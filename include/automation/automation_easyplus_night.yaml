@@ -20,6 +20,56 @@
   - service: notify.dageraad
     data:
       message: "Auto Shutdown starting in 5min."
+  - service: telegram_bot.send_message
+    data_template:
+      title: 'Night Modus'
+      target: 1999381 # or '{{ trigger.event.data.user_id }}' # to be test
+      message: 'Activate or Delay Night Modus'
+      inline_keyboard:
+        - "Activate:/night_now"
+        - "Delay:/night_delay"
+
+
+- id: easyplus_6_tg_night_now
+  initial_state: 'true'
+  alias: 'Telegram reply night_now'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/night_now'
+  action:
+  - service: script.lights
+  - service: script.switches
+  - delay:
+      seconds: 10
+  - service: homeassistant.turn_off
+    entity_id: switch.easyplus        
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+
+      You have selected Night Modus, House shutdown'
+
+
+- id: easyplus_6_tg_night_delay
+  initial_state: 'true'
+  alias: 'Telegram reply night_delay'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/night_delay'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: input_boolean.night        
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+
+      Night has been deactivated'
 
 - id: easyplus_6a
   initial_state: 'true'

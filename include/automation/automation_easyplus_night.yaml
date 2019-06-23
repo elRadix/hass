@@ -1,6 +1,6 @@
-- id: easyplus_6
+- id: easyplus_night_1
   initial_state: 'true'
-  alias: Auto Easyplus off Notification  Night
+  alias: 'Night Modus Notification'
   trigger:
     platform: time
     at: '00:25:00'
@@ -26,9 +26,9 @@
         - "Shutdown:/night_now"
         - "Delay:/night_delay"
 
-- id: easyplus_6_tg_night_now
+- id: easyplus_night_2
   initial_state: 'true'
-  alias: 'Telegram reply night_now'
+  alias: 'Night Modus TG Now'
   trigger:
   - platform: event
     event_type: telegram_callback
@@ -48,10 +48,9 @@
 
       You have selected Night Modus, House shutdown'
 
-
-- id: easyplus_6_tg_night_delay
+- id: easyplus_night_3
   initial_state: 'true'
-  alias: 'Telegram reply night_delay'
+  alias: 'Night Modus TG Delay'
   trigger:
   - platform: event
     event_type: telegram_callback
@@ -67,9 +66,9 @@
 
       Night Modus has been delayed'
 
-- id: easyplus_6a
+- id: easyplus_night_4
   initial_state: 'true'
-  alias: Auto Easyplus Shutdown Lights
+  alias: 'Night Modus Lights Off'
   trigger:
     platform: time
     at: '00:30:00'
@@ -91,9 +90,9 @@
     data:
       message: "Night Modus, Lights Off"
 
-- id: easyplus_6b
+- id: easyplus_night_5
   initial_state: 'true'
-  alias: Auto Easyplus Shutdown Switches
+  alias:  'Night Modus Switches Off'
   trigger:
     platform: time
     at: '00:30:30'
@@ -115,9 +114,9 @@
     data:
       message: "Night Modus, Switches Off"
 
-- id: easyplus_6c
+- id: easyplus_night_6
   initial_state: 'true'
-  alias: Auto Easyplus Shutdown 
+  alias: 'Night Modus Easyplus Off' 
   trigger:
     platform: time
     at: '00:30:55'
@@ -136,4 +135,3 @@
   - service: notify.dageraad
     data:
       message: "Night Modus, Easyplus Off"
-###############################################################

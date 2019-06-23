@@ -25,7 +25,6 @@
       inline_keyboard:
          - "Shutdown:/night_now"
          - "Delay:/night_delay"
-
   # - service: notify.dageraad
   #   data:
   #     message: "Auto Shutdown starting in 5min."

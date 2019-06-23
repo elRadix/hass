@@ -68,12 +68,20 @@
   alias: 'Telegram reply night_delay'
   trigger:
   - platform: event
-    event_type: telegram_command
+    event_type: telegram_callback
     event_data:
-      command: '/night_delay'
+      data: '/night_delay'
+  # - platform: event
+  #   event_type: telegram_command
+  #   event_data:
+  #     command: '/night_delay'
   action:
   - service: homeassistant.turn_off
-    entity_id: input_boolean.night      
+    entity_id: input_boolean.night 
+  - service: telegram_bot.answer_callback_query
+    data_template:
+      callback_query_id: '{{ trigger.event.data.id }}'
+      message: 'Ok, Night Modus Delayed'
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'

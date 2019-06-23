@@ -25,6 +25,14 @@
       inline_keyboard:
         - "Shutdown:/night_now"
         - "Delay:/night_delay"
+  - service: telegram_bot.send_message
+    data_template:
+      title: 'Night Modus will start over 5min'
+      target: 13971596
+      message: 'What shall we do now?'
+      inline_keyboard:
+        - "Shutdown:/night_now"
+        - "Delay:/night_delay"
 
 - id: easyplus_night_2
   initial_state: 'true'

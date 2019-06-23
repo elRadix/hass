@@ -1,0 +1,119 @@
+- id: counter_1
+  alias: counter_stats
+  initial_state: 'true'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/counter'
+  - platform: time
+    at: '00:00:00'
+  action:
+    service: notify.dageraad
+    data_template:
+      message: '
+      Motion Stats:
+
+      ----------
+
+      Inkomhal:      {{states.counter.motion_hal.state}}
+
+      Eetkamer:     {{states.counter.motion_eetkamer.state}}
+
+      WC:                {{states.counter.motion_wc.state}}
+
+      Traphal:        {{states.counter.motion_traphal.state}}
+
+      Badkamer:      {{states.counter.motion_badkamer.state}}
+
+
+      Door Stats:
+
+      ----------
+
+      Inkomhal:   {{states.counter.rf_inkomhal.state}}
+
+      Terras:        {{states.counter.rf_terras.state}}'
+      
+
+
+- id: counter_2
+  alias: counter_motion_wc
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_wc
+    to: 'on'
+  action:
+  - service: counter.increment
+    entity_id: counter.motion_wc
+
+- id: counter_3
+  alias: counter_motion_eetkamer
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_eetkamer
+    to: 'on'
+  action:
+  - service: counter.increment
+    entity_id: counter.motion_eetkamer
+
+- id: counter_4
+  alias: counter_motion_inkomhal
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_inkomhal
+    to: 'on'
+  action:
+  - service: counter.increment
+    entity_id: counter.motion_hal
+    
+- id: counter_5
+  alias: counter_motion_traphal
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_traphal
+    to: 'on'
+  action:
+  - service: counter.increment
+    entity_id: counter.motion_traphal
+    
+- id: counter_6
+  alias: counter_motion_badkamer
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_badkamer
+    to: 'on'
+  action:
+  - service: counter.increment
+    entity_id: counter.motion_badkamer
+
+- id: counter_9
+  alias: counter_reset
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '00:00:05'
+  action:
+  - service: counter.reset
+    entity_id: counter.motion_hal
+  - service: counter.reset
+    entity_id: counter.motion_eetkamer
+  - service: counter.reset
+    entity_id: counter.motion_wc
+  - service: counter.reset
+    entity_id: counter.motion_traphal
+  - service: counter.reset
+    entity_id: counter.motion_badkamer
+  - service: counter.reset
+    entity_id: counter.rf_inkomhal
+  - service: counter.reset
+    entity_id: counter.rf_terras
+  - service: notify.telegram_rachid
+    data:
+      message: 'Counter Reset!'
+

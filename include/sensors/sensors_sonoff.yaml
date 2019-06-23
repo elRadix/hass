@@ -1,0 +1,114 @@
+#=== Sensors
+#============
+
+  # Latest Sonoff Tasmota firmware version
+  - platform: command_line
+    name: Tasmota Current Version
+    command: "curl -s https://github.com/arendst/Sonoff-Tasmota/releases/latest | cut -d'\"' -f2 | rev | cut -d'/' -f1 | rev"
+    scan_interval: 86400
+
+  # Latest ESPHome firmware version
+
+  - platform: command_line
+    name: ESPHome Current Version
+    command: "curl -s https://github.com/esphome/esphome/releases/latest | cut -d'\"' -f2 | rev | cut -d'/' -f1 | rev"
+    scan_interval: 86400
+
+
+  # Earliest Sonoff Tasmota firmware version
+  - platform: template
+    sensors:
+      tasmota_earliest_installed_version:
+        entity_id: sensor.time
+        friendly_name: Tasmota Earliest Installed Version
+        value_template: >
+          {% set ns = namespace(lowest = states('sensor.tasmota_current_version')[1:]) %}
+          {% for item in states if item.entity_id.split(".")[1].endswith('Sonoff') and 
+                                   item.entity_id.split(".")[1].startswith('Version') and 
+                                   item.state != 'unknown' and
+                                   item.state < ns.lowest %}
+            {% set ns.lowest = item.state %}
+          {% endfor %}
+          v{{ ns.lowest }}  
+
+
+  # Installed firmware version
+
+####SONOFF#####
+  - platform: rest
+    name: Sonoff latest release
+    resource: https://api.github.com/repos/arendst/Sonoff-Tasmota/releases/latest
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor 
+
+  # - platform: mqtt
+  #   name: Sonoff 01 Version
+  #   state_topic: "stat/easyplus/STATUS2"
+  #   value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-sonoff)", "") }}'
+  #   qos: 0
+  #   availability_topic: "tele/easyplus/LWT"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"
+    
+  # - platform: mqtt
+  #   name: Sonoff 02 Version
+  #   state_topic: "stat/server/STATUS2"
+  #   value_template: 'v{{ value_json.StatusFWR.Version | replace("(b5824fc-sonoff)", "") }}'
+  #   qos: 0
+  #   availability_topic: "tele/server/LWT"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"
+
+  # - platform: mqtt
+  #   name: Sonoff 03 Version
+  #   state_topic: "stat/ketel/STATUS2"
+  #   value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-sonoff)", "") }}'
+  #   qos: 0
+  #   availability_topic: "tele/ketel/LWT"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"
+
+  # - platform: mqtt
+  #   name: Sonoff 04 Version
+  #   state_topic: "stat/kodi/STATUS2"
+  #   value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-sonoff)", "") }}'
+  #   qos: 0
+  #   availability_topic: "tele/kodi/LWT"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"
+    
+  # - platform: mqtt
+  #   name: Sonoff 05 Version
+  #   state_topic: "stat/living/STATUS2"
+  #   value_template: 'v{{ value_json.StatusFWR.Version | replace("(2b7fbe2-sonoff)", "") }}'
+  #   qos: 0
+  #   availability_topic: "tele/living/LWT"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: Sonoff 06 Version
+    state_topic: "rfbridge/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-sonoff)", "") }}'
+    # qos: 0
+    # availability_topic: "rfbridge/tele/LWT"
+    # payload_available: "Online"
+    # payload_not_available: "Offline"
+
+
+#RF BRIDGE
+
+#rfbridge/tele/RESULT
+  - platform: mqtt
+    state_topic: 'rfbridge/tele/RESULT'
+    name: RF Bridge
+    value_template: "{{ value_json.RfReceived.Data }}"
+
+  - platform: mqtt
+    state_topic: 'rfbridge/tele/RESULT'
+    name: RF Stream
+    value_template: "{{ value_json.RfReceived.Data }}"
+    expire_after: 1

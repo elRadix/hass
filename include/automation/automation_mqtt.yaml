@@ -1,0 +1,48 @@
+# - id: "MQTT Enable discovery for all devices"
+#   trigger:
+#     platform: homeassistant
+#     event: start
+#   action:
+#     - service: mqtt.publish
+#       data:
+#         topic: "cmnd/sonoffs/SetOption19"
+#         payload: "1"
+#     - service: mqtt.publish
+#       data:
+#         topic: "cmnd/sonoffs/SetOption55"
+#         payload: "1"
+
+
+- id: mqtt_01
+  alias: "Sonoff Sate"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: sonoffs/cmnd/STATUS
+        payload: "" 
+
+
+- id: mqqt_02
+  alias: "Sonoff Firmware Installed"
+  initial_state: 'on'
+  trigger:
+    - platform: time
+      at: '00:00:00'
+    - platform: time
+      at: '12:00:00'
+    - platform: homeassistant
+      event: start
+  action:
+  - service: mqtt.publish
+    data:
+      topic: sonoffs/cmnd/STATUS
+      payload: "2"
+
+
+
+
+
+

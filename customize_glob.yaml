@@ -1,0 +1,223 @@
+
+    "sensor.rf*":
+      icon: mdi:video-input-antenna
+
+    "switch.light_tr*":
+      icon: mdi:stairs
+      assumed_state: false
+
+    "input_number.dimmer_*":
+      icon: mdi:lightbulb
+      assumed_state: false
+
+    "switch.stp_*":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+
+    "switch.light_*":
+      icon: mdi:lightbulb
+      assumed_state: false
+
+    "switch.router_vpn_se*":
+      icon: mdi:key
+
+    "switch.router_vpn_cl*":
+      icon: mdi:vpn
+
+    "switch.router_adblock":
+      icon: mdi:alert-decagram
+
+    "switch.router_firewall":
+      icon: mdi:wall
+
+    "input_boolean.*":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+
+    "sensor.f*":
+      icon: mdi:account
+
+    "switch.son*":
+      icon: mdi:power-socket-eu
+
+    "sensor.sonoff_latest_release":
+      icon: mdi:eye
+     
+    "script.check_sonoffs_version":
+      icon: mdi:checkbox-multiple-marked-outline  
+
+    "script.update_sonoffs":
+      icon: mdi:download-network
+
+
+    "sensor.sonoff*":
+      icon: mdi:power-socket-eu
+     
+
+    "switch.b*":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+
+    "switch.heating*":
+      icon: mdi:fire
+      assumed_state: false
+
+
+    "climate.*":
+      icon: mdi:fan
+
+    "sensor.smappee_*":
+      icon: mdi:gauge
+
+    "switch.stp_keuken_espresso*":
+      icon: mdi:coffee
+    "switch.stp_berging_was*":
+      icon: mdi:washing-machine
+    "switch.stp_berging_droo*":
+      icon: mdi:tumble-dryer
+    "switch.stp_keuken_vaat*":
+      icon: mdi:washing-machine
+    "switch.stp_keuken_ove*":
+      icon: mdi:washing-machine
+    "switch.stp_berging_micro*":
+      icon: mdi:washing-machine
+    "switch.stp.keuken_water*":
+      icon: mdi:cup-water
+    "switch.stp_living_so*":
+      icon: mdi:television
+    "switch.inter*":
+       assumed_state: false
+    "switch.internet*":
+      icon: mdi:signal-variant
+    "sensor.soumaya_to_isabel":
+      icon: mdi:briefcase
+    "sensor.rachid_to_home":
+      icon: mdi:home-variant
+    "sensor.soumaya_to_home":
+      icon: mdi:home-variant
+    "sensor.elradixbe":
+      icon: mdi:web
+    "input_number.dim*":
+      icon: mdi:brightness-7
+    "input_number.set*":
+      icon: mdi:fire
+    "sensor.yassin_to_voetbal":
+      icon: mdi:soccer
+    "sensor.zayd_to_voetbal":
+      icon: mdi:soccer
+    "sensor.kids_to_arabische_lessen":
+      icon: mdi:chair-school
+    "sensor.kids_to_judo":
+      icon: mdi:sword-cross
+    "sensor.kids_to_school":
+      icon: mdi:chair-school
+    "sensor.sara_to_gymnastiek":
+      icon: mdi:mushroom
+    "sensor.brussel_train_status":
+      icon: mdi:bus
+    "proximity.*":
+      icon: mdi:home-variant
+    "sensor.total_current":
+      icon: mdi:gauge
+    "sensor.total_power":
+      icon: mdi:gauge
+    "sensor.voltage":
+      icon: mdi:gauge
+    "sensor.active_power__phase_1":
+      icon: mdi:gauge
+    "sensor.apparent_power__phase_1":
+      icon: mdi:gauge
+    "sensor.cos__phase_1":
+      icon: mdi:gauge
+    "sensor.current__phase_1":
+      icon: mdi:gauge
+    "sensor.reactive_power__phase_1":
+      icon: mdi:gauge
+    "switch.allhome":
+      icon: mdi:lightbulb
+      assumed_state: false
+
+    "switch.easyplus":
+      icon: mdi:power
+      assumed_state: false
+
+
+    #"switch.docker*":
+      #icon: mdi:docker
+      #assumed_state: false
+
+    "switch.bureau_lader":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+
+
+    "switch.woon":
+      icon: mdi:lightbulb
+      assumed_state: false
+    "switch.slaap":
+      icon: mdi:lightbulb
+      assumed_state: false
+    "switch.socket_woon":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+    "switch.socket_slaap":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+
+
+    "automation.auto_heat*":
+      icon: mdi:thermometer
+
+    "automation.auto_easyplus_shutdow*":
+      icon: mdi:power-settings
+
+
+    "automation.easyplus_startu*":
+      icon: mdi:power-settings
+
+
+    "automation.easyplus_startup_monday":
+      icon: mdi:power-settings
+
+
+    "input_boolean.work":
+      icon: mdi:briefcase
+
+
+    "input_boolean.school":
+      icon: mdi:school
+
+    "automation.auto_off_day":
+      icon: mdi:flashlight-off
+      
+    "sensor.percent_at_work_daily":
+      icon: mdi:percent
+      
+    "sensor.percent_at_work_weekly":
+      icon: mdi:percent
+
+    "sensor.percent_at_work_monthly":
+      icon: mdi:percent
+
+    "sensor.time_at_work_today":
+      icon: mdi:office-building
+
+    "sensor.time_at_work_this_week":
+      icon: mdi:office-building
+
+    "sensor.time_at_work_this_month":
+      icon: mdi:office-building
+
+    "sensor.me_traffic_density_to_home":
+      icon: mdi:traffic-light
+
+    "sensor.me_traffic_density_to_work":
+      icon: mdi:traffic-light
+
+      
+    "sensor.home_to_bnp":
+      icon: mdi:briefcase
+      
+    "sensor.bnp_to_home":
+      icon: mdi:home-variant
+

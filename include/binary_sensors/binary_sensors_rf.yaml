@@ -1,0 +1,110 @@
+
+
+#- platform: template
+#  sensors:
+#    rf_switch:
+#      value_template: '{{ is_state("sensor.rf_stream", "46C232") }}' 
+#      delay_off: '00:00:01'
+#      device_class: light
+#      friendly_name: "Sara Switch"
+
+
+### SARA RF Wall Switch
+- platform: template
+  sensors:
+    rf_switch_b:
+      value_template: '{{ is_state("sensor.rf_stream", "A06D62") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button B"
+
+- platform: template
+  sensors:
+    rf_switch_c:
+      value_template: '{{ is_state("sensor.rf_stream", "A06D64") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button C"
+
+- platform: template
+  sensors:
+    rf_switch_d:
+      value_template: '{{ is_state("sensor.rf_stream", "A06D68") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button D"
+      
+## RF SWITCH 3 BUTTONS
+- platform: template
+  sensors:
+    rf_switch_btns_left:
+      value_template: '{{ is_state("sensor.rf_stream", "8F8B91") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button Left"
+
+- platform: template
+  sensors:
+    rf_switch_btns_center:
+      value_template: '{{ is_state("sensor.rf_stream", "8F8B98") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button Center"
+      
+- platform: template
+  sensors:
+    rf_switch_btns_right:
+      value_template: '{{ is_state("sensor.rf_stream", "8F8B92") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button Right"
+      
+### RF ROUND BUTTONS
+
+- platform: template
+  sensors:
+    rf_btn_45a081:
+      value_template: '{{ is_state("sensor.rf_stream", "45A081") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button 45A081"
+
+- platform: template
+  sensors:
+    rf_btn_4ffd01:
+      value_template: '{{ is_state("sensor.rf_stream", "4FFD01") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button 4FFD01"
+
+- platform: template
+  sensors:
+    rf_btn_793401:
+      value_template: '{{ is_state("sensor.rf_stream", "793401") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button 793401"
+
+- platform: template
+  sensors:
+    rf_btn_1c60b1:
+      value_template: '{{ is_state("sensor.rf_stream", "1C60B1") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button 1C60B1"
+
+# - platform: template
+#   sensors:
+#     rf_btn_909601:
+#       value_template: '{{ is_state("sensor.rf_stream", "909601") }}' 
+#       # delay_off: '00:00:01'
+#       device_class: plug
+#       friendly_name: "Button 909601"
+
+- platform: mqtt
+  name: 'rf_btn_909601'
+  state_topic: 'home/circle1'
+  off_delay: 1
+  device_class: plug
+
+

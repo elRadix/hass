@@ -1,0 +1,460 @@
+- alias: Log Level
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: input_select.log_level
+  action:
+    service: logger.set_level
+    data_template:
+      homeassistant.components: "{{ trigger.to_state.state }}"
+
+- id: rpi_power
+  alias: RPI-Power alarm
+  initial_state: True
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.rpi_power_status
+    above: 0
+  action:
+  - service: notify.dageraad
+    data_template:
+       message: 'Status code = {{ states.sensor.rpi_power_status.state }}, {{states.sensor.rpi_power_status.attributes.description}}'
+       title: WARNING There is a power supply problem
+
+
+- id: 'cleanknowndevices'
+  alias: Clean out Known Devices
+  initial_state: 'true'
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - service: shell_command.clean_knowndevices
+
+
+- id: Power Tarrif Energy
+  alias: Power Tarrif Energy
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '06:00:00'
+    - platform: time
+      at: '21:00:00'
+  action:
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.daily_energy
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.monthly_energy
+
+# - id: Force_Owntracks_Rachid
+#   initial_state: True
+#   alias: Force Owntracks Rachid every 30m
+#   trigger:
+#   - platform: time_pattern
+#     minutes: '/30'
+#   action:
+#   - service: mqtt.publish
+#     data:
+#       topic: "owntracks/elradix/s7elradix/cmd"
+#       payload_template: '{"_type": "cmd","action": "reportLocation"}'
+#       #payload_template: '{"_type": "cmd","action": "reportLocation", "batt": %BATT}'
+
+# - id: Force_Owntracks_Soumaya
+#   initial_state: True
+#   alias: Force Owntracks Soumaya every 30m
+#   trigger:
+#   - platform: time_pattern
+#     minutes: '/30'
+#   action:
+#   - service: mqtt.publish
+#     data:
+#       topic: "owntracks/elradix/s7soumaya/cmd"
+#       payload_template: '{"_type": "cmd","action": "reportLocation"}'
+#       #payload_template: '{"_type": "cmd","action": "reportLocation", "batt": %BATT}'
+      
+      
+
+
+
+
+#- id: motion_s2_berging_on
+#  initial_state: True
+#  alias: Motion Detection - berging s2 on
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.s2_camera_motion
+#    to: 'on'
+#  condition:
+#      condition: state
+#      entity_id: sun.sun
+#      state: below_horizon
+#  action:
+#    service: homeassistant.turn_on
+#    entity_id: group.berging_light
+
+#- id: motion_s2_berging_off
+#  initial_state: True
+#  alias: Motion Detection - berging s2 off
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.s2_camera_motion
+#    to: 'off'
+#    for: '00:00:10'
+#  action:
+#    service: homeassistant.turn_off
+#    entity_id: group.berging_light
+
+
+#- id: s2_camera_motion_photo
+#  initial_state: True
+#  alias: 'S2 Camera Motion Send photo'
+#  condition:
+#    condition: state
+#    entity_id: group.all_devices
+#    state: 'not_home'
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.s2_camera_motion
+#    to: 'on'
+#  action:
+#  - service: notify.dageraad
+#    data:
+#      title: 'Home Assistant'
+#      message: 'Photo'
+#      data:
+#        photo:
+#          url: http://s2.lan:8000/shot.jpg
+#          caption: Motion in Berging @ {{now().strftime("%H:%M:%S")}}
+#  - service: notify.telegram_rachid
+#    data:
+#      title: 'Home Assistant'
+#      message: 'Photo'
+#      data:
+#        photo:
+#          url: http://s2.lan:8000/photo.jpg
+#          caption: Motion in Berging @ {{now().strftime("%H:%M:%S")}}
+#  - service: notify.html5
+#    data:
+#      title: 'Camera Berging'
+#      message: 'Motion detected at {{now().strftime("%H:%M:%S")}}!!'
+#      data:
+#        tag: alert
+#        url: 'https://home.elradix.be/api/camera_proxy_stream/camera.s2'
+#        image: "http://s2.lan:8000/shot.jpg"
+#        #image: "https://home.elradix.be/api/camera_proxy/camera.s2?api_password=athlon00"
+#        vibrate:
+#          - 300
+#          - 100
+#          - 400
+#        renotify: 2
+
+
+#- id: s2_camera_motion_gif
+#  alias: 'S2 Camera Motion Send gif'
+  #condition:
+  #  condition: state
+  #  entity_id: binary_sensor.rachid_home
+  #  state: 'off'
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.s2_camera_motion
+#    to: 'on'
+#  action:
+#  - service: shell_command.snapshot_cam2_gif
+#  - delay:
+#       seconds: 1
+#  - service: notify.telegram_rachid
+#    data:
+#      title: 'Home Assistant'
+#      message: 'Photo'
+#      data:
+#        document:
+#          file: /home/homeassistant/.homeassistant/www/cam/s2cam.gif
+#          caption: "Berging motion detected"
+
+
+
+
+
+# - id: text_speaker
+#   initial_state: True
+#   alias: Announce Input Over Speaker
+#   trigger:
+#   - platform: state
+#     entity_id: input_text.announce_google
+#   action:
+#   - service: tts.google_say
+#     data_template:
+#       entity_id: media_player.all_devices
+#       message: "{{ states.input_text.announce_google.state }}"
+
+
+
+
+#- id: Stop Sonoff  when Kodi is idle
+#  initial_state: True
+#  trigger:
+#  - platform: state
+#    entity_id: media_player.kodi_slaapkamer
+#    to: 'idle'
+#    for:
+#      minutes: 15 
+#  action:
+#  - service: homeassistant.turn_off
+#    entity_id: switch.kodi
+#  - service: homeassistant.turn_off
+#    entity_id: switch.dockerplex
+#  - delay:
+#      seconds: 5
+#  - service: homeassistant.turn_off
+#    entity_id: switch.dockertautulli
+#  - delay:
+#      seconds: 5
+#  - service: homeassistant.turn_off
+#    entity_id: switch.dockersambaserver
+#  - delay:
+#      seconds: 5
+#  - service: notify.dageraad
+#    data:
+#      message: 'Shutdown Sonoff switch and media containers'
+
+###########################################
+
+#- id: active_mediaplayer
+#  alias: Media Update Active Group
+#  trigger:
+#  - entity_id: sensor.media_players_active
+#    platform: state
+#  action:
+#  - service: group.set
+#    data_template:
+#      object_id: media_players_active
+#      entities: '{{ trigger.to_state.state }}'
+
+
+
+
+
+###############
+###  FIND   ###
+###############
+
+#- id: find_bureau
+#  initial_state: True
+#  alias: location bureau
+#  trigger:
+#  - platform: state
+#    entity_id: sensor.find_rachid_mqtt
+#    to: "bureau_old"
+#  condition:
+#      condition: state
+#      entity_id: sun.sun
+#      state: below_horizon
+#  action:
+#  - service: homeassistant.turn_on
+#    entity_id: switch.light_bureau_spots
+#  - delay: '00:05:00'
+#  - service: homeassistant.turn_off
+#    entity_id: switch.light_bureau_spots
+
+
+
+
+
+
+#
+#- id: telebot_status
+#  alias: 'Telegram bot that edits the last sent message'
+#  hide_entity: true
+#  trigger:
+#  - platform: event
+#    event_type: telegram_callback
+#    event_data:
+#      data: '/ptatus'
+#  action:
+#  - service: telegram_bot.send_message
+#    data_template:
+#      target: '{{ trigger.event.data.user_id }}'
+#      message: " System is online!
+#
+#        There are {{states.sensor.ssl_certificate_expiry.state}} days left on the SSL certificate for elradix.be.
+#
+#        Rachid is {{states.device_tracker.rachid_mqtt.state}}.
+#        Soumaya is {{states.device_tracker.soumaya_mqtt.state}}.
+# 
+#        All lights are {{states.group.lights.state}}.
+#        All switches are {{states.group.sockets.state}}."
+##
+##
+#
+#- id: telebot_eetkamer_spot_toggle
+#  alias: 'TeleBot: Eetkamer spot'
+#  trigger:
+#  - platform: event
+#    event_type: telegram_command
+#    event_data:
+#      command: '/eetkamer'
+#  action:
+#  - service: switch.toggle
+#    data:
+#      entity_id: group.dinner_light
+#  - service: notify.telegram
+#    data:
+#      message: 'Eetkamer spots is {{ states.group.dinner_light.state}}'
+##
+#
+#
+####################################################
+########## PERSISTENT NOTIFICATION #################
+####################################################
+#- id: home_notification
+#  alias: 'Occupants State Change Alert'
+#  hide_entity: true
+#  trigger:
+#  - platform: state
+#    entity_id: device_tracker.rachid, device_tracker.soumaya, device_tracker.988667514f3249575a, device_tracker.ce091609285fb41004
+#  action:
+#  - service: persistent_notification.create
+#    data_template:
+#      message:  >
+#        {{ trigger.to_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'not_home' %}away{% else %}home{% endif %} since {{now().strftime("%H:%M:%S")}}
+#      notification_id: "occupants"
+#
+#- id: home_notification_rachid
+#  alias: 'Occupants State Change Alert Rachid'
+#  hide_entity: true
+#  trigger:
+#  - platform: state
+#    entity_id: device_tracker.rachid, device_tracker.ce091609285fb41004
+#  action:
+#  - service: persistent_notification.create
+#    data_template:
+#      message:  >
+#        {{ trigger.to_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'not_home' %}away{% else %}home{% endif %} since {{now().strftime("%H:%M:%S")}}
+#      notification_id: "rachid"
+#
+#- id: home_notification_souamaya
+#  alias: 'Occupants State Change Alert Soumaya'
+#  hide_entity: true
+#  trigger:
+#  - platform: state
+#    entity_id: device_tracker.soumaya, device_tracker.988667514f3249575a
+#  action:
+#  - service: persistent_notification.create
+#    data_template:
+#      message:  >
+#        {{ trigger.to_state.attributes.friendly_name }} is {% if trigger.to_state.state == 'not_home' %}niet thuis{% else %}thuis{% endif %} sinds {{now().strftime("%H:%M:%S")}}
+#      notification_id: "soumaya"
+##
+#
+#- id: movie_notification
+#  alias: 'Announcement Movie state'
+#  hide_entity: true
+#  trigger:
+#  - platform: state
+#    entity_id: media_player.kodi, media_player.kodi_living, media_player.kodi_slaapkamer
+#  action:
+#  - service: persistent_notification.create
+#    data_template:
+#      message:  >
+#        {{ trigger.to_state.attributes.media_title }} is now {{ trigger.to_state.state }} in the {{ trigger.to_state.attributes.friendly_name }}.
+#      notification_id: "movie"
+#
+#- id: music_notification
+#  alias: 'Announcement Music state changed'
+#  hide_entity: true
+#  trigger:
+#  - platform: state
+#    entity_id: media_player.livingroom, media_player.bedroom
+#  action:
+#  - service: persistent_notification.create
+#    data_template:
+#      message:  >
+#        {{ trigger.to_state.attributes.media_artist }} - {{ trigger.to_state.attributes.media_title }} is now {{ trigger.to_state.state }} in the {{ trigger.to_state.attributes.friendly_name }}.
+#      notification_id: "music"
+#
+#
+#  -  service: notify.telegram_soumaya
+#     data:
+#      message: 'Home Assistant is going down!'
+##
+#
+#
+#
+#                Boiler will start at {{states.sensor.auto_heat_time_ketel.state}}
+
+#- id: weekly_tv_report
+#  alias: Send TV report
+#  initial_state: true
+#  hide_entity: false
+#  trigger:
+#  - platform: time_pattern
+#    after: '00:05:00'
+#  condition:
+#    - condition: time
+#      weekday:
+#        - mon
+#  action:
+#  - service: notify.tv_report
+#    data:
+#      message: ""
+#
+#
+#
+#
+#   - service: homeassistant.turn_off or .turn_on
+#      data:
+#        entity_id:
+#          - light.light1
+# https://community.home-assistant.io/t/how-to-turn-on-2-light-concurrently-without-using-groups/26548/6
+#
+#
+
+#
+#
+#### INTERNET
+#
+#- id: disconect_tabs2
+#  alias: 'Disconnect TabS2'
+#  trigger:
+#  - platform: time_pattern
+#    minutes: '/5'
+#    seconds: '0'
+#  condition:
+#    condition: template
+#    value_template: '{{ ((now().strftime("%s") | int ) | timestamp_custom("%H:%M")) == states.sensor.internetcuttime.state  }}'
+#  action:
+#  - service: shell_command.cut_internet_tabs2
+#
+#- id: disconect_ipad
+#  alias: 'Disconnect ipad'
+#  trigger:
+#  - platform: time_pattern
+#    minutes: '/5'
+#    seconds: '0'
+#  condition:
+#    condition: template
+#    value_template: '{{ ((now().strftime("%s") | int ) | timestamp_custom("%H:%M")) == states.sensor.internetcuttime.state  }}'
+#  action:
+#  - service: shell_command.cut_internet_ipad
+#
+#
+#
+
+
+
+
+#                Heating Time
+#
+#                ---------------------
+#
+#                Living:  {{states.sensor.liv_1u_stopwatch.state}}
+#
+#                Dinner: {{states.sensor.eet_1u_stopwatch.state}} or {{states.sensor.eet_2u_stopwatch.state}}
+#
+#                S&R:    {{states.sensor.sr_1u_stopwatch.state}} or {{states.sensor.sr_2u_stopwatch.state}}
+#
+#                Sara:    {{states.sensor.sara_1u_stopwatch.state}}
+#
+#                Yassin: {{states.sensor.yassin_1u_stopwatch.state}}'
+#

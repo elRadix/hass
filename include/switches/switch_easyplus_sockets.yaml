@@ -1,0 +1,199 @@
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_living_sony:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 21,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 21,0'"
+        command_state: "/opt/scripts/status/state.sh -D 21"
+        friendly_name: Sony TV 
+
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_living_bureau:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 20,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 20,0'"
+        command_state: "/opt/scripts/status/state.sh -D 20"
+        friendly_name: Bureau
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_living_other:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 22,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 22,0'"
+        command_state: "/opt/scripts/status/state.sh -D 22"
+        friendly_name: Other
+
+- platform: command_line 
+  scan_interval: 110
+  switches:
+   stp_keuken_commander:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 40,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 40,0'"
+        command_state: "/opt/scripts/status/state.sh -D 40"
+        friendly_name: Commander 
+
+- platform: command_line 
+  scan_interval: 110
+  switches:
+   stp_keuken_microwave:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 33,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 33,0'"
+        command_state: "/opt/scripts/status/state.sh -D 33"
+        friendly_name: Microgolf
+
+- platform: command_line 
+  scan_interval: 110
+  switches:
+   stp_keuken_oven:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 34,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 34,0'"
+        command_state: "/opt/scripts/status/state.sh -D 34"
+        friendly_name: Oven 
+
+- platform: command_line 
+  scan_interval: 110
+  switches:
+   stp_keuken_espresso:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 35,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 35,0'"
+        command_state: "/opt/scripts/status/state.sh -D 35"
+        friendly_name: Espresso 
+
+- platform: command_line 
+  scan_interval: 110
+  switches:
+   stp_keuken_water:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 39,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 39,0'"
+        command_state: "/opt/scripts/status/state.sh -D 39"
+        friendly_name: Waterkoker
+
+- platform: command_line 
+  scan_interval: 110
+  switches:
+   stp_keuken_vaatwasser:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 38,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 38,0'"
+        command_state: "/opt/scripts/status/state.sh -D 38"
+        friendly_name: Vaatwasser
+
+- platform: command_line 
+  scan_interval: 110
+  switches:
+   stp_keuken_dampkap:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 1,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 1,0'"
+        command_state: "/opt/scripts/status/state.sh -D 1"
+        friendly_name: Dampkap
+
+
+        
+- platform: command_line 
+  scan_interval: 110
+  switches:
+   stp_berging_wasmachine:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 36,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 36,0'"
+        command_state: "/opt/scripts/status/state.sh -D 36"
+        friendly_name: Wasmachine 
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_berging_droogkast:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 37,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 37,0'"
+        command_state: "/opt/scripts/status/state.sh -D 37"
+        friendly_name: Droogkast
+
+
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_smappee:
+        command_on: "/home/root/domoticz/scripts/smappee_plug_control.sh 1 2"
+        command_off: "/home/root/domoticz/scripts/smappee_plug_control.sh 0 2"
+        friendly_name: smappee
+
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_eetkamer_tv:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 19,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 19,0'"
+        command_state: "/opt/scripts/status/state.sh -D 19"
+        friendly_name: Samung TV
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_eetkamer_other:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 18,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 18,0'"
+        command_state: "/opt/scripts/status/state.sh -D 18"
+        friendly_name: Other
+
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_slp1_bed:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 29,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 29,0'"
+        command_state: "/opt/scripts/status/state.sh -D 29"
+        friendly_name: Bed Rachid
+
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_slp1_bed_soumaya:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 28,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 28,0'"
+        command_state: "/opt/scripts/status/state.sh -D 28"
+        friendly_name: Bed Soumaya
+
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_slp2_bureau:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 25,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 25,0'"
+        command_state: "/opt/scripts/status/state.sh -D 25"
+        friendly_name: Bureau
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_slp2_deur:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 24,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 24,0'"
+        command_state: "/opt/scripts/status/state.sh -D 24"
+        friendly_name: Deur
+
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_slp3_bureau:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 27,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 27,0'"
+        command_state: "/opt/scripts/status/state.sh -D 27"
+        friendly_name: Bureau
+
+- platform: command_line
+  scan_interval: 110
+  switches:
+   stp_slp3_deur:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 26,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 26,0'"
+        command_state: "/opt/scripts/status/state.sh -D 26"
+        friendly_name: Deur
+
+

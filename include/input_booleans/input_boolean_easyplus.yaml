@@ -1,0 +1,14 @@
+  night:
+    name: Midnight 
+    initial: on
+    icon: mdi:weather-night
+
+  night_late:
+    name: Midnight Late
+    initial: on
+    icon: mdi:weather-night
+
+  night_plus:
+    name: Midnight Plus
+    initial: on
+    icon: mdi:weather-night   

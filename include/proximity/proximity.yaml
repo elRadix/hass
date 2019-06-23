@@ -1,0 +1,36 @@
+#proximity:
+  home:
+    zone: home
+    devices:
+      - device_tracker.comp_rachid
+      - device_tracker.comp_soumaya
+#    tolerance: 200
+    unit_of_measurement: km
+
+  home_rachid:
+    zone: home
+    devices:
+      - device_tracker.comp_rachid
+#    tolerance: 200
+    unit_of_measurement: km
+
+  home_soumaya:
+    zone: home
+    devices:
+      - device_tracker.comp_soumaya
+#    tolerance: 200
+    unit_of_measurement: km
+    
+  work:
+    zone: work
+    devices:
+      - device_tracker.comp_rachid
+#    tolerance: 200
+    unit_of_measurement: km
+
+  isabel:
+    zone: isabel
+    devices:
+      - device_tracker.comp_soumaya
+#    tolerance: 200
+    unit_of_measurement: km

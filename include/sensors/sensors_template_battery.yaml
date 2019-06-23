@@ -1,0 +1,77 @@
+#### TEMPLATE SENSORS ####
+
+#sensor:
+  - platform: template
+    sensors:
+
+      battery_inkomhal_days2go:
+        value_template: '{{ ((as_timestamp(now()) - (states.input_datetime.inkomhal_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.inkomhal_battery,sensor.time
+        friendly_name: "RF Deur Inkomhal"
+
+      battery_terras_days2go:
+        value_template: '{{ ((as_timestamp(now()) - (states.input_datetime.terras_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.terras_battery,sensor.time
+        friendly_name: "RF Deur Terras"
+        
+      battery_water_keuken_days2go:
+        value_template: '{{ ((as_timestamp(now()) - (states.input_datetime.water_keuken_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.water_keuken_battery,sensor.time
+        friendly_name: "RF Water Keuken"
+        
+      battery_water_badkamer_days2go:
+        value_template:  '{{ ((as_timestamp(now()) - (states.input_datetime.water_badkamer_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.water_badkamer_battery,sensor.time
+        friendly_name: "RF Water Badkamer"
+        
+      battery_shelly_eetkamer_days2go:
+        value_template: '{{ ((as_timestamp(now()) - (states.input_datetime.shelly_eetkamer_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.shelly_eetkamer_battery,sensor.time
+        friendly_name: "Shelly HT Eetkamer"
+        
+      battery_shelly_sara_days2go:
+        value_template:  '{{ ((as_timestamp(now()) - (states.input_datetime.shelly_sara_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.shelly_sara_battery,sensor.time
+        friendly_name: "Shelly HT Sara"
+
+      battery_rf_45a081_days2go:
+        value_template:  '{{ ((as_timestamp(now()) - (states.input_datetime.rf_45a081_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.rf_45a081_battery,sensor.time
+        friendly_name: "RF Button 45A081"
+
+      battery_rf_909601_days2go:
+        value_template:  '{{ ((as_timestamp(now()) - (states.input_datetime.rf_909601_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.rf_909601_battery,sensor.time
+        friendly_name: "RF Button 909601"
+
+      battery_rf_1d60b1_days2go:
+        value_template:  '{{ ((as_timestamp(now()) - (states.input_datetime.rf_1c60b1_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.rf_1c60b1_battery,sensor.time
+        friendly_name: "RF Button 1C60B1"
+
+      battery_rf_4ffd01_days2go:
+        value_template:  '{{ ((as_timestamp(now()) - (states.input_datetime.rf_4ffd01_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.rf_4ffd01_battery,sensor.time
+        friendly_name: "RF Button 4FFD01"
+
+      battery_rf_793401_days2go:
+        value_template:  '{{ ((as_timestamp(now()) - (states.input_datetime.rf_793401_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.rf_793401_battery,sensor.time
+        friendly_name: "RF Button 793401"
+
+      battery_sonoff_remote_days2go:
+        value_template:  '{{ ((as_timestamp(now()) - (states.input_datetime.rf_sonoff_remote_battery.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'Days'
+        entity_id: input_datetime.rf_sonoff_remote_battery,sensor.time
+        friendly_name: "RF Button 793401"

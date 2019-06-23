@@ -1,0 +1,597 @@
+- id: rf_00
+  alias: 'rfbridge_demultiplexer'
+  initial_state: 'true'
+  trigger:
+  - platform: mqtt
+    topic: rfbridge/tele/RESULT
+  action:
+  - service: python_script.rfbridge_demux
+    data_template:
+      payload: '{{trigger.payload_json.RfReceived.Data}}'
+
+
+######## OPEN - CLOSED ######## 
+- id: rf_01
+  initial_state: 'true'
+  alias: '[RF] Inkomhal Open'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.inkomhal
+    from: 'off'
+    to: 'on'
+  action:
+  - service: counter.increment
+    entity_id: counter.rf_inkomhal
+  - service: notify.dageraad
+    data_template:
+      message: 'Deur {{ trigger.to_state.name }} is OPEN'
+  # - service: notify.html5
+  #   data_template:
+  #     message: 'Door {{ trigger.to_state.name }} is OPEN'
+  - service: notify.android
+    data_template:
+      message: Door {{ trigger.to_state.name }} is OPEN - {{now().strftime("%H:%M:%S")}}
+
+- id: rf_02
+  initial_state: 'true'
+  alias: '[RF] Terras Open'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.terras
+    from: 'off'
+    to: 'on'
+  action:
+  - service: counter.increment
+    entity_id: counter.rf_terras
+  - service: notify.dageraad
+    data_template:
+      message: 'Door {{ trigger.to_state.name }} is OPEN'
+  # - service: notify.html5
+  #   data_template:
+  #     message: 'Door {{ trigger.to_state.name }} is OPEN'
+  - service: notify.android
+    data_template:
+      message: Door {{ trigger.to_state.name }} is OPEN - {{now().strftime("%H:%M:%S")}}
+
+
+- id: rf_03
+  initial_state: 'true'
+  alias: '[RF] Inkomhal Closed'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.inkomhal, binary_sensor.terras
+    from: 'on'
+    to: 'off'
+  action:
+  - service: notify.dageraad
+    data_template:
+      message: 'Door {{ trigger.to_state.name }} is CLOSED'
+  # - service: notify.html5
+  #   data_template:
+  #     message: 'Door {{ trigger.to_state.name }} is CLOSED'
+  - service: notify.android
+    data_template:
+      message: Door {{ trigger.to_state.name }} is CLOSED - {{now().strftime("%H:%M:%S")}}
+######## OPEN - CLOSED ######## 
+
+######## OPEN - REMINDER ######## 
+- id: rf_03
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.inkomhal, binary_sensor.terras
+      to: 'on'
+      for:
+        minutes: 5
+    - platform: time_pattern
+      minutes: '/5'
+      seconds: 1
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.inkomhal
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.terras
+      state: 'on'
+#  condition:
+#    condition: and
+#    conditions:
+#      # Only send this once per 5min
+#      - condition: template
+#        value_template: >
+#          {% if states.automation.rf_door_still_open.last_triggered is not none %}
+#            {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.rf_door_still_open.attributes.last_triggered) | int > 300 %} true {% else %} false
+#            {% endif %}
+#          {% else %}
+#          false
+#          {% endif %}
+#      - condition: state
+#        entity_id: binary_sensor.inkomhal
+#        state: 'on'
+  action:
+  - service: notify.dageraad
+    data_template:
+      message: 'Door {{ trigger.to_state.name }} is OPEN for 5 minutes'
+  # - service: notify.html5
+  #   data_template:
+  #     message: 'Door {{ trigger.to_state.name }} is OPEN for 5 minutes'
+  - service: notify.android
+    data_template:
+      message: Door {{ trigger.to_state.name }} is OPEN for 5 minutes - {{now().strftime("%H:%M:%S")}}
+  - service: persistent_notification.create
+    data_template:
+      notification_id: door_open
+      title: ALARM - DOOR OPEN
+      message: >
+        Door {{ trigger.to_state.name }} is STILL OPEN - PLEASE CHECK ASAP.
+######## OPEN - REMINDER ######## 
+
+######## WATER ALERT KEUKEN ######## 
+- id: rf_04
+  initial_state: 'true'
+  alias: '[RF] Water Alert Keuken'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.keuken_lek
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: 'ALERT WATER DAMAGE - KEUKEN - {{now().strftime("%H:%M:%S")}} '
+  # - service: notify.html5
+  #   data:
+  #     message: 'ALERT WATER DAMAGE - KEUKEN - {{now().strftime("%H:%M:%S")}}'
+  - service: notify.android
+    data:
+      message: ALERT WATER DAMAGE - KEUKEN - {{now().strftime("%H:%M:%S")}}
+  - service: persistent_notification.create
+    data_template:
+      notification_id: water_keukent
+      title: ALERT - WATER DAMAGE
+      message: >
+        {{ trigger.to_state.name }} - PLEASE CHECK ASAP
+        
+        Since {{now().strftime("%H:%M:%S")}}
+######## WATER ALERT KEUKEN ######## 
+
+######## WATER ALERT BADKAMER  ######## 
+- id: rf_water_alert_badkamer
+  initial_state: 'true'
+  alias: '[RF] Water Alert Badkamer'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.badkamer_lek
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: 'ALERT WATER DAMAGE - BADKAMER - {{now().strftime("%H:%M:%S")}}'
+  # - service: notify.html5
+  #   data:
+  #     message: 'ALERT WATER DAMAGE - BADKAMER - {{now().strftime("%H:%M:%S")}}'
+  - service: notify.android
+    data:
+      message: ALERT - {{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}
+  - service: persistent_notification.create
+    data_template:
+      notification_id: water_badkamer
+      title: ALERT - WATER DAMAGE
+      message: >
+        {{ trigger.to_state.name }} - PLEASE CHECK ASAP
+        
+        Since {{now().strftime("%H:%M:%S")}}
+
+######## WATER ALERT KEUKEN ######## 
+
+
+
+######## FIRE ALERT   ######## 
+- id: rf_fire
+  initial_state: 'true'
+  alias: '[RF] Fire'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.fire_alarm
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: 'FIRE ALARM - {{now().strftime("%H:%M:%S")}}'
+  # - service: notify.html5
+  #   data:
+  #     message: 'FIRE ALARM - {{now().strftime("%H:%M:%S")}}'
+  - service: notify.android
+    data:
+      message: ALARM - {{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}
+  - service: persistent_notification.create
+    data_template:
+      notification_id: fire
+      title: FIRE ALARM
+      message: >
+        {{ trigger.to_state.name }} - PLEASE CHECK ASAP
+        
+        Since {{now().strftime("%H:%M:%S")}}
+
+######## FIRE ALERT  ######## 
+
+
+######## GAS ALERT   ######## 
+- id: rf_gas
+  initial_state: 'true'
+  alias: '[RF] Gas'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.gas_alarm
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: 'GAS ALARM - {{now().strftime("%H:%M:%S")}}'
+  # - service: notify.html5
+  #   data:
+  #     message: 'GAS ALARM - {{now().strftime("%H:%M:%S")}}'
+  - service: notify.android
+    data:
+      message: ALARM - {{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}
+  - service: persistent_notification.create
+    data_template:
+      notification_id: gas
+      title: GAS ALARM
+      message: >
+        {{ trigger.to_state.name }} - PLEASE CHECK ASAP
+        
+        Since {{now().strftime("%H:%M:%S")}}
+
+######## FIRE ALERT  ######## 
+
+
+######## RESET RF ######## 
+- id: rf_05
+  initial_state: 'true'
+  alias: '[RF] Reset'
+  trigger:
+  - platform: state
+    entity_id: input_boolean.reset_rf
+    from: 'off'
+    to: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: home/inkomhal
+      payload: OFF
+  - service: mqtt.publish
+    data:
+      topic: home/terras
+      payload: OFF
+  - service: mqtt.publish
+    data:
+      topic: home/water-badkamer
+      payload: OFF 
+  - service: mqtt.publish
+    data:
+      topic: home/water-keuken
+      payload: OFF
+  - service: mqtt.publish
+    data:
+      topic: home/gas
+      payload: OFF
+  - service: mqtt.publish
+    data:
+      topic: home/fire
+      payload: OFF
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} Activated'
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.reset_rf
+######## RESET RF ######## 
+
+######## RF BUTTONS ######## 
+- id: rf_06
+  initial_state: 'true'
+  alias: '[RF] Sonoff A'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_switch_a
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.slaap
+  - delay:
+      seconds: 30
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }}
+
+
+      Sleep lights are {{states.switch.slaap.state}}'
+
+
+- id: rf_07
+  initial_state: 'true'
+  alias: '[RF] Sonoff B'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_switch_b
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.woon
+  - delay:
+      seconds: 7
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }}
+
+
+      Living lights are {{states.switch.woon.state}}'
+
+- id: rf_08
+  initial_state: 'true'
+  alias: '[RF] Sonoff C'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_switch_c
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.toggle
+    entity_id: switch.easyplus
+  - delay:
+      seconds: 2
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} toggled Easyplus'
+  - delay:
+      seconds: 22
+  - service: notify.telegram_rachid
+    data_template:
+      message: 'Easyplus is {{states.switch.easyplus.state}}'
+      
+- id: rf_09
+  initial_state: 'true'
+  alias: '[RF] Sonoff D'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_switch_d
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.socket_woon
+  - delay:
+      seconds: 15
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} 
+      
+      Living Sockets are {{states.switch.woon.state}} '
+      
+    
+### RF 3 BUTTON SWITCH
+- id: rf_10
+  initial_state: 'true'
+  alias: '[RF] Lights Sara left'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_switch_btns_left
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.toggle
+    entity_id: light.sara_deur
+  - delay:
+      seconds: 8
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }}
+
+      Current light is {{states.group.slaapkamer2_light.state}}'
+
+- id: rf_11
+  initial_state: 'true'
+  alias: '[RF] Lights Sara center'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_switch_btns_center
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.toggle
+    entity_id: light.sara_kast
+  - delay:
+      seconds: 8
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} 
+
+      Current light is {{states.group.slaapkamer2_light.state}}'
+
+- id: rf_12
+  initial_state: 'true'
+  alias: '[RF] Lights Sara right'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_switch_btns_right
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: group.slaapkamer2_light
+  - delay:
+      seconds: 8
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }}
+
+      Current light is {{states.group.slaapkamer2_light.state}}'
+      
+
+### RF DOOR BATTERY LOW
+- id: rf_13
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.inkomhal_battery, binary_sensor.terras_battery
+    from: 'off'
+    to: 'on' 
+  action: 
+  - service: persistent_notification.create
+    data_template:
+      message: "Sensor {{ trigger.entity_id }} low battery"
+      title: "Low Battery Alert"
+      
+
+
+#### RF CIRCLE BUTTONS ###
+- id: rf_14
+  initial_state: 'true'
+  alias: '[RF] Button 45A081'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_btn_45a081
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.toggle
+    entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
+  - delay:
+      seconds: 8
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} toggled Keuken
+      
+      
+      Commander is {{states.switch.stp_keuken_commander.state}}
+      
+      Vaatwasser is {{states.switch.stp_keuken_vaatwasser.state}}'
+
+
+- id: rf_15
+  initial_state: 'true'
+  alias: '[RF] Easyplus'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_btn_793401
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.toggle
+    entity_id: switch.easyplus
+  - delay:
+      seconds: 2
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} toggled Easyplus'
+  - delay:
+      seconds: 18
+  - service: notify.telegram_rachid
+    data_template:
+      message: 'Easyplus is {{states.switch.easyplus.state}}'
+
+- id: rf_16
+  initial_state: 'true'
+  alias: '[RF] Wasmachine'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_btn_4ffd01
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.toggle
+    entity_id: switch.stp_berging_wasmachine
+  - delay:
+      seconds: 10
+  - service: notify.dageraad
+    data_template:
+      message: '{{ trigger.to_state.name }} toggled Wasmachine
+      
+      
+      Wasmachine is {{states.switch.stp_berging_wasmachine.state}}'
+
+- id: rf_17
+  initial_state: 'true'
+  alias: '[RF] Droogkast'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.rf_btn_1c60b1
+    from: 'off'
+    to: 'on'
+  action:
+  - service: homeassistant.toggle
+    entity_id: switch.stp_berging_droogkast
+  - delay:
+      seconds: 15
+  - service: notify.dageraad
+    data_template:
+      message: '{{ trigger.to_state.name }} toggled Droogkast
+      
+      
+      Droogkast is {{states.switch.stp_berging_droogkast.state}}'
+
+# - id: rf_18
+#   initial_state: 'true'
+#   alias: '[RF] Waterkoker'
+#   trigger:
+#   - platform: state
+#     entity_id: binary_sensor.rf_btn_909601
+#     from: 'off'
+#     to: 'on'
+#   action:
+#   - service: homeassistant.toggle
+#     entity_id: switch.stp_keuken_water
+#   - delay:
+#       seconds: 15
+#   - service: notify.dageraad
+#     data_template:
+#       message: '{{ trigger.to_state.name }} toggled Waterkoker
+      
+      
+#       Droogkast is {{states.switch.stp_keuken_water.state}}'
+
+
+- id: rf_19
+  initial_state: 'true'
+  alias: Tap Counter RF 909601
+  trigger:
+   - platform: state
+     entity_id: binary_sensor.rf_btn_909601
+     to: 'on'
+  action:
+    service: counter.increment
+    entity_id: counter.rf_909601
+    
+- id: rf_20
+  initial_state: 'true'
+  alias: Tap Controller 909601
+  trigger:
+    platform: numeric_state
+    entity_id: counter.rf_909601
+    above: 0
+    for:
+      seconds: 5
+  condition:
+    condition: numeric_state
+    entity_id: counter.rf_909601
+    above: 0
+  action:
+    - service: light.toggle
+      data_template:
+       entity_id: >
+        {% if is_state(trigger.entity_id, '1') %}
+          light.trap_1
+        {% elif is_state(trigger.entity_id, '2') %}
+          light.trap_2
+        {% else %}
+          light.trap_3
+        {% endif %}
+    - service: counter.reset
+      entity_id: counter.rf_909601

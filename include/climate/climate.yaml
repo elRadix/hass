@@ -1,0 +1,86 @@
+
+###################
+### THERMOSTAAT ###
+###################
+
+#climate:
+  - platform: generic_thermostat
+    name: Eetkamer
+    heater: switch.heating_eetkamer
+    target_sensor: sensor.tmp_eetkamer_calibrated
+    min_temp: 5
+    max_temp: 22
+    target_temp: 17
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+  - platform: generic_thermostat
+    name: Living
+    heater: switch.heating_living
+    target_sensor: sensor.tmp_living_calibrated
+    min_temp: 5
+    max_temp: 24
+    target_temp: 5
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+  - platform: generic_thermostat
+    name: Sara
+    heater: switch.heating_sara
+    target_sensor: sensor.tmp_slp_2_calibrated
+    min_temp: 5
+    max_temp: 22
+    target_temp: 17
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+
+  - platform: generic_thermostat
+    name: Yassin
+    heater: switch.heating_yassin
+    target_sensor: sensor.tmp_slp_3
+    min_temp: 5
+    max_temp: 22
+    target_temp: 17
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+
+  - platform: generic_thermostat
+    name: FloRadix
+    heater: switch.heating_floradix
+    target_sensor: sensor.tmp_slp_1_calibrated
+    min_temp: 5
+    max_temp: 24
+    target_temp: 17
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+
+  - platform: generic_thermostat
+    name: Badkamer
+    heater: switch.heating_badkamer
+    target_sensor: sensor.tmp_badkamer
+    min_temp: 5
+    max_temp: 25
+    target_temp: 5
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5

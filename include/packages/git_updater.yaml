@@ -1,0 +1,74 @@
+sensor:
+  - platform: gitlab_ci
+    name: gitlab_ci
+    gitlab_id: !secret gitlab_id
+    token: !secret gitlab_token    
+    scan_interval: 30
+
+  - platform: template
+    sensors:
+      git_update_available:
+        friendly_name: git_update_available
+        value_template: >- 
+            {% if states('sensor.current_git_commit_id') != state_attr('sensor.gitlab_ci', 'commit id')
+            and states('sensor.local_git_commit_time') < state_attr('sensor.gitlab_ci', 'commit date')
+            and state_attr('sensor.gitlab_ci', 'build_status') == 'success' 
+            and state_attr('sensor.gitlab_ci', 'build branch') == 'master' %} 
+            true
+            {% else %} 
+            false
+            {% endif %}
+
+  - platform: command_line
+    name: current_git_commit_ids
+    command: 'git -C /home/homeassistant/.homeassistant/ rev-parse HEAD'
+    scan_interval: 35
+    
+  - platform: command_line
+    name: local_git_commit_time
+    command: 'git -C /home/homeassistant/.homeassistant/ log -1 --format="%at" | xargs -I{} date -ud @{} +"%Y-%m-%dT%H:%M:%S.000Z"'
+    scan_interval: 40
+
+  - platform: command_line
+    name: Latest Commit
+    command: 'git -C /home/homeassistant/.homeassistant/ log -1 --pretty=%B'
+    scan_interval: 100
+
+  # - platform: github
+  #   access_token: !secret github_access_token
+  #   repositories:
+  #     - path: 'elRadix/hass'    
+
+shell_command:
+  git_pull: 'git -C /home/homeassistant/.homeassistant/ pull && /opt/scripts/hass_restart.sh'
+
+script:
+  git_pull:
+    alias: git pull
+    sequence:
+      - service: shell_command.git_pull
+
+input_boolean:    
+  gitlab:
+    name: gitlab
+    initial: off
+    icon: mdi:gitlab
+
+automation:
+ - alias: git_updated
+   hide_entity: True
+   trigger:
+   - platform: event
+     event_type: telegram_command
+     event_data:
+       command: '/pull'   
+   - platform: state
+     entity_id: input_boolean.gitlab
+     from: 'off'
+     to: 'on'
+   condition:
+     condition: state
+     entity_id:  sensor.git_update_available
+     state: 'true'
+   action:
+     - service: shell_command.git_pull

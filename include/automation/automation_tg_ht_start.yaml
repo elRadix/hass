@@ -1,0 +1,171 @@
+#############################
+- id: tg_heating_1
+  alias: tg_heating_start
+  initial_state: 'true'
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Verwarming'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+
+                Heating Status
+
+                ---------------
+
+                Ketel:   {{states.switch.ketel.state}}
+
+
+                ```
+
+                Living:   {{states.climate.living.state}} - {{states.switch.heating_living.state}}
+
+                Dinner:  {{states.climate.eetkamer.state}} - {{states.switch.heating_eetkamer.state}} 
+
+                S&R:      {{states.climate.floradix.state}} - {{states.switch.heating_floradix.state}}
+
+                Sara:      {{states.climate.sara.state}} - {{states.switch.heating_sara.state}}
+
+                Yassin:   {{states.climate.yassin.state}} - {{states.switch.heating_yassin.state}}
+
+                Badkamer:  {{states.climate.badkamer.state}} - {{states.switch.heating_badkamer.state}}
+
+                ```
+
+
+                Current Temperature
+
+                ---------------------
+
+                ```
+
+                Living:  {{states.climate.living.attributes.current_temperature}}°C
+
+                Dinner: {{states.climate.eetkamer.attributes.current_temperature}}°C
+
+                S&R:    {{states.climate.floradix.attributes.current_temperature}}°C
+
+                Sara:    {{states.climate.sara.attributes.current_temperature}}°C
+
+                Yassin: {{states.climate.yassin.attributes.current_temperature}}°C
+
+                Badkamer: {{states.climate.badkamer.attributes.current_temperature}}°C
+
+                ```'
+
+      keyboard:
+        - '/Eetkamer_V, /Living_V'
+        - '/Sara_V, /Yassin_V, /SR_V'
+        - '/Options'
+        - '/Verwarming, /home'
+
+
+#### TELEGRAM VERWARMING ####
+
+- id: tg_heating_2
+  initial_state: 'true'
+  alias: tg_heating_options
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Options'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+                 Select options below
+
+                 '
+
+      keyboard:
+        - '/heatprog, /temp'
+        - '/Easyplus_On'
+        - '/Verwarming, /home'
+
+
+
+
+
+- id: tg_heating_3
+  initial_state: 'true'
+  alias: tg_heating_programma
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/heatprog'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Heating program
+
+                ==============
+
+
+                Room Schedule:
+
+                -----------------
+
+                Dinner will heat for {{states.sensor.auto_heat_duration.state}} at {{states.sensor.auto_heat_time.state}}
+
+                Living will heat for {{states.sensor.auto_heat_duration_liv.state}} at {{states.sensor.auto_heat_time_liv.state}}
+
+                S&R will heat for {{states.sensor.auto_heat_duration_slp1.state}} at {{states.sensor.auto_heat_time_slp1.state}}
+
+                Sara will heat for {{states.sensor.auto_heat_duration_slp2.state}} at {{states.sensor.auto_heat_time_slp2.state}}
+
+                Yassin will heat for {{states.sensor.auto_heat_duration_slp3.state}} at {{states.sensor.auto_heat_time_slp3.state}}
+
+
+                Room Temperature:
+
+                ---------------------
+
+                Living:  {{states.climate.living.attributes.current_temperature}}°C
+
+                Dinner: {{states.climate.eetkamer.attributes.current_temperature}}°C
+
+                S&R:     {{states.climate.floradix.attributes.current_temperature}}°C
+
+                Sara:    {{states.climate.sara.attributes.current_temperature}}°C
+
+                Yassin: {{states.climate.yassin.attributes.current_temperature}}°C
+
+                "
+                
+                
+
+
+- id: tg_heating_4
+  initial_state: 'true'
+  alias: tg_heating_temps
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/temp'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Room Temperature:
+
+                ---------------------
+
+                Living:  {{states.climate.living.attributes.current_temperature}}°C
+
+                Dinner: {{states.climate.eetkamer.attributes.current_temperature}}°C
+
+                S&R:     {{states.climate.floradix.attributes.current_temperature}}°C
+
+                Sara:    {{states.climate.sara.attributes.current_temperature}}°C
+
+                Yassin: {{states.climate.yassin.attributes.current_temperature}}°C
+                "

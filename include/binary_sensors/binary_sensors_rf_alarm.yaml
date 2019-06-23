@@ -1,0 +1,45 @@
+## FIRE/GAS ALARM
+
+
+- platform: mqtt
+  name: 'Fire Alarm'
+  state_topic: 'home/fire'
+  device_class: smoke
+
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Fire Alarm'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: 'AC25E8'
+#   payload_off: 'AC25E8off'
+#   device_class: smoke
+#   qos: 1
+
+
+- platform: mqtt
+  name: 'Gas Alarm'
+  state_topic: 'home/gas'
+  device_class: gas
+
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Gas Alarm'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: 'DC7503'
+#   payload_off: 'DC7503off'
+#   device_class: gas
+#   qos: 1
+
+# - platform: template
+#   sensors:
+#     rf_smoke_alarm:
+#       value_template: '{{ is_state("sensor.rf_stream", "AC25E8") }}' 
+#       device_class: smoke
+#       friendly_name: "Fire"
+
+# - platform: template
+#   sensors:
+#     rf_gas_alarm:
+#       value_template: '{{ is_state("sensor.rf_stream", "DC7503") }}' 
+#       device_class: gas
+#       friendly_name: "Gas"

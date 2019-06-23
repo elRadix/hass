@@ -1,0 +1,127 @@
+#ram_usage_lost:
+#  name: RAM Usage Sensor Lost
+#  entity_id: input_boolean.alert_lost_ram_usage_at_300
+#  skip_first: True
+#  repeat:
+#    - 5
+#    - 15
+#    - 30
+#    - 60
+#  notifiers:
+#    - pushbullet
+
+
+#ram_too_high:
+#  name: Ram Usage > 90%
+#  entity_id: binary_sensor.ram_too_high
+#  can_acknowledge: True
+#  repeat:
+#    - 5
+#    - 30
+#    - 60
+#  notifiers:
+#    - pushbullet
+
+
+# https://github.com/lolouk44/homeassistant/blob/master/alerts/Alerts.yaml
+
+
+  inkomhal:
+    name: Inkomhal
+    message: "Inkomhal has been open for {{ relative_time(states.binary_sensor.inkomhal.last_changed) }}"
+    done_message: "Inkomhal is closed"
+    entity_id: binary_sensor.inkomhal
+    state: 'on'
+    repeat:
+      - 10
+      - 15
+      - 30
+      - 60
+    can_acknowledge: true
+    skip_first: true
+    # data:
+    #   inline_keyboard:
+    #     - 'Close garage:/close_garage, Acknowledge:/garage_acknowledge'
+    notifiers:
+      - dageraad
+      - android
+
+  terras:
+    name: Terras
+    message: "Terras has been open for {{ relative_time(states.binary_sensor.terras.last_changed) }}"
+    done_message: "Terras is closed"
+    entity_id: binary_sensor.terras
+    state: 'on'
+    repeat:
+      - 10
+      - 15
+      - 30
+      - 60
+    can_acknowledge: true
+    skip_first: true
+    notifiers:
+      - dageraad
+      - android
+      
+  water_keuken:
+    name: Water Keuken
+    message: "Water has been detected in the kichten for {{ relative_time(states.binary_sensor.water_keuken.last_changed) }}"
+    done_message: "Water issue has been taken care"
+    entity_id: binary_sensor.keuken_lek
+    state: 'on'
+    repeat:
+      - 10
+      - 15
+      - 30
+      - 60
+    can_acknowledge: true
+    skip_first: true
+    notifiers:
+      - dageraad
+      - android
+      
+  water_badkamer:
+    name: Water Badkamer
+    message: "Water has been detected in the bathroom for {{ relative_time(states.binary_sensor.water_badkamer.last_changed) }}"
+    done_message: "Water issue has been taken care"
+    entity_id: binary_sensor.badkamer_lek
+    state: 'on'
+    repeat:
+      - 10
+      - 15
+      - 30
+      - 60
+    can_acknowledge: true
+    skip_first: true
+    notifiers:
+      - dageraad
+      - android
+
+  fire:
+    name: Fire Alarm
+    message: "Fire has been detected !!!"
+    done_message: "Fire issue has been taken care"
+    entity_id: binary_sensor.fire_alarm
+    state: 'on'
+    repeat: 5
+    can_acknowledge: true
+    skip_first: false
+    notifiers:
+      - dageraad
+      - android
+
+
+  gas:
+    name: Fire Alarm
+    message: "Gas has been detected !!!"
+    done_message: "Gas issue has been taken care"
+    entity_id: binary_sensor.gas_alarm
+    state: 'on'
+    repeat: 5
+    can_acknowledge: true
+    skip_first: false
+    notifiers:
+      - dageraad
+      - android
+
+

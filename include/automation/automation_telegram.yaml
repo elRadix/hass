@@ -1,0 +1,1773 @@
+
+###############################
+#This automation replies to a #
+#telegram message with various#
+#status details for the system#
+###############################
+
+
+- id: tgbot_01
+  initial_state: 'true'
+  alias: 'Telebot start home'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/home'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Home Assistant at your service.
+
+                Easyplus is {{states.switch.easyplus.state}}
+
+                Kies uit de volgende opties"
+      keyboard:
+        - '/Verwarming'
+        - '/Keuken, /Berging, /Eetkamer'
+        - '/Living, /Media' 
+        - '/Slaapkamers'
+        - '/Settings, /Alarm'
+
+- id: tgbot_02
+  initial_state: 'true'
+  alias: 'Telebot alarm'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Alarm'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: 'Alarm is {{states.alarm_control_panel.dageraad.state}}'
+      keyboard:
+        - '/Arm, /DisArm'
+        - '/Camera, /home'
+
+
+- id: tgbot_03
+  initial_state: 'true'
+  alias: 'Telebot alarm_arm'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Arm'
+  action:
+  - service: script.alarm_arm
+  - delay:
+      seconds: 2
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+
+
+      Alarm is *{{states.alarm_control_panel.dageraad.state}}*
+      '
+
+
+- id: tgbot_03
+  initial_state: 'true'
+  alias: 'Telebot alarm_disarm'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/DisArm'
+  action:
+  - service: script.alarm_disarm
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: 'Choose options below.
+
+
+      Alarm is {{states.alarm_control_panel.dageraad.state}}
+      '
+
+
+- id: tgbot_04
+  initial_state: 'true'
+  alias: 'Telebot media'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Media'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: 'Choose options below.
+
+
+      Sony TV is {{states.switch.stp_living_sony.state}}
+
+      Samsung TV is {{states.switch.stp_eetkamer_tv.state}}
+
+      Kodi is {{states.switch.sonoff.state}} 
+
+      Slaapkamer TV is {{states.media_player.tv_slaapkamer.state}}
+      '
+      keyboard:
+        - '/TV, /Volume'
+        - '/Media, /home'
+
+- id: tgbot_05
+  initial_state: 'true'
+  alias: 'Telebot TV ON'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/TV'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Choose options below."
+      keyboard:
+        - '/Samsung, /Sony'
+        - '/Kodi, /SR_TV'
+        - '/Media, /home'
+
+- id: tgbot_06
+  initial_state: 'true'
+  alias: 'Telebot TV ON'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Volume'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Choose options below."
+      keyboard:
+        - '/Samsung_vol, /Sony_vol, /Kodi_vol'
+        - '/Media, /home'
+
+
+- id: tgbot_06
+  initial_state: 'true'
+  alias: 'Telebot Samsung volume'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Kodi_vol'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Choose options below."
+
+      keyboard:
+        - '/Kodi_vol+, /Kodi_vol-'
+        - '/Kodi_play_pause'
+        - '/Media'
+
+- id: tgbot_07
+  initial_state: 'true'
+  alias: 'Telebot Samsung volume'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Samsung_vol'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Choose options below."
+
+      keyboard:
+        - '/Samsung_vol+, /Sasmung_vol-'
+        - '/Media'
+
+- id: tgbot_08
+  initial_state: 'true'
+  alias: 'Telebot Sony volume'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Sony_vol'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Choose options below."
+
+      keyboard:
+        - '/Sony_vol+, /Sony_vol-'
+        - '/Media'
+
+
+- id: tgbot_09
+  initial_state: 'true'
+  alias: 'Telegram reply sony volume+'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Sony_vol+'
+  action:
+  - service: media_player.volume_up
+    data:
+      entity_id:
+        - media_player.tv_living
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Volume {{states.media_player.tv_living.attributes.volume_level}}'
+
+- id: tgbot_10
+  initial_state: 'true'
+  alias: 'Telegram reply sony volume-'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Sony_vol-'
+  action:
+  - service: media_player.volume_down
+    data:
+      entity_id:
+        - media_player.tv_living
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Volume {{states.media_player.tv_living.attributes.volume_level.state}}'
+
+
+- id: tgbot_11
+  initial_state: 'true'
+  alias: 'Telegram reply samsung volume+'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Samsung_vol+'
+  action:
+  - service: media_player.volume_up
+    data:
+      entity_id:
+        - media_player.tv_keuken_2
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Volume {{states.media_player.tv_keuken_2.attributes.volume_level}}'
+
+- id: tgbot_12
+  initial_state: 'true'
+  alias: 'Telegram reply samsung volume-'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Samsung_vol-'
+  action:
+  - service: media_player.volume_down
+    data:
+      entity_id:
+        - media_player.tv_keuken_2
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Samsung Volume {{states.media_player.tv_keuken_2.attributes.volume_level.state}}'
+
+
+
+- id: tgbot_13
+  initial_state: 'true'
+  alias: 'Telegram reply kodi vol+'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Kodi_vol+'
+  action:
+  - service: media_player.volume_up
+    data:
+      entity_id:
+        - media_player.tv_slaapkamer
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Volume {{states.media_player.tv_slaapkamer.attributes.volume_level}}'
+
+- id: tgbot_14
+  initial_state: 'true'
+  alias: 'Telegram reply kodi vol-'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Kodi_vol-'
+  action:
+  - service: media_player.volume_down
+    data:
+      entity_id:
+        - media_player.tv_slaapkamer
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Volume {{states.media_player.tv_slaapkamer.attributes.volume_level.state}}'
+
+- id: tgbot_15
+  initial_state: 'true'
+  alias: 'Telegram reply kodi plaupause'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Kodi_play_pause'
+  action:
+  - service: media_player.media_play_pause
+    data:
+      entity_id:
+        - media_player.kodi_slaapkamer
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Current media: {{states.media_player.kodi_slaapkamer.attributes.media_title }} is now {{states.media_player.kodi_slaapkamer.state }} '
+
+
+
+#### TELEGRAM EETKAMER ######
+
+- id: tgbot_16
+  initial_state: 'true'
+  alias: 'Telegram reply Berging status'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Berging'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+      Berging:
+
+
+      Light is {{states.switch.light_berging_center.state}}
+
+
+      Wasmachine is {{states.switch.stp_berging_wasmachine.state}}
+
+      Droogkast is {{states.switch.stp_berging_droogkast.state}}'
+
+      keyboard:
+        - '/Licht'
+        - '/Droogkast, /Wasmachine'
+        - '/Berging, /home'
+
+
+- id: tgbot_17
+  initial_state: 'true'
+  alias: 'Telegram reply Droogkast'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Droogkast'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_berging_droogkast
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+
+      Droogkast is {{states.switch.stp_berging_droogkast.state}}'
+
+- id: tgbot_18
+  initial_state: 'true'
+  alias: 'Telegram reply Wasmachine'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Wasmachine'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_berging_wasmachine
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+
+      Wasmachine is {{states.switch.stp_berging_wasmachine.state}}'
+
+- id: tgbot_19
+  initial_state: 'true'
+  alias: 'Telegram reply light'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Licht'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_berging_center
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+
+      Light is {{states.switch.light_berging_center.state}}'
+
+    
+
+- id: tgbot_20
+  initial_state: 'true'
+  alias: 'Telegram reply settings'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Settings'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: 'Turn Easyplus & Ketel via Settings
+
+
+      Easyplus is {{states.switch.easyplus.state}}
+
+
+      Light Status
+
+      The 1st floor lights group is {{states.group.woon_sub.state}}
+
+      The 2nd floor lights group is {{states.group.slaap_sub.state}}
+
+
+      Sockets Status
+
+      The 1st floor sockets group is {{states.group.woon_sub_soc.state}}
+
+      The 2nd floor sockets group is {{states.group.slaap_sub_soc.state}}'
+
+      keyboard:
+        - '/Ketel, /All_Off'
+        - '/Sockets_Off, /Easyplus, /LightsOff'
+        - '/router, /home'
+
+
+
+- id: verbruik smappee per time x
+  initial_state: 'true'
+  alias: 'Telegram reply Smappee per time x'
+  trigger:
+  - platform: time_pattern
+    minutes: '/120'
+    seconds: 1
+  condition:
+    condition: or
+    conditions:
+#      - condition: state
+#        entity_id: group.rachid
+#        state: 'not_home'
+      - condition: state
+        entity_id: input_boolean.switch
+        state: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: "
+
+      Verbruik tot nu: {{states.sensor.pvoutput_energy_consumption.state}} kWh
+
+      Sluipverbruik:   {{states.sensor.smappee_dageraad_always_on_today.state}} kWh
+
+      Huidig verbruik: {{states.sensor.pvoutput_power_consumption.state }} kWh
+
+      "
+
+# * 100 | round(2) | float(2)
+
+- id: verbruik smappee
+  initial_state: 'true'
+  alias: 'Telegram reply Smappee'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Verbruik'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "
+
+      Verbruik tot nu: {{states.sensor.smappee_dageraad_power_today.state}} kWh
+
+      Sluipverbruik:   {{states.sensor.smappee_dageraad_always_on_today.state}} kWh
+
+      Huidig verbruik: {{states.sensor.smappee_dageraad_current.state}} kWh
+
+      "
+      data:
+        inline keyboard:
+          - "Home:/home"
+          - "Settings:/Settings"
+
+- id: motion camera telegram
+  initial_state: 'true'
+  alias: 'Telegram reply camera'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Camera'
+  action:
+  - service: telegram_bot.send_document
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      file: http://s2.lan:8000/shot.jpg
+      caption: Current picture in Berging @ {{now().strftime("%H:%M:%S")}}
+
+
+
+
+
+
+
+- id: ALL OFF status
+  initial_state: 'true'
+  alias: 'Telegram reply ALL OFF'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/All_Off'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+      Alles uitschakelen inclusief Easyplus?
+
+      All Switches are {{states.group.all_switches.state}}'
+
+      keyboard:
+        - '/Ja, /Nee'
+        - '/Settings, /home'
+
+- id: ALL OFF Ja
+  initial_state: 'true'
+  alias: 'Telegram reply ALL OFF Ja'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Ja'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Even geduld aub...we zijn ermee bezig'
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - group.all_home
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: 'All Switches are {{states.group.all_switches.state}}'
+      keyboard:
+        - '/Verwarming'
+        - '/Keuken, /Berging, /Eetkamer'
+        - '/Living, /Media'
+        - '/Slaapkamers'
+        - '/Settings, /Alarm'
+
+- id: ALL OFF Nee
+  initial_state: 'true'
+  alias: 'Telegram reply ALL OFF Nee'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Nee'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: 'All Switches are {{states.group.all_switches.state}}'
+      keyboard:
+        - '/Verwarming'
+        - '/Keuken, /Berging, /Eetkamer'
+        - '/Living, /Media'
+        - '/Slaapkamers'
+        - '/Settings, /Alarm'
+
+
+
+
+- id: Easyplus status
+  initial_state: 'true'
+  alias: 'Telegram reply Easyplus state'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Easyplus'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+      Easyplus is {{states.switch.easyplus.state}}'
+      keyboard:
+        - '/Easyplus_On, /Easyplus_Off'
+        - '/Settings, /home'
+
+
+- id: Easyplus On
+  initial_state: 'true'
+  alias: 'Telegram reply Easyplus On'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Easyplus_On'
+  action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - switch.easyplus
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Even geduld aub...'
+      keyboard:
+        - '/Verwarming'
+        - '/Keuken, /Berging, /Eetkamer'
+        - '/Living, /Media'
+        - '/Slaapkamers'
+        - '/Settings, /Alarm'
+
+- id: Ketel status
+  initial_state: 'true'
+  alias: 'Telegram reply Ketel state'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Ketel'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+      Ketel is {{states.switch.ketel.state}}'
+      keyboard:
+        - '/Ketel_On, /Ketel_Off'
+        - '/Settings, /home' 
+
+
+- id: Ketel On
+  initial_state: 'true'
+  alias: 'Telegram reply Ketel On'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Ketel_On'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.ketel
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Ketel is {{states.switch.ketel.state}}'
+      keyboard:
+        - '/Verwarming'
+        - '/Keuken, /Berging, /Eetkamer'
+        - '/Living, /Media'
+        - '/Slaapkamers'
+        - '/Settings, /Alarm'
+
+
+
+- id: Ketel On
+  initial_state: 'true'
+  alias: 'Telegram reply Ketel Off'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Ketel_Off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.ketel
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Ketel is {{states.switch.ketel.state}}'
+
+- id: EasyOff Lader
+  initial_state: 'true'
+  alias: 'Telegram reply Easyplus Off'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Easyplus_Off'
+  action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - switch.easyplus
+
+
+- id: 'Telegram reply with Slaapkamers'
+  initial_state: 'true'
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Slaapkamers'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+      Light status:
+
+
+      S&R lights is {{states.group.slaapkamer1_light.state}}
+
+      Sara lights is {{states.group.slaapkamer2_light.state}}
+
+      Yassin lights is {{states.group.slaapkamer3_light.state}}'
+      keyboard:
+        - '/S&R'
+        - '/Sara, /Yassin'
+        - '/Slaapkamers, /home'
+
+- id: 'Telegram reply with Living'
+  initial_state: 'true'
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Living'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+      Spots:
+
+      ------
+
+      Living Spot Center is {{states.switch.light_living_center.state}}
+
+      Living Spot Dubbel is {{states.switch.light_living_double_spot.state}}
+
+      Living Spot Center is {{states.switch.light_living_triple_spot.state}}
+
+      Bureau TL is {{states.switch.light_bureau_tl.state}}
+
+      Bureau Spot is {{states.switch.light_bureau_spots.state}}
+
+
+      Toestellen:
+
+      -----------
+
+      Sony TV is {{states.switch.stp_living_sony.state}}
+
+      Bureau Lader is {{states.switch.bureau_lader.state}}'
+
+      keyboard:
+        - '/Liv_Dubbel, /Liv_Center, /Liv_Triple'
+        - '/Bur_TL, /Bur_Spot, /Bur_Lader'
+        - '/Living, /home'
+
+- id: Bureau Lader
+  initial_state: 'true'
+  alias: 'Telegram reply Bureau lader toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Bur_Lader'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.bureau_lader
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Bureau lader is {{states.switch.bureau_lader.state}}'
+
+
+
+- id: Bureau TL 
+  initial_state: 'true'
+  alias: 'Telegram reply Bureau Spot toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Bur_Spot'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_bureau_spots
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Bureau Spot is {{states.switch.light_bureau_spots.state}}'
+
+- id: Bureau TL
+  initial_state: 'true'
+  alias: 'Telegram reply Bureau TL toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Bur_TL'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_bureau_tl
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Bureau TL is {{states.switch.light_bureau_tl.state}}'
+
+- id: Living Spotcenter 
+  initial_state: 'true'
+  alias: 'Telegram reply Spotcenter toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Liv_Center'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_living_center
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Spot Center is {{states.switch.light_living_center.state}}'
+
+- id: living Spot2
+  initial_state: 'true'
+  alias: 'Telegram reply Spot2 toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Liv_Dubbel'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_living_double_spot
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Spot Dubbel is {{states.switch.light_living_double_spot.state}}'
+
+- id: Living Spot3
+  initial_state: 'true'
+  alias: 'Telegram reply Spot3 toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Liv_Triple'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_living_triple_spot
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Spot Triple is {{states.switch.light_living_triple_spot.state}}'
+
+
+- id: Living SonyTV
+  initial_state: 'true'
+  alias: 'Telegram reply Sony toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Sony'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_living_sony
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Kodi is {{states.switch.stp_living_sony.state}}'
+
+- id: Living KodiTV
+  initial_state: 'true'
+  alias: 'Telegram reply Kodi toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Kodi'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.kodi
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Kodi is {{states.switch.kodi.state}}'
+
+
+- id: slp sasungtv
+  initial_state: 'true'
+  alias: 'Telegram reply slp samsung TV off'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/SR_TV'
+  action:
+  - service: media_player.turn_off
+    data:
+      entity_id:
+        - media_player.tv_slaapkamer
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Slaapkamer TV is {{states.switch.stp_living_sony.state}}'
+
+
+- id: 'Telegram reply with Eetkamer'
+  initial_state: 'true'
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Eetkamer'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+      Eetkamer Spots:
+
+      ---------------
+
+      Spot Center is {{states.switch.light_eetkamer_center.state}}
+
+      Spot Dubbel is {{states.switch.light_eetkamer_double_spot.state}}
+
+
+
+      Eetkamer Toestellen:
+
+      ---------------------
+
+      Samsung TV is {{states.switch.stp_eetkamer_tv.state}}'
+      keyboard:
+        - '/Samsung'
+        - '/Eet_Center, /Eet_Dubbel'
+        - '/Keuken, /home'
+
+
+- id: Eetkamer SamsungTV
+  initial_state: 'true'
+  alias: 'Telegram reply SamsungTV toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Samsung'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_eetkamer_tv
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Samsung TV is {{states.switch.stp_eetkamer_tv.state}}'
+
+- id: Eetkamer Center
+  initial_state: 'true'
+  alias: 'Telegram reply spotcenter toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Eet_Center'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_eetkamer_center
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Spot Center is {{states.switch.light_eetkamer_center.state}}'
+
+- id: Eetkamer Dubbel
+  initial_state: 'true'
+  alias: 'Telegram reply spotdubbel toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Eet_Dubbel'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_eetkamer_double_spot
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Spot Dubbel is {{states.switch.light_eetkamer_double_spot.state}}'
+
+- id: 'Telegram reply with Kitchen'
+  initial_state: 'true'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Keukena'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: " Kies uit de volgende opties
+
+      Keuken Toestellen:
+
+
+      Microgolf is {{states.switch.stp_keuken_microwave.state}}
+
+      Commander is {{states.switch.stp_keuken_commander.state}}
+
+      Waterkoker is {{states.switch.stp_keuken_water.state}}
+
+      Espresso is {{states.switch.stp_keuken_espresso.state}}
+
+      Oven is {{states.switch.stp_keuken_oven.state}}
+
+
+      Keuken Status:
+
+
+      Spot Wasbak is {{states.switch.light_keuken_spot_front.state}}
+
+      Spot Links is {{states.switch.light_keuken_spot_links.state}}
+
+      Spot Rechts is {{states.switch.light_keuken_spot_rechts.state}}"
+      keyboard:
+        - '/Keuken_Toestellen, /Keuken_Spots' 
+        - '/Eetkamer, /home'
+
+
+- id: 'Telegram reply with Keuken_spots'
+  initial_state: 'true'
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Keuken_Spots'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+
+      Keuken Spots:
+
+      -------------
+
+
+      Spot Wasbak is {{states.switch.light_keuken_spot_front.state}}
+
+      Spot Links is {{states.switch.light_keuken_spot_links.state}}
+
+      Spot Rechts is {{states.switch.light_keuken_spot_rechts.state}}'
+
+
+      keyboard:
+        - '/Spotwasbak'
+        - '/Spotlinks, /Spotrechts'
+        - '/Keuken, /home'
+
+
+- id: spotwasbak
+  initial_state: 'true'
+  alias: 'Telegram reply spotwasbak toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Spotwasbak'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_keuken_spot_front
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Spot Wasbak is {{states.switch.light_keuken_spot_front.state}}'
+
+- id: spotlinks
+  initial_state: 'true'
+  alias: 'Telegram reply spotlinks toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Spotlinks'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_keuken_spot_links
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Spot Links is {{states.switch.light_keuken_spot_links.state}}'
+
+- id: spotrechts
+  initial_state: 'true'
+  alias: 'Telegram reply spotrechts toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Spotrechts'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_keuken_spot_rechts
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Spot Rechts is {{states.switch.light_keuken_spot_rechts.state}}'
+
+- id: 'Telegram reply with Keuken_Toestellen'
+  initial_state: 'true'
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Keuken'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}' 
+      message: '
+      Keuken Toestellen:
+
+
+      Microgolf is {{states.switch.stp_keuken_microwave.state}}
+
+      Commander is {{states.switch.stp_keuken_commander.state}}
+
+      Waterkoker is {{states.switch.stp_keuken_water.state}}
+
+      Espresso is {{states.switch.stp_keuken_espresso.state}}
+
+      Oven is {{states.switch.stp_keuken_oven.state}}
+
+      Vaatwasser is {{states.switch.stp_keuken_vaatwasser.state}}
+
+      Keuken Spots:
+
+
+      Spot Wasbak is {{states.switch.light_keuken_spot_front.state}}
+
+      Spot Links is {{states.switch.light_keuken_spot_links.state}}
+
+      Spot Rechts is {{states.switch.light_keuken_spot_rechts.state}}'
+
+      keyboard:
+        - '/Espresso, /Microgolf, /Oven'
+        - '/Waterkoker, /Commander, /Vaatwasser'
+        - '/Spotlinks, /Spotwasbak, /Spotrechts'
+        - '/Keuken, /Eetkamer, /home'
+
+
+- id: Commander
+  initial_state: 'true'
+  alias: 'Telegram reply Commander toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Commander'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_keuken_commander
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: ' 
+        Commander is {{states.switch.stp_keuken_commander.state}}'
+
+#{{% if is_state('switch.stp_keuken_commander', 'on') %}staat aan{% else %}staat uit{% endif %}})" '
+#        Commander is {{states.switch.stp_keuken_commander.state}}
+#{% if is_state('switch.stp_keuken_commander', 'on') %}staat aan{% else %}staat uit{% endif %} 
+#
+#
+#        {% if states.switch.stp_keuken_commander.state == 'on' %}
+#          Commander staat aan
+#        {% else %}
+#          Commander staat uit
+#        {% endif %}
+
+
+
+- id: Microgolf
+  initial_state: 'true'
+  alias: 'Telegram reply Microgolf toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Microgolf'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_keuken_microwave
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Micogolf is {{states.switch.stp_keuken_microwave.state}}'
+
+
+- id: Oven
+  initial_state: 'true'
+  alias: 'Telegram reply Oven toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Oven'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_keuken_oven
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Oven is {{states.switch.stp_keuken_oven.state}}'
+
+- id: Vaatwasser
+  initial_state: 'true'
+  alias: 'Telegram reply Vaatwasser toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Vaatwasser'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_keuken_vaatwasser    
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Vaatwasser is {{states.switch.stp_keuken_vaatwasser.state}}'
+
+- id: Waterkoker
+  initial_state: 'true'
+  alias: 'Telegram reply Waterkoker toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Waterkoker'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_keuken_water
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Waterkoker is {{states.switch.stp_keuken_water.state}}'
+
+- id: Espresso 
+  initial_state: 'true'
+  alias: 'Telegram reply Espresso toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Espresso'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.stp_keuken_espresso     
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Espresso is {{states.switch.stp_keuken_espresso.state}}'
+
+
+
+
+
+
+- id: telegram Lights off
+  initial_state: 'true'
+  alias: 'Telegram reply with Lights Off'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Lights_Off'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "
+      Even geduld, we sluiten alles zo uit"
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - group.woon_sub
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - group.slaap_sub 
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "
+      1st floor lights is {{states.group.woon_sub.state}}
+      2nd floor lights is {{states.group.slaap_sub.state}}"
+
+
+- id: telegram Socket off
+  initial_state: 'true'
+  alias: 'Telegram reply with Socket Off'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Sockets_Off'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "
+      Even geduld, we sluiten alles zo uit"
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - group.woon_sub_soc      
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - group.slaap_sub_soc
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "
+      1st floor sockets is {{states.group.woon_sub_soc.state}}
+
+      2nd floor sockets is {{states.group.slaap_sub_soc.state}}"
+
+
+
+- id: telegram_s&r_notification
+  initial_state: 'true'
+  alias: 'Telegram reply with S&R light toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/S&R'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_slp1_deur_morning
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "S&R light is {{ states.switch.light_slp1_deur.state}}"
+
+- id: telegram_sara_notification
+  initial_state: 'true'
+  alias: 'Telegram reply with Sara light toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Sara'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_slp2_kast
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_slp2_deur
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Sara light is {{ states.group.slaapkamer2_light.state}}"
+
+
+- id: telegram_Yassin_notification
+  initial_state: 'true'
+  alias: 'Telegram reply with Yassin light toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Yassin'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_slp3_deur
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_slp3_kast
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Yassin light is {{ states.group.slaapkamer3_light.state}}"
+
+
+
+- id: telegram_bureau_notification
+  initial_state: 'true'
+  alias: 'Telegram reply with bureau light toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/bureau'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.light_bureau_spots
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Bureau light is {{ states.switch.light_bureau_spots.state}}"
+
+
+- id: telegram_easyplus_notification
+  initial_state: 'true'
+  alias: 'Telegram reply with easyplus toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/easyplus'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.easyplus
+  - delay:
+      seconds: 1
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Easyplus is {{ states.switch.easyplus.state}}"
+
+#- id: telegram_mercedes_location
+#  initial_state: 'true'
+#  alias: 'Telegram reply with mercedes location'
+#  trigger:
+#  - platform: event
+#    event_type: telegram_command
+#    event_data:
+#      command: '/mercedes'
+#  action:
+#  - service: telegram_bot.send_message
+#    data_template:
+#      target: '{{ trigger.event.data.user_id }}'
+#      message: "Mercedes status:
+#
+#
+#                Door locked: {{states.binary_sensor.doors_locked.state}}
+#
+#                Door closed: {{ states.binary_sensor.doors_closed.state}}
+#
+#                Fuel Status: {{ states.sensor.fuel_level.state}}%
+#
+#                Odometer: {{ states.sensor.odometer.state}} km
+#                 "
+##      data:
+#        location:
+#          latitude: "{{ states.device_tracker.wdd1179121n503099.attributes.latitude }}"
+##          longitude: "{{ states.device_tracker.wdd1179121n503099.attributes.longitude }}"
+
+
+
+#### ROUTER
+
+- id: Telegram Router menu
+  initial_state: 'true'
+  alias: 'Telegram reply Router status'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/router'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+      Router Status:
+
+
+      Firewall is {{states.switch.router_firewall.state}}
+
+      Adblock is {{states.switch.router_adblock.state}}
+
+      VPN Server 1 is {{states.switch.router_vpn_server1.state}}
+      
+      VPN Server 2 is {{states.switch.router_vpn_server2.state}}'
+
+      keyboard:
+        - '/firewall, /adblock'
+        - '/vpnserver1, /vpnserver2'
+        - '/reboot, /router, /home'
+
+
+- id: telegram_router_firewall
+  initial_state: 'true'
+  alias: 'Firewall toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/firewall'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.router_firewall
+  - delay:
+      seconds: 7
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Firewall is {{ states.switch.router_firewall.state}}"
+      
+- id: telegram_router_adblock
+  initial_state: 'true'
+  alias: 'Adblock toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/adblock'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.router_adblock
+  - delay:
+      seconds: 7
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Adblock is {{ states.switch.router_adblock.state}}"
+      
+- id: telegram_router_vpnserver1
+  initial_state: 'true'
+  alias: 'vpnserver1 toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/vpnserver1'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.router_vpn_server1
+  - delay:
+      seconds: 7
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "vpnserver1 is {{ states.switch.router_vpn_server1.state}}"
+
+- id: telegram_router_vpnserver2
+  initial_state: 'true'
+  alias: 'vpnserver2 toggle'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/vpnserver2'
+  action:
+  - service: homeassistant.toggle
+    data:
+      entity_id:
+        - switch.router_vpn_server2
+  - delay:
+      seconds: 7
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "vpnserver2 is {{ states.switch.router_vpn_server2.state}}"
+
+
+
+
+- id: telegram_router_reboot
+  initial_state: 'true'
+  alias: 'router reboot'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/reboot'
+  action:
+  - service: script.turn_on
+    entity_id: script.router_reboot
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Reboot Router"
+

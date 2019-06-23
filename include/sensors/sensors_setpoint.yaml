@@ -1,0 +1,26 @@
+
+##### Setpoint
+  - platform: command_line
+    name: tmp_set_living
+    command:  /opt/scripts/status/state.sh -s 0
+    unit_of_measurement: "°C"
+
+  - platform: command_line
+    name: tmp_set_slp_1
+    command:  /opt/scripts/status/state.sh -s 7
+    unit_of_measurement: "°C"
+
+  - platform: command_line
+    name: tmp_set_slp_2
+    command:  /opt/scripts/status/state.sh -s 5
+    unit_of_measurement: "°C"
+
+  - platform: command_line
+    name: tmp_set_slp_3
+    command:  /opt/scripts/status/state.sh -s 6
+    unit_of_measurement: "°C"
+
+  - platform: command_line
+    name: tmp_set_badkamer
+    command:  /opt/scripts/status/state.sh -s 10
+    unit_of_measurement: "°C"

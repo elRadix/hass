@@ -1,0 +1,238 @@
+#### TELEGRAM LIVING  ######
+#  alias: tg_heating_sara_2u_stop
+
+## 1 ##
+- id:  tg_heating_living_1
+  initial_state: 'true'
+  alias: tg_heating_living_start
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Living_V'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: 'Ketel wordt automatisch opgestart!!
+
+
+                 Current Temperature
+
+                 ---------------------
+
+                 Living: {{states.climate.living.attributes.current_temperature}}°C'
+      keyboard:
+        - '/1u_Liv, /2u_Liv, /Stop_Liv'
+        - '/Verwarming, /home'
+
+
+
+
+## 2 ##
+- id: tg_heating_living_2
+  initial_state: 'true'
+  alias: tg_heating_living_1u_start
+  trigger:
+  - platform: state
+    entity_id: input_boolean.1u_living
+    from: 'off'
+    to: 'on'
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/1u_Liv'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Even geduld aub...EasyPlus opstarten'
+  - service: homeassistant.turn_on
+    entity_id: switch.easyplus
+  - delay:
+      seconds: 17
+  - service: homeassistant.turn_on
+    entity_id: switch.ketel
+  - service: shell_command.tmp_living_auto
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.1u_living
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.ketel_1h
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.living
+      operation_mode: "heat"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living
+      temperature: 19
+      operation_mode: "heat"
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+                 Living voor 1 uur opwarmen.
+
+                 Living: {{states.climate.living.attributes.current_temperature}}°C'
+      keyboard:
+        - '/Living_V, /Verwarming'
+        - '/home'
+
+## 3 ##
+- id: tg_heating_living_3
+  alias: tg_heating_living_1u_stop
+  initial_state: 'true'
+  trigger:
+#  - platform: state
+#    entity_id: input_boolean.1u_living
+#    from: 'on'
+#    to: 'off'
+  - platform: state
+    entity_id: input_boolean.1u_living
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 75
+      seconds: 0
+  action:
+  - service: shell_command.tmp_living_off
+  - service: homeassistant.turn_off
+    entity_id: switch.heating_living
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.1u_living
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.ketel_1h
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.living
+      operation_mode: "off"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living
+      temperature: 5
+  - service: notify.dageraad
+    data:
+      message: "Living verwarming is uitgeschakeld na 1 uur."
+
+
+## 4 ##
+- id:  tg_heating_living_4
+  initial_state: 'true'
+  alias: tg_heating_living_2u_start
+  trigger:
+  - platform: state
+    entity_id: input_boolean.2u_living
+    from: 'off'
+    to: 'on'
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/2u_Liv'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Even geduld aub...EasyPlus opstarten'
+  - service: homeassistant.turn_on
+    entity_id: switch.easyplus
+  - delay:
+      seconds: 17
+  - service: homeassistant.turn_on
+    entity_id: switch.ketel
+  - service: shell_command.tmp_living_auto
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.ketel_2h
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.2u_living
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.living
+      operation_mode: "heat"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living
+      temperature: 19
+      operation_mode: "heat"
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+                 Living voor 2 uur verwarmen.
+
+                 Living: {{states.climate.living.attributes.current_temperature}}°C'
+      keyboard:
+        - '/Living_V, /Verwarming'
+        - '/home'
+
+## 5 ##
+- id: tg_heating_living_5
+  alias: tg_heating_living_2u_stop
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: input_boolean.2u_living
+    from: 'on'
+    to: 'off'
+  - platform: state
+    entity_id: input_boolean.2u_living
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 135
+      seconds: 0
+  action:
+  - service: shell_command.tmp_living_off
+  - service: homeassistant.turn_off
+    entity_id: switch.heating_living
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.2u_living
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.ketel_2h
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.living
+      operation_mode: "off"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living
+      temperature: 5
+  - service: notify.dageraad
+    data:
+      message: "Living verwarming is uitgeschakeld na 2 uur"
+
+## 6 ##
+- id: tg_heating_living_6
+  alias: tg_heating_living_stop_all
+  initial_state: 'true'
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Stop_Liv'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.heating_living
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.living
+      operation_mode: "off"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living
+      temperature: 5
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.1u_living
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.2u_living
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.ketel_1h
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.ketel_2h    
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Living verwarming is uitgeschakeld"
+
+#### TELEGRAM LIVING ####

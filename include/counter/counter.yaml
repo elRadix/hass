@@ -1,0 +1,51 @@
+#counter:
+  motion_hal:
+    name: Inkomhal
+    icon: mdi:run-fast
+    restore: true
+    step: 1
+  motion_eetkamer:
+    name: Eetkamer
+    icon: mdi:run-fast
+    restore: true
+    step: 1
+  motion_wc:
+    name: WC
+    icon: mdi:run-fast
+    restore: true
+    step: 1
+  motion_traphal:
+    name: Traphal
+    icon: mdi:run-fast
+    restore: true
+    step: 1
+  motion_badkamer:
+    name: Badkamer
+    icon: mdi:run-fast
+    restore: true
+    step: 1
+  rf_inkomhal:
+    name: RF Inkomhal
+    icon: mdi:exit-run
+    restore: true
+    step: 1
+  rf_terras:
+    name: RF Terras
+    icon: mdi:exit-run
+    restore: true
+    step: 1
+  warning_counter:
+    name: Warnings
+    icon: mdi:alert
+    restore: false
+    #step: 1
+  error_counter:
+    name: Error
+    icon: mdi:alert-octagram
+    restore: false
+    #step: 1
+  rf_909601:
+    name: RF Button 909601
+    icon: mdi:alert-circle-outline
+    restore: true
+    step: 1

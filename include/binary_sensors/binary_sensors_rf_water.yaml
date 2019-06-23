@@ -1,0 +1,9 @@
+- platform: mqtt
+  name: 'Keuken Lek'
+  state_topic: 'home/water-keuken'
+  device_class: moisture
+
+- platform: mqtt
+  name: 'Badkamer Lek'
+  state_topic: 'home/water-badkamer'
+  device_class: moisture

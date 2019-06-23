@@ -1,0 +1,163 @@
+  auto_heat_hour:
+    name: Hour
+    icon: mdi:timer
+    initial: 0
+    min: 0
+    max: 23
+    step: 1
+#    mode: box
+
+  auto_heat_min:
+    name: Minutes
+    icon: mdi:timer
+    initial: 5
+    min: 0
+    max: 55
+    step: 5
+ #   mode: box
+
+  auto_heat_duration:
+    name: Duration minutes
+    icon: mdi:timer
+    initial: 60
+    min: 0
+    max: 120
+    step: 30
+ #   mode: box
+
+  auto_heat_hour_liv:
+    name: Hour
+    icon: mdi:timer
+    initial: 0
+    min: 0
+    max: 23
+    step: 1
+ #   mode: box
+
+  auto_heat_min_liv:
+    name: Minutes
+    icon: mdi:timer
+    initial: 5
+    min: 0
+    max: 55
+    step: 5
+ #   mode: box
+
+  auto_heat_duration_liv:
+    name: Duration minutes
+    icon: mdi:timer
+    initial: 60
+    min: 0
+    max: 120
+    step: 30
+  #  mode: box
+
+  auto_heat_hour_slp1:
+    name: Hour
+    icon: mdi:timer
+    initial: 0
+    min: 0
+    max: 23
+    step: 1
+  #  mode: box
+
+  auto_heat_min_slp1:
+    name: Minutes
+    icon: mdi:timer
+    initial: 5
+    min: 0
+    max: 55
+    step: 5
+#    mode: box
+
+  auto_heat_duration_slp1:
+    name: Duration minutes
+    icon: mdi:timer
+    initial: 60
+    min: 0
+    max: 120
+    step: 30
+#    mode: box
+
+  auto_heat_hour_slp2:
+    name: Hour
+    icon: mdi:timer
+    initial: 0
+    min: 0
+    max: 23
+    step: 1
+ #   mode: box
+
+  auto_heat_min_slp2:
+    name: Minutes
+    icon: mdi:timer
+    initial: 5
+    min: 0
+    max: 55
+    step: 5
+#    mode: box
+
+  auto_heat_duration_slp2:
+    name: Duration minutes
+    icon: mdi:timer
+    initial: 60
+    min: 0
+    max: 120
+    step: 30
+#    mode: box
+
+  auto_heat_hour_slp3:
+    name: Hour
+    icon: mdi:timer
+    initial: 0
+    min: 0
+    max: 23
+    step: 1
+#    mode: box
+
+  auto_heat_min_slp3:
+    name: Minutes
+    icon: mdi:timer
+    initial: 5
+    min: 0
+    max: 55
+    step: 5
+#    mode: box
+
+  auto_heat_duration_slp3:
+    name: Duration minutes
+    icon: mdi:timer
+    initial: 60
+    min: 0
+    max: 120
+    step: 30
+#    mode: box
+
+
+  auto_heat_hour_ketel:
+    name: Hour
+    icon: mdi:timer
+    initial: 0
+    min: 0
+    max: 23
+    step: 1
+#    mode: box
+
+
+  auto_heat_min_ketel:
+    name: Minutes
+    icon: mdi:timer
+    initial: 5
+    min: 0
+    max: 55
+    step: 5
+#    mode: box
+
+  auto_heat_duration_ketel:
+    name: Duration minutes
+    icon: mdi:timer
+    initial: 60
+    min: 0
+    max: 120
+    step: 30
+#    mode: box

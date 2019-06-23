@@ -1,0 +1,38 @@
+# - id: shellies_announce
+#   alias: 'Shellies Announce'
+#   trigger:
+#     - platform: homeassistant
+#       event: start
+#   action:
+#     service: mqtt.publish
+#     data:
+#       topic: shellies/command
+#       payload: announce
+      
+#shellyht-22C4A5/ 
+
+- id: 'shellies_discovery'
+  alias: 'Shellies Discovery'
+  trigger:
+  - platform: mqtt
+    topic: shellies/announce
+  action:
+    service: python_script.shellies_discovery
+    data_template:
+      discovery_prefix: 'homeassistant'
+      id: '{{ trigger.payload_json.id }}'
+      mac: '{{ trigger.payload_json.mac }}'
+      fw_ver: '{{ trigger.payload_json.fw_ver }}'
+      
+
+- id: 'Shelly synch'
+  alias: Shelly sync at HA start
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - delay: 00:00:30
+  - service: mqtt.publish 
+    data: 
+      topic: shellies/command 
+      payload: announce

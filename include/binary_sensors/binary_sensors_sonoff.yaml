@@ -1,0 +1,9 @@
+### SONOFFRF Bridge
+
+  - platform: mqtt
+    name: "RF Bridge"
+    state_topic: "rfbridge/tele/LWT" 
+    value_template: "{{ value }}"
+    payload_on: "Online"
+    payload_off: "Offline"
+    device_class: connectivity

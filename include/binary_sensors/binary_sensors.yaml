@@ -1,0 +1,119 @@
+
+
+  - platform: command_line
+    name: WAN
+    command: "/opt/scripts/wan_test.sh"
+    device_class: connectivity
+    payload_on: "Up"
+    payload_off: "Down"
+    
+    
+  - platform: workday
+    country: BE
+    workdays: [mon, tue, wed, thu, fri]
+
+
+  - platform: mqtt
+    name: "Shelly Firmware Update"
+    state_topic: "shellies/announce"
+    value_template: "{{ value_json.new_fw }}"
+    payload_on: "true"
+    payload_off: "false"
+
+#   - platform: 'bayesian'
+#     prior: 0.25
+#     name: 'Rachid Home'
+#     probability_threshold: 0.95
+#     device_class: presence
+#     observations:
+#       - entity_id: 'device_tracker.rachid'
+#         prob_given_true: 0.98
+#         prob_given_false: 0.1
+#         platform: 'state'
+#         to_state: 'home'
+#       - entity_id: 'device_tracker.rachid_mqtt'
+#         prob_given_true: 0.99
+#         prob_given_false: 0.1
+#         platform: 'state'
+#         to_state: 'home'
+#       - entity_id: 'device_tracker.elradix_s7elradix'
+#         prob_given_true: 0.95
+#         prob_given_false: 0.1
+#         platform: 'state'
+#         to_state: 'home'
+#       - entity_id: 'device_tracker.elradix' 
+#         prob_given_true: 0.95
+#         prob_given_false: 0.2
+#         platform: 'state'
+#         to_state: 'home'
+
+#   - platform: 'bayesian'
+#     prior: 0.25
+#     name: 'Soumaya Home'
+#     probability_threshold: 0.95
+#     device_class: presence
+#     observations:
+#       - entity_id: 'device_tracker.soumaya'
+#         prob_given_true: 0.99
+#         prob_given_false: 0.1
+#         platform: 'state'
+#         to_state: 'home'
+#       - entity_id: 'device_tracker.soumaya_mqtt'
+#         prob_given_true: 0.99
+#         prob_given_false: 0.1
+#         platform: 'state'
+#         to_state: 'home'
+#       - entity_id: 'device_tracker.elradix_s7soumaya'
+#         prob_given_true: 0.99
+#         prob_given_false: 0.1
+#         platform: 'state'
+#         to_state: 'home'
+#       - entity_id: 'device_tracker.soumaya_2'
+#         prob_given_true: 0.95
+#         prob_given_false: 0.2
+#         platform: 'state'
+#         to_state: 'home'
+
+#  - platform: 'bayesian'
+#    name: 'In bed sensor'
+#    prior: 0.25
+#    probability_threshold: 0.95
+#    observations:
+#      - entity_id: 'binary_sensor.motion_eetkamer'
+#        prob_given_true: 0.4
+#        prob_given_false: 0.2
+#        platform: 'state'
+#        to_state: 'off'
+#      - entity_id: 'binary_sensor.motion_inkomhal' 
+#        prob_given_true: 0.4
+#        prob_given_false: 0.2
+#        platform: 'state'
+##        to_state: 'off'
+#      - entity_id: 'binary_sensor.motion_badkamer' 
+#        prob_given_true: 0.4
+#        prob_given_false: 0.2
+#        platform: 'state'
+#        to_state: 'off'
+#      - entity_id: 'binary_sensor.motion_traphal'
+#        prob_given_true: 0.6
+#        platform: 'state'
+#        to_state: 'on'
+#      - entity_id: 'sensor.sun'
+#        prob_given_true: 0.7
+#        platform: 'state'
+#        to_state: 'below_horizon'
+#      - entity_id: 'alarm_control_panel.dageraad'
+#        prob_given_true: 0.9
+#        platform: 'state'
+#        to_state: 'armed_home'
+
+
+
+
+#  - platform: rest
+#    name: S2 Camera Motion
+#    device_class: motion
+#    resource: http://s2.lan:8000/sensors.json?sense=motion_active
+#    value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
+
+

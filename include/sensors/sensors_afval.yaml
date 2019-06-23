@@ -1,0 +1,13 @@
+# https://github.com/pippyn/Home-Assistant-Sensor-Ophaalkalender
+  - platform: ophaalkalender
+    resources:
+      - restafval
+      - papier
+      - pmd
+      - gemengde plastics
+      - grof huisvuil afroep
+      - snoeiafval afroep
+    postcode: !secret ophaalkalender_postcode
+    streetname: !secret ophaalkalender_street
+    streetnumber: !secret ophaalkalender_streetnumber
+#    dateformat: "%d-%m-%Y"

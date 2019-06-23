@@ -1,0 +1,67 @@
+###############
+### DIMMERS ###
+###############
+
+keuken:
+  alias: Dimmer keuken
+  sequence:
+    - service: shell_command.wasbak
+    - service: shell_command.spotright
+    - service: shell_command.spotleft
+
+dinner:
+  alias: Dimmer dinner
+  sequence:
+    - service: shell_command.dinner_center
+    - service: shell_command.dinner_double
+
+living:
+  alias: Dimmer living
+  sequence:
+    - service: shell_command.living_center
+    - service: shell_command.living_double
+    - service: shell_command.living_triple
+
+slp1:
+  alias: Dimmer slp1
+  sequence:
+    - service: shell_command.slp1_deur
+    - service: shell_command.slp1_double
+
+slp1_center:
+  alias: Dimmer slp1
+  sequence:
+    - service: shell_command.slp1_deur
+
+
+slp2:
+  alias: Dimmer slp2
+  sequence:
+    - service: shell_command.slp2_deur
+    - service: shell_command.slp2_kast
+
+slp3:
+  alias: Dimmer slp3
+  sequence:
+    - service: shell_command.slp3_deur
+
+traphal:
+  alias: Dimmer traphal
+  sequence:
+    - service: shell_command.trapvoor
+    - service: shell_command.trapachter
+
+wc:
+  alias: Dimmer wc
+  sequence:
+    - service: shell_command.wc
+
+bureau_spot:
+  alias: Dimmer bureau spot
+  sequence:
+    - service: shell_command.bureau_spot
+
+bureau_tl:
+  alias: Dimmer bureau tl
+  sequence:
+    - service: shell_command.bureau_tl

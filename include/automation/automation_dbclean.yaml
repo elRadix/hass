@@ -1,0 +1,10 @@
+  - alias: Purge Database
+    initial_state: 'true'
+    trigger:
+      platform: time
+      at: '01:22:22'
+    action:
+      service: recorder.purge
+      data:
+        keep_days: 5
+        repack: true

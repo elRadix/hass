@@ -1,0 +1,64 @@
+  heating:
+    name: Heating Program
+    initial: off
+    icon: mdi:thermometer-lines
+
+  ketel_1h:
+    name: Ketel 1 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  ketel_2h:
+    name: Ketel 2 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  1u_eetkamer:
+    name: 1 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  2u_eetkamer:
+    name: 2 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  1u_living:
+    name: 1 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  2u_living:
+    name: 2 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  1u_floradix:
+    name: 1 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  2u_floradix:
+    name: 2 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  1u_sara:
+    name: 1 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  2u_sara:
+    name: 2 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  1u_yassin:
+    name: 1 uur
+    initial: off
+    icon: mdi:thermometer-lines
+
+  2u_yassin:
+    name: 2 uur
+    initial: off
+    icon: mdi:thermometer-lines

@@ -1,0 +1,402 @@
+homeassistant:
+  auth_providers:
+    - type: homeassistant  
+  auth_mfa_modules:
+    - type: totp
+      name: Authy app
+    - type: notify
+      message: 'I almost forget, to get into my house, you need to say {}'
+  whitelist_external_dirs:
+    - !secret scripts_directory
+
+  customize_glob: !include customize_glob.yaml
+  customize: !include customize.yaml
+
+  name: Home
+
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  unit_system: metric
+  time_zone: !secret time_zone
+
+  packages: !include_dir_named include/packages/
+  
+
+config: 
+system_health:
+websocket_api:
+#default_config:
+person:
+python_script:
+discovery:
+  ignore:
+    - igd
+  # enable:
+  #   - homekit
+ssdp:
+zeroconf: 
+breaking_changes:
+mobile_app:
+map:
+
+http:
+  use_x_forwarded_for: True
+  trusted_proxies:
+    - 127.0.0.1
+    - 192.168.1.21
+    - 10.8.0.0/24
+  base_url: !secret base_url
+  server_port: !secret server_port
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
+
+shelly:
+  username: elradix
+  password: athlon
+  additional_information: true
+  wifi_sensor: true
+  uptime_sensor: true
+  version: true
+
+#################################################################
+## Include
+#################################################################
+#alarm_control_panel: !include alarm.yaml
+alert: !include_dir_merge_named  include/alerts
+automation: !include_dir_merge_list  include/automation
+binary_sensor: !include_dir_merge_list  include/binary_sensors
+camera: !include_dir_merge_named include/cameras
+counter: !include_dir_merge_named include/counter
+#climate: !include_dir_merge_named include/climate
+#frontend: !include_dir_merge_named include/frontend
+frontend:
+  javascript_version: latest
+  themes: !include ./include/frontend/themes/clear.yaml
+device_tracker: !include_dir_merge_list include/device_tracker
+#google_assistant: !include_dir_merge_list include/google_assistant
+group: !include_dir_merge_named include/groups
+history: #!include_dir_merge_named include/history
+history_graph: !include_dir_merge_named include/history_graph
+#influxdb:  !include_dir_merge_named include/influxdb
+input_datetime: !include_dir_merge_named include/input_datetime
+input_select: !include_dir_merge_named include/input_select
+input_number: !include_dir_merge_named include/input_number
+input_text: !include_dir_merge_named include/input_text
+input_boolean: !include_dir_merge_named include/input_booleans
+light: !include_dir_merge_list include/light
+logbook:  #!include_dir_merge_list include/logbook
+notify: !include_dir_merge_list include/notify
+#panel_custom: !include panel_custom.yaml
+proximity: !include_dir_merge_list include/proximity
+recorder:  #!include_dir_merge_list include/recorder
+  # db_url: mysql://root:hassdb@192.168.1.21:3307/hassdbv87?charset=utf8
+  #db_url: mysql://admin:password@mydatabase.us-east-1.rds.amazonaws.com/homeassistant?charset=utf8
+  db_url: mysql://elradix:elradixhassdb@hassdb.c7bk9xalw0ea.us-west-2.rds.amazonaws.com:3306/hassdb?charset=utf8
+  #db_url: mysql://user:pw@url:port/dbname?charset=utf8
+  purge_keep_days: 7
+  purge_interval: 0
+  exclude:
+    domains:
+      - automation
+#    entities:
+#      - camera.porch_camera
+#      - camera.bedroom_tv_image
+  # exclude:
+  #   domains:
+  #     - automation
+  #     - weblink
+  #     - updater
+  #     - group
+  #     - calendar
+  #     - camera
+  #     - climate
+  #     - device_tracker
+  #     - group
+  #     - input_text
+  #     - input_number
+  #     - light
+  #     - lock
+  #     - media_player
+  #     - remote
+  #     - script
+  #     - sun
+  #     - switch
+  #     - zone
+  #     - weather
+script: !include_dir_merge_named include/script
+shell_command: !include_dir_merge_named include/shell_commands
+sensor: !include_dir_merge_list include/sensors
+switch: !include_dir_merge_list include/switches
+zone: !include_dir_merge_list include/zones
+#scene: !include_dir_merge_named include/scenes
+
+updater:
+  include_used_components: true
+
+custom_updater:
+  show_installable: True
+  track:
+    - cards
+    - components
+    - python_scripts
+  card_urls:    
+    - https://raw.githubusercontent.com/bramkragten/custom-ui/master/updater.json  
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+    - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
+    - https://raw.githubusercontent.com/bramkragten/custom-ui/master/updater.json
+    - https://raw.githubusercontent.com/maykar/custom-lovelace/master/tracker.json
+    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
+    - https://raw.githubusercontent.com/ljmerza/waze-card/master/updater.json
+    - https://raw.githubusercontent.com/ljmerza/-card/master/custom_updater.json
+  component_urls:
+    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
+    - https://raw.githubusercontent.com/awesome-developer/my-awesome-repo/master/custom_components.json
+    - https://raw.githubusercontent.com/danobot/temperature-alert/master/tracker.json
+    - https://raw.githubusercontent.com/pippyn/Home-Assistant-Sensor-Afvalbeheer/master/custom_components.json
+    - https://raw.githubusercontent.com/thibmaek/custom-components/master/vrtnws/custom_updater.json
+    - https://raw.githubusercontent.com/ReneNulschDE/ha_cc_mbwebapppy/master/custom_updater.json
+  python_script_urls:
+    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/python_scripts.json
+    - https://raw.githubusercontent.com/bieniu/home-assistant-config/master/python_scripts/python_scripts.json
+
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
+    mode: daily
+
+
+# life360:
+#   accounts:
+#     - username: !secret life_username
+#       password: !secret life_password
+
+
+#asuswrt:
+#  host: !secret asuswrt_host
+# username: !secret asuswrt_username
+# password: !secret asuswrt_password
+#  port: !secret asuswrt_port
+#  protocol: !secret asuswrt_protocol
+#  sensors:
+#    - download_speed
+#    - upload_speed
+#    - download
+#    - upload
+
+sun:
+  monitored_conditions:
+    - azimuth
+    - elevation
+    - max_elevation
+    - next_dawn
+    - next_dusk
+    - next_midnight
+    - next_noon
+    - daylight
+    - next_daylight
+    - prev_daylight
+    - sunrise
+    - sunset
+
+# ###################
+# ### THERMOSTAAT ###
+# ###################
+
+climate:
+  - platform: generic_thermostat
+    name: Eetkamer
+    heater: switch.heating_eetkamer
+    target_sensor: sensor.ht_eetkamer_temp
+    min_temp: 5
+    max_temp: 22
+    target_temp: 17
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+  - platform: generic_thermostat
+    name: Living
+    heater: switch.heating_living
+    target_sensor: sensor.tmp_living
+    min_temp: 5
+    max_temp: 24
+    target_temp: 5
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+  - platform: generic_thermostat
+    name: Sara
+    heater: switch.heating_sara
+    target_sensor: sensor.ht_sara_temp
+    min_temp: 5
+    max_temp: 22
+    target_temp: 17
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+  - platform: generic_thermostat
+    name: Yassin
+    heater: switch.heating_yassin
+    target_sensor: sensor.tmp_slp_3
+    min_temp: 5
+    max_temp: 22
+    target_temp: 17
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+  - platform: generic_thermostat
+    name: FloRadix
+    heater: switch.heating_floradix
+    target_sensor: sensor.tmp_slp_1_calibrated
+    min_temp: 5
+    max_temp: 24
+    target_temp: 17
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+  - platform: generic_thermostat
+    name: Badkamer
+    heater: switch.heating_badkamer
+    target_sensor: sensor.tmp_badkamer
+    min_temp: 5
+    max_temp: 25
+    target_temp: 5
+    hot_tolerance: 0.5
+    min_cycle_duration:
+      minutes: 5
+    initial_operation_mode: "off"
+    away_temp: 5
+
+system_log:
+  fire_event: true
+
+#logger:
+#  default: info
+#  logs:
+#    homeassistant.components.logger: debug
+
+# logger:
+#   default: warn
+#   logs:
+#     custom_components.mercedesmeapi: debug
+#     custom_components.mercedesmeapi.sensor: info
+#     custom_components.mercedesmeapi.apicontroller: debug
+#     custom_components.mercedesmeapi.OAuth: debug
+
+
+# Weather prediction
+#sensor:
+#  - platform: yr
+
+mercedesmeapi:
+  username: !secret mercedes_username
+  password: !secret mercedes_passowrd
+  pin: !secret mercedes_pin
+  country_code: !secret mercedes_country_code
+  accept_lang: !secret mercedes_accept_lang
+  save_car_details: false
+
+media_player:
+  - platform: braviatv_psk
+    name: TV Living
+    host: !secret ip_sony
+    psk: sony
+    mac: !secret mac_sony
+    amp: True
+    android: True
+# #    #sourcefilter:
+#     #  - ' HD'
+#     #  - HDMI
+
+
+#  - platform: tts_bluetooth_speaker
+#    address: 10:B7:F6:00:66:25   # Required - for example, 00:2F:AD:12:0D:42
+#    volume: 1.0                   # Optional - default is 0.5
+#    #pre_silence_duration: 1       # Optional - No. of seconds silence before the TTS (default is 0)
+#    #post_silence_duration: 0.5    # Optional - No. of seconds silence after the TTS (default is 0)
+#    #cache_dir: /tmp/tts           # Optional - make sure it matches the same setting in TTS confi
+
+panel_iframe:
+  configurator:
+    title: Editor 
+    icon: mdi:wrench 
+    url: !secret configurator_url
+  esphome:
+    title: ESPHome
+    url: !secret esphome_url
+    icon: mdi:contactless-payment
+#########################
+
+smappee:
+    host: !secret smappee_host
+#    host_password: admin
+    client_id: !secret smappee_client_id
+    client_secret: !secret smappee_secret
+    username: !secret smappee_username
+    password: !secret smappee_password
+
+telegram_bot:
+  platform: polling
+  api_key: !secret telegram_bot_api
+  parse_mode: markdown
+  allowed_chat_ids:
+    - !secret telegram_bot_user1
+    - !secret telegram_bot_user2
+
+
+# temperature_alert:
+#   - indoor_sensors:
+#       - sensor.ht_eetkamer_temp
+#       - sensor.ht_sara_temp
+#     outdoor_sensor: sensor.dark_sky_temperature
+#     temp_delta: 2                           # min delta before triggering
+#     notifiers: 
+#       - 'notify.dageraad'
+#     mode: cooler                            # cooler/warmer
+#     name: 'temp_alert'
+
+
+
+utility_meter:
+  daily_energy:
+    source: sensor.pvoutput_energy_consumption
+    cycle: daily 
+    tariffs:
+      - peak
+      - offpeak
+  monthly_energy:
+    source: sensor.pvoutput_energy_consumption
+    cycle: monthly
+    tariffs:
+      - peak
+      - offpeak
+  daily_energy_live:
+    source: sensor.sensor_smappee_power_integral
+    cycle: daily 
+    tariffs:
+      - peak
+      - offpeak
+  monthly_energy_live:
+    source: sensor.sensor_smappee_power_integral
+    cycle: monthly
+    tariffs:
+      - peak
+      - offpeak
+
+

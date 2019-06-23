@@ -1,0 +1,20 @@
+ - platform: command_line
+   scan_interval: 60
+   switches:
+    dsm:
+        command_on: "/opt/scripts/dsm_on.sh"
+        command_off: "/opt/scripts/dsm_off.sh"
+        command_state: "/opt/scripts/dsm_state.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: Synology
+
+
+ - platform: command_line
+   scan_interval: 90
+   switches:
+    dsm_lun:
+        command_on: "/opt/scripts/dietpi_on.sh"
+        command_off: "/opt/scripts/dietpi_off.sh"
+        command_state: "/opt/scripts/dietpi_state.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: Dietpi LUN

@@ -1,0 +1,285 @@
+## Kodi Module
+## https://github.com/maattdiy/home-assistant-config
+
+## Resources:
+## https://home-assistant.io/components/media_player.kodi/
+## https://home-assistant.io/cookbook/automation_kodi_dynamic_input_select/
+## https://forum.kodi.tv/showthread.php?tid=157996
+## https://forum.kodi.tv/showthread.php?tid=210549
+## http://kodi.wiki/view/JSON-RPC_API/v6
+## http://kodi.wiki/view/Action_IDs
+
+
+##################################################
+## Customizes
+##################################################
+
+homeassistant:
+  customize:
+    media_player.kodi:
+      entity_picture: ''
+    script.kodi_update_library:
+      icon: mdi:server
+      #show_last_changed: true
+
+
+##################################################
+## Automations
+##################################################
+
+media_player:
+  # https://home-assistant.io/components/media_player.kodi/
+
+  - platform: kodi
+    host: 192.168.1.12
+    name: kodi_slaapkamer
+
+##################################################
+## Inputs
+##################################################
+
+input_number:
+  kodi_volume:
+    name: Volume
+    icon: mdi:volume-medium
+    initial: 0.4
+    min: 0
+    max: 1
+    step: 0.01
+
+input_boolean:
+  mode_kodi:
+    name: Kodi Mode
+    icon: mdi:Kodi
+    initial: off
+
+##################################################
+## Switchs
+##################################################
+
+switch:
+  - platform: template
+    switches:
+      mode_kodi:
+        value_template: "{{ is_state('input_boolean.mode_kodi', 'on') }}"
+        turn_on:
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.mode_kodi
+          - service: group.set_visibility
+            entity_id: group.remote_control_kodi
+            data:
+              visible: True
+        turn_off:
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.mode_kodi
+          - service: group.set_visibility
+            entity_id: group.remote_control_kodi
+            data:
+              visible: False
+
+
+##################################################
+## Sensors
+##################################################
+
+sensor:
+  - platform: template
+    sensors:
+      kodi_template:
+        friendly_name: 'Kodi'
+        value_template: "{{ states.media_player.kodi_slaapkamer.attributes.media_title }}"
+        icon_template: 'mdi:kodi'
+        #icon_template: "{{ 'mdi:kodi' if is_state('media_player.kodi', 'playing') else 'mdi:close-circle' }}"
+
+
+##################################################
+## Automations
+##################################################
+
+automation:
+  - alias: "Kodi Playing"
+    initial_state: 'off'
+    trigger:
+      - platform: state
+        entity_id: media_player.kodi_slaapkamer
+        to: 'playing'
+    action:
+      - service: script.kodi_tv_on
+
+  - alias: Kodi Volume
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: input_number.kodi_volume
+    action:
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.kodi_slaapkamer
+          volume_level: '{{ trigger.to_state.state }}'
+          
+          
+##################################################
+## Scripts
+##################################################
+
+script:
+
+  # TV On
+  kodi_tv_on:
+    alias: Kodi turn on TV
+    sequence:
+      - condition: state
+        entity_id: switch.kodi
+        state: 'off'
+      - service: switch.turn_on
+        entity_id: switch.kodi
+#      - delay: 00:00:05
+#      - service: script.tv_h1
+
+  # TV Off
+  kodi_tv_off:
+    alias: Kodi turn off TV
+    sequence:
+      - service: script.kodi_home
+      - delay: 00:00:01
+      - service: switch.turn_off
+        entity_id: switch.kodi
+
+  # Play something (Party Mode)
+  kodi_play_something:
+    alias: Kodi Play Something
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: Player.Open
+          item:
+            partymode: music
+      - service: script.kodi_tv_on
+  
+  # Play Playlist
+  kodi_play_playlist:
+    alias: Kodi Play Playlist
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: Player.Open
+          item:
+            playlistid: "{{ value }}"
+
+  # Command
+  kodi_cmd:
+    alias: Kodi Command
+    sequence:
+      - service: media_player.kodi_call_method
+        data_template:
+          entity_id: media_player.kodi_slaapkamer
+          method: "{{ value }}"
+
+  # TV Show
+  kodi_tvshows:
+    alias: Kodi TV Show
+    sequence:
+      - service: media_player.kodi_call_method
+        data_template:
+          entity_id: media_player.kodi_slaapkamer
+          method: Addons.ExecuteAddon
+          addonid: script.tv.show.last.episode
+      - delay: 00:00:02
+      - service: script.kodi_tv_on
+  
+  # Addon
+  kodi_addon:
+    alias: Kodi Addon
+    sequence:
+      - service: media_player.kodi_call_method
+        data_template:
+          entity_id: media_player.kodi_slaapkamer
+          method: Addons.ExecuteAddon
+          addonid: "{{ value }}"
+          params:
+            command: activate
+  
+  # Play/Puase
+  kodi_playpause:
+    alias: Kodi Play/Pause
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: Player.PlayPause
+          playerid: 0
+  
+  # Stop
+  kodi_stop:
+    alias: Kodi Play/Pause
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: Player.Stop
+          playerid: 0
+  
+  # Home
+  kodi_home:
+    alias: Kodi Home
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: Player.Stop
+          playerid: 0
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: Input.Home
+      - service: script.kodi_tv_on
+  
+  # Test
+  kodi_test:
+    alias: Kodi Test
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: GUI.ActivateWindow
+          window: Videos,videodb://recentlyaddedepisodes/
+  
+  # Update Library
+  kodi_update_library:
+    alias: Update Kodi Library
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: VideoLibrary.Scan
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: VideoLibrary.Clean
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: AudioLibrary.Scan
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: AudioLibrary.Clean
+          
+##################################################
+## Specified shows
+##################################################
+  
+  # Flash
+  kodi_play_tvshow01:
+    alias: Kodi Play Playlist
+    sequence:
+      - service: media_player.kodi_call_method
+        data:
+          entity_id: media_player.kodi_slaapkamer
+          method: Player.Open
+          item:
+            file: "file:///mnt_usb_2/Video/Test/HD/jellyfish-10-mbps-hd-h264.mkv"
+          options:
+            resume: True

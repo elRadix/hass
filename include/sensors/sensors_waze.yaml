@@ -1,0 +1,45 @@
+### WAZE
+
+  - platform: waze_travel_time
+    name: Rachid to Home
+    origin: device_tracker.comp_rachid
+    destination: !secret waze_destination_home
+    region: 'EU'
+    
+  - platform: waze_travel_time
+    name: Soumaya to Home
+    origin: device_tracker.comp_soumaya
+    destination: secret !waze_destination_home
+    region: 'EU'
+
+## WORK
+  - platform: waze_travel_time
+    name: Home to Keystone
+    origin: !secret waze_destination_home
+    destination: !secret waze_destination_work
+    region: 'EU'
+
+  - platform: waze_travel_time
+    name: Time to work
+    origin: device_tracker.comp_rachid
+    destination: zone.bnp
+    region: 'EU'
+
+  - platform: waze_travel_time
+    name: Time to home
+    origin: device_tracker.comp_rachid
+    destination: !secret waze_destination_home
+    region: 'EU'
+
+  - platform: waze_travel_time
+    name: Home to BNP
+    origin: !secret waze_destination_home
+    destination: !secret waze_destination_bank
+    region: 'EU'
+
+  - platform: waze_travel_time
+    name: BNP to Home
+    origin: !secret waze_destination_bank
+    destination: !secret waze_destination_home
+    region: 'EU'
+

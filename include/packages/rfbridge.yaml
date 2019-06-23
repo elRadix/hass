@@ -1,0 +1,89 @@
+input_select:
+  
+  rf_bridge_device_select:
+    name: 'Device'
+    initial: Select
+    options:
+      - "Select"
+      - "rfbridge"
+      - "Device 2"
+
+  rf_bridge_mode_select:
+    name: 'Mode'
+    initial: Select
+    options:
+      - "Select"
+      - "Learn"
+      - "Send"
+
+  rf_bridge_key_select:
+    name: 'Key'
+    initial: Select
+    options:
+      - "Select"
+      - "01"
+      - "02"
+      - "03"
+      - "04"
+      - "05"
+      - "06"
+      - "07"
+      - "08"
+      - "09"
+      - "10"
+      - "11"
+      - "12"
+      - "13"
+      - "14"
+      - "15"
+      - "16"
+
+script:
+
+  rf_bridge_send_command:
+    alias: 'Send command'
+    sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: 'cmnd/{% if states.input_select.rf_bridge_device_select.state == "rfbridge" %}rfbridgetopicdevice1{% elif states.input_select.rf_bridge_device_select.state == "Device 2" %}rfbridgetopicdevice2{% endif %}/backlog'
+        payload: 'rfkey{{ states("input_select.rf_bridge_key_select") }} {% if states.input_select.rf_bridge_mode_select.state == "Learn" %}2{% elif states.input_select.rf_bridge_mode_select.state == "Send" %}1{% endif %}'
+    - service: input_select.select_option
+      entity_id: input_select.rf_bridge_device_select
+      data_template:
+        option: "Select"
+    - service: input_select.select_option
+      entity_id: input_select.rf_bridge_mode_select
+      data_template:
+        option: "Select"
+    - service: input_select.select_option
+      entity_id: input_select.rf_bridge_key_select
+      data_template:
+        option: "Select"
+
+
+group:
+
+  rf_bridge_controls:
+    control: hidden
+    entities:
+    - input_select.rf_bridge_device_select
+    - input_select.rf_bridge_mode_select
+    - input_select.rf_bridge_key_select
+    - script.rf_bridge_send_command
+    name: RF Bridge
+    view: false
+
+homeassistant:
+  customize:
+
+    input_select.rf_bridge_device_select:
+      icon: mdi:access-point
+    
+    input_select.rf_bridge_mode_select:
+      icon: mdi:swap-vertical
+    
+    input_select.rf_bridge_key_select:
+      icon: mdi:format-list-numbered
+    
+    script.rf_bridge_send_command:
+      icon: mdi:send

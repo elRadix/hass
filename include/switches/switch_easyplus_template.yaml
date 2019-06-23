@@ -1,0 +1,132 @@
+
+# - platform: template
+#   switches:
+
+#switch:
+
+  - platform: template
+    switches:
+      slaap:
+        friendly_name: Slaap ruimte
+        value_template: "{{ is_state('group.slaap_sub', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: group.slaap_sub
+        turn_off:
+          service: script.lights_slaap
+
+
+  - platform: template
+    switches:
+      woon:
+        friendly_name: Woon ruimte
+        value_template: "{{ is_state('group.woon_sub', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: group.woon_sub
+        turn_off:
+          service: script.lights_woon
+
+  - platform: template
+    switches:
+      socket_slaap:
+        friendly_name: Slaap ruimte
+        value_template: "{{ is_state('group.slaap_sub_soc', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: group.slaap_sub_soc
+        turn_off:
+          service: script.switches_slaap
+
+  - platform: template
+    switches:
+      socket_woon:
+        friendly_name: Woon ruimte
+        value_template: "{{ is_state('group.woon_sub_soc', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          data:
+            entity_id: group.woon_sub_soc
+        turn_off:
+          service: script.switches_woon
+
+
+
+
+# script.lights
+
+
+  # - platform: template
+  #   switches:
+  #     socket_woon:
+  #       friendly_name: Woon ruimte
+  #       value_template: "{{ is_state('group.woon_sub_soc', 'on') }}"
+  #       turn_on:
+  #         service: switch.turn_on
+  #         data:
+  #           entity_id: group.woon_sub_soc
+  #       turn_off:
+  #         service: script.turn_on
+  #         entity_id: script.switches
+
+#########
+#  - service: light.turn_off
+#    data_template:
+#      entity_id: >
+#        {% set lights_on = states.light |
+#          selectattr('entity_id','in',state_attr('group.easyplus_lights','entity_id'))| 
+#          selectattr('state','eq','on') | map(attribute='entity_id') | join(',') %}
+#        {{lights_on}}
+
+
+#  - service: homeassistant.turn_off
+#    data_template:
+#      entity_id: >
+#        {% set switches_on = states.switch |
+#          selectattr('entity_id','in',state_attr('group.easyplus_switches','entity_id'))| 
+#          selectattr('state','eq','on') | map(attribute='entity_id') | join(',') %}
+#        {{switches_on}}
+######
+
+
+
+#   google_assistant_sync:
+#      friendly_name: Google Home
+#      value_template: "{{'off'}}"
+#      turn_on:
+#        service: google_assistant.request_sync
+#      turn_off:
+#        service: google_assistant.request_sync
+
+  # - platform: template
+  #   switches:
+
+
+  # - platform: template
+  #   switches:
+  #     debug: 
+  #       friendly_name: Show Debug View
+  #       value_template: "{{ is_state_attr('group.debug' , 'view' , true) }}"
+  #       turn_on:
+  #         - service: python_script.populate_catchall_group
+  #         - service: python_script.find_dead_items
+  #         - service: group.set
+  #           data:
+  #             object_id: debug
+  #             view: true
+  #             visible: true
+  #       turn_off:
+  #         - service: group.set
+  #           data:
+  #             object_id: debug
+  #             view: false
+  #             visible: false
+  #         - service: group.remove
+  #           data:
+  #             object_id: catchall
+  #         - service: group.remove
+  #           data:
+  #             object_id: deaditems

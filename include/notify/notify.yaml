@@ -1,0 +1,34 @@
+#notify:
+
+
+  - name: android
+    platform: fcm-android
+    #server_key (OPTIONAL: only if using your own FCM Project): MYSERVERKEY123456
+
+#  - name: html5
+#    platform: html5
+#    gcm_api_key: !secret gcm_api_key
+#    gcm_sender_id: !secret gcm_sender_id
+
+#name: TV report
+#    platform: command_line
+#    command: "python /home/pi/.homeassistant/scripts/weekly_report.py -e sensor.watchig_tv -n 'Weekly TV report' -o 0"
+
+#  - name: Lights report
+#    platform: command_line
+#    command: "python /home/pi/.homeassistant/scripts/weekly_report.py -e sensor.keuken -n 'Weekly kitchen lights report' -o 0"
+
+# Telegram Setup
+  - name: telegram_rachid
+    platform: telegram
+    chat_id: !secret telegram_bot_user1
+
+  - name: telegram_soumaya
+    platform: telegram
+    chat_id: !secret telegram_bot_user2
+
+  - name: dageraad
+    platform: group
+    services:
+      - service: telegram_rachid
+      - service: telegram_soumaya

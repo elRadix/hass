@@ -1,0 +1,384 @@
+#################################################################
+## Customize
+#################################################################
+  sensor.speedtest_download:
+    friendly_name: "Download "
+  sensor.media_players_active:
+    friendly_name: "Media Status"
+  sensor.speedtest_upload:
+    friendly_name: "Upload "
+  sensor.speedtest_ping:
+    friendly_name: "Ping"
+  sensor.weather_temperature:
+    friendly_name: "Temperature"
+  sensor.weather_daily_high_temperature:
+    friendly_name: "Temperature max"
+  sensor.weather_daily_low_temperature:
+    friendly_name: "Temperature min"
+  sensor.weather_pressure:
+    friendly_name: "Pressure"
+  sensor.weather_humidity:
+    friendly_name: "humidity"
+  sensor.weather_cloud_coverage:
+    friendly_name: "Cloud coverage"
+  sensor.weather_wind_speed:
+    friendly_name: "Wind Speed"
+  sensor.weather_hourly_summary:
+    friendly_name: "Today"
+  sensor.weather_daily_summary:
+    friendly_name: "Forcast"
+  sensor.weather_summary:
+    friendly_name: "Now"
+  sensor.weather_ozone:
+    friendly_name: "Ozone"
+  sensor.time:
+    friendly_name: "Today's time is"
+  sensor.smappee_dageraad_always_on:
+    friendly_name: "Sluip verbruik"
+  sensor.smappee_dageraad_current:
+    friendly_name: "Huidig verbruik"
+  sensor.smappee_dageraad_current_today:
+    friendly_name: "Dag verbruik"
+  sensor.rachid_today:
+    friendly_name: "Rachid @home today"
+  sensor.soumaya_today:
+    friendly_name: "Soumaya @home today"
+  sensor.rachid_this_week:
+    friendly_name: "Rachid weekly @home"
+  sensor.soumaya_this_week:
+    friendly_name: "Soumaya weekly @home"
+  sensor.rachid_this_month:
+    friendly_name: "Rachid monthly @home"
+  sensor.soumaya_this_month:
+    friendly_name: "Soumaya monthly @home"
+  sensor.ketel:
+    friendly_name: "Ketel"
+  sensor.commander:
+    friendly_name: "Commander"
+  sensor.keuken:
+    friendly_name: "Keuken verlichting"
+  sensor.eetkamer:
+    friendly_name: "Eetkamer verlichting"
+  sensor.living:
+    friendly_name: "Living verlichting"
+  sensor.bureau:
+    friendly_name: "Bureau verlichting"
+  sensor.slaapkamers:
+    friendly_name: "Slaapkamers verlichting"
+  sensor.watching_tv:
+    friendly_name: "TV's"
+  sensor.ketel_this_week:
+    friendly_name: "Ketel"
+  sensor.commander_this_week:
+    friendly_name: "Commander"
+  sensor.keuken_this_week:
+    friendly_name: "Keuken verlichting"
+  sensor.eetkamer_this_week:
+    friendly_name: "Eetkamer verlichting"
+  sensor.living_this_week:
+    friendly_name: "Living verlichting"
+  sensor.bureau_this_week:
+    friendly_name: "Bureau verlichting"
+  sensor.slaapkamers_this_week:
+    friendly_name: "Slaapkamers verlichting"
+  sensor.watching_tv_this_week:
+    friendly_name: "TV's"
+  sensor.ketel_this_month:
+    friendly_name: "Ketel"
+  sensor.commander_this_month:
+    friendly_name: "Commander"
+  sensor.keuken_this_month:
+    friendly_name: "Keuken verlichting"
+  sensor.eetkamer_this_month:
+    friendly_name: "Eetkamer verlichting"
+  sensor.living_this_month:
+    friendly_name: "Living verlichting"
+  sensor.bureau_this_month:
+    friendly_name: "Bureau verlichting"
+  sensor.slaapkamers_this_month:
+    friendly_name: "Slaapkamers verlichting"
+  sensor.watching_tv_this_month:
+    friendly_name: "TV's"
+  device_tracker.ce091609285fb41004:
+    friendly_name: "Mobile"
+  device_tracker.xncdwobc_elradix:
+    friendly_name: "Rachid LTE"
+  device_tracker.rachid:
+    friendly_name: "Router"
+  device_tracker.rachid_mqtt:
+    friendly_name: "WiFi"
+  device_tracker.soumaya:
+    friendly_name: "Router"
+  device_tracker.soumaya_mqtt:
+    friendly_name: "WiFi"
+  device_tracker.xncdwobc_soumaya:
+    friendly_name: "Soumaya LTE"
+  device_tracker.988667514f3249575a:
+    friendly_name: "Soumaya mobile"
+  automation.auto_heat_on_enabled:
+    friendly_name: "Timer Status"
+    icon: mdi:oil-temperature
+  automation.auto_heat_on_enabled_liv:
+    friendly_name: "Timer Status"
+    icon: mdi:oil-temperature
+  automation.auto_heat_on_enabled_slp1:
+    friendly_name: "Timer Status"
+    icon: mdi:oil-temperature
+  automation.auto_heat_on_enabled_slp2:
+    friendly_name: "Timer Status"
+    icon: mdi:oil-temperature
+  automation.auto_heat_on_enabled_slp3:
+    friendly_name: "Timer Status"
+    icon: mdi:oil-temperature
+  automation.auto_heat_off:
+    friendly_name: "Auto Heat"
+    icon: mdi:oil-temperature
+  automation.auto_heat_off_liv:
+    friendly_name: "Auto Heat"
+    icon: mdi:oil-temperature
+  automation.auto_heat_off_slp1:
+    friendly_name: "Auto Heat"
+    icon: mdi:oil-temperature
+  automation.auto_heat_off_slp2:
+    friendly_name: "Auto Heat"
+    icon: mdi:oil-temperature
+  automation.auto_heat_off_slp3:
+    friendly_name: "Auto Heat"
+    icon: mdi:oil-temperature
+  sensor.download_speed_mean:
+    friendly_name: "Speedtest Download Average"
+    icon: mdi:speedometer
+  sensor.upload_speed_mean:
+    friendly_name: "Speedtest Upload Average"
+    icon: mdi:speedometer
+  sensor.ping_time_mean:
+    friendly_name: "Speedtest Ping Average"
+    icon: mdi:clock-fast
+  sensor.wan_traffic_in_mean:
+    friendly_name: "WAN Download Average"
+    icon: mdi:download
+  sensor.wan_traffic_out_mean:
+    friendly_name: "WAN Upload Average"
+    icon: mdi:upload 
+  sensor.tmp_badkamer:
+    friendly_name: "Badk."
+  sensor.tmp_living:
+    friendly_name: "Living"
+  sensor.tmp_living_calibrated:
+    friendly_name: "Living"
+  sensor.tmp_eetkamer_calibrated:
+     friendly_name: "Eetk."
+  sensor.tmp_slp_1:
+    friendly_name: "S&R kamer"
+  sensor.tmp_slp_1_calibrated:
+    friendly_name: "S&R"
+  sensor.tmp_slp_2:
+    friendly_name: "Sara"
+  sensor.tmp_slp_2_calibrated:
+    friendly_name: "Sara"
+  sensor.tmp_slp_3:
+    friendly_name: "Yassin"
+  sensor.tmp_set_badkamer:
+    friendly_name: "Badkamer"
+  sensor.tmp_set_living:
+    friendly_name: "Living"
+  sensor.tmp_set_slp_1:
+    friendly_name: "S&R"
+  sensor.tmp_set_slp_2:
+    friendly_name: "Sara"
+  sensor.tmp_set_slp_3:
+    friendly_name: "Yassin"
+  sensor.proximity_person:
+    friendly_name: "Closest @home"
+  proximity.dxc:
+    friendly_name: "Distance to DXC"
+  proximity.home:
+    friendly_name: "Distance to Huis"
+  proximity.isabel:
+    friendly_name: "Distance to Isabel"
+  binary_sensor.heat_badkamer:
+    friendly_name: "Badkamer"
+  binary_sensor.heat_living:
+    friendly_name: "Living"
+  binary_sensor.heat_slp_1:
+    friendly_name: "S&R"
+  binary_sensor.heat_slp_2:
+    friendly_name: "Sara"
+  binary_sensor.heat_slp_3:
+    friendly_name: "Yassin"
+
+#  switch.smappee::
+#    friendly_name: "Laptop"
+  switch.heating_badkamer:
+    friendly_name: "Badkamer"
+  switch.heating_eetkamer:
+    friendly_name: "Eetkamer"
+  switch.heating_floradix:
+    friendly_name: "S&R"
+  switch.heating_living:
+    friendly_name: "Living"
+  switch.heating_sara:
+    friendly_name: "Sara"
+  switch.heating_yassin:
+    friendly_name: "Yassin"
+  sensor.find_rachid_loc:
+    friendly_name: "Rachid"
+  sensor.find_soumaya_loc:
+    friendly_name: "Soumaya"
+  sensor.find_rachid_mqtt:
+    friendly_name: "Rachid"
+  sensor.find_soumaya_mqtt:
+    friendly_name: "Soumaya"
+  binary_sensor.s2_camera_motion:
+    friendly_name: "Berging"
+  binary_sensor.motion_inkomhal:
+    friendly_name: "Inkomhal"
+  binary_sensor.motion_eetkamer:
+    friendly_name: "Eetkamer"
+  binary_sensor.motion_wc:
+    friendly_name: "Toilet"
+  binary_sensor.motion_traphal:
+    friendly_name: "Traphal"
+  binary_sensor.motion_badkamer:
+    friendly_name: "Badkamer"
+  climate.badkamer:
+    friendly_name: "Thermostaat"
+  climate.eetkamer:
+    friendly_name: "Thermostaat"
+  climate.floradix:
+    friendly_name: "Thermostaat"
+  climate.living:
+    friendly_name: "Thermostaat"
+  climate.sara:
+    friendly_name: "Thermostaat"
+  climate.yassin:
+    friendly_name: "Thermostaat"
+  switch.easyplus:
+    friendly_name: "Domotica"
+
+  automation.easyplus_startup:
+    friendly_name: "Startup Programma"
+
+  automation.auto_easyplus_shutdown:
+    friendly_name: "Shutdown Porgramma"
+
+  automation.easyplus_startup_monday:
+    friendly_name: "Week Startup"
+
+  switch.kodi:
+    friendly_name: "Kodi"
+
+  automation.auto_off_day:
+    friendly_name: "Daglicht Programma"
+
+  camera.s2:
+    friendly_name: "Samsung Camera"
+  switch.s2_exposure_lock:
+    friendly_name: "Exposure"
+  switch.s2_focus:
+    friendly_name: "Focus"
+  switch.s2_frontfacing_camera:
+    friendly_name: "Front Camera"
+  switch.s2_gps_active:
+    friendly_name: "GPS active"
+  switch.s2_night_vision:
+    friendly_name: "Night vision"
+  switch.s2_overlay:
+    friendly_name: "Date/Time overlay"
+  switch.s2_torch:
+    friendly_name: "Torch"
+  switch.s2_video_recording:
+    friendly_name: "Record Video"
+  switch.s2_white_balance_lock:
+    friendly_name: "White balance lock"
+  sensor.s2_audio_connections:
+    friendly_name: "Audio Connection"
+  sensor.s2_battery_level:
+    friendly_name: "Battery level"
+  sensor.s2_battery_temperature:
+    friendly_name: "Battery temperature"
+  sensor.s2_battery_voltage:
+    friendly_name: "Battery voltage"
+  sensor.s2_light_level:
+    friendly_name: "Light level"
+  sensor.s2_motion:
+    friendly_name: "Motion"
+  sensor.rachid_battery:
+    friendly_name: "Rachid"
+    icon: mdi:battery
+  sensor.soumaya_battery:
+    friendly_name: "Soumaya"
+    icon: mdi:battery
+  binary_sensor.rachid_home:
+    friendly_name: "Rachid"
+  binary_sensor.soumaya_home:
+    friendly_name: "Soumaya"
+  sensor.ptf_btc:
+    friendly_name: "PTF BitCoins"
+  sensor.ptf_eur:
+    friendly_name: "PTF Eur"
+  sensor.pl_eur:
+    friendly_name: "Profit Eur"
+
+  sensor.tautulli_total:
+    friendly_name: "Total"
+  sensor.tautulli_transcode:
+    friendly_name: "Transcode"
+  sensor.tautulli_direct_play:
+    friendly_name: "Direct Play"
+  sensor.tautulli_direct_stream:
+    friendly_name: "Direct Sream"
+  sensor.tautulli_total_bandwidth:
+    friendly_name: "Total Bandwidth"
+
+
+## SONOFF
+  script.check_sonoffs_version:
+    friendly_name: "Check Version"
+  script.update_sonoffs:
+    friendly_name: "Update All Sonoff"
+  sensor.sonoff_latest_release:
+    friendly_name: "Sonoff latest release"
+  sensor.sonoff_01_Version:
+    friendly_name: "Basic - Easyplus"
+  sensor.sonoff_02_Version:
+    friendly_name: "S20 - Server"
+  sensor.sonoff_03_Version:
+    friendly_name: "S20 - Ketel"
+  sensor.sonoff_04_Version:
+    friendly_name: "S20 - Kodi"
+  sensor.sonoff_05_Version:
+    friendly_name: "S20 - Living"
+  sensor.sonoff_06_Version:
+    friendly_name: "RF Bridge - Living"
+
+  sensor.yr_symbol:
+    friendly_name: "Day State"
+
+  input_boolean.work:
+    friendly_name: "At Work"
+
+
+  sensor.time_at_work_today:
+    friendly_name: "Daily hours"
+  sensor.time_at_work_this_week:
+    friendly_name: "Weekly hours"
+  sensor.percent_at_work_weekly:
+    friendly_name: "Weekly"
+  sensor.time_at_work_this_month:
+    friendly_name: "Monthly hours"
+  sensor.percent_at_work_monthly:
+    friendly_name: "Monthly"
+
+  sensor.keystone_to_home:
+    friendly_name: "To Home"
+  sensor.home_to_keystone:
+    friendly_name: "To Work"
+  sensor.me_traffic_density_to_home:
+    friendly_name: "Traffic Home"
+  sensor.me_traffic_density_to_work:
+    friendly_name: "Traffic Work"
+  sensor.bnp_to_home:
+    friendly_name: "BNP to Home"
+  sensor.home_to_bnp:
+    friendly_name: "Home to BNP"

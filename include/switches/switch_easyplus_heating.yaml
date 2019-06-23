@@ -1,0 +1,54 @@
+- platform: command_line
+  scan_interval: 120
+  switches:
+   heating_eetkamer:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 64,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 64,0'"
+        command_state: "/opt/scripts/status/state.sh -D 64"
+        friendly_name: Eetkamer
+
+- platform: command_line
+  scan_interval: 120
+  switches:
+   heating_living:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 65,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 65,0'"
+        command_state: "/opt/scripts/status/state.sh -D 65"
+        friendly_name: Living
+
+- platform: command_line
+  scan_interval: 120
+  switches:
+   heating_badkamer:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 66,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 66,0'"
+        command_state: "/opt/scripts/status/state.sh -D 66"
+        friendly_name: Badkamer
+
+- platform: command_line
+  scan_interval: 120
+  switches:
+   heating_floradix:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 67,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 67,0'"
+        command_state: "/opt/scripts/status/state.sh -D 67"
+        friendly_name: S&R
+
+
+- platform: command_line
+  scan_interval: 120
+  switches:
+   heating_sara:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 68,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 68,0'"
+        command_state: "/opt/scripts/status/state.sh -D 68"
+        friendly_name: Sara
+
+- platform: command_line
+  scan_interval: 120
+  switches:
+   heating_yassin:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 69,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 69,0'"
+        command_state: "/opt/scripts/status/state.sh -D 69"
+        friendly_name: Yassin

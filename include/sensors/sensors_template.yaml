@@ -1,0 +1,336 @@
+#### TEMPLATE SENSORS ####
+
+  - platform: template
+    sensors:
+
+      vandaag:
+        friendly_name: Vandaag
+        entity_id: sensor.date
+        value_template: >
+          {{ now().strftime("%A %d %B") }}
+#          {{ now().strftime("%A %d %B %Y") }}
+
+
+
+      last_motion:
+        friendly_name: 'Last Motion'
+        entity_id: binary_sensor.motion_eetkamer, binary_sensor.motion_inkomhal, binary_sensor.motion_wc, binary_sensor.motion_traphal, binary_sensor.motion_badkamer
+        value_template: >
+          {%- set pirs = [states.binary_sensor.motion_eetkamer, states.binary_sensor.motion_inkomhal, states.binary_sensor.motion_wc, states.binary_sensor.motion_traphal, states.binary_sensor.motion_badkamer] %}
+          {% for pir in pirs %}
+            {% if as_timestamp(pir.last_changed) == as_timestamp(pirs | map(attribute='last_changed') | max) %}
+              {{ pir.name }} {{pir.last_changed.astimezone(now().tzinfo).strftime('%d-%m %X')}}
+            {% endif %}
+          {% endfor %}
+
+
+#      sunrise:
+#        friendly_name: Sunrise
+#        value_template: "{{ as_timestamp(state_attr('sun.sun', 'sunrise'))|timestamp_custom('%X') }}"
+#      sunset:
+#        friendly_name: Sunset
+#        value_template: "{{ as_timestamp(state_attr('sun.sun', 'sunset'))|timestamp_custom('%X') }}"
+#
+#      daylight_sec:
+#        friendly_name: Daylight Seconds
+#        value_template: "{{ state_attr('sun.sun', 'daylight')|int }}"
+#        unit_of_measurement: sec
+#      daylight_hr:
+#        friendly_name: Daylight Hours
+#        value_template: "{{ (state_attr('sun.sun', 'daylight')/(60*60))|round(2) }}"
+#        unit_of_measurement: hr
+#      daylight_hms:
+#        friendly_name: "Daylight HH:MM:SS"
+#        value_template: >
+#          {{ state_attr('sun.sun', 'daylight')|int|timestamp_custom('%X', false) }}
+#
+#      daylight_chg:
+#        friendly_name: Daylight Change from Yesterday
+#        value_template: >
+#          {{ (state_attr('sun.sun', 'daylight') - state_attr('sun.sun', 'prev_daylight'))|int }}
+#        unit_of_measurement: sec
+#
+#      daylight_remaining_min:
+#        friendly_name: Daylight Remaining Minutes
+#        entity_id: sensor.time
+#        value_template: >
+#          {{ ((as_timestamp(state_attr('sun.sun', 'sunset')) - now().timestamp())/60)|int }}
+#        unit_of_measurement: min
+#      daylight_remaining_hm:
+#        friendly_name: "Daylight Remaining HH:MM"
+#        entity_id: sensor.time
+#        value_template: >
+#          {{ (as_timestamp(state_attr('sun.sun', 'sunset')) - now().timestamp())
+#             |timestamp_custom('%H:%M', false) }}
+#
+
+
+      network_in_eth0_gb:
+        entity_id: sensor.network_in_eth0
+        value_template: '{{states.sensor.network_in_eth0.state |float /1024 | round(2)| float(2)}}'
+        friendly_name: 'Download'  
+        icon_template: mdi:cloud-download
+        unit_of_measurement: "GB"
+
+
+      network_out_eth0_gb:
+        entity_id: sensor.network_out_eth0
+        value_template: '{{states.sensor.network_out_eth0.state |float /1024 | round(2)| float(2)}}'
+        friendly_name: 'Upload'  
+        icon_template: mdi:cloud-upload
+        unit_of_measurement: "GB"
+
+
+      vrt_text:
+        entity_id: sensor.vrt_nws,sensor.time
+        value_template: '{{states.sensor.vrt_nws.attributes.details | truncate(255) }}'
+        friendly_name: 'vrt text'  
+
+
+          
+        
+
+      #period_of_day:
+      #  friendly_name: 'period of the day'
+      #  value_template: >-
+      #    {% if (as_timestamp(states.sun.sun.attributes.next_dusk)) - (as_timestamp(states.sun.sun.attributes.next_setting)) < 0 %}
+      #      dusk
+      #    {% elif (as_timestamp(states.sun.sun.attributes.next_rising)) - (as_timestamp(states.sun.sun.attributes.next_dawn)) < 0 %}
+      #      dawn
+      #    {% elif (states.sun.sun.attributes.elevation) < 0 %}
+      #      night
+      #    {% else %}
+      #      day
+      #    {% endif %}
+      #  icon_template: >-
+      ##    {% if is_state('sun.sun', 'above_horizon') %}
+      #      mdi:weather-sunny
+      #    {% else %}
+      #      mdi:weather-night
+      #    {% endif %}
+
+        
+        
+      nginx:
+        entity_id: sensor.process_nginx
+        value_template: '{% if is_state("sensor.process_nginx", "off") %}Not Running{% else %}Running{% endif %}'
+        friendly_name: 'nginx'
+       
+      phpfpm:
+        #entity_id: sensor.process_php-fpm
+        value_template: '{% if is_state("sensor.process_php-fpm", "off") %}Not Running{% else %}Running{% endif %}'
+        friendly_name: 'php7'
+
+      docker:
+        entity_id: sensor.process_docker
+        value_template: '{% if is_state("sensor.process_docker", "off") %}Not Running{% else %}Running{% endif %}'
+        friendly_name: 'docker'
+
+      cron:
+        entity_id: sensor.process_cron
+        value_template: '{% if is_state("sensor.process_cron", "off") %}Not Running{% else %}Running{% endif %}'
+        friendly_name: 'cron'
+
+      rpi_power_description:
+        entity_id: sensor.rpi_power_status
+        friendly_name: "RPi Power Status"
+        value_template: "{{ state_attr('sensor.rpi_power_status', 'description') }}"
+        icon_template: mdi:raspberrypi
+
+
+      #==========================
+      #=== Home Assistant uptime
+      #==========================
+      ha_uptime:
+        friendly_name: HA Uptime
+        value_template: >
+          {% if states('sensor.uptime') == '0.0' %} 
+            Just restarted...
+          {% else %}
+            {% macro phrase(value, name) %}
+            {%- set value = value | int %}
+            {%- set end = 's' if value > 1 else '' %}
+            {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+            {%- endmacro %}
+            
+            {% set weeks = (states('sensor.uptime') | int / 7) | int %}
+            {% set days = (states('sensor.uptime') | int) - (weeks * 7) %}
+            {% set hours = (states('sensor.uptime') | float - states('sensor.uptime') | int) * 24 %}
+            {% set minutes = (hours - hours | int) * 60 %}
+
+            {{ [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') }}
+          {% endif %}
+
+
+      #=========================================
+      #=== Raspberry Pi last boot date and time
+      #=========================================
+      last_boot_date_time:
+        friendly_name: Last Boot
+        value_template: >
+          {% set date = as_timestamp(states('sensor.last_boot')) | timestamp_custom('%d') %}
+          {% set date = '{:01}'.format(date | int) %}
+          {% if date in ('1', '21', '31') %}
+            {% set date = date ~ 'st' %}
+          {% elif date in ('2', '22') %}
+            {% set date = date ~ 'nd' %}
+          {% elif date in ('3', '23') %}
+            {% set date = date ~ 'rd' %}
+          {% else %}
+            {% set date = date ~ 'th' %}
+          {% endif %}
+
+          {{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%H:%M on %a') }} {{ date }} {{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%b %Y') }}
+
+
+      #=========================
+      #=== Raspberry Pi Up Time
+      #=========================
+      rpi_uptime:
+        friendly_name: RPi Uptime
+        entity_id: sensor.time
+        value_template: >
+          {% set up_time = as_timestamp(now()) - as_timestamp(states('sensor.last_boot')) %}
+
+          {% set minutes = (up_time // 60) | int %}
+          {% set hours = (minutes // 60) %}
+          {% set days = (hours // 24) %}
+          {% set weeks = (days // 7) %}
+
+          {% set minutes = (minutes % 60) %}
+          {% set hours =  (hours % 24) %}
+          {% set days = (days % 7) %}
+
+          {% macro phrase(value, name) %}
+                    {%- set value = value %}
+                    {%- set end = 's' if value > 1 else '' %}
+                    {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+          {%- endmacro %}
+                    
+          {% set text = [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') %}
+          {% set last_comma = text.rfind(',') %}
+          {% if last_comma != -1 %}
+            {% set text = text[:last_comma] + ' and' + text[last_comma + 1:] %}
+          {% endif %}
+          
+          {{ text }}
+
+
+      # rpi_uptime:
+      #   friendly_name: RPi Uptime
+      #   entity_id: sensor.time
+      #   value_template: >
+      #     {% set up_time = as_timestamp(now()) - as_timestamp(states('sensor.last_boot')) %}
+
+      #     {% set minutes = (up_time // 60) | int %}
+      #     {% set hours = (minutes // 60) %}
+      #     {% set days = (hours // 24) %}
+      #     {% set weeks = (days // 7) %}
+
+      #     {% set minutes = (minutes % 60) %}
+      #     {% set hours =  (hours % 24) %}
+      #     {% set days = (days % 7) %}
+
+      #     {% macro phrase(value, name) %}
+      #               {%- set value = value %}
+      #               {%- set end = 's' if value > 1 else '' %}
+      #               {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+      #     {%- endmacro %}
+                    
+      #     {% set text = [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') %}
+      #     {% set last_comma = text.rfind(',') %}
+      #     {% if last_comma != -1 %}
+      #       {% set text = text[:last_comma] + ' and' + text[last_comma + 1:] %}
+      #     {% endif %}
+          
+      #     {{ text }}
+
+
+      # ha_uptime:
+      #   friendly_name: HA Uptime
+      #   entity_id: sensor.time
+      #   value_template: >
+      #     {% set up_time = as_timestamp(now()) - as_timestamp(states('sensor.hass_uptime')) %}
+
+      #     {% set minutes = (up_time // 60) | int %}
+      #     {% set hours = (minutes // 60) %}
+      #     {% set days = (hours // 24) %}
+      #     {% set weeks = (days // 7) %}
+
+      #     {% set minutes = (minutes % 60) %}
+      #     {% set hours =  (hours % 24) %}
+      #     {% set days = (days % 7) %}
+
+      #     {% macro phrase(value, name) %}
+      #               {%- set value = value %}
+      #               {%- set end = 's' if value > 1 else '' %}
+      #               {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+      #     {%- endmacro %}
+                    
+      #     {% set text = [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') %}
+      #     {% set last_comma = text.rfind(',') %}
+      #     {% if last_comma != -1 %}
+      #       {% set text = text[:last_comma] + ' and' + text[last_comma + 1:] %}
+      #     {% endif %}
+          
+          # {{ text }}
+
+      period_of_day:
+        entity_id: sun.sun
+        friendly_name: 'period of the day'
+        value_template: >-
+          {% if (as_timestamp(states.sun.sun.attributes.next_dusk)) - (as_timestamp(states.sun.sun.attributes.next_setting)) < 0 %}
+            dusk
+          {% elif (as_timestamp(states.sun.sun.attributes.next_rising)) - (as_timestamp(states.sun.sun.attributes.next_dawn)) < 0 %}
+            dawn
+          {% elif (states.sun.sun.attributes.elevation) < -4 %}
+            night
+          {% else %}
+            day
+          {% endif %}
+        icon_template: >-
+          {% if (as_timestamp(states.sun.sun.attributes.next_dusk)) - (as_timestamp(states.sun.sun.attributes.next_setting)) < 0 %}
+            mdi:weather-sunset-down
+          {% elif (as_timestamp(states.sun.sun.attributes.next_rising)) - (as_timestamp(states.sun.sun.attributes.next_dawn)) < 0 %}
+            mdi:weather-sunset-up
+          {% elif (states.sun.sun.attributes.elevation) < -4 %}
+            mdi:weather-night
+          {% else %}
+            mdi:weather-sunny
+          {% endif %}
+
+
+
+      pvoutput_power_consumption:
+        entity_id: sensor.pvoutput
+        value_template: '{% if is_state_attr("sensor.pvoutput", "power_consumption", "NaN") %}0{% else %}{{ states.sensor.pvoutput.attributes.power_consumption }}{% endif %}'
+        friendly_name: 'Huidig verbruik'
+        unit_of_measurement: 'Watt'
+        
+      pvoutput_energy_consumption:
+        entity_id: sensor.pvoutput
+        value_template: '{{ "%0.1f"|format(states.sensor.pvoutput.attributes.energy_consumption|float/1000) }}'
+        friendly_name: 'Dag verbruik'
+        unit_of_measurement: 'kWh'
+
+
+
+
+#       total_power:
+#         entity_id: sensor.active_power__phase_
+#         friendly_name: "Total power"
+#         unit_of_measurement: "W"
+#         value_template: "{{ states('sensor.active_power_phase_1')|int }}"
+# #       value_template: "{{ states('sensor.active_power_phase_1')|int  + states('sensor.active_power__phase_2')|int + states('sensor.active_power__phase_3')|int }}"
+
+#       total_current:
+#         entity_id: sensor.current__phas
+#         friendly_name: "Total current"
+#         unit_of_measurement: "A"
+#         value_template: "{{ states('sensor.current__phase_1')|int }}"
+
+
+
+
+
+

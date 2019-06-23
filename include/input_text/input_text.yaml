@@ -1,0 +1,4 @@
+#input_text:
+  announce_google:
+    name: Announcer
+    initial: Some Text

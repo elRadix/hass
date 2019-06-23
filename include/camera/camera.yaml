@@ -1,0 +1,25 @@
+#camera:
+#  - platform: mjpeg
+#    mjpeg_url: http://s2.lan:8000/video
+
+#  - platform: generic
+#    name: rachid
+#    still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.elradix_s7elradix.attributes.latitude }},{{states.device_tracker.elradix_s7elradix.attributes.longitude }}&zoom=15&size=500x500&maptype=roadmap&markers=color:red%7Clabel:R%7C{{ states.device_tracker.elradix_s7elradix.attributes.latitude }},{{ states.device_tracker.elradix_s7elradix.attributes.longitude }}
+#    limit_refetch_to_url_change: true
+
+#  - platform: generic
+#    name: floradix
+#    still_image_url: https://maps.googleapis.com/maps/api/staticmap?size=800x800&maptype=roadmap&markers=color:red|label:R|{{ states.device_tracker.elradix_s7elradix.attributes.latitude }},{{ states.device_tracker.elradix_s7elradix.attributes.longitude }}&markers=color:green|label:S|{{ states.device_tracker.elradix_s7soumaya.attributes.latitude }},{{ states.device_tracker.elradix_s7soumaya.attributes.longitude }}
+#    #still_image_url: https://maps.googleapis.com/maps/api/staticmap?size=800x800&maptype=roadmap&markers=color:red|label:R|{{ states.device_tracker.elradix_s7elradix.attributes.latitude }},{{ states.device_tracker.elradix_s7elradix.attributes.longitude }}&markers=color:green|label:S|{{ states.device_tracker.elradix_s7soumaya.attributes.latitude }},{{ states.device_tracker.elradix_s7soumaya.attributes.longitude }}&markers=color:blue|label:M|{{ states.device_tracker.wdd1179121n503099.attributes.latitude }},{{ states.device_tracker.wdd1179121n503099.attributes.longitude }}
+#    limit_refetch_to_url_change: true
+
+#  - platform: generic
+#    name: soumaya
+#    still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.elradix_s7soumaya.attributes.latitude }},{{ states.device_tracker.elradix_s7soumaya.attributes.longitude }}&zoom=15&size=500x500&maptype=roadmap&markers=color:red%7Clabel:S%7C{{ states.device_tracker.elradix_s7soumaya.attributes.latitude }},{{ states.device_tracker.elradix_s7soumaya.attributes.longitude }}
+#    limit_refetch_to_url_change: true
+
+
+#  - platform: generic
+#    name: mercedes
+#    still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.wdd1179121n503099.attributes.latitude }},{{ states.device_tracker.wdd1179121n503099.attributes.longitude }}&zoom=15&size=500x500&maptype=roadmap&markers=color:red%7Clabel:M%7C{{ states.device_tracker.wdd1179121n503099.attributes.latitude }},{{ states.device_tracker.wdd1179121n503099.attributes.longitude }}
+#    limit_refetch_to_url_change: true

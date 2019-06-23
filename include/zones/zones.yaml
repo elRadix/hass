@@ -1,0 +1,55 @@
+- name: Home
+  latitude: !secret zone_home_lat
+  longitude: !secret zone_home_long
+  radius: 204
+  icon: mdi:home
+
+- name: School
+  latitude: 51.0299119 #51.0304086
+  longitude: 4.4721695 #4.473024
+  radius: 52
+  icon: mdi:school
+
+- name: Sporting
+  latitude: 51.0114587
+  longitude: 4.4773348
+  radius: 80
+  icon: mdi:soccer
+
+- name: Mechelen P1 Parking
+  latitude: 51.0152614
+  longitude: 4.4823895
+  radius: 70
+  icon: mdi:train
+
+- name: Mechelen Station
+  latitude: 51.018529
+  longitude: 4.485512
+  radius: 99
+  icon: mdi:train
+
+- name: BNP
+  latitude: 50.8511865
+  longitude: 4.3585715
+  radius: 80
+  icon: mdi:office-building
+
+- name: Brussel Centraal
+  latitude: 50.8459483
+  longitude: 4.3567598
+  radius: 60
+  icon: mdi:train
+
+- name: Brussel Noord
+  latitude: 50.8592647
+  longitude: 4.360895
+  radius: 100
+  icon: mdi:train
+
+- name: Keystone
+  latitude: 50.848110
+  longitude: 4.369422
+  radius: 150
+  icon: mdi:briefcase
+  
+  

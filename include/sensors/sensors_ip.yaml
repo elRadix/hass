@@ -1,0 +1,20 @@
+  - platform: geoip
+
+  - platform: dnsip
+    hostname: !secret dnsip_be
+    resolver: 8.8.8.8
+
+  - platform: dnsip
+    hostname: !secret dnsip_eu
+    resolver: 8.8.8.8
+
+  - platform: file
+    file_path: !secret scripts_directory_cert
+    name: SSL Certificate
+    unit_of_measurement: 'days'
+
+
+  - platform: file
+    file_path: !secret scripts_directory_cert_eu
+    name: SSL Certificate EU
+    unit_of_measurement: 'days'

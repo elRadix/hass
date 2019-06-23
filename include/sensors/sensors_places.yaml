@@ -1,0 +1,19 @@
+  - platform: Places
+    name: Rachid
+    devicetracker_id: device_tracker.comp_rachid
+    home_zone: zone.home
+#    display_zone: show
+    api_key: !secret place_api
+    map_provider: google
+    map_zoom: 15
+    options: place 
+
+  - platform: Places
+    name: Soumaya
+    devicetracker_id: device_tracker.comp_soumaya
+    home_zone: zone.home
+#    display_zone: show
+    api_key: !secret place_api
+    map_provider: google
+    map_zoom: 15
+    options: place

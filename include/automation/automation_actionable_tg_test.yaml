@@ -1,0 +1,228 @@
+
+
+# # - alias: Chrome url
+# #     trigger:
+# #       platform: state
+# #       entity_id: your sensor
+# #       to: 'on'
+# #     action:
+# #       - service: camera.snapshot
+# #         data:
+# #           entity_id: camera.mjpeg_camera
+# #           filename: '/config/www/yourcamera.jpg'
+# #       - service: notify.chrome
+# #         data_template:
+# #           title: Snapshot
+# #           message: Movement entry chrome url
+# #           data:
+# #             message_type: notification
+# #             url: 'https://xxxx.duckdns.org:8123/local/yourcamera.jpg?{{now().second}}'
+
+
+
+# - id: telebot_start ik
+#   initial_state: 'true'
+#   alias: 'Telebot start ik'
+#   trigger:
+#   - platform: event
+#     event_type: telegram_command
+#     event_data:
+#       command: '/ik'
+#   action:
+#   - service: telegram_bot.send_message
+#     data:
+#       target: '{{ trigger.event.data.user_id }}'
+#       message: "He Home Assistant at your service."
+#       data:
+#         inline_keyboard:
+#         - 'Lights:/lights, Status:/status, Security:/security'
+#         - 'System:/system, Help:/help, Ping:/ping'
+
+
+
+# - id: telegram-control-pannel-start
+#   alias: 'Telegram Control Pannel Command'
+#   initial_state: 'true'
+#   trigger:
+#     platform: event
+#     event_type: telegram_command
+#     event_data:
+#       command: '/cp'
+#   action:
+#   - service: notify.dageraad
+#     data:
+#       message: >
+#       {{ [
+#       "Home Assistant Status",
+#       "Control Panel",
+#       "Yes Sir!",
+#       "Home Assistant Control Panel",
+#       "Pannello di controllo"
+#       ] | random }}
+#       data:
+#         inline_keyboard:
+#           - 'Lights:/lights, Status:/status, Security:/security'
+#           - 'System:/system, Help:/help, Ping:/ping'
+#           - "Addons:/addons"
+
+# ### Start Keyboard ###
+# - id: telegram-start
+#   alias: 'Telegram Start Command'
+#   initial_state: 'true'
+#   trigger:
+#     platform: event
+#     event_type: telegram_command
+#     event_data:
+#       command: '/start'
+#   action:
+#   - service: notify.dageraad
+#     data:
+#       message: >
+#       {{ [
+#       "Hi",
+#       "Hello",
+#       "Yes Sir!",
+#       "it's a pleasure to see you again"
+#       ] | random }}       
+#       data:
+#         keyboard:
+#           - '/lichten, /ping'
+
+
+# ####################################################
+# #                   Ping Pong                      #
+# ####################################################
+# - id: telegram-ping-pong
+#   alias: 'Telegram bot that reply pong to ping'
+#   initial_state: 'true'
+#   trigger:
+#     platform: event
+#     event_type: telegram_command
+#     event_data:
+#       command: '/ping'
+#   action:
+#   - service: notify.notify
+#     data:
+#       message: 'pong'
+
+
+
+# ####################################################
+# #                                                  #
+# #                   Telegram                       #
+# #                Inline Keyboard                   #
+# ####################################################
+
+
+# ####################
+# ### IK Ping Pong ###
+# ####################
+# - id: telegram-ik-ping-pong
+#   trigger:
+#     - platform: event
+#       event_type: telegram_callback
+#       event_data:
+#         data: '/ping'
+#   action:
+#     - service: telegram_bot.answer_callback_query
+#       data_template:
+#         callback_query_id: '{{ trigger.event.data.id }}'
+#         message: >-
+#           Callback received from {{ trigger.event.data.from_first }}.
+#           Message id: {{ trigger.event.data.message.message_id }}.
+#           Data: {{ trigger.event.data.data }}
+#           {{now().strftime("%H:%M:%S %Y-%m-%d")}} Pong, Message from {{ trigger.event.data["user_id"] }}.
+#         show_alert: true
+
+
+
+
+# #################
+# ### IK Lights ###
+# #################
+# - id: 'Lights Actions'
+#   trigger:
+#     platform: event
+#     event_type: telegram_callback
+#     event_data:
+#       data: '/lichten'
+#   action:
+#     - service: telegram_bot.answer_callback_query
+#       data_template:
+#         callback_query_id: '{{ trigger.event.data.id }}'
+#         message: 'What you want to do with Lights?'  
+#     - service: telegram_bot.send_message
+#       data_template:
+#         title: 'Lights ON or OFF?'
+#         target: 1999381
+#         message: 'Look like you want to turn on or off your lights. What you want to do?'
+#         inline_keyboard:
+#           - "Living ON:/Living_on, Dinner ON:/dinner_on"
+#           - "Living OFF :/Living_off, Dinner OFF:/dinner_off"
+
+
+# ### Living ligths
+# - id: 'IK - Telegram - Living Light On'
+#   trigger:
+#     platform: event
+#     event_type: telegram_callback
+#     event_data:
+#       data: '/Living_on'
+#   action:
+#     - service: telegram_bot.answer_callback_query
+#       data_template:
+#         callback_query_id: '{{ trigger.event.data.id }}'
+#         message: 'Lights ON'
+#     - service: light.turn_on
+#       data:
+#         entity_id: group.living_light
+#         brightness: 255
+
+# - id: 'IK - Telegram - Living Light Off'
+#   trigger:
+#     platform: event
+#     event_type: telegram_callback
+#     event_data:
+#       data: '/Living_off'
+#   action:
+#     - service: telegram_bot.answer_callback_query
+#       data_template:
+#         callback_query_id: '{{ trigger.event.data.id }}'
+#         message: 'Lights OFF'
+#     - service: light.turn_off
+#       data:
+#         entity_id: group.living_light
+
+
+# ### Dinner 
+# - id: 'IK - Telegram - Dinner Light On'
+#   trigger:
+#     platform: event
+#     event_type: telegram_callback
+#     event_data:
+#       data: '/dinner_on'
+#   action:
+#     - service: telegram_bot.answer_callback_query
+#       data_template:
+#         callback_query_id: '{{ trigger.event.data.id }}'
+#         message: 'Dinner Lights ON'
+#     - service: light.turn_on
+#       data:
+#         entity_id: group.dinner_light
+
+
+# - id: 'IK - Telegram - Dinner Light OFF'
+#   hide_entity: true
+#   trigger:
+#     platform: event
+#     event_type: telegram_callback
+#     event_data:
+#       data: '/dinner_off'
+#   action:
+#     - service: telegram_bot.answer_callback_query
+#       data_template:
+#         callback_query_id: '{{ trigger.event.data.id }}'
+#         message: 'Dinner Lights OFF'
+#     - service: light.turn_off
+#       data:
+#         entity_id: group.dinner_light

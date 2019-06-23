@@ -1,0 +1,143 @@
+#light 
+
+- platform: switch
+  name: Vestiaire
+  entity_id: switch.light_vestiare
+
+- platform: switch
+  name: Inkomhal
+  entity_id: switch.light_inkom
+
+- platform: switch
+  name: WC
+  entity_id: switch.light_wc
+
+- platform: switch
+  name: Eetkamer center
+  entity_id: switch.light_eetkamer_center
+
+- platform: switch
+  name: Eetkamer Double
+  entity_id: switch.light_eetkamer_double_spot
+
+- platform: switch
+  name: Keuken Center
+  entity_id: switch.light_keuken_spot_front
+
+- platform: switch
+  name: Keuken Links
+  entity_id: switch.light_keuken_spot_links
+
+- platform: switch
+  name: Keuken Rechts
+  entity_id: switch.light_keuken_spot_rechts
+
+- platform: switch
+  name: Living Center
+  entity_id: switch.light_living_center
+
+- platform: switch
+  name: Living Double
+  entity_id: switch.light_living_double_spot
+
+- platform: switch
+  name: Living Triple
+  entity_id: switch.light_living_triple_spot
+
+- platform: switch
+  name: Bureau Spots
+  entity_id: switch.light_bureau_spots
+
+- platform: switch
+  name: Bureau TL
+  entity_id: switch.light_bureau_tl
+
+- platform: switch
+  name: Trap 1
+  entity_id: switch.light_trap_1
+
+- platform: switch
+  name: Trap 2
+  entity_id: switch.light_trap_2
+
+- platform: switch
+  name: Trap 3
+  entity_id: switch.light_trap_3
+
+- platform: switch
+  name: Trap 4
+  entity_id: switch.light_trap_4
+
+- platform: switch
+  name: Trap 5
+  entity_id: switch.light_trap_5
+
+- platform: switch
+  name: Trap Voor
+  entity_id: switch.light_trap_voor
+
+- platform: switch
+  name: Trap light_trap_achter
+  entity_id: switch.light_trap_achter
+
+- platform: switch
+  name: Bed Deur
+  entity_id: switch.light_slp1_deur
+
+- platform: switch
+  name: Bed Double
+  entity_id: switch.light_slp1_double
+
+- platform: switch
+  name: Bed Center
+  entity_id: switch.light_slp1_center
+
+- platform: switch
+  name: Bed Soumaya
+  entity_id: switch.light_slp1_soumaya
+
+- platform: switch
+  name: Bed Rachid
+  entity_id: switch.light_slp1_rachid
+
+- platform: switch
+  name: Sara Deur
+  entity_id: switch.light_slp2_deur
+
+- platform: switch
+  name: Sara Kast
+  entity_id: switch.light_slp2_kast
+
+- platform: switch
+  name: Yassin Deur
+  entity_id: switch.light_slp3_deur
+
+- platform: switch
+  name: Yassin Kast
+  entity_id: switch.light_slp3_kast
+
+- platform: switch
+  name: Yassin Muur
+  entity_id: switch.light_slp3_muur
+
+
+- platform: switch
+  name: Bathroom Douche
+  entity_id: switch.light_badkamer_douche
+
+- platform: switch
+  name: Bathroom Lavabo
+  entity_id: switch.light_badkamer_lavabo
+
+- platform: switch
+  name: Bathroom Mirror
+  entity_id: switch.light_badkamer_lavabo
+  
+- platform: switch
+  name: Bathroom WC
+  entity_id: switch.light_badkamer_wc
+
+- platform: switch
+  name: Berging center
+  entity_id: switch.light_berging_center
+

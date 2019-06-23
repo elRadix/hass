@@ -1,0 +1,85 @@
+
+# #history_graph:
+#   gr1:
+#     name: Temperatuur 24 uur
+#     entities:
+#       - sensor.tmp_living_calibrated
+#       - sensor.tmp_eetkamer_calibrated
+#       - sensor.tmp_slp_1_calibrated
+#       - sensor.tmp_slp_2_calibrated
+#       - sensor.tmp_slp_3
+#       - sensor.tmp_badkamer
+#     hours_to_show: 24
+#     refresh: 600
+#   gr2:
+#     name: Temperatuur 7 dagen
+#     entities:
+#       - sensor.tmp_living_calibrated
+#       - sensor.tmp_eetkamer_calibrated
+#       - sensor.tmp_slp_1_calibrated
+#       - sensor.tmp_slp_2_calibrated
+#       - sensor.tmp_slp_3
+#       - sensor.tmp_badkamer
+#     hours_to_show: 168
+#     refresh: 600
+#   gr3:
+#     name: Smappee
+#     entities:
+#       - sensor.smappee_dageraad_current
+#       - sensor.smappee_dageraad_current_today
+#       - sensor.pvoutput_power_consumption
+#       - sensor.pvoutput_energy_consumption
+#     hours_to_show: 48
+#     refresh: 300
+#   gr4:
+#     name: Heating 24 uur
+#     entities:
+#       - sensor.tmp_set_eetkamer
+#       - sensor.tmp_set_living
+#       - sensor.tmp_set_slp_1
+#       - sensor.tmp_set_slp_2
+#       - sensor.tmp_set_slp_3
+#       - sensor.tmp_set_badkamer
+#     hours_to_show: 24
+#     refresh: 600
+#   gr5:
+#     name: Heating 7 dagen
+#     entities:
+#       - sensor.tmp_set_eetkamer
+#       - sensor.tmp_set_living
+#       - sensor.tmp_set_slp_1
+#       - sensor.tmp_set_slp_2
+#       - sensor.tmp_set_slp_3
+#       - sensor.tmp_set_badkamer
+#       #- switch.heating_eetkamer
+#       #- switch.heating_living
+#       #- switch.heating_floradix
+#       #- switch.heating_sara
+#       #- switch.heating_yassin
+#       #- switch.heating_badkamer
+#     hours_to_show: 168
+#     refresh: 600
+#   gr6:
+#     name: Heating Status
+#     entities:
+#       - binary_sensor.heat_living
+#       - binary_sensor.heat_slp_1
+#       - binary_sensor.heat_slp_2
+#       - binary_sensor.heat_slp_3
+#       - binary_sensor.heat_badkamer
+#       - switch.heating_eetkamer
+#       - switch.heating_living
+#       - switch.heating_floradix
+#       - switch.heating_sara
+#       - switch.heating_yassin
+#       - switch.heating_badkamer
+#     hours_to_show: 168
+#     refresh: 600
+#   gr7:
+#     name: Average Temp
+#     entities:
+#       - sensor.woon
+#       - sensor.slaap
+#       - sensor.tmp_badkamer
+#     hours_to_show: 12
+

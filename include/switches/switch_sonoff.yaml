@@ -1,0 +1,130 @@
+#####################
+# SONOFF switches   #
+#####################
+
+
+# - platform: mqtt
+#   name: "Sonoff"
+#   state_topic: "stat/kodi/POWER1"
+#   command_topic: "cmnd/kodi/POWER1"
+#   availability_topic: "tele/kodi/LWT"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+# #  qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   # retain: false
+
+# - platform: mqtt
+#   name: "Sonoff"
+#   state_topic: "kodi/tele/STATE"
+#   value_template: "{{ value_json.POWER }}"
+#   command_topic: "cmnd/kodi/POWER"
+#   availability_topic: "kodi/tele/LWT"
+#   qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
+
+#- platform: mqtt
+#  name: "Easyplus"
+#  state_topic: "stat/easyplus/POWER1"
+#  command_topic: "cmnd/easyplus/POWER1"
+#  availability_topic: "tele/easyplus/LWT"  
+#  payload_available: "Online"
+#  payload_not_available: "Offline"
+##  qos: 1
+#  payload_on: "ON"
+#  payload_off: "OFF"
+#  # retain: false
+
+# - platform: mqtt  ## NEW FW
+#   name: "Easyplus"
+#   state_topic: "easyplus/tele/STATE"
+#   value_template: "{{ value_json.POWER }}"
+#   command_topic: "cmnd/easyplus/POWER"
+#   availability_topic: "easyplus/tele/LWT"
+#   qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
+
+
+# - platform: mqtt
+#   name: "Bureau lader"
+#   state_topic: "stat/living/POWER"
+#   command_topic: "cmnd/living/POWER"
+#   availability_topic: "tele/living/LWT" 
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+# #  qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   # retain: false
+
+# - platform: mqtt #NEW FW
+#   name: "Bureau lader"
+#   state_topic: "living/tele/STATE"
+#   value_template: "{{ value_json.POWER }}"
+#   command_topic: "cmnd/living/POWER"
+#   availability_topic: "living/tele/LWT"
+#   qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
+
+#- platform: mqtt
+#  name: "Server"
+#  state_topic: "stat/server/POWER"
+#  command_topic: "cmnd/server/POWER"
+#  availability_topic: "tele/server/LWT"
+#  payload_available: "Online"
+#  payload_not_available: "Offline"
+#  qos: 1
+#  payload_on: "ON"
+#  payload_off: "OFF"
+#  retain: true
+
+# - platform: mqtt
+#   name: "Ketel"
+#   state_topic: "stat/ketel/POWER"
+#   command_topic: "cmnd/ketel/POWER"
+#   availability_topic: "tele/ketel/LWT"  
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+# #  qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   # retain: false
+  
+  
+# - platform: mqtt # NEW FW
+#   name: "Ketel"
+#   state_topic: "ketel/tele/STATE"
+#   value_template: "{{ value_json.POWER }}"
+#   command_topic: "cmnd/ketel/POWER"
+#   availability_topic: "ketel/tele/LWT"
+#   qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: false
+
+# - platform: mqtt
+#   name: "SCREEN SWITCH Rachid"
+#   state_topic: "homeassistant/switch/android_elradix_s7a_screen/state"
+#   command_topic: "homeassistant/switch/android_elradix_s7a_screen/set"
+#   value_template: "{{ value_json.state }}"
+  
+# - platform: mqtt
+#   name: "SCREEN SWITCH Soumaya"
+#   state_topic: "homeassistant/switch/android_flora_s7a_screen/state"
+#   command_topic: "homeassistant/switch/android_flora_s7a_screen/set"
+#   value_template: "{{ value_json.state }}"

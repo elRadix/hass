@@ -1,0 +1,105 @@
+
+#   - platform: mqtt
+#     name: "S7 Soumaya BATTERY"
+#     state_topic: "homeassistant/sensor/android_flora_s7a_battery/state"  
+#     value_template: "{{ value_json.level }}"
+#     unit_of_measurement: '%'
+#     json_attributes:
+#       - level
+#       - voltage
+#       - temperature
+#       - status
+#       - power
+#       - health
+#       - technology
+
+#   - platform: mqtt
+#     name: "S7 Soumaya WIFI"
+#     state_topic: "homeassistant/sensor/android_flora_s7a_wifi/state"
+#     value_template: "{{ value_json.ssid }}"
+#     json_attributes:
+#       - status
+#       - ssid
+#       - bssid
+#       - rssi
+#       - ip
+#       - link_speed
+#       - signal
+#       - mac
+    
+#   - platform: mqtt
+#     name: "S7 Soumaya PHONE CALL"
+#     state_topic: "homeassistant/sensor/android_flora_s7a_callstate/state"
+#     value_template: "{{ value_json.state }}"
+#     json_attributes:
+#       - state
+#       - icon
+
+#   - platform: mqtt
+#     name: "S7 Soumaya LIGHT"
+#     state_topic: "homeassistant/sensor/android_flora_s7a_light/state"
+#     unit_of_measurement: 'lx'
+#     value_template: "{{ value_json.value }}"
+#     json_attributes:
+#       - value
+#       - sensor_name
+#       - vendor
+#       - version
+#       - power
+#       - resolution
+#       - max_range
+
+#   - platform: mqtt
+#     name: "S7 Soumaya STEP COUNTER"
+#     state_topic: "homeassistant/sensor/android_flora_s7a_steps/state"
+#     unit_of_measurement: 'steps'
+#     value_template: "{{ value_json.steps }}"
+#     json_attributes:
+#       - steps
+#       - sensor_name
+#       - vendor
+#       - version
+#       - power
+#       - resolution
+#       - max_range
+
+#   - platform: mqtt
+#     name: "S7 Soumaya PRESSURE"
+#     state_topic: "homeassistant/sensor/android_flora_s7a_pressure/state"
+#     unit_of_measurement: 'hPa'
+#     value_template: "{{ value_json.value }}"
+#     json_attributes:
+#       - value
+#       - sensor_name
+#       - vendor
+#       - version
+#       - power
+#       - resolution
+#       - max_range
+
+#   - platform: mqtt
+#     name: "S7 Soumaya BLUETOOTH"
+#     state_topic: "homeassistant/sensor/android_flora_s7a_bluetooth/state"
+#     value_template: "{{ value_json.enabled }}"
+#     json_attributes:
+#       - icon
+#       - name
+#       - mac
+#       - discovered_devices
+#       - bonded_devices
+
+
+#   - platform: mqtt
+#     name: "S7 Soumaya APPS"
+#     state_topic: "homeassistant/sensor/android_flora_s7a_apps/state"
+#     value_template: "{{ value_json.apps_count }}"
+#     json_attributes:
+#       - icon
+#       - apps_names
+#       - apps_packages
+
+#   - platform: mqtt
+#     name: "S7 SCREEN Soumaya"
+#     state_topic: "homeassistant/switch/android_flora_s7a_screen/state"
+#     #command_topic: "homeassistant/switch/android_elradix_s7a_screen/set"
+#     value_template: "{{ value_json.state }}"

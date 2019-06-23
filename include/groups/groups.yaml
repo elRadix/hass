@@ -1,0 +1,709 @@
+# ####### HOME VIEW ######
+# #########################
+  default_view:
+    icon: mdi:home-assistant
+    view: yes
+    entities:
+      - group.allhome
+      - group.rf
+      - group.motion_sub
+      - group.lights
+
+####### ROOMS ######
+####################
+
+  dageraad:
+    name: My home
+    view: no
+    control: hidden
+    icon: mdi:lightbulb-on-outline
+    entities:
+      - switch.easyplus
+      - switch.woon
+      - switch.socket_woon
+      - switch.slaap
+      - switch.socket_slaap
+
+  woon_sub:
+    name: Woon verlichting
+    view: no
+    icon: mdi:lightbulb-on-outline
+    entities:
+      - group.berging_light
+      - group.kitchen_light
+      - group.dinner_light
+      - group.wc_light
+      - group.hall_light
+      - group.bureau_light
+      - group.living_light
+  slaap_sub:
+    name: Slaap verlichting
+    view: no
+    icon: mdi:lightbulb-on-outline
+    entities:
+      - group.trap_light
+      - group.trap_boven
+      - group.slaapkamer1_light
+      - group.slaapkamer2_light
+      - group.slaapkamer3_light
+      - group.badkamer_light
+  woon_sub_soc:
+    name: Woon stopcontacten
+    view: no
+    icon: mdi:power-socket-eu
+    entities:
+      - group.berging_sockets
+      - group.kitchen_wall
+      - group.kitchen_eiland
+      - group.dinner_sockets
+      - group.bureau_sockets
+      - group.living_sockets
+  slaap_sub_soc:
+    name: Slaap stopcontacten
+    view: no
+    icon: mdi:power-socket-eu
+    entities:
+      - group.slaapkamer1_sockets
+      - group.slaapkamer2_sockets
+      - group.slaapkamer3_sockets
+      #- group.sonoff
+      #- group.badkamer_sockets
+
+
+
+########################################
+  lights:
+    name: Verlichting
+    view: yes
+    icon: mdi:lamp
+    entities:
+      - group.berging_light
+      - group.kitchen_light
+      - group.dinner_light
+      - group.wc_light
+      - group.hall_light
+      - group.bureau_light
+      - group.living_light
+      - group.trap_light
+      - group.trap_boven
+      - group.slaapkamer1_light
+      - group.slaapkamer2_light
+      - group.slaapkamer3_light
+      - group.badkamer_light
+
+
+  sockets:
+    name: Stopcontanten
+    view: yes
+    icon: mdi:power-plug
+    entities:
+      - group.sonoff
+      - group.berging_sockets
+      - group.kitchen_wall
+      - group.kitchen_eiland
+      - group.dinner_sockets
+      - group.bureau_sockets
+      - group.living_sockets
+      - group.slaapkamer1_sockets
+      - group.slaapkamer2_sockets
+      - group.slaapkamer3_sockets
+      - group.badkamer_sockets
+
+  temps:
+    name: Verwarming
+    view: yes
+    icon: mdi:temperature-celsius
+    entities:
+      - group.dinner_tmp
+      - group.living_tmp
+      - group.slaapkamer1_tmp
+      - group.slaapkamer2_tmp
+      - group.slaapkamer3_tmp
+      - group.badkamer_tmp
+
+
+      
+  allhome:
+    name: Status Light & Sockets
+    view: no
+    control: hidden
+    icon: mdi:flash
+    entities:
+      - switch.easyplus
+      - group.woon_sub
+      - group.slaap_sub
+      - group.woon_sub_soc
+      - group.slaap_sub_soc
+# ################################
+
+
+# ###################################
+  berging:
+    name: Berging
+    icon: mdi:server
+    view: no
+    entities:
+      - group.hall_light
+      - group.berging_light
+      - group.berging_sockets
+      - group.wc_light
+  berging_light:
+    name: Berging
+    view: no
+    entities:
+      - switch.light_berging_center
+  berging_sockets:
+    name: Berging
+    view: no
+    icon: mdi:server
+    control: hidden
+    entities:
+      - switch.stp_berging_wasmachine
+      - switch.stp_berging_droogkast
+      - switch.ketel
+# #############################
+  kitchen:
+    name: Keuken
+    icon: mdi:silverware-variant  #food-variant
+    view: no
+    entities:
+      - group.kitchen_light
+      - group.dinner_light
+      - group.kitchen_wall
+      - group.kitchen_eiland
+      - group.dinner_sockets
+      - group.dinner_tmp
+      - group.dinner_media
+  kitchen_light:
+    name: Keuken
+    icon: mdi:silverware-variant
+    view: no
+    entities:
+      - input_number.dimmer_eiland
+      - switch.light_keuken_spot_front
+      - switch.light_keuken_spot_links
+      - switch.light_keuken_spot_rechts
+  kitchen_wall:
+    name: Keuken Muur
+    view: no
+    icon: mdi:silverware-variant
+    control: hidden
+    entities:
+      - switch.stp_keuken_microwave
+      - switch.stp_keuken_espresso
+      - switch.stp_keuken_oven
+  kitchen_eiland:
+    name: Keuken Eiland
+    icon: mdi:silverware-variant
+    view: no
+    control: hidden
+    entities:
+      - switch.stp_keuken_commander
+      - switch.stp_keuken_vaatwasser
+      - switch.stp_keuken_water
+      - switch.stp_keuken_dampkap
+
+# #############################
+  dinner:
+    name: Eetkamer
+    icon: mdi:silverware-variant
+    view: no
+    entities:
+      - group.dinner_light
+      - group.dinner_sockets
+      - group.dinner_tmp
+      - group.dinner_media
+  dinner_tmp:
+    name: Eetkamer
+    control: hidden
+    icon: mdi:silverware-variant
+    view: no
+    entities:
+      - input_boolean.1u_eetkamer
+      - input_boolean.2u_eetkamer
+      - switch.heating_eetkamer
+      - binary_sensor.heat_living
+      - climate.eetkamer
+      - sensor.tmp_set_eetkamer
+      - input_number.setpoint_eetkamer
+  dinner_light:
+    name: Eetkamer
+    icon: mdi:silverware-variant
+    view: no
+    entities:
+      - input_number.dimmer_dinner
+      - switch.light_eetkamer_center
+      - switch.light_eetkamer_double_spot
+  dinner_sockets:
+    name: Eetkamer
+    control: hidden
+    view: no
+    entities:
+      - switch.stp_eetkamer_tv
+
+
+#############################
+  wc:
+    name: WC
+    view: no
+    icon: mdi:leaf
+    entities:
+      - group.wc_light
+  wc_light:
+    name: WC
+    view: no
+    icon: mdi:leaf
+    entities:
+      - switch.light_wc
+      - input_number.dimmer_wc
+
+#############################
+
+  hall:
+    name: Hall
+    icon: mdi:hanger
+    view: no
+    entities:
+      - group.hall_light
+  hall_light:
+    name: Hall
+    view: no
+    icon: mdi:hanger
+    entities:
+      - switch.light_vestiare
+#############################
+
+  living:
+    name: Living
+    icon: mdi:sofa
+    view: no
+    entities:
+      - group.living_tmp
+      - group.bureau_light
+      - group.bureau_sockets
+      - group.living_light
+      - group.living_sockets
+      - group.living_media
+  living_tmp:
+    name: Living
+    control: hidden
+    icon: mdi:sofa
+    view: no
+    entities:
+      - input_boolean.1u_living
+      - input_boolean.2u_living
+      - switch.heating_living
+      - binary_sensor.heat_living
+      - climate.living
+      - sensor.tmp_living
+      - sensor.tmp_set_living
+      - input_number.setpoint
+  living_light:
+    name: Living
+    icon: mdi:sofa
+    view: no
+    entities:
+      - input_number.dimmer_living
+      - switch.light_living_center
+      - switch.light_living_double_spot
+      - switch.light_living_triple_spot
+  living_sockets:
+    name: Living
+    icon: mdi:sofa
+    view: no
+    entities:
+      - switch.stp_living_sony
+      - switch.stp_living_other
+
+  bureau:
+    name: Bureau
+    icon: mdi:desktop-mac
+    view: no
+    entities:
+      - group.bureau_light
+      - group.bureau_sockets
+  bureau_light:
+    name: Bureau
+    icon: mdi:desktop-mac
+    view: no
+    entities:
+      - switch.light_bureau_tl
+      - input_number.dimmer_bureau_tl
+      - switch.light_bureau_spots
+      - input_number.dimmer_bureau_spot
+  bureau_sockets:
+    icon: mdi:desktop-mac
+    name: Bureau
+    view: no
+    entities:
+      - switch.stp_living_bureau
+      #- switch.living
+#############################
+
+  trap:
+    name: Trappen
+    icon: mdi:stairs
+    view: no
+    entities:
+      - group.trap_boven
+      - group.trap_light
+  trap_light:
+    name: Trappen
+    view: no
+    icon: mdi:stairs
+    entities:
+      - switch.light_trap_1
+      - switch.light_trap_2
+      - switch.light_trap_3
+      - switch.light_trap_4
+      - switch.light_trap_5
+  trap_boven:
+    name: Traphall
+    view: no
+    icon: mdi:stairs
+    entities:
+      - input_number.dimmer_traphal
+      - switch.light_trap_voor
+      - switch.light_trap_achter
+#############################
+
+  slaapkamer1:
+    name: Soumaya & Rachid
+    icon: mdi:hotel
+    view: no
+    entities:
+      - group.slaapkamer1_tmp
+      - group.slaapkamer1_light
+      - group.slaapkamer1_sockets
+      - group.slaapkamer1_media
+  slaapkamer1_tmp:
+    name: S&R
+    control: hidden
+    view: no
+    icon: mdi:hotel
+    entities:
+      - input_boolean.1u_floradix
+      - input_boolean.2u_floradix
+      - switch.heating_floradix
+      - binary_sensor.heat_slp_1
+      - climate.floradix
+      - sensor.tmp_slp_1
+      - sensor.tmp_set_slp_1
+      - input_number.setpoint_slp1
+  slaapkamer1_light:
+    name: S&R 
+    view: no
+    icon: mdi:hotel
+    entities:
+      - input_number.dimmer_slp1_center
+      - switch.light_slp1_deur
+      - switch.light_slp1_center
+      - switch.light_slp1_double
+      - input_number.dimmer_slp1
+      - switch.light_slp1_soumaya
+      - switch.light_slp1_rachid
+  slaapkamer1_sockets:
+    name: S&R
+    view: no
+    icon: mdi:hotel
+    entities:
+
+      - switch.stp_slp1_bed
+      - switch.stp_slp1_bed_soumaya
+
+
+
+  bedrooms:
+    name: Bedrooms
+    icon: mdi:hotel
+    view: no
+    entities:
+      - group.slaapkamer1_light
+      - group.slaapkamer2_light
+      - group.slaapkamer3_light
+
+
+###########################
+  slaapkamer_kids:
+    name: Slaapkamer Kids
+    icon: mdi:hotel
+    view: no
+    entities:
+      - group.slaapkamer2_tmp
+      - group.slaapkamer3_tmp
+      - group.slaapkamer2_light
+      - group.slaapkamer3_light
+      - group.slaapkamer2_sockets
+      - group.slaapkamer3_sockets
+
+############################
+  slaapkamer2:
+    name: Sara
+    icon: mdi:hotel
+    view: no
+    entities:
+      - group.slaapkamer2_tmp
+      - group.slaapkamer2_light
+      - group.slaapkamer2_sockets
+  slaapkamer2_tmp:
+    control: hidden
+    name: Sara
+    view: no
+    icon: mdi:hotel
+    entities:
+      - input_boolean.1u_sara
+      - switch.heating_sara
+      - binary_sensor.heat_slp_2
+      - climate.sara
+      #- sensor.tmp_slp_2
+      - sensor.tmp_set_slp_2
+      - input_number.setpoint_slp2
+  slaapkamer2_light:
+    name: Sara
+    icon: mdi:hotel
+    view: no
+    entities:
+      - input_number.dimmer_slp2
+      - switch.light_slp2_deur
+      - switch.light_slp2_kast
+  slaapkamer2_sockets:
+    name: Sara
+    view: no
+    icon: mdi:hotel
+    entities:
+      - switch.stp_slp2_deur
+      - switch.stp_slp2_bureau
+
+  slaapkamer3:
+    name: Yassin
+    icon: mdi:hotel
+    view: no
+    entities:
+      - group.slaapkamer3_tmp
+      - group.slaapkamer3_light
+      - group.slaapkamer3_sockets
+  slaapkamer3_tmp:
+    name: Yassin
+    view: no
+    entities:
+      - input_boolean.1u_floradix
+      - switch.heating_yassin
+      - binary_sensor.heat_slp_3
+      - climate.yassin
+      #- sensor.tmp_slp_3
+      - sensor.tmp_set_slp_3
+      - input_number.setpoint_slp3
+  slaapkamer3_light:
+    name: Yassin
+    control: hidden
+    icon: mdi:hotel
+    view: no
+    entities:
+      - input_number.dimmer_slp3
+      - switch.light_slp3_deur
+      - switch.light_slp3_kast
+      - switch.light_slp3_muur
+  slaapkamer3_sockets:
+    name: Yassin
+    icon: mdi:hotel
+    view: no
+    entities:
+      - switch.stp_slp3_deur
+      #- switch.spt_slp3_bureau
+##################################
+
+  badkamer:
+    name: Badkamer
+    icon: mdi:water-pump
+    view: no
+    entities:
+      - group.badkamer_tmp
+      - group.badkamer_light
+      - group.badkemer_sockets
+  badkamer_tmp:
+    name: Badkamer
+    control: hidden
+    icon: mdi:water-pump
+    view: no
+    entities:
+      - switch.heating_badkamer
+      - binary_sensor.heat_badkamer
+      - climate.badkamer
+      #- sensor.tmp_badkamer
+      - sensor.tmp_set_badkamer
+      - input_number.setpoint_bad
+  badkamer_light:
+    name: Badkamer 
+    view: no
+    icon: mdi:water-pump
+    entities:
+      - switch.light_badkamer_spiegel
+      - switch.light_badkamer_douche
+      - switch.light_badkamer_lavabo
+
+  badkamer_sockets:
+    name: Badkamer
+    icon: mdi:water-pump
+    view: no
+    entities:
+
+# ###################################
+# ###################################
+
+
+
+
+  easyplus_lights_slaap:
+    name: Easyplus Lights Slaap
+    icon: mdi:flash
+    view: no
+    entities:
+      - light.bathroom_douche
+      - light.bathroom_lavabo
+      - light.bathroom_mirror
+      - light.bathroom_wc
+      - light.bed_center
+      - light.bed_deur
+      - light.bed_double
+      - light.bed_rachid
+      - light.bed_soumaya
+      - light.sara_deur
+      - light.sara_kast
+      - light.trap_1
+      - light.trap_2
+      - light.trap_3
+      - light.trap_4
+      - light.trap_5
+      - light.trap_light_trap_achter
+      - light.trap_voor
+      - light.yassin_deur
+      - light.yassin_kast
+      - light.yassin_muur
+
+  easyplus_lights_woon:
+    name: Easyplus Lights Woon
+    icon: mdi:flash
+    view: no
+    entities:
+      - light.berging_center
+      - light.bureau_spots
+      - light.bureau_tl
+      - light.eetkamer_center
+      - light.eetkamer_double
+      - light.inkomhal
+      - light.ketel_green_led
+      - light.keuken_center
+      - light.keuken_links
+      - light.keuken_rechts
+      - light.living_center
+      - light.living_double
+      - light.living_triple
+      - light.vestiaire
+      - light.wc
+
+      
+  easyplus_lights:
+    name: Easyplus Lights All
+    icon: mdi:flash
+    view: no
+    entities:
+      - light.bathroom_douche
+      - light.bathroom_lavabo
+      - light.bathroom_mirror
+      - light.bathroom_wc
+      - light.bed_center
+      - light.bed_deur
+      - light.bed_double
+      - light.bed_rachid
+      - light.bed_soumaya
+      - light.berging_center
+      - light.bureau_spots
+      - light.bureau_tl
+      - light.eetkamer_center
+      - light.eetkamer_double
+      - light.inkomhal
+      - light.ketel_green_led
+      - light.keuken_center
+      - light.keuken_links
+      - light.keuken_rechts
+      - light.living_center
+      - light.living_double
+      - light.living_triple
+      - light.sara_deur
+      - light.sara_kast
+      - light.trap_1
+      - light.trap_2
+      - light.trap_3
+      - light.trap_4
+      - light.trap_5
+      - light.trap_light_trap_achter
+      - light.trap_voor
+      - light.vestiaire
+      - light.wc
+      - light.yassin_deur
+      - light.yassin_kast
+      - light.yassin_muur
+
+  easyplus_switches_woon:
+    name: Easyplus Switches Woon
+    icon: mdi:flash
+    view: no
+    entities:
+      - switch.stp_berging_droogkast
+      - switch.stp_berging_wasmachine
+      - switch.stp_eetkamer_other
+      - switch.stp_eetkamer_tv
+      - switch.stp_keuken_commander
+      - switch.stp_keuken_dampkap
+      - switch.stp_keuken_espresso
+      - switch.stp_keuken_microwave
+      - switch.stp_keuken_oven
+      - switch.stp_keuken_vaatwasser
+      - switch.stp_keuken_water
+      - switch.stp_living_bureau
+      - switch.stp_living_other
+      - switch.stp_living_sony
+    #  - switch.living
+      - switch.ketel
+
+  easyplus_switches_slaap:
+    name: Easyplus Switches Slaap
+    icon: mdi:flash
+    view: no
+    entities:
+      - switch.stp_slp1_bed
+      - switch.stp_slp1_bed_soumaya
+      - switch.stp_slp2_bureau
+      - switch.stp_slp2_deur
+      - switch.stp_slp3_bureau
+      - switch.stp_slp3_deur
+
+  easyplus_switches:
+    name: Easyplus Switches
+    icon: mdi:flash
+    view: no
+    entities:
+      - switch.stp_berging_droogkast
+      - switch.stp_berging_wasmachine
+      - switch.stp_eetkamer_other
+      - switch.stp_eetkamer_tv
+      - switch.stp_keuken_commander
+      - switch.stp_keuken_dampkap
+      - switch.stp_keuken_espresso
+      - switch.stp_keuken_microwave
+      - switch.stp_keuken_oven
+      - switch.stp_keuken_vaatwasser
+      - switch.stp_keuken_water
+      - switch.stp_living_bureau
+      - switch.stp_living_other
+      - switch.stp_living_sony
+      - switch.stp_slp1_bed
+      - switch.stp_slp1_bed_soumaya
+      - switch.stp_slp2_bureau
+      - switch.stp_slp2_deur
+      - switch.stp_slp3_bureau
+      - switch.stp_slp3_deur
+      - switch.ketel
+      
+      
+         #  - switch.living

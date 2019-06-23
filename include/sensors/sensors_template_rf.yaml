@@ -1,0 +1,60 @@
+
+- platform: template
+  sensors:
+    rf_bridge_status:
+      entity_id: sensor.rf_bridge
+      friendly_name: Latest RF
+      value_template: >-
+        {%- if is_state('sensor.rf_bridge', '0DF00A') %}
+          Inkomhal Open
+        {% elif is_state('sensor.rf_bridge', '0DF00E') %}
+          Inkomhal Closed
+        {% elif is_state('sensor.rf_bridge', '0DF006') %}
+          Inkomhal Battery
+        {% elif is_state('sensor.rf_bridge', '0DF007') %}
+          Inkomhal Tamper
+        {% elif is_state('sensor.rf_bridge', '12800A') %}
+          Terras Open
+        {% elif is_state('sensor.rf_bridge', '12800E') %}
+          Terras Closed
+        {% elif is_state('sensor.rf_bridge', '128006') %}
+          Terras Battery
+        {% elif is_state('sensor.rf_bridge', '128007') %}
+          Terras Tamper
+        {% elif is_state('sensor.rf_bridge', '2C8B11') %}
+          Water Keuken
+        {% elif is_state('sensor.rf_bridge', '628A11') %}
+          Water Badkamer
+        {% elif is_state('sensor.rf_bridge', '46C232') %}
+          Sara Switch
+        {% elif is_state('sensor.rf_bridge', 'A06D61') %}
+          RF Button A
+        {% elif is_state('sensor.rf_bridge', 'A06D62') %}
+          RF Button B
+        {% elif is_state('sensor.rf_bridge', 'A06D64') %}
+          RF Button C
+        {% elif is_state('sensor.rf_bridge', 'A06D68') %}
+          RF Button D
+        {% elif is_state('sensor.rf_bridge', '8F8B91') %}
+          RF Switch Left
+        {% elif is_state('sensor.rf_bridge', '8F8B98') %}
+          RF Switch Center
+        {% elif is_state('sensor.rf_bridge', '8F8B92') %}
+          RF Switch Right
+        {% elif is_state('sensor.rf_bridge', '45A081') %}
+          RF Button 45A081
+        {% elif is_state('sensor.rf_bridge', '909601') %}
+          RF Button 909601
+        {% elif is_state('sensor.rf_bridge', '1C60B1') %}
+          RF Button 1C60B1
+        {% elif is_state('sensor.rf_bridge', '4FFD01') %}
+          RF Button 4FFD01
+        {% elif is_state('sensor.rf_bridge', '793401') %}
+          RF Button 793401
+        {% elif is_state('sensor.rf_bridge', 'DC7503') %}
+          Gas Alarm
+        {% elif is_state('sensor.rf_bridge', 'AC25E8') %}
+          Fire Alarm
+        {% else %}
+          No RF data
+        {%- endif %}

@@ -1,0 +1,44 @@
+
+- id: dsm1
+  initial_state: 'true'
+  alias: DSM on state
+  trigger:
+    platform: state
+    entity_id: switch.dsm
+    to: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: Synology is up.
+
+- id: dsm2
+  initial_state: 'true'
+  alias: DSM off state
+  trigger:
+    platform: state
+    entity_id: switch.dsm
+    to: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.dsm_lun  
+  - service: notify.dageraad
+    data:
+      message: Synology is down.
+     
+      
+- id: dsm3
+  initial_state: 'true'
+  alias: DSM LUN on
+  trigger:
+  - platform: state
+    entity_id: switch.dsm
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 3 
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.dsm_lun
+      
+      
+      

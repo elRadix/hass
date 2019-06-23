@@ -1,0 +1,63 @@
+
+- id: theme_1
+  initial_state: 'true'
+  alias: switch_hass_template
+  trigger:
+  - platform: state
+    entity_id: input_select.hass_template
+  - platform: homeassistant
+    event: start
+  action:
+  - service: frontend.set_theme
+    data_template:
+      name: '{{ states.input_select.hass_template.state }}'
+
+
+
+#- id: change_current_theme
+#  initial_state: 'true'
+#  alias: 'Change Current Theme'
+#  trigger:
+#  - platform: state
+#    entity_id: input_select.hass_template
+#  action:
+#  - service: frontend.set_theme
+#    data_template:
+#      name: '{{states.input_select.hass_template.state}}'
+#  - service: tts.google_say
+#    data:
+#      entity_id: media_player.tts_bluetooth_speaker
+#      message: 'Nice theme you have selected.'
+
+
+- id: theme_2
+  initial_state: 'true'
+  alias: day_to_night_theme
+  trigger:
+  - entity_id: sun.sun
+    from: above_horizon
+    platform: state
+    to: below_horizon
+  action:
+  - data:
+      entity_id: input_select.hass_template
+      option: dark_arraudi
+    service: input_select.select_option
+#  - service: homeassistant.turn_off
+#    entity_id: automation.auto_off_day
+
+- id: night_to_day_theme
+  initial_state: 'true'
+  alias: night_to_day_theme
+  trigger:
+  - entity_id: sun.sun
+    from: below_horizon
+    platform: state
+    to: above_horizon
+  action:
+  - data:
+      entity_id: input_select.hass_template
+      option: default
+    service: input_select.select_option
+  - service: homeassistant.turn_on
+    entity_id: automation.auto_off_day

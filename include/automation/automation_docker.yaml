@@ -1,0 +1,295 @@
+
+################
+#    DOCKER    #
+################
+
+- id: docker_1
+  alias: Start Plex Docker when Kodi is On
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: switch.kodi
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.docker_media
+        state: 'off'
+      - condition: state
+        entity_id: switch.kodi
+        state: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.dockerplex
+  - delay:
+      seconds: 5
+  - service: homeassistant.turn_on
+    entity_id: switch.dockertautulli
+  - delay:
+      seconds: 5
+  - service: homeassistant.turn_on
+    entity_id: switch.dockersambaserver
+  - delay:
+      seconds: 5
+  - service: notify.dageraad
+    data:
+      message: 'Slaapkamer TV  is on, starting Media containers.'
+
+- id: docker_2
+  alias: Start Plex Docker when Sony is On
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: switch.stp_living_sony
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.docker_media
+        state: 'off'
+      - condition: state
+        entity_id: switch.stp_living_sony
+        state: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.dockerplex   
+  - delay:
+      seconds: 5  
+  - service: homeassistant.turn_on
+    entity_id: switch.dockertautulli
+  - delay:
+      seconds: 5  
+  - service: homeassistant.turn_on
+    entity_id: switch.dockersambaserver
+  - delay:
+      seconds: 5  
+  - service: notify.dageraad
+    data:
+      message: 'Sony TV is on, starting Media containers.'
+
+- id: docker_3
+  alias: Stop Plex Docker at night
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '02:30:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.docker_media
+        state: 'on'
+      - condition: state
+        entity_id: switch.kodi
+        state: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.kodi
+  - service: homeassistant.turn_off
+    entity_id: switch.dockerplex   
+  - delay:
+      seconds: 5
+  - service: homeassistant.turn_off
+    entity_id: switch.dockertautulli
+  - delay:
+      seconds: 5
+  - service: homeassistant.turn_off
+    entity_id: switch.dockersambaserver
+  - delay:
+      seconds: 5
+  - service: notify.dageraad
+    data:
+      message: 'Shutdown media containers'
+
+- id: docker_4
+  alias: Start Plex Docker at night
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '19:00:00'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: group.docker_media
+  - service: notify.dageraad
+    data:
+      message: 'Start media containers'
+
+- id: docker_5
+  alias: Start Download Docker at night
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '03:05:00'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.dockertransmission
+  - delay:
+      seconds: 5
+  - service: homeassistant.turn_on 
+    entity_id: switch.dockermedusa
+  - delay:
+      seconds: 5
+  - service: notify.dageraad
+    data:
+      message: 'Startup Torrent & Medusa containers'
+
+- id: docker_6
+  alias: Stop Download Docker at night
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '07:15:00'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.dockertransmission
+  - delay:
+      seconds: 5
+  - service: homeassistant.turn_off
+    entity_id: switch.dockermedusa
+  - delay:
+      seconds: 5
+  - service: notify.dageraad
+    data:
+      message: 'Shutdown Torrent & Medusa containers'
+
+- id: docker_7
+  alias: Run Letsencrypt Docker
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '01:00:00'
+#  condition:
+#    condition: time
+#    weekday:
+#      - sat
+#      - wed
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.dockerletsencrypt
+  - service: notify.dageraad
+    data:
+      message: 'Start SSL container'
+  - service: notify.android
+    data:
+      message: Start SSL container - {{now().strftime("%H:%M:%S")}}
+
+- id: docker_8
+  alias: Stop Letsencrypt Docker
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '01:30:00'
+#  condition:
+#    condition: time
+#    weekday:
+#      - sat
+#      - wed
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.dockerletsencrypt
+  - service: notify.dageraad
+    data:
+      message: Stop SSL container - {{now().strftime("%H:%M:%S")}}
+
+#- id: docker_9
+#  alias: Start  Duplicati Docker Monday
+#  initial_state: 'true'
+#  trigger:
+#    platform: time
+#    at: '08:00:00'
+#  condition:
+#    condition: time
+#    weekday:
+#      - mon
+#  action:
+#  - service: homeassistant.turn_on
+#    entity_id: switch.dockerduplicati
+#  - service: notify.dageraad
+ #   data:
+ #     message: 'Start Backup Duplicati container'
+
+#- id: docker_10
+#  alias: Start  Duplicati Docker Thursday
+#  initial_state: 'true'
+#  trigger:
+#    platform: time
+#    at: '08:00:00'
+#  condition:
+#    condition: time
+#    weekday:
+#      - thu
+#  action:
+#  - service: homeassistant.turn_on
+#    entity_id: switch.dockerduplicati
+#  - service: notify.dageraad
+#    data:
+#      message: 'Start Backup Duplicati container'
+
+#- id: docker_11
+#  alias: Stop Duplicati Docker Monday
+#  initial_state: 'true'
+#  trigger:
+#    platform: time
+#    at: '12:00:00'
+#  condition:
+#    condition: time
+#    weekday:
+#      - mon
+#  action:
+#  - service: homeassistant.turn_off
+#    entity_id: switch.dockerduplicati
+#  - service: notify.dageraad
+#    data:
+#      message: 'Stop Backup Duplicati container'
+
+#- id: docker_12
+#  alias: Stop Duplicati Docker Thursday
+#  initial_state: 'true'
+#  trigger:
+#    platform: time
+#    at: '12:00:00'
+#  condition:
+#    condition: time
+#    weekday:
+#      - thu
+#  action:
+#  - service: homeassistant.turn_off
+#    entity_id: switch.dockerduplicati
+#  - service: notify.dageraad
+#    data:
+#      message: 'Stop Backup Duplicati container'
+
+- id: docker_13
+  alias: Alert when a critical container goes offline
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: switch.dockermosquitto, switch.dockerdockermon
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    condition: and
+    conditions:
+      # Only send this once per hour
+      - condition: template
+        value_template: >
+          {% if states.automation.alert_when_a_critical_container_goes_offline.last_triggered is not none %}
+            {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.alert_when_a_critical_container_goes_offline.attributes.last_triggered) | int > 3600 %} true {% else %} false
+            {% endif %}
+          {% else %}
+          false
+          {% endif %}
+  action:
+    - service: notify.dageraad
+      data_template:
+        message: 'Docker container for {{ trigger.to_state.name }} is not running. Please check the status of this container as some features may stop functioning.'
+        title: Container Alert
+    - service: persistent_notification.create
+      data_template:
+        notification_id: offline_container
+        title: Container Offline
+        message: >
+          Docker container for {{ trigger.to_state.name }} is not running. Please check the status of this container as some features may stop functioning.

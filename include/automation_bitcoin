@@ -1,0 +1,354 @@
+
+### NORDINE ###
+ 
+
+- id: telebot_start mycoins
+  initial_state: True
+  alias: 'Telebot start mycoins'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/mycoins'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "MyCoins at your service."
+      keyboard:
+        - '/mercoins, /coins_update'
+        -  '/risks, /risk, /home'
+
+- id: Update PTF
+  initial_state: True
+  alias: Update Merwone PTF every 5m
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/coins_update'
+  action:
+  - service: shell_command.merwone
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Getting the latest data about your coins"
+  - delay:
+       seconds: 5
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Updated completed"
+
+- id: Update PTF
+  initial_state: True
+  alias: Update Merwone PTF every 5m
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/coins'
+  action:
+  - service: notify.telegram_rachid
+    data:
+      message: "
+
+        `Balance` €{{states.sensor.ptf_eur.state}}  
+        `Profit` €{{states.sensor.pl_eur.state}} • `{{states.sensor.pl_per.state | round(2)| float(2)}}%`
+
+
+        `BTC`       ${{states.sensor.btc_price.state | float(2)}}
+
+        `Change`  {{states.sensor.btc_1h.state | round(2)| float(2)}}%
+
+        `Volume`  ${{states.sensor.btc_24h_volume.state}}M
+
+        `PTF`       ฿{{states.sensor.ptf_btc.state | float(2)}}
+
+
+      ```
+
+      {{states.sensor.c1_name.state}} • {{states.sensor.c1_value.state}}€ • {{states.sensor.c1_profit.state}}€ • {{states.sensor.c1_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c2_name.state}} • {{states.sensor.c2_value.state}}€ • {{states.sensor.c2_profit.state}}€ • {{states.sensor.c2_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c3_name.state}} • {{states.sensor.c3_value.state}}€ • {{states.sensor.c3_profit.state}}€ • {{states.sensor.c3_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c4_name.state}} • {{states.sensor.c4_value.state}}€ • {{states.sensor.c4_profit.state}}€ • {{states.sensor.c4_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c5_name.state}} • {{states.sensor.c5_value.state}}€ • {{states.sensor.c5_profit.state}}€ • {{states.sensor.c5_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c6_name.state}} • {{states.sensor.c6_value.state}}€ • {{states.sensor.c6_profit.state}}€ • {{states.sensor.c6_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c7_name.state}} • {{states.sensor.c7_value.state}}€ • {{states.sensor.c7_profit.state}}€ • {{states.sensor.c7_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c8_name.state}} • {{states.sensor.c8_value.state}}€ • {{states.sensor.c8_profit.state}}€ • {{states.sensor.c8_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c9_name.state}} • {{states.sensor.c9_value.state}}€ • {{states.sensor.c9_profit.state}}€ • {{states.sensor.c9_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c10_name.state}} • {{states.sensor.c10_value.state}}€ • {{states.sensor.c10_profit.state}}€ • {{states.sensor.c10_change.state | round(2)| float}}%```
+
+
+      Risk status
+
+      ```
+
+      {{states.sensor.c1_name.state}} • {{states.sensor.c1_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c2_name.state}} • {{states.sensor.c2_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c3_name.state}} • {{states.sensor.c3_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c4_name.state}} • {{states.sensor.c4_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c5_name.state}} • {{states.sensor.c5_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c6_name.state}} • {{states.sensor.c6_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c7_name.state}} • {{states.sensor.c7_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c8_name.state}} • {{states.sensor.c8_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c9_name.state}} • {{states.sensor.c9_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c10_name.state}} • {{states.sensor.c10_risk.state | round(4)| float(2)}}%```
+      "
+
+- id: telegram_merwone ptf
+  initial_state: True
+  alias: 'Telegram reply with merwone'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/mercoins'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "
+
+        `Balance` €{{states.sensor.ptf_eur.state}}
+        `Profit` €{{states.sensor.pl_eur.state | float(2)}} • `{{states.sensor.pl_per.state }}%`
+
+
+        `BTC`       ${{states.sensor.btc_price.state}}
+
+        `Change`  {{states.sensor.btc_1h.state | float(2)}}%
+
+        `Volume`  ${{states.sensor.btc_24h_volume.state}}M
+
+        `PTF`       ฿{{states.sensor.ptf_btc.state | float(2)}}
+
+
+      ```
+
+      {{states.sensor.c1_name.state}} • {{states.sensor.c1_value.state}}€ • {{states.sensor.c1_profit.state}}€ • {{states.sensor.c1_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c2_name.state}} • {{states.sensor.c2_value.state}}€ • {{states.sensor.c2_profit.state}}€ • {{states.sensor.c2_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c3_name.state}} • {{states.sensor.c3_value.state}}€ • {{states.sensor.c3_profit.state}}€ • {{states.sensor.c3_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c4_name.state}} • {{states.sensor.c4_value.state}}€ • {{states.sensor.c4_profit.state}}€ • {{states.sensor.c4_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c5_name.state}} • {{states.sensor.c5_value.state}}€ • {{states.sensor.c5_profit.state}}€ • {{states.sensor.c5_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c6_name.state}} • {{states.sensor.c6_value.state}}€ • {{states.sensor.c6_profit.state}}€ • {{states.sensor.c6_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c7_name.state}} • {{states.sensor.c7_value.state}}€ • {{states.sensor.c7_profit.state}}€ • {{states.sensor.c7_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c8_name.state}} • {{states.sensor.c8_value.state}}€ • {{states.sensor.c8_profit.state}}€ • {{states.sensor.c8_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c9_name.state}} • {{states.sensor.c9_value.state}}€ • {{states.sensor.c9_profit.state}}€ • {{states.sensor.c9_change.state | round(2)| float(2)}}%
+
+      {{states.sensor.c10_name.state}} • {{states.sensor.c10_value.state}}€ • {{states.sensor.c10_profit.state}}€ • {{states.sensor.c10_change.state | round(2)| float(2)}}%``` 
+
+
+
+      Risk status
+
+      ```
+
+      {{states.sensor.c1_name.state}} • {{states.sensor.c1_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c2_name.state}} • {{states.sensor.c2_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c3_name.state}} • {{states.sensor.c3_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c4_name.state}} • {{states.sensor.c4_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c5_name.state}} • {{states.sensor.c5_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c6_name.state}} • {{states.sensor.c6_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c7_name.state}} • {{states.sensor.c7_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c8_name.state}} • {{states.sensor.c8_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c9_name.state}} • {{states.sensor.c9_risk.state | round(4)| float(2)}}%
+
+      {{states.sensor.c10_name.state}} • {{states.sensor.c10_risk.state | round(4)| float(2)}}%```
+      "
+
+- id: telebot_risk mycoins
+  initial_state: True
+  alias: 'Telebot risk mycoins'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/risk'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Risk status:
+
+           {% if states.sensor.c1_risk|float < 1 -%}
+           {{states.sensor.c1_name.state}} is below threshold ({{states.sensor.c1_risk.state}}%)
+           {% elif states.sensor.c1_risk|float > 0 -%}
+           {{states.sensor.c1_name.state}} is above threshold ({{states.sensor.c1_risk.state}}%)
+           {%- endif %}
+   
+           {% if states.sensor.C2_risk|float < 5 -%}
+           {{states.sensor.C2_name.state}} is below threshold ({{states.sensor.C2_risk.state}}%)
+           {% elif states.sensor.C2_risk|float > 5 -%}
+           {{states.sensor.C2_name.state}} is above threshold ({{states.sensor.C2_risk.state}}%)
+           {%- endif %}
+   
+           {% if states.sensor.C3_risk|float < 5 -%}
+           {{states.sensor.C3_name.state}} is below threshold ({{states.sensor.C3_risk.state}}%)
+           {% elif states.sensor.C3_risk|float > 5 -%}
+           {{states.sensor.C3_name.state}} is above threshold ({{states.sensor.C3_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C4_risk|float < 5 -%}
+           {{states.sensor.C4_name.state}} is below threshold ({{states.sensor.C4_risk.state}}%)
+           {% elif states.sensor.C4_risk|float > 5 -%}
+           {{states.sensor.C4_name.state}} is above threshold ({{states.sensor.C4_risk.state}}%)
+           {%- endif %}
+   
+           {% if states.sensor.C5_risk|float < 5 -%}
+           {{states.sensor.C5_name.state}} is below threshold ({{states.sensor.C5_risk.state}}%)
+           {% elif states.sensor.C5_risk|float > 5 -%}
+           {{states.sensor.C5_name.state}} is above threshold ({{states.sensor.C5_risk.state}}%)
+           {%- endif %}
+   
+           {% if states.sensor.C6_risk|float < 5 -%}
+           {{states.sensor.C6_name.state}} is below threshold ({{states.sensor.C6_risk.state}}%)
+           {% elif states.sensor.C6_risk|float > 5 -%}
+           {{states.sensor.C6_name.state}} is above threshold ({{states.sensor.C6_risk.state}}%)
+           {%- endif %}
+   
+           {% if states.sensor.C7_risk|float < 5 -%}
+           {{states.sensor.C7_name.state}} is below threshold ({{states.sensor.C7_risk.state}}%)
+           {% elif states.sensor.C7_risk|float > 5 -%}
+           {{states.sensor.C7_name.state}} is above threshold ({{states.sensor.C7_risk.state}}%)
+           {%- endif %}
+   
+           {% if states.sensor.C8_risk|float < 5 -%}
+           {{states.sensor.C8_name.state}} is below threshold ({{states.sensor.C8_risk.state}}%)
+           {% elif states.sensor.C8_risk|float > 5 -%}
+           {{states.sensor.C8_name.state}} is above threshold ({{states.sensor.C8_risk.state}}%)
+           {%- endif %}
+   
+           {% if states.sensor.C9_risk|float < 5 -%}
+           {{states.sensor.C9_name.state}} is below threshold ({{states.sensor.C9_risk.state}}%)
+           {% elif states.sensor.C9_risk|float > 5 -%}
+           {{states.sensor.C9_name.state}} is above threshold ({{states.sensor.C9_risk.state}}%)
+           {%- endif %}
+   
+           {% if states.sensor.C10_risk|float < 5 -%}
+           {{states.sensor.C10_name.state}} is below threshold ({{states.sensor.C10_risk.state}}%)
+           {% elif states.sensor.C10_risk|float > 5 -%}
+           {{states.sensor.C10_name.state}} is above threshold ({{states.sensor.C10_risk.state}}%)
+           {%- endif %}"
+
+
+- id: telebot_risks mycoins
+  initial_state: True
+  alias: 'Telebot risks mycoins'
+  trigger:
+  - platform: numeric_state
+    entity_id:
+    - sensor.c1_risk
+    - sensor.c2_risk
+    - sensor.c3_risk
+    - sensor.c4_risk
+    - sensor.c5_risk
+    - sensor.c6_risk
+    - sensor.c7_risk
+    - sensor.c8_risk
+    - sensor.c9_risk
+    - sensor.c10_risk
+    below: 5
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/risks'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Risk status:
+
+           {% if states.sensor.c1_risk|float < -0,0001 -%}
+           {{states.sensor.c1_name.state}} is below threshold ({{states.sensor.c1_risk.state}}%)
+           {% elif states.sensor.c1_risk|float > 0 -%}
+           {{states.sensor.c1_name.state}} is above threshold ({{states.sensor.c1_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C2_risk|float < -0,0001 -%}
+           {{states.sensor.C2_name.state}} is below threshold ({{states.sensor.C2_risk.state}}%)
+           {% elif states.sensor.C2_risk|float > 0 -%}
+           {{states.sensor.C2_name.state}} is above threshold ({{states.sensor.C2_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C3_risk|float < -0,0001 -%}
+           {{states.sensor.C3_name.state}} is below threshold ({{states.sensor.C3_risk.state}}%)
+           {% elif states.sensor.C3_risk|float > 0 -%}
+           {{states.sensor.C3_name.state}} is above threshold ({{states.sensor.C3_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C4_risk|float < -0,0001 -%}
+           {{states.sensor.C4_name.state}} is below threshold ({{states.sensor.C4_risk.state}}%)
+           {% elif states.sensor.C4_risk|float > 0 -%}
+           {{states.sensor.C4_name.state}} is above threshold ({{states.sensor.C4_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C5_risk|float < 5 -%}
+           {{states.sensor.C5_name.state}} is below threshold ({{states.sensor.C5_risk.state}}%)
+           {% elif states.sensor.C5_risk|float > 0 -%}
+           {{states.sensor.C5_name.state}} is above threshold ({{states.sensor.C5_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C6_risk|float < 5 -%}
+           {{states.sensor.C6_name.state}} is below threshold ({{states.sensor.C6_risk.state}}%)
+           {% elif states.sensor.C6_risk|float > 0 -%}
+           {{states.sensor.C6_name.state}} is above threshold ({{states.sensor.C6_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C7_risk|float < 5 -%}
+           {{states.sensor.C7_name.state}} is below threshold ({{states.sensor.C7_risk.state}}%)
+           {% elif states.sensor.C7_risk|float > 0 -%}
+           {{states.sensor.C7_name.state}} is above threshold ({{states.sensor.C7_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C8_risk|float < 5 -%}
+           {{states.sensor.C8_name.state}} is below threshold ({{states.sensor.C8_risk.state}}%)
+           {% elif states.sensor.C8_risk|float > 5 -%}
+           {{states.sensor.C8_name.state}} is above threshold ({{states.sensor.C8_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C9_risk|float < 5 -%}
+           {{states.sensor.C9_name.state}} is below threshold ({{states.sensor.C9_risk.state}}%)
+           {% elif states.sensor.C9_risk|float > 5 -%}
+           {{states.sensor.C9_name.state}} is above threshold ({{states.sensor.C9_risk.state}}%)
+           {%- endif %}
+
+           {% if states.sensor.C10_risk|float < 5 -%}
+           {{states.sensor.C10_name.state}} is below threshold ({{states.sensor.C10_risk.state}}%)
+           {% elif states.sensor.C10_risk|float > 5 -%}
+           {{states.sensor.C10_name.state}} is above threshold ({{states.sensor.C10_risk.state}}%)
+           {%- endif %}"
+

@@ -1,0 +1,32 @@
+### SONOFF RF REMOTE ####
+- platform: template
+  sensors:
+    rf_switch_a:
+      value_template: '{{ is_state("sensor.rf_stream", "A06D61") }}' 
+      delay_off: '00:00:01'
+      device_class: plug
+      friendly_name: "Button A"
+
+- platform: mqtt
+  name: 'Sonoff A'
+  state_topic: 'home/sonoffa'
+  off_delay: 1
+  device_class: plug
+
+- platform: mqtt
+  name: 'Sonoff B'
+  state_topic: 'home/sonoffb'
+  off_delay: 1
+  device_class: plug
+
+- platform: mqtt
+  name: 'Sonoff c'
+  state_topic: 'home/sonoffc'
+  off_delay: 1
+  device_class: plug
+
+- platform: mqtt
+  name: 'Sonoff d'
+  state_topic: 'home/sonoffd'
+  off_delay: 1
+  device_class: plug

@@ -1,0 +1,21 @@
+#### DIMMER ### | int * 2.55 | round(0)
+  wasbak:             !secret shell_command_dimmer_wasbak
+  spotleft:           !secret shell_command_dimmer_spotleft
+  spotright:          !secret shell_command_dimmer_spotright
+  dinner_center:      !secret shell_command_dimmer_dinner_center
+  dinner_double:      !secret shell_command_dimmer_dinner_double
+  living_center:      !secret shell_command_dimmer_living_center
+  living_double:      !secret shell_command_dimmer_living_double
+  living_triple:      !secret shell_command_dimmer_living_triple
+  slp1_deur:          !secret shell_command_dimmer_slp1_deur
+  slp1_double:        !secret shell_command_dimmer_slp1_double
+  slp2_deur:          !secret shell_command_dimmer_slp2_deur
+  slp2_kast:          !secret shell_command_dimmer_slp2_kast
+  slp3_deur:          !secret shell_command_dimmer_slp3_deur
+  trapvoor:           !secret shell_command_dimmer_trapvoor
+  trapachter:         !secret shell_command_dimmer_trapachter
+  wc:                 !secret shell_command_dimmer_wc
+  bureau_spot:        !secret shell_command_dimmer_bureau_spot
+  bureau_tl:          !secret shell_command_dimmer_bureau_tl
+
+#  "/opt/scripts/apex.sh 'SetAnalogOut 22,{{ states.input_number.dimmer_slp3.state | int * 2.55 | round(0)}}'"

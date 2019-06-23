@@ -1,0 +1,377 @@
+#    "*.*":
+##      custom_ui_state_card: state-card-custom-ui
+
+    #"switch.light.*":
+    #  icon: mdi:lightbulb
+    #  custom_ui_state_card: state-card-custom-ui
+    #  state_card_mode: single-line
+    #  slider_theme:
+    #    min: 1
+    #    max: 255
+    #    pin: true
+    #    off_when_min: false
+    #    report_when_not_changed: false
+
+
+    alarm_control_panel.dageraad:
+      # state_card_custom_ui_secondary: state-card-custom_alarm
+    group.weer:
+      state_card_mode: badges
+    group.weer2:
+      state_card_mode: badges
+    group.smappee:
+      state_card_mode: badges
+    group.smappee2:
+      state_card_mode: badges
+
+
+    "switch.light_tr*":
+      icon: mdi:stairs
+      assumed_state: false
+#      custom_ui_state_card: state-card-custom-ui
+      #state_card_mode: break-slider-toggle
+      # state_card_mode: single-line
+      show_last_changed: true
+
+#    #state_card_mode: single-line
+#      slider_theme:
+#        min: 10
+#        max: 255
+#        pin: true
+#        off_when_min: false
+#        report_when_not_changed: false
+#      #stretch_slider: true
+#      show_last_changed: true
+
+    "input_number.dimmer_*":
+      icon: mdi:lightbulb
+      assumed_state: false
+      # custom_ui_state_card: state-card-custom-ui
+      #state_card_mode: break-slider-toggle
+      # state_card_mode: single-line
+    #state_card_mode: single-line
+      # slider_theme:
+      #   min: 10
+      #   max: 255
+      #   pin: true
+      #   off_when_min: false
+      #   report_when_not_changed: false
+      #stretch_slider: true
+      show_last_changed: true
+
+
+    "switch.stp_*":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+      # custom_ui_state_card: state-card-custom-ui
+     # state_card_mode: break-slider-toggle
+     # stretch_slider: true
+      show_last_changed: true
+
+    "switch.router_vpn_se*":
+      icon: mdi:key
+      # custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+
+    "switch.router_vpn_cl*":
+      icon: mdi:vpn
+      # custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+
+    "switch.router_adblock":
+      icon: mdi:alert-decagram
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+
+    "switch.router_firewall":
+      icon: mdi:wall
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+
+    "switch.light_*":
+      icon: mdi:lightbulb
+      assumed_state: false
+      # custom_ui_state_card: state-card-custom-ui
+      #state_card_mode: break-slider-toggle
+      #state_card_mode: single-line
+      show_last_changed: true
+
+
+    "input_boolean.*":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+
+    "sensor.f*":
+      icon: mdi:account
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+
+    "sensor.1sfg998_*":
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+
+    "switch.son*":
+      icon: mdi:power-socket-eu
+      #assumed_state: false
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+
+
+    "sensor.sonoff_latest_release":
+      icon: mdi:eye
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: false
+
+
+    "script.check_sonoffs_version":
+      icon: mdi:checkbox-multiple-marked-outline  
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: false
+
+
+    "script.update_sonoffs":
+      icon: mdi:download-network
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+      confirm_controls_show_lock: true
+
+    "sensor.sonoff*":
+      icon: mdi:power-socket-eu
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: false
+
+
+#    "switch.smap*":
+#      icon: mdi:laptop
+#      #assumed_state: false
+##      custom_ui_state_card: state-card-custom-ui
+#      show_last_changed: true
+
+
+    "switch.b*":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+#      custom_ui_state_card: state-card-custom-ui
+     # state_card_mode: break-slider-toggle
+     # stretch_slider: true
+      show_last_changed: true
+
+    "switch.k*":
+      icon: mdi:power-socket-eu
+      assumed_state: false
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+    "switch.heating*":
+      icon: mdi:fire
+      assumed_state: false
+   #   custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+    "climate.*":
+      icon: mdi:fan
+      #icon: mdi:fire
+      #assumed_state: false
+    #  custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+    "sensor.tmp_*":
+     # custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+    "binary_sensor.*":
+#      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+    #"input_number.*":
+    #  custom_ui_state_card: state-card-custom-ui
+    #  show_last_changed: true
+    "sensor.smappee_*":
+      icon: mdi:gauge
+    "media_*":
+      icon: mdi:monitor
+    "switch.stp_keuken_espresso*":
+      icon: mdi:coffee
+    "switch.stp_berging_was*":
+      icon: mdi:washing-machine
+    "switch.stp_berging_droo*":
+      icon: mdi:tumble-dryer
+    "switch.stp_keuken_vaat*":
+      icon: mdi:washing-machine
+    "switch.stp_keuken_ove*":
+      icon: mdi:washing-machine
+    "switch.stp_berging_micro*":
+      icon: mdi:washing-machine
+    "switch.stp.keuken_water*":
+      icon: mdi:cup-water
+    "switch.stp_living_so*":
+      icon: mdi:television
+    "switch.inter*":
+       assumed_state: false
+    "switch.internet*":
+      icon: mdi:signal-variant
+
+
+      
+    "sensor.soumaya_to_isabel":
+      icon: mdi:briefcase
+    "sensor.rachid_to_home":
+      icon: mdi:home-variant
+    "sensor.soumaya_to_home":
+      icon: mdi:home-variant
+    "sensor.elradixbe":
+      icon: mdi:web
+    "input_number.dim*":
+      icon: mdi:brightness-7
+    "input_number.set*":
+      icon: mdi:fire
+    "sensor.yassin_to_voetbal":
+      icon: mdi:soccer
+    "sensor.zayd_to_voetbal":
+      icon: mdi:soccer
+    "sensor.kids_to_arabische_lessen":
+      icon: mdi:chair-school
+    "sensor.kids_to_judo":
+      icon: mdi:sword-cross
+    "sensor.kids_to_school":
+      icon: mdi:chair-school
+    "sensor.sara_to_gymnastiek":
+      icon: mdi:mushroom
+    "sensor.brussel_train_status":
+      icon: mdi:bus
+    "proximity.*":
+      icon: mdi:home-variant
+    "sensor.total_current":
+      icon: mdi:gauge
+    "sensor.total_power":
+      icon: mdi:gauge
+    "sensor.voltage":
+      icon: mdi:gauge
+    "sensor.active_power__phase_1":
+      icon: mdi:gauge
+    "sensor.apparent_power__phase_1":
+      icon: mdi:gauge
+    "sensor.cos__phase_1":
+      icon: mdi:gauge
+    "sensor.current__phase_1":
+      icon: mdi:gauge
+    "sensor.reactive_power__phase_1":
+      icon: mdi:gauge
+    "switch.allhome":
+#      custom_ui_state_card: state-card-custom-ui
+      # confirm_controls_show_lock: true
+      icon: mdi:lightbulb
+      assumed_state: false
+
+    "switch.easyplus":
+#      custom_ui_state_card: state-card-custom-ui
+      # confirm_controls_show_lock: true
+      icon: mdi:power
+      assumed_state: false
+      show_last_changed: true
+
+#    "switch.docker*":
+#      custom_ui_state_card: state-card-custom-ui
+#      # confirm_controls_show_lock: true
+#      icon: mdi:docker
+#      assumed_state: false
+#      show_last_changed: true
+
+
+    "switch.bureau_lader":
+  #    custom_ui_state_card: state-card-custom-ui
+      #confirm_controls_show_lock: true
+      icon: mdi:power-socket-eu
+      assumed_state: false
+      show_last_changed: true
+
+    "switch.woon":
+#      custom_ui_state_card: state-card-custom-ui
+      confirm_controls_show_lock: true
+      icon: mdi:lightbulb
+      show_last_changed: true
+      assumed_state: false
+    "switch.slaap":
+#      custom_ui_state_card: state-card-custom-ui
+      # confirm_controls_show_lock: true
+      icon: mdi:lightbulb
+      show_last_changed: true
+      assumed_state: false
+    "switch.socket_woon":
+#      custom_ui_state_card: state-card-custom-ui
+      # confirm_controls_show_lock: true
+      icon: mdi:power-socket-eu
+      show_last_changed: true
+      assumed_state: false
+    "switch.socket_slaap":
+#      custom_ui_state_card: state-card-custom-ui
+      confirm_controls_show_lock: true
+      #state_card_mode: break-slider
+      icon: mdi:power-socket-eu
+      assumed_state: false
+      show_last_changed: true
+
+    "automation.auto_heat*":
+   #   custom_ui_state_card: state-card-custom-ui
+      icon: mdi:thermometer
+
+    "automation.auto_easyplus_shutdow*":
+    #  custom_ui_state_card: state-card-custom-ui
+      icon: mdi:power-settings
+      show_last_changed: true
+
+    "automation.easyplus_startu*":
+    #  custom_ui_state_card: state-card-custom-ui
+      icon: mdi:power-settings
+      show_last_changed: true
+
+    "automation.easyplus_startup_monday":
+      icon: mdi:power-settings
+      show_last_changed: true
+
+
+
+
+    "sensor.light":
+      show_last_changed: true
+
+    "input_boolean.work":
+      icon: mdi:briefcase
+      show_last_changed: true
+
+    "input_boolean.school":
+      icon: mdi:school
+
+    "automation.auto_off_day":
+      icon: mdi:flashlight-off
+      
+    "sensor.percent_at_work_daily":
+      icon: mdi:percent
+      
+    "sensor.percent_at_work_weekly":
+      icon: mdi:percent
+
+    "sensor.percent_at_work_monthly":
+      icon: mdi:percent
+
+    "sensor.time_at_work_today":
+      icon: mdi:office-building
+
+    "sensor.time_at_work_this_week":
+      icon: mdi:office-building
+
+    "sensor.time_at_work_this_month":
+      icon: mdi:office-building
+
+    "sensor.me_traffic_density_to_home":
+      icon: mdi:traffic-light
+
+    "sensor.me_traffic_density_to_work":
+      icon: mdi:traffic-light
+
+      
+    "sensor.home_to_bnp":
+      icon: mdi:briefcase
+      
+    "sensor.bnp_to_home":
+      icon: mdi:home-variant
+
+
+

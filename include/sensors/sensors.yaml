@@ -1,0 +1,701 @@
+#################################################################
+## SENSORS
+#################################################################
+
+
+#  - platform: travisci
+#    api_key: !secret travis_api
+
+#  - platform: travisci
+#    api_key: !secret travis_api
+#    repository:
+#      - hass
+#    monitored_conditions:
+#      - last_build_state
+
+
+  - platform: filesize
+    file_paths:
+      - !secret scripts_directory_log 
+
+
+  - platform: vrtnws
+     # Optional: set a scan interval
+ #   update_interval: 180
+
+
+#   - platform: feedparser
+#     name: HLN
+#     feed_url: 'https://www.hln.be/nieuws/rss.xml'
+#     date_format: '%a, %b %d %I:%M %p'
+#     inclusions:
+#       - title
+#       - id
+#       - summary
+#       - updated
+#       - vrtns:nslabeltag
+#     exclusions:
+#       - language
+
+
+#   - platform: feedparser
+#     name: vrt_headlines
+#     feed_url: 'https://www.vrt.be/vrtnws/nl.rss.headlines.xml'
+#     date_format: '%a, %b %d %I:%M %p'
+#     inclusions:
+#       - title
+#       - link
+#       - description
+#       - image
+#       - pubDate
+#       - language      
+#     exclusions:
+#       - language
+
+
+  - platform: websocket_api
+
+  - platform: integration 
+    source: sensor.smappee_power
+    unit_prefix: k
+    round: 2
+
+#   - platform: sql
+#     db_url: !secret db_url_local
+#     queries:
+#       - name: HASS DB size
+#         query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1048576, 2) "value" FROM information_schema.tables WHERE table_schema="hassdbv87" GROUP BY table_schema;'
+#         column: 'value'
+#         unit_of_measurement: MB
+
+  - platform: sql
+    db_url: !secret db_url_aws
+    queries:
+      - name: HASS DB size
+        query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / POWER(1024,3), 1) "value" FROM information_schema.tables WHERE table_schema="hassdb" GROUP BY table_schema;'
+        column: 'value'
+        unit_of_measurement: GB
+
+        #query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1048576, 2) "value" FROM information_schema.tables WHERE table_schema="hassdb" GROUP BY table_schema;'
+
+
+
+
+#   - platform: filesize
+#     file_paths:
+#       - /home/homeassistant/.homeassistant/home-assistant_v2.db
+
+
+
+#   - platform: ical
+#     name: School Vakanties
+#     url: "https://calendar.google.com/calendar/ical/feestdagenbelgie%40gmail.com/public/basic.ics"
+
+
+#   - platform: plex_recently_added
+#     token: !secret plex_token
+#     server_name: !secreit plex_server_name
+#     ssl: true
+#     ssl_cert: false
+#     download_images: false
+#     max: 5
+
+#   - platform: rest
+#     resource: https://holiday.elradix.be/holidays.json
+#     name: Holiday
+# #    scan_interval: 14400
+#     scan_interval: 60
+#     force_update: true
+#     value_template: >
+#       {% set today = now().month  ~ '/' ~ now().day  %}
+#       {% set holiday =  value_json.Verlof.static[ today ] %}
+#       {% if holiday | trim == "" %}
+#         {% set today = now().month  ~ '/' ~ now().day ~ '/' ~ now().year %}
+#         {% set holiday =  value_json.Verlof.dynamic[ today ] %}
+#       {% endif %}
+#       {{ holiday }}
+    
+#  - platform: statistics
+#    name: Gemiddeld verbruik
+#    entity_id: sensor.smappee_dageraad_current_today
+#    sampling_size: 120
+#    max_age:
+#      minutes: 60
+
+#  - platform: statistics
+#    name: Gemiddeld huidig verbruik
+#    entity_id: sensor.smappee_dageraad_current
+#    sampling_size: 120
+#    max_age:
+#      minutes: 60
+
+
+
+  - platform: rest
+    resource: https://pypi.python.org/pypi/homeassistant/json
+    name: Latest version
+    value_template: "{{ value_json.info.version }}"
+    scan_interval: 3600
+
+  - platform: command_line
+    name: Current Version
+    command: "cat /home/homeassistant/.homeassistant/.HA_VERSION"
+
+
+
+
+
+#################
+### AVG TEMPS ###
+#################
+
+#   - platform: min_max
+#     entity_ids:
+#       - sensor.tmp_eetkamer_calibrated
+#       - sensor.tmp_living_calibrated
+#     name: woon
+#     type: mean
+
+#   - platform: min_max
+#     entity_ids:
+#       - sensor.tmp_slp_1_calibrated
+#       - sensor.tmp_slp_2_calibrated
+#       - sensor.tmp_slp_3
+#     name: slaap
+#     type: mean
+
+
+#Light sensor state.sh -a 8
+#  - platform: command_line
+#    name: light
+#    device_class: illuminance
+#    command:  /opt/scripts/status/state.sh -a 8
+#    unit_of_measurement: "Light"
+      
+
+
+### Motion control
+
+
+
+
+##### INTERNET ####
+#  - platform: template
+#    sensors:
+#        internetcuttime:
+#          friendly_name: Switch off at
+#          entity_id:
+#            - input_slider.internet_cut_hour
+#            - input_slider.internet_cut_minutes
+#          value_template: '{{ "%0.02d:%0.02d" | format(states("input_slider.internet_cut_hour") | int, states("input_slider.internet_cut_minutes") | int) }}'
+
+
+# 
+      
+
+#  - platform: time_date
+#    display_options:
+#      - time #'time_date'
+
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+
+  - platform: uptime
+    name: "HA runtime in minutes"
+    unit_of_measurement: minutes
+
+  - platform: uptime
+    name: "Uptime HASS"
+    unit_of_measurement: hours
+
+#  - platform: season
+
+
+  - platform: pvoutput
+    system_id: !secret pvoutput_system_id
+    api_key: !secret pvoutput_api
+    scan_interval: 150
+
+
+
+
+
+#  - platform: speedtest
+#    hour:
+#      - 0
+#      - 4
+#      - 8
+#      - 12
+#      - 16
+#      - 18
+#      - 20
+#      - 22
+#    monitored_conditions:
+#      - ping
+#      - download
+#      - upload
+
+
+#  - platform: cert_expiry
+#    host: elradix.be
+
+
+
+###### TODAY
+#  - platform: history_stats
+#    name: Ketel 
+#    entity_id: switch.ketel
+#    state: 'on'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Keuken
+#    entity_id: group.kitchen_light
+#    state: 'on'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Living
+#    entity_id: group.living_light
+#    state: 'on'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Bureau
+#    entity_id: group.bureau_light
+#    state: 'on'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Commander
+#    entity_id: switch.stp_keuken_commander
+#    state: 'on'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Watching TV
+#    entity_id: group.tvmedia
+#    state: 'on'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Eetkamer
+#    entity_id: group.dinner_light
+#    state: 'on'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Slaapkamers
+#    entity_id: group.bedrooms
+#    state: 'on'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Rachid today
+#    entity_id: device_tracker.xncdwobc_elradix
+#   state: 'home'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Soumaya today
+#    entity_id: device_tracker.xncdwobc_soumaya
+#    state: 'home'
+#    type: time
+#    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    end: '{{ now() }}'
+
+
+
+#### THIS WEEK ######################################################################
+
+#  - platform: history_stats
+#    name: Ketel this week
+#    entity_id: switch.ketel
+#    state: 'on'
+#    type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Keuken this week
+#    entity_id: group.kitchen_light
+#    state: 'on'
+#    type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Living this week
+#    entity_id: group.living_light
+#    state: 'on'
+#    type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+#    entity_id: group.bureau_light
+#  - platform: history_stats
+#    name: Bureau this week
+#    entity_id: group.bureau_light
+#    state: 'on'
+#    type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Commander this week
+#    entity_id: switch.stp_keuken_commander
+#    state: 'on'
+#    type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Watching TV this week
+#    entity_id: group.tvmedia
+#    state: 'on'
+#    type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Eetkamer this week
+#    entity_id: group.dinner_light
+#    state: 'on'
+#    type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Slaapkamers this week
+#    entity_id: group.bedrooms
+#    state: 'on'
+#    type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Rachid this week
+#    entity_id: device_tracker.rachid
+#    state: 'home'
+#    type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+#  - platform: history_stats
+#    name: Soumaya this week
+#    entity_id: device_tracker.soumaya
+#    state: 'home'
+##   type: time
+#    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+#    end: '{{ now() }}'
+
+
+
+#### THIS MONTH ###############################################################################################
+
+#  - platform: history_stats
+#    name: Ketel this month
+#    entity_id: switch.ketel
+#    state: 'on'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+#  - platform: history_stats
+#    name: Keuken this month
+#    entity_id: group.kitchen_light
+#    state: 'on'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+#  - platform: history_stats
+#    name: Living this month
+#    entity_id: group.living_light
+#    state: 'on'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+#  - platform: history_stats
+#    name: Bureau this month
+#    entity_id: group.bureau_light
+#    state: 'on'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+
+#  - platform: history_stats
+#    name: Commander this month
+#    entity_id: switch.stp_keuken_commander
+#    state: 'on'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+#  - platform: history_stats
+#    name: Watching TV this month
+#    entity_id: group.tvmedia
+#    state: 'on'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+
+#  - platform: history_stats
+#    name: Eetkamer this month
+#    entity_id: group.dinner_light
+#    state: 'on'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+#  - platform: history_stats
+#    name: Slaapkamers this month
+#    entity_id: group.bedrooms
+#    state: 'on'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+#  - platform: history_stats
+#    name: Rachid this month
+#    entity_id: device_tracker.rachid
+#    state: 'home'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+
+#  - platform: history_stats
+#    name: Soumaya this month
+#    entity_id: device_tracker.soumaya
+#    state: 'home'
+#    type: time
+#    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+#    duration:
+#      days: 30
+
+
+
+
+#  - platform: api_streams
+
+#  - platform: tautulli
+#    host: 192.168.1.21:8181/plexpy
+#    ssl: false
+#    verify_ssl: true
+#    token: e3e28ceb81f14d5c8cc6f944af32cf15
+#    attributes:
+#      - magic_title
+    #monitored_conditions:
+    #  - stream_count
+    #  - stream_count_transcode
+    #  - stream_count_direct_play
+    #  - stream_count_direct_stream
+    #  - total_bandwidth
+
+#    attributes:
+#      - magic_title
+
+#   - platform: haveibeenpwned
+#     email: 
+#     - elrachid@gmail.com
+#     - bsoumaya@gmail.com
+
+
+
+
+
+# ########### SMAPPEE ##########
+# #sensor voltage:
+#   - platform: mqtt
+#     state_topic: "hass/smappee/measurements"
+#     name: "Voltage"
+#     unit_of_measurement: "V"
+#     value_template: "{{value_json.voltage}}"
+
+# #sensor phase1_current:
+#   - platform: mqtt
+#     state_topic: "hass/smappee/measurements"
+#     name: "Current - phase 1"
+#     unit_of_measurement: "A"
+#     value_template: "{{value_json.phase1_current}}"
+
+# #sensor phase1_activePower:
+#   - platform: mqtt
+#     state_topic: "hass/smappee/measurements"
+#     name: "Active power - phase 1"
+#     unit_of_measurement: "W"
+#     value_template: "{{value_json.phase1_activePower}}"
+
+# #sensor phase1_reactivePower:
+#   - platform: mqtt
+#     state_topic: "hass/smappee/measurements"
+#     name: "Reactive power - phase 1"
+#     unit_of_measurement: "var"
+#     value_template: "{{value_json.phase1_reactivePower}}"
+
+# #sensor phase1_apparentPower:
+#   - platform: mqtt
+#     state_topic: "hass/smappee/measurements"
+#     name: "Apparent power - phase 1"
+#     unit_of_measurement: "VA"
+#     value_template: "{{value_json.phase1_apparentPower}}"
+
+# #sensor phase1_cosfi:
+#   - platform: mqtt
+#     state_topic: "hass/smappee/measurements"
+#     name: "Cos(φ) - phase 1"
+#     value_template: "{{value_json.phase1_cosfi}}"
+
+
+
+#   - name: Illuminance
+#     platform: illuminance
+#     api_key: 87754f14f6b8451f
+#     query: 'pws:IMECHELE52'
+#     scan_interval:
+#       minutes: 5
+
+
+########### FIND ##########
+
+#   - platform: mqtt
+#     state_topic: 'floradix/location/rachid'
+#     name: find_rachid_mqtt
+#     value_template: '{{ value_json.guesses[0].location }}'
+
+#   - platform: mqtt
+#     state_topic: 'floradix/location/soumaya'
+#     name: find_soumaya_mqtt
+#     value_template: '{{ value_json.guesses[0].location }}'
+
+
+#   - platform: mqtt
+#     state_topic: 'owntracks/elradix/s7elradix'
+#     name: 'Rachid Battery'
+#     unit_of_measurement: '%'
+#     value_template: '{{ value_json.batt }}'
+
+#   - platform: mqtt
+#     state_topic: 'owntracks/elradix/s7soumaya'
+#     name: 'Soumaya Battery'
+#     unit_of_measurement: '%'
+#     value_template: '{{ value_json.batt }}'
+
+# SMAPPEE ## WORKING LIVE
+#   - platform: mqtt
+#     state_topic: 'servicelocation/5796cd51-d672-11e7-ac58-022d286959f5/realtime'
+#     name: 'Power Usage Live'
+#     unit_of_measurement: 'W'
+#     value_template: '{{ value_json.totalPower }}'
+
+#  - platform: mqtt
+#    state_topic: 'servicelocation/5796cd51-d672-11e7-ac58-022d286959f5/realtime'
+#    name: 'Smappee Reactive Power Live'
+#    unit_of_measurement: 'W'
+#    value_template: '{{ value_json.totalReactivePower }}'
+
+#  - platform: mqtt
+#    state_topic: 'servicelocation/5796cd51-d672-11e7-ac58-022d286959f5/realtime'
+#    name: 'Smappee Energy Live'
+#    unit_of_measurement: 'W'
+#    value_template: '{{ value_json.totalImportEnergy" }}'
+
+#  - platform: mqtt
+#    state_topic: 'servicelocation/5796cd51-d672-11e7-ac58-022d286959f5/aggregated'
+#    name: ' Smappee Always On'
+#    unit_of_measurement: 'W'
+#    value_template: "{{ value_json['intervalDatas'].alwaysOn }}"
+
+
+
+#  - platform: rest
+#    resource: http://192.168.1.21:8003/location?group=floradix&user=elradix
+#    value_template: '{{ value_json.users.elradix[0].location }}{{ value_json.users.elradix[0].time }}'
+#    method: GET
+#    name: find_rachid_http
+#    scan_interval: 3
+
+#  - platform: rest
+#    resource: http://192.168.1.21:8003/location?group=floradix&user=elradix
+#    value_template: '{{ value_json.users.elradix[0].location }}'
+#    method: GET
+#    name: find_rachid_loc
+#    scan_interval: 3
+
+
+#  - platform: rest
+#    resource: http://192.168.1.21:8003/location?group=floradix&user=soumaya
+#    value_template: '{{ value_json.users.soumaya[0].location }}{{ value_json.users.soumaya[0].time }}'
+#    method: GET
+#    name: find_soumaya_http
+#    scan_interval: 3
+
+#  - platform: rest
+#    resource: http://192.168.1.21:8003/location?group=floradix&user=soumaya
+#    value_template: '{{ value_json.users.soumaya[0].location }}'
+#    method: GET
+#    name: find_soumaya_loc
+#    scan_interval: 3
+
+
+
+# # SQL DB Sensor
+# - platform: sql
+#   db_url: mysql://hass_db:PASSWORD@192.168.200.9:3306/hass_db
+#   queries:
+#     - name: HASS DB
+#       query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1024, 1) "value" FROM information_schema.tables WHERE table_schema="hass_db" GROUP BY table_schema;'
+#       column: 'value'
+#       unit_of_measurement: kB
+
+
+#  - platform: template
+#    sensors:
+#      power_consumption:
+#        value_template: '{% if is_state_attr("sensor.pvoutput", "power_consumption", "NaN") %}0{% else %}{{ states.sensor.pvoutput.attributes.power_consumption }}{% endif %}'
+#        friendly_name: 'Huidige verbruik'
+#        unit_of_measurement: 'Watt'
+#      energy_consumption:
+#        value_template: '{{ "%0.1f"|format(states.sensor.pvoutput.attributes.energy_consumption|float/1000) }}'
+#        friendly_name: 'Dag verbruik'
+#        unit_of_measurement: 'kWh'
+
+
+

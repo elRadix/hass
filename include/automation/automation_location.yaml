@@ -1,0 +1,798 @@
+### WIFI
+
+
+#- id: home_rachid
+#  initial_state: 'true'
+#  alias: Is home Rachid
+#  trigger:
+#  - platform: zone
+#    event: enter
+#    zone: zone.home
+#    entity_id: device_tracker.comp_rachid
+#  action:
+#  - service: notify.dageraad
+#    data:
+#      message: Rachid is home since {{now().strftime("%H:%M:%S")}}
+#  - service: notify.android
+#    data:
+#      message: Rachid is home since {{now().strftime("%H:%M:%S")}}
+
+
+####### ZONE HOME ####### 
+- id: zone_home_enter
+  alias: Zone Home Enter
+  trigger:
+  - platform: zone
+    event: enter
+    zone: zone.home
+    entity_id: device_tracker.comp_soumaya, device_tracker.comp_rachid, device_tracker.rachid_mqtt, device_tracker.soumaya_mqtt
+  action:
+  - service: notify.dageraad
+    data_template:
+      message: ' {{ trigger.to_state.name }} is at Home {{now().strftime("%H:%M:%S")}}'
+
+- id: zone.home_leave
+  alias: Zone Home Leave
+  trigger:
+  - platform: zone
+    event: leave
+    zone: zone.home
+    entity_id: device_tracker.comp_soumaya, device_tracker.comp_rachid, device_tracker.rachid_mqtt, device_tracker.soumaya_mqtt
+  action:
+  - service: notify.dageraad
+    data_template:
+      message: ' {{ trigger.to_state.name }} left Home {{now().strftime("%H:%M:%S")}}'
+####### ZONE HOME ####### 
+
+########## WIFI HOME ########## 
+- id: wifi_at_home
+  initial_state: 'true'
+  alias: wifi at home
+  trigger:
+  - platform: state
+    from: '<unknown ssid>'
+    to: 'florasnel'
+    entity_id: sensor.s7_rachid_wifi
+  action:
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} is at Home {{now().strftime("%H:%M:%S")}}'
+  - service: notify.android
+    data_template:
+      message: '{{ trigger.to_state.name }} is at Home since {{now().strftime("%H:%M:%S")}} '
+      
+- id: wifi_left_home
+  initial_state: 'true'
+  alias: wifi left home
+  trigger:
+  - platform: state
+    entity_id: sensor.s7_rachid_wifi
+    from: 'florasnel'
+    to: '<unknown ssid>'
+  action:
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} left Home {{now().strftime("%H:%M:%S")}}'
+  - service: notify.android
+    data_template:
+      message: '{{ trigger.to_state.name }} left Home since {{now().strftime("%H:%M:%S")}} '
+
+
+
+########## WIFI HOBOKEN ########## 
+- id: wifi_at_hoboken
+  initial_state: 'true'
+  alias: wifi at hoboken
+  trigger:
+  - platform: state
+    to: "BenAyad5.0"
+    entity_id: sensor.s7_soumaya_wifi, sensor.s7_rachid_wifi
+  action:
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} is at Hoboken {{now().strftime("%H:%M:%S")}}'
+  - service: notify.android
+    data_template:
+      message: '{{ trigger.to_state.name }} is at Hoboken since {{now().strftime("%H:%M:%S")}} '
+      
+- id: wifi_left_hoboken
+  initial_state: 'true'
+  alias: wifi left hoboken
+  trigger:
+  - platform: state
+    entity_id: sensor.s7_soumaya_wifi, sensor.s7_rachid_wifi
+    from: "BenAyad5.0"
+    to: "<unknown ssid>"
+  action:
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.to_state.name }} left Hoboken {{now().strftime("%H:%M:%S")}}'
+  - service: notify.android
+    data_template:
+      message: '{{ trigger.to_state.name }} left Hoboken since {{now().strftime("%H:%M:%S")}} '
+
+########## WIFI WORK SOUMAYA ########## 
+- id: wifi_soumaya_isabel
+  initial_state: 'true'
+  alias: wifi soumaya isabel
+  trigger:
+  - platform: state
+    to: "IsaGuest"
+    entity_id: sensor.s7_soumaya_wifi
+  action:
+  - service: notify.telegram_rachid
+    data:
+      message: Soumaya is at Isabel since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Soumaya is at Isabel since {{now().strftime("%H:%M:%S")}}
+
+- id: wifi_soumaya_isabel_left
+  initial_state: 'true'
+  alias: wifi soumaya isabel left
+  trigger:
+  - platform: state
+    entity_id: sensor.s7_soumaya_wifi
+    from: "IsaGuest"
+    to: "<unknown ssid>"
+  action:
+  - service: notify.telegram_rachid
+    data:
+      message: Soumaya left Isabel since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Soumaya left Isabel since {{now().strftime("%H:%M:%S")}}
+########## WIFI WORK SOUMAYA ########## 
+
+
+########## WIFI WORK RACHID ########## 
+- id: wifi_rachid_bpn
+  initial_state: 'true'
+  alias: wifi rachid bnp
+  trigger:
+  - platform: state
+    to: "_WiFi-First"
+    entity_id: sensor.s7_rachid_wifi
+  action:
+  - service: notify.telegram_rachid
+    data:
+      message: Rachid is at BNP since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid is at BNP since {{now().strftime("%H:%M:%S")}}
+
+- id: wifi_soumaya_isabel_left
+  initial_state: 'true'
+  alias: wifi rachid bnp left
+  trigger:
+  - platform: state
+    entity_id: sensor.s7_rachid_wifi
+    from: "_WiFi-First"
+    to: "<unknown ssid>"
+  action:
+  - service: notify.telegram_rachid
+    data:
+      message: Rachid left BNP since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid left BNP since {{now().strftime("%H:%M:%S")}}
+########## WIFI WORK RACHID ########## 
+
+
+
+##### gps 
+
+### WORK keystone ####
+
+- id: "Notify Me when its time to leave for Work"
+  trigger:
+  - platform: state
+    entity_id: sensor.time_to_leave_for_work
+    to: 'True' 
+    from: 'False'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.ha_runtime_in_minutes
+    above: 1    
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: sensor.me_traffic_density_to_work
+        state: 'Moderate'
+      - condition: state
+        entity_id: sensor.me_traffic_density_to_work
+        state: 'Heavy'
+  action:
+    - service: notify.dageraad  # Aankomsttijd: {{ (as_timestamp(now())+(states("sensor.time_to_home")|int) * 60 ) | timestamp_custom("%H:%M") }}
+      data_template:
+        message: "
+        
+        Je hebt 15min tijd om je klaar te maken, om op 9u aan te komen bij Keystone. 
+        
+        Reistijd: {{states.sensor.home_to_keystone.state}} min."
+        title: time_pattern to Leave for Work
+
+- id: "Notify me after 8hrs Work"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.time_at_work_today
+      above: 8
+  action:
+    - service: notify.dageraad
+      data_template:
+        message: "
+        
+        Tijd om naar huis te gaan.
+        
+        `Huidige reistijd bedraagt nu {{states.sensor.keystone_to_home.state}} min.`"
+        title: Workday completed at {{now().strftime("%H:%M:%S")}}
+    - service: notify.android
+      data_template:
+        message: "
+        Tijd om naar huis te gaan
+        Huidige reistijd bedraagt nu {{states.sensor.keystone_to_home.state}} min."
+        title: Workday Completed at {{now().strftime("%H:%M:%S")}}
+
+
+- id: "Notify Me when its time to leave for Home"
+  trigger:
+  - platform: state
+    entity_id: sensor.time_to_leave_for_home
+    to: 'True' 
+    from: 'False'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.ha_runtime_in_minutes
+    above: 1    
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: sensor.me_traffic_density_to_home
+        state: 'Moderate'
+      - condition: state
+        entity_id: sensor.me_traffic_density_to_home
+        state: 'Heavy'
+  action:
+    - service: notify.dageraad
+      data_template:
+        message: '
+        
+        Je hebt 15min tijd om je klaar te maken, om op 18u thuis aan te komen. 
+        Huidige reistijd bedraagt nu  {{states.sensor.keystone_to_home.state}} min. '
+        title: time_pattern to Leave for Home
+
+####### ZONE SHOOL #######  since {{now().strftime("%H:%M:%S")}}
+- id: zone_school_enter
+  alias: Zone School Enter
+  trigger:
+  - platform: zone
+    event: enter
+    zone: zone.school
+    entity_id: device_tracker.comp_soumaya, device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data_template:
+      message: ' {{ trigger.to_state.name }} is at School {{now().strftime("%H:%M:%S")}}'
+
+
+- id: zone.school_leave
+  alias: Zone School Leave
+  trigger:
+  - platform: zone
+    event: leave
+    zone: zone.school
+    entity_id: device_tracker.comp_soumaya, device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data_template:
+      message: ' {{ trigger.to_state.name }} left School {{now().strftime("%H:%M:%S")}}'
+####### ZONE SHOOL ####### 
+
+
+
+########## ZONE MECHELEN P1 Parking ########## 
+- id: P1_Parking_Enter
+  initial_state: 'true'
+  alias: P1 Parking Enter
+  trigger:
+  - platform: zone
+    event: enter
+    zone: zone.mechelen_p1_parking
+    entity_id: device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data:
+      message: Rachid is at P1 Parking Mechelen since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid is at P1 Parking Mechelen since {{now().strftime("%H:%M:%S")}}
+
+- id: P1_Parking_Leave
+  initial_state: 'true'
+  alias: P1 Parking Leave
+  trigger:
+  - platform: zone
+    event: leave
+    zone: zone.mechelen_p1_parking
+    entity_id: device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data:
+      message: Rachid left P1 Parking Mechelen since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid left P1 Parking Mechelen since {{now().strftime("%H:%M:%S")}}
+########## ZONE MECHELEN  P1 Parking ##########
+
+########## ZONE Mechelen Station ########## 
+- id: Mechelen_Station_Enter
+  initial_state: 'true'
+  alias: Mechelen_Station Enter
+  trigger:
+  - platform: zone
+    event: enter
+    zone: zone.mechelen_station
+    entity_id: device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data:
+      message: Rachid is at Mechelen Station since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid is at Mechelen Station  since {{now().strftime("%H:%M:%S")}}
+
+- id: Mechelen_Station_Leave
+  initial_state: 'true'
+  alias: Mechelen_Station Leave
+  trigger:
+  - platform: zone
+    event: leave
+    zone: zone.mechelen_station
+    entity_id: device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data:
+      message: Rachid left Mechelen Station since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid left Mechelen Station since {{now().strftime("%H:%M:%S")}}
+########## ZONE Mechelen Station ##########
+
+########## ZONE Brussel Centraal ########## 
+- id: Brussel_Centraal_Enter
+  initial_state: 'true'
+  alias: Brussel Centraal Enter
+  trigger:
+  - platform: zone
+    event: enter
+    zone: zone.brussel_centraal
+    entity_id: device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data:
+      message: Rachid is at Brussel Centraal since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid is at Brussel Centraal  since {{now().strftime("%H:%M:%S")}}
+
+- id: Brussel_Centraal_Leave
+  initial_state: 'true'
+  alias: Brussel Centraal Leave
+  trigger:
+  - platform: zone
+    event: leave
+    zone: zone.brussel_centraal
+    entity_id: device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data:
+      message: Rachid left Brussel Centraal since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid left Brussel Centraal since {{now().strftime("%H:%M:%S")}}
+########## ZONE Brussel Station ##########
+
+
+########## ZONE Brussel Noord ########## 
+- id: Brussel_Noord_Enter
+  initial_state: 'true'
+  alias: Brussel Noord Enter
+  trigger:
+  - platform: zone
+    event: enter
+    zone: zone.brussel_noord
+    entity_id: device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data:
+      message: Rachid is at Brussel Noord since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid is at Brussel Noord since {{now().strftime("%H:%M:%S")}}
+
+- id: Brussel_Noord_Leave
+  initial_state: 'true'
+  alias: Brussel Noord Leave
+  trigger:
+  - platform: zone
+    event: leave
+    zone: zone.brussel_noord
+    entity_id: device_tracker.comp_rachid
+  action:
+  - service: notify.dageraad
+    data:
+      message: Rachid left Brussel Noord since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid left Brussel Noord since {{now().strftime("%H:%M:%S")}}
+########## ZONE Brussel Noord ##########
+
+
+########## ZONE WORK ########## 
+- id: work_rachid_on
+  initial_state: 'true'
+  alias: Is work Rachid On
+  trigger:
+#  - platform: state
+#    to: "_WiFi-First"
+#    entity_id: sensor.s7_rachid_wifi
+#  - platform: zone
+#    event: enter
+#    zone: zone.keystone
+#    entity_id: device_tracker.comp_rachid
+  - platform: zone
+    event: enter
+    zone: zone.bnp
+    entity_id: device_tracker.comp_rachid
+  condition:
+    - condition: time
+      before: '10:00:00'
+      after: '08:00:00'
+  action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.work
+  - service: notify.dageraad
+    data:
+      message: Rachid is at work since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid is at work since {{now().strftime("%H:%M:%S")}}
+  - service: notify.dageraad
+    data_template:
+      message: ' {{ trigger.to_state.name }} is at work {{now().strftime("%H:%M:%S")}}'
+      
+- id: work_rachid_off_bnp
+  initial_state: 'true'
+  alias: Is work Rachid Off
+  trigger:
+  - platform: zone
+    event: leave
+    zone: zone.bnp
+    entity_id: device_tracker.comp_rachid
+  condition:
+    - condition: time
+      before: '18:30:00'
+      after: '16:00:00'
+  action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.work
+  - service: notify.dageraad
+    data:
+      message: Rachid just left work since {{now().strftime("%H:%M:%S")}}
+  - service: notify.android
+    data:
+      message: Rachid just left work since {{now().strftime("%H:%M:%S")}}
+  - service: notify.dageraad
+    data_template:
+      message: ' {{ trigger.to_state.name }} left work {{now().strftime("%H:%M:%S")}}'
+########## ZONE WORK ########## 
+
+
+
+
+# - id: ReverseLocateSoumaya
+#   initial_state: 'true'
+#   trigger:
+#   - platform: event
+#     event_type: places_state_update
+#   condition:
+#     condition: template
+#     value_template: '{{ trigger.event.data.entity == "soumaya" }}'
+#   action:
+#   - service: notify.dageraad
+#     data_template:
+#       title: 'Locatie: {{ trigger.event.data.entity }} - {{ trigger.event.data.place_name }}'
+#       message: |-
+#         {{ trigger.event.data.entity }}  
+#         {{ trigger.event.data.place_name }}
+#         {{ trigger.event.data.distance_from_home }} from home and traveling {{ trigger.event.data.direction }}
+#         {{ trigger.event.data.to_state }} ({{ trigger.event.data.mtime }})
+# #      data:
+# #        attachment:
+# #          url: '{{ trigger.event.data.map }}'
+# #          hide_thumbnail: false
+# #        location:
+# #          latitude: "{{ trigger.event.data.current_latitude }}"
+# # #          longitude: "{{ trigger.event.data.current_longitudee }}"
+
+
+# - id: ReverseLocateRachid
+#   initial_state: 'true'
+#   trigger:
+#   - platform: event
+#     event_type: places_state_update
+#   condition:
+#     condition: template
+#     value_template: '{{ trigger.event.data.entity == "rachid" }}'
+#   action:
+#   - service: notify.dageraad
+#     data_template:
+#       title: 'Locatie: {{ trigger.event.data.entity }} - {{ trigger.event.data.place_name }}'
+#       message: |-
+#         {{ trigger.event.data.entity }}  
+#         {{ trigger.event.data.place_name }}
+#         {{ trigger.event.data.distance_from_home }} from home and traveling {{ trigger.event.data.direction }}
+#         {{ trigger.event.data.to_state }} ({{ trigger.event.data.mtime }})
+# #      data:
+# #        attachment:
+# #          url: '{{ trigger.event.data.map }}'
+# #          hide_thumbnail: false
+# #        location:
+# #          latitude: "{{ trigger.event.data.current_latitude }}"
+# #          longitude: "{{ trigger.event.data.current_longitudee }}"
+
+
+- id: Rachid on his way home
+  initial_state: 'true'
+  alias: Rachid on his way home
+  trigger:
+    - platform: numeric_state
+      entity_id: proximity.home
+      below: 5
+  condition:
+    condition: and
+    conditions:
+    - condition: template
+      value_template: '{{ states.proximity.home_rachid.attributes.dir_of_travel == "towards" }}'
+    - condition: state
+      entity_id: device_tracker.comp_rachid
+      state: 'not_home'
+  action:
+     - service: notify.dageraad
+       data:
+         #title: "going HOME"
+         message: "Rachid almost HOME!!"
+     - service: notify.android
+       data:
+         message: Rachid almost HOME @ {{now().strftime("%H:%M:%S")}}
+
+
+- id: Soumaya on his way home
+  initial_state: 'true'
+  alias: Soumaya on his way home
+  trigger:
+    - platform: numeric_state
+      entity_id: proximity.home
+      below: 5
+  condition:
+    condition: and
+    conditions:
+    - condition: template
+      value_template: '{{ states.proximity.home_soumaya.attributes.dir_of_travel == "towards" }}'
+    - condition: state
+      entity_id: device_tracker.comp_soumaya
+      state: 'not_home'
+  action:
+     - service: notify.dageraad
+       data:
+         message: "Soumaya almost HOME!!"
+     - service: notify.android
+       data:
+         message: Soumaya almost HOME @ {{now().strftime("%H:%M:%S")}}
+
+
+- id: Life360 Overdue Update
+  trigger:
+    platform: event
+    event_type: device_tracker.life360_update_overdue
+  action:
+    service: notify.telegram_rachid
+    data_template:
+      title: Life360 update overdue
+      message: >
+        Update for {{
+          state_attr(trigger.event.data.entity_id, 'friendly_name') or
+          trigger.event.data.entity_id
+        }} is overdue.
+
+- id: Life360 Update Restored
+  trigger:
+    platform: event
+    event_type: device_tracker.life360_update_restored
+  action:
+    service: notify.telegram_rachid
+    data_template:
+      title: Life360 update restored
+      message: >
+        Update for {{
+          state_attr(trigger.event.data.entity_id, 'friendly_name') or
+          trigger.event.data.entity_id
+        }} restored after {{ trigger.event.data.wait }}.
+
+
+
+
+#- id: home_soumaya
+#  initial_state: 'true'
+#  alias: Is home Soumaya
+#  trigger:
+#  - platform: zone
+#    event: enter
+#    zone: zone.home
+#    entity_id: device_tracker.comp_soumaya
+#  action:
+#  - service: notify.dageraad
+#    data:
+#      message: Soumaya is home since {{now().strftime("%H:%M:%S")}}
+#  - service: notify.android
+#    data:
+#      message: Soumaya is home since {{now().strftime("%H:%M:%S")}}
+
+
+#- id: away_rachid
+#  initial_state: 'true'
+#  alias: Leave Home Rachid
+#  trigger:
+#  - platform: zone
+#    event: leave
+#    zone: zone.home
+#    entity_id: device_tracker.comp_rachid
+#  action:
+#  - service: notify.dageraad
+#    data:
+#      message: Rachid left the house since {{now().strftime("%H:%M:%S")}}
+#  - service: notify.android
+#    data:
+#      message: Rachid left the house since {{now().strftime("%H:%M:%S")}}
+
+
+#- id: away_soumaya
+#  initial_state: 'true'
+#  alias: Leave Home Soumaya
+#  trigger:
+#  - platform: zone
+#    event: leave
+#    zone: zone.home
+#    entity_id: device_tracker.comp_soumaya
+#  action:
+#  - service: notify.dageraad
+#    data:
+#      message: Soumaya left the house since {{now().strftime("%H:%M:%S")}}
+#  - service: notify.android
+#    data:
+#      message: Soumaya left the house since {{now().strftime("%H:%M:%S")}}
+
+
+
+
+ 
+
+#- id: soumaya_vertrekt_rachid
+#  initial_state: 'true'
+#  alias: Soumaya vertrekt ergens, stuur travel time notify Rachid
+#  trigger:
+#  - platform: state
+#    entity_id: device_tracker.comp_soumaya
+#    to: 'not_home'
+#  action:
+#    - condition: and
+#      conditions:
+#        - condition: template
+#          value_template: "{{ trigger.from_state.state != 'not_home' }}"
+#        - condition: template 
+#          value_template: "{{ trigger.from_state.state != 'home' }}"
+#    - delay:
+#        minutes: 3
+   # - service: notify.telegram_rachid
+   #   data:
+   #     message: "Soumaya komt thuis in ongeveer {{ states.sensor.soumaya_to_home.state }} minuten ({{ relative_time(states.sensor.soumaya_to_home.last_updated) }} geleden aangepast)."
+#    - service: notify.telegram_rachid
+#      data:
+#        message: "Soumaya komt thuis in ongeveer {{ states.sensor.soumaya_to_home.state }} minuten ({{ relative_time(states.sensor.soumaya_to_home.last_updated) }} geleden aangepast)."
+#        data:
+#          location:
+#            latitude: "{{ states.device_tracker.comp_soumaya.attributes.latitude }}"
+#            longitude: "{{ states.device_tracker.comp_soumaya.attributes.longitude }}"
+
+
+#- id: soumaya_vertrekt_soumaya
+#  initial_state: 'true'
+#  alias: Soumaya vertrekt ergens, stuur travel time notify Soumaya
+#  trigger:
+#  - platform: state
+#    entity_id: device_tracker.comp_soumaya
+#    to: 'not_home'
+#  action:
+#    - condition: and
+#      conditions:
+#        - condition: template
+#          value_template: "{{ trigger.from_state.state != 'not_home' }}"
+#        - condition: template
+#          value_template: "{{ trigger.from_state.state != 'home' }}"
+#    - delay:
+#        minutes: 3
+   # - service: notify.telegram_soumaya
+   #   data:
+   #     message: "Soumaya komt thuis in ongeveer {{ states.sensor.soumaya_to_home.state }} minuten ({{ relative_time(states.sensor.soumaya_to_home.last_updated) }} geleden aangepast)."
+#    - service: notify.telegram_rachid
+#      data:
+#        message: "Soumaya komt thuis in ongeveer {{ states.sensor.soumaya_to_home.state }} minuten ({{ relative_time(states.sensor.soumaya_to_home.last_updated) }} geleden aangepast)."
+#        data:
+#          location:
+#            latitude: "{{ states.device_tracker.comp_soumaya.attributes.latitude }}"
+#            longitude: "{{ states.device_tracker.comp_soumaya.attributes.longitude }}"
+
+
+#- id: rachid_vertrekt_to_rachid
+#  initial_state: 'true'
+#  alias: Rachid vertrekt ergens, stuur travel time notiy Rachid
+#  trigger:
+#  - platform: state
+#    entity_id: device_tracker.comp_rachid
+#    to: 'not_home'
+#  action:
+#    - condition: and
+#      conditions:
+#        - condition: template
+#          value_template: "{{ trigger.from_state.state != 'not_home' }}"
+#        - condition: template
+#          value_template: "{{ trigger.from_state.state != 'home' }}"
+#    - delay:
+#        minutes: 3
+   # - service: notify.telegram_rachid
+   #   data:
+   #     message: "Rachid komt thuis in ongeveer {{ states.sensor.rachid_to_home.state }} minuten ({{ relative_time(states.sensor.rachid_to_home.last_updated) }} geleden aangepast)."
+#    - service: notify.telegram_rachid
+#      data:
+#        message: "Rachid komt thuis in ongeveer {{ states.sensor.rachid_to_home.state }} minuten ({{ relative_time(states.sensor.rachid_to_home.last_updated) }} geleden aangepast)."
+#        data:
+#          location:
+#            latitude: "{{ states.device_tracker.comp_rachid.attributes.latitude }}"
+#            longitude: "{{ states.device_tracker.comp_rachid.attributes.longitude }}"
+
+
+#- id: rachid_vertrekt_to_soumaya
+#  initial_state: 'true'
+#  alias: Rachid vertrekt ergens, stuur travel time notiy Soumaya
+#  trigger:
+#  - platform: state
+#    entity_id: device_tracker.comp_rachid
+#    to: 'not_home'
+#  action:
+#    - condition: and
+#      conditions:
+#        - condition: template
+#          value_template: "{{ trigger.from_state.state != 'not_home' }}"
+#        - condition: template
+#          value_template: "{{ trigger.from_state.state != 'home' }}"
+#    - delay:
+#        minutes: 3
+    #- service: notify.telegram_soumaya
+    #  data:
+    #    message: "Rachid komt thuis in ongeveer {{ states.sensor.rachid_to_home.state }} minuten ({{ relative_time(states.sensor.rachid_to_home.last_updated) }} geleden aangepast)."
+#    - service: notify.telegram_rachid
+#      data:
+#        message: "Rachid komt thuis in ongeveer {{ states.sensor.rachid_to_home.state }} minuten ({{ relative_time(states.sensor.rachid_to_home.last_updated) }} geleden aangepast)."
+#        data:
+#          location:
+#            latitude: "{{ states.device_tracker.comp_rachid.attributes.latitude }}"
+#            longitude: "{{ states.device_tracker.comp_rachid.attributes.longitude }}"
+
+
+

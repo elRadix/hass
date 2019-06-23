@@ -1,0 +1,675 @@
+
+##################################
+###### Temperature Setpoint ######
+##################################
+
+- id: setpoint_living
+  initial_state: 'true'
+  alias: setpoint_living
+  trigger:
+  -  platform: state
+     entity_id: input_number.setpoint
+  action:
+  - service: script.setpoint_living_on
+  - service: shell_command.tmp_living
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.living
+      temperature: '{{ states.sensor.tmp_set_living.state | float  }}'
+      #temperature: '{{ states.input_number.setpoint.state | float  }}'
+
+
+- id: setpoint_eetkamer
+  initial_state: 'true'
+  alias: setpoint_eetkamer
+  trigger:
+  -  platform: state
+     entity_id: input_number.setpoint_eetkamer
+  action:
+  #- service: script.setpoint_eetkamer_on
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.eetkamer
+      temperature: '{{ states.input_number.setpoint_eetkamer.state | float  }}'
+
+             
+- id: setpoint_slp1
+  initial_state: 'true'
+  alias: setpoint_slp1
+  trigger:
+  -  platform: state
+     entity_id: input_number.setpoint_slp1
+  action:
+  - service: script.setpoint_slp1_on
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.floradix
+      temperature: '{{ states.input_number.setpoint_slp1.state | float  }}'
+
+- id: setpoint_slp2
+  initial_state: 'true'
+  alias: setpoint_slp2
+  trigger:
+  - platform: state
+    entity_id: input_number.setpoint_slp2
+  action:
+  - service: script.setpoint_slp2_on
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.sara
+      temperature: '{{ states.input_number.setpoint_slp2.state | float  }}'
+
+- id: setpoint_slp3
+  initial_state: 'true'
+  alias: setpoint_slp3
+  trigger:
+  - platform: state
+    entity_id: input_number.setpoint_slp3
+  action:
+  - service: script.setpoint_slp3_on
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.yassin
+      temperature: '{{ states.input_number.setpoint_slp3.state | float  }}'
+
+
+- id: setpoint_bad
+  initial_state: 'true'
+  alias: setpoint_bad_auto
+  trigger:
+  - platform: state
+    entity_id: input_number.setpoint_bad
+  action:
+  - service: script.setpoint_bad_on
+  - service: climate.set_temperature
+    data_template:
+      entity_id: climate.badkamer
+      temperature: '{{ states.input_number.setpoint_bad.state | float  }}'
+
+######## AUTO HEAT 
+
+#- id: notify_rooms_too_cold_or_hot
+#  initial_state: 'true'
+#  alias: Notify if rooms are too cold or too hot
+#  #initial_state: 'true'
+#  trigger:
+#    - platform: template
+#      value_template: "{% if states.climate.living.attributes.current_temperature | float < 17 %} true {% endif %}"
+#    - platform: template
+#      value_template: "{% if states.climate.living.attributes.current_temperature | float > 19 %} true {% endif %}"
+#    - platform: template
+#      value_template: "{% if states.climate.eetkamer.attributes.current_temperature | float < 17 %} true {% endif %}"
+#    - platform: template
+#      value_template: "{% if states.climate.eetkamer.attributes.current_temperature | float > 19 %} true {% endif %}"
+#    - platform: template
+#      value_template: "{% if states.climate.floradix.attributes.current_temperature | float < 17 %} true {% endif %}"
+#    - platform: template
+#      value_template: "{% if states.climate.floradix.attributes.current_temperature | float > 19 %} true {% endif %}"
+#    - platform: template
+#      value_template: "{% if states.climate.sara.attributes.current_temperature | float < 17 %} true {% endif %}"
+#    - platform: template
+#      value_template: "{% if states.climate.sara.attributes.current_temperature | float > 19 %} true {% endif %}"
+#    - platform: template
+#      value_template: "{% if states.climate.yassin.attributes.current_temperature | float < 17 %} true {% endif %}"
+#    - platform: template
+#      value_template: "{% if states.climate.yassin.attributes.current_temperature | float > 19 %} true {% endif %}"
+#  action:
+#    - service: notify.dageraad
+#      data_template:
+#        #message: >
+#        message: "Temperature status:
+#
+#          {% if states.climate.living.attributes.current_temperature|float < 17 -%}
+#          Living is too cold ({{states.climate.living.attributes.current_temperature}}°C)
+#          {% elif states.climate.living.attributes.current_temperature|float > 19 -%}
+#          Living is too hot ({{states.climate.living.attributes.current_temperature}}°C)
+#          {%- endif %}
+#
+#          {% if states.climate.eetkamer.attributes.current_temperature|float < 17 -%}
+#          Dinner is too cold ({{states.climate.eetkamer.attributes.current_temperature}}°C)
+#          {% elif states.climate.eetkamer.attributes.current_temperature|float > 19 -%}
+#          Dinner is too hot ({{states.climate.eetkamer.attributes.current_temperature}}°C)
+#          {%- endif %}
+#
+#          {% if states.climate.floradix.attributes.current_temperature|float < 17 -%}
+#          S&R is too cold ({{states.climate.floradix.attributes.current_temperature}}°C)
+#          {% elif states.climate.floradix.attributes.current_temperature|float > 19 -%}
+#          S&R is too hot ({{states.climate.floradix.attributes.current_temperature}}°C)
+#          {%- endif %}
+#
+#          {% if states.climate.sara.attributes.current_temperature|float < 17 -%}
+#          Sara is too cold ({{states.climate.sara.attributes.current_temperature}}°C)
+#          {% elif states.climate.sara.attributes.current_temperature|float > 19 -%}
+#          Sara is too hot ({{states.climate.sara.attributes.current_temperature}}°C)
+#          {%- endif %}
+#
+#          {% if states.climate.yassin.attributes.current_temperature|float < 17 -%}
+#          Yassin is too cold ({{states.climate.yassin.attributes.current_temperature}})
+#          {% elif states.climate.yassin.attributes.current_temperature|float > 19 -%}
+#          Yassin is too hot ({{states.climate.yassin.attributes.current_temperature}})
+#          {%- endif %}"
+#
+
+##Ketel aan
+- id: ketel boolean enabled
+  initial_state: 'true'
+  alias: ketel boolean enabled
+  trigger:
+    platform: state
+    entity_id: input_boolean.heating
+    from: 'off'
+    to: 'on'
+  action:
+ # - service: homeassistant.turn_on
+ #   data:
+ #     entity_id:
+ #       - switch.stp_berging_ketel
+  - service: notify.dageraad
+    data:
+      message: "Heating schedule activated:
+
+                ===========================
+
+
+                Room Schedule:
+
+                --------------
+
+                Dinner will heat for {{states.sensor.auto_heat_duration.state}} at {{states.sensor.auto_heat_time.state}}
+
+                Living will heat for {{states.sensor.auto_heat_duration_liv.state}} at {{states.sensor.auto_heat_time_liv.state}}
+
+                S&R will heat for {{states.sensor.auto_heat_duration_slp1.state}} at {{states.sensor.auto_heat_time_slp1.state}}
+
+                Sara will heat for {{states.sensor.auto_heat_duration_slp2.state}} at {{states.sensor.auto_heat_time_slp2.state}}
+
+                Yassin will heat for {{states.sensor.auto_heat_duration_slp3.state}} at {{states.sensor.auto_heat_time_slp3.state}}
+
+
+
+                Room Temperature:
+
+                ---------------------
+
+                Living:  {{states.climate.living.attributes.current_temperature}}°C
+
+                Dinner: {{states.climate.eetkamer.attributes.current_temperature}}°C
+
+                S&R:     {{states.climate.floradix.attributes.current_temperature}}°C
+
+                Sara:    {{states.climate.sara.attributes.current_temperature}}°C
+
+                Yassin: {{states.climate.yassin.attributes.current_temperature}}°C
+
+                "
+
+
+##Ketel uit
+- id: ketel boolean disabled
+  initial_state: 'true'
+  alias: ketel boolean disabled
+  trigger:
+    platform: state
+    entity_id: input_boolean.heating
+    from: 'on'
+    to: 'off'
+  action:
+  #- service: homeassistant.turn_on
+  #  data:
+  #    entity_id:
+  #      - switch.stp_berging_ketel
+  - service: notify.dageraad
+    data:
+      message: "Verwarming programma uitgeschakeld."
+  - service: notify.android
+    data:
+      message: Verwarming programma uitgeschakeld. - 
+      
+      
+- id: Heater Off at midnight
+  initial_state: 'true'
+  alias: Heater Off at midnight
+  trigger:
+    platform: time
+    at: '00:00:00'
+  condition:
+    condition: state
+    entity_id: input_boolean.heating
+    state: 'on'
+  action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.heating
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - switch.ketel
+  - service: notify.telegram_rachid
+    data:
+      message: "Verwarming programma & ketel uitgeschakeld."
+  - service: notify.android
+    data:
+      message: Verwarming programma & ketel uitgeschakeld.
+
+##Eetkamer
+- id: auto_heat_on enabled
+  initial_state: 'true'
+  alias: auto_heat_on enabled
+  trigger:
+    platform: state
+    entity_id: input_number.auto_heat_hour, input_number.auto_heat_min, input_number.auto_heat_duration
+  action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_on
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_off
+
+
+##Eetkamer
+- id: auto_heat_on
+  alias: auto_heat_on
+  initial_state: 'true'
+  trigger:
+    - platform: time_pattern
+      minutes: '/5'
+      seconds: 14
+  condition:
+    - condition: state
+      entity_id: input_boolean.heating 
+      state: 'on'
+    - condition: template
+      value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time.state }}'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.easyplus
+    - delay:
+        seconds: 20
+    - service: homeassistant.turn_on
+      entity_id: switch.ketel
+    - service: climate.set_operation_mode
+      data:
+        entity_id: climate.eetkamer
+        operation_mode: "heat"
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.eetkamer
+        temperature: 19
+    - service: notify.dageraad
+      data:
+        message: "Room Dinner will heat for {{states.sensor.auto_heat_duration.state}} at {{states.sensor.auto_heat_time.state}}"
+
+
+
+###Eetkamer
+- id: auto_heat_off
+  alias: auto_heat_off
+  initial_state: 'true'
+  trigger:
+  - platform: time_pattern
+    minutes: '/1'
+    seconds: 14
+  condition:
+  - condition: state
+    entity_id: input_boolean.heating 
+    state: 'on'
+  - condition: template
+    value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time.state }}'
+  action:
+  - service: shell_command.tmp_eetkamer_off
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.eetkamer
+      temperature: 5
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.eetkamer
+      operation_mode: "off"
+  - service: notify.dageraad
+    data:
+      message: "Verwarming Eetkamer is uitgeschakeld."
+
+
+##Living
+- id: auto_heat_on enabled_liv
+  alias: auto_heat_on enabled_liv
+  trigger:
+    platform: state
+    entity_id: input_number.auto_heat_hour_liv, input_number.auto_heat_min_liv, input_number.auto_heat_duration_liv
+  action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_on_liv
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_off_liv
+##Living
+- id: auto_heat_on_liv
+  alias: auto_heat_on_liv
+  initial_state: 'true'
+  trigger:
+    - platform: time_pattern
+      minutes: '/5'
+      seconds: 14
+  condition:
+    - condition: state
+      entity_id: input_boolean.heating
+      state: 'on'
+    - condition: template
+      value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_liv.state }}'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.easyplus
+    - delay:
+        seconds: 20
+    - service: homeassistant.turn_on
+      entity_id: switch.ketel
+    - service: shell_command.tmp_living_auto
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.living
+        temperature: 19
+    - service: climate.set_operation_mode
+      data:
+        entity_id: climate.living
+        operation_mode: "heat"
+    - service: notify.dageraad
+      data:
+        message: "Room Living will heat for {{states.sensor.auto_heat_duration_liv.state}} at {{states.sensor.auto_heat_time_liv.state}}"
+
+
+###Living
+- id: auto_heat_off_liv
+  alias: auto_heat_off_liv
+  initial_state: 'true'
+  trigger:
+  - platform: time_pattern
+    minutes: '/1'
+    seconds: 14
+  condition:
+  - condition: state
+    entity_id: input_boolean.heating
+    state: 'on'
+  - condition: template
+    value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration_liv") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_liv.state }}'
+  action:
+  - service: shell_command.tmp_living_off
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living
+      temperature: 5
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.living
+      operation_mode: "off"
+  - service: notify.telegram_dageraad
+    data:
+      message: "Verwarming Living is uitgeschakeld!"
+
+
+
+##SLP1_a
+- id: auto_heat_on enabled_slp1
+  alias: auto_heat_on enabled_slp1
+  trigger:
+    platform: state
+    entity_id: input_number.auto_heat_hour_slp1, input_number.auto_heat_min_slp1, input_number.auto_heat_duration_slp1
+  action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_on_slp1
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_off_slp1
+
+##SLP1_b
+- id: auto_heat_on_slp1
+  alias: auto_heat_on_slp1
+  initial_state: 'true'
+  trigger:
+    - platform: time_pattern
+      minutes: '/5'
+      seconds: 14
+  condition:
+    - condition: state
+      entity_id: input_boolean.heating
+      state: 'on'
+    - condition: template
+      value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp1.state }}'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.easyplus
+    - delay:
+        seconds: 20
+    - service: homeassistant.turn_on
+      entity_id: switch.ketel
+    - service: shell_command.tmp_slp1_auto
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.floradix
+        temperature: 19
+    - service: climate.set_operation_mode
+      data:
+        entity_id: climate.floradix
+        operation_mode: "heat"
+    - service: notify.dageraad
+      data:
+        message: "Room S&R will heat for {{states.sensor.auto_heat_duration_slp1.state}} at {{states.sensor.auto_heat_time_slp1.state}}"
+
+###SLP1_c
+- id: auto_heat_off_slp1
+  alias: auto_heat_off_slp1
+  initial_state: 'true'
+  trigger:
+  - platform: time_pattern
+    minutes: '/1'
+    seconds: 14
+  condition:
+  - condition: state
+    entity_id: input_boolean.heating
+    state: 'on'
+  - condition: template
+    value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration_slp1") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp1.state }}'
+  action:
+  - service: shell_command.tmp_slp1_off
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.floradix
+      temperature: 5
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.floradix
+      operation_mode: "off"
+  - service: notify.dageraad
+    data:
+      message: "Verwarming S&R is uitgeschakeld!"
+
+##SLP2_a
+- id: auto_heat_on enabled_slp2
+  alias: auto_heat_on enabled_slp2
+  trigger:
+    platform: state
+    entity_id: input_number.auto_heat_hour_slp2, input_number.auto_heat_min_slp2, input_number.auto_heat_duration_slp2
+  action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_on_slp2
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_off_slp2
+
+##SLP2_b
+- id: auto_heat_on_slp2
+  alias: auto_heat_on_slp2
+  initial_state: 'true'
+  trigger:
+    - platform: time_pattern
+      minutes: '/5'
+      seconds: 14
+  condition:
+    - condition: state
+      entity_id: input_boolean.heating
+      state: 'on'
+    - condition: template
+      value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp2.state }}'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.easyplus
+    - delay:
+        seconds: 20
+    - service: homeassistant.turn_on
+      entity_id: switch.ketel
+    - service: shell_command.tmp_slp2_auto
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.sara
+        temperature: 19
+    - service: climate.set_operation_mode
+      data:
+        entity_id: climate.sara
+        operation_mode: "heat"
+    - service: notify.dageraad
+      data:
+        message: "Room Sara will heat for {{states.sensor.auto_heat_duration_slp2.state}} at {{states.sensor.auto_heat_time_slp2.state}}"
+
+
+###SLP2_c
+- id: auto_heat_off_slp2
+  alias: auto_heat_off_slp2
+  initial_state: 'true'
+  trigger:
+  - platform: time_pattern
+    minutes: '/1'
+    seconds: 14
+  condition:
+  - condition: state
+    entity_id: input_boolean.heating
+    state: 'on'
+  - condition: template
+    value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration_slp2") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp2.state }}'
+  action:
+  - service: shell_command.tmp_slp2_off
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.sara
+      temperature: 5
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.sara
+      operation_mode: "off"
+  - service: notify.dageraad
+    data:
+      message: "Verwarming Sara is uitgeschakeld!"
+
+
+##SLP3_a
+- id: auto_heat_on enabled_slp3
+  alias: auto_heat_on enabled_slp3
+  trigger:
+    platform: state
+    entity_id: input_number.auto_heat_hour_slp3, input_number.auto_heat_min_slp3, input_number.auto_heat_duration_slp3
+  action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_on_slp3
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - automation.auto_heat_off_slp3
+
+
+##SLP3_b
+- id: auto_heat_on_slp3
+  alias: auto_heat_on_slp3
+  initial_state: 'true'
+  trigger:
+    - platform: time_pattern
+      minutes: '/5'
+      seconds: 14
+  condition:
+    - condition: state
+      entity_id: input_boolean.heating
+      state: 'on'
+    - condition: template
+      value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp3.state }}'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.easyplus
+    - delay:
+        seconds: 20
+    - service: homeassistant.turn_on
+      entity_id: switch.ketel
+    - service: shell_command.tmp_slp3_auto
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.yassin
+        temperature: 19
+    - service: climate.set_operation_mode
+      data:
+        entity_id: climate.yassin
+        operation_mode: "heat"
+    - service: notify.dageraad
+      data:
+        message: "Room Yassin will heat for {{states.sensor.auto_heat_duration_slp3.state}} at {{states.sensor.auto_heat_time_slp3.state}}"
+
+
+###SLP3_c
+- id: auto_heat_off_slp3
+  alias: auto_heat_off_slp3
+  initial_state: 'true'
+  trigger:
+  - platform: time_pattern
+    minutes: '/1'
+    seconds: 14
+  condition:
+  - condition: state
+    entity_id: input_boolean.heating
+    state: 'on'
+  - condition: template
+    value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration_slp3") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp3.state }}'
+  action:
+  - service: shell_command.tmp_slp3_off
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.yassin
+      temperature: 5
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.yassin
+      operation_mode: "off"
+  - service: notify.dageraad
+    data:
+      message: "Verwarming Yassin is uitgeschakeld!"
+
+
+
+##ketel
+- id: auto_heat_on_ketel
+  alias: auto_heat_on_ketel
+  initial_state: 'true'
+  trigger:
+    - platform: time_pattern
+      minutes: '/5'
+      seconds: 14
+  condition:
+    - condition: state
+      entity_id: input_boolean.heating
+      state: 'on'
+    - condition: template
+      value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_ketel.state }}'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.ketel
+  - service: notify.dageraad
+    data:
+      message: "Ketel aan!"
+

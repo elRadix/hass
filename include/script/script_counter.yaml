@@ -1,0 +1,13 @@
+  reset_error_counter:
+    alias: 'Errors reset'
+    sequence:
+      service: counter.reset
+      data:
+        entity_id: counter.error_counter
+
+  reset_warning_counter:
+    alias: 'Wanring Reset'
+    sequence:
+      service: counter.reset
+      data:
+        entity_id: counter.warning_counter

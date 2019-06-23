@@ -1,0 +1,24 @@
+#   - platform: openweathermap
+#     api_key: a52ded14c53760c1c1fcbf0fd5984713
+#     monitored_conditions:
+#       - weather
+
+  - platform: illuminance
+    name: illuminance
+    entity_id: sensor.dark_sky_icon
+
+  - platform: darksky
+    api_key: !secret darksky_api
+    name: weather
+    monitored_conditions:
+     - summary
+     - temperature
+     - icon
+     
+  - platform: season
+    type: meteorological
+
+  - platform: yr
+
+  - platform: moon
+

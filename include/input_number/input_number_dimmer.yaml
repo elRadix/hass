@@ -1,0 +1,90 @@
+
+  dimmer_eiland:
+    name: brightness
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_dinner:
+    name: brightness
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_living:
+    name: brightness
+    initial: 50
+    min: 5
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_slp1:
+    name: brightness
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_slp1_center:
+    name: Slaap spot
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_slp2:
+    name: brightness
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_slp3:
+    name: brightness
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_traphal:
+    name: brightness
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_wc:
+    name: brightness
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_bureau_spot:
+    name: brightness
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+  dimmer_bureau_tl:
+    name: brightness
+    initial: 50
+    min: 0
+    max: 255
+    step: 5
+    mode: slider
+
+

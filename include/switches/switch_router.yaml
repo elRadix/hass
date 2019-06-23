@@ -1,0 +1,96 @@
+
+#####################
+# Router switches #
+#####################
+- platform: command_line
+  scan_interval: 160
+  switches:
+   router_adblock:
+        command_on: "/opt/scripts/diversion_on.sh"
+        command_off: "/opt/scripts/diversion_off.sh"
+        command_state: "/opt/scripts/diversion_status.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: Adblock
+
+- platform: command_line
+  scan_interval: 160
+  switches:
+   router_firewall:
+        command_on: "/opt/scripts/firewall_on.sh"
+        command_off: "/opt/scripts/firewall_off.sh"
+        command_state: "/opt/scripts/firewall_status.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: Firewall
+
+- platform: command_line
+  scan_interval: 160
+  switches:
+   router_vpn_server1:
+        command_on: "/opt/scripts/vpn_server1_on.sh"
+        command_off: "/opt/scripts/vpn_server1_off.sh"
+        command_state: "/opt/scripts/vpn_server1_status.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: VPN Server 1
+
+- platform: command_line
+  scan_interval: 160
+  switches:
+   router_vpn_server2:
+        command_on: "/opt/scripts/vpn_server2_on.sh"
+        command_off: "/opt/scripts/vpn_server2_off.sh"
+        command_state: "/opt/scripts/vpn_server2_status.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: VPN Server 2
+        
+
+- platform: command_line
+  scan_interval: 160
+  switches:
+   router_vpn_client1:
+        command_on: "/opt/scripts/vpn_client1_on.sh"
+        command_off: "/opt/scripts/vpn_client1_off.sh"
+        command_state: "/opt/scripts/vpn_client1_status.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: VPN Client 1
+        
+- platform: command_line
+  scan_interval: 160
+  switches:
+   router_vpn_client2:
+        command_on: "/opt/scripts/ vpn_client2_on.sh"
+        command_off: "/opt/scripts/ vpn_client2_off.sh"
+        command_state: "/opt/scripts/vpn_client2_status.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: VPN Client 2
+
+- platform: command_line
+  scan_interval: 160
+  switches:
+   router_vpn_client3:
+        command_on: "/opt/scripts/vpn_client3_on.sh"
+        command_off: "/opt/scripts/vpn_client3_off.sh"
+        command_state: "/opt/scripts/vpn_client3_status.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: VPN Client 3
+
+- platform: command_line
+  scan_interval: 160
+  switches:
+   router_vpn_client4:
+        command_on: "/opt/scripts/vpn_client4_on.sh"
+        command_off: "/opt/scripts/vpn_client4_off.sh"
+        command_state: "/opt/scripts/vpn_client4_status.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: VPN Client 4
+
+- platform: command_line
+  scan_interval: 160
+  switches:
+   router_vpn_client5:
+        command_on: "/opt/scripts/vpn_client5_on.sh"
+        command_off: "/opt/scripts/vpn_client5_off.sh"
+        command_state: "/opt/scripts/vpn_client5_status.sh"
+        value_template: '{{ value == "enabled" }}'
+        friendly_name: VPN Client 5
+
+

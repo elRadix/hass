@@ -1,0 +1,95 @@
+
+hass_restart:
+  alias: HA Restart
+  sequence:
+    - service: shell_command.hass_restart
+
+
+nginx:
+  alias: nginx
+  sequence:
+    - service: shell_command.nginx
+
+docker:
+  alias: docker
+  sequence:
+    - service: shell_command.docker
+
+router_reboot:
+  alias: router reboot
+  sequence:
+    - service: shell_command.router_reboot
+
+php:
+  alias: php
+  sequence:
+    - service: shell_command.php
+
+hass_update:
+  alias: Hass Update
+  sequence:
+    - service: shell_command.hass_update
+
+hass_clean:
+  alias: Hass DB Removal
+  sequence:
+    - service: shell_command.hass_db
+
+dietpi_lun:
+  alias: Synology LUN to DietPi
+  sequence:
+    - service: shell_command.dietpi_lun
+
+
+alarm_arm:
+  sequence:
+    service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.dageraad
+
+alarm_disarm:
+  sequence:
+    service: alarm_control_panel.alarm_disarm
+    entity_id: alarm_control_panel.dageraad
+    data:
+      code: 9999
+
+
+
+check_sonoffs_version:
+    sequence:
+      - service: mqtt.publish
+        data_template:
+          topic: "cmnd/sonoffs/STATUS"
+          payload: "2"
+      # - service: mqtt.publish
+      #   data_template:
+      #     topic: "cmnd/ketel/status"
+      #     payload: "2"
+      # - service: mqtt.publish
+      #   data_template:
+      #     topic: "cmnd/easyplus/status"
+      #     payload: "2"
+      # - service: mqtt.publish
+      #   data_template:
+      #     topic: "cmnd/server/status"
+      #     payload: "2"
+      # - service: mqtt.publish
+      #   data_template:
+      #     topic: "cmnd/living/status"
+      #     payload: "2"
+      # - service: mqtt.publish
+      #   data_template:
+      #     topic: "cmnd/kodi/status"
+      #     payload: "2"
+      # - service: mqtt.publish
+      #   data_template:
+      #     topic: "cmnd/rfbridge/status"
+      #     payload: "2"
+
+
+#update_sonoffs:
+#    sequence:
+#      - service: mqtt.publish
+#        data_template:
+#          topic: "cmnd/sonoffs/upgrade"
+#          payload: 1

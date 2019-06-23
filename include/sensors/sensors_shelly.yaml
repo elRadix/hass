@@ -1,0 +1,75 @@
+
+  - platform: mqtt
+    name: "HT Eetkamer Temp"
+    state_topic: "shellies/shellyht-22C3C0/sensor/temperature"
+    unit_of_measurement: '°C'
+    device_class: temperature
+  - platform: mqtt
+    name: "HT Eetkamer Humidity"
+    state_topic: "shellies/shellyht-22C3C0/sensor/humidity"
+    unit_of_measurement: '%'
+    device_class: humidity
+  - platform: mqtt
+    name: "HT Eetkamer Battery"
+    state_topic: "shellies/shellyht-22C3C0/sensor/battery"
+    unit_of_measurement: '%'
+    device_class: battery
+  - platform: mqtt
+    name: "HT Eetkamer Online"
+    state_topic: "shellies/shellyht-22C3C0/online"
+  - platform: mqtt
+    name: "HT Eetkamer"
+    state_topic: "shellies/announce"
+    value_template: "{{ value_json.id }}"
+    json_attributes_topic: 'shellies/announce'
+    #   - id
+    #   - mac
+    #   - MAC
+    #   - ip
+    #   - new_fw
+    #   - fw_ver  
+
+    
+  - platform: mqtt
+    name: "HT Sara Temp"
+    state_topic: "shellies/shellyht-22C4A5/sensor/temperature"
+    unit_of_measurement: '°C'
+    device_class: temperature
+  - platform: mqtt
+    name: "HT Sara Humidity"
+    state_topic: "shellies/shellyht-22C4A5/sensor/humidity"
+    unit_of_measurement: '%'
+    device_class: humidity
+  - platform: mqtt
+    name: "HT Sara Battery"
+    state_topic: "shellies/shellyht-22C4A5/sensor/battery"
+    unit_of_measurement: '%'
+    device_class: battery
+  - platform: mqtt
+    name: "HT Sara Online"
+    state_topic: "shellies/shellyht-22C4A5/online"
+    
+  - platform: mqtt
+    name: "HT Sara"
+    state_topic: "shellies/announce"
+    value_template: "{{ value_json.id }}"
+    json_attributes_topic: 'shellies/announce'
+    #   - id
+    #   - mac
+    #   - ip
+    #   - new_fw
+    #   - fw_ver  
+
+#    json_attributes_topic: 'location/first floor/[MAC ADDRESS]'
+
+  - platform: mqtt
+    name: "Shelly Firmware"
+    state_topic: "shellies/announce"
+    value_template: "{{ value_json.new_fw }}"
+    json_attributes_topic: 'shellies/announce'
+    #   - fw_ver  
+    #   - new_fw
+    #   - id
+    #   - mac
+    #   - ip
+

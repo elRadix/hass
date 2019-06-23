@@ -1,0 +1,178 @@
+
+#   - alias: Reset trash notification
+#     trigger:
+#       platform: state
+#       entity_id: input_boolean.trash_moved
+#       to: 'on'
+#       for:
+#         hours: 12
+#     action:
+#       - service: input_boolean.turn_off
+#         entity_id: input_boolean.trash_moved
+#       - service: input_boolean.turn_on
+#         entity_id: input_boolean.trash_reminder
+
+#   - alias: Mark trash as moved from notification
+#     trigger:
+#       platform: event
+#       event_type: ios.notification_action_fired
+#       event_data:
+#         actionName: MARK_TRASH_MOVED
+#     action:
+#       - service: input_boolean.turn_on
+#         entity_id: input_boolean.trash_moved
+
+#   - alias: Trash has not been moved
+#     trigger:
+#       platform: time
+#       minutes: '/30'
+#       seconds: 00
+#     condition:
+#       condition: and
+#       conditions:
+#         - condition: state
+#           entity_id: input_boolean.trash_moved
+#           state: 'off'
+#         - condition: state
+#           entity_id: input_boolean.trash_reminder
+#           state: 'on'
+#         - condition: time
+#           after: '18:00:00'
+#           before: '23:00:00'
+#         - condition: template
+#           value_template: "{{ states('sensor.trash_tomorrow') != 'Geen' }}"
+#     action:
+#       - service: notify.dageraad
+#         data:
+#           title: "Afval"
+#           message: 'Het is vandaag - {{ now().strftime("%d-%m-%Y") }}. Witte zak: {{ states.sensor.ophaalkalender_restafval.state }} wordt opgehaald op: {{ (as_timestamp(now()) + (24*3600)) | timestamp_custom("%d-%m-%Y", True) }}!'
+#           data:
+#             push:
+#               badge: 0
+#               category: 'afval'
+
+#- id: auto_heat_on_ketel
+#  alias: auto_heat_on_ketel
+
+  - id: afval_1
+    alias: afval_waarschuwing_dag_voor_wit
+    initial_state: 'true'
+    trigger:
+      platform: time_pattern
+      hours: '20'
+      minutes: 0
+      seconds: 0
+    condition:
+      - condition: template
+        value_template: '{{ states.sensor.ophaalkalender_restafval.state.split(", ")[0] == "Tomorrow" }}'
+    action:
+    - service: notify.dageraad
+      data:
+        title: "Restafval"
+        message: "Vandaag wordt de Witte zak geleegd"
+    - service: persistent_notification.create
+      data:
+        title: "Restafval"
+        message: "Vandaag wordt de Witte zak geleegd"
+    - service: notify.dageraad
+      data:
+        title: 'Witte zak klaarmaken'
+        message: 'Photo'
+        data:
+          photo:
+            url: https://home.elradix.be/local/afval/wit.png
+            caption: Plaats witte zak nu buiten.
+
+#https://home.elradix.be/local/afval/plastic3.png
+#https://home.elradix.be/local/afval/wit.png
+#https://home.elradix.be/local/afval/roze.jpg
+#https://home.elradix.be/local/afval/blue.jpg
+#https://home.elradix.be/local/afval/papier3.png
+
+  - id: afval_2
+    alias: afval_waarschuwing_dag_voor_pmd
+    initial_state: 'true'
+    trigger:
+      platform: time_pattern
+      hours: '20'
+      minutes: 0
+      seconds: 09
+    condition:
+      - condition: template
+        value_template: '{{ states.sensor.ophaalkalender_pmd.state.split(", ")[0] == "Tomorrow" }}'
+    action:
+    - service: notify.dageraad
+      data:
+        title: "Afval Blauw"
+        message: "Vandaag wordt de 'Blauwe' zak geleegd"  
+    - service: persistent_notification.create
+      data:
+        title: "Afval Blauwe"
+        message: "Vandaag wordt de 'Blauwe' zak geleegd"
+    - service: notify.dageraad
+      data:
+        title: 'Blauwe zak klaarmaken'
+        message: 'Photo'
+        data:
+          photo:
+            url: https://home.elradix.be/local/afval/blue.jpg
+            caption: Plaats blauwe zak nu buiten.
+
+
+  - id: afval_3
+    alias: afval_waarschuwing_dag_voor_papier
+    initial_state: 'true'
+    trigger:
+      platform: time_pattern
+      hours: '20'
+      minutes: 0
+      seconds: 10
+    condition:
+      - condition: template
+        value_template: '{{ states.sensor.ophaalkalender_papier.state.split(", ")[0] == "Tomorrow" }}'
+    action:
+    - service: notify.dageraad
+      data:
+        title: "Afval Papier"
+        message: "Vandaag wordt Papier geleegd"    
+    - service: persistent_notification.create
+      data:
+        title: "Afval Papier"
+        message: "Vandaag wordt Papier geleegd"
+    - service: notify.dageraad
+      data:
+        title: 'Papier klaarmaken'
+        message: 'Photo'
+        data:
+          photo:
+            url: https://home.elradix.be/local/afval/papier3.png
+            caption: Plaats karton nu buiten.
+
+  - id: afval_4
+    alias: afval_waarschuwing_dag_voor_roze
+    initial_state: 'true'
+    trigger:
+      platform: time_pattern
+      hours: '20'
+      minutes: 0
+      seconds: 05
+    condition:
+      - condition: template
+        value_template: '{{ states.sensor.ophaalkalender_gemengde_plastics.state.split(", ")[0] == "Tomorrow" }}'
+    action:
+    - service: notify.dageraad
+      data:
+        title: "Afval Roos"
+        message: "Vandaag wordt de Roze zak geleegd"    
+    - service: persistent_notification.create
+      data:
+        title: "Afval Roze Zak"
+        message: "Vandaag wordt de 'Roze' zak geleegd"
+    - service: notify.dageraad
+      data:
+        title: 'Roze zak klaarmaken'
+        message: 'Photo'
+        data:
+          photo:
+            url: https://home.elradix.be/local/afval/roze.jpg
+            caption: Plaats Roze zak nu buiten.

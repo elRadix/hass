@@ -1,0 +1,124 @@
+# The six hex digits after “Data” are the values for the sensor. The first 4 uniquely identify the sensor and the last 2 the function invoked:
+# 0E = ON (or CLOSED), 0A = OFF (or OPEN), 06 = LOW BATT and 07 = TAMPER. More about the last two functions later.
+
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Inkomhal'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: '0DF00A'
+#   payload_off: '0DF00E'
+#   device_class: door
+#   # optimistic: false
+#   qos: 1
+  # retain: false
+
+
+
+- platform: mqtt
+  name: 'Inkomhal'
+  state_topic: 'home/inkomhal'
+  device_class: Door
+
+
+- platform: mqtt
+  name: 'Inkomhal Battery'
+  state_topic: 'home/inkomhal-battery'
+  device_class: battery
+
+- platform: mqtt
+  name: 'Inkomhal Tamper'
+  state_topic: 'home/inkomhal-tamper'
+  device_class: door
+
+- platform: mqtt
+  name: 'Terras'
+  state_topic: 'home/terras'
+  device_class: door
+
+- platform: mqtt
+  name: 'Terras Battery'
+  state_topic: 'home/terras-battery'
+  device_class: battery
+
+
+- platform: mqtt
+  name: 'Terras Tamper'
+  state_topic: 'home/terras-tamper'
+  device_class: door
+  
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Inkomhal Battery'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: '0DF006'
+#   payload_off: '0DF006off'
+#   device_class: battery
+#   # optimistic: false
+#   qos: 1
+#   # retain: false
+
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Inkomhal Tamper'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: '0DF007'
+#   payload_off: '0DF007off'
+#   device_class: battery
+#   # optimistic: false
+#   qos: 1
+#   # retain: false
+  
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Terras'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: '12800A'
+#   payload_off: '12800E'
+#   device_class: door
+#   # optimistic: false
+#   qos: 1
+#   # retain: false
+
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Terras Battery'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: '128006'
+#   payload_off: '128006off'
+#   device_class: battery
+#   # optimistic: false
+#   qos: 1
+#   # retain: false
+
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Terras Tamper'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: '128007'
+#   payload_off: '128007off'
+#   device_class: battery
+#   # optimistic: false
+#   qos: 1
+#   # retain: false
+
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Water Keuken'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: '2C8B11'
+#   payload_off: '2C8B11off'
+#   device_class: moisture
+#   # optimistic: false
+#   qos: 1
+#   # retain: false
+
+# - platform: mqtt
+#   state_topic: "rfbridge/tele/RESULT"
+#   name: 'Water Badkamer'
+#   value_template: '{{value_json.RfReceived.Data}}'
+#   payload_on: '628A11'
+#   payload_off: '628A11off'
+#   device_class: moisture
+#   # optimistic: false
+#   qos: 1
+#   # retain: false

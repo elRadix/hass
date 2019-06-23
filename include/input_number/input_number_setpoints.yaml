@@ -1,0 +1,52 @@
+  setpoint:
+    name: 'Doel setpoint'
+    min: 5
+    max: 23
+    step: 1
+    initial: 10
+    mode: slider
+    unit_of_measurement: "°C"
+
+  setpoint_slp1:
+    name: 'Doel setpoint'
+    min: 5
+    max: 24
+    step: 1
+    initial: 10
+    mode: slider
+    unit_of_measurement: "°C"
+
+  setpoint_slp2:
+    name: 'Doel setpoint'
+    min: 5
+    max: 22
+    step: 1
+    initial: 10
+    mode: slider
+    unit_of_measurement: "°C"
+
+  setpoint_slp3:
+    name: 'Doel setpoint'
+    min: 5
+    max: 22
+    step: 1
+    initial: 10
+    mode: slider
+    unit_of_measurement: "°C"
+
+  setpoint_bad:
+    name: 'Doel setpoint'
+    min: 5
+    max: 19
+    step: 1
+    initial: 10
+    mode: slider
+    unit_of_measurement: "°C"
+
+  setpoint_eetkamer:
+    name: 'Doel Setpoint'
+    initial: 10
+    min: 5
+    max: 23
+    step: 1
+    mode: slider

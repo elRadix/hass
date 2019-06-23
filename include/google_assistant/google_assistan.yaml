@@ -1,0 +1,16 @@
+project_id: !secret GAproject_id
+# client_id: !secret GAclient_id
+# access_token: !secret GAaccess_token
+api_key: !secret GAHomeGraph_key
+expose_by_default: false
+entity_config:
+
+  input_boolean.movies:
+    name: "Movies"
+    room: 'Living Room'
+    expose: true
+
+  input_boolean.normal:
+    name: "Normal"
+    room: 'Living Room'
+    expose: true

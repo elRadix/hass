@@ -1,0 +1,77 @@
+
+  inkomhal_battery:
+    name: Inkomhal
+    has_date: true
+    has_time: false
+    initial: '2018-11-29'
+    
+
+  terras_battery:
+    name: Terras
+    has_date: true
+    has_time: false
+    initial: '2018-11-29'
+
+
+  water_keuken_battery:
+    name: Keuken
+    has_date: true
+    has_time: false
+    initial: '2018-11-29'
+    
+
+  water_badkamer_battery:
+    name: Badkamer
+    has_date: true
+    has_time: false
+    initial: '2018-11-30'
+
+
+  shelly_eetkamer_battery:
+    name: Eetkamer
+    has_date: true
+    has_time: false
+    initial: '2019-05-03'
+
+  shelly_sara_battery:
+    name: Sara
+    has_date: true
+    has_time: false
+    initial: '2019-05-03'
+
+  rf_909601_battery:
+    name: 909601
+    has_date: true
+    has_time: false
+    initial: '2019-02-20'
+
+  rf_1c60b1_battery:
+    name: 1c60b1
+    has_date: true
+    has_time: false
+    initial: '2019-02-20'
+
+  rf_793401_battery:
+    name: 793491
+    has_date: true
+    has_time: false
+    initial: '2019-02-20'
+
+  rf_4ffd01_battery:
+    name: 4ffd01
+    has_date: true
+    has_time: false
+    initial: '2019-02-20'
+
+  rf_45a081_battery:
+    name: 45a081
+    has_date: true
+    has_time: false
+    initial: '2019-02-20'
+
+
+  rf_sonoff_remote_battery:
+    name: Sonoff Remote
+    has_date: true
+    has_time: false
+    initial: '2019-02-05'

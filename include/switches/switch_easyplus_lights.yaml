@@ -1,0 +1,336 @@
+#####################
+# Easyplus Lights #
+#####################
+
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_berging_center:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 0,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 0,0'"
+        command_state: "/opt/scripts/status/state.sh -D 0"
+        friendly_name: Lamp
+
+- platform: command_line 
+  scan_interval: 90
+  switches:
+   light_eetkamer_double_spot:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 2,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 2,0'"
+        command_state: "/opt/scripts/status/state.sh -A 2"
+        friendly_name: Double spot
+
+
+- platform: command_line 
+  scan_interval: 90
+  switches:
+   light_eetkamer_center:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 3,250'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 3,0'"
+        command_state: "/opt/scripts/status/state.sh -A 3"
+        friendly_name: Center spot
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_living_double_spot:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 8,200'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 8,0'"
+        command_state: "/opt/scripts/status/state.sh -A 8"
+        friendly_name: Double spot 
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_living_triple_spot:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 12,200'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 12,0'"
+        command_state: "/opt/scripts/status/state.sh -A 12"
+        friendly_name: Triple spot
+
+- platform: command_line 
+  scan_interval: 90
+  switches:
+   light_living_center:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 10,200'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 10,0'"
+        command_state: "/opt/scripts/status/state.sh -A 10"
+        friendly_name: Center 
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_keuken_spot_links:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 0,255'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 0,0'"
+        command_state: "/opt/scripts/status/state.sh -A 0"
+        friendly_name: Spot left 
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_keuken_spot_rechts:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 1,255'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 1,0'"
+        command_state: "/opt/scripts/status/state.sh -A 1"
+        friendly_name: Spot right 
+
+- platform: command_line 
+  scan_interval: 90
+  switches:
+   light_keuken_spot_front:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 7,255'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 7,0'"
+        command_state: "/opt/scripts/status/state.sh -A 7"
+        friendly_name: Spot wasbak
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_bureau_spots:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 13,80'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 13,0'"
+        command_state: "/opt/scripts/status/state.sh -A 13"
+        friendly_name: Spots
+
+- platform: command_line 
+  scan_interval: 90
+  switches:
+   light_bureau_tl:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 76,50'" 
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 76,0'"
+        command_state: "/opt/scripts/status/state.sh -D 76"
+        friendly_name: Muur TL
+
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp1_deur:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 17,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 17,0'"
+        command_state: "/opt/scripts/status/state.sh -A 17"
+        friendly_name: Deur
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp1_deur_morning:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 17,100'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 17,0'"
+        command_state: "/opt/scripts/status/state.sh -A 17"
+        friendly_name: Deur_morgend
+
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp1_center:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 13,50'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 13,0'"
+        command_state: "/opt/scripts/status/state.sh -D 13"
+        friendly_name: Center
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp1_double:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 16,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 16,0'"
+        command_state: "/opt/scripts/status/state.sh -A 16"
+        friendly_name: Double
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp1_soumaya:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 18,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 18,0'"
+        command_state: "/opt/scripts/status/state.sh -A 18"
+        friendly_name: Light Soumaya
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp1_rachid:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 19,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 19,0'"
+        command_state: "/opt/scripts/status/state.sh -A 19"
+        friendly_name: Light Rachid
+
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp2_deur:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 20,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 20,0'"
+        command_state: "/opt/scripts/status/state.sh -A 20"
+        friendly_name: Deur
+        
+
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp2_kast:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 21,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 21,0'"
+        command_state: "/opt/scripts/status/state.sh -A 21"
+        friendly_name: Kast
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp3_deur:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 22,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 22,0'"
+        command_state: "/opt/scripts/status/state.sh -A 22"
+        friendly_name: Deur
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp3_kast:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 4,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 4,0'"
+        command_state: "/opt/scripts/status/state.sh -D 4"
+        friendly_name: Kast
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_slp3_muur:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 5,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 5,0'"
+        command_state: "/opt/scripts/status/state.sh -D 5"
+        friendly_name: Muur
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_badkamer_spiegel:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 32,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 32,0'"
+        command_state: "/opt/scripts/status/state.sh -D 32"
+        friendly_name: Spiegel
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_badkamer_wc:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 23,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 23,0'"
+        command_state: "/opt/scripts/status/state.sh -A 23"
+        friendly_name: Spot 
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_badkamer_douche:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 6,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 6,0'"
+        command_state: "/opt/scripts/status/state.sh -D 6"
+        friendly_name: Douche
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_badkamer_lavabo:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 7,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 7,0'"
+        command_state: "/opt/scripts/status/state.sh -D 7"
+        friendly_name: Lavabo
+
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_trap_voor:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 14,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 14,0'"
+        command_state: "/opt/scripts/status/state.sh -A 14"
+        friendly_name: Slaapkamer
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_trap_achter:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 15,30'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 15,0'"
+        command_state: "/opt/scripts/status/state.sh -A 15"
+        friendly_name: Badkamer
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_vestiare:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 2,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 2,0'"
+        command_state: "/opt/scripts/status/state.sh -D 2"
+        friendly_name: Vestiaire
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_inkom:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 5,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 5,0'"
+        command_state: "/opt/scripts/status/state.sh -A 5"
+        friendly_name: Inkom
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_wc:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 4,150'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 4,0'"
+        command_state: "/opt/scripts/status/state.sh -A 4"
+        friendly_name: WC
+
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_trap_1:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 12,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 12,0'"
+        command_state: "/opt/scripts/status/state.sh -D 12"
+        friendly_name: Trap 1
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_trap_2:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 11,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 11,0'"
+        command_state: "/opt/scripts/status/state.sh -D 11"
+        friendly_name: Trap 2
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_trap_3:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 10,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 10,0'"
+        command_state: "/opt/scripts/status/state.sh -D 10"
+        friendly_name: Trap 3
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_trap_4:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 9,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 9,0'"
+        command_state: "/opt/scripts/status/state.sh -D 9"
+        friendly_name: Trap 4
+
+- platform: command_line
+  scan_interval: 90
+  switches:
+   light_trap_5:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 8,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 8,0'"
+        command_state: "/opt/scripts/status/state.sh -D 8"
+        friendly_name: Trap 5

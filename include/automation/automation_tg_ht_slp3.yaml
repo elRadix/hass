@@ -1,0 +1,223 @@
+##### TELEGRAM YASSIN ###
+#  alias: tg_heating_sara_2u_stop
+## 1 ##
+- id: tg_heating_yassin_1
+  initial_state: 'true'
+  alias: tg_heating_yassin_start
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Yassin_V'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: 'Ketel wordt automatisch opgestart!!
+
+
+                 Current Temperature
+
+                 ---------------------
+
+                 Yassin: {{states.climate.yassin.attributes.current_temperature}}°C'
+      keyboard:
+        - '/1u_Yassin, /Stop_Yassin'
+        - '/Verwarming, /home'
+
+## 2 ##
+- id: tg_heating_yassin_2
+  initial_state: 'true'
+  alias: tg_heating_yassin_1u_start
+  trigger:
+  - platform: state
+    entity_id: input_boolean.1u_yassin
+    from: 'off'
+    to: 'on'
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/1u_Yassin'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Even geduld aub...EasyPlus opstarten'
+  - service: homeassistant.turn_on
+    entity_id: switch.easyplus
+  - delay:
+      seconds: 17
+  - service: homeassistant.turn_on
+    entity_id: switch.ketel
+  - service: shell_command.tmp_slp3_auto
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.1u_yassin
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.ketel_1h
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.yassin
+      operation_mode: "heat"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.yassin
+      temperature: 19
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+                 Yassin voor 1 uur opwarmen.
+
+                 Yassin: {{states.climate.yassin.attributes.current_temperature}}°C'
+      keyboard:
+        - '/Yassin, /Verwarming'
+        - '/home'
+
+## 3 ##
+- id: tg_heating_yassin_3
+  alias: tg_heating_yassin_1u_stop
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: input_boolean.1u_yassin
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 60
+      seconds: 0
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.heating_yassin
+  - service: shell_command.tmp_slp3_off
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.ketel_1h
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.1u_yassin
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.yassin
+      operation_mode: "off"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.yassin
+      temperature: 5
+  - service: notify.dageraad
+    data:
+      message: "Yassin verwarming is uitgeschakeld na 1 uur."
+
+## 4 ##
+- id: tg_heating_yassin_4
+  alias: tg_heating_yassin_2u_start
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: input_boolean.2u_yassin
+    from: 'off'
+    to: 'on'
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/2u_Yassin'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+        Even geduld aub...EasyPlus opstarten'
+  - service: homeassistant.turn_on
+    entity_id: switch.easyplus
+  - delay:
+      seconds: 17
+  - service: homeassistant.turn_on
+    entity_id: switch.ketel
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.2u_yassin
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.ketel_2h
+  - service: shell_command.tmp_slp3_auto
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.yassin
+      operation_mode: "heat"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.yassin
+      temperature: 19
+      operation_mode: "heat"
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: '
+                 Yassin voor 2 uur verwarmen.
+
+                 Yassin: {{states.climate.yassin.attributes.current_temperature}}°C'
+      keyboard:
+        - '/Verwarming, /home'
+
+# 5 ##
+- id: tg_heating_yassin_5
+  alias: tg_heating_yassin_2u_stop
+  initial_state: 'true'
+  trigger:
+    platform: state
+    entity_id: input_boolean.2u_yassin
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 120
+      seconds: 0
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.heating_yassin
+  - service: shell_command.tmp_slp3_off
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.2u_yassin
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.ketel_2h
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.yassin
+      operation_mode: "off"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.yassin
+      temperature: 5
+  - service: notify.dageraad
+    data:
+      message: "Yassin verwarming is uitgeschakeld na 2 uur"
+
+## 6 ##
+- id: tg_heating_yassin_6
+  alias: tg_heating_yassin_stop_all
+  initial_state: 'true'
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Stop_Yassin'
+  action:
+  - service: shell_command.tmp_slp3_off
+  - service: homeassistant.turn_off
+    entity_id: switch.heating_yassin
+  - service: climate.set_operation_mode
+    data:
+      entity_id: climate.yassin
+      operation_mode: "off"
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.yassin
+      temperature: 5
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.1u_yassin
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.2u_yassin
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.ketel_1h
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.ketel_2h
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: "Yassin verwarming is uitgeschakeld"
+##### TELEGRAM YASSIN ###

@@ -1,0 +1,62 @@
+
+- id: hass_1
+  initial_state: 'true'
+  alias: System Startup Notification
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+  - service: notify.telegram_rachid
+    data:
+      message: 'Home Assistant back online!'
+  # - service: notify.html5
+  #   data:
+  #     message: 'Home Assistant back online!'
+  - service: notify.android
+    data:
+      message: Home Assistant back online! - {{now().strftime("%H:%M:%S")}}
+
+- id: hass_2
+  initial_state: 'true'
+  alias: System Shutdown Notification
+  trigger:
+  - platform: homeassistant
+    event: shutdown
+  action:
+  - service: notify.telegram_rachid
+    data:
+      message: 'Home Assistant is going down!'
+  # - service: notify.html5
+  #   data:
+  #     message: 'Home Assistant is going down!'
+  - service: notify.android
+    data:
+      message: Home Assistant is going down! - {{now().strftime("%H:%M:%S")}}
+
+
+
+
+###########HTML5 Notification sensor.ha_version
+- id: hass_3
+  initial_state: 'true'
+  alias: Update is available
+  trigger:
+  - platform: state
+    entity_id: updater.updater
+  action:
+  - service: notify.dageraad
+    data_template:
+      message: HASS {{states.updater.updater.state}} is now available.
+
+- id: hass_4
+  initial_state: 'true'
+  alias: Update is available version
+  trigger:
+  - platform: state
+    entity_id: sensor.ha_version
+  action:
+  - service: notify.dageraad
+    data_template:
+      message: Home Assistant {{states.sensor.ha_version.state}} is now available.
+      
+

@@ -1,0 +1,55 @@
+####### INPUT SELECT  #######
+#############################
+
+
+#input_select:
+
+  hass_template:
+    name: "Choose template"
+    options:
+     - default
+     - Dark-N-Smoke
+     - Dark-N-Clear
+     - dark_arraudi
+    # - Night_Theme
+    # - lovelace
+    # - midnight
+    # - night
+    # - darkcyan
+    # - darkblue
+    # - darkorange
+    # - darkred
+    initial: default
+    icon: mdi:theme-light-dark
+
+  was:
+    name: "Was programma"
+    options:
+     - Wit-Kort
+     - Wit-Lang
+     - Kleur-Kort
+     - Kleur-Lang
+     
+  droog:
+    name: "Droog programma"
+    options:
+     - Normaal
+     - Sport
+     - Andere
+
+  log_level:
+    name: Log Level
+    options:
+      - critical
+      - fatal
+      - error
+      - warning
+      - warn
+      - info
+      - debug
+      - notset
+    initial: warn
+
+
+
+

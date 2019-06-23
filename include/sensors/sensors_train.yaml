@@ -1,0 +1,20 @@
+  - platform: nmbs
+    name: "Train Home"
+    station_from: "Brussel-Centraal"
+    station_to: "Mechelen"
+    station_live: "Brussel-Centraal"
+    show_on_map: true
+
+  - platform: nmbs
+    name: "Train Home Noord"
+    station_from: "Brussel-Noord"
+    station_to: "Mechelen"
+    station_live: "Brussel-Noord"
+    show_on_map: true
+
+  - platform: nmbs
+    name: "Train Work"
+    station_from: "Mechelen"
+    station_to: "Brussel-Centraal"
+    station_live: "Mechelen"
+    show_on_map: true

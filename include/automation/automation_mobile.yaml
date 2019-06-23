@@ -1,0 +1,47 @@
+# - id: 'Back Camera Save'
+#   alias: Back Camera Save2
+#   trigger:
+#   - platform: mqtt
+#     topic: homeassistant/camera/android_elradix_s7a_backcamera
+#   action:
+#   - data:
+#       entity_id: camera.elradix_s7a_back_camera
+#       filename: "/home/homeassistant/.homeassistant/www/back.jpg"
+#     service: camera.snapshot
+#   - delay: 00:00:05
+#   - service: notify.telegram_rachid
+#     data:
+#       title: 'Android Photo'
+#       message: 'Back Camera'
+#       data:
+#         document:
+#           file: "/home/homeassistant/.homeassistant/www/back.jpg"
+#           caption: "back Camera"
+
+# - id: 'Back Camera S7'
+#   alias: Back Camera S7
+#   trigger:
+#   - platform: mqtt
+#     topic: homeassistant/camera/android_elradix_s7a_backcamera
+
+
+
+#- id: 'Back Camera S7'
+#  alias: Back Camera S7
+#  trigger:
+#  - platform: mqtt
+#    topic: homeassistant/camera/android_elradix_s7a_backcamera
+#  action:
+#  - data:
+#      entity_id: camera.elradix_s7a_back_camera
+#      filename: "/home/homeassistant/.homeassistant/www/back.jpg"
+#    service: camera.snapshot
+#  - delay: 00:00:05
+##  - service: notify.dageraard
+#    data:
+#      title: 'Android Photo'
+#      message: 'Back Camera'
+#      data:
+#        photo:
+#          - file: /tmp/shot2.jpg
+#            caption: '{{now().strftime("%Y.%m.%d-%H:%M:%S")}}'

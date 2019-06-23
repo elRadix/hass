@@ -1,0 +1,105 @@
+
+###############
+### DIMMERS ###
+###############
+
+- id: dimmer_eiland
+  initial_state: 'true'
+  alias: dimmer_eiland
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_eiland
+  action:
+  - service: script.keuken
+
+- id: dimmer_eetkamer
+  initial_state: 'true'
+  alias: dimmer_eetkamer
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_dinner
+  action:
+  - service: script.dinner
+
+- id: dimmer_living
+  initial_state: 'true'
+  alias: dimmer_living
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_living
+  action:
+  - service: script.living
+
+- id: dimmer_slp1
+  initial_state: 'true'
+  alias: dimmer_slp1
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_slp1
+  action:
+  - service: script.slp1
+
+- id: dimmer_slp1_center
+  initial_state: 'true'
+  alias: dimmer_slp1_center
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_slp1_center
+  action:
+  - service: script.slp1_center
+
+- id: dimmer_slp2
+  initial_state: 'true'
+  alias: dimmer_slp2
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_slp2
+  action:
+  - service: script.slp2
+
+- id: dimmer_slp3
+  initial_state: 'true'
+  alias: dimmer_slp3
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_slp3
+  action:
+  - service: script.slp3
+
+- id: dimmer_traphal
+  initial_state: 'true'
+  alias: dimmer_traphal
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_traphal
+  action:
+  - service: script.traphal
+
+- id: dimmer_wc
+  initial_state: 'true'
+  alias: dimmer_wc
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_wc
+  action:
+  - service: script.wc
+
+- id: dimmer_bureau_spot
+  initial_state: 'true'
+  alias: dimmer_bureau_spot
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_bureau_spot
+  action:
+  - service: script.bureau_spot
+
+- id: dimmer_bureau_tl
+  initial_state: 'true'
+  alias: dimmer_bureau_tl
+  trigger:
+  - platform: state
+    entity_id: input_number.dimmer_bureau_tl
+  action:
+  - service: script.bureau_tl
+
+

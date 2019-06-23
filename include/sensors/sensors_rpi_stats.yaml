@@ -1,0 +1,61 @@
+  - platform: rpi_power
+
+  - platform: cpuspeed
+  
+  - platform: uptime
+
+  - platform: systemmonitor
+    resources:
+     - type: disk_free
+       arg: /home
+     - type: disk_free
+       arg: /mnt/usb_2
+     - type: disk_use_percent
+       arg: /mnt/usb_2
+     - type: memory_free
+     - type: memory_use
+     - type: swap_use
+     - type: processor_use
+     - type: process
+     - type: load_1m
+     - type: load_5m
+     - type: load_15m
+     - type: last_boot
+     - type: process
+       arg: php-fpm7.0  
+     - type: process
+       arg: nginx
+     - type: process
+       arg: cron
+     - type: process
+       arg: dockerd
+     - type: network_in
+       arg: eth0
+     - type: network_out
+       arg: eth0
+
+  - platform: command_line
+    name: "CPU Temp"
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ (value | multiply(0.001)) | round(1) }}'
+
+  - platform: command_line
+    name: "HASS Uptime"
+    command: ps -o etimes= -p $(pidof /srv/homeassistant/bin/python3 /srv/homeassistant/bin/hass -c /home/homeassistant/.homeassistant)
+    scan_interval: 600
+    value_template: >-
+      {% set uptime = value | int %}
+      {% set seconds = uptime % 60 %}
+      {% set minutes = ((uptime % 3600) / 60) | int %}
+      {% set hours = ((uptime % 86400) / 3600) | int %}
+      {% set days = (uptime / 86400) | int %}
+      {%- if days > 0 -%}
+        {%- if days == 1 -%}
+          1 day
+        {%- else -%}
+          {{ days }} days
+        {%- endif -%}
+        {{ ', ' }}
+      {%- endif -%}
+      {{ '%02d' % hours }}:{{ '%02d' % minutes }}

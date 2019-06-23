@@ -1,0 +1,31 @@
+  switch:
+    name: Notificaties
+    initial: off
+    icon: mdi:briefcase
+
+  work:
+    name: Time at work
+    initial: off
+    icon: mdi:briefcase
+
+  school:
+    name: School Programma
+    initial: on
+    icon: mdi:school
+
+
+  easyplus_summer:
+    name: Summer 
+    initial: on
+    icon: mdi:power
+
+  day:
+    name: day
+    initial: off
+    icon: mdi:power
+
+  reset_rf:
+    name: RF Reset
+    initial: off
+    icon: mdi:video-input-antenna
+

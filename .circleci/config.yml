@@ -22,3 +22,11 @@ jobs:
             pip3 install homeassistant
             hass -c . --script check_config
             hass --version
+
+
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - build
+

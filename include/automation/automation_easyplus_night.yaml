@@ -1,0 +1,93 @@
+- id: easyplus_6
+  initial_state: 'true'
+  alias: Auto Easyplus off Notification  Night
+  trigger:
+    platform: time
+    at: '00:25:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.night
+        state: 'on'  
+      - condition: state
+        entity_id: group.easyplus_lights
+        state: 'on'
+      - condition: state
+        entity_id: switch.easyplus
+        state: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: "Auto Shutdown starting in 5min."
+
+- id: easyplus_6a
+  initial_state: 'true'
+  alias: Auto Easyplus Shutdown Lights
+  trigger:
+    platform: time
+    at: '00:30:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.night
+        state: 'on'    
+      - condition: state
+        entity_id: group.easyplus_lights
+        state: 'on'
+      - condition: state
+        entity_id: switch.easyplus
+        state: 'on'
+  action:
+  - service: script.lights
+  - service: notify.dageraad
+    data:
+      message: "Night Modus, Lights Off"
+
+- id: easyplus_6b
+  initial_state: 'true'
+  alias: Auto Easyplus Shutdown Switches
+  trigger:
+    platform: time
+    at: '00:30:30'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.night
+        state: 'on'    
+      - condition: state
+        entity_id: group.easyplus_switches
+        state: 'on'
+      - condition: state
+        entity_id: switch.easyplus
+        state: 'on'
+  action:
+  - service: script.switches
+  - service: notify.dageraad
+    data:
+      message: "Night Modus, Switches Off"
+
+- id: easyplus_6c
+  initial_state: 'true'
+  alias: Auto Easyplus Shutdown 
+  trigger:
+    platform: time
+    at: '00:30:55'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.night
+        state: 'on'    
+      - condition: state
+        entity_id: switch.easyplus
+        state: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.easyplus
+  - service: notify.dageraad
+    data:
+      message: "Night Modus, Easyplus Off"
+###############################################################

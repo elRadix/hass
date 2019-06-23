@@ -48,7 +48,7 @@ before_script:
   - apt-get install -y python3-pip
   - /usr/bin/pip3 install homeassistant   #==${HA_VERSION}
 
-build:check_hass_config:
+build:test_hass:
   stage: build
   script:
     - mv secrets_redacted.yaml secrets.yaml

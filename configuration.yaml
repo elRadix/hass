@@ -12,8 +12,6 @@ homeassistant:
   customize_glob: !include customize_glob.yaml
   customize: !include customize.yaml
 
-
-
   name: Home
 
   latitude: !secret latitude

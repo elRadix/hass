@@ -1,0 +1,57 @@
+#test:
+#  stage: test
+#  image: homeassistant/raspberrypi3-homeassistant:latest
+#  before_script:
+#    - mkdir -p /opt/scripts/
+#    - mkdir -p /opt/scripts/status/
+#    - touch /opt/scripts/status/data.log
+#    - touch /opt/scripts/cert.log
+#    - touch /opt/scripts/cert_eu.log
+#    - echo "10" > /opt/scripts/cert.log
+#    - echo "10" > /opt/scripts/cert_eu.log
+#  script: |
+#    mv secrets_redacted.yaml secrets.yaml
+#    hass --script check_config -c .
+#    hass --version
+
+# Custom HA Version testing
+#
+#variables:
+#  HA_VERSION: 0.94.1
+#
+# - /usr/bin/pip3 install homeassistant==${HA_VERSION}
+
+stages:
+#  - test
+  - build
+
+
+
+#yamllint:
+#  stage: test
+#  image: sdesbure/yamllint
+#  before_script:
+#    - yamllint --version
+#  script:
+#    - yamllint .
+
+
+
+before_script:
+  - mkdir fake_directory/
+  - touch fake_directory/data.log
+  - touch fake_directory/cert.log
+  - touch fake_directory/cert_eu.log
+  - echo "10" > fake_directory/cert.log
+  - echo "10" > fake_directory/cert_eu.log
+  - apt-get update -qy
+  - apt-get install -y python3-pip
+  - /usr/bin/pip3 install homeassistant   #==${HA_VERSION}
+
+build:check_hass_config:
+  stage: build
+  script:
+    - mv secrets_redacted.yaml secrets.yaml
+    - hass -c . --script check_config
+    - hass --version
+    - echo $?

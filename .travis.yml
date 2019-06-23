@@ -1,0 +1,23 @@
+dist: xenial
+language: python
+python:
+  - "3.7.3"
+  - "3.6.4"
+before_install:
+  - mkdir -p /opt/scripts/
+  - mkdir -p /opt/scripts/status/
+  - touch /opt/scripts/status/data.log
+  - touch /opt/scripts/cert.log
+  - echo "10" > /opt/scripts/cert.log
+  - touch /opt/scripts/cert_eu.log  
+  - echo "10" > /opt/scripts/cert_eu.log
+  - mv secrets_redacted.yaml secrets.yaml
+install:
+  - pip3 install homeassistant
+  - hass --version
+script:
+  - hass -c . --script check_config
+after_script:
+  - bash ./telegram_notification.sh
+notifications:
+  webhooks: https://fathomless-fjord-24024.herokuapp.com/notify?secret=elradix_hass

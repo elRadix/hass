@@ -20,7 +20,7 @@
   - service: telegram_bot.send_message
     data_template:
       title: 'Night Modus will start over 5min'
-      target: 1999381
+      target: 1999381, 13971596
       message: 'What shall we do now?'
       inline_keyboard:
         - "Shutdown:/night_now"

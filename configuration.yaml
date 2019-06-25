@@ -167,10 +167,10 @@ weather:
     mode: daily
 
 
-# life360:
-#   accounts:
-#     - username: !secret life_username
-#       password: !secret life_password
+ life360:
+   accounts:
+     - username: !secret life_username
+       password: !secret life_password
 
 
 #asuswrt:

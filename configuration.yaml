@@ -21,6 +21,10 @@ homeassistant:
   time_zone: !secret time_zone
 
   packages: !include_dir_named include/packages/
+
+
+hacs:
+  token: ebc4f2ada704abef6e311fa83bfb784b857e667a
   
 
 config: 
@@ -167,11 +171,10 @@ weather:
     mode: daily
 
 
-# life360:
-#   accounts:
-#     - username: !secret life_username
-#       password: !secret life_password
-
+life360:
+  accounts:
+    - username: !secret life_username
+      password: !secret life_password
 
 #asuswrt:
 #  host: !secret asuswrt_host

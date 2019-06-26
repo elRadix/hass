@@ -3,8 +3,8 @@
 - platform: hadockermon
   host: !secret hadockermon_host
   port: !secret hadockermon_port
-  stats: false
-  prefix: docker
+#  stats: false
+#  prefix: docker
 #  exclude:
 #    - 'ha-dockermon'
 
@@ -12,7 +12,8 @@
 - platform: hadockermon
   host: !secret hadockermon_host_nas
   port: !secret hadockermon_port_nas
-  stats: false
-  prefix: docker_nas
+#  stats: false
+#  prefix: docker_nas
 #  exclude:
 #    - 'ha-dockermon'
+

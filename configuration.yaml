@@ -55,6 +55,7 @@ http:
   login_attempts_threshold: 5
 
 shelly:
+  discovery: true
   username: elradix
   password: athlon
   additional_information: true

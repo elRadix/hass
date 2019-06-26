@@ -13,6 +13,7 @@
 #    monitored_conditions:
 #      - last_build_state
 
+  - platform: authenticated
 
   - platform: filesize
     file_paths:

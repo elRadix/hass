@@ -6,7 +6,7 @@
     entity_id:
       #- device_tracker.owntracks_rachid
       - device_tracker.google_maps_elrachid_gmail_com
-#      - device_tracker.life360_rachid
+      - device_tracker.life360_rachid
       - device_tracker.rachid_gpslogger
 #      - device_tracker.elradix_s7a
 
@@ -25,7 +25,7 @@
     entity_id:
       #- device_tracker.owntracks_soumaya
       - device_tracker.google_maps_102675862650488616596
-      # - device_tracker.life360_soumaya
+      - device_tracker.life360_soumaya
       - device_tracker.soumaya_gpslogger
 #      - device_tracker.flora_s7a
 

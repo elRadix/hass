@@ -24,7 +24,10 @@ homeassistant:
 
 
 hacs:
-  token: ebc4f2ada704abef6e311fa83bfb784b857e667a
+  token: !secret hacs_token
+#  appdeamon: true
+  python_script: true
+  theme: true
 
 config: 
 system_health:

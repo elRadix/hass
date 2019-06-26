@@ -134,34 +134,6 @@ switch: !include_dir_merge_list include/switches
 zone: !include_dir_merge_list include/zones
 #scene: !include_dir_merge_named include/scenes
 
-updater:
-  include_used_components: true
-
-custom_updater:
-  show_installable: True
-  track:
-    - cards
-    - components
-    - python_scripts
-  card_urls:    
-    - https://raw.githubusercontent.com/bramkragten/custom-ui/master/updater.json  
-    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
-    - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
-    - https://raw.githubusercontent.com/bramkragten/custom-ui/master/updater.json
-    - https://raw.githubusercontent.com/maykar/custom-lovelace/master/tracker.json
-    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
-    - https://raw.githubusercontent.com/ljmerza/waze-card/master/updater.json
-    - https://raw.githubusercontent.com/ljmerza/-card/master/custom_updater.json
-  component_urls:
-    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/custom_components.json
-    - https://raw.githubusercontent.com/awesome-developer/my-awesome-repo/master/custom_components.json
-    - https://raw.githubusercontent.com/danobot/temperature-alert/master/tracker.json
-    - https://raw.githubusercontent.com/pippyn/Home-Assistant-Sensor-Afvalbeheer/master/custom_components.json
-    - https://raw.githubusercontent.com/thibmaek/custom-components/master/vrtnws/custom_updater.json
-    - https://raw.githubusercontent.com/ReneNulschDE/ha_cc_mbwebapppy/master/custom_updater.json
-  python_script_urls:
-    - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/python_scripts.json
-    - https://raw.githubusercontent.com/bieniu/home-assistant-config/master/python_scripts/python_scripts.json
 
 
 weather:

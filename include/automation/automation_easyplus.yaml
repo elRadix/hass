@@ -324,7 +324,7 @@
   - service: homeassistant.turn_on
     entity_id: switch.easyplus    
   - delay:
-      seconds: 5    
+      seconds: 20    
   - service: homeassistant.turn_on
     entity_id: switch.stp_keuken_water         
   - service: notify.dageraad

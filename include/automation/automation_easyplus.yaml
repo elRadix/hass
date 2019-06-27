@@ -322,13 +322,17 @@
         state: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: switch.easyplus      
+    entity_id: switch.easyplus    
+  - delay:
+      seconds: 5    
+  - service: homeassistant.turn_on
+    entity_id: switch.stp_keuken_water         
   - service: notify.dageraad
     data:
       message: "Shool Modus, Easyplus On"
   - service: notify.android
     data:
-      message: "Shool Modus, Easyplus On"
+      message: "Shool Modus, Easyplus + Waterkoker On"
 
 
 - id: easyplus_12
@@ -358,7 +362,7 @@
         state: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: switch.stp_eetkamer_tv
+    entity_id: switch.stp_eetkamer_tv, 
   - service: notify.dageraad
     data:
       message: "School Modus, TV on"

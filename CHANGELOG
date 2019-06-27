@@ -1,3 +1,6 @@
 Latest for Changes for Release 1.1
-* removed customizer and replaced with the new HACS components
+* removed customizer 
+* add HACS store 
 * clean-up unused components
+* updated all cards and components with HACS
+* added SSH sensor

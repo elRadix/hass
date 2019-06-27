@@ -5,3 +5,4 @@ Latest for Changes for Release 1.1
 * updated all cards and components with HACS
 * added SSH sensor
 * updated Circle-CI to python verson 3.7.3
+* upgraded CCH cards - had breaking changes

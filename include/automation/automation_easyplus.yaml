@@ -362,7 +362,7 @@
         state: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: switch.stp_eetkamer_tv, 
+    entity_id: switch.stp_eetkamer_tv
   - service: notify.dageraad
     data:
       message: "School Modus, TV on"

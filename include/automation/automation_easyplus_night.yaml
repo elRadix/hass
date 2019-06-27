@@ -3,7 +3,7 @@
   alias: 'Night Modus Notification'
   trigger:
     platform: time
-    at: '00:25:00'
+    at: '00:15:00'
   condition:
     condition: and
     conditions:
@@ -19,7 +19,7 @@
   action:
   - service: telegram_bot.send_message
     data_template:
-      title: 'Night Modus will start over 5min'
+      title: 'Night Modus will start over 15min'
       target: 1999381
       message: 'What shall we do now?'
       inline_keyboard:
@@ -27,7 +27,7 @@
         - "Delay:/night_delay"
   - service: telegram_bot.send_message
     data_template:
-      title: 'Night Modus will start over 5min'
+      title: 'Night Modus will start over 15min'
       target: 13971596
       message: 'What shall we do now?'
       inline_keyboard:
@@ -44,17 +44,17 @@
       command: '/night_now'
   action:
   - service: script.lights
+  - delay:
+      seconds: 5  
   - service: script.switches
   - delay:
-      seconds: 10
+      seconds: 5
   - service: homeassistant.turn_off
     entity_id: switch.easyplus        
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
-      message: '
-
-      You have selected Night Modus, House shutdown'
+      message: 'You have selected Night Modus, House shutdown'
 
 - id: easyplus_night_3
   initial_state: 'true'
@@ -70,9 +70,7 @@
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
-      message: '
-
-      Night Modus has been delayed'
+      message: 'Night Modus has been delayed till 1am'
 
 - id: easyplus_night_4
   initial_state: 'true'

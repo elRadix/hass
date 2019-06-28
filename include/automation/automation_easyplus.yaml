@@ -842,7 +842,7 @@
     entity_id: automation.auto_off_day
   - service: notify.dageraad
     data:
-      message: 'Day Modus Enabled'
+      message: 'Day Modus Started'
 
 - id: easyplus_20
   initial_state: 'true'
@@ -850,16 +850,16 @@
   trigger:
   - platform: sun
     event: sunset
-    offset: "-00:40:00"
+    offset: "-01:00:00"
   action:
   - service: homeassistant.turn_off
     entity_id: automation.auto_off_day
   - service: notify.dageraad
     data:
-      message: "Day Modus Disabled"
-  - service: notify.android
-    data:
-      message: Day Modus Disabled - {{now().strftime("%H:%M:%S")}}
+      message: "Night Modus Started"
+  # - service: notify.android
+  #   data:
+  #     message: Night Modus Started - {{now().strftime("%H:%M:%S")}}
 
       
 
@@ -889,7 +889,6 @@
   trigger:
   - platform: state
     entity_id: group.berging_light,group.kitchen_light,group.dinner_light,group.wc_light,group.hall_light,group.bureau_light,group.living_light,group.trap_light,group.trap_boven,group.slaapkamer1_light,group.slaapkamer2_light,group.slaapkamer3_light,group.badkamer_light
-    #entity_id: group.easyplus_lights
     to: "on"
   condition:
     condition: or

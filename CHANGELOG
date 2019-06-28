@@ -1,8 +1,19 @@
 Latest for Changes for Release 1.1
-* removed customizer 
+
+
+Cards & components:
 * add HACS store 
-* clean-up unused components
 * updated all cards and components with HACS
-* added SSH sensor
+* clean-up unused components
+* added SSH components
+* removed customizer 
+* upgraded CCH cards + fix breaking changes
+
+Automations:
+* Adjust offset to 1h for Night Modus by elradix
+* Adjust Night late time notification by elradix
+* memo: Adjust Night late plus  time notification by elradix
+* Adjust Modus School to 06u15 by elradix
+
+Other:
 * updated Circle-CI to python verson 3.7.3
-* upgraded CCH cards - had breaking changes

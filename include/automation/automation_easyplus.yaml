@@ -111,7 +111,7 @@
   alias: Auto Easyplus off 1u30 - Notification
   trigger:
     platform: time
-    at: '00:55:00'
+    at: '00:45:00'
   condition:
     condition: and
     conditions:
@@ -127,7 +127,7 @@
   action:
   - service: notify.dageraad
     data:
-      message: "Auto Shutdown starting in 5min."
+      message: "Night Late Shutdown starting in 15min."
 
 - id: easyplus_9a
   initial_state: 'true'

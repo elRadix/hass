@@ -12,6 +12,16 @@
 ####### ROOMS ######
 ####################
 
+#### USED IN AUTOMATIONS HOME/AWAY #####
+  floradix:
+    name: floradix
+    view: no
+    entities:
+      - device_tracker.rachid_mqtt
+      - device_tracker.soumaya_mqtt
+#### USED IN AUTOMATIONS HOME/AWAY #####
+
+
   dageraad:
     name: My home
     view: no

@@ -340,7 +340,7 @@
   alias: Easyplus startup Soumaya
   trigger:
     platform: time
-    at: '06:30:00'
+    at: '06:15:00'
   condition:
     condition: and
     conditions:

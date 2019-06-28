@@ -205,7 +205,7 @@
   alias: Auto Easyplus off Notification Late Night
   trigger:
     platform: time
-    at: '01:25:00'
+    at: '01:15:00'
   condition:
     condition: and
     conditions:
@@ -222,7 +222,7 @@
   - service: script.lights
   - service: notify.dageraad
     data:
-      message: "Auto Shutdown starting in 5min."
+      message: "Late Night Plus Shutdown starting in 15min."
       
 - id: easyplus_10a
   initial_state: 'true'

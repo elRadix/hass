@@ -8,6 +8,7 @@
     name: "Choose template"
     options:
      - default
+     - slate
      - Dark-N-Smoke
      - Dark-N-Clear
      - dark_arraudi

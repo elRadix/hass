@@ -41,7 +41,7 @@
   action:
   - data:
       entity_id: input_select.hass_template
-      option: dark_arraudi
+      option: slate
     service: input_select.select_option
 #  - service: homeassistant.turn_off
 #    entity_id: automation.auto_off_day

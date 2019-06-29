@@ -22,14 +22,14 @@
        title: WARNING There is a power supply problem
 
 
-- id: 'cleanknowndevices'
-  alias: Clean out Known Devices
-  initial_state: 'true'
-  trigger:
-  - event: start
-    platform: homeassistant
-  action:
-  - service: shell_command.clean_knowndevices
+# - id: 'cleanknowndevices'
+#   alias: Clean out Known Devices
+#   initial_state: 'true'
+#   trigger:
+#   - event: start
+#     platform: homeassistant
+#   action:
+#   - service: shell_command.clean_knowndevices
 
 
 - id: Power Tarrif Energy

@@ -7605,11 +7605,28 @@
                                     "icon": "mdi:home",
                                     "name": "Family"
                                 },
-                                "input_boolean.switch",
-                                "input_boolean.school",
-                                "automation.easyplus_startup",
-                                "automation.easyplus_startup_monday",
-                                "automation.auto_off_day",
+                                {
+                                    "entity": "automation.turn_easyplus_off_niemand_thuis",
+                                    "icon": "mdi:home",
+                                    "name": "Away Modus"
+                                },
+                                {
+                                    "entity": "input_boolean.switch"
+                                },
+                                {
+                                    "entity": "input_boolean.school",
+                                    "name": "School modus"
+                                },
+                                {
+                                    "entity": "automation.easyplus_startup"
+                                },
+                                {
+                                    "entity": "automation.easyplus_startup_monday"
+                                },
+                                {
+                                    "entity": "automation.auto_off_day",
+                                    "name": "Daylight OFF modus"
+                                },
                                 "sensor.last_motion"
                             ],
                             "show_header_toggle": false,
@@ -8935,7 +8952,7 @@
                                                 },
                                                 {
                                                     "entity": "automation.shutdown_dsm_at_3am",
-                                                    "icon": "mdi:calendar",
+                                                    "icon": "mdi:timelapse",
                                                     "name": "Auto Poweroff",
                                                     "tap_action": {
                                                         "action": "toggle"

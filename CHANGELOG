@@ -8,6 +8,7 @@ Cards & components:
 * added SSH components
 * removed customizer 
 * upgraded CCH cards + fix breaking changes
+* renoved non working Authenticator component
 
 Automations:
 * Adjust offset to 1h for Night Modus by elradix
@@ -18,3 +19,4 @@ Automations:
 
 Other:
 * updated Circle-CI to python verson 3.7.3
+* add lovelace config to git

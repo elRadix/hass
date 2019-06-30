@@ -8935,7 +8935,7 @@
                                                 },
                                                 {
                                                     "entity": "automation.shutdown_dsm_at_3am",
-                                                    "icon": "mdi:power",
+                                                    "icon": "mdi:calendar",
                                                     "name": "Auto Poweroff",
                                                     "tap_action": {
                                                         "action": "toggle"

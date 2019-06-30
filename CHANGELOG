@@ -14,6 +14,7 @@ Automations:
 * Adjust Night late time notification by elradix
 * memo: Adjust Night late plus  time notification by elradix
 * Adjust Modus School to 06u15 by elradix
+* Add DSM Shutdown at 3am
 
 Other:
 * updated Circle-CI to python verson 3.7.3

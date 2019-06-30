@@ -40,5 +40,13 @@
   - service: homeassistant.turn_on
     entity_id: switch.dsm_lun
       
-      
-      
+
+- id: dsm4
+  alias: Shutdown DSM at 3am
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '03:00:00'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.dsm

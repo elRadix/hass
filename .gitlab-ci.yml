@@ -46,6 +46,7 @@ before_script:
   - echo "10" > fake_directory/cert_eu.log
   - apt-get update -qy
   - apt-get install -y python3-pip
+  - pip3 install colorlog
   - /usr/bin/pip3 install --pre --upgrade homeassistant   #==${HA_VERSION}
 
 build:test_hass:

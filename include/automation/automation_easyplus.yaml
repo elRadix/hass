@@ -702,9 +702,9 @@
   initial_state: 'true'
   alias: Turn Easyplus Off Niemand thuis - Lights
   trigger:
-  # - platform: time_pattern
-  #   minutes: '/5'
-  #   seconds: 1
+   - platform: time_pattern
+     minutes: '/5'
+     seconds: 1
   - platform: state
     entity_id: group.floradix
     from: 'home'

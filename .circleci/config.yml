@@ -20,7 +20,8 @@ jobs:
             source bin/activate
             pip install --upgrade pip
             pip3 install homeassistant
-            hass -c . --script check_config
+            pip3 install colorlog
+            hass -c . --script check_config #--info all
             hass --version
 
 

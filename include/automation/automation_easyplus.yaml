@@ -704,7 +704,7 @@
   trigger:
   - platform: time_pattern
     minutes: '/5'
-    #seconds: 1
+    seconds: 1
   - platform: state
     entity_id: group.floradix
     from: 'home'

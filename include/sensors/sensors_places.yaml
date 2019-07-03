@@ -1,4 +1,4 @@
-  - platform: Places
+  - platform: places
     name: Rachid
     devicetracker_id: device_tracker.comp_rachid
     home_zone: zone.home
@@ -8,7 +8,7 @@
     map_zoom: 15
     options: place 
 
-  - platform: Places
+  - platform: places
     name: Soumaya
     devicetracker_id: device_tracker.comp_soumaya
     home_zone: zone.home

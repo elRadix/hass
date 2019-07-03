@@ -6922,7 +6922,7 @@
                                 {
                                     "entity": "input_boolean.gitlab",
                                     "icon": "mdi:gitlab",
-                                    "name": "Auto Updates OFF"
+                                    "name": "GIT Pull + HA reboot"
                                 },
                                 {
                                     "entity": "sensor.gitlab_ci",

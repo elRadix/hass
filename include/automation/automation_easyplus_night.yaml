@@ -1,14 +1,27 @@
-- alias: response easyplus night now
+- alias:  easyplus_night_1_mobile_app_night now
   trigger:
   - event_data:
       action: night_now
     event_type: ariela_notification_clicked
     platform: event
   action:
+  - service: script.lights
+  - delay:
+      seconds: 5  
+  - service: script.switches
+  - delay:
+      seconds: 5
   - service: homeassistant.turn_off
-    entity_id: switch.easyplus      
+    entity_id: switch.easyplus       
+ - service: notify.mobile_app_elradix
+   data:
+     message: House is in Night Mode
+ - service: notify.mobile_app_flora
+   data:
+     message: House is in Night Mode
 
-- alias: response easyplus night delay
+
+- alias: easyplus_night_1_mobile_app_delay
   trigger:
   - event_data:
       action: night_delay
@@ -17,6 +30,13 @@
   action:
   - service: homeassistant.turn_off
     entity_id: input_boolean.night 
+ - service: notify.mobile_app_elradix
+   data:
+     message: Night Mode has been delayed
+ - service: notify.mobile_app_flora
+   data:
+     message: Night Mode has been delayed
+
 
 - id: easyplus_night_1
   initial_state: 'true'
@@ -45,7 +65,16 @@
           - action: night_now
             title: Shutdown Easyplus now
           - action: night_delay
-            title: Delay Shutdown Easyplus to 1am   
+            title: Delay Shutdown Easyplus to 1am
+  - service: notify.mobile_app_flora
+    data:
+      message: Night Modus Starting in 15min
+      data:
+        actions:
+          - action: night_now
+            title: Shutdown Easyplus now
+          - action: night_delay
+            title: Delay Shutdown Easyplus to 1am               
   - service: telegram_bot.send_message
     data_template:
       title: 'Night Modus will start over 15min'

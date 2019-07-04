@@ -1,3 +1,23 @@
+- alias: response easyplus night now
+  trigger:
+  - event_data:
+      action: night_now
+    event_type: ariela_notification_clicked
+    platform: event
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.easyplus      
+
+- alias: response easyplus night delay
+  trigger:
+  - event_data:
+      action: night_delay
+    event_type: ariela_notification_clicked
+    platform: event
+  action:
+  - service: homeassistant.turn_off
+    entity_id: input_boolean.night 
+
 - id: easyplus_night_1
   initial_state: 'true'
   alias: 'Night Modus Notification'
@@ -17,6 +37,15 @@
         entity_id: switch.easyplus
         state: 'on'
   action:
+  - service: notify.mobile_app_elradix
+    data:
+      message: Night Modus Starting in 15min
+      data:
+        actions:
+          - action: night_now
+            title: Shutdown Easyplus now
+          - action: night_delay
+            title: Delay Shutdown Easyplus to 1am   
   - service: telegram_bot.send_message
     data_template:
       title: 'Night Modus will start over 15min'

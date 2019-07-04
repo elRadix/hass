@@ -89,7 +89,12 @@
     to: 'on'
   action:
   - service: script.easyplus_on
-
+  - service: notify.mobile_app_elradix
+    data:
+      message: "Easyplus On"
+  - service: notify.dageraad
+    data:
+      message: "Easyplus On"
 
 ## De-Activate Easyplus Telnet Service
 - id: easyplus_5
@@ -101,8 +106,13 @@
     to: 'off'
   action:
   - service: script.easyplus_off
-  
-
+  - service: notify.mobile_app_elradix
+    data:
+      message: "Easyplus Off"  
+  - service: notify.dageraad
+    data:
+      message: "Easyplus Off"
+      
 
 
 ################################################

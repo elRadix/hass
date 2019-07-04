@@ -13,12 +13,12 @@
       seconds: 5
   - service: homeassistant.turn_off
     entity_id: switch.easyplus       
- - service: notify.mobile_app_elradix
-   data:
-     message: House is in Night Mode
- - service: notify.mobile_app_flora
-   data:
-     message: House is in Night Mode
+  - service: notify.mobile_app_elradix
+    data:
+      message: House is in Night Mode
+  - service: notify.mobile_app_flora
+    data:
+      message: House is in Night Mode
 
 
 - alias: easyplus_night_1_mobile_app_delay
@@ -30,12 +30,12 @@
   action:
   - service: homeassistant.turn_off
     entity_id: input_boolean.night 
- - service: notify.mobile_app_elradix
-   data:
-     message: Night Mode has been delayed
- - service: notify.mobile_app_flora
-   data:
-     message: Night Mode has been delayed
+  - service: notify.mobile_app_elradix
+    data:
+      message: Night Mode has been delayed
+  - service: notify.mobile_app_flora
+    data:
+      message: Night Mode has been delayed
 
 
 - id: easyplus_night_1

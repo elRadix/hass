@@ -261,35 +261,37 @@
     from: 'off'
     to: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: home/inkomhal
-      payload: OFF
-  - service: mqtt.publish
-    data:
-      topic: home/terras
-      payload: OFF
-  - service: mqtt.publish
-    data:
-      topic: home/water-badkamer
-      payload: OFF 
-  - service: mqtt.publish
-    data:
-      topic: home/water-keuken
-      payload: OFF
-  - service: mqtt.publish
-    data:
-      topic: home/gas
-      payload: OFF
-  - service: mqtt.publish
-    data:
-      topic: home/fire
-      payload: OFF
+  - service: script.reset_rf
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.reset_rf
   - service: notify.telegram_rachid
     data_template:
       message: '{{ trigger.to_state.name }} Activated'
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.reset_rf
+  # - service: mqtt.publish
+  #   data:
+  #     topic: home/inkomhal
+  #     payload: OFF
+  # - service: mqtt.publish
+  #   data:
+  #     topic: home/terras
+  #     payload: OFF
+  # - service: mqtt.publish
+  #   data:
+  #     topic: home/water-badkamer
+  #     payload: OFF 
+  # - service: mqtt.publish
+  #   data:
+  #     topic: home/water-keuken
+  #     payload: OFF
+  # - service: mqtt.publish
+  #   data:
+  #     topic: home/gas
+  #     payload: OFF
+  # - service: mqtt.publish
+  #   data:
+  #     topic: home/fire
+  #     payload: OFF
+
 ######## RESET RF ######## 
 
 ######## RF BUTTONS ######## 

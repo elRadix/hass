@@ -1,0 +1,35 @@
+reset_rf:
+  alias: Reset RF
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: home/inkomhal
+        payload: 'OFF'
+    - service: mqtt.publish
+      data:
+        topic: home/terras
+        payload: 'OFF'
+    - service: mqtt.publish
+      data:
+        topic: home/water-badkamer
+        payload: 'OFF'
+    - service: mqtt.publish
+      data:
+        topic: home/water-keuken
+        payload: 'OFF'
+    - service: mqtt.publish
+      data:
+        topic: home/gas
+        payload: 'OFF'
+    - service: mqtt.publish
+      data:
+        topic: home/fire
+        payload: 'OFF' 
+    - service: mqtt.publish
+      data:
+        topic: home/terras
+        payload: 'OFF'
+    - service: mqtt.publish
+      data:
+       topic: home/terras
+       payload: 'OFF'

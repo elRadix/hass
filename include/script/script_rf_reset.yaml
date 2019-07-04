@@ -25,11 +25,3 @@ reset_rf:
       data:
         topic: home/fire
         payload: 'OFF' 
-    - service: mqtt.publish
-      data:
-        topic: home/terras
-        payload: 'OFF'
-    - service: mqtt.publish
-      data:
-       topic: home/terras
-       payload: 'OFF'

@@ -7635,7 +7635,7 @@
                         {
                             "entities": [
                                 {
-                                    "name": "RF Bridge",
+                                    "name": "RF  Devices",
                                     "styles": {
                                         "card": [
                                             {
@@ -7682,6 +7682,11 @@
                                     "type": "custom:button-card"
                                 },
                                 {
+                                    "entity": "input_boolean.reset_rf",
+                                    "icon": "mdi:restart",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
                                     "entity": "binary_sensor.gas_alarm",
                                     "icon": "mdi:periodic-table-co2",
                                     "secondary_info": "last-changed"
@@ -7709,22 +7714,23 @@
                                 },
                                 {
                                     "entity": "sensor.rf_bridge",
+                                    "name": "Latest RF Code",
                                     "secondary_info": "last-changed"
                                 },
                                 {
                                     "entity": "sensor.rf_bridge_status",
+                                    "name": "Latest RF Name",
                                     "secondary_info": "last-changed"
                                 },
                                 {
                                     "entity": "sensor.rf_stream",
+                                    "name": "Live RF stream",
                                     "secondary_info": "last-changed"
                                 },
                                 {
-                                    "entity": "input_boolean.reset_rf",
-                                    "secondary_info": "last-changed"
-                                },
-                                {
-                                    "entity": "sensor.sonoff_bridge_status"
+                                    "entity": "sensor.sonoff_bridge_status",
+                                    "icon": "mdi:wifi-star",
+                                    "name": "RF Bridage Status"
                                 }
                             ],
                             "type": "entities"

@@ -1,6 +1,7 @@
 {
     "data": {
         "config": {
+            "background": "center / cover no-repeat url(\"/local/background_blue.jpg\") fixed",
             "button_body": {
                 "aspect_ratio": "1/1",
                 "color": "auto",
@@ -311,10 +312,12 @@
                 "clock_am_pm": false,
                 "date_locale": "en-gb",
                 "hide_help": true,
-                "menu": "overflow",
+                "menu": "hide",
                 "notifications": "hide",
                 "swipe": true,
-                "swipe_animate": "fade",
+                "swipe_animate": "swipe",
+                "swipe_prevent_default": true,
+                "swipe_wrap": false,
                 "voice": "hide"
             },
             "resources": [
@@ -389,6 +392,9 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/list-card/list-card.js"
+                },
+                {
+                    "url": "/community_plugin/lovelace-card-mod/card-mod.js"
                 }
             ],
             "title": "Home",
@@ -9726,6 +9732,352 @@
                         }
                     ],
                     "title": "test"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "aspect_ratio": "1/1",
+                                            "color": "auto",
+                                            "entity": "sensor.cpu_temp",
+                                            "icon": "mdi:raspberry-pi",
+                                            "label_template": "return '<div align=\"left\">' +\n        '<div>' +\n          '<ha-icon icon=\"mdi:thermometer\" style=\"width: 12px; color: #f4e842; padding-bottom: 0px;\"></ha-icon> ' +\n          entity.state + '\u00b0C' +\n        '</div>' +\n      '</div>';\n",
+                                            "layout": "icon_label",
+                                            "name_template": "return '<div align=\"left\" style=\"padding-top: 0px;\">' +\n        '<div style=\"font-weight: bold;font-size: 13px;\">' + \"RPI\" + '</div>' +\n        '<div style=\"margin-top: -5px;\">' +\n          '<ha-icon icon=\"mdi:server\" style=\"width: 12px; color: #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"CPU: \" + states['sensor.processor_use'].state + '%' +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\">' +\n          '<ha-icon icon=\"mdi:memory\" style=\"width: 12px; color: #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"RAM: \" + Math.round(states['sensor.memory_use'].state) + \" MB\" +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\">' +\n          '<ha-icon icon=\"mdi:harddisk\" style=\"width: 12px; color: #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"SD: \" + states['sensor.disk_free_home'].state + \" GB\" +\n        '</div>' +\n      '</div>';\n",
+                                            "show_label": true,
+                                            "show_state": false,
+                                            "state": [
+                                                {
+                                                    "color": "lime",
+                                                    "operator": "template",
+                                                    "value": "return entity.state < '60'\n"
+                                                },
+                                                {
+                                                    "color": "orange",
+                                                    "operator": "template",
+                                                    "value": "return entity.state < '80'\n"
+                                                },
+                                                {
+                                                    "color": "red",
+                                                    "operator": "template",
+                                                    "value": "return entity.state > '80'\n"
+                                                }
+                                            ],
+                                            "type": "custom:button-card"
+                                        },
+                                        {
+                                            "aspect_ratio": "1/1",
+                                            "color": "auto",
+                                            "entity": "sensor.cpu_temp",
+                                            "icon": "mdi:raspberry-pi",
+                                            "label_template": "return '<div align=\"left\">' +\n        '<div>' +\n          '<ha-icon icon=\"mdi:thermometer\" style=\"width: 12px; color: #f4e842; padding-bottom: 0px;\"></ha-icon> ' +\n          entity.state + '\u00b0C' +\n        '</div>' +\n      '</div>';\n",
+                                            "layout": "icon_label",
+                                            "name_template": "return '<div align=\"left\" style=\"padding-top: 0px;\">' +\n        '<div style=\"font-weight: bold;font-size: 13px;\">' + \"Synology\" + '</div>' +\n        '<div style=\"margin-top: -5px;\">' +\n          '<ha-icon icon=\"mdi:server\" style=\"width: 12px; color: #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"CPU: \" + states['sensor.synology_dsm_cpu_load_total'].state + '%' +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\">' +\n          '<ha-icon icon=\"mdi:memory\" style=\"width: 12px; color: #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"RAM: \" + Math.round(states['sensor.synology_dsm_memory_usage_real'].state) + \" MB\" +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\">' +\n          '<ha-icon icon=\"mdi:harddisk\" style=\"width: 12px; color: #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"SD: \" + states['sensor.disk_free_home'].state + \" GB\" +\n        '</div>' +\n      '</div>';\n",
+                                            "show_label": true,
+                                            "show_state": false,
+                                            "state": [
+                                                {
+                                                    "color": "lime",
+                                                    "operator": "template",
+                                                    "value": "return entity.state < '60'\n"
+                                                },
+                                                {
+                                                    "color": "orange",
+                                                    "operator": "template",
+                                                    "value": "return entity.state < '80'\n"
+                                                },
+                                                {
+                                                    "color": "red",
+                                                    "operator": "template",
+                                                    "value": "return entity.state > '80'\n"
+                                                }
+                                            ],
+                                            "type": "custom:button-card"
+                                        },
+                                        {
+                                            "aspect_ratio": "1/1",
+                                            "color": "auto",
+                                            "entity": "sensor.cpu_temp",
+                                            "icon": "mdi:raspberry-pi",
+                                            "label_template": "return '<div align=\"left\">' +\n        '<div>' +\n          '<ha-icon icon=\"mdi:thermometer\" style=\"width: 12px; color: #f4e842; padding-bottom: 0px;\"></ha-icon> ' +\n          entity.state + '\u00b0C' +\n        '</div>' +\n      '</div>';\n",
+                                            "layout": "icon_label",
+                                            "name_template": "return '<div align=\"left\" style=\"padding-top: 0px;\">' +\n        '<div style=\"font-weight: bold;font-size: 13px;\">' + \"RPI\" + '</div>' +\n        '<div style=\"margin-top: -5px;\">' +\n          '<ha-icon icon=\"mdi:server\" style=\"width: 12px; color: #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"CPU: \" + states['sensor.processor_use'].state + '%' +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\">' +\n          '<ha-icon icon=\"mdi:memory\" style=\"width: 12px; color: #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"RAM: \" + Math.round(states['sensor.memory_use'].state) + \" MB\" +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\">' +\n          '<ha-icon icon=\"mdi:harddisk\" style=\"width: 12px; color: #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"SD: \" + states['sensor.disk_free_home'].state + \" GB\" +\n        '</div>' +\n      '</div>';\n",
+                                            "show_label": true,
+                                            "show_state": false,
+                                            "state": [
+                                                {
+                                                    "color": "lime",
+                                                    "operator": "template",
+                                                    "value": "return entity.state < '60'\n"
+                                                },
+                                                {
+                                                    "color": "orange",
+                                                    "operator": "template",
+                                                    "value": "return entity.state < '80'\n"
+                                                },
+                                                {
+                                                    "color": "red",
+                                                    "operator": "template",
+                                                    "value": "return entity.state > '80'\n"
+                                                }
+                                            ],
+                                            "type": "custom:button-card"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "color_thresholds": [
+                                                {
+                                                    "color": "#0da035",
+                                                    "value": -1
+                                                },
+                                                {
+                                                    "color": "#e0b400",
+                                                    "value": 25
+                                                },
+                                                {
+                                                    "color": "#e45e65",
+                                                    "value": 35
+                                                }
+                                            ],
+                                            "color_thresholds_transition": "smooth",
+                                            "entities": [
+                                                "sensor.processor_use"
+                                            ],
+                                            "group": false,
+                                            "hour24": true,
+                                            "line_width": 6,
+                                            "name": "CPU",
+                                            "points_per_hour": 1,
+                                            "show": {
+                                                "extrema": true,
+                                                "icon": true,
+                                                "labels": false,
+                                                "name": true,
+                                                "state": true
+                                            },
+                                            "style": "ha-card {\n   border: solid 2px var(--primary-color);\n }\n",
+                                            "type": "custom:mini-graph-card"
+                                        },
+                                        {
+                                            "color_thresholds": [
+                                                {
+                                                    "color": "#039BE5",
+                                                    "value": -50
+                                                },
+                                                {
+                                                    "color": "#0da035",
+                                                    "value": 40
+                                                },
+                                                {
+                                                    "color": "#e0b400",
+                                                    "value": 50
+                                                },
+                                                {
+                                                    "color": "#e45e65",
+                                                    "value": 60
+                                                }
+                                            ],
+                                            "color_thresholds_transition": "smooth",
+                                            "entities": [
+                                                "sensor.cpu_temp"
+                                            ],
+                                            "group": false,
+                                            "hour24": true,
+                                            "line_width": 6,
+                                            "name": "Temperature",
+                                            "points_per_hour": 1,
+                                            "show": {
+                                                "extrema": true,
+                                                "icon": true,
+                                                "labels": false,
+                                                "name": true,
+                                                "state": true
+                                            },
+                                            "style": "ha-card {\n   border: solid 2px var(--primary-color);\n }\n",
+                                            "type": "custom:mini-graph-card"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "color_thresholds": [
+                                                {
+                                                    "color": "#0da035",
+                                                    "value": -1
+                                                },
+                                                {
+                                                    "color": "#e0b400",
+                                                    "value": 60
+                                                },
+                                                {
+                                                    "color": "#e45e65",
+                                                    "value": 70
+                                                }
+                                            ],
+                                            "color_thresholds_transition": "hard",
+                                            "entities": [
+                                                "sensor.memory_use"
+                                            ],
+                                            "group": false,
+                                            "hour24": true,
+                                            "line_width": 6,
+                                            "name": "RAM",
+                                            "points_per_hour": 1,
+                                            "show": {
+                                                "fill": "fade",
+                                                "icon": true,
+                                                "labels": false,
+                                                "name": true,
+                                                "state": true
+                                            },
+                                            "style": "ha-card {\n   border: solid 2px var(--primary-color);\n }\n",
+                                            "type": "custom:mini-graph-card"
+                                        },
+                                        {
+                                            "color_thresholds": [
+                                                {
+                                                    "color": "#0da035",
+                                                    "value": -1
+                                                },
+                                                {
+                                                    "color": "#e0b400",
+                                                    "value": 60
+                                                },
+                                                {
+                                                    "color": "#e45e65",
+                                                    "value": 70
+                                                }
+                                            ],
+                                            "color_thresholds_transition": "hard",
+                                            "entities": [
+                                                "sensor.swap_use"
+                                            ],
+                                            "group": false,
+                                            "hour24": true,
+                                            "line_width": 6,
+                                            "name": "Swap",
+                                            "points_per_hour": 1,
+                                            "show": {
+                                                "fill": "fade",
+                                                "icon": true,
+                                                "labels": false,
+                                                "name": true,
+                                                "state": true
+                                            },
+                                            "style": "ha-card {\n   border: solid 2px var(--primary-color);\n }\n",
+                                            "type": "custom:mini-graph-card"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "color_thresholds": [
+                                                {
+                                                    "color": "#0da035",
+                                                    "value": -1
+                                                },
+                                                {
+                                                    "color": "#e0b400",
+                                                    "value": 30
+                                                },
+                                                {
+                                                    "color": "#e45e65",
+                                                    "value": 40
+                                                }
+                                            ],
+                                            "color_thresholds_transition": "hard",
+                                            "entities": [
+                                                "sensor.disk_free_home"
+                                            ],
+                                            "group": false,
+                                            "hour24": true,
+                                            "line_width": 6,
+                                            "name": "Disk",
+                                            "points_per_hour": 1,
+                                            "show": {
+                                                "fill": "fade",
+                                                "icon": true,
+                                                "labels": false,
+                                                "name": true,
+                                                "state": true
+                                            },
+                                            "style": "ha-card {\n   border: solid 2px var(--primary-color);\n }\n",
+                                            "type": "custom:mini-graph-card"
+                                        },
+                                        {
+                                            "color_thresholds": [
+                                                {
+                                                    "color": "#0da035",
+                                                    "value": -1
+                                                },
+                                                {
+                                                    "color": "#e0b400",
+                                                    "value": 500
+                                                },
+                                                {
+                                                    "color": "#e45e65",
+                                                    "value": 1000
+                                                }
+                                            ],
+                                            "color_thresholds_transition": "hard",
+                                            "entities": [
+                                                "sensor.hass_db_size"
+                                            ],
+                                            "group": false,
+                                            "hour24": true,
+                                            "icon": "mdi:database",
+                                            "line_width": 6,
+                                            "name": "DB",
+                                            "points_per_hour": 1,
+                                            "show": {
+                                                "fill": "fade",
+                                                "icon": true,
+                                                "labels": false,
+                                                "name": true,
+                                                "state": true
+                                            },
+                                            "style": "ha-card {\n   border: solid 2px var(--primary-color);\n }\n",
+                                            "type": "custom:mini-graph-card"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_select.log_level"
+                                },
+                                {
+                                    "entity": "input_select.hass_template"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "style": "ha-card {\n   border: solid 2px var(--primary-color);\n }\n",
+                            "title": "Options",
+                            "type": "entities"
+                        }
+                    ],
+                    "title": "cards"
                 }
             ]
         }

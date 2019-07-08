@@ -47,7 +47,7 @@ sensor:
 
 shell_command:
   git_pull: 'git -C /home/homeassistant/.homeassistant/ pull && /opt/scripts/hass_restart.sh'
-  git_commit: '/bin/sh /home/homeassistant/.homeassistant/git_commit.sh "{{ states.input_text.git_commit_message.state }}"'
+  git_commit: 'sh /home/homeassistant/.homeassistant/git_commit.sh "{{ states.input_text.git_commit_message.state }}"'
 
 script:
   git_pull:

@@ -6932,6 +6932,47 @@
                             "type": "custom:vertical-stack-in-card"
                         },
                         {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        "input_text.git_commit_message"
+                                    ],
+                                    "show_header_toggle": false,
+                                    "type": "entities"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "color": "rgb(117, 189, 111)",
+                                            "color_type": "card",
+                                            "icon": "mdi:github-circle",
+                                            "layout": "icon_name",
+                                            "name": "My Repo",
+                                            "tap_action": {
+                                                "action": "url",
+                                                "url": "https://gitlab.com/elradix/hass"
+                                            },
+                                            "type": "custom:button-card"
+                                        },
+                                        {
+                                            "color": "rgb(117, 189, 111)",
+                                            "color_type": "card",
+                                            "icon": "mdi:arrow-top-right",
+                                            "layout": "icon_name",
+                                            "name": "Commit",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "shell_command.git_commit"
+                                            },
+                                            "type": "custom:button-card"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "custom:vertical-style-card"
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "input_boolean.gitlab",
@@ -6977,47 +7018,6 @@
                             "show_header_toggle": false,
                             "title": "HASS Log level",
                             "type": "entities"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entities": [
-                                        "input_text.git_commit_message"
-                                    ],
-                                    "show_header_toggle": false,
-                                    "type": "entities"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "color": "rgb(117, 189, 111)",
-                                            "color_type": "card",
-                                            "icon": "mdi:github-circle",
-                                            "layout": "icon_name",
-                                            "name": "My Repo",
-                                            "tap_action": {
-                                                "action": "url",
-                                                "url": "https://gitlab.com/elradix/hass"
-                                            },
-                                            "type": "custom:button-card"
-                                        },
-                                        {
-                                            "color": "rgb(117, 189, 111)",
-                                            "color_type": "card",
-                                            "icon": "mdi:arrow-top-right",
-                                            "layout": "icon_name",
-                                            "name": "Commit",
-                                            "tap_action": {
-                                                "action": "call-service",
-                                                "service": "shell_command.git_commit"
-                                            },
-                                            "type": "custom:button-card"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                }
-                            ],
-                            "type": "custom:vertical-style-card"
                         },
                         {
                             "columns": 3,

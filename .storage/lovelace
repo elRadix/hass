@@ -6997,7 +6997,7 @@
                                     "type": "custom:text-input-row"
                                 },
                                 {
-                                    "action_name": "push commit",
+                                    "action_name": "push commits",
                                     "icon": "mdi:git",
                                     "name": " ",
                                     "service": "shell_command.git_commit",

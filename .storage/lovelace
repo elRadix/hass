@@ -399,6 +399,10 @@
                 },
                 {
                     "url": "/community_plugin/lovelace-card-mod/card-mod.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/lovelace-text-input-row/text-input-row.js"
                 }
             ],
             "title": "Home",
@@ -7335,6 +7339,22 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Processes",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_text.git_commit",
+                                    "type": "custom:text-input-row"
+                                },
+                                {
+                                    "action_name": "Yourr commit message ...",
+                                    "icon": "mdi:git",
+                                    "name": " ",
+                                    "service": "shell_command.git_commit",
+                                    "type": "call-service"
+                                }
+                            ],
                             "type": "entities"
                         }
                     ],

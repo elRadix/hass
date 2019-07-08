@@ -6950,6 +6950,17 @@
                                 {
                                     "entity": "sensor.latest_commit",
                                     "icon": "mdi:git"
+                                },
+                                {
+                                    "entity": "input_text.git_commit",
+                                    "type": "custom:text-input-row"
+                                },
+                                {
+                                    "action_name": "push commit",
+                                    "icon": "mdi:git",
+                                    "name": " ",
+                                    "service": "shell_command.git_commit",
+                                    "type": "call-service"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -7348,7 +7359,7 @@
                                     "type": "custom:text-input-row"
                                 },
                                 {
-                                    "action_name": "push commitss",
+                                    "action_name": "push commit",
                                     "icon": "mdi:git",
                                     "name": " ",
                                     "service": "shell_command.git_commit",

@@ -7204,35 +7204,6 @@
                             "type": "glance"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "sensor.network_in_eth0"
-                                },
-                                {
-                                    "entity": "sensor.network_out_eth0"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "RPI Network",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "script.check_sonoffs_version"
-                                },
-                                {
-                                    "entity": "sensor.tasmota_current_version"
-                                },
-                                {
-                                    "entity": "sensor.sonoff_06_version"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Sonoff Firmware",
-                            "type": "entities"
-                        },
-                        {
                             "columns": 7,
                             "entities": [
                                 {
@@ -7275,6 +7246,35 @@
                             "show_state": false,
                             "title": "Sonoff Status",
                             "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.network_in_eth0"
+                                },
+                                {
+                                    "entity": "sensor.network_out_eth0"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "RPI Network",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "script.check_sonoffs_version"
+                                },
+                                {
+                                    "entity": "sensor.tasmota_current_version"
+                                },
+                                {
+                                    "entity": "sensor.sonoff_06_version"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Sonoff Firmware",
+                            "type": "entities"
                         },
                         {
                             "entities": [

@@ -1,3 +1,9 @@
+input_text:
+  git_commit_message:
+    name: "Commit Message"
+    initial: "latest update"
+
+
 sensor:
   - platform: gitlab_ci
     name: gitlab_ci
@@ -41,6 +47,7 @@ sensor:
 
 shell_command:
   git_pull: 'git -C /home/homeassistant/.homeassistant/ pull && /opt/scripts/hass_restart.sh'
+  git_commit: '/home/homeassistant/.homeassistant/git_commit.sh "{{ states.input_text.git_commit_message.state }}"'
 
 script:
   git_pull:

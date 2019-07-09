@@ -31,7 +31,7 @@
     "sensor.sonoff_latest_release":
       icon: mdi:eye
     "script.check_sonoffs_version":
-      icon: mdi:checkbox-multiple-marked-outline  
+      icon: mdi:checkbox-multiple-marked-outline
     "script.update_sonoffs":
       icon: mdi:download-network
     "sensor.sonoff*":
@@ -62,10 +62,6 @@
       icon: mdi:cup-water
     "switch.stp_living_so*":
       icon: mdi:television
-    "switch.inter*":
-       assumed_state: false
-    "switch.internet*":
-      icon: mdi:signal-variant
     "sensor.soumaya_to_isabel":
       icon: mdi:briefcase
     "sensor.rachid_to_home":

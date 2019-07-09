@@ -21,10 +21,7 @@ stages:
     - touch fake_directory/cert.log
     - touch fake_directory/cert_eu.log
     - echo "10" > fake_directory/cert.log
-    - echo "10" > fake_directory/cert_eu.log    
-#    - touch ./home-assistant_v2.db
-#    - touch ./home-assistant.log
-#    - touch ./OZW_Log.txt
+    - echo "10" > fake_directory/cert_eu.log
   script:
     - |
       python -m homeassistant \
@@ -85,7 +82,7 @@ markdownlint:
   image:
     name: ruby:alpine
     entrypoint: [""]
-  allow_failure: true  
+  allow_failure: true
   before_script:
     - gem install mdl
     - mdl --version

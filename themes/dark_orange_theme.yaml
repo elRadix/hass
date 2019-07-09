@@ -1,4 +1,4 @@
-
+---
     darkorange:
       primary-color: "#ff9800"
       light-primary-color: "#ffc947"
@@ -36,4 +36,4 @@
       label-badge-yellow: "var(--text-primary-color)"
       label-badge-grey: "var(--paper-grey-500)"
       table-row-background-color: "var(--paper-card-background-color)"
-      table-row-alternative-background-color: "var(--sidebar-text_-_background)" 
+      table-row-alternative-background-color: "var(--sidebar-text_-_background)"

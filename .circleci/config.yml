@@ -1,3 +1,4 @@
+---
 version: 2.1
 jobs:
   build:
@@ -13,10 +14,10 @@ jobs:
             mkdir fake_directory
             touch fake_directory/data.log
             touch fake_directory/cert.log
-            touch fake_directory/cert_eu.log  
+            touch fake_directory/cert_eu.log
             echo "10" > fake_directory/cert.log
             echo "10" > fake_directory/cert_eu.log
-            python3.7 -m venv . 
+            python3.7 -m venv .
             source bin/activate
             pip install --upgrade pip
             pip3 install homeassistant
@@ -24,10 +25,8 @@ jobs:
             hass -c . --script check_config #--info all
             hass --version
 
-
 workflows:
   version: 2.1
   build_and_test:
     jobs:
       - build
-

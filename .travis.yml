@@ -1,3 +1,4 @@
+---
 dist: xenial
 language: python
 python:
@@ -9,7 +10,7 @@ before_install:
   - touch /opt/scripts/status/data.log
   - touch /opt/scripts/cert.log
   - echo "10" > /opt/scripts/cert.log
-  - touch /opt/scripts/cert_eu.log  
+  - touch /opt/scripts/cert_eu.log
   - echo "10" > /opt/scripts/cert_eu.log
   - mv secrets_redacted.yaml secrets.yaml
 install:

@@ -47,14 +47,14 @@ mobile_app:
 map:
 
 http:
-  use_x_forwarded_for: True
+  use_x_forwarded_for: true
   trusted_proxies:
     - 127.0.0.1
     - 192.168.1.21
     - 10.8.0.0/24
   base_url: !secret base_url
   server_port: !secret server_port
-  ip_ban_enabled: True
+  ip_ban_enabled: true
   login_attempts_threshold: 5
 
 shelly:
@@ -287,8 +287,8 @@ media_player:
     host: !secret ip_sony
     psk: sony
     mac: !secret mac_sony
-    amp: True
-    android: True
+    amp: true
+    android: true
 # #    #sourcefilter:
 #     #  - ' HD'
 #     #  - HDMI
@@ -301,8 +301,8 @@ media_player:
 
 panel_iframe:
   configurator:
-    title: Editor 
-    icon: mdi:wrench 
+    title: Editor
+    icon: mdi:wrench
     url: !secret configurator_url
   esphome:
     title: ESPHome
@@ -311,12 +311,12 @@ panel_iframe:
 #########################
 
 smappee:
-    host: !secret smappee_host
-#    host_password: admin
-    client_id: !secret smappee_client_id
-    client_secret: !secret smappee_secret
-    username: !secret smappee_username
-    password: !secret smappee_password
+  host: !secret smappee_host
+# host_password: admin
+  client_id: !secret smappee_client_id
+  client_secret: !secret smappee_secret
+  username: !secret smappee_username
+  password: !secret smappee_password
 
 telegram_bot:
   platform: polling
@@ -325,17 +325,6 @@ telegram_bot:
   allowed_chat_ids:
     - !secret telegram_bot_user1
     - !secret telegram_bot_user2
-
-# temperature_alert:
-#   - indoor_sensors:
-#       - sensor.ht_eetkamer_temp
-#       - sensor.ht_sara_temp
-#     outdoor_sensor: sensor.dark_sky_temperature
-#     temp_delta: 2                           # min delta before triggering
-#     notifiers: 
-#       - 'notify.dageraad'
-#     mode: cooler                            # cooler/warmer
-#     name: 'temp_alert'
 
 utility_meter:
   daily_energy:

@@ -196,7 +196,7 @@ climate:
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    initial_operation_mode: "off"
+    #initial_operation_mode: "off"
     away_temp: 5
 
   - platform: generic_thermostat
@@ -209,7 +209,7 @@ climate:
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    initial_operation_mode: "off"
+    #initial_operation_mode: "off"
     away_temp: 5
 
   - platform: generic_thermostat
@@ -222,7 +222,7 @@ climate:
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    initial_operation_mode: "off"
+    #initial_operation_mode: "off"
     away_temp: 5
 
   - platform: generic_thermostat
@@ -235,7 +235,7 @@ climate:
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    initial_operation_mode: "off"
+    #initial_operation_mode: "off"
     away_temp: 5
 
   - platform: generic_thermostat
@@ -248,7 +248,7 @@ climate:
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    initial_operation_mode: "off"
+    #initial_operation_mode: "off"
     away_temp: 5
 
   - platform: generic_thermostat
@@ -261,7 +261,7 @@ climate:
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    initial_operation_mode: "off"
+    #initial_operation_mode: "off"
     away_temp: 5
 
 system_log:

@@ -76,6 +76,7 @@ stages:
     PYTHONPATH: "/usr/src/app:$PYTHONPATH"
   before_script:
     - python -m homeassistant --version
+    - pip3 install colorlog
     - cp secrets_redacted.yaml secrets.yaml
     - mkdir fake_directory/
     - touch fake_directory/data.log
@@ -89,8 +90,8 @@ stages:
   script:
     - |
       python -m homeassistant \
-        --script check_config -c . \
-        --info all
+        --script check_config -c . #\
+#        --info all
 
 # Preflight jobs
 shellcheck:

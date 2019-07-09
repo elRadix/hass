@@ -26,8 +26,8 @@ rules:
     max-spaces-after: 1
   comments:
     level: error
-    require-starting-space: false
-    min-spaces-from-content: 1
+    require-starting-space: true
+    min-spaces-from-content: 2
   comments-indentation:
     level: error
   document-end:
@@ -37,7 +37,7 @@ rules:
     level: error
     present: true
     ignore: |
-      known_devices.yaml
+      config/known_devices.yaml
   empty-lines:
     level: error
     max: 1
@@ -49,7 +49,7 @@ rules:
   indentation:
     level: error
     spaces: 2
-    indent-sequences: false
+    indent-sequences: true
     check-multi-line-strings: false
   key-duplicates:
     level: error
@@ -58,7 +58,7 @@ rules:
       .github/support.yml
       .github/settings.yml
     level: warning
-    max: 160
+    max: 120
     allow-non-breakable-words: true
     allow-non-breakable-inline-mappings: true
   new-line-at-end-of-file:

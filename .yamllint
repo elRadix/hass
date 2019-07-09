@@ -49,7 +49,7 @@ rules:
   indentation:
     level: error
     spaces: 2
-    indent-sequences: true
+    indent-sequences: false
     check-multi-line-strings: false
   key-duplicates:
     level: error

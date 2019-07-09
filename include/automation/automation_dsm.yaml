@@ -30,7 +30,7 @@
   alias: DSM LUN on
   trigger:
   - platform: state
-    entity_id: switch.dsm 
+    entity_id: switch.dsm
     from: 'off'
     to: 'on'
     for:

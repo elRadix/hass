@@ -21,4 +21,7 @@ Automations:
 Other:
 * updated Circle-CI to python verson 3.7.3
 * add lovelace config to git
-* add git_commit input text + script
+* add git_commit input text + scrit
+
+
+

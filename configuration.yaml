@@ -25,21 +25,21 @@ homeassistant:
 
 hacs:
   token: !secret hacs_token
-#  appdeamon: true
+# appdeamon: true
   python_script: true
   theme: true
 
 config:
 system_health:
-#websocket_api:
-#default_config:
+# websocket_api:
+# default_config:
 person:
 python_script:
 discovery:
   ignore:
     - igd
   # enable:
-  #   - homekit
+    # - homekit
 ssdp:
 zeroconf:
 breaking_changes:
@@ -81,7 +81,7 @@ frontend:
 device_tracker: !include_dir_merge_list include/device_tracker
 # google_assistant: !include_dir_merge_list include/google_assistant
 group: !include_dir_merge_named include/groups
-history: #!include_dir_merge_named include/history
+history: # !include_dir_merge_named include/history
 history_graph: !include_dir_merge_named include/history_graph
 # influxdb:  !include_dir_merge_named include/influxdb
 input_datetime: !include_dir_merge_named include/input_datetime
@@ -92,7 +92,7 @@ input_boolean: !include_dir_merge_named include/input_booleans
 light: !include_dir_merge_list include/light
 logbook:  # !include_dir_merge_list include/logbook
 notify: !include_dir_merge_list include/notify
-#p anel_custom: !include panel_custom.yaml
+# panel_custom: !include panel_custom.yaml
 proximity: !include_dir_merge_list include/proximity
 recorder:  # !include_dir_merge_list include/recorder
   # db_url: mysql://root:hassdb@192.168.1.21:3307/hassdbv87?charset=utf8
@@ -134,7 +134,7 @@ shell_command: !include_dir_merge_named include/shell_commands
 sensor: !include_dir_merge_list include/sensors
 switch: !include_dir_merge_list include/switches
 zone: !include_dir_merge_list include/zones
-#scene: !include_dir_merge_named include/scenes
+# scene: !include_dir_merge_named include/scenes
 
 weather:
   - platform: darksky
@@ -145,7 +145,7 @@ life360:
   accounts:
     - username: !secret life_username
       password: !secret life_password
-  show_as_state: 
+  show_as_state:
     - driving
     - moving
 
@@ -329,7 +329,7 @@ telegram_bot:
 utility_meter:
   daily_energy:
     source: sensor.pvoutput_energy_consumption
-    cycle: daily 
+    cycle: daily
     tariffs:
       - peak
       - offpeak
@@ -341,7 +341,7 @@ utility_meter:
       - offpeak
   daily_energy_live:
     source: sensor.sensor_smappee_power_integral
-    cycle: daily 
+    cycle: daily
     tariffs:
       - peak
       - offpeak

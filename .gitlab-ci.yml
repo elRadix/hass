@@ -119,6 +119,7 @@ shellcheck:
 yamllint:
   <<: *preflight
   image: sdesbure/yamllint
+  allow_failure: true
   before_script:
     - yamllint --version
   script:
@@ -127,6 +128,7 @@ yamllint:
 jsonlint:
   <<: *preflight
   image: sahsu/docker-jsonlint
+  allow_failure: true
   before_script:
     - jsonlint --version || true
   script:

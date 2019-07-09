@@ -1,4 +1,4 @@
-
+---
 - id: alarm_armed_away
   initial_state: 'true'
   alias: '[Alarm] Away Mode Armed'
@@ -17,7 +17,6 @@
     data:
       message: The house alarm has been switched on in away mode. Goodby
 
-
 - id: alarm_armed_home
   initial_state: 'true'
   alias: '[Alarm] Home Mode Armed'
@@ -35,7 +34,6 @@
   - service: notify.android
     data:
       message: The house alarm has been switched on in home mode. Goodnight
-
 
 - id: alarm_disarmed
   initial_state: 'true'
@@ -71,7 +69,6 @@
     data:
       message: The house alarm has been Deactivated
 
-
 - id: alarm_warning
   initial_state: 'true'
   alias: '[Alarm] Triggered'
@@ -89,7 +86,6 @@
       message: 'ALARM TRIGGERED!!! {{ states[states.alarm_control_panel.dageraad.attributes.changed_by.split(".")[0]][ states.alarm_control_panel.dageraad.attributes.changed_by.split(".")[1]].name }}'
     service: notify.dageraad
 
-
 - id: '[Alarm] Warning'
   alias: '[Alarm] Warning'
   trigger:
@@ -104,4 +100,3 @@
   - data:
       message: 'Hello, the house alarm has been tripped. Please deactivate'
     service: notify.dageraad
-

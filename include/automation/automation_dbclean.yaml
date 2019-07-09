@@ -1,3 +1,4 @@
+---
   - alias: Purge Database
     initial_state: 'true'
     trigger:

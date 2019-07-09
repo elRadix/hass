@@ -1,6 +1,4 @@
-###### MOTION #########
-
-### HALL ###
+---
 - id: motion_01
   alias: Motion Detection - Hall Light on
   initial_state: 'true'
@@ -34,10 +32,7 @@
   action:
   - service: homeassistant.turn_off
     entity_id:  switch.light_vestiare
-### HALL ###
 
-
-### EETKAMER ###
 - id: motion_03
   alias: Motion Detection - Dinner Light on
   initial_state: 'true'
@@ -59,7 +54,7 @@
   action:
   - service: homeassistant.turn_on
     entity_id: switch.light_eetkamer_center
-    
+
 - id: motion_dinner_off
   alias: Motion Detection - Dinner Light off
   initial_state: 'true'
@@ -71,10 +66,7 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.light_eetkamer_center
-### EETKAMER ###
 
-
-### BADKAMER ###
 - id: motion_04
   alias: Motion Detection - Bad Light on
   initial_state: 'true'
@@ -96,7 +88,7 @@
   action:
   - service: homeassistant.turn_on
     entity_id: switch.light_badkamer_spiegel
-    
+
 - id: motion_05
   alias: Motion Detection - Bad Light off
   initial_state: 'true'
@@ -108,9 +100,7 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.light_badkamer_spiegel
-### BADKAMER ###
 
-#### TRAP ####
 - id: motion_trap_on
   initial_state: 'true'
   alias: Motion Detection - Trap Light on
@@ -144,15 +134,10 @@
   action:
   - service: homeassistant.turn_off
     entity_id: group.trap_light
-#### TRAP ####
-
-
-
-#### WC ####
 
 - id: motion_07
   initial_state: 'true'
-  alias: Motion Detection - Trap Light off
+  alias: Motion Detection - WC off
   trigger: 
   - platform: state
     entity_id: binary_sensor.motion_wc
@@ -161,4 +146,3 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.light_wc
-#### WC ####

@@ -1,3 +1,4 @@
+---
 - id: rf_00
   alias: 'rfbridge_demultiplexer'
   initial_state: 'true'
@@ -9,8 +10,7 @@
     data_template:
       payload: '{{trigger.payload_json.RfReceived.Data}}'
 
-
-######## OPEN - CLOSED ######## 
+# ####### OPEN - CLOSED ######## 
 - id: rf_01
   initial_state: 'true'
   alias: '[RF] Inkomhal Open'
@@ -53,7 +53,6 @@
     data_template:
       message: Door {{ trigger.to_state.name }} is OPEN - {{now().strftime("%H:%M:%S")}}
 
-
 - id: rf_03
   initial_state: 'true'
   alias: '[RF] Inkomhal Closed'
@@ -72,9 +71,9 @@
   - service: notify.android
     data_template:
       message: Door {{ trigger.to_state.name }} is CLOSED - {{now().strftime("%H:%M:%S")}}
-######## OPEN - CLOSED ######## 
+# ####### OPEN - CLOSED ######## 
 
-######## OPEN - REMINDER ######## 
+# ####### OPEN - REMINDER ######## 
 - id: rf_03
   initial_state: 'on'
   trigger:
@@ -184,10 +183,7 @@
         {{ trigger.to_state.name }} - PLEASE CHECK ASAP
         
         Since {{now().strftime("%H:%M:%S")}}
-
 ######## WATER ALERT KEUKEN ######## 
-
-
 
 ######## FIRE ALERT   ######## 
 - id: rf_fire
@@ -216,9 +212,7 @@
         {{ trigger.to_state.name }} - PLEASE CHECK ASAP
         
         Since {{now().strftime("%H:%M:%S")}}
-
 ######## FIRE ALERT  ######## 
-
 
 ######## GAS ALERT   ######## 
 - id: rf_gas
@@ -247,9 +241,7 @@
         {{ trigger.to_state.name }} - PLEASE CHECK ASAP
         
         Since {{now().strftime("%H:%M:%S")}}
-
 ######## FIRE ALERT  ######## 
-
 
 ######## RESET RF ######## 
 - id: rf_05
@@ -291,9 +283,7 @@
   #   data:
   #     topic: home/fire
   #     payload: OFF
-
 ######## RESET RF ######## 
-
 ######## RF BUTTONS ######## 
 - id: rf_06
   initial_state: 'true'

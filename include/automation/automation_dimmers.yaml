@@ -1,8 +1,5 @@
 
-###############
-### DIMMERS ###
-###############
-
+---
 - id: dimmer_eiland
   initial_state: 'true'
   alias: dimmer_eiland
@@ -101,5 +98,3 @@
     entity_id: input_number.dimmer_bureau_tl
   action:
   - service: script.bureau_tl
-
-

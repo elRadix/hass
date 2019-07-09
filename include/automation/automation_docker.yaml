@@ -1,8 +1,4 @@
-
-################
-#    DOCKER    #
-################
-
+---
 - id: docker_1
   alias: Start Plex Docker when Kodi is On
   initial_state: 'true'
@@ -54,9 +50,9 @@
         state: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: switch.dockerplex   
+    entity_id: switch.dockerplex 
   - delay:
-      seconds: 5  
+      seconds: 5
   - service: homeassistant.turn_on
     entity_id: switch.dockertautulli
   - delay:
@@ -88,7 +84,7 @@
   - service: homeassistant.turn_off
     entity_id: switch.kodi
   - service: homeassistant.turn_off
-    entity_id: switch.dockerplex   
+    entity_id: switch.dockerplex 
   - delay:
       seconds: 5
   - service: homeassistant.turn_off

@@ -1,4 +1,4 @@
-
+---
 - id: dsm1
   initial_state: 'true'
   alias: DSM on state
@@ -20,26 +20,24 @@
     to: 'off'
   action:
   - service: homeassistant.turn_off
-    entity_id: switch.dsm_lun  
+    entity_id: switch.dsm_lun
   - service: notify.dageraad
     data:
       message: Synology is down.
-     
-      
+
 - id: dsm3
   initial_state: 'true'
   alias: DSM LUN on
   trigger:
   - platform: state
-    entity_id: switch.dsm
+    entity_id: switch.dsm 
     from: 'off'
     to: 'on'
     for:
-      minutes: 3 
+      minutes: 3
   action:
   - service: homeassistant.turn_on
     entity_id: switch.dsm_lun
-      
 
 - id: dsm4
   alias: Shutdown DSM at 3am

@@ -1,3 +1,4 @@
+---
 - id: counter_1
   alias: counter_stats
   initial_state: 'true'
@@ -69,7 +70,7 @@
   action:
   - service: counter.increment
     entity_id: counter.motion_hal
-    
+
 - id: counter_5
   alias: counter_motion_traphal
   initial_state: 'true'
@@ -80,7 +81,7 @@
   action:
   - service: counter.increment
     entity_id: counter.motion_traphal
-    
+
 - id: counter_6
   alias: counter_motion_badkamer
   initial_state: 'true'
@@ -116,4 +117,3 @@
   - service: notify.telegram_rachid
     data:
       message: 'Counter Reset!'
-

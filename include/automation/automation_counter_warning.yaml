@@ -1,3 +1,4 @@
+---
   - alias: Count warnings
     id: 'Count warnings'
     initial_state: 'on'
@@ -21,8 +22,6 @@
     action:
       service: counter.increment
       entity_id: counter.error_counter
-      
-
 
   # - id: Create notifications for "service" errors
   #   trigger:
@@ -36,4 +35,3 @@
   #     data_template:
   #       title: Something bad happened
   #       message: '{{ trigger.event.data.message }}'
-

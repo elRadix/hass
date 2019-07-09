@@ -1,4 +1,4 @@
-
+---
 #   - alias: Reset trash notification
 #     trigger:
 #       platform: state
@@ -83,11 +83,11 @@
             url: https://home.elradix.be/local/afval/wit.png
             caption: Plaats witte zak nu buiten.
 
-#https://home.elradix.be/local/afval/plastic3.png
-#https://home.elradix.be/local/afval/wit.png
-#https://home.elradix.be/local/afval/roze.jpg
-#https://home.elradix.be/local/afval/blue.jpg
-#https://home.elradix.be/local/afval/papier3.png
+# https://home.elradix.be/local/afval/plastic3.png
+# https://home.elradix.be/local/afval/wit.png
+# https://home.elradix.be/local/afval/roze.jpg
+# https://home.elradix.be/local/afval/blue.jpg
+# https://home.elradix.be/local/afval/papier3.png
 
   - id: afval_2
     alias: afval_waarschuwing_dag_voor_pmd
@@ -117,7 +117,6 @@
           photo:
             url: https://home.elradix.be/local/afval/blue.jpg
             caption: Plaats blauwe zak nu buiten.
-
 
   - id: afval_3
     alias: afval_waarschuwing_dag_voor_papier

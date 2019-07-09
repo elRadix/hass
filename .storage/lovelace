@@ -312,7 +312,7 @@
                 "clock_am_pm": false,
                 "date_locale": "en-gb",
                 "hide_help": true,
-                "menu": "hide",
+                "menu": "overflow",
                 "notifications": "hide",
                 "swipe": true,
                 "swipe_animate": "swipe",
@@ -7042,6 +7042,7 @@
                                     "name": "Input Date Times"
                                 }
                             ],
+                            "theme": "Backend-selected",
                             "title": "HA Component Count",
                             "type": "glance"
                         },
@@ -7200,6 +7201,7 @@
                                 "sensor.memory_free",
                                 "sensor.swap_use"
                             ],
+                            "theme": "Backend-selected",
                             "title": "",
                             "type": "glance"
                         },
@@ -7244,6 +7246,7 @@
                             ],
                             "show_name": true,
                             "show_state": false,
+                            "theme": "default",
                             "title": "Sonoff Status",
                             "type": "glance"
                         },
@@ -7273,6 +7276,7 @@
                                 }
                             ],
                             "show_header_toggle": false,
+                            "theme": "Backend-selected",
                             "title": "Sonoff Firmware",
                             "type": "entities"
                         },

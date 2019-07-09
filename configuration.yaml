@@ -1,7 +1,7 @@
 ---
 homeassistant:
   auth_providers:
-    - type: homeassistant  
+    - type: homeassistant
   auth_mfa_modules:
     - type: totp
       name: Authy app
@@ -23,14 +23,13 @@ homeassistant:
 
   packages: !include_dir_named include/packages/
 
-
 hacs:
   token: !secret hacs_token
 #  appdeamon: true
   python_script: true
   theme: true
 
-config: 
+config:
 system_health:
 #websocket_api:
 #default_config:
@@ -42,7 +41,7 @@ discovery:
   # enable:
   #   - homekit
 ssdp:
-zeroconf: 
+zeroconf:
 breaking_changes:
 mobile_app:
 map:
@@ -67,41 +66,39 @@ shelly:
   uptime_sensor: true
   version: true
 
-#################################################################
-## Include
-#################################################################
-#alarm_control_panel: !include alarm.yaml
+#  Include
+# alarm_control_panel: !include alarm.yaml
 alert: !include_dir_merge_named  include/alerts
 automation: !include_dir_merge_list  include/automation
 binary_sensor: !include_dir_merge_list  include/binary_sensors
 camera: !include_dir_merge_named include/cameras
 counter: !include_dir_merge_named include/counter
-#climate: !include_dir_merge_named include/climate
-#frontend: !include_dir_merge_named include/frontend
+# climate: !include_dir_merge_named include/climate
+# frontend: !include_dir_merge_named include/frontend
 frontend:
   javascript_version: latest
   themes: !include ./include/frontend/themes/slate.yaml
 device_tracker: !include_dir_merge_list include/device_tracker
-#google_assistant: !include_dir_merge_list include/google_assistant
+# google_assistant: !include_dir_merge_list include/google_assistant
 group: !include_dir_merge_named include/groups
 history: #!include_dir_merge_named include/history
 history_graph: !include_dir_merge_named include/history_graph
-#influxdb:  !include_dir_merge_named include/influxdb
+# influxdb:  !include_dir_merge_named include/influxdb
 input_datetime: !include_dir_merge_named include/input_datetime
 input_select: !include_dir_merge_named include/input_select
 input_number: !include_dir_merge_named include/input_number
 input_text: !include_dir_merge_named include/input_text
 input_boolean: !include_dir_merge_named include/input_booleans
 light: !include_dir_merge_list include/light
-logbook:  #!include_dir_merge_list include/logbook
+logbook:  # !include_dir_merge_list include/logbook
 notify: !include_dir_merge_list include/notify
-#panel_custom: !include panel_custom.yaml
+#p anel_custom: !include panel_custom.yaml
 proximity: !include_dir_merge_list include/proximity
-recorder:  #!include_dir_merge_list include/recorder
+recorder:  # !include_dir_merge_list include/recorder
   # db_url: mysql://root:hassdb@192.168.1.21:3307/hassdbv87?charset=utf8
-  #db_url: mysql://admin:password@mydatabase.us-east-1.rds.amazonaws.com/homeassistant?charset=utf8
+  # db_url: mysql://admin:password@mydatabase.us-east-1.rds.amazonaws.com/homeassistant?charset=utf8
   db_url: mysql://elradix:elradixhassdb@hassdb.c7bk9xalw0ea.us-west-2.rds.amazonaws.com:3306/hassdb?charset=utf8
-  #db_url: mysql://user:pw@url:port/dbname?charset=utf8
+  # db_url: mysql://user:pw@url:port/dbname?charset=utf8
   purge_keep_days: 7
   purge_interval: 0
   exclude:
@@ -139,13 +136,10 @@ switch: !include_dir_merge_list include/switches
 zone: !include_dir_merge_list include/zones
 #scene: !include_dir_merge_named include/scenes
 
-
-
 weather:
   - platform: darksky
     api_key: !secret darksky_api
     mode: daily
-
 
 life360:
   accounts:
@@ -154,8 +148,8 @@ life360:
   show_as_state: 
     - driving
     - moving
-    
-#asuswrt:
+
+# asuswrt:
 #  host: !secret asuswrt_host
 # username: !secret asuswrt_username
 # password: !secret asuswrt_password
@@ -181,10 +175,6 @@ sun:
     - prev_daylight
     - sunrise
     - sunset
-
-# ###################
-# ### THERMOSTAAT ###
-# ###################
 
 climate:
   - platform: generic_thermostat
@@ -272,7 +262,6 @@ system_log:
 #  default: info
 #  logs:
 #    homeassistant.components.logger: debug
-
 # logger:
 #   default: warn
 #   logs:
@@ -280,8 +269,6 @@ system_log:
 #     custom_components.mercedesmeapi.sensor: info
 #     custom_components.mercedesmeapi.apicontroller: debug
 #     custom_components.mercedesmeapi.OAuth: debug
-
-
 # Weather prediction
 #sensor:
 #  - platform: yr
@@ -305,8 +292,6 @@ media_player:
 # #    #sourcefilter:
 #     #  - ' HD'
 #     #  - HDMI
-
-
 #  - platform: tts_bluetooth_speaker
 #    address: 10:B7:F6:00:66:25   # Required - for example, 00:2F:AD:12:0D:42
 #    volume: 1.0                   # Optional - default is 0.5
@@ -341,7 +326,6 @@ telegram_bot:
     - !secret telegram_bot_user1
     - !secret telegram_bot_user2
 
-
 # temperature_alert:
 #   - indoor_sensors:
 #       - sensor.ht_eetkamer_temp
@@ -352,8 +336,6 @@ telegram_bot:
 #       - 'notify.dageraad'
 #     mode: cooler                            # cooler/warmer
 #     name: 'temp_alert'
-
-
 
 utility_meter:
   daily_energy:
@@ -380,5 +362,3 @@ utility_meter:
     tariffs:
       - peak
       - offpeak
-
-

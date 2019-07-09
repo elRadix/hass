@@ -150,7 +150,10 @@ life360:
   accounts:
     - username: !secret life_username
       password: !secret life_password
-
+  show_as_state: 
+    - driving
+    - moving
+    
 #asuswrt:
 #  host: !secret asuswrt_host
 # username: !secret asuswrt_username

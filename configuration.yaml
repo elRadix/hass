@@ -1,3 +1,4 @@
+---
 homeassistant:
   auth_providers:
     - type: homeassistant  

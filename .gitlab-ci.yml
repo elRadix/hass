@@ -146,6 +146,7 @@ markdownlint:
   image:
     name: ruby:alpine
     entrypoint: [""]
+  allow_failure: true  
   before_script:
     - gem install mdl
     - mdl --version

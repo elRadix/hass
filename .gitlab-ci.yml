@@ -4,11 +4,9 @@ image: docker:latest
 stages:
   - preflight
   - test
-
 # Generic preflight template
 .preflight: &preflight
   stage: preflight
-
 # Generic test template
 .dev: &test
   stage: test
@@ -32,7 +30,6 @@ stages:
       python -m homeassistant \
         --script check_config -c . #\
 #        --info all
-
 # Preflight jobs
 shellcheck:
   <<: *preflight
@@ -65,7 +62,6 @@ yamllint:
     - yamllint --version
   script:
     - yamllint .
-
 jsonlint:
   <<: *preflight
   image: sahsu/docker-jsonlint
@@ -95,14 +91,12 @@ markdownlint:
     - mdl --version
   script:
     - mdl --style all --warnings .
-
 # Test jobs
 latest:
   <<: *test
   image:
     name: homeassistant/home-assistant:latest
     entrypoint: [""]
-
 rc:
   <<: *test
   image:

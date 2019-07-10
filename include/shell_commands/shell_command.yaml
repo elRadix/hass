@@ -1,18 +1,11 @@
-###################
-## SHELL COMMAND ##
-###################
-
-
-## Update Google sheet Merwone
-#  merwone:            "/opt/scripts/coins/import.sh"
-
-  nginx:              !secret shell_command_nginx
-  docker:             !secret shell_command_docker
-  php:                !secret shell_command_php
-  hass_update:        !secret shell_command_hass_update
-  hass_db:            !secret shell_command_hass_db
-  router_reboot:      !secret shell_command_router_reboot
+---
+  nginx: !secret shell_command_nginx
+  docker: !secret shell_command_docker
+  php: !secret shell_command_php
+  hass_update: !secret shell_command_hass_update
+  hass_db: !secret shell_command_hass_db
+  router_reboot: !secret shell_command_router_reboot
   clean_knowndevices: !secret shell_command_clean_knowndevices
-  dietpi_lun:         !secret shell_command_dietpi_lun
-  hass_restart :      '/opt/scripts/hass_restart.sh'
-  telegram-notify:    !secret shell_command_telegram-notify
+  dietpi_lun: !secret shell_command_dietpi_lun
+  hass_restart : !secret shell_command_hass_restart
+  telegram_notify: !secret shell_command_telegram_notify

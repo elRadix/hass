@@ -1,8 +1,4 @@
-#####################
-# Easyplus Lights #
-#####################
-
-
+---
 - platform: command_line
   scan_interval: 90
   switches:
@@ -12,7 +8,7 @@
         command_state: "/opt/scripts/status/state.sh -D 0"
         friendly_name: Lamp
 
-- platform: command_line 
+- platform: command_line
   scan_interval: 90
   switches:
    light_eetkamer_double_spot:
@@ -22,7 +18,7 @@
         friendly_name: Double spot
 
 
-- platform: command_line 
+- platform: command_line
   scan_interval: 90
   switches:
    light_eetkamer_center:
@@ -49,7 +45,7 @@
         command_state: "/opt/scripts/status/state.sh -A 12"
         friendly_name: Triple spot
 
-- platform: command_line 
+- platform: command_line
   scan_interval: 90
   switches:
    light_living_center:
@@ -94,7 +90,7 @@
         command_state: "/opt/scripts/status/state.sh -A 13"
         friendly_name: Spots
 
-- platform: command_line 
+- platform: command_line
   scan_interval: 90
   switches:
    light_bureau_tl:
@@ -102,7 +98,6 @@
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 76,0'"
         command_state: "/opt/scripts/status/state.sh -D 76"
         friendly_name: Muur TL
-
 
 - platform: command_line
   scan_interval: 90
@@ -121,7 +116,6 @@
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 17,0'"
         command_state: "/opt/scripts/status/state.sh -A 17"
         friendly_name: Deur_morgend
-
 
 - platform: command_line
   scan_interval: 90
@@ -168,8 +162,6 @@
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 20,0'"
         command_state: "/opt/scripts/status/state.sh -A 20"
         friendly_name: Deur
-        
-
 
 - platform: command_line
   scan_interval: 90
@@ -243,7 +235,6 @@
         command_state: "/opt/scripts/status/state.sh -D 7"
         friendly_name: Lavabo
 
-
 - platform: command_line
   scan_interval: 90
   switches:
@@ -288,7 +279,6 @@
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 4,0'"
         command_state: "/opt/scripts/status/state.sh -A 4"
         friendly_name: WC
-
 
 - platform: command_line
   scan_interval: 90

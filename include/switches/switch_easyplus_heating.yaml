@@ -1,3 +1,4 @@
+---
 - platform: command_line
   scan_interval: 120
   switches:
@@ -33,7 +34,6 @@
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 67,0'"
         command_state: "/opt/scripts/status/state.sh -D 67"
         friendly_name: S&R
-
 
 - platform: command_line
   scan_interval: 120

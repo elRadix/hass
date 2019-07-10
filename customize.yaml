@@ -1,11 +1,6 @@
 ---
-#################################################################
-## Customize
-#################################################################
-
   sensor.time:
     friendly_name: "Today's time is"
-
   sensor.rachid_today:
     friendly_name: "Rachid @home today"
   sensor.soumaya_today:
@@ -66,12 +61,6 @@
     friendly_name: "Slaapkamers verlichting"
   sensor.watching_tv_this_month:
     friendly_name: "TV's"
-
-
-
-
-
-
   automation.auto_heat_on_enabled:
     friendly_name: "Timer Status"
     icon: mdi:oil-temperature
@@ -102,7 +91,6 @@
   automation.auto_heat_off_slp3:
     friendly_name: "Auto Heat"
     icon: mdi:oil-temperature
-
   sensor.tmp_badkamer:
     friendly_name: "Badk."
   sensor.tmp_living:
@@ -149,9 +137,6 @@
     friendly_name: "Sara"
   binary_sensor.heat_slp_3:
     friendly_name: "Yassin"
-
-#  switch.smappee::
-#    friendly_name: "Laptop"
   switch.heating_badkamer:
     friendly_name: "Badkamer"
   switch.heating_eetkamer:
@@ -198,21 +183,14 @@
     friendly_name: "Thermostaat"
   switch.easyplus:
     friendly_name: "Domotica"
-
   automation.easyplus_startup:
     friendly_name: "Startup Programma"
-
   automation.auto_easyplus_shutdown:
     friendly_name: "Shutdown Porgramma"
-
   automation.easyplus_startup_monday:
     friendly_name: "Week Startup"
-
-
-
   automation.auto_off_day:
     friendly_name: "Daglicht Programma"
-
   sensor.rachid_battery:
     friendly_name: "Rachid"
     icon: mdi:battery
@@ -223,9 +201,6 @@
     friendly_name: "Rachid"
   binary_sensor.soumaya_home:
     friendly_name: "Soumaya"
-
-
-## SONOFF
   script.check_sonoffs_version:
     friendly_name: "Check Version"
   script.update_sonoffs:
@@ -244,14 +219,10 @@
     friendly_name: "S20 - Living"
   sensor.sonoff_06_Version:
     friendly_name: "RF Bridge"
-
   sensor.yr_symbol:
     friendly_name: "Day State"
-
   input_boolean.work:
     friendly_name: "At Work"
-
-
   sensor.time_at_work_today:
     friendly_name: "Daily hours"
   sensor.time_at_work_this_week:
@@ -262,7 +233,6 @@
     friendly_name: "Monthly hours"
   sensor.percent_at_work_monthly:
     friendly_name: "Monthly"
-
   sensor.keystone_to_home:
     friendly_name: "To Home"
   sensor.home_to_keystone:
@@ -275,12 +245,10 @@
     friendly_name: "BNP to Home"
   sensor.home_to_bnp:
     friendly_name: "Home to BNP"
-    
   sensor.s7_rachid_wifi:
     friendly_name: "Rachid (wifi)"
   sensor.s7_soumaya_wifi:
     friendly_name: "Soumaya (wifi)"
-
   binary_sensor.rf_inkomhal:
     friendly_name: "Inkomhal"
   binary_sensor.rf_terras:
@@ -289,20 +257,14 @@
     friendly_name: "Keuken"
   binary_sensor.rf_water_badkamer:
     friendly_name: "Badkamer"
-
-
   sensor.ophaalkalender_restafval:
     entity_picture: /local/afval/white.jpg
-
   sensor.ophaalkalender_papier:
     entity_picture: /local/afval/papier.png
-
   sensor.ophaalkalender_pmd:
     entity_picture: /local/afval/blue.jpg
-
   sensor.ophaalkalender_gemengde_plastics:
     entity_picture: /local/afval/roze.jpg
-
   switch.dockertransmission:
     entity_picture: /local/docker/transmission.png
   switch.dockerplex:
@@ -325,7 +287,6 @@
     entity_picture: /local/docker/mqtt.png
   switch.dockerletsencrypt:
     entity_picture: /local/docker/ssl.png
-  
   sensor.smappee_dageraad_always_on:
     friendly_name: "Sluip verbruik"
   sensor.smappee_dageraad_current:

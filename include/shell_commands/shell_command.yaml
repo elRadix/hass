@@ -15,3 +15,4 @@
   clean_knowndevices: !secret shell_command_clean_knowndevices
   dietpi_lun:         !secret shell_command_dietpi_lun
   hass_restart :      '/opt/scripts/hass_restart.sh'
+  telegram-notify:    !secret shell_command_telegram-notify

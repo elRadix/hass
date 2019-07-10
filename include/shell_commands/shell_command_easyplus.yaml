@@ -1,8 +1,4 @@
-###################
-## SHELL COMMAND ##
-###################
-
-
-  easyplus_on:        !secret shell_command_easyplus_on
-  easyplus_off:       !secret shell_command_easyplus_off
-  easyclean:          !secret shell_command_easyclean
+---
+easyplus_on: !secret shell_command_easyplus_on
+easyplus_off: !secret shell_command_easyplus_off
+easyclean: !secret shell_command_easyclean

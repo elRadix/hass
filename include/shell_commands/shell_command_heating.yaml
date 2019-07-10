@@ -1,24 +1,19 @@
-### HEATING ###
-  tmp_living:         !secret shell_command_heating_tmp_living
-  tmp_living_auto:    !secret shell_command_heating_tmp_living_auto
-  tmp_living_off:     !secret shell_command_heating_tmp_living_off
-
-  tmp_slp1_on:        !secret shell_command_heating_tmp_slp1_on
-  tmp_slp1_auto:      !secret shell_command_heating_tmp_slp1_auto
-  tmp_slp1_off:       !secret shell_command_heating_tmp_slp1_off
-
-  tmp_slp2_on:        !secret shell_command_heating_tmp_slp2_on
-  tmp_slp2_auto:      !secret shell_command_heating_tmp_slp2_auto
-  tmp_slp2_off:       !secret shell_command_heating_tmp_slp2_off
-
-  tmp_slp3_on:        !secret shell_command_heating_tmp_slp3_on
-  tmp_slp3_auto:      !secret shell_command_heating_tmp_slp3_auto
-  tmp_slp3_off:       !secret shell_command_heating_tmp_slp3_off
-
-  tmp_bad_on:         !secret shell_command_heating_tmp_bad_on
-  tmp_bad_auto:       !secret shell_command_heating_tmp_bad_auto
-  tmp_bad_off:        !secret shell_command_heating_tmp_bad_off
-
-  tmp_eetkamer_on:    !secret shell_command_heating_tmp_eetkamer_on
-  tmp_eetkamer_auto:  !secret shell_command_heating_tmp_eetkamer_auto
-  tmp_eetkamer_off:   !secret shell_command_heating_tmp_eetkamer_off
+---
+tmp_living: !secret shell_command_heating_tmp_living
+tmp_living_auto: !secret shell_command_heating_tmp_living_auto
+tmp_living_off: !secret shell_command_heating_tmp_living_off
+tmp_slp1_on: !secret shell_command_heating_tmp_slp1_on
+tmp_slp1_auto: !secret shell_command_heating_tmp_slp1_auto
+tmp_slp1_off: !secret shell_command_heating_tmp_slp1_off
+tmp_slp2_on: !secret shell_command_heating_tmp_slp2_on
+tmp_slp2_auto: !secret shell_command_heating_tmp_slp2_auto
+tmp_slp2_off: !secret shell_command_heating_tmp_slp2_off
+tmp_slp3_on: !secret shell_command_heating_tmp_slp3_on
+tmp_slp3_auto: !secret shell_command_heating_tmp_slp3_auto
+tmp_slp3_off: !secret shell_command_heating_tmp_slp3_off
+tmp_bad_on: !secret shell_command_heating_tmp_bad_on
+tmp_bad_auto: !secret shell_command_heating_tmp_bad_auto
+tmp_bad_off: !secret shell_command_heating_tmp_bad_off
+tmp_eetkamer_on: !secret shell_command_heating_tmp_eetkamer_on
+tmp_eetkamer_auto: !secret shell_command_heating_tmp_eetkamer_auto
+tmp_eetkamer_off: !secret shell_command_heating_tmp_eetkamer_off

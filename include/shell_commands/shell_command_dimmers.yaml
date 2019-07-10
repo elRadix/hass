@@ -1,4 +1,4 @@
---- 
+---
 wasbak: !secret shell_command_dimmer_wasbak
 spotleft: !secret shell_command_dimmer_spotleft
 spotright: !secret shell_command_dimmer_spotright

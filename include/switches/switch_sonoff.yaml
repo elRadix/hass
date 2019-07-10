@@ -1,8 +1,4 @@
-#####################
-# SONOFF switches   #
-#####################
-
-
+---
 # - platform: mqtt
 #   name: "Sonoff"
 #   state_topic: "stat/kodi/POWER1"

@@ -1,5 +1,4 @@
-# DOCKER
-
+---
 - platform: hadockermon
   host: !secret hadockermon_host
   port: !secret hadockermon_port
@@ -8,7 +7,6 @@
 #  exclude:
 #    - 'ha-dockermon'
 
-
 - platform: hadockermon
   host: !secret hadockermon_host_nas
   port: !secret hadockermon_port_nas
@@ -16,4 +14,3 @@
 #  prefix: docker_nas
 #  exclude:
 #    - 'ha-dockermon'
-

@@ -1,7 +1,4 @@
-
-#####################
-# Router switches #
-#####################
+---
 - platform: command_line
   scan_interval: 160
   switches:
@@ -41,7 +38,6 @@
         command_state: "/opt/scripts/vpn_server2_status.sh"
         value_template: '{{ value == "enabled" }}'
         friendly_name: VPN Server 2
-        
 
 - platform: command_line
   scan_interval: 160
@@ -52,7 +48,7 @@
         command_state: "/opt/scripts/vpn_client1_status.sh"
         value_template: '{{ value == "enabled" }}'
         friendly_name: VPN Client 1
-        
+
 - platform: command_line
   scan_interval: 160
   switches:
@@ -92,5 +88,3 @@
         command_state: "/opt/scripts/vpn_client5_status.sh"
         value_template: '{{ value == "enabled" }}'
         friendly_name: VPN Client 5
-
-

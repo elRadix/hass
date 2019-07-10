@@ -1,9 +1,4 @@
-
-# - platform: template
-#   switches:
-
-#switch:
-
+---
   - platform: template
     switches:
       slaap:
@@ -15,7 +10,6 @@
             entity_id: group.slaap_sub
         turn_off:
           service: script.lights_slaap
-
 
   - platform: template
     switches:
@@ -53,12 +47,6 @@
         turn_off:
           service: script.switches_woon
 
-
-
-
-# script.lights
-
-
   # - platform: template
   #   switches:
   #     socket_woon:
@@ -72,7 +60,6 @@
   #         service: script.turn_on
   #         entity_id: script.switches
 
-#########
 #  - service: light.turn_off
 #    data_template:
 #      entity_id: >
@@ -90,8 +77,6 @@
 #          selectattr('state','eq','on') | map(attribute='entity_id') | join(',') %}
 #        {{switches_on}}
 ######
-
-
 
 #   google_assistant_sync:
 #      friendly_name: Google Home
@@ -130,3 +115,4 @@
   #         - service: group.remove
   #           data:
   #             object_id: deaditems
+  

@@ -1,5 +1,4 @@
-### WIFI
-
+---
 
 #- id: home_rachid
 #  initial_state: 'true'
@@ -60,7 +59,6 @@
   - service: notify.android
     data_template:
       message: '{{ trigger.to_state.name }} is at Home since {{now().strftime("%H:%M:%S")}} '
-      
 - id: wifi_left_home
   initial_state: 'true'
   alias: wifi left home
@@ -79,7 +77,7 @@
 
 
 
-########## WIFI HOBOKEN ########## 
+########## WIFI HOBOKEN ##########
 - id: wifi_at_hoboken
   initial_state: 'true'
   alias: wifi at hoboken
@@ -94,7 +92,7 @@
   - service: notify.android
     data_template:
       message: '{{ trigger.to_state.name }} is at Hoboken since {{now().strftime("%H:%M:%S")}} '
-      
+
 - id: wifi_left_hoboken
   initial_state: 'true'
   alias: wifi left hoboken
@@ -111,7 +109,7 @@
     data_template:
       message: '{{ trigger.to_state.name }} left Hoboken since {{now().strftime("%H:%M:%S")}} '
 
-########## WIFI WORK SOUMAYA ########## 
+########## WIFI WORK SOUMAYA ##########
 - id: wifi_soumaya_isabel
   initial_state: 'true'
   alias: wifi soumaya isabel
@@ -142,10 +140,9 @@
   - service: notify.android
     data:
       message: Soumaya left Isabel since {{now().strftime("%H:%M:%S")}}
-########## WIFI WORK SOUMAYA ########## 
+########## WIFI WORK SOUMAYA ##########
 
-
-########## WIFI WORK RACHID ########## 
+########## WIFI WORK RACHID ##########
 - id: wifi_rachid_bpn
   initial_state: 'true'
   alias: wifi rachid bnp
@@ -180,7 +177,7 @@
 
 
 
-##### gps 
+##### gps
 
 ### WORK keystone ####
 
@@ -188,12 +185,12 @@
   trigger:
   - platform: state
     entity_id: sensor.time_to_leave_for_work
-    to: 'True' 
+    to: 'True'
     from: 'False'
   condition:
   - condition: numeric_state
     entity_id: sensor.ha_runtime_in_minutes
-    above: 1    
+    above: 1
   - condition: state
     entity_id: binary_sensor.workday_sensor
     state: 'on'
@@ -209,9 +206,9 @@
     - service: notify.dageraad  # Aankomsttijd: {{ (as_timestamp(now())+(states("sensor.time_to_home")|int) * 60 ) | timestamp_custom("%H:%M") }}
       data_template:
         message: "
-        
-        Je hebt 15min tijd om je klaar te maken, om op 9u aan te komen bij Keystone. 
-        
+
+        Je hebt 15min tijd om je klaar te maken, om op 9u aan te komen bij Keystone.
+
         Reistijd: {{states.sensor.home_to_keystone.state}} min."
         title: time_pattern to Leave for Work
 
@@ -224,9 +221,9 @@
     - service: notify.dageraad
       data_template:
         message: "
-        
+
         Tijd om naar huis te gaan.
-        
+
         `Huidige reistijd bedraagt nu {{states.sensor.keystone_to_home.state}} min.`"
         title: Workday completed at {{now().strftime("%H:%M:%S")}}
     - service: notify.android
@@ -241,12 +238,12 @@
   trigger:
   - platform: state
     entity_id: sensor.time_to_leave_for_home
-    to: 'True' 
+    to: 'True'
     from: 'False'
   condition:
   - condition: numeric_state
     entity_id: sensor.ha_runtime_in_minutes
-    above: 1    
+    above: 1
   - condition: state
     entity_id: binary_sensor.workday_sensor
     state: 'on'
@@ -262,7 +259,7 @@
     - service: notify.dageraad
       data_template:
         message: '
-        
+
         Je hebt 15min tijd om je klaar te maken, om op 18u thuis aan te komen. 
         Huidige reistijd bedraagt nu  {{states.sensor.keystone_to_home.state}} min. '
         title: time_pattern to Leave for Home
@@ -292,11 +289,11 @@
   - service: notify.dageraad
     data_template:
       message: ' {{ trigger.to_state.name }} left School {{now().strftime("%H:%M:%S")}}'
-####### ZONE SHOOL ####### 
+####### ZONE SHOOL #######
 
 
 
-########## ZONE MECHELEN P1 Parking ########## 
+########## ZONE MECHELEN P1 Parking ##########
 - id: P1_Parking_Enter
   initial_state: 'true'
   alias: P1 Parking Enter
@@ -330,7 +327,7 @@
       message: Rachid left P1 Parking Mechelen since {{now().strftime("%H:%M:%S")}}
 ########## ZONE MECHELEN  P1 Parking ##########
 
-########## ZONE Mechelen Station ########## 
+########## ZONE Mechelen Station ##########
 - id: Mechelen_Station_Enter
   initial_state: 'true'
   alias: Mechelen_Station Enter
@@ -364,7 +361,7 @@
       message: Rachid left Mechelen Station since {{now().strftime("%H:%M:%S")}}
 ########## ZONE Mechelen Station ##########
 
-########## ZONE Brussel Centraal ########## 
+########## ZONE Brussel Centraal ##########
 - id: Brussel_Centraal_Enter
   initial_state: 'true'
   alias: Brussel Centraal Enter
@@ -399,7 +396,7 @@
 ########## ZONE Brussel Station ##########
 
 
-########## ZONE Brussel Noord ########## 
+########## ZONE Brussel Noord ##########
 - id: Brussel_Noord_Enter
   initial_state: 'true'
   alias: Brussel Noord Enter
@@ -434,7 +431,7 @@
 ########## ZONE Brussel Noord ##########
 
 
-########## ZONE WORK ########## 
+########## ZONE WORK ##########
 - id: work_rachid_on
   initial_state: 'true'
   alias: Is work Rachid On
@@ -466,7 +463,7 @@
   - service: notify.dageraad
     data_template:
       message: ' {{ trigger.to_state.name }} is at work {{now().strftime("%H:%M:%S")}}'
-      
+
 - id: work_rachid_off_bnp
   initial_state: 'true'
   alias: Is work Rachid Off
@@ -491,7 +488,7 @@
   - service: notify.dageraad
     data_template:
       message: ' {{ trigger.to_state.name }} left work {{now().strftime("%H:%M:%S")}}'
-########## ZONE WORK ########## 
+########## ZONE WORK ##########
 
 
 
@@ -509,7 +506,7 @@
 #     data_template:
 #       title: 'Locatie: {{ trigger.event.data.entity }} - {{ trigger.event.data.place_name }}'
 #       message: |-
-#         {{ trigger.event.data.entity }}  
+#         {{ trigger.event.data.entity }}
 #         {{ trigger.event.data.place_name }}
 #         {{ trigger.event.data.distance_from_home }} from home and traveling {{ trigger.event.data.direction }}
 #         {{ trigger.event.data.to_state }} ({{ trigger.event.data.mtime }})
@@ -535,7 +532,7 @@
 #     data_template:
 #       title: 'Locatie: {{ trigger.event.data.entity }} - {{ trigger.event.data.place_name }}'
 #       message: |-
-#         {{ trigger.event.data.entity }}  
+#         {{ trigger.event.data.entity }}
 #         {{ trigger.event.data.place_name }}
 #         {{ trigger.event.data.distance_from_home }} from home and traveling {{ trigger.event.data.direction }}
 #         {{ trigger.event.data.to_state }} ({{ trigger.event.data.mtime }})
@@ -681,8 +678,6 @@
 
 
 
- 
-
 #- id: soumaya_vertrekt_rachid
 #  initial_state: 'true'
 #  alias: Soumaya vertrekt ergens, stuur travel time notify Rachid
@@ -793,6 +788,3 @@
 #          location:
 #            latitude: "{{ states.device_tracker.comp_rachid.attributes.latitude }}"
 #            longitude: "{{ states.device_tracker.comp_rachid.attributes.longitude }}"
-
-
-

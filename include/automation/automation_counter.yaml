@@ -35,7 +35,7 @@
       Inkomhal:   {{states.counter.rf_inkomhal.state}}
 
       Terras:        {{states.counter.rf_terras.state}}'
-      
+
 
 
 - id: counter_2

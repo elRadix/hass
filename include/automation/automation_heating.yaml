@@ -1,8 +1,5 @@
 
-##################################
-###### Temperature Setpoint ######
-##################################
-
+---
 - id: setpoint_living
   initial_state: 'true'
   alias: setpoint_living
@@ -18,7 +15,6 @@
       temperature: '{{ states.sensor.tmp_set_living.state | float  }}'
       #temperature: '{{ states.input_number.setpoint.state | float  }}'
 
-
 - id: setpoint_eetkamer
   initial_state: 'true'
   alias: setpoint_eetkamer
@@ -32,7 +28,6 @@
       entity_id: climate.eetkamer
       temperature: '{{ states.input_number.setpoint_eetkamer.state | float  }}'
 
-             
 - id: setpoint_slp1
   initial_state: 'true'
   alias: setpoint_slp1
@@ -223,9 +218,8 @@
       message: "Verwarming programma uitgeschakeld."
   - service: notify.android
     data:
-      message: Verwarming programma uitgeschakeld. - 
-      
-      
+      message: Verwarming programma uitgeschakeld.
+
 - id: Heater Off at midnight
   initial_state: 'true'
   alias: Heater Off at midnight
@@ -313,7 +307,7 @@
     seconds: 14
   condition:
   - condition: state
-    entity_id: input_boolean.heating 
+    entity_id: input_boolean.heating
     state: 'on'
   - condition: template
     value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time.state }}'
@@ -672,4 +666,3 @@
   - service: notify.dageraad
     data:
       message: "Ketel aan!"
-

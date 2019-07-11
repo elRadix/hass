@@ -1,3 +1,4 @@
+---
 - id: easyplus_1
   initial_state: 'true'
   alias: Easyplus non-Winter state
@@ -67,7 +68,7 @@
 #     data:
 #       message: "Alles gaat uit over 15min!
 
-#                 Deactiveer Auto Shutdown 
+#                 Deactiveer Auto Shutdown
 #                 als je dat niet wilt."
 #   - service: notify.android
 #     data:
@@ -77,7 +78,7 @@
 #           - action: start_easyplus
 #             title: Domtica opstarten
 #           - action: cancel_cancel
-#             title: Cancel 
+#             title: Cancel
 ###############################################################
 ## Activate Easyplus Telnet Service
 - id: easyplus_4
@@ -108,11 +109,11 @@
   - service: script.easyplus_off
   - service: notify.mobile_app_elradix
     data:
-      message: "Easyplus Off"  
+      message: "Easyplus Off"
   - service: notify.dageraad
     data:
       message: "Easyplus Off"
-      
+
 
 
 ################################################
@@ -127,13 +128,13 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night_late
-        state: 'on'     
+        state: 'on'
       - condition: state
         entity_id: group.easyplus_lights
         state: 'on'
       - condition: state
         entity_id: switch.easyplus
-        state: 'on'    
+        state: 'on'
   action:
   - service: notify.dageraad
     data:
@@ -150,7 +151,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night_late
-        state: 'on'     
+        state: 'on'
       - condition: state
         entity_id: group.easyplus_lights
         state: 'on'
@@ -162,7 +163,7 @@
   - service: notify.dageraad
     data:
       message: "Night 1am Modus, Lights off"
-      
+
 - id: easyplus_9b
   initial_state: 'true'
   alias: Auto Easyplus off 1u30 - Switches
@@ -174,7 +175,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night_late
-        state: 'on'      
+        state: 'on'
       - condition: state
         entity_id: group.easyplus_switches
         state: 'on'
@@ -198,7 +199,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night_late
-        state: 'on'      
+        state: 'on'
       - condition: state
         entity_id: switch.easyplus
         state: 'on'
@@ -208,7 +209,7 @@
   - service: notify.dageraad
     data:
       message: "Night 1am Modus, Easyplus off"
-  
+
 ##########################################################
 - id: easyplus_10a
   initial_state: 'true'
@@ -221,7 +222,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night_plus
-        state: 'on'  
+        state: 'on'
       - condition: state
         entity_id: group.easyplus_lights
         state: 'on'
@@ -233,7 +234,7 @@
   - service: notify.dageraad
     data:
       message: "Late Night Plus Shutdown starting in 15min."
-      
+
 - id: easyplus_10a
   initial_state: 'true'
   alias: Auto Easyplus off 1u30 - Lights
@@ -245,7 +246,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night_plus
-        state: 'on'  
+        state: 'on'
       - condition: state
         entity_id: group.easyplus_lights
         state: 'on'
@@ -257,7 +258,7 @@
   - service: notify.dageraad
     data:
       message: "Late Night Modus, Lights off"
-      
+
 - id: easyplus_10b
   initial_state: 'true'
   alias: Auto Easyplus off 1u30 - Switches
@@ -269,7 +270,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night_plus
-        state: 'on'        
+        state: 'on'
       - condition: state
         entity_id: group.easyplus_switches
         state: 'on'
@@ -293,7 +294,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night_plus
-        state: 'on'  
+        state: 'on'
       - condition: state
         entity_id: switch.easyplus
         state: 'on'
@@ -328,22 +329,21 @@
         entity_id: binary_sensor.workday_sensor
         state: 'on'
       - condition: state
-        entity_id: input_boolean.school 
+        entity_id: input_boolean.school
         state: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: switch.easyplus    
+    entity_id: switch.easyplus
   - delay:
-      seconds: 20    
+      seconds: 20
   - service: homeassistant.turn_on
-    entity_id: switch.stp_keuken_water         
+    entity_id: switch.stp_keuken_water
   - service: notify.dageraad
     data:
       message: "Shool Modus, Easyplus On"
   - service: notify.android
     data:
       message: "Shool Modus, Easyplus + Waterkoker On"
-
 
 - id: easyplus_12
   initial_state: 'true'
@@ -368,7 +368,7 @@
         entity_id: binary_sensor.workday_sensor
         state: 'on'
       - condition: state
-        entity_id: input_boolean.school 
+        entity_id: input_boolean.school
         state: 'on'
   action:
   - service: homeassistant.turn_on
@@ -379,7 +379,6 @@
   - service: notify.android
     data:
       message: School Modus, TV on
-
 
 - id: easyplus_13
   initial_state: 'true'
@@ -404,13 +403,13 @@
         entity_id: binary_sensor.workday_sensor
         state: 'on'
       - condition: state
-        entity_id: input_boolean.school 
+        entity_id: input_boolean.school
         state: 'on'
   action:
   - service: homeassistant.turn_on
     entity_id: switch.light_slp3_deur
   - service: homeassistant.turn_on
-    entity_id: switch.light_slp3_kast    
+    entity_id: switch.light_slp3_kast
   - service: homeassistant.turn_on
     entity_id: switch.light_slp2_deur
   - service: homeassistant.turn_on
@@ -448,7 +447,7 @@
         entity_id: group.easyplus_lights
         state: 'on'
       - condition: state
-        entity_id: input_boolean.school 
+        entity_id: input_boolean.school
         state: 'on'
   action:
   - service: script.lights
@@ -481,10 +480,10 @@
         entity_id: group.easyplus_switches
         state: 'on'
       - condition: state
-        entity_id: input_boolean.school 
+        entity_id: input_boolean.school
         state: 'on'
   action:
-  - service: script.switches 
+  - service: script.switches
   - service: notify.dageraad
     data:
       message: "School Modus, Switches Off"
@@ -511,7 +510,7 @@
         entity_id: binary_sensor.workday_sensor
         state: 'on'
       - condition: state
-        entity_id: input_boolean.school 
+        entity_id: input_boolean.school
         state: 'on'
   action:
   - service: homeassistant.turn_off
@@ -543,7 +542,7 @@
         entity_id: group.easyplus_lights
         state: 'on'
       - condition: state
-        entity_id: input_boolean.school 
+        entity_id: input_boolean.school
         state: 'on'
   action:
   - service: script.lights
@@ -573,10 +572,10 @@
         entity_id: group.easyplus_switches
         state: 'on'
       - condition: state
-        entity_id: input_boolean.school 
+        entity_id: input_boolean.school
         state: 'on'
   action:
-  - service: script.switches 
+  - service: script.switches
   - service: notify.dageraad
     data:
       message: "School Modus, Switches Off"
@@ -603,7 +602,7 @@
         entity_id: group.easyplus_switches
         state: 'on'
       - condition: state
-        entity_id: input_boolean.school 
+        entity_id: input_boolean.school
         state: 'on'
   action:
   - service: homeassistant.turn_off
@@ -611,8 +610,6 @@
   - service: notify.dageraad
     data:
       message: "School Modus, Easyplus Off"
-
-
 
 - id: easyplus_16
   initial_state: 'true'
@@ -654,7 +651,7 @@
   - service: notify.android
     data:
       message: Easyplus startup has been activated, it's Monday - {{now().strftime("%H:%M:%S")}}
-      
+
 - id: easyplus_18
   initial_state: 'true'
   alias: Easyplus startup sun below horizonn
@@ -663,7 +660,7 @@
 #    minutes: '/1'
 #    seconds: 1
   - platform: sun
-    event: sunset  
+    event: sunset
     offset: "-00:15:00"
   - platform: state
     entity_id: group.floradix
@@ -706,8 +703,6 @@
     data:
       message: Je bent thuis en tis bijna donker, Easyplus is start nu - {{now().strftime("%H:%M:%S")}}
 
-
-
 - id: easyplus_19a
   initial_state: 'true'
   alias: Turn Easyplus Off Niemand thuis - Lights
@@ -720,7 +715,7 @@
     from: 'home'
     to: 'not_home'
     for:
-      minutes: 3 
+      minutes: 3
   condition:
     condition: and
     conditions:
@@ -732,7 +727,7 @@
         state: 'on'
       - condition: state
         entity_id: switch.stp_berging_wasmachine
-        state: 'off' 
+        state: 'off'
       - condition: state
         entity_id: switch.stp_berging_droogkast
         state: 'off'
@@ -763,7 +758,7 @@
     from: 'home'
     to: 'not_home'
     for:
-      minutes: 4 
+      minutes: 4
   condition:
     condition: and
     conditions:
@@ -775,7 +770,7 @@
         state: 'on'
       - condition: state
         entity_id: switch.stp_berging_wasmachine
-        state: 'off' 
+        state: 'off'
       - condition: state
         entity_id: switch.stp_berging_droogkast
         state: 'off'
@@ -819,7 +814,7 @@
         state: 'on'
       - condition: state
         entity_id: switch.stp_berging_wasmachine
-        state: 'off' 
+        state: 'off'
       - condition: state
         entity_id: switch.stp_berging_droogkast
         state: 'off'
@@ -834,12 +829,10 @@
         state: 'on'
   action:
   - service: homeassistant.turn_off
-    entity_id: switch.easyplus  
+    entity_id: switch.easyplus
   - service: notify.dageraad
     data:
       message: "Away Modus, Easyplus Off"
-
-
 
 - id: easyplus_21
   alias: 'Auto off Day enabled day'
@@ -871,8 +864,6 @@
   #   data:
   #     message: Night Modus Started - {{now().strftime("%H:%M:%S")}}
 
-      
-
 #- id: auto off disabled
 #  alias: 'Auto off Day disabled dusk'
 #  initial_state: 'true'
@@ -889,9 +880,6 @@
 #  - service: notify.dageraad
 #    data:
 #      message: 'lights enabled  at Dusk!'
-
-
-
 
 - id: easyplus_22
   alias: 'Auto off Day'
@@ -917,4 +905,3 @@
       data_template:
         message: 'Het is daglicht, {{ trigger.to_state.name }} stond aan!'
         title: Lichten uitgeschakeld
-        

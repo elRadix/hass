@@ -162,7 +162,7 @@
     - service: notify.dageraad
       data:
         title: "Afval Roos"
-        message: "Vandaag wordt de Roze zak geleegd"    
+        message: "Vandaag wordt de Roze zak geleegd"
     - service: persistent_notification.create
       data:
         title: "Afval Roze Zak"

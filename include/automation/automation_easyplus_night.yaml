@@ -1,3 +1,4 @@
+---
 - alias:  easyplus_night_1_mobile_app_night now
   trigger:
   - event_data:
@@ -7,12 +8,12 @@
   action:
   - service: script.lights
   - delay:
-      seconds: 5  
+      seconds: 5
   - service: script.switches
   - delay:
       seconds: 5
   - service: homeassistant.turn_off
-    entity_id: switch.easyplus       
+    entity_id: switch.easyplus
   - service: notify.mobile_app_elradix
     data:
       message: House is in Night Mode
@@ -49,7 +50,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night
-        state: 'on'  
+        state: 'on'
       - condition: state
         entity_id: group.easyplus_lights
         state: 'on'
@@ -74,7 +75,7 @@
           - action: night_now
             title: Shutdown Easyplus now
           - action: night_delay
-            title: Delay Shutdown Easyplus to 1am               
+            title: Delay Shutdown Easyplus to 1am
   - service: telegram_bot.send_message
     data_template:
       title: 'Night Modus will start over 15min'
@@ -103,12 +104,12 @@
   action:
   - service: script.lights
   - delay:
-      seconds: 5  
+      seconds: 5
   - service: script.switches
   - delay:
       seconds: 5
   - service: homeassistant.turn_off
-    entity_id: switch.easyplus        
+    entity_id: switch.easyplus
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -124,7 +125,7 @@
       data: '/night_delay'
   action:
   - service: homeassistant.turn_off
-    entity_id: input_boolean.night 
+    entity_id: input_boolean.night
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -141,7 +142,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night
-        state: 'on'    
+        state: 'on'
       - condition: state
         entity_id: group.easyplus_lights
         state: 'on'
@@ -165,7 +166,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night
-        state: 'on'    
+        state: 'on'
       - condition: state
         entity_id: group.easyplus_switches
         state: 'on'
@@ -180,7 +181,7 @@
 
 - id: easyplus_night_6
   initial_state: 'true'
-  alias: 'Night Modus Easyplus Off' 
+  alias: 'Night Modus Easyplus Off'
   trigger:
     platform: time
     at: '00:30:55'
@@ -189,7 +190,7 @@
     conditions:
       - condition: state
         entity_id: input_boolean.night
-        state: 'on'    
+        state: 'on'
       - condition: state
         entity_id: switch.easyplus
         state: 'on'

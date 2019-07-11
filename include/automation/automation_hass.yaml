@@ -36,7 +36,7 @@
 
 
 
-###########HTML5 Notification sensor.ha_version
+---
 - id: hass_3
   initial_state: 'true'
   alias: Update is available
@@ -58,5 +58,3 @@
   - service: notify.dageraad
     data_template:
       message: Home Assistant {{states.sensor.ha_version.state}} is now available.
-      
-

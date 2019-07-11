@@ -49,7 +49,7 @@
   - service: notify.android
     data:
       message: House alarm activating, ensure all doors and windows are closed
-      
+
 - id: alarm_disarmed
   initial_state: 'true'
   alias: '[Alarm] Disarmed'

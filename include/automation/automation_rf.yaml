@@ -10,7 +10,7 @@
     data_template:
       payload: '{{trigger.payload_json.RfReceived.Data}}'
 
-# ####### OPEN - CLOSED ######## 
+# ####### OPEN - CLOSED ########
 - id: rf_01
   initial_state: 'true'
   alias: '[RF] Inkomhal Open'
@@ -71,9 +71,9 @@
   - service: notify.android
     data_template:
       message: Door {{ trigger.to_state.name }} is CLOSED - {{now().strftime("%H:%M:%S")}}
-# ####### OPEN - CLOSED ######## 
+# ####### OPEN - CLOSED ########
 
-# ####### OPEN - REMINDER ######## 
+# ####### OPEN - REMINDER ########
 - id: rf_03
   initial_state: 'on'
   trigger:
@@ -125,9 +125,9 @@
       title: ALARM - DOOR OPEN
       message: >
         Door {{ trigger.to_state.name }} is STILL OPEN - PLEASE CHECK ASAP.
-######## OPEN - REMINDER ######## 
+######## OPEN - REMINDER ########
 
-######## WATER ALERT KEUKEN ######## 
+######## WATER ALERT KEUKEN ########
 - id: rf_04
   initial_state: 'true'
   alias: '[RF] Water Alert Keuken'
@@ -181,11 +181,11 @@
       title: ALERT - WATER DAMAGE
       message: >
         {{ trigger.to_state.name }} - PLEASE CHECK ASAP
-        
-        Since {{now().strftime("%H:%M:%S")}}
-######## WATER ALERT KEUKEN ######## 
 
-######## FIRE ALERT   ######## 
+        Since {{now().strftime("%H:%M:%S")}}
+######## WATER ALERT KEUKEN ########
+
+######## FIRE ALERT   ########
 - id: rf_fire
   initial_state: 'true'
   alias: '[RF] Fire'
@@ -210,11 +210,11 @@
       title: FIRE ALARM
       message: >
         {{ trigger.to_state.name }} - PLEASE CHECK ASAP
-        
-        Since {{now().strftime("%H:%M:%S")}}
-######## FIRE ALERT  ######## 
 
-######## GAS ALERT   ######## 
+        Since {{now().strftime("%H:%M:%S")}}
+######## FIRE ALERT  ########
+
+######## GAS ALERT   ########
 - id: rf_gas
   initial_state: 'true'
   alias: '[RF] Gas'
@@ -239,11 +239,11 @@
       title: GAS ALARM
       message: >
         {{ trigger.to_state.name }} - PLEASE CHECK ASAP
-        
-        Since {{now().strftime("%H:%M:%S")}}
-######## FIRE ALERT  ######## 
 
-######## RESET RF ######## 
+        Since {{now().strftime("%H:%M:%S")}}
+######## FIRE ALERT  ########
+
+######## RESET RF ########
 - id: rf_05
   initial_state: 'true'
   alias: '[RF] Reset'
@@ -270,7 +270,7 @@
   # - service: mqtt.publish
   #   data:
   #     topic: home/water-badkamer
-  #     payload: OFF 
+  #     payload: OFF
   # - service: mqtt.publish
   #   data:
   #     topic: home/water-keuken
@@ -283,8 +283,8 @@
   #   data:
   #     topic: home/fire
   #     payload: OFF
-######## RESET RF ######## 
-######## RF BUTTONS ######## 
+######## RESET RF ########
+######## RF BUTTONS ########
 - id: rf_06
   initial_state: 'true'
   alias: '[RF] Sonoff A'
@@ -323,7 +323,6 @@
     data_template:
       message: '{{ trigger.to_state.name }}
 
-
       Living lights are {{states.switch.woon.state}}'
 
 - id: rf_08
@@ -347,7 +346,7 @@
   - service: notify.telegram_rachid
     data_template:
       message: 'Easyplus is {{states.switch.easyplus.state}}'
-      
+
 - id: rf_09
   initial_state: 'true'
   alias: '[RF] Sonoff D'
@@ -363,11 +362,10 @@
       seconds: 15
   - service: notify.telegram_rachid
     data_template:
-      message: '{{ trigger.to_state.name }} 
-      
+      message: '{{ trigger.to_state.name }}
+
       Living Sockets are {{states.switch.woon.state}} '
-      
-    
+
 ### RF 3 BUTTON SWITCH
 - id: rf_10
   initial_state: 'true'
@@ -403,7 +401,7 @@
       seconds: 8
   - service: notify.telegram_rachid
     data_template:
-      message: '{{ trigger.to_state.name }} 
+      message: '{{ trigger.to_state.name }}
 
       Current light is {{states.group.slaapkamer2_light.state}}'
 
@@ -425,7 +423,7 @@
       message: '{{ trigger.to_state.name }}
 
       Current light is {{states.group.slaapkamer2_light.state}}'
-      
+
 
 ### RF DOOR BATTERY LOW
 - id: rf_13
@@ -434,13 +432,13 @@
   - platform: state
     entity_id: binary_sensor.inkomhal_battery, binary_sensor.terras_battery
     from: 'off'
-    to: 'on' 
-  action: 
+    to: 'on'
+  action:
   - service: persistent_notification.create
     data_template:
       message: "Sensor {{ trigger.entity_id }} low battery"
       title: "Low Battery Alert"
-      
+
 
 
 #### RF CIRCLE BUTTONS ###
@@ -460,10 +458,10 @@
   - service: notify.telegram_rachid
     data_template:
       message: '{{ trigger.to_state.name }} toggled Keuken
-      
-      
+
+
       Commander is {{states.switch.stp_keuken_commander.state}}
-      
+
       Vaatwasser is {{states.switch.stp_keuken_vaatwasser.state}}'
 
 
@@ -505,8 +503,8 @@
   - service: notify.dageraad
     data_template:
       message: '{{ trigger.to_state.name }} toggled Wasmachine
-      
-      
+
+
       Wasmachine is {{states.switch.stp_berging_wasmachine.state}}'
 
 - id: rf_17
@@ -525,8 +523,8 @@
   - service: notify.dageraad
     data_template:
       message: '{{ trigger.to_state.name }} toggled Droogkast
-      
-      
+
+
       Droogkast is {{states.switch.stp_berging_droogkast.state}}'
 
 # - id: rf_18
@@ -545,8 +543,8 @@
 #   - service: notify.dageraad
 #     data_template:
 #       message: '{{ trigger.to_state.name }} toggled Waterkoker
-      
-      
+
+
 #       Droogkast is {{states.switch.stp_keuken_water.state}}'
 
 
@@ -560,7 +558,7 @@
   action:
     service: counter.increment
     entity_id: counter.rf_909601
-    
+
 - id: rf_20
   initial_state: 'true'
   alias: Tap Controller 909601

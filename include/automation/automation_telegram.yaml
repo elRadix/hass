@@ -1,11 +1,4 @@
-
-###############################
-#This automation replies to a #
-#telegram message with various#
-#status details for the system#
-###############################
-
-
+---
 - id: tgbot_01
   initial_state: 'true'
   alias: 'Telebot start home'
@@ -1770,4 +1763,3 @@
     data_template:
       target: '{{ trigger.event.data.user_id }}'
       message: "Reboot Router"
-

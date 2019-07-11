@@ -1,3 +1,4 @@
+---
 - id: Switch On
   alias: 'Switch On'
   initial_state: True
@@ -92,4 +93,3 @@
 #      tag: switchOff
 #      color: #FD0000
 # switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_eetkamer_other,switch.stp_eetkamer_tv,switch.stp_keuken_commander,switch.stp_keuken_dampkap,switch.stp_keuken_espresso,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_keuken_vaatwasser,switch.stp_keuken_water,switch.stp_living_bureau,switch.stp_living_other,switch.stp_living_sony,switch.stp_slp1_bed,switch.stp_slp1_bed_soumaya,switch.stp_slp2_bureau,switch.stp_slp2_deur,switch.stp_slp3_bureau,switch.stp_slp3_deur,switch.stp_smappee,switch.ketel,switch.easyplus,switch.bureau_lader
-

@@ -1,4 +1,4 @@
-#############################
+---
 - id: tg_heating_1
   alias: tg_heating_start
   initial_state: 'true'
@@ -139,8 +139,7 @@
                 Yassin: {{states.climate.yassin.attributes.current_temperature}}°C
 
                 "
-                
-                
+
 
 
 - id: tg_heating_4

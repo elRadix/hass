@@ -1,4 +1,5 @@
 
+---
 - id: theme_1
   initial_state: 'true'
   alias: switch_hass_template

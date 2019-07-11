@@ -1,3 +1,4 @@
+---
 - alias: Log Level
   initial_state: True
   trigger:
@@ -71,10 +72,6 @@
 #       topic: "owntracks/elradix/s7soumaya/cmd"
 #       payload_template: '{"_type": "cmd","action": "reportLocation"}'
 #       #payload_template: '{"_type": "cmd","action": "reportLocation", "batt": %BATT}'
-      
-      
-
-
 
 
 #- id: motion_s2_berging_on

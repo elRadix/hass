@@ -1,4 +1,4 @@
-
+---
 - id: hass_1
   initial_state: 'true'
   alias: System Startup Notification
@@ -9,9 +9,6 @@
   - service: notify.telegram_rachid
     data:
       message: 'Home Assistant back online!'
-  # - service: notify.html5
-  #   data:
-  #     message: 'Home Assistant back online!'
   - service: notify.android
     data:
       message: Home Assistant back online! - {{now().strftime("%H:%M:%S")}}
@@ -26,17 +23,10 @@
   - service: notify.telegram_rachid
     data:
       message: 'Home Assistant is going down!'
-  # - service: notify.html5
-  #   data:
-  #     message: 'Home Assistant is going down!'
   - service: notify.android
     data:
       message: Home Assistant is going down! - {{now().strftime("%H:%M:%S")}}
 
-
-
-
----
 - id: hass_3
   initial_state: 'true'
   alias: Update is available

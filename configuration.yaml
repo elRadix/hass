@@ -159,11 +159,14 @@ life360:
 #    - upload_speed
 #    - download
 #    - upload
+
 geo_address:
   use_state: true
   use_timed: true
   update_interval: 60
   update_period: 3600
+  fields_display: road house_number city_district country_code  
+
 sun:
   monitored_conditions:
     - azimuth

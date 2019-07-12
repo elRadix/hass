@@ -1,0 +1,8 @@
+{
+    "domain": "https://github.com/Crewski/HANotify",
+    "name": "HANotify",
+    "documentation": "https://github.com/Crewski/HANotify",
+    "dependencies": [],
+    "codeowners": ["@Crewski"],
+    "requirements": []
+  }

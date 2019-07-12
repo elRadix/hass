@@ -1,0 +1,10 @@
+{
+    "domain": "geo_address",
+    "name": "geo_address",
+    "documentation": "https://github.com/Sha-Darim/geo_address",
+    "requirements": ["geopy==1.20.0"],
+    "dependencies": ["device_tracker"],
+    "codeowners": [
+        "@sha-darim"
+    ]
+}

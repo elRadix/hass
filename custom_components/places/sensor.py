@@ -260,7 +260,7 @@ ATTR_PLACE_CATEGORY = 'place_category'
 ATTR_PLACE_NEIGHBOURHOOD = 'neighbourhood'
 ATTR_DEVICETRACKER_ID = 'devicetracker_entityid'
 ATTR_DEVICETRACKER_ZONE = 'devicetracker_zone'
-ATTR_PICTURE = 'entity_picture'
+""" ATTR_PICTURE = 'entity_picture' """
 ATTR_LATITUDE_OLD = 'previous_latitude'
 ATTR_LONGITUDE_OLD = 'previous_longitude'
 ATTR_LATITUDE = 'current_latitude'
@@ -329,7 +329,7 @@ class Places(Entity):
 
         home_latitude = str(hass.states.get(home_zone).attributes.get('latitude'))
         home_longitude = str(hass.states.get(home_zone).attributes.get('longitude'))
-        self._entity_picture = hass.states.get(devicetracker_id).attributes.get('entity_picture')
+        """ self._entity_picture = hass.states.get(devicetracker_id).attributes.get('entity_picture') """
         self._street_number = None
         self._street = None
         self._city = None
@@ -379,11 +379,11 @@ class Places(Entity):
         """Return the state of the sensor."""
         return self._state
 
-    @property
+"""   @property
     def entity_picture(self):
         """Return the picture of the device."""
         return self._entity_picture
-
+"""
     @property
     def device_state_attributes(self):
         """Return the state attributes."""
@@ -408,7 +408,7 @@ class Places(Entity):
             ATTR_DEVICETRACKER_ID: self._devicetracker_id,
             ATTR_DEVICETRACKER_ZONE: self._devicetracker_zone,
             ATTR_HOME_ZONE: self._home_zone,
-            ATTR_PICTURE: self._entity_picture,
+"""            ATTR_PICTURE: self._entity_picture, """
             ATTR_DISTANCE_KM: self._distance_km,
             ATTR_DISTANCE_M: self._distance_m,
             ATTR_MTIME: self._mtime,

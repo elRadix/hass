@@ -5309,7 +5309,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.raspi_dockermon",
+                                            "entity": "switch.raspi_dockermons",
                                             "entity_picture": "/local/docker/dockermon.png",
                                             "show_entity_picture": true,
                                             "show_name": false,

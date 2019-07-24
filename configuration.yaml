@@ -136,6 +136,27 @@ switch: !include_dir_merge_list include/switches
 zone: !include_dir_merge_list include/zones
 # scene: !include_dir_merge_named include/scenes
 
+docker_monitor:
+  # containers:
+  #   - homeassistant_homeassistant_1
+  #   - homeassistant_mariadb_1
+  #   - homeassistant_mosquitto_1
+  name: raspi
+  url: !secret hadockermon_host
+  events: True
+  monitored_conditions:
+    - utilization_version
+    - container_status
+    - container_uptime
+    - container_image
+    - container_memory_usage
+    - container_memory_percentage_usage
+    - container_cpu_percentage_usage
+    - container_network_total_up
+    - container_network_total_down
+    - container_network_speed_up
+    - container_network_speed_down
+
 weather:
   - platform: darksky
     api_key: !secret darksky_api

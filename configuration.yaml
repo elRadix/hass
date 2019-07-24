@@ -142,7 +142,7 @@ docker_monitor:
   #   - homeassistant_mariadb_1
   #   - homeassistant_mosquitto_1
   name: raspi
-  url: !secret hadockermon_host
+  # url: !secret hadockermon_host
   events: True
   monitored_conditions:
     - utilization_version

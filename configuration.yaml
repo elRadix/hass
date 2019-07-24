@@ -144,18 +144,18 @@ docker_monitor:
   name: raspi
   # url: !secret hadockermon_host
   # events: True
-  monitored_conditions:
-    - utilization_version
-    - container_status
-    - container_uptime
-    - container_image
-    - container_memory_usage
-    - container_memory_percentage_usage
-    - container_cpu_percentage_usage
-    - container_network_total_up
-    - container_network_total_down
-    - container_network_speed_up
-    - container_network_speed_down
+  # monitored_conditions:
+  #   - utilization_version
+  #   - container_status
+  #   - container_uptime
+  #   - container_image
+  #   - container_memory_usage
+  #   - container_memory_percentage_usage
+  #   - container_cpu_percentage_usage
+  #   - container_network_total_up
+  #   - container_network_total_down
+  #   - container_network_speed_up
+  #   - container_network_speed_down
 
 weather:
   - platform: darksky

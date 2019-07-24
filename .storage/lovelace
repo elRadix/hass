@@ -322,6 +322,10 @@
             },
             "resources": [
                 {
+                    "type": "module",
+                    "url": "/local/search-card.js"
+                },
+                {
                     "type": "js",
                     "url": "/local/vertical-style-card.js"
                 },
@@ -4709,7 +4713,7 @@
                                     "cards": [
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_plex",
+                                            "entity": "switch.raspi_plex",
                                             "entity_picture": "/local/docker/plex.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -4748,7 +4752,7 @@
                                         },
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_tautulli",
+                                            "entity": "switch.raspi_tautulli",
                                             "entity_picture": "/local/docker/tautulli.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -4787,7 +4791,7 @@
                                         },
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_sambaserver",
+                                            "entity": "switch.raspi_sambaserver",
                                             "entity_picture": "/local/docker/samba.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -4885,7 +4889,7 @@
                                     "cards": [
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_transmission",
+                                            "entity": "switch.raspi_transmission",
                                             "entity_picture": "/local/docker/transmission.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -4924,7 +4928,7 @@
                                         },
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_medusa",
+                                            "entity": "switch.raspi_medusa",
                                             "entity_picture": "/local/docker/medusa.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -4963,7 +4967,7 @@
                                         },
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_couchpotato",
+                                            "entity": "switch.raspi_couchpotato",
                                             "entity_picture": "/local/docker/couchpotato.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5002,7 +5006,7 @@
                                         },
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_sabnzbd",
+                                            "entity": "switch.raspi_sabnzbd",
                                             "entity_picture": "/local/docker/sabnzbd.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5041,7 +5045,7 @@
                                         },
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_jackett",
+                                            "entity": "switch.raspi_jackett",
                                             "entity_picture": "/local/docker/jackett.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5140,7 +5144,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_cloud9",
+                                            "entity": "switch.raspi_cloud9",
                                             "entity_picture": "/local/docker/cloud9.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5180,7 +5184,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_hassconfig",
+                                            "entity": "switch.raspi_hassconfig",
                                             "entity_picture": "/local/docker/editor.svg",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5220,7 +5224,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_ouroboros",
+                                            "entity": "switch.raspi_ouroboros",
                                             "entity_picture": "/local/docker/ouroborosv1.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5260,7 +5264,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_mosquitto",
+                                            "entity": "switch.raspi_mosquitto",
                                             "entity_picture": "/local/docker/mosquitto.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5305,7 +5309,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_dockermon",
+                                            "entity": "switch.raspi_dockermon",
                                             "entity_picture": "/local/docker/dockermon.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5345,7 +5349,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_portainer",
+                                            "entity": "switch.raspi_portainer",
                                             "entity_picture": "/local/docker/portainer.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5385,7 +5389,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_esphome",
+                                            "entity": "switch.raspi_esphome",
                                             "entity_picture": "/local/docker/esphome.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5483,7 +5487,7 @@
                                     "cards": [
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_wetty",
+                                            "entity": "switch.raspi_wetty",
                                             "entity_picture": "/local/docker/ssh.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5522,7 +5526,7 @@
                                         },
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_rwetty_ssh",
+                                            "entity": "switch.raspi_wetty_ssh",
                                             "entity_picture": "/local/docker/ssh.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5561,7 +5565,7 @@
                                         },
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_goaccess",
+                                            "entity": "switch.raspi_goaccess",
                                             "entity_picture": "/local/docker/webtools.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5600,7 +5604,7 @@
                                         },
                                         {
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_letsencrypt",
+                                            "entity": "switch.raspi_letsencrypt",
                                             "entity_picture": "/local/docker/ssl.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5699,7 +5703,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_duplicati",
+                                            "entity": "switch.raspi_duplicati",
                                             "entity_picture": "/local/docker/duplicati.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5739,7 +5743,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_seafile",
+                                            "entity": "switch.raspi_seafile",
                                             "entity_picture": "/local/docker/seafile.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5838,7 +5842,7 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.ha_dockermon_mariadb_hass",
+                                            "entity": "switch.raspi_mariadb_hass",
                                             "entity_picture": "/local/docker/homeassitant.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
@@ -5881,7 +5885,7 @@
                                             "color_off": "var(--disabled-text-color)(189, 255, 5)",
                                             "color_type": "card",
                                             "default_color": "var(--primary-text-color)",
-                                            "entity": "switch.ha_dockermon_mariadb",
+                                            "entity": "switch.raspi_mariadb",
                                             "icon": "mdi:docker",
                                             "name": "Mariadb",
                                             "size": "15%",
@@ -5909,7 +5913,7 @@
                                             "color_off": "var(--disabled-text-color)(189, 255, 5)",
                                             "color_type": "card",
                                             "default_color": "var(--primary-text-color)",
-                                            "entity": "switch.ha_dockermon_myphpadmin",
+                                            "entity": "switch.raspi_myphpadmin",
                                             "icon": "mdi:docker",
                                             "name": "myphpadmin",
                                             "size": "15%",
@@ -5937,7 +5941,7 @@
                                             "color_off": "var(--disabled-text-color)(189, 255, 5)",
                                             "color_type": "card",
                                             "default_color": "var(--primary-text-color)",
-                                            "entity": "switch.ha_dockermon_clarkson",
+                                            "entity": "switch.raspi_clarkson",
                                             "icon": "mdi:docker",
                                             "name": "clarkson",
                                             "size": "15%",
@@ -7404,6 +7408,10 @@
                 {
                     "badges": [],
                     "cards": [
+                        {
+                            "max_results": 20,
+                            "type": "custom:search-card"
+                        },
                         {
                             "entities": [
                                 {

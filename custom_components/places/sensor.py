@@ -381,7 +381,7 @@ class Places(Entity):
 
 """   @property
     def entity_picture(self):
-        """Return the picture of the device."""
+    
         return self._entity_picture
 """
     @property

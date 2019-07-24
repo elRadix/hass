@@ -18,10 +18,9 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import (
     CONF_NAME, CONF_HOST, CONF_USERNAME, CONF_PASSWORD,
     CONF_VALUE_TEMPLATE, CONF_COMMAND, CONF_PORT,
-    STATE_UNKNOWN)
+    STATE_UNKNOWN, CONF_UNIT_OF_MEASUREMENT)
 
-__version__ = '0.1.2'
-REQUIREMENTS = ['pexpect==4.6.0']
+__version__ = '0.1.3'
 
 _LOGGER = logging.getLogger(__name__)
 DOMAIN = 'sensor'
@@ -38,6 +37,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_USERNAME): cv.string,
     vol.Optional(CONF_PORT, default=DEFAULT_SSH_PORT): cv.port,
     vol.Required(CONF_COMMAND): cv.string,
+    vol.Required(CONF_UNIT_OF_MEASUREMENT): cv.string,
     vol.Optional(CONF_VALUE_TEMPLATE): cv.template,
 })
 
@@ -50,7 +50,6 @@ def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
 
 
 class SSHSensor(Entity):
-    """This class queries Unifi gateway via SSH for VPN status."""
 
     def __init__(self, hass, config):
         """Initialize the scanner."""
@@ -61,6 +60,7 @@ class SSHSensor(Entity):
         self._port = config.get(CONF_PORT)
         self._command = config.get(CONF_COMMAND)
         self._value_template = config.get(CONF_VALUE_TEMPLATE)
+        self._unit_of_measurement = config.get(CONF_UNIT_OF_MEASUREMENT)
         self._ssh = None
         self._connected = False
         self._connect()
@@ -89,6 +89,11 @@ class SSHSensor(Entity):
         """Return the device state attributes."""
         return self._attributes
 
+    @property
+    def unit_of_measurement(self):
+        """Return the unit of measurement of this entity, if any."""
+        return self._unit_of_measurement
+    
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
         from pexpect import pxssh, exceptions

@@ -210,12 +210,14 @@ climate:
     target_sensor: sensor.ht_eetkamer_temp
     min_temp: 5
     max_temp: 22
+    ac_mode: false
     target_temp: 17
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    #initial_operation_mode: "off"
+    initial_hvac_mode: "off"
     away_temp: 5
+    precision: 0.1
 
   - platform: generic_thermostat
     name: Living
@@ -223,12 +225,14 @@ climate:
     target_sensor: sensor.tmp_living
     min_temp: 5
     max_temp: 24
+    ac_mode: false
     target_temp: 5
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    #initial_operation_mode: "off"
+    initial_hvac_mode: "off"
     away_temp: 5
+    precision: 0.5
 
   - platform: generic_thermostat
     name: Sara
@@ -236,12 +240,14 @@ climate:
     target_sensor: sensor.ht_sara_temp
     min_temp: 5
     max_temp: 22
+    ac_mode: false
     target_temp: 17
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    #initial_operation_mode: "off"
+    initial_hvac_mode: "off"
     away_temp: 5
+    precision: 0.5
 
   - platform: generic_thermostat
     name: Yassin
@@ -249,25 +255,29 @@ climate:
     target_sensor: sensor.tmp_slp_3
     min_temp: 5
     max_temp: 22
+    ac_mode: false
     target_temp: 17
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    #initial_operation_mode: "off"
+    initial_hvac_mode: "off"
     away_temp: 5
+    precision: 0.5
 
   - platform: generic_thermostat
     name: FloRadix
     heater: switch.heating_floradix
     target_sensor: sensor.tmp_slp_1_calibrated
+    ac_mode: false
     min_temp: 5
     max_temp: 24
     target_temp: 17
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    #initial_operation_mode: "off"
+    initial_hvac_mode: "off"
     away_temp: 5
+    precision: 0.5
 
   - platform: generic_thermostat
     name: Badkamer
@@ -279,8 +289,9 @@ climate:
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
-    #initial_operation_mode: "off"
+    initial_hvac_mode: "off"
     away_temp: 5
+    precision: 0.5
 
 system_log:
   fire_event: true

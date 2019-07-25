@@ -1,6 +1,7 @@
-- id: easyplus_night_boolean
+---
+- id: easyplus_night_boolean_off
   initial_state: 'true'
-  alias: 'Night Modus Notification'
+  alias: 'Night Modus Notification OFF'
   trigger:
   - platform: state
     entity_id: input_boolean.night
@@ -11,9 +12,22 @@
     data:
       message: "Midnight Modus Deactivated"
 
-- id: easyplus_night_late_boolean
+- id: easyplus_night_boolean_on
   initial_state: 'true'
-  alias: 'Night Late Modus Notification'
+  alias: 'Night Modus Notification ON'
+  trigger:
+  - platform: state
+    entity_id: input_boolean.night
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: "Midnight Modus Activated"
+
+- id: easyplus_night_late_boolean_off
+  initial_state: 'true'
+  alias: 'Night Late Modus Notification OFF'
   trigger:
   - platform: state
     entity_id: input_boolean.night_late
@@ -24,9 +38,22 @@
     data:
       message: "Midnight late Modus Deactivated"
 
-- id: easyplus_night_plus_boolean
+- id: easyplus_night_late_boolean_on
   initial_state: 'true'
-  alias: 'Night Late Plus Modus Notification'
+  alias: 'Night Late Modus Notification ON'
+  trigger:
+  - platform: state
+    entity_id: input_boolean.night_late
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: "Midnight late Modus Activated"
+
+- id: easyplus_night_plus_boolean_off
+  initial_state: 'true'
+  alias: 'Night Late Plus Modus Notification OFF'
   trigger:
   - platform: state
     entity_id: input_boolean.night_plus
@@ -36,3 +63,16 @@
   - service: notify.dageraad
     data:
       message: "Midnight very late Modus Deactivated"
+
+- id: easyplus_night_plus_boolean_on
+  initial_state: 'true'
+  alias: 'Night Late Plus Modus Notification ON'
+  trigger:
+  - platform: state
+    entity_id: input_boolean.night_plus
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.dageraad
+    data:
+      message: "Midnight very late Modus Activated"

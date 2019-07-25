@@ -76,3 +76,17 @@
   - service: notify.dageraad
     data:
       message: "Midnight very late Modus Activated"
+
+- id: easyplus_night_boolean_reset
+  initial_state: 'true'
+  alias: 'Night Booleans reset'
+  trigger:
+    platform: time
+    at: '02:00:00'
+  action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.night
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.night_plus
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.night_late

@@ -1,5 +1,5 @@
   night:
-    name: Midnight 
+    name: Midnight
     initial: on
     icon: mdi:weather-night
 
@@ -11,4 +11,4 @@
   night_plus:
     name: Midnight Plus
     initial: on
-    icon: mdi:weather-night   
+    icon: mdi:weather-night

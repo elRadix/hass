@@ -3,9 +3,6 @@
 #################################################################
 
 
-  - platform: email
-    email: !secret mail_user1
-    password: !secret mail_ha_sensor_app
 
 #  - platform: travisci
 #    api_key: !secret travis_api

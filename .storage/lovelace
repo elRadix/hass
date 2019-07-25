@@ -407,6 +407,10 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/lovelace-text-input-row/text-input-row.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/tracking-number-card/tracking-number-card.js"
                 }
             ],
             "title": "Home",
@@ -5309,8 +5313,8 @@
                                         {
                                             "card_style": "",
                                             "color_type": "label-card",
-                                            "entity": "switch.raspi_dockermons",
-                                            "entity_picture": "/local/docker/dockermon.png",
+                                            "entity": "switch.raspi_mariadb_hass",
+                                            "entity_picture": "/local/docker/homeassitant.png",
                                             "show_entity_picture": true,
                                             "show_name": false,
                                             "size": "30%",
@@ -5762,189 +5766,6 @@
                                                     "value": "off"
                                                 }
                                             ],
-                                            "styles": {
-                                                "card": [
-                                                    {
-                                                        "border-radius": "50px"
-                                                    },
-                                                    {
-                                                        "border-style": "solid"
-                                                    },
-                                                    {
-                                                        "border-width": "2px"
-                                                    },
-                                                    {
-                                                        "border-color": "#e5e5e5"
-                                                    }
-                                                ]
-                                            },
-                                            "type": "custom:button-card"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "color_type": "label-card",
-                                    "name": "DATABASE",
-                                    "show_entity_picture": true,
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "card_style": "",
-                                            "color_type": "label-card",
-                                            "entity": "switch.raspi_mariadb_hass",
-                                            "entity_picture": "/local/docker/homeassitant.png",
-                                            "show_entity_picture": true,
-                                            "show_name": false,
-                                            "size": "50%",
-                                            "state": [
-                                                {
-                                                    "color": "var(--paper-item-icon-color)",
-                                                    "value": "on"
-                                                },
-                                                {
-                                                    "entity_picture_style": [
-                                                        {
-                                                            "filter": "grayscale(100%)"
-                                                        }
-                                                    ],
-                                                    "value": "off"
-                                                }
-                                            ],
-                                            "styles": {
-                                                "card": [
-                                                    {
-                                                        "border-radius": "50px"
-                                                    },
-                                                    {
-                                                        "border-style": "solid"
-                                                    },
-                                                    {
-                                                        "border-width": "2px"
-                                                    },
-                                                    {
-                                                        "border-color": "#e5e5e5"
-                                                    }
-                                                ]
-                                            },
-                                            "type": "custom:button-card"
-                                        },
-                                        {
-                                            "card_style": "",
-                                            "color": "rgb(255, 255, 0)",
-                                            "color_off": "var(--disabled-text-color)(189, 255, 5)",
-                                            "color_type": "card",
-                                            "default_color": "var(--primary-text-color)",
-                                            "entity": "switch.raspi_mariadb",
-                                            "icon": "mdi:docker",
-                                            "name": "Mariadb",
-                                            "size": "15%",
-                                            "styles": {
-                                                "card": [
-                                                    {
-                                                        "border-radius": "50px"
-                                                    },
-                                                    {
-                                                        "border-style": "solid"
-                                                    },
-                                                    {
-                                                        "border-width": "2px"
-                                                    },
-                                                    {
-                                                        "border-color": "#e5e5e5"
-                                                    }
-                                                ]
-                                            },
-                                            "type": "custom:button-card"
-                                        },
-                                        {
-                                            "card_style": "",
-                                            "color": "rgb(239, 239, 16)",
-                                            "color_off": "var(--disabled-text-color)(189, 255, 5)",
-                                            "color_type": "card",
-                                            "default_color": "var(--primary-text-color)",
-                                            "entity": "switch.raspi_myphpadmin",
-                                            "icon": "mdi:docker",
-                                            "name": "myphpadmin",
-                                            "size": "15%",
-                                            "styles": {
-                                                "card": [
-                                                    {
-                                                        "border-radius": "50px"
-                                                    },
-                                                    {
-                                                        "border-style": "solid"
-                                                    },
-                                                    {
-                                                        "border-width": "2px"
-                                                    },
-                                                    {
-                                                        "border-color": "#e5e5e5"
-                                                    }
-                                                ]
-                                            },
-                                            "type": "custom:button-card"
-                                        },
-                                        {
-                                            "card_style": "",
-                                            "color": "rgb(239, 239, 16)",
-                                            "color_off": "var(--disabled-text-color)(189, 255, 5)",
-                                            "color_type": "card",
-                                            "default_color": "var(--primary-text-color)",
-                                            "entity": "switch.raspi_clarkson",
-                                            "icon": "mdi:docker",
-                                            "name": "clarkson",
-                                            "size": "15%",
                                             "styles": {
                                                 "card": [
                                                     {

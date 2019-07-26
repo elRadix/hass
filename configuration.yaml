@@ -62,8 +62,8 @@ shelly:
   username: elradix
   password: athlon
   additional_information: true
-  wifi_sensor: true
-  uptime_sensor: true
+  rssi: true
+  uptime: true
   version: true
 
 #  Include

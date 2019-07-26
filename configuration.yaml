@@ -62,9 +62,11 @@ shelly:
   username: elradix
   password: athlon
   additional_information: true
-  rssi: true
-  uptime: true
+  sensors: 
+    - all
   version: true
+
+
 
 #  Include
 # alarm_control_panel: !include alarm.yaml

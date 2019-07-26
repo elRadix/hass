@@ -62,7 +62,7 @@ shelly:
   username: elradix
   password: athlon
   additional_information: true
-  sensors: 
+  sensors:
     - all
   version: true
 

@@ -2,311 +2,6 @@
     "data": {
         "config": {
             "background": "center / cover no-repeat url(\"/local/background_blue.jpg\") fixed",
-            "button_body": {
-                "aspect_ratio": "1/1",
-                "color": "auto",
-                "show_label": true,
-                "show_state": true,
-                "size": "30%",
-                "styles": {
-                    "card": [
-                        {
-                            "color": "var(--local-color)"
-                        },
-                        {
-                            "border-radius": "6px"
-                        },
-                        {
-                            "background-color": "ivory"
-                        },
-                        {
-                            "padding-left": "5px"
-                        },
-                        {
-                            "box-shadow": "0px 0px 2px 1px"
-                        }
-                    ],
-                    "grid": [
-                        {
-                            "grid-template-areas": "\"i\" \"n\" \"s\" \"l\""
-                        },
-                        {
-                            "grid-template-columns": "1fr"
-                        },
-                        {
-                            "grid-template-rows": "1fr min-content min-content"
-                        }
-                    ],
-                    "icon": [
-                        {
-                            "color": "var(--local-color)"
-                        }
-                    ],
-                    "img_cell": [
-                        {
-                            "justify-content": "start"
-                        },
-                        {
-                            "align-items": "start"
-                        }
-                    ],
-                    "label": [
-                        {
-                            "text-align": "start"
-                        },
-                        {
-                            "font-size": "11px"
-                        },
-                        {
-                            "font-family": "Helvetica"
-                        },
-                        {
-                            "justify-self": "start"
-                        }
-                    ],
-                    "lock": [
-                        {
-                            "color": "red"
-                        }
-                    ],
-                    "name": [
-                        {
-                            "text-overflow": "unset"
-                        },
-                        {
-                            "white-space": "unset"
-                        },
-                        {
-                            "word-break": "break-word"
-                        },
-                        {
-                            "text-align": "start"
-                        },
-                        {
-                            "justify-self": "start"
-                        },
-                        {
-                            "font-weight": "bold"
-                        },
-                        {
-                            "font-family": "Helvetica"
-                        },
-                        {
-                            "font-size": "13px"
-                        }
-                    ],
-                    "state": [
-                        {
-                            "text-align": "start"
-                        },
-                        {
-                            "font-size": "11px"
-                        },
-                        {
-                            "font-family": "Helvetica"
-                        },
-                        {
-                            "justify-self": "start"
-                        },
-                        {
-                            "text-transform": "capitalize"
-                        },
-                        {
-                            "font-weight": "bold"
-                        }
-                    ]
-                }
-            },
-            "button_card_templates": {
-                "button_switch": {
-                    "hold_action": {
-                        "action": "more-info"
-                    },
-                    "layout": "icon_label",
-                    "show_label": true,
-                    "show_name": true,
-                    "state": [
-                        {
-                            "styles": {
-                                "card": [
-                                    {
-                                        "box-shadow": "0px 0px 10px 3px var(--paper-item-icon-active-color)"
-                                    }
-                                ],
-                                "icon": [
-                                    {
-                                        "color": "var(--paper-item-icon-active-color)"
-                                    }
-                                ]
-                            },
-                            "value": "on"
-                        }
-                    ],
-                    "styles": {
-                        "card": [
-                            {
-                                "border-radius": "15px"
-                            },
-                            {
-                                "height": "76px"
-                            },
-                            {
-                                "width": "76px"
-                            },
-                            {
-                                "margin": "5px 5px 0px 0px"
-                            },
-                            {
-                                "padding": "0px 0px"
-                            },
-                            {
-                                "--paper-card-background-color": "rgba(40, 40, 40, 0.5)"
-                            }
-                        ],
-                        "grid": [
-                            {
-                                "grid-template-rows": "42px auto 0px"
-                            },
-                            {
-                                "grid-template-columns": "42px auto"
-                            }
-                        ],
-                        "icon": [
-                            {
-                                "width": "30px"
-                            },
-                            {
-                                "color": "white"
-                            }
-                        ],
-                        "label": [
-                            {
-                                "font-size": "12px"
-                            },
-                            {
-                                "font-weight": "bold"
-                            },
-                            {
-                                "color": "white"
-                            }
-                        ],
-                        "name": [
-                            {
-                                "justify-self": "start"
-                            },
-                            {
-                                "align-self": "end"
-                            },
-                            {
-                                "padding": "9px 10px"
-                            },
-                            {
-                                "font-size": "12px"
-                            },
-                            {
-                                "font-weight": "bold"
-                            },
-                            {
-                                "color": "white"
-                            }
-                        ]
-                    },
-                    "tap_action": {
-                        "action": "toggle"
-                    }
-                }
-            },
-            "button_motion": {
-                "hold_action": {
-                    "action": "more-info",
-                    "haptic": "success"
-                },
-                "show_last_changed": true,
-                "state": [
-                    {
-                        "styles": {
-                            "card": [
-                                {
-                                    "color": "red"
-                                }
-                            ],
-                            "icon": [
-                                {
-                                    "color": "red"
-                                }
-                            ],
-                            "name": [
-                                {
-                                    "color": "black"
-                                }
-                            ]
-                        },
-                        "value": "on"
-                    },
-                    {
-                        "id": "off-icon",
-                        "operator": "template",
-                        "styles": {
-                            "card": [
-                                {
-                                    "color": "#555B65"
-                                }
-                            ],
-                            "icon": [
-                                {
-                                    "color": "green"
-                                }
-                            ],
-                            "state": [
-                                {
-                                    "color": "green"
-                                }
-                            ]
-                        },
-                        "value": "return entity.attributes.on === true\n"
-                    },
-                    {
-                        "id": "off-icon",
-                        "operator": "default",
-                        "styles": {
-                            "card": [
-                                {
-                                    "color": "#555B65"
-                                },
-                                {
-                                    "opacity": 0.8
-                                }
-                            ],
-                            "icon": [
-                                {
-                                    "color": "#555B65"
-                                }
-                            ]
-                        }
-                    }
-                ],
-                "styles": {
-                    "name": [
-                        {
-                            "text-overflow": "unset"
-                        },
-                        {
-                            "white-space": "unset"
-                        },
-                        {
-                            "word-break": "break-word"
-                        },
-                        {
-                            "box-shadow": "0px 0px 2px 1px"
-                        }
-                    ]
-                },
-                "tap_action": {
-                    "action": "more-info",
-                    "haptic": "light"
-                },
-                "template": "button_body"
-            },
             "cch": {
                 "active_tab_color": "red",
                 "clock_am_pm": false,
@@ -411,6 +106,10 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/tracking-number-card/tracking-number-card.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/monster-card/monster-card.js"
                 }
             ],
             "title": "Home",
@@ -9826,6 +9525,62 @@
                                 "sensor.email_elrachidgmailcom"
                             ],
                             "type": "custom:tracking-number-card"
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "Shelly",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "exclude": [
+                                    {
+                                        "entity_id": "*rssi*"
+                                    },
+                                    {
+                                        "entity_id": "*uptime*"
+                                    },
+                                    {
+                                        "entity_id": "*firmware*"
+                                    }
+                                ],
+                                "include": [
+                                    {
+                                        "entity_id": "*shelly*"
+                                    }
+                                ]
+                            },
+                            "type": "custom:monster-card"
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "Shelly need update",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "entity_id": "*firmware_update*"
+                                    }
+                                ]
+                            },
+                            "type": "custom:monster-card"
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "title": "Shelly",
+                                "type": "entities"
+                            },
+                            "filter": {
+                                "include": [
+                                    {
+                                        "entity_id": "*rssi*"
+                                    }
+                                ]
+                            },
+                            "type": "custom:monster-card"
                         }
                     ],
                     "title": "cards"

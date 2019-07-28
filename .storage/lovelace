@@ -6368,7 +6368,7 @@
                                     "type": "custom:text-input-row"
                                 },
                                 {
-                                    "action_name": "push commit",
+                                    "action_name": "push to Gitlab",
                                     "icon": "mdi:github-circle",
                                     "name": " ",
                                     "service": "shell_command.git_commit",

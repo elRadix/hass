@@ -18,6 +18,10 @@
             "resources": [
                 {
                     "type": "module",
+                    "url": "/local/sun-card.js"
+                },
+                {
+                    "type": "module",
                     "url": "/local/search-card.js"
                 },
                 {
@@ -249,6 +253,10 @@
                                 "on"
                             ],
                             "type": "entity-filter"
+                        },
+                        {
+                            "name": "Sun",
+                            "type": "custom:sun-card"
                         },
                         {
                             "cards": [

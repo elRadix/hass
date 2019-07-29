@@ -1,7 +1,7 @@
 {
     "data": {
         "config": {
-            "background": "center / cover no-repeat url(\"/local/background_blue.jpg\") fixed",
+            "background": "center / cover no-repeat url(\"/local/background.jpg\") fixed",
             "cch": {
                 "active_tab_color": "red",
                 "clock_am_pm": false,
@@ -18,10 +18,6 @@
             "resources": [
                 {
                     "type": "module",
-                    "url": "/local/sun-card.js"
-                },
-                {
-                    "type": "module",
                     "url": "/local/search-card.js"
                 },
                 {
@@ -31,18 +27,6 @@
                 {
                     "type": "module",
                     "url": "/local/check-button-card.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/button-card/button-card.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/mini-media-player/mini-media-player.js"
-                },
-                {
-                    "type": "js",
-                    "url": "/local/waze-card.js"
                 },
                 {
                     "type": "js",
@@ -62,11 +46,15 @@
                 },
                 {
                     "type": "js",
-                    "url": "/local/github/lovelace-card-modder/card-modder.js"
+                    "url": "/local/card-mod.js"
                 },
                 {
                     "type": "js",
-                    "url": "/local/github/lovelace-card-tools/card-tools.js"
+                    "url": "/local/card-tools.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/local/card-modder.js"
                 },
                 {
                     "type": "module",
@@ -114,6 +102,24 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/monster-card/monster-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/sun-card/sun-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/button-card/button-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/mini-media-player/mini-media-player.js"
+                },
+                {
+                    "url": "/community_plugin/travel-time-card/travel-time-card.js"
+                },
+                {
+                    "type": "js"
                 }
             ],
             "title": "Home",
@@ -164,6 +170,10 @@
                             "entity": "weather.dark_sky",
                             "name": "Mechelen",
                             "type": "weather-forecast"
+                        },
+                        {
+                            "name": " ",
+                            "type": "custom:sun-card"
                         },
                         {
                             "card": {
@@ -253,10 +263,6 @@
                                 "on"
                             ],
                             "type": "entity-filter"
-                        },
-                        {
-                            "name": "Sun",
-                            "type": "custom:sun-card"
                         },
                         {
                             "cards": [
@@ -598,7 +604,7 @@
                                 ],
                                 "header": true,
                                 "metric": true,
-                                "type": "custom:waze-card"
+                                "type": "custom:travel-time-card"
                             },
                             "conditions": [
                                 {
@@ -6744,265 +6750,8 @@
                     "badges": [],
                     "cards": [
                         {
-                            "columns": 7,
-                            "entities": [
-                                {
-                                    "entity": "sensor.elradix_s7a_call_state",
-                                    "name": "Call"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_battery_sensor",
-                                    "icon": "mdi:battery",
-                                    "name": "Battery"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_bluetooth"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_wi_fi_sensor",
-                                    "icon": "mdi:wifi",
-                                    "name": "Wifi"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_step_counter_sensor",
-                                    "icon": "mdi:walk",
-                                    "name": "Steps"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_light_sensor"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_apps"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_available_status",
-                                    "icon": "mdi:monitor"
-                                },
-                                {
-                                    "entity": "switch.screen_switch_rachid",
-                                    "icon": "mdi:power"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_next_alarm"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_hfp"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_a2dp"
-                                }
-                            ],
-                            "show_name": false,
-                            "show_state": true,
-                            "title": "",
-                            "type": "glance"
-                        },
-                        {
-                            "columns": 7,
-                            "entities": [
-                                {
-                                    "entity": "sensor.flora_s7a_call_state",
-                                    "name": "Call"
-                                },
-                                {
-                                    "entity": "sensor.flora_s7a_battery_sensor",
-                                    "icon": "mdi:battery",
-                                    "name": "Battery"
-                                },
-                                {
-                                    "entity": "sensor.flora_s7a_bluetooth"
-                                },
-                                {
-                                    "entity": "sensor.flora_s7a_wi_fi_sensor",
-                                    "icon": "mdi:wifi",
-                                    "name": "Wifi"
-                                },
-                                {
-                                    "entity": "sensor.flora_s7a_step_counter_sensor",
-                                    "icon": "mdi:walk",
-                                    "name": "Steps"
-                                },
-                                {
-                                    "entity": "sensor.flora_s7a_light_sensor"
-                                },
-                                {
-                                    "entity": "sensor.flora_s7a_apps"
-                                },
-                                {
-                                    "entity": "sensor.flora_s7a_available_status",
-                                    "icon": "mdi:monitor"
-                                },
-                                {
-                                    "entity": "switch.screen_switch_soumaya",
-                                    "icon": "mdi:power"
-                                },
-                                {
-                                    "entity": "camera.flora_s7a_back_camera"
-                                },
-                                {
-                                    "entity": "camera.flora_s7a_front_camera"
-                                },
-                                {
-                                    "entity": "sensor.flora_s7a_next_alarm"
-                                }
-                            ],
-                            "show_name": false,
-                            "title": "",
-                            "type": "glance"
-                        },
-                        {
-                            "aspect_ratio": "16x9",
-                            "default_zoom": 12,
-                            "entities": [
-                                {
-                                    "entity": "device_tracker.elradix_s7a"
-                                },
-                                {
-                                    "entity": "device_tracker.flora_s7a"
-                                },
-                                {
-                                    "entity": "device_tracker.comp_soumaya"
-                                }
-                            ],
-                            "type": "map"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "card_style": "font-size: 15px;\nfont-weight: bold;\n",
-                                    "color": "rgb(44, 109, 214)",
-                                    "color_off": "var(--disabled-text-color)",
-                                    "color_type": "label-card",
-                                    "default_color": "var(--primary-text-color)",
-                                    "name": "Battery",
-                                    "size": "10%",
-                                    "style": [
-                                        {
-                                            "font-size": "15px"
-                                        },
-                                        {
-                                            "font-weight": "bold"
-                                        }
-                                    ],
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "entity": "sensor.elradix_s7a_battery_sensor",
-                                    "filter": {
-                                        "exclude": [
-                                            "sensor.elradix_s7a_battery_sensor.f*",
-                                            "sensor.elradix_s7a_battery_sensor.u*",
-                                            "sensor.elradix_s7a_battery_sensor.u*",
-                                            "sensor.elradix_s7a_battery_sensor.u*",
-                                            "sensor.elradix_s7a_battery_sensor.t*",
-                                            "sensor.elradix_s7a_battery_sensor.h*",
-                                            "sensor.elradix_s7a_battery_sensor.l*"
-                                        ],
-                                        "include": [
-                                            "sensor.elradix_s7a_battery_sensor.*"
-                                        ]
-                                    },
-                                    "heading_name": "RACHID",
-                                    "heading_state": " ",
-                                    "type": "custom:entity-attributes-card"
-                                },
-                                {
-                                    "entity": "sensor.flora_s7a_battery_sensor",
-                                    "filter": {
-                                        "exclude": [
-                                            "sensor.flora_s7a_battery_sensor.f*",
-                                            "sensor.flora_s7a_battery_sensor.u*",
-                                            "sensor.flora_s7a_battery_sensor.h*",
-                                            "sensor.flora_s7a_battery_sensor.t*",
-                                            "sensor.flora_s7a_battery_sensor.l*"
-                                        ],
-                                        "include": [
-                                            "sensor.flora_s7a_battery_sensor.*"
-                                        ]
-                                    },
-                                    "heading_name": "SOUMAYA",
-                                    "heading_state": " ",
-                                    "type": "custom:entity-attributes-card"
-                                }
-                            ],
-                            "type": "entities"
-                        }
-                    ],
-                    "icon": "mdi:android",
-                    "path": "",
-                    "theme": "Backend-selected",
-                    "title": "S7"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
                             "max_results": 20,
                             "type": "custom:search-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "name": "EASYPLUS AUTO SHUTDOWN",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "entity": "input_boolean.night",
-                                    "name": "Midnight at 00h30"
-                                },
-                                {
-                                    "entity": "input_boolean.night_late",
-                                    "name": "Late Night at 1h00"
-                                },
-                                {
-                                    "entity": "input_boolean.night_plus",
-                                    "name": "Late Night at 1h30"
-                                }
-                            ],
-                            "type": "entities"
                         },
                         {
                             "entities": [
@@ -7083,6 +6832,131 @@
                                 "sensor.last_motion"
                             ],
                             "show_header_toggle": false,
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "name": "EASYPLUS AUTO SHUTDOWN",
+                                    "styles": {
+                                        "card": [
+                                            {
+                                                "height": "40px"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "text-orientation": "mixed"
+                                            },
+                                            {
+                                                "font-size": "20px"
+                                            },
+                                            {
+                                                "text-Transform": "uppercase"
+                                            },
+                                            {
+                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "padding": "2%"
+                                            },
+                                            {
+                                                "color": "white"
+                                            },
+                                            {
+                                                "border-radius": "50px"
+                                            },
+                                            {
+                                                "border-style": "solid"
+                                            },
+                                            {
+                                                "border-width": "2px"
+                                            },
+                                            {
+                                                "border-color": "#e5e5e5"
+                                            }
+                                        ]
+                                    },
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "entity": "input_boolean.night",
+                                    "name": "Midnight at 00h30"
+                                },
+                                {
+                                    "entity": "input_boolean.night_late",
+                                    "name": "Late Night at 1h00"
+                                },
+                                {
+                                    "entity": "input_boolean.night_plus",
+                                    "name": "Late Night at 1h30"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.season"
+                                },
+                                {
+                                    "entity": "sun.sun"
+                                },
+                                {
+                                    "entity": "sensor.sunrise"
+                                },
+                                {
+                                    "entity": "sensor.sunset"
+                                },
+                                {
+                                    "entity": "sensor.period_of_day"
+                                },
+                                {
+                                    "entity": "sensor.astronomical_dawn"
+                                },
+                                {
+                                    "entity": "sensor.astronomical_daylight"
+                                },
+                                {
+                                    "entity": "sensor.astronomical_dusk"
+                                },
+                                {
+                                    "entity": "sensor.civil_daylight"
+                                },
+                                {
+                                    "entity": "sensor.dawn"
+                                },
+                                {
+                                    "entity": "sensor.daylight"
+                                },
+                                {
+                                    "entity": "sensor.dusk"
+                                },
+                                {
+                                    "entity": "sensor.nautical_dawn"
+                                },
+                                {
+                                    "entity": "sensor.nautical_daylight"
+                                },
+                                {
+                                    "entity": "sensor.nautical_dusk"
+                                },
+                                {
+                                    "entity": "sensor.max_elevation"
+                                },
+                                {
+                                    "entity": "sensor.solar_angle"
+                                },
+                                {
+                                    "entity": "sensor.solar_noon"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Sun ",
                             "type": "entities"
                         },
                         {
@@ -9592,6 +9466,199 @@
                         }
                     ],
                     "title": "cards"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "columns": 7,
+                            "entities": [
+                                {
+                                    "entity": "sensor.elradix_s7a_call_state",
+                                    "name": "Call"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_battery_sensor",
+                                    "icon": "mdi:battery",
+                                    "name": "Battery"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_bluetooth"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_wi_fi_sensor",
+                                    "icon": "mdi:wifi",
+                                    "name": "Wifi"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_step_counter_sensor",
+                                    "icon": "mdi:walk",
+                                    "name": "Steps"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_light_sensor"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_apps"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_available_status",
+                                    "icon": "mdi:monitor"
+                                },
+                                {
+                                    "entity": "switch.screen_switch_rachid",
+                                    "icon": "mdi:power"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_next_alarm"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_hfp"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_a2dp"
+                                }
+                            ],
+                            "show_name": false,
+                            "show_state": true,
+                            "title": "",
+                            "type": "glance"
+                        },
+                        {
+                            "columns": 7,
+                            "entities": [
+                                {
+                                    "entity": "sensor.flora_s7a_call_state",
+                                    "name": "Call"
+                                },
+                                {
+                                    "entity": "sensor.flora_s7a_battery_sensor",
+                                    "icon": "mdi:battery",
+                                    "name": "Battery"
+                                },
+                                {
+                                    "entity": "sensor.flora_s7a_bluetooth"
+                                },
+                                {
+                                    "entity": "sensor.flora_s7a_wi_fi_sensor",
+                                    "icon": "mdi:wifi",
+                                    "name": "Wifi"
+                                },
+                                {
+                                    "entity": "sensor.flora_s7a_step_counter_sensor",
+                                    "icon": "mdi:walk",
+                                    "name": "Steps"
+                                },
+                                {
+                                    "entity": "sensor.flora_s7a_light_sensor"
+                                },
+                                {
+                                    "entity": "sensor.flora_s7a_apps"
+                                },
+                                {
+                                    "entity": "sensor.flora_s7a_available_status",
+                                    "icon": "mdi:monitor"
+                                },
+                                {
+                                    "entity": "switch.screen_switch_soumaya",
+                                    "icon": "mdi:power"
+                                },
+                                {
+                                    "entity": "camera.flora_s7a_back_camera"
+                                },
+                                {
+                                    "entity": "camera.flora_s7a_front_camera"
+                                },
+                                {
+                                    "entity": "sensor.flora_s7a_next_alarm"
+                                }
+                            ],
+                            "show_name": false,
+                            "title": "",
+                            "type": "glance"
+                        },
+                        {
+                            "aspect_ratio": "16x9",
+                            "default_zoom": 12,
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.elradix_s7a"
+                                },
+                                {
+                                    "entity": "device_tracker.flora_s7a"
+                                },
+                                {
+                                    "entity": "device_tracker.comp_soumaya"
+                                }
+                            ],
+                            "type": "map"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "card_style": "font-size: 15px;\nfont-weight: bold;\n",
+                                    "color": "rgb(44, 109, 214)",
+                                    "color_off": "var(--disabled-text-color)",
+                                    "color_type": "label-card",
+                                    "default_color": "var(--primary-text-color)",
+                                    "name": "Battery",
+                                    "size": "10%",
+                                    "style": [
+                                        {
+                                            "font-size": "15px"
+                                        },
+                                        {
+                                            "font-weight": "bold"
+                                        }
+                                    ],
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "entity": "sensor.elradix_s7a_battery_sensor",
+                                    "filter": {
+                                        "exclude": [
+                                            "sensor.elradix_s7a_battery_sensor.f*",
+                                            "sensor.elradix_s7a_battery_sensor.u*",
+                                            "sensor.elradix_s7a_battery_sensor.u*",
+                                            "sensor.elradix_s7a_battery_sensor.u*",
+                                            "sensor.elradix_s7a_battery_sensor.t*",
+                                            "sensor.elradix_s7a_battery_sensor.h*",
+                                            "sensor.elradix_s7a_battery_sensor.l*"
+                                        ],
+                                        "include": [
+                                            "sensor.elradix_s7a_battery_sensor.*"
+                                        ]
+                                    },
+                                    "heading_name": "RACHID",
+                                    "heading_state": " ",
+                                    "type": "custom:entity-attributes-card"
+                                },
+                                {
+                                    "entity": "sensor.flora_s7a_battery_sensor",
+                                    "filter": {
+                                        "exclude": [
+                                            "sensor.flora_s7a_battery_sensor.f*",
+                                            "sensor.flora_s7a_battery_sensor.u*",
+                                            "sensor.flora_s7a_battery_sensor.h*",
+                                            "sensor.flora_s7a_battery_sensor.t*",
+                                            "sensor.flora_s7a_battery_sensor.l*"
+                                        ],
+                                        "include": [
+                                            "sensor.flora_s7a_battery_sensor.*"
+                                        ]
+                                    },
+                                    "heading_name": "SOUMAYA",
+                                    "heading_state": " ",
+                                    "type": "custom:entity-attributes-card"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:android",
+                    "path": "",
+                    "theme": "Backend-selected",
+                    "title": "S7"
                 }
             ]
         }

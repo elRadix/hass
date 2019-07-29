@@ -300,6 +300,25 @@
           {% endif %}
 
 
+      period_of_day2:
+        friendly_name: 'Period of the day2'
+        value_template: >
+          {% if (as_timestamp(state_attr('sun.sun','next_dusk'))) - 
+                (as_timestamp(state_attr('sun.sun','next_setting'))) < 0 %} Dusk
+          {% elif (as_timestamp(state_attr('sun.sun','next_rising'))) - 
+                  (as_timestamp(state_attr('sun.sun','next_dawn'))) < 0 %} Dawn
+          {% elif (state_attr('sun.sun', 'elevation')) < 0 %} Night
+          {% else %} Day
+          {% endif %}
+        icon_template: >
+          {% if is_state('sensor.period_of_day','Dusk') %} mdi:weather-sunset-down
+          {% elif is_state('sensor.period_of_day','Dawn') %} mdi:weather-sunset-up
+          {% elif is_state('sensor.period_of_day','Night') %} mdi:weather-night
+          {% else %} mdi:weather-sunny
+          {% endif %}
+
+
+
 
       pvoutput_power_consumption:
         entity_id: sensor.pvoutput

@@ -789,7 +789,6 @@
     data:
       message: "Away Modus, Switches Off"
 
-
 - id: easyplus_19c
   initial_state: 'true'
   alias: Turn Easyplus Off Niemand thuis
@@ -835,7 +834,7 @@
       message: "Away Modus, Easyplus Off"
 
 - id: easyplus_21
-  alias: 'Auto off Day enabled day'
+  alias: 'Day Modus'
   initial_state: 'true'
   trigger:
   - platform: template
@@ -860,6 +859,7 @@
   - service: notify.dageraad
     data:
       message: "Night Modus Started"
+
   # - service: notify.android
   #   data:
   #     message: Night Modus Started - {{now().strftime("%H:%M:%S")}}

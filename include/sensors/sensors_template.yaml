@@ -10,8 +10,6 @@
           {{ now().strftime("%A %d %B") }}
 #          {{ now().strftime("%A %d %B %Y") }}
 
-
-
       last_motion:
         friendly_name: 'Last Motion'
         entity_id: binary_sensor.motion_eetkamer, binary_sensor.motion_inkomhal, binary_sensor.motion_wc, binary_sensor.motion_traphal, binary_sensor.motion_badkamer
@@ -64,19 +62,17 @@
 #             |timestamp_custom('%H:%M', false) }}
 #
 
-
       network_in_eth0_gb:
         entity_id: sensor.network_in_eth0
         value_template: '{{states.sensor.network_in_eth0.state |float /1024 | round(2)| float(2)}}'
-        friendly_name: 'Download'  
+        friendly_name: 'Download'
         icon_template: mdi:cloud-download
         unit_of_measurement: "GB"
-
 
       network_out_eth0_gb:
         entity_id: sensor.network_out_eth0
         value_template: '{{states.sensor.network_out_eth0.state |float /1024 | round(2)| float(2)}}'
-        friendly_name: 'Upload'  
+        friendly_name: 'Upload'
         icon_template: mdi:cloud-upload
         unit_of_measurement: "GB"
 
@@ -84,11 +80,7 @@
       vrt_text:
         entity_id: sensor.vrt_nws,sensor.time
         value_template: '{{states.sensor.vrt_nws.attributes.details | truncate(255) }}'
-        friendly_name: 'vrt text'  
-
-
-          
-        
+        friendly_name: 'vrt text'
 
       #period_of_day:
       #  friendly_name: 'period of the day'
@@ -109,13 +101,11 @@
       #      mdi:weather-night
       #    {% endif %}
 
-        
-        
       nginx:
         entity_id: sensor.process_nginx
         value_template: '{% if is_state("sensor.process_nginx", "off") %}Not Running{% else %}Running{% endif %}'
         friendly_name: 'nginx'
-       
+
       phpfpm:
         #entity_id: sensor.process_php-fpm
         value_template: '{% if is_state("sensor.process_php-fpm", "off") %}Not Running{% else %}Running{% endif %}'
@@ -144,7 +134,7 @@
       ha_uptime:
         friendly_name: HA Uptime
         value_template: >
-          {% if states('sensor.uptime') == '0.0' %} 
+          {% if states('sensor.uptime') == '0.0' %}
             Just restarted...
           {% else %}
             {% macro phrase(value, name) %}
@@ -152,7 +142,7 @@
             {%- set end = 's' if value > 1 else '' %}
             {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
             {%- endmacro %}
-            
+
             {% set weeks = (states('sensor.uptime') | int / 7) | int %}
             {% set days = (states('sensor.uptime') | int) - (weeks * 7) %}
             {% set hours = (states('sensor.uptime') | float - states('sensor.uptime') | int) * 24 %}
@@ -182,7 +172,6 @@
 
           {{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%H:%M on %a') }} {{ date }} {{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%b %Y') }}
 
-
       #=========================
       #=== Raspberry Pi Up Time
       #=========================
@@ -206,13 +195,13 @@
                     {%- set end = 's' if value > 1 else '' %}
                     {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
           {%- endmacro %}
-                    
+
           {% set text = [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') %}
           {% set last_comma = text.rfind(',') %}
           {% if last_comma != -1 %}
             {% set text = text[:last_comma] + ' and' + text[last_comma + 1:] %}
           {% endif %}
-          
+
           {{ text }}
 
 
@@ -236,13 +225,13 @@
       #               {%- set end = 's' if value > 1 else '' %}
       #               {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
       #     {%- endmacro %}
-                    
+
       #     {% set text = [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') %}
       #     {% set last_comma = text.rfind(',') %}
       #     {% if last_comma != -1 %}
       #       {% set text = text[:last_comma] + ' and' + text[last_comma + 1:] %}
       #     {% endif %}
-          
+
       #     {{ text }}
 
 
@@ -266,13 +255,13 @@
       #               {%- set end = 's' if value > 1 else '' %}
       #               {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
       #     {%- endmacro %}
-                    
+
       #     {% set text = [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') %}
       #     {% set last_comma = text.rfind(',') %}
       #     {% if last_comma != -1 %}
       #       {% set text = text[:last_comma] + ' and' + text[last_comma + 1:] %}
       #     {% endif %}
-          
+
           # {{ text }}
 
       period_of_day:
@@ -303,37 +292,31 @@
       period_of_day2:
         friendly_name: 'Period of the day2'
         value_template: >
-          {% if (as_timestamp(state_attr('sun.sun','next_dusk'))) - 
-                (as_timestamp(state_attr('sun.sun','next_setting'))) < 0 %} Dusk
-          {% elif (as_timestamp(state_attr('sun.sun','next_rising'))) - 
-                  (as_timestamp(state_attr('sun.sun','next_dawn'))) < 0 %} Dawn
+          {% if (as_timestamp(state_attr('sun.sun','next_dusk'))) -
+                (as_timestamp(state_attr('sun.sun','next_setting'))) < 0 %} dusk
+          {% elif (as_timestamp(state_attr('sun.sun','next_rising'))) -
+                  (as_timestamp(state_attr('sun.sun','next_dawn'))) < 0 %} dawn
           {% elif (state_attr('sun.sun', 'elevation')) < 0 %} Night
           {% else %} Day
           {% endif %}
         icon_template: >
-          {% if is_state('sensor.period_of_day','Dusk') %} mdi:weather-sunset-down
-          {% elif is_state('sensor.period_of_day','Dawn') %} mdi:weather-sunset-up
-          {% elif is_state('sensor.period_of_day','Night') %} mdi:weather-night
+          {% if is_state('sensor.period_of_day','dusk') %} mdi:weather-sunset-down
+          {% elif is_state('sensor.period_of_day','dawn') %} mdi:weather-sunset-up
+          {% elif is_state('sensor.period_of_day','night') %} mdi:weather-night
           {% else %} mdi:weather-sunny
           {% endif %}
-
-
-
 
       pvoutput_power_consumption:
         entity_id: sensor.pvoutput
         value_template: '{% if is_state_attr("sensor.pvoutput", "power_consumption", "NaN") %}0{% else %}{{ states.sensor.pvoutput.attributes.power_consumption }}{% endif %}'
         friendly_name: 'Huidig verbruik'
         unit_of_measurement: 'Watt'
-        
+
       pvoutput_energy_consumption:
         entity_id: sensor.pvoutput
         value_template: '{{ "%0.1f"|format(states.sensor.pvoutput.attributes.energy_consumption|float/1000) }}'
         friendly_name: 'Dag verbruik'
         unit_of_measurement: 'kWh'
-
-
-
 
 #       total_power:
 #         entity_id: sensor.active_power__phase_
@@ -347,9 +330,3 @@
 #         friendly_name: "Total current"
 #         unit_of_measurement: "A"
 #         value_template: "{{ states('sensor.current__phase_1')|int }}"
-
-
-
-
-
-

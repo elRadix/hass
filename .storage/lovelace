@@ -18,10 +18,6 @@
             "resources": [
                 {
                     "type": "module",
-                    "url": "/local/sun-card.js"
-                },
-                {
-                    "type": "module",
                     "url": "/local/search-card.js"
                 },
                 {
@@ -31,18 +27,6 @@
                 {
                     "type": "module",
                     "url": "/local/check-button-card.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/button-card/button-card.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/mini-media-player/mini-media-player.js"
-                },
-                {
-                    "type": "js",
-                    "url": "/local/waze-card.js"
                 },
                 {
                     "type": "js",
@@ -62,11 +46,15 @@
                 },
                 {
                     "type": "js",
-                    "url": "/local/github/lovelace-card-modder/card-modder.js"
+                    "url": "/local/card-mod.js"
                 },
                 {
                     "type": "js",
-                    "url": "/local/github/lovelace-card-tools/card-tools.js"
+                    "url": "/local/card-tools.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/local/card-modder.js"
                 },
                 {
                     "type": "module",
@@ -114,6 +102,24 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/monster-card/monster-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/sun-card/sun-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/button-card/button-card.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/mini-media-player/mini-media-player.js"
+                },
+                {
+                    "url": "/community_plugin/travel-time-card/travel-time-card.js"
+                },
+                {
+                    "type": "js"
                 }
             ],
             "title": "Home",
@@ -598,7 +604,7 @@
                                 ],
                                 "header": true,
                                 "metric": true,
-                                "type": "custom:waze-card"
+                                "type": "custom:travel-time-card"
                             },
                             "conditions": [
                                 {

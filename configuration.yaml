@@ -190,20 +190,20 @@ geo_address:
   update_period: 3600
   fields_display: road house_number city_district country_code  
 
-sun:
-  monitored_conditions:
-    - azimuth
-    - elevation
-    - max_elevation
-    - next_dawn
-    - next_dusk
-    - next_midnight
-    - next_noon
-    - daylight
-    - next_daylight
-    - prev_daylight
-    - sunrise
-    - sunset
+# sun:
+#   monitored_conditions:
+#     - azimuth
+#     - elevation
+#     - max_elevation
+#     - next_dawn
+#     - next_dusk
+#     - next_midnight
+#     - next_noon
+#     - daylight
+#     - next_daylight
+#     - prev_daylight
+#     - sunrise
+#     - sunset
 
 climate:
   - platform: generic_thermostat

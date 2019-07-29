@@ -16,9 +16,31 @@
 
 #   - platform: authenticated
 
+  - platform: sun2
+    monitored_conditions:
+      - solar_midnight
+      - astronomical_dawn
+      - nautical_dawn
+      - dawn
+      - sunrise
+      - solar_noon
+      - sunset
+      - dusk
+      - nautical_dusk
+      - astronomical_dusk
+      - daylight
+      - civil_daylight
+      - nautical_daylight
+      - astronomical_daylight
+      - night
+      - civil_night
+      - nautical_night
+      - astronomical_night
+      - max_elevation
+
   - platform: filesize
     file_paths:
-      - !secret scripts_directory_log 
+      - !secret scripts_directory_log
 
 
   - platform: vrtnws

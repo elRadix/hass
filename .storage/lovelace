@@ -172,8 +172,21 @@
                             "type": "weather-forecast"
                         },
                         {
-                            "name": " ",
-                            "type": "custom:sun-card"
+                            "card": {
+                                "name": " ",
+                                "type": "custom:sun-card"
+                            },
+                            "style": {
+                                "--sc-background": "linear-gradient(rgba(1, 1, 254,  0%), rgb(0, 191, 255) 46%, rgb(0, 250,  124) 54%, rgba(11, 1,  40,  0%))",
+                                "--sc-event-line-color": "white",
+                                "--sc-horizon-color": null,
+                                "--sc-sunbeam-color": "white",
+                                "background-repeat": "no-repeat",
+                                "background-size": "100% 100%",
+                                "border": "solid 1.5px  # rgba(57,128,228)",
+                                "border-radius": "10px"
+                            },
+                            "type": "custom:card-modder"
                         },
                         {
                             "card": {

@@ -892,16 +892,18 @@
     condition: or
     conditions:
       - condition: template
-        value_template: "{{ states.sensor.period_of_day.state != 'dusk' }}"
+        value_template: "{{ states.sensor.period_of_day.state != 'night' }}"
   action:
-    - service: homeassistant.turn_off
-      entity_id: group.lights
-    - delay:
-        seconds: 5
-    - service: notify.android
-      data_template:
-        message: It's daylight, {{ trigger.to_state.name }} was activated! -{{now().strftime("%H:%M:%S")}}
+    - service: script.lights
     - service: notify.dageraad
       data_template:
         message: 'Het is daglicht, {{ trigger.to_state.name }} stond aan!'
         title: Lichten uitgeschakeld
+    # - service: homeassistant.turn_off
+    #   entity_id: group.lights
+    # - delay:
+    #     seconds: 5
+    # - service: notify.android
+    #   data_template:
+    #     message: It's daylight, {{ trigger.to_state.name }} was activated! -{{now().strftime("%H:%M:%S")}}
+

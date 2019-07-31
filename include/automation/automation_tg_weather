@@ -16,7 +16,7 @@
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
-      message: "
+      message: "Weer
 
           {{ states.sensor.dark_sky_hourly_summary.state }}
 

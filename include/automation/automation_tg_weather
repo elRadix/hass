@@ -1,22 +1,25 @@
+---
 - alias: 'Telegram bot that sends a weather forecast'
   initial_state: true
   trigger:
     platform: event
     event_type: telegram_command
     event_data:
-      command: '/weather'
+      command: '/weer'
   action:
     - service: telegram_bot.send_photo
       data_template:
         target: '{{ trigger.event.data.user_id }}'
-        disable_notification: true
+        #disable_notification: true
         file: '/home/homeassistant/.homeassistant/www/climate/{{ states.sensor.dark_sky_icon.state }}.png'
         caption: '{{ states.sensor.dark_sky_summary.state }}'
+
     - service: telegram_bot.send_message
       data_template:
         target: '{{ trigger.event.data.user_id }}'
-        disable_notification: true
-        message: >
+        #disable_notification: true
+        message: >'
+
           {{ states.sensor.dark_sky_hourly_summary.state }}
 
 
@@ -25,7 +28,7 @@
 
           {{ states.sensor.dark_sky_overnight_low_temperature_0d.state_with_unit }} {{ '\u21F5' }} {{ states.sensor.dark_sky_daytime_high_temperature_0d.state_with_unit }}
 
-          {{ states.sensor.dark_sky_overnight_low_apparent_temperature_0d.state_with_unit }} {{ '\u21F5' }} {{ states.sensor.dark_sky_daytime_high_apparent_temperature_0d.state_with_unit }} (gefühlt)
+          {{ states.sensor.dark_sky_overnight_low_apparent_temperature_0d.state_with_unit }} {{ '\u21F5' }} {{ states.sensor.dark_sky_daytime_high_apparent_temperature_0d.state_with_unit }} (gevoel)
 
 
           Regen: {{ states.sensor.dark_sky_precip_probability.state_with_unit }}, {{ states.sensor.dark_sky_precip_intensity.state_with_unit }}

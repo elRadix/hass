@@ -6929,34 +6929,34 @@
                                     "entity": "sensor.period_of_day"
                                 },
                                 {
-                                    "entity": "sensor.astronomical_dawn"
-                                },
-                                {
-                                    "entity": "sensor.astronomical_daylight"
-                                },
-                                {
-                                    "entity": "sensor.astronomical_dusk"
-                                },
-                                {
-                                    "entity": "sensor.civil_daylight"
-                                },
-                                {
                                     "entity": "sensor.dawn"
-                                },
-                                {
-                                    "entity": "sensor.daylight"
-                                },
-                                {
-                                    "entity": "sensor.dusk"
                                 },
                                 {
                                     "entity": "sensor.nautical_dawn"
                                 },
                                 {
-                                    "entity": "sensor.nautical_daylight"
+                                    "entity": "sensor.astronomical_dawn"
+                                },
+                                {
+                                    "entity": "sensor.dusk"
                                 },
                                 {
                                     "entity": "sensor.nautical_dusk"
+                                },
+                                {
+                                    "entity": "sensor.astronomical_dusk"
+                                },
+                                {
+                                    "entity": "sensor.astronomical_daylight"
+                                },
+                                {
+                                    "entity": "sensor.civil_daylight"
+                                },
+                                {
+                                    "entity": "sensor.daylight"
+                                },
+                                {
+                                    "entity": "sensor.nautical_daylight"
                                 },
                                 {
                                     "entity": "sensor.max_elevation"
@@ -6970,6 +6970,100 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Sun ",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "name": "RF  RESET Devices",
+                                    "styles": {
+                                        "card": [
+                                            {
+                                                "height": "40px"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "text-orientation": "mixed"
+                                            },
+                                            {
+                                                "font-size": "20px"
+                                            },
+                                            {
+                                                "text-Transform": "uppercase"
+                                            },
+                                            {
+                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "padding": "2%"
+                                            },
+                                            {
+                                                "color": "white"
+                                            },
+                                            {
+                                                "border-radius": "50px"
+                                            },
+                                            {
+                                                "border-style": "solid"
+                                            },
+                                            {
+                                                "border-width": "2px"
+                                            },
+                                            {
+                                                "border-color": "#e5e5e5"
+                                            }
+                                        ]
+                                    },
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "entity": "input_boolean.reset_rf_all",
+                                    "icon": "mdi:restart",
+                                    "name": "All",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "input_boolean.reset_rf_terras",
+                                    "icon": "mdi:restart",
+                                    "name": "Keuken",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "input_boolean.reset_rf_inkomhal",
+                                    "icon": "mdi:restart",
+                                    "name": "Inkomhal",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "input_boolean.reset_rf_keuken",
+                                    "icon": "mdi:restart",
+                                    "name": "Keuken",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "input_boolean.reset_rf_badkamer",
+                                    "icon": "mdi:restart",
+                                    "name": "Badkamer",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "input_boolean.reset_rf_fire",
+                                    "icon": "mdi:restart",
+                                    "name": "Fire",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "input_boolean.reset_rf_gas",
+                                    "icon": "mdi:restart",
+                                    "name": "Gas",
+                                    "secondary_info": "last-changed"
+                                }
+                            ],
                             "type": "entities"
                         },
                         {
@@ -7020,11 +7114,6 @@
                                         ]
                                     },
                                     "type": "custom:button-card"
-                                },
-                                {
-                                    "entity": "input_boolean.reset_rf",
-                                    "icon": "mdi:restart",
-                                    "secondary_info": "last-changed"
                                 },
                                 {
                                     "entity": "binary_sensor.gas_alarm",
@@ -7086,6 +7175,70 @@
                             ],
                             "show_header_toggle": false,
                             "title": "RF Bridge Control",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "name": "RF Wall Remote",
+                                    "styles": {
+                                        "card": [
+                                            {
+                                                "height": "40px"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "text-orientation": "mixed"
+                                            },
+                                            {
+                                                "font-size": "20px"
+                                            },
+                                            {
+                                                "text-Transform": "uppercase"
+                                            },
+                                            {
+                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "padding": "2%"
+                                            },
+                                            {
+                                                "color": "white"
+                                            },
+                                            {
+                                                "border-radius": "50px"
+                                            },
+                                            {
+                                                "border-style": "solid"
+                                            },
+                                            {
+                                                "border-width": "2px"
+                                            },
+                                            {
+                                                "border-color": "#e5e5e5"
+                                            }
+                                        ]
+                                    },
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "entity": "binary_sensor.rf_switch_btns_left",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "binary_sensor.rf_switch_btns_center",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "binary_sensor.rf_switch_btns_right",
+                                    "secondary_info": "last-changed"
+                                }
+                            ],
                             "type": "entities"
                         },
                         {
@@ -7155,70 +7308,6 @@
                                 {
                                     "entity": "binary_sensor.rf_switch_d",
                                     "name": "D - Sockets Off",
-                                    "secondary_info": "last-changed"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "name": "RF Wall Remote",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "entity": "binary_sensor.rf_switch_btns_left",
-                                    "secondary_info": "last-changed"
-                                },
-                                {
-                                    "entity": "binary_sensor.rf_switch_btns_center",
-                                    "secondary_info": "last-changed"
-                                },
-                                {
-                                    "entity": "binary_sensor.rf_switch_btns_right",
                                     "secondary_info": "last-changed"
                                 }
                             ],
@@ -9414,12 +9503,6 @@
                             "content": "<h3>Rachid</h3>  [[ geo_address.comp_rachid.attributes.road ]] [[ if(geo_address.comp_rachid.attributes.house_number != undefined, geo_address.comp_rachid.attributes.house_number, \"\") ]]  [[ geo_address.comp_rachid.attributes.city_district ]]  <h3>Soumaya</h3>  [[ geo_address.comp_soumaya.attributes.road ]] [[ if(geo_address.comp_soumaya.attributes.house_number != undefined, geo_address.comp_soumaya.attributes.house_number, \"\") ]]  [[ geo_address.comp_soumaya.attributes.city_district ]] \n",
                             "title": "Location",
                             "type": "markdown"
-                        },
-                        {
-                            "entities": [
-                                "sensor.email_elrachidgmailcom"
-                            ],
-                            "type": "custom:tracking-number-card"
                         },
                         {
                             "card": {

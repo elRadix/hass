@@ -1,7 +1,7 @@
 ---
-- id: tg_weer
-  initial_state: true
-  alias: 'Telegram bot that sends a weather forecast'
+- id: weer
+  initial_state: 'true'
+  alias: 'Telebot start weer'
   trigger:
   - platform: event
     event_type: telegram_command
@@ -16,7 +16,7 @@
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
-      message: >
+      message: "
 
           {{ states.sensor.dark_sky_hourly_summary.state }}
 
@@ -33,4 +33,4 @@
           {% if not is_state('sensor.dark_sky_precip', 'unknown') %}
 
           Soort Regen: {{ states.sensor.dark_sky_precip.state }}
-          {% endif %}
+          {% endif %}"

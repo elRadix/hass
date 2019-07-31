@@ -253,8 +253,9 @@
     from: 'off'
     to: 'on'
   action:
-  - service: script.reset_rf_{{ trigger.to_state.name }}
+  - service_template: script.reset_rf_{{ trigger.to_state.name }}
   - service: input_boolean.turn_off
+    data_template:
     entity_id: input_boolean.reset_rf_{{ trigger.to_state.name }}
   - service: notify.telegram_rachid
     data_template:

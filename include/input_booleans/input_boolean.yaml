@@ -1,31 +1,60 @@
-  switch:
-    name: Notificaties
-    initial: off
-    icon: mdi:briefcase
+---
+switch:
+  name: Notificaties
+  initial: off
+  icon: mdi:briefcase
 
-  work:
-    name: Time at work
-    initial: off
-    icon: mdi:briefcase
+work:
+  name: Time at work
+  initial: off
+  icon: mdi:briefcase
 
-  school:
-    name: School Programma
-    initial: on
-    icon: mdi:school
+school:
+  name: School Programma
+  initial: on
+  icon: mdi:school
 
+easyplus_summer:
+  name: Summer 
+  initial: on
+  icon: mdi:power
 
-  easyplus_summer:
-    name: Summer 
-    initial: on
-    icon: mdi:power
+day:
+  name: day
+  initial: off
+  icon: mdi:power
 
-  day:
-    name: day
-    initial: off
-    icon: mdi:power
+reset_rf:
+  name: RF Reset
+  initial: off
+  icon: mdi:video-input-antenna
 
-  reset_rf:
-    name: RF Reset
-    initial: off
-    icon: mdi:video-input-antenna
+reset_rf_badkamer:
+  name: RF Reset Badkamer
+  initial: off
+  icon: mdi:video-input-antenna
 
+reset_rf_keuken:
+  name: keuken
+  initial: off
+  icon: mdi:video-input-antenna
+
+reset_rf_inkomhal:
+  name: inkomhal
+  initial: off
+  icon: mdi:video-input-antenna
+
+reset_rf_terras:
+  name: terras
+  initial: off
+  icon: mdi:video-input-antenna
+
+reset_rf_gas:
+  name: gas
+  initial: off
+  icon: mdi:video-input-antenna
+
+reset_rf_fire:
+  name: fire
+  initial: off
+  icon: mdi:video-input-antenna

@@ -249,16 +249,16 @@
   alias: '[RF] Reset'
   trigger:
   - platform: state
-    entity_id: input_boolean.reset_rf
+    entity_id: input_boolean.reset_rf,input_boolean.reset_rf_badkamer,input_boolean.reset_rf_keuken,input_boolean.reset_rf_inkomhal,input_boolean.reset_rf_terras,input_boolean.reset_rf_gas,input_boolean.reset_rf_fire
     from: 'off'
     to: 'on'
   action:
-  - service: script.reset_rf
+  - service: script.reset_rf_{{ trigger.to_state.name }}
   - service: input_boolean.turn_off
-    entity_id: input_boolean.reset_rf
+    entity_id: input_boolean.reset_rf_{{ trigger.to_state.name }}
   - service: notify.telegram_rachid
     data_template:
-      message: '{{ trigger.to_state.name }} Activated'
+      message: 'RF {{ trigger.to_state.name }} Reset Activated'
   # - service: mqtt.publish
   #   data:
   #     topic: home/inkomhal

@@ -27,34 +27,34 @@ day:
 reset_rf:
   name: RF Reset
   initial: off
-  icon: mdi:video-input-antenna
+  icon: mdi:restart
 
 reset_rf_badkamer:
-  name: RF Reset Badkamer
+  name: badkamer
   initial: off
-  icon: mdi:video-input-antenna
+  icon: mdi:restart
 
 reset_rf_keuken:
   name: keuken
   initial: off
-  icon: mdi:video-input-antenna
+  icon: mdi:restart
 
 reset_rf_inkomhal:
   name: inkomhal
   initial: off
-  icon: mdi:video-input-antenna
+  icon: mdi:restart
 
 reset_rf_terras:
   name: terras
   initial: off
-  icon: mdi:video-input-antenna
+  icon: mdi:restart
 
 reset_rf_gas:
   name: gas
   initial: off
-  icon: mdi:video-input-antenna
+  icon: mdi:restart
 
 reset_rf_fire:
   name: fire
   initial: off
-  icon: mdi:video-input-antenna
+  icon: mdi:restart

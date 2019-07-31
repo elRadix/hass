@@ -24,8 +24,8 @@ day:
   initial: off
   icon: mdi:power
 
-reset_rf:
-  name: RF Reset
+reset_rf_all:
+  name: all
   initial: off
   icon: mdi:restart
 

@@ -1,5 +1,5 @@
 ---
-reset_rf:
+reset_rf_all:
   alias: Reset RF
   sequence:
     - service: mqtt.publish

@@ -249,7 +249,7 @@
   alias: '[RF] Reset'
   trigger:
   - platform: state
-    entity_id: input_boolean.reset_rf_badkamer,input_boolean.reset_rf_keuken,input_boolean.reset_rf_inkomhal,input_boolean.reset_rf_terras,input_boolean.reset_rf_gas,input_boolean.reset_rf_fire
+    entity_id: input_boolean.reset_rf_all,input_boolean.reset_rf_badkamer,input_boolean.reset_rf_keuken,input_boolean.reset_rf_inkomhal,input_boolean.reset_rf_terras,input_boolean.reset_rf_gas,input_boolean.reset_rf_fire
     from: 'off'
     to: 'on'
   action:

@@ -253,10 +253,10 @@
     from: 'off'
     to: 'on'
   action:
-  - service_template: "script.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}"
+  - service_template: "script.reset_rf_ {{ trigger.to_state.name }}"  # {{ trigger.to_state.entity_id.split('_')[-1] }}"
   - service: input_boolean.turn_off
     data_template:
-      entity_id: input_boolean.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}"
+      entity_id: input_boolean.reset_rf_{{ trigger.to_state.name }}"  # {{ trigger.to_state.entity_id.split('_')[-1] }}"
   - service: notify.telegram_rachid
     data_template:
       message: 'RF {{ trigger.to_state.name }} Reset Activated'

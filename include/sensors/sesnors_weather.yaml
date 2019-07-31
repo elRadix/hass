@@ -8,13 +8,40 @@
     name: illuminance
     entity_id: sensor.dark_sky_icon
 
+  # - platform: darksky
+  #   api_key: !secret darksky_api
+  #   name: weather
+  #   monitored_conditions:
+  #    - summary
+  #    - temperature
+  #    - icon
+
   - platform: darksky
     api_key: !secret darksky_api
-    name: weather
+    scan_interval:
+      minutes: 5
+    language: 'nl'
+    forecast:
+      - 0
+      - 1
+      - 2
+      - 3
     monitored_conditions:
-     - summary
-     - temperature
-     - icon
+      - summary
+      - hourly_summary
+      - daily_summary
+      - icon
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - precip_probability
+      - precip_intensity
+      - precip_type
+      - uv_index
+
+
 
   - platform: season
     type: meteorological

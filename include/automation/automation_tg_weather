@@ -1,35 +1,35 @@
-# - alias: 'Telegram bot that sends a weather forecast'
-#   initial_state: true
-#   trigger:
-#     platform: event
-#     event_type: telegram_command
-#     event_data:
-#       command: '/weather'
-#   action:
-#     - service: telegram_bot.send_photo
-#       data_template:
-#         target: '{{ trigger.event.data.user_id }}'
-#         disable_notification: true
-#         file: '/home/homeassistant/.homeassistant/www/climacons/{{ states.sensor.dark_sky_icon.state }}.png'
-#         caption: '{{ states.sensor.dark_sky_summary.state }}'
-#     - service: telegram_bot.send_message
-#       data_template:
-#         target: '{{ trigger.event.data.user_id }}'
-#         disable_notification: true
-#         message: >
-#           {{ states.sensor.dark_sky_hourly_summary.state }}
+- alias: 'Telegram bot that sends a weather forecast'
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/weather'
+  action:
+    - service: telegram_bot.send_photo
+      data_template:
+        target: '{{ trigger.event.data.user_id }}'
+        disable_notification: true
+        file: '/home/homeassistant/.homeassistant/www/climate/{{ states.sensor.dark_sky_icon.state }}.png'
+        caption: '{{ states.sensor.dark_sky_summary.state }}'
+    - service: telegram_bot.send_message
+      data_template:
+        target: '{{ trigger.event.data.user_id }}'
+        disable_notification: true
+        message: >
+          {{ states.sensor.dark_sky_hourly_summary.state }}
 
 
-#           *Momentan {{ states.sensor.dark_sky_temperature.state_with_unit }}*
+          *Momenteel {{ states.sensor.dark_sky_temperature.state_with_unit }}*
 
 
-#           {{ states.sensor.dark_sky_overnight_low_temperature_0d.state_with_unit }} {{ '\u21F5' }} {{ states.sensor.dark_sky_daytime_high_temperature_0d.state_with_unit }}
+          {{ states.sensor.dark_sky_overnight_low_temperature_0d.state_with_unit }} {{ '\u21F5' }} {{ states.sensor.dark_sky_daytime_high_temperature_0d.state_with_unit }}
 
-#           {{ states.sensor.dark_sky_overnight_low_apparent_temperature_0d.state_with_unit }} {{ '\u21F5' }} {{ states.sensor.dark_sky_daytime_high_apparent_temperature_0d.state_with_unit }} (gefühlt)
+          {{ states.sensor.dark_sky_overnight_low_apparent_temperature_0d.state_with_unit }} {{ '\u21F5' }} {{ states.sensor.dark_sky_daytime_high_apparent_temperature_0d.state_with_unit }} (gefühlt)
 
 
-#           Regen: {{ states.sensor.dark_sky_precip_probability.state_with_unit }}, {{ states.sensor.dark_sky_precip_intensity.state_with_unit }}
-#           {% if not is_state('sensor.dark_sky_precip', 'unknown') %}
+          Regen: {{ states.sensor.dark_sky_precip_probability.state_with_unit }}, {{ states.sensor.dark_sky_precip_intensity.state_with_unit }}
+          {% if not is_state('sensor.dark_sky_precip', 'unknown') %}
 
-#           Art des Niederschlags: {{ states.sensor.dark_sky_precip.state }}
-#           {% endif %}
+          Soort Regen: {{ states.sensor.dark_sky_precip.state }}
+          {% endif %}

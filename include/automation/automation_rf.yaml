@@ -249,14 +249,14 @@
   alias: '[RF] Reset'
   trigger:
   - platform: state
-    entity_id: input_boolean.reset_rf,input_boolean.reset_rf_badkamer,input_boolean.reset_rf_keuken,input_boolean.reset_rf_inkomhal,input_boolean.reset_rf_terras,input_boolean.reset_rf_gas,input_boolean.reset_rf_fire
+    entity_id: input_boolean.reset_rf_badkamer,input_boolean.reset_rf_keuken,input_boolean.reset_rf_inkomhal,input_boolean.reset_rf_terras,input_boolean.reset_rf_gas,input_boolean.reset_rf_fire
     from: 'off'
     to: 'on'
   action:
-  - service_template: "script.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}" # {{ trigger.to_state.name }}" 
+  - service_template: "script.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}" 
   - service: input_boolean.turn_off
     data_template:
-      entity_id: input_boolean.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}" #{{ trigger.to_state.name }}"  
+      entity_id: "input_boolean.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}" 
   - service: notify.telegram_rachid
     data_template:
       message: 'RF {{ trigger.to_state.name }} Reset Activated'

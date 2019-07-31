@@ -1,24 +1,22 @@
 ---
-- alias: 'Telegram bot that sends a weather forecast'
+- id: tg_weer
   initial_state: true
+  alias: 'Telegram bot that sends a weather forecast'
   trigger:
-    platform: event
+  - platform: event
     event_type: telegram_command
     event_data:
       command: '/weer'
   action:
-    - service: telegram_bot.send_photo
-      data_template:
-        target: '{{ trigger.event.data.user_id }}'
-        #disable_notification: true
-        file: '/home/homeassistant/.homeassistant/www/climate/{{ states.sensor.dark_sky_icon.state }}.png'
-        caption: '{{ states.sensor.dark_sky_summary.state }}'
-
-    - service: telegram_bot.send_message
-      data_template:
-        target: '{{ trigger.event.data.user_id }}'
-        #disable_notification: true
-        message: >'
+  - service: telegram_bot.send_photo
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      file: '/home/homeassistant/.homeassistant/www/climate/{{ states.sensor.dark_sky_icon.state }}.png'
+      caption: '{{ states.sensor.dark_sky_summary.state }}'
+  - service: telegram_bot.send_message
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      message: >
 
           {{ states.sensor.dark_sky_hourly_summary.state }}
 

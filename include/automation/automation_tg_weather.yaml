@@ -8,11 +8,11 @@
     event_data:
       command: '/weer'
   action:
-  # - service: telegram_bot.send_photo
-  #   data_template:
-  #     target: '{{ trigger.event.data.user_id }}'
-  #     file: '/home/homeassistant/.homeassistant/www/climate/{{ states.sensor.dark_sky_icon.state }}.png'
-  #     caption: '{{ states.sensor.dark_sky_summary.state }}'
+  - service: telegram_bot.send_photo
+    data_template:
+      target: '{{ trigger.event.data.user_id }}'
+      file: '/home/homeassistant/.homeassistant/www/climate/{{ states.sensor.dark_sky_icon.state }}.png'
+      caption: '{{ states.sensor.dark_sky_summary.state }}'
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'

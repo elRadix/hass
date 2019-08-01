@@ -1,16 +1,4 @@
 ---
-
-turn_on_easyplus:
-  sequence:
-  - condition: state
-    entity_id: switch.easyplus
-    state: 'off'
-  - service: switch.turn_on
-    entity_id: switch.easyplus
-  - delay:
-         seconds: 17
-
-
 lights:
   alias: Lights Off All
   sequence:
@@ -93,3 +81,13 @@ easyclean:
   alias: EasyClean Log
   sequence:
     - service: shell_command.easyclean
+
+turn_on_easyplus:
+  sequence:
+  - condition: state
+    entity_id: switch.easyplus
+    state: 'off'
+  - service: switch.turn_on
+    entity_id: switch.easyplus
+  - delay:
+         seconds: 20

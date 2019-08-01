@@ -454,7 +454,7 @@
   action:
   - service: script.turn_on_easyplus
   - delay:
-    seconds: 6
+      seconds: 8
   - service: homeassistant.toggle
     entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
   - service: notify.telegram_rachid

@@ -6898,14 +6898,17 @@
                                 },
                                 {
                                     "entity": "input_boolean.night",
+                                    "icon": "mdi:weather-night",
                                     "name": "Midnight at 00h30"
                                 },
                                 {
                                     "entity": "input_boolean.night_late",
+                                    "icon": "mdi:weather-night",
                                     "name": "Late Night at 1h00"
                                 },
                                 {
                                     "entity": "input_boolean.night_plus",
+                                    "icon": "mdi:weather-night",
                                     "name": "Late Night at 1h30"
                                 }
                             ],

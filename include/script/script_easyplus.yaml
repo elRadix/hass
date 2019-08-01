@@ -83,6 +83,7 @@ easyclean:
     - service: shell_command.easyclean
 
 turn_on_easyplus:
+  alias: turn easyplus condition OFF 
   sequence:
   - condition: state
     entity_id: switch.easyplus

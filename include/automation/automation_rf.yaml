@@ -453,14 +453,13 @@
     to: 'on'
   action:
   - service: script.turn_on_easyplus
+  - delay:
+    seconds: 6
   - service: homeassistant.toggle
     entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
-  - delay:
-      seconds: 2
   - service: notify.telegram_rachid
     data_template:
       message: '{{ trigger.to_state.name }} toggled Keuken
-
 
       Commander is {{states.switch.stp_keuken_commander.state}}
 

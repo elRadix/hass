@@ -89,8 +89,6 @@ turn_on_easyplus:
     state: 'off'
   - service: switch.turn_on
     entity_id: switch.easyplus
-  - delay:
-         seconds: 17
   - service: notify.dageraad
     data_template:
       message: "EasyPlus is {{states.switch.easyplus.state}}"

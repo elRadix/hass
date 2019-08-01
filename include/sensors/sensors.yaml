@@ -2,33 +2,33 @@
 ## SENSORS
 #################################################################
 
-   - platform: filter
-     name: "tmp_living "
-     entity_id: sensor.tmp_living_calibrated
-     filters:
-       - filter: range
-         lower_bound: 1
+  - platform: filter
+    name: "tmp_living "
+    entity_id: sensor.tmp_living_calibrated
+    filters:
+      - filter: range
+        lower_bound: 1
 
-   - platform: filter
-     name: "tmp_slp_3 "
-     entity_id: sensor.tmp_slp_2_calibrated
-     filters:
-       - filter: range
-         lower_bound: 1
+  - platform: filter
+    name: "tmp_slp_3 "
+    entity_id: sensor.tmp_slp_2_calibrated
+    filters:
+      - filter: range
+        lower_bound: 1
 
-   - platform: filter
-     name: "tmp_slp_1 "
-     entity_id: sensor.tmp_slp_1_calibrated
-     filters:
-       - filter: range
-         lower_bound: 1
+  - platform: filter
+    name: "tmp_slp_1 "
+    entity_id: sensor.tmp_slp_1_calibrated
+    filters:
+      - filter: range
+        lower_bound: 1
 
-   - platform: filter
-     name: "tmp_badkamer "
-     entity_id: sensor.tmp_badkamer_source
-     filters:
-       - filter: range
-         lower_bound: 1
+  - platform: filter
+    name: "tmp_badkamer "
+    entity_id: sensor.tmp_badkamer_source
+    filters:
+      - filter: range
+        lower_bound: 1
 
 
 #  - platform: travisci

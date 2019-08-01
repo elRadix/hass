@@ -46,10 +46,7 @@
       target: '{{ trigger.event.data.user_id }}'
       message: '
         Even geduld aub...EasyPlus opstarten'
-  - service: homeassistant.turn_on
-    entity_id: switch.easyplus
-  - delay:
-      seconds: 17
+  - service: script.turn_on_easyplus
   - service: homeassistant.turn_on
     entity_id: switch.ketel
   - service: input_boolean.turn_on
@@ -134,10 +131,7 @@
       target: '{{ trigger.event.data.user_id }}'
       message: '
         Even geduld aub...EasyPlus opstarten'
-  - service: homeassistant.turn_on
-    entity_id: switch.easyplus
-  - delay:
-      seconds: 17
+  - service: script.turn_on_easyplus
   - service: homeassistant.turn_on
     entity_id: switch.ketel
   - service: input_boolean.turn_on

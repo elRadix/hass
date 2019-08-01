@@ -277,10 +277,7 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time.state }}'
   action:
-    - service: homeassistant.turn_on
-      entity_id: switch.easyplus
-    - delay:
-        seconds: 20
+    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
       entity_id: switch.ketel
     - service: climate.set_operation_mode
@@ -356,10 +353,7 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_liv.state }}'
   action:
-    - service: homeassistant.turn_on
-      entity_id: switch.easyplus
-    - delay:
-        seconds: 20
+    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
       entity_id: switch.ketel
     - service: shell_command.tmp_living_auto
@@ -437,10 +431,7 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp1.state }}'
   action:
-    - service: homeassistant.turn_on
-      entity_id: switch.easyplus
-    - delay:
-        seconds: 20
+    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
       entity_id: switch.ketel
     - service: shell_command.tmp_slp1_auto
@@ -515,10 +506,7 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp2.state }}'
   action:
-    - service: homeassistant.turn_on
-      entity_id: switch.easyplus
-    - delay:
-        seconds: 20
+    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
       entity_id: switch.ketel
     - service: shell_command.tmp_slp2_auto
@@ -596,10 +584,7 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp3.state }}'
   action:
-    - service: homeassistant.turn_on
-      entity_id: switch.easyplus
-    - delay:
-        seconds: 20
+    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
       entity_id: switch.ketel
     - service: shell_command.tmp_slp3_auto

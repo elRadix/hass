@@ -498,6 +498,7 @@
     from: 'off'
     to: 'on'
   action:
+  - service: script.turn_on_easyplus
   - service: homeassistant.toggle
     entity_id: switch.stp_berging_wasmachine
   - delay:
@@ -518,6 +519,7 @@
     from: 'off'
     to: 'on'
   action:
+  - service: script.turn_on_easyplus
   - service: homeassistant.toggle
     entity_id: switch.stp_berging_droogkast
   - delay:

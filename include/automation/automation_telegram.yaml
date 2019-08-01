@@ -439,7 +439,7 @@
 
       Light is {{states.switch.light_berging_center.state}}'
 
-    
+
 
 - id: tgbot_20
   initial_state: 'true'

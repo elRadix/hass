@@ -2,26 +2,26 @@
 
 #### Current Temp
   - platform: command_line
-    name: tmp_living
+    name: tmp_living_source
     command: /opt/scripts/status/state.sh -t 0
     unit_of_measurement: "°C"
 
   - platform: command_line
-    name: tmp_slp_1
+    name: tmp_slp_1_source
     command: /opt/scripts/status/state.sh -t 7
     unit_of_measurement: "°C"
 
   - platform: command_line
-    name: tmp_slp_2
+    name: tmp_slp_2_source
     command: /opt/scripts/status/state.sh -t 5
     unit_of_measurement: "°C"
 
   - platform: command_line
-    name: tmp_slp_3
+    name: tmp_slp_3_source
     command: /opt/scripts/status/state.sh -t 6
     unit_of_measurement: "°C"
 
   - platform: command_line
-    name: tmp_badkamer
+    name: tmp_badkamer_source
     command: /opt/scripts/status/state.sh -t 10
     unit_of_measurement: "°C"

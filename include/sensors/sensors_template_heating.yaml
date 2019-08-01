@@ -172,29 +172,29 @@
 
       tmp_living_calibrated:
         entity_id: sensor.tmp_living
-        value_template: '{{ (float(states.sensor.tmp_living.state) - 1.5 ) }}'
-        friendly_name: 'Liv.'  
+        value_template: '{{ (float(states.sensor.tmp_living_source.state) - 1.5 ) }}'
+        friendly_name: 'Liv.'
         icon_template: mdi:thermometer
         unit_of_measurement: "°C"
 
 
       tmp_eetkamer_calibrated:
         entity_id: sensor.tmp_living
-        value_template: '{{ (float(states.sensor.tmp_living.state) - 1 ) }}'
+        value_template: '{{ (float(states.sensor.tmp_living_source.state) - 1 ) }}'
         friendly_name: 'Eetk.'
         icon_template: mdi:thermometer
         unit_of_measurement: "°C"
 
       tmp_slp_1_calibrated:
         entity_id: sensor.tmp_slp_1
-        value_template: '{{ (float(states.sensor.tmp_slp_1.state) + 0.5 ) }}'
+        value_template: '{{ (float(states.sensor.tmp_slp_1_source.state) + 0.5 ) }}'
         friendly_name: 'S&R'
         icon_template: mdi:thermometer
         unit_of_measurement: "°C"
 
       tmp_slp_2_calibrated:
         entity_id: sensor.tmp_slp_3
-        value_template: '{{ (float(states.sensor.tmp_slp_3.state) + 0.5 ) }}'
+        value_template: '{{ (float(states.sensor.tmp_slp_3_source.state) + 0.5 ) }}'
         friendly_name: 'Sara'
         icon_template: mdi:thermometer
         unit_of_measurement: "°C"

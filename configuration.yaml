@@ -269,7 +269,7 @@ climate:
   - platform: generic_thermostat
     name: FloRadix
     heater: switch.heating_floradix
-    target_sensor: sensor.tmp_slp_1_calibrated
+    target_sensor: sensor.tmp_slp_1
     ac_mode: false
     min_temp: 5
     max_temp: 24

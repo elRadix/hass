@@ -454,7 +454,10 @@
   action:
   - service: script.turn_on_easyplus
   - delay:
-         seconds: 17
+         seconds: 5
+  - service: notify.dageraad
+    data_template:
+      message: "Starting Commander after 5 sec"
   - service: homeassistant.toggle
     entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
   - delay:

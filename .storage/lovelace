@@ -6938,6 +6938,9 @@
                                     "entity": "sensor.astronomical_dawn"
                                 },
                                 {
+                                    "entity": "sensor.solar_noon"
+                                },
+                                {
                                     "entity": "sensor.dusk"
                                 },
                                 {
@@ -6963,9 +6966,6 @@
                                 },
                                 {
                                     "entity": "sensor.solar_angle"
-                                },
-                                {
-                                    "entity": "sensor.solar_noon"
                                 }
                             ],
                             "show_header_toggle": false,

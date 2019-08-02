@@ -23,11 +23,22 @@
   - service: homeassistant.turn_off
     entity_id: switch.ketel
 
+- id: boiler_state
+  initial_state: 'true'
+  alias: '[Boiler] state'
+  trigger:
+  - platform: state
+    entity_id: switch.ketel
+    to: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.easyplus_boiler_shower
+
 - id: dishwasher turn off
   initial_state: 'true'
   alias: dhishwasher turn off
   trigger:
-    platform: state
+  - platform: state
     entity_id: switch.stp_keuken_vaatwasser
     from: 'off'
     to: 'on'

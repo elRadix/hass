@@ -115,7 +115,7 @@ turn_on_kitchen:
 
       Vaatwasser is {{states.switch.stp_keuken_vaatwasser.state}}'
 
-turn_off_dishwasher
+turn_off_dishwasher:
   sequence:
   - service: homeassistant.toggle
     entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser

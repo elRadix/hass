@@ -152,11 +152,11 @@
       title: ALERT - WATER DAMAGE
       message: >
         {{ trigger.to_state.name }} - PLEASE CHECK ASAP
-        
-        Since {{now().strftime("%H:%M:%S")}}
-######## WATER ALERT KEUKEN ######## 
 
-######## WATER ALERT BADKAMER  ######## 
+        Since {{now().strftime("%H:%M:%S")}}
+######## WATER ALERT KEUKEN ########
+
+######## WATER ALERT BADKAMER  ########
 - id: rf_water_alert_badkamer
   initial_state: 'true'
   alias: '[RF] Water Alert Badkamer'
@@ -453,8 +453,10 @@
     to: 'on'
   action:
   - service: script.turn_on_easyplus
-  - delay:
-      seconds: 8
+  - wait_template: "{{ is_state('binary_sensor.easyplus_on_17s', 'on') }}"
+    timeout:
+      seconds: 22 #give it 5 extra seconds in case of delays
+    continue_on_timeout: false 
   - service: homeassistant.toggle
     entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
   - service: notify.telegram_rachid

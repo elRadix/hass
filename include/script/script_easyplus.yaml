@@ -93,3 +93,17 @@ turn_on_easyplus:
   - service: notify.dageraad
     data_template:
      message: "1 easyplus is {{states.switch.easyplus.state}} - turning on"
+
+
+turn_on_kitchen:
+  sequence:
+  - service: script.turn_on_easyplus
+  - wait_template: "{{ is_state('binary_sensor.easyplus_on_17s', 'on') }}"
+    timeout:
+      seconds: 22
+    continue_on_timeout: false
+  - service: homeassistant.toggle
+    entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
+  - service: notify.dageraad
+    data_template:
+     message: "1 easyplus is {{states.switch.easyplus.state}} - turning on"

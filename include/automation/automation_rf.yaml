@@ -455,16 +455,8 @@
   - service: script.turn_on_easyplus
   - service: notify.dageraad
     data_template:
-     message: "2 starting wait template"
-  - wait_template: "{{ is_state('binary_sensor.easyplus_on_17s', 'on') }}"
-    timeout:
-      seconds: 22 #give it 5 extra seconds in case of delays
-    continue_on_timeout: false
-  - service: notify.dageraad
-    data_template:
-     message: "3 finished wait template, starting toggle"
-  - service: homeassistant.toggle
-    entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
+     message: "2, starting toggle with wait 22sec"
+  - service: script.turn_on_kitchen
   - service: notify.dageraad
     data_template:
      message: "4 finished toggle current state, {{states.switch.stp_keuken_commander.state}} and  {{states.switch.stp_keuken_vaatwasser.state}}"

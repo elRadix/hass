@@ -453,8 +453,9 @@
     to: 'on'
   action:
   - service: script.turn_on_easyplus
-  - delay: '00:00:05'
+  # - delay: '00:00:05'
   - service: script.turn_on_kitchen
+   - delay: '00:00:05' 
   - service: notify.dageraad
     data_template:
      message: "3 finished toggle current state, {{states.switch.stp_keuken_commander.state}} and  {{states.switch.stp_keuken_vaatwasser.state}}"

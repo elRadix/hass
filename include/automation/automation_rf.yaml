@@ -453,13 +453,10 @@
     to: 'on'
   action:
   - service: script.turn_on_easyplus
-  - service: notify.dageraad
-    data_template:
-     message: "2, starting toggle with wait 22sec"
   - service: script.turn_on_kitchen
   - service: notify.dageraad
     data_template:
-     message: "4 finished toggle current state, {{states.switch.stp_keuken_commander.state}} and  {{states.switch.stp_keuken_vaatwasser.state}}"
+     message: "3 finished toggle current state, {{states.switch.stp_keuken_commander.state}} and  {{states.switch.stp_keuken_vaatwasser.state}}"
   - service: notify.telegram_rachid
     data_template:
       message: '{{ trigger.to_state.name }} toggled Keuken

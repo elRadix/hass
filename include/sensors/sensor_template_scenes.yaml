@@ -3,14 +3,14 @@
   sensors:
     easyplus:
       friendly_name: "Easyplus Master"
-      entity_id: input_boolean.easyplus_boiler, input_boolean.easyplus_boiler,  input_boolean.easyplus_cleaning
+      entity_id: input_boolean.easyplus_boiler, input_boolean.easyplus_boiler,  sensor.easyplus_cleaning
       device_class: power
       value_template: >-
         {% if 'on' in states.input_boolean.easyplus_boiler.state %}
           on
         {% elif 'on' in states.input_boolean.easyplus_boiler.state %}
           on
-        {% elif 'on' in states.input_boolean.easyplus_cleaning.state %}
+        {% elif 'on' in states.sensor.easyplus_cleaning.state %}
           on
         {% else %}
           off

@@ -54,9 +54,9 @@
 #    filename: life360.conf
 
 
-  - platform: google_maps
-    username: !secret mail_user1
-    password: !secret mail_user1_password
+  # - platform: google_maps
+  #   username: !secret mail_user1
+  #   password: !secret mail_user1_password
 
 
   # - platform: gpslogger

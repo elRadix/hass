@@ -4,7 +4,7 @@
     easyplus:
       friendly_name: "Easyplus Master"
       entity_id: input_boolean.easyplus_boiler, input_boolean.easyplus_boiler,  input_boolean.easyplus_cleaning
-      device_class: plug
+      device_class: power
       value_template: >-
         {% if 'on' in states.input_boolean.easyplus_boiler.state %}
           on
@@ -21,7 +21,7 @@
     easyplus_boiler:
       friendly_name: "Boiler Master"
       entity_id: input_boolean.easyplus_boiler_shower, input_boolean.easyplus_boiler_heating
-      device_class: heat
+      device_class: power
       value_template: >-
         {% if 'on' in states.input_boolean.easyplus_boiler_shower.state %}
           on
@@ -36,7 +36,7 @@
     easyplus_boiler_heating:
       friendly_name: "Heating Master"
       entity_id: input_boolean.easyplus_boiler_heating_1h_eetkamer,input_boolean.easyplus_boiler_heating_1h_floradix,input_boolean.easyplus_boiler_heating_1h_living,input_boolean.easyplus_boiler_heating_1h_sara,input_boolean.easyplus_boiler_heating_1h_yassin,input_boolean.easyplus_boiler_heating_2h_eetkamer,input_boolean.easyplus_boiler_heating_2h_floradix,input_boolean.easyplus_boiler_heating_2h_living,input_boolean.easyplus_boiler_heating_2h_sara,input_boolean.easyplus_boiler_heating_2h_yassin
-      device_class: heat
+      device_class: power
       value_template: >-
         {% if 'on' in states.input_boolean.easyplus_boiler_heating_1h_eetkamer.state %}
           on
@@ -67,7 +67,7 @@
     easyplus_cleaning:
       friendly_name: "Cleaning Master"
       entity_id: switch.stp_keuken_vaatwasser,switch.stp_berging_droogkast,switch.stp_berging_wasmachine
-      device_class: plug
+      device_class: power
       value_template: >-
         {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
           on

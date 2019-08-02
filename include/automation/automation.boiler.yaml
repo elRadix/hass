@@ -34,16 +34,3 @@
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_shower
 
-- id: dishwasher turn off
-  initial_state: 'true'
-  alias: dhishwasher turn off
-  trigger:
-  - platform: state
-    entity_id: switch.stp_keuken_vaatwasser
-    from: 'off'
-    to: 'on'
-    for:
-      minutes: 40
-      seconds: 0
-  action:
-  - service: script.turn_off_dishwasher

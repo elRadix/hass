@@ -1,0 +1,54 @@
+---
+- id: Dishwaser_01
+  initial_state: 'true'
+  alias: 'Dishwasher Program'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/dishwasher'
+  - platform: state
+    entity_id: binary_sensor.rf_btn_45a081
+    from: 'off'
+    to: 'on'
+  action:
+  - service: script.turn_on_kitchen
+  - delay: '00:40:00'
+  - service: script.turn_off_kitchen
+
+
+- id: rf_button_keuken_01
+  initial_state: 'true'
+  alias: Tap Counter RF 909601
+  trigger:
+   - platform: state
+     entity_id: binary_sensor.rf_btn_45a081
+     to: 'on'
+  action:
+    service: counter.increment
+    entity_id: counter.rf_keuken
+
+- id: rf_button_keuken_02
+  initial_state: 'true'
+  alias: Keuken RF button
+  trigger:
+    platform: numeric_state
+    entity_id: counter.rf_keuken
+    above: 0
+    for:
+      seconds: 5
+  condition:
+    condition: numeric_state
+    entity_id: counter.rf_keuken
+    above: 0
+  action:
+    - service: homeassistant.toggle
+      data_template:
+       entity_id: >
+        {% if is_state(trigger.entity_id, '1') %}
+          script.turn_on_kitchen
+        {% else is_state(trigger.entity_id, '2') %}
+          switch.stp_keuken_espresso
+        {% endif %}
+    - service: counter.reset
+      entity_id: counter.rf_909601

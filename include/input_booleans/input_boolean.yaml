@@ -24,37 +24,4 @@ day:
   initial: off
   icon: mdi:power
 
-reset_rf_all:
-  name: all
-  initial: off
-  icon: mdi:restart
 
-reset_rf_badkamer:
-  name: badkamer
-  initial: off
-  icon: mdi:restart
-
-reset_rf_keuken:
-  name: keuken
-  initial: off
-  icon: mdi:restart
-
-reset_rf_inkomhal:
-  name: inkomhal
-  initial: off
-  icon: mdi:restart
-
-reset_rf_terras:
-  name: terras
-  initial: off
-  icon: mdi:restart
-
-reset_rf_gas:
-  name: gas
-  initial: off
-  icon: mdi:restart
-
-reset_rf_fire:
-  name: fire
-  initial: off
-  icon: mdi:restart

@@ -1,0 +1,91 @@
+---
+easyplus:
+  name: master
+  initial: off
+  icon: mdi:power
+
+easyplus_boiler:
+  name: boiler master
+  initial: off
+  icon: mdi:water-boiler
+
+easyplus_boiler_shower:
+  name: shower
+  initial: off
+  icon: mdi:shower-head
+
+easyplus_boiler_heating:
+  name: heating master
+  initial: off
+  icon: mdi:fan
+
+easyplus_boiler_heating_1h_living:
+  name: heating 1h living
+  initial: off
+  icon: mdi:numeric-1-box-outline
+
+easyplus_boiler_heating_2h_living:
+  name: heating 2h living
+  initial: off
+  icon: mdi:numeric-2-box-outline
+
+easyplus_boiler_heating_1h_eetkamer:
+  name: heating 1h eetkamer
+  initial: off
+  icon: mdi:numeric-1-box-outline
+
+easyplus_boiler_heating_2h_eetkamer:
+  name: heating 2h eetkamer
+  initial: off
+  icon: mdi:numeric-2-box-outline
+
+easyplus_boiler_heating_1h_sara:
+  name: heating 1h sara
+  initial: off
+  icon: mdi:numeric-1-box-outline
+
+easyplus_boiler_heating_2h_sara:
+  name: heating 2h sara
+  initial: off
+  icon: mdi:numeric-2-box-outline
+
+easyplus_boiler_heating_1h_yassin:
+  name: heating 1h yassin
+  initial: off
+  icon: mdi:numeric-1-box-outline
+
+easyplus_boiler_heating_2h_yassin:
+  name: heating 2h yassin
+  initial: off
+  icon: mdi:numeric-2-box-outline
+
+easyplus_boiler_heating_1h_floradix:
+  name: heating 1h floradix
+  initial: off
+  icon: mdi:numeric-1-box-outline
+
+easyplus_boiler_heating_2h_floradix:
+  name: heating 2h floradix
+  initial: off
+  icon: mdi:numeric-2-box-outline
+
+easyplus_cleaning:
+  name: cleaning master
+  initial: off
+  icon: mdi:spray-bottle
+
+easyplus_cleaning_dish:
+  name: cleaning dishwasher
+  initial: off
+  icon: mdi:dishwasher
+
+easyplus_cleaning_washing:
+  name: cleaning washing machine
+  initial: off
+  icon: mdi:washing-machine
+
+easyplus_cleaning_dryer:
+  name: cleaning dryer machine
+  initial: off
+  icon: mdi:tumble-dryer
+  

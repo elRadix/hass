@@ -90,3 +90,6 @@ turn_on_easyplus:
     state: 'off'
   - service: switch.turn_on
     entity_id: switch.easyplus
+  - service: notify.dageraad
+    data_template:
+     message: "1 easyplus is {{states.switch.easyplus.state}} - turning on"

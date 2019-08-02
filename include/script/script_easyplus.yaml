@@ -94,13 +94,29 @@ turn_on_easyplus:
 turn_on_kitchen:
   sequence:
   - service: script.turn_on_easyplus
-  - delay:
-      seconds: >-
-         {% if is_state('binary_sensor.easyplus_on_17s', 'off') %}
-          20
-         {% else %}
-          0
-         {% endif %}
+  - wait_template: "{{ is_state('binary_sensor.easyplus_on_17s', 'on') }}"
+    timeout: '00:00:17'
+    continue_on_timeout: 'true'
+  # - delay:
+  #     seconds: >-
+  #        {% if is_state('binary_sensor.easyplus_on_17s', 'off') %}
+  #         20
+  #        {% else %}
+  #         0
+  #        {% endif %}
+  - service: homeassistant.toggle
+    entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
+  - delay: '00:00:04'
+  - service: notify.telegram_rachid
+    data_template:
+      message: 'RF Button toggled
+
+      Commander is {{states.switch.stp_keuken_commander.state}}
+
+      Vaatwasser is {{states.switch.stp_keuken_vaatwasser.state}}'
+
+turn_off_dishwasher
+  sequence:
   - service: homeassistant.toggle
     entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
   - delay: '00:00:04'

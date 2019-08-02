@@ -22,3 +22,17 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.ketel
+
+- id: dishwasher turn off
+  initial_state: 'true'
+  alias: dhishwasher turn off
+  trigger:
+    platform: state
+    entity_id: switch.stp_keuken_vaatwasser
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 40
+      seconds: 0
+  action:
+  - service: script.turn_off_dishwasher

@@ -453,6 +453,7 @@
     to: 'on'
   action:
   - service: script.turn_on_easyplus
+  - delay: '00:00:05'
   - service: script.turn_on_kitchen
   - service: notify.dageraad
     data_template:

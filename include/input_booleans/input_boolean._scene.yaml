@@ -73,19 +73,3 @@ easyplus_cleaning:
   name: cleaning master
   initial: off
   icon: mdi:spray-bottle
-
-easyplus_cleaning_dish:
-  name: cleaning dishwasher
-  initial: off
-  icon: mdi:dishwasher
-
-easyplus_cleaning_washing:
-  name: cleaning washing machine
-  initial: off
-  icon: mdi:washing-machine
-
-easyplus_cleaning_dryer:
-  name: cleaning dryer machine
-  initial: off
-  icon: mdi:tumble-dryer
-  

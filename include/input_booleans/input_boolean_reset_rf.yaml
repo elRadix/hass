@@ -1,4 +1,10 @@
 ---
+
+reset_rf_all:
+  name: all
+  initial: off
+  icon: mdi:restart
+
 reset_rf_badkamer:
   name: badkamer
   initial: off

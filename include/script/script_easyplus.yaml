@@ -103,10 +103,7 @@ turn_on_kitchen:
          {% endif %}
   - service: homeassistant.toggle
     entity_id: switch.stp_keuken_commander, switch.stp_keuken_vaatwasser
-  - wait_template: "{{ is_state('switch.stp_keuken_commander', 'on') }}"
-    timeout: "00:00:05"
-    continue_on_timeout: false
-  # - delay: '00:00:05'
+  - delay: '00:00:04'
   - service: notify.telegram_rachid
     data_template:
       message: 'RF Button toggled

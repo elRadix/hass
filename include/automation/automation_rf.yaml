@@ -452,10 +452,7 @@
     from: 'off'
     to: 'on'
   action:
-  - service: script.turn_on_easyplus
   - service: script.turn_on_kitchen
-  
-
 
 
 - id: rf_15

@@ -71,7 +71,7 @@
       value_template: >-
         {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
           on
-        {% elif 'on' in states.input_boolean.easyplus_cleaning_dryer.state %}
+        {% elif 'on' in states.switch.stp_berging_wasmachine.state %}
           on
         {% elif 'on' in states.switch.stp_berging_droogkast.state %}
           on

@@ -443,17 +443,21 @@
 
 
 #### RF CIRCLE BUTTONS ###
-- id: rf_14
-  initial_state: 'true'
-  alias: '[RF] Button 45A081'
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.rf_btn_45a081
-    from: 'off'
-    to: 'on'
-  action:
-  - service: script.turn_on_kitchen
 
+
+# - id: dishwasher turn off
+#   initial_state: 'true'
+#   alias: dishwasher turn off
+#   trigger:
+#   - platform: state
+#     entity_id: switch.stp_keuken_vaatwasser
+#     from: 'off'
+#     to: 'on'
+#     for:
+#       minutes: 40
+#       seconds: 0
+#   action:
+#   - service: script.turn_off_dishwasher
 
 - id: rf_15
   initial_state: 'true'
@@ -540,40 +544,40 @@
 #       Droogkast is {{states.switch.stp_keuken_water.state}}'
 
 
-- id: rf_19
-  initial_state: 'true'
-  alias: Tap Counter RF 909601
-  trigger:
-   - platform: state
-     entity_id: binary_sensor.rf_btn_909601
-     to: 'on'
-  action:
-    service: counter.increment
-    entity_id: counter.rf_909601
+  # - id: rf_19
+  #   initial_state: 'true'
+  #   alias: Tap Counter RF 909601
+  #   trigger:
+  #   - platform: state
+  #     entity_id: binary_sensor.rf_btn_909601
+  #     to: 'on'
+  #   action:
+  #     service: counter.increment
+  #     entity_id: counter.rf_909601
 
-- id: rf_20
-  initial_state: 'true'
-  alias: Tap Controller 909601
-  trigger:
-    platform: numeric_state
-    entity_id: counter.rf_909601
-    above: 0
-    for:
-      seconds: 5
-  condition:
-    condition: numeric_state
-    entity_id: counter.rf_909601
-    above: 0
-  action:
-    - service: light.toggle
-      data_template:
-       entity_id: >
-        {% if is_state(trigger.entity_id, '1') %}
-          light.trap_1
-        {% elif is_state(trigger.entity_id, '2') %}
-          light.trap_2
-        {% else %}
-          light.trap_3
-        {% endif %}
-    - service: counter.reset
-      entity_id: counter.rf_909601
+  # - id: rf_20
+  #   initial_state: 'true'
+  #   alias: Tap Controller 909601
+  #   trigger:
+  #     platform: numeric_state
+  #     entity_id: counter.rf_909601
+  #     above: 0
+  #     for:
+  #       seconds: 5
+  #   condition:
+  #     condition: numeric_state
+  #     entity_id: counter.rf_909601
+  #     above: 0
+  #   action:
+  #     - service: light.toggle
+  #       data_template:
+  #       entity_id: >
+  #         {% if is_state(trigger.entity_id, '1') %}
+  #           light.trap_1
+  #         {% elif is_state(trigger.entity_id, '2') %}
+  #           light.trap_2
+  #         {% else %}
+  #           light.trap_3
+  #         {% endif %}
+  #     - service: counter.reset
+  #       entity_id: counter.rf_909601

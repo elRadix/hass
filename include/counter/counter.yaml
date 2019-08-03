@@ -49,3 +49,8 @@
     icon: mdi:alert-circle-outline
     restore: true
     step: 1
+  # rf_keuken:
+  #   name: RF Button Keuken
+  #   icon: mdi:alert-circle-outline
+  #   restore: true
+  #   step: 1

@@ -1,4 +1,4 @@
-sn = data.get('script_name')
+sn = data.get('script_id')
 ep = hass.states.get('switch.easyplus')
 
 if sn is not None:
@@ -7,7 +7,7 @@ if sn is not None:
     if ep is not None:
       if ep.state == 'off':
         service_data = {'entity_id':'switch.easyplus'}
-        hass.services.call('switch', 'turn_on', service_data, False)    
+        hass.services.call('homeassistant', 'turn_on', service_data, False)    
         time.sleep(17)
 
       hass.services.call('script', sn, '', False)

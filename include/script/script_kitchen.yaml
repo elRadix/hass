@@ -33,5 +33,4 @@ turn_off_dishwasher:
       message: 'Diswasher program completed
 
       Commander is {{states.switch.stp_keuken_commander.state}}
-
       Vaatwasser is {{states.switch.stp_keuken_vaatwasser.state}}'

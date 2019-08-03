@@ -14,7 +14,7 @@
   action:
   - service: python_script.easyplus
     data:
-      script_name: turn_on_kitchen
+      script_id: turn_on_kitchen
   - delay: '00:40:00'
   - service: script.turn_off_kitchen
 

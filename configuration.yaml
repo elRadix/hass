@@ -135,6 +135,7 @@ script: !include_dir_merge_named include/script
 shell_command: !include_dir_merge_named include/shell_commands
 sensor: !include_dir_merge_list include/sensors
 switch: !include_dir_merge_list include/switches
+timer: !include_dir_merge_list include/timer
 zone: !include_dir_merge_list include/zones
 # scene: !include_dir_merge_named include/scenes
 

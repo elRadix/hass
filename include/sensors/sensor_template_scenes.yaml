@@ -31,7 +31,7 @@
         {% else %}
           off
         {% endif %}
-        icon_template: >-
+      icon_template: >-
         {% if 'on' in states.input_boolean.easyplus_boiler_shower.state %}
            mdi:shower-head
         {% elif 'on' in states.input_boolean.easyplus_boiler_heating.state %}
@@ -41,7 +41,7 @@
         {% endif %}
 
 
-- platform: template  # level 3
+- platform: template level 3
   sensors:
     easyplus_boiler_heating:
       friendly_name: "Heating Master"
@@ -86,7 +86,7 @@
         {% else %}
           off
         {% endif %}
-        icon_template: >-
+      icon_template: >-
         {% if 'on' in states.switch.stp_berging_wasmachine.state %}
            mdi:washing-machine
         {% elif 'on' in states.switch.stp_berging_droogkast.state %}
@@ -102,18 +102,38 @@
       entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
       device_class: power
       value_template: >-
-        {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
+         {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
           on
-        {% elif 'on' in states.switch.stp_keuken_commander.state %}
+         {% elif 'on' in states.switch.stp_keuken_commander.state %}
           on
-        {% else %}
+         {% else %}
           off
-        {% endif %}
-        icon_template: >-
+         {% endif %}
+      icon_template: >-
         {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
            mdi:dishwasher
         {% elif 'on' in states.switch.stp_keuken_commander.state %}
-            mdi:food
+          mdi:food
         {% else %}
-            mdi:close-circle-outline
+          mdi:close-circle-outline
         {% endif %}
+
+
+
+- platform: template
+  sensors:
+    stopwatch_dish:
+      friendly_name: "Stopwatch Dishwasher"
+      value_template: >
+       {% if is_state('states.switch.stp_keuken_vaatwasser', 'on') %}
+          {{ (now() - states.automation.start_dish.attributes.last_triggered).total_seconds() | int }}
+        {% elif is_state('sensor.stopwatch_dish', 'unknown') %}
+          0
+        {% else %}
+          {{ states('sensor.stopwatch_dish') }}
+        {% endif %}
+      unit_of_measurement: 'sec'
+      entity_id:
+        - switch.stp_keuken_vaatwasser
+        - automation.start_dish
+        - sensor.time

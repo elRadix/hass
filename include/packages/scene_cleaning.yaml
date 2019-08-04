@@ -1,4 +1,12 @@
 ---
+# timer:
+#   dish:
+#     duration: '00:40:00'
+#   was:
+#     duration: '02:00:00'
+#   dry:
+#     duration: '02:30:00'
+
 script:
   turn_on_dryer:
     sequence:

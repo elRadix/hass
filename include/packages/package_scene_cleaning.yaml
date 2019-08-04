@@ -1,7 +1,7 @@
 ---
 timer:
   dish:
-    duration: '00:05:00'
+    duration: '00:01:00'
   was:
     duration: '02:00:00'
   dry:
@@ -129,7 +129,7 @@ automation:
 
   - id: timers_stop
     initial_state: 'true'
-    alias: start was
+    alias: timers stop
     trigger:
     - platform: event
       event_type: timer.finished
@@ -138,13 +138,13 @@ automation:
     - platform: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.dish
+        entity_id: timer.was
     - platform: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.dish
+        entity_id: timer.dryer
     action:
-    - service_template: "script.turn_off_{{ trigger.to_state.entity_id.split('_')[-1] }}"
+    - service_template: "script.turn_off_{{ trigger.to_state.name}}"
     - service: notify.dageraad
       data_template:
-        message: 'program: {{ trigger.to_state }} completed'
+        message: 'program: {{ trigger.to_state.name }} completed'

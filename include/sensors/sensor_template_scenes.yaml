@@ -6,11 +6,11 @@
       entity_id: sensor.time, sensor.easyplus_boiler, sensor.easyplus_cleaning
       device_class: power
       value_template: >-
-        {% if 'on' in states.sensor.easyplus_boiler.state %}
+        {% if is_state('sensor.easyplus_boiler', 'on') %}
           on
-        {% elif 'on' in states.sensor.easyplus_kitchen.state %}
+        {% elif is_state('sensor.easyplus_kitchen', 'on') %}
           on
-        {% elif 'on' in states.sensor.easyplus_was.state %}
+        {% elif is_state('sensor.easyplus_was.state', 'on') %}
           on
         {% else %}
           off
@@ -24,17 +24,17 @@
       entity_id: input_boolean.easyplus_boiler_shower, input_boolean.easyplus_boiler_heating
       device_class: power
       value_template: >-
-        {% if 'on' in states.input_boolean.easyplus_boiler_shower.state %}
+        {% if is_state('input_boolean.easyplus_boiler_shower', 'on') %}
           on
-        {% elif 'on' in states.input_boolean.easyplus_boiler_heating.state %}
+        {% elif is_state('input_boolean.easyplus_boiler_heating', 'on') %}
           on
         {% else %}
           off
         {% endif %}
       icon_template: >-
-        {% if 'on' in states.input_boolean.easyplus_boiler_shower.state %}
+        {% if is_state('input_boolean.easyplus_boiler_shower', 'on') %}
            mdi:shower-head
-        {% elif 'on' in states.input_boolean.easyplus_boiler_heating.state %}
+        {% elif is_state('input_boolean.easyplus_boiler_heating', 'on') %}
             mdi:fan
         {% else %}
             mdi:close-circle-outline
@@ -143,7 +143,7 @@
     timer_dryer:
       friendly_name: "Dryer timer"
       value_template: >
-        {{(as_timestamp(now()) - as_timestamp(states.automation.start_dryer.attributes.last_triggered | default(0))) | timestamp_custom("%H")|int-1}} Hours {{(as_timestamp(now()) - as_timestamp(states.automation.start_dryer.attributes.last_triggered | default(0))) | timestamp_custom("%M")|int}} Minutes ago
+        {{(as_timestamp(now()) - as_timestamp(states.automation.start_dryer.attributes.last_triggered | default(0))) | timestamp_custom("%H")|int-1}} Hours {{(as_timestamp(now()) - as_timestamp(states.automation.scene_start_dryer.attributes.last_triggered | default(0))) | timestamp_custom("%M")|int}} Minutes ago
 
 
 - platform: template
@@ -151,4 +151,4 @@
     timer_dish:
       friendly_name: "Dish timer"
       value_template: >
-        {{(as_timestamp(now()) - as_timestamp(states.automation.start_dish.attributes.last_triggered | default(0))) | timestamp_custom("%H")|int-1}} Hours {{(as_timestamp(now()) - as_timestamp(states.automation.start_dish.attributes.last_triggered | default(0))) | timestamp_custom("%M")|int}} Minutes ago
+        {{(as_timestamp(now()) - as_timestamp(states.automation.scene_start_dish.attributes.last_triggered | default(0))) | timestamp_custom("%H")|int-1}} Hours {{(as_timestamp(now()) - as_timestamp(states.automation.scene_start_dish.attributes.last_triggered | default(0))) | timestamp_custom("%M")|int}} Minutes ago

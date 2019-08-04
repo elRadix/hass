@@ -1,17 +1,19 @@
 ---
-# timer:
-#   dish:
-#     duration: '00:40:00'
-#   was:
-#     duration: '02:00:00'
-#   dry:
-#     duration: '02:30:00'
+timer:
+  dish:
+    duration: '00:05:00'
+  was:
+    duration: '02:00:00'
+  dry:
+    duration: '02:30:00'
 
 script:
   turn_on_dryer:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_berging_droogkast  #, automation.start_dryer
+      entity_id: switch.stp_berging_droogkast
+    - service: timer.start
+      entity_id: timer.dryer
     - delay:
         seconds: 4
     - service: notify.dageraad
@@ -21,19 +23,19 @@ script:
   turn_off_dryer:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_berging_droogkast #, automation.start_dryer
+      entity_id: switch.stp_berging_droogkast
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
         message: 'was program: {{states.switch.stp_berging_droogkast.state}}'
-    # - service: homeassistant.turn_on
-    #   entity_id: automation.start_dryer
 
   turn_on_was:
     sequence:
     - service: homeassistant.turn_on
       entity_id: switch.stp_berging_wasmachine
+    - service: timer.start
+      entity_id: timer.was
     - delay:
         seconds: 4
     - service: notify.dageraad
@@ -43,14 +45,12 @@ script:
   turn_off_was:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_berging_wasmachine #, automation.start_was
+      entity_id: switch.stp_berging_wasmachine
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
         message: 'was program: {{states.switch.stp_berging_wasmachine.state}}'
-    # - service: homeassistant.turn_on
-    #   entity_id: automation.start_was
 
   turn_on_dish:
     sequence:
@@ -65,18 +65,19 @@ script:
   turn_off_dish:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander #, automation.start_dish
+      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
+    - service: timer.start
+      entity_id: timer.dish
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
         message: 'Turn off dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
-    # - service: homeassistant.turn_on
-    #   entity_id: automation.start_dish
+
 
 automation:
-  - id: scene_start_dryer
-    # initial_state: 'true'
+  - id: tart_dryer
+    initial_state: 'true'
     alias: start dryer
     trigger:
     - platform: state
@@ -87,11 +88,11 @@ automation:
     - service: python_script.easyplus
       data:
         script_id: turn_on_dryer
-    - delay: '03:00:00'
-    - service: script.turn_off_dryer
+    # - delay: '03:00:00'
+    # - service: script.turn_off_dryer
 
-  - id: scene_start_was
-    # initial_state: 'true'
+  - id: start_was
+    initial_state: 'true'
     alias: start was
     trigger:
     - platform: state
@@ -102,12 +103,12 @@ automation:
     - service: python_script.easyplus
       data:
         script_id: turn_on_was
-    - delay: '02:50:00'
-    - service: script.turn_off_was
+    # - delay: '02:50:00'
+    # - service: script.turn_off_was
 
-  - id: scene_start_dish
+  - id: start_dish
     # initial_state: 'true'
-    alias: start was
+    alias: start dish
     trigger:
     - platform: state
       entity_id: binary_sensor.rf_btn_45a081
@@ -117,6 +118,28 @@ automation:
     - service: python_script.easyplus
       data:
         script_id: turn_on_dish
-    - delay:
-        minutes: 40
-    - service: script.turn_off_dish
+    # - delay:
+    #     minutes: 40
+    # - service: script.turn_off_dish
+
+  - id: timers_stop
+    initial_state: 'true'
+    alias: start was
+    trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.dish
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.dish
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.dish
+    action:
+    - service:  "script.turn_off_{{ trigger.to_state.entity_id.split('_')[-1] }}"
+    - service: notify.dageraad
+      data_template:
+        message: 'program: {{ trigger.to_state }} completed'

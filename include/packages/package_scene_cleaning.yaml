@@ -1,7 +1,7 @@
 ---
 timer:
   dish:
-    duration: '00:01:00'
+    duration: '00:45:00'
   was:
     duration: '02:00:00'
   dry:

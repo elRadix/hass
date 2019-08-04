@@ -47,22 +47,22 @@ script:
   turn_on_dish:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_keuken_vaatwasser
+      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
     - delay:
         seconds: 3
     - service: notify.dageraad
       data_template:
-        message: 'dish program: {{states.switch.stp_keuken_vaatwasser.state}}'
+        message: 'Turn on dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
 
   turn_off_dish:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_vaatwasser #, automation.start_dish
+      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander #, automation.start_dish
     - delay:
         seconds: 3
     - service: notify.dageraad
       data_template:
-        message: 'dish program: {{states.switch.stp_keuken_vaatwasser.state}}'
+        message: 'Turn off dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
     # - service: homeassistant.turn_on
     #   entity_id: automation.start_dish
 
@@ -121,5 +121,6 @@ automation:
     - service: python_script.easyplus
       data:
         script_id: turn_on_dish
-    - delay: '00:40:00'
+    - delay:
+        minutes: 40
     - service: script.turn_off_dish

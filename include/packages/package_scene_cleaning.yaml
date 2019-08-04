@@ -24,6 +24,8 @@ script:
     sequence:
     - service: homeassistant.turn_off
       entity_id: switch.stp_berging_droogkast
+    - service: timer.cancel
+      entity_id: timer.dryer
     - delay:
         seconds: 4
     - service: notify.dageraad
@@ -46,6 +48,8 @@ script:
     sequence:
     - service: homeassistant.turn_off
       entity_id: switch.stp_berging_wasmachine
+    - service: timer.cancel
+      entity_id: timer.was
     - delay:
         seconds: 4
     - service: notify.dageraad
@@ -56,6 +60,8 @@ script:
     sequence:
     - service: homeassistant.turn_on
       entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
+    - service: timer.start
+      entity_id: timer.dish
     - delay:
         seconds: 4
     - service: notify.dageraad
@@ -66,7 +72,7 @@ script:
     sequence:
     - service: homeassistant.turn_off
       entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
-    - service: timer.start
+    - service: timer.cancel
       entity_id: timer.dish
     - delay:
         seconds: 4
@@ -74,9 +80,8 @@ script:
       data_template:
         message: 'Turn off dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
 
-
 automation:
-  - id: tart_dryer
+  - id: start_dryer
     initial_state: 'true'
     alias: start dryer
     trigger:

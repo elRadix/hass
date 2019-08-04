@@ -76,7 +76,7 @@ script:
 
 automation:
   - id: scene_start_dryer
-    initial_state: 'true'
+    # initial_state: 'true'
     alias: start dryer
     trigger:
     - platform: state
@@ -91,7 +91,7 @@ automation:
     - service: script.turn_off_dryer
 
   - id: scene_start_was
-    initial_state: 'true'
+    # initial_state: 'true'
     alias: start was
     trigger:
     - platform: state
@@ -106,7 +106,7 @@ automation:
     - service: script.turn_off_was
 
   - id: scene_start_dish
-    initial_state: 'true'
+    # initial_state: 'true'
     alias: start was
     trigger:
     - platform: state

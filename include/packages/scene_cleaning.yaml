@@ -75,10 +75,6 @@ automation:
       entity_id: binary_sensor.rf_btn_1c60b1
       from: 'off'
       to: 'on'
-    - platform: state
-      entity_id: switch.stp_berging_droogkast
-      from: 'off'
-      to: 'on'
     action:
     - service: python_script.easyplus
       data:
@@ -94,10 +90,6 @@ automation:
       entity_id: binary_sensor.rf_btn_4ffd01
       from: 'off'
       to: 'on'
-    - platform: state
-      entity_id: switch.stp_berging_wasmachine
-      from: 'off'
-      to: 'on'
     action:
     - service: python_script.easyplus
       data:
@@ -111,10 +103,6 @@ automation:
     trigger:
     - platform: state
       entity_id: binary_sensor.rf_btn_45a081
-      from: 'off'
-      to: 'on'
-    - platform: state
-      entity_id: switch.stp_keuken_vaatwasser
       from: 'off'
       to: 'on'
     action:

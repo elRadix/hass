@@ -68,3 +68,8 @@ easyplus_boiler_heating_2h_floradix:
   name: heating 2h floradix
   initial: off
   icon: mdi:numeric-2-box-outline
+
+easyplus_cleaning:
+  name: cleaning master
+  initial: off
+  icon: mdi:spray-bottle

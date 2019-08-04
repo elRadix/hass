@@ -8,7 +8,7 @@ timer:
     duration: '02:30:00'
 
 script:
-  turn_on_dryer: #reset_rf_keuken
+  turn_on_dryer: 
     sequence:
     - service: homeassistant.turn_on
       entity_id: switch.stp_berging_droogkast

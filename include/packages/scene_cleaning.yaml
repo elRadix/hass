@@ -5,7 +5,7 @@ script:
     - service: homeassistant.turn_on
       entity_id: switch.stp_berging_droogkast  #, automation.start_dryer
     - delay:
-        seconds: 3
+        seconds: 4
     - service: notify.dageraad
       data_template:
         message: 'dryer program: {{states.switch.stp_berging_droogkast.state}}'
@@ -15,7 +15,7 @@ script:
     - service: homeassistant.turn_off
       entity_id: switch.stp_berging_droogkast #, automation.start_dryer
     - delay:
-        seconds: 3
+        seconds: 4
     - service: notify.dageraad
       data_template:
         message: 'was program: {{states.switch.stp_berging_droogkast.state}}'
@@ -27,7 +27,7 @@ script:
     - service: homeassistant.turn_on
       entity_id: switch.stp_berging_wasmachine
     - delay:
-        seconds: 3
+        seconds: 4
     - service: notify.dageraad
       data_template:
         message: 'was program: {{states.switch.stp_berging_wasmachine.state}}'
@@ -37,7 +37,7 @@ script:
     - service: homeassistant.turn_off
       entity_id: switch.stp_berging_wasmachine #, automation.start_was
     - delay:
-        seconds: 3
+        seconds: 4
     - service: notify.dageraad
       data_template:
         message: 'was program: {{states.switch.stp_berging_wasmachine.state}}'
@@ -49,7 +49,7 @@ script:
     - service: homeassistant.turn_on
       entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
     - delay:
-        seconds: 3
+        seconds: 4
     - service: notify.dageraad
       data_template:
         message: 'Turn on dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
@@ -59,7 +59,7 @@ script:
     - service: homeassistant.turn_off
       entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander #, automation.start_dish
     - delay:
-        seconds: 3
+        seconds: 4
     - service: notify.dageraad
       data_template:
         message: 'Turn off dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'

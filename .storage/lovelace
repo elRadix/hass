@@ -17,6 +17,18 @@
             },
             "resources": [
                 {
+                    "type": "js",
+                    "url": "/local/card-mod.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/local/card-tools.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/local/card-modder.js"
+                },
+                {
                     "type": "module",
                     "url": "/local/search-card.js"
                 },
@@ -43,18 +55,6 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/mini-graph-card/mini-graph-card.js"
-                },
-                {
-                    "type": "js",
-                    "url": "/local/card-mod.js"
-                },
-                {
-                    "type": "js",
-                    "url": "/local/card-tools.js"
-                },
-                {
-                    "type": "js",
-                    "url": "/local/card-modder.js"
                 },
                 {
                     "type": "module",
@@ -116,10 +116,8 @@
                     "url": "/community_plugin/mini-media-player/mini-media-player.js"
                 },
                 {
+                    "type": "js",
                     "url": "/community_plugin/travel-time-card/travel-time-card.js"
-                },
-                {
-                    "type": "js"
                 }
             ],
             "title": "Home",
@@ -6772,23 +6770,22 @@
                             "entities": [
                                 {
                                     "entity": "sensor.easyplus",
-                                    "icon": "mdi:power",
-                                    "name": "Easyplus"
+                                    "icon": "mdi:power"
                                 },
                                 {
-                                    "entity": "sensor.easyplus_boiler",
-                                    "icon": "mdi:fire",
-                                    "name": "Boiler"
+                                    "entity": "sensor.easyplus_boiler"
                                 },
                                 {
-                                    "entity": "sensor.easyplus_boiler_heating",
-                                    "icon": "mdi:fan",
-                                    "name": "Heating"
+                                    "entity": "sensor.easyplus_boiler_heating"
                                 },
                                 {
-                                    "entity": "sensor.easyplus_cleaning",
-                                    "icon": "mdi:spray-bottle",
-                                    "name": "Cleaning"
+                                    "entity": "sensor.easyplus_kitchen"
+                                },
+                                {
+                                    "entity": "sensor.easyplus_was"
+                                },
+                                {
+                                    "entity": "timer.dish"
                                 }
                             ],
                             "show_empty": true,
@@ -6796,6 +6793,91 @@
                                 "on"
                             ],
                             "type": "entity-filter"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "name": "EASYPLUS AUTO SHUTDOWN",
+                                    "styles": {
+                                        "card": [
+                                            {
+                                                "height": "40px"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "text-orientation": "mixed"
+                                            },
+                                            {
+                                                "font-size": "20px"
+                                            },
+                                            {
+                                                "text-Transform": "uppercase"
+                                            },
+                                            {
+                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "padding": "2%"
+                                            },
+                                            {
+                                                "color": "white"
+                                            },
+                                            {
+                                                "border-radius": "50px"
+                                            },
+                                            {
+                                                "border-style": "solid"
+                                            },
+                                            {
+                                                "border-width": "2px"
+                                            },
+                                            {
+                                                "border-color": "#e5e5e5"
+                                            }
+                                        ]
+                                    },
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "entity": "input_boolean.night",
+                                    "icon": "mdi:weather-night",
+                                    "name": "Midnight at 00h30"
+                                },
+                                {
+                                    "entity": "input_boolean.night_late",
+                                    "icon": "mdi:weather-night",
+                                    "name": "Late Night at 1h00"
+                                },
+                                {
+                                    "entity": "input_boolean.night_plus",
+                                    "icon": "mdi:weather-night",
+                                    "name": "Late Night at 1h30"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "timer.dish"
+                                },
+                                {
+                                    "entity": "timer.dry"
+                                },
+                                {
+                                    "entity": "timer.was"
+                                }
+                            ],
+                            "show_icon": true,
+                            "show_name": true,
+                            "show_state": true,
+                            "title": "Timers",
+                            "type": "glance"
                         },
                         {
                             "entities": [
@@ -6881,134 +6963,6 @@
                         {
                             "entities": [
                                 {
-                                    "name": "EASYPLUS AUTO SHUTDOWN",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "entity": "input_boolean.night",
-                                    "icon": "mdi:weather-night",
-                                    "name": "Midnight at 00h30"
-                                },
-                                {
-                                    "entity": "input_boolean.night_late",
-                                    "icon": "mdi:weather-night",
-                                    "name": "Late Night at 1h00"
-                                },
-                                {
-                                    "entity": "input_boolean.night_plus",
-                                    "icon": "mdi:weather-night",
-                                    "name": "Late Night at 1h30"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.season"
-                                },
-                                {
-                                    "entity": "sun.sun"
-                                },
-                                {
-                                    "entity": "sensor.sunrise"
-                                },
-                                {
-                                    "entity": "sensor.sunset"
-                                },
-                                {
-                                    "entity": "sensor.period_of_day"
-                                },
-                                {
-                                    "entity": "sensor.dawn"
-                                },
-                                {
-                                    "entity": "sensor.nautical_dawn"
-                                },
-                                {
-                                    "entity": "sensor.astronomical_dawn"
-                                },
-                                {
-                                    "entity": "sensor.solar_noon"
-                                },
-                                {
-                                    "entity": "sensor.dusk"
-                                },
-                                {
-                                    "entity": "sensor.nautical_dusk"
-                                },
-                                {
-                                    "entity": "sensor.astronomical_dusk"
-                                },
-                                {
-                                    "entity": "sensor.astronomical_daylight"
-                                },
-                                {
-                                    "entity": "sensor.civil_daylight"
-                                },
-                                {
-                                    "entity": "sensor.daylight"
-                                },
-                                {
-                                    "entity": "sensor.nautical_daylight"
-                                },
-                                {
-                                    "entity": "sensor.max_elevation"
-                                },
-                                {
-                                    "entity": "sensor.solar_angle"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Sun ",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "name": "RF  RESET Devices",
                                     "styles": {
                                         "card": [
@@ -7064,7 +7018,7 @@
                                 {
                                     "entity": "input_boolean.reset_rf_terras",
                                     "icon": "mdi:restart",
-                                    "name": "Keuken",
+                                    "name": "Terras",
                                     "secondary_info": "last-changed"
                                 },
                                 {
@@ -7273,6 +7227,67 @@
                                     "secondary_info": "last-changed"
                                 }
                             ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.season"
+                                },
+                                {
+                                    "entity": "sun.sun"
+                                },
+                                {
+                                    "entity": "sensor.sunrise"
+                                },
+                                {
+                                    "entity": "sensor.sunset"
+                                },
+                                {
+                                    "entity": "sensor.period_of_day"
+                                },
+                                {
+                                    "entity": "sensor.dawn"
+                                },
+                                {
+                                    "entity": "sensor.nautical_dawn"
+                                },
+                                {
+                                    "entity": "sensor.astronomical_dawn"
+                                },
+                                {
+                                    "entity": "sensor.solar_noon"
+                                },
+                                {
+                                    "entity": "sensor.dusk"
+                                },
+                                {
+                                    "entity": "sensor.nautical_dusk"
+                                },
+                                {
+                                    "entity": "sensor.astronomical_dusk"
+                                },
+                                {
+                                    "entity": "sensor.astronomical_daylight"
+                                },
+                                {
+                                    "entity": "sensor.civil_daylight"
+                                },
+                                {
+                                    "entity": "sensor.daylight"
+                                },
+                                {
+                                    "entity": "sensor.nautical_daylight"
+                                },
+                                {
+                                    "entity": "sensor.max_elevation"
+                                },
+                                {
+                                    "entity": "sensor.solar_angle"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Sun ",
                             "type": "entities"
                         },
                         {

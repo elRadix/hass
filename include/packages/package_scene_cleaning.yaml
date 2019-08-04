@@ -8,7 +8,7 @@ timer:
     duration: '02:30:00'
 
 script:
-  turn_on_dryer:
+  turn_on_dryer: #reset_rf_keuken
     sequence:
     - service: homeassistant.turn_on
       entity_id: switch.stp_berging_droogkast
@@ -139,7 +139,7 @@ automation:
       event_data:
         entity_id: timer.dish
     action:
-    - service:  "script.turn_off_{{ trigger.to_state.entity_id.split('_')[-1] }}"
+    - service_template: "script.turn_off_{{ trigger.to_state.entity_id.split('_')[-1] }}"
     - service: notify.dageraad
       data_template:
         message: 'program: {{ trigger.to_state }} completed'

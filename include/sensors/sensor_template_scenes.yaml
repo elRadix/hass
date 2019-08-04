@@ -10,7 +10,7 @@
           on
         {% elif is_state('sensor.easyplus_kitchen', 'on') %}
           on
-        {% elif is_state('sensor.easyplus_was.state', 'on') %}
+        {% elif is_state('sensor.easyplus_was', 'on') %}
           on
         {% else %}
           off

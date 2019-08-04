@@ -144,10 +144,10 @@ automation:
       event_data:
         entity_id: timer.dryer
     action:
-    - service_template: "script.turn_off_{{ trigger.to_state.name}}"
+    - service_template: "script.turn_off_{{ trigger.event}}"
     - service: notify.dageraad
       data_template:
-        message: 'program: {{ trigger.to_state.name }} completed'
+        message: 'program: {{ trigger.event}} completed'
 
   - id: timers_state_trigger
     initial_state: 'true'

@@ -159,7 +159,7 @@ automation:
       value_template: >
         {{ trigger.event.data.entity_id in ['timer.dish',
                                             'timer.was',
-                                            'timer.dry] }}
+                                            'timer.dry'] }}
     action:
     - service: homeassistant.turn_on
       data_template:

@@ -69,7 +69,7 @@ easyplus_boiler_heating_2h_floradix:
   initial: off
   icon: mdi:numeric-2-box-outline
 
-easyplus_cleaning:
-  name: cleaning master
+easyplus_kitchen:
+  name: kitchen
   initial: off
-  icon: mdi:spray-bottle
+  icon: mdi:silverware-clean

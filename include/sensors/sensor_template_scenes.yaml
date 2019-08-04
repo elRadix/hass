@@ -8,11 +8,14 @@
       value_template: >-
         {% if 'on' in states.sensor.easyplus_boiler.state %}
           on
-        {% elif 'on' in states.sensor.easyplus_cleaning.state %}
+        {% elif 'on' in states.sensor.easyplus_kitchen.state %}
+          on
+        {% elif 'on' in states.sensor.easyplus_was.state %}
           on
         {% else %}
           off
         {% endif %}
+
 
 - platform: template # level 2
   sensors:
@@ -28,6 +31,15 @@
         {% else %}
           off
         {% endif %}
+        icon_template: >-
+        {% if 'on' in states.input_boolean.easyplus_boiler_shower.state %}
+           mdi:shower-head
+        {% elif 'on' in states.input_boolean.easyplus_boiler_heating.state %}
+            mdi:fan
+        {% else %}
+            mdi:close-circle-outline
+        {% endif %}
+
 
 - platform: template  # level 3
   sensors:
@@ -62,17 +74,46 @@
 
 - platform: template
   sensors:
-    easyplus_cleaning:
-      friendly_name: "Cleaning Master"
-      entity_id: switch.stp_keuken_vaatwasser,switch.stp_berging_droogkast,switch.stp_berging_wasmachine
+    easyplus_was:
+      friendly_name: "Was"
+      entity_id: switch.stp_berging_droogkast,switch.stp_berging_wasmachine
       device_class: power
       value_template: >-
-        {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
-          on
-        {% elif 'on' in states.switch.stp_berging_wasmachine.state %}
+        {% if 'on' in states.switch.stp_berging_wasmachine.state %}
           on
         {% elif 'on' in states.switch.stp_berging_droogkast.state %}
           on
         {% else %}
           off
+        {% endif %}
+        icon_template: >-
+        {% if 'on' in states.switch.stp_berging_wasmachine.state %}
+           mdi:washing-machine
+        {% elif 'on' in states.switch.stp_berging_droogkast.state %}
+            mdi:tumble-dryer
+        {% else %}
+            mdi:close-circle-outline
+        {% endif %}
+
+- platform: template
+  sensors:
+    easyplus_kitchen:
+      friendly_name: "Kitchen"
+      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
+      device_class: power
+      value_template: >-
+        {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
+          on
+        {% elif 'on' in states.switch.stp_keuken_commander.state %}
+          on
+        {% else %}
+          off
+        {% endif %}
+        icon_template: >-
+        {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
+           mdi:dishwasher
+        {% elif 'on' in states.switch.stp_keuken_commander.state %}
+            mdi:food
+        {% else %}
+            mdi:close-circle-outline
         {% endif %}

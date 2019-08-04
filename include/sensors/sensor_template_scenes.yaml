@@ -1,5 +1,5 @@
 ---
-- platform: template # level 1
+- platform: template
   sensors:
     easyplus:
       friendly_name: "Easyplus Master"
@@ -17,7 +17,7 @@
         {% endif %}
 
 
-- platform: template # level 2
+- platform: template 
   sensors:
     easyplus_boiler:
       friendly_name: "Boiler Master"
@@ -41,7 +41,7 @@
         {% endif %}
 
 
-- platform: template level 3
+- platform: template
   sensors:
     easyplus_boiler_heating:
       friendly_name: "Heating Master"

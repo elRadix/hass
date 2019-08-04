@@ -3,7 +3,7 @@ script:
   turn_on_dryer:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_berging_droogkast #, automation.start_dryer
+      entity_id: switch.stp_berging_droogkast  #, automation.start_dryer
     - delay:
         seconds: 3
     - service: notify.dageraad

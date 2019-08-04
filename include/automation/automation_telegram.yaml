@@ -382,10 +382,13 @@
     event_data:
       command: '/Droogkast'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus
     data:
-      entity_id:
-        - switch.stp_berging_droogkast
+      script_id: turn_on_dryer
+  # - service: homeassistant.toggle
+  #   data:
+  #     entity_id:
+  #       - switch.stp_berging_droogkast
   - delay:
       seconds: 1
   - service: telegram_bot.send_message
@@ -404,10 +407,13 @@
     event_data:
       command: '/Wasmachine'
   action:
-  - service: homeassistant.toggle
-    data:
-      entity_id:
-        - switch.stp_berging_wasmachine
+  # - service: homeassistant.toggle
+  #   data:
+  #     entity_id:
+  #       - switch.stp_berging_wasmachine
+  - service: python_script.easyplus
+     data:
+      script_id: turn_on_was
   - delay:
       seconds: 1
   - service: telegram_bot.send_message

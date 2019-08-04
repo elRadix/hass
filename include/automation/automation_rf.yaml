@@ -481,47 +481,9 @@
     data_template:
       message: 'Easyplus is {{states.switch.easyplus.state}}'
 
-- id: rf_16
-  initial_state: 'true'
-  alias: '[RF] Wasmachine'
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.rf_btn_4ffd01
-    from: 'off'
-    to: 'on'
-  action:
-  - service: script.turn_on_easyplus
-  - service: homeassistant.toggle
-    entity_id: switch.stp_berging_wasmachine
-  - delay:
-      seconds: 10
-  - service: notify.dageraad
-    data_template:
-      message: '{{ trigger.to_state.name }} toggled Wasmachine
 
 
-      Wasmachine is {{states.switch.stp_berging_wasmachine.state}}'
 
-- id: rf_17
-  initial_state: 'true'
-  alias: '[RF] Droogkast'
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.rf_btn_1c60b1
-    from: 'off'
-    to: 'on'
-  action:
-  - service: script.turn_on_easyplus
-  - service: homeassistant.toggle
-    entity_id: switch.stp_berging_droogkast
-  - delay:
-      seconds: 15
-  - service: notify.dageraad
-    data_template:
-      message: '{{ trigger.to_state.name }} toggled Droogkast
-
-
-      Droogkast is {{states.switch.stp_berging_droogkast.state}}'
 
 # - id: rf_18
 #   initial_state: 'true'

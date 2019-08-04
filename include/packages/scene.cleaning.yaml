@@ -1,0 +1,125 @@
+---
+script:
+  turn_on_dryer:
+    sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.stp_berging_droogkast #, automation.start_dryer
+    - delay:
+        seconds: 3
+    - service: notify.dageraad
+      data_template:
+        message: 'dryer program: {{states.switch.stp_berging_droogkast.state}}'
+
+  turn_off_dryer:
+    sequence:
+    - service: homeassistant.turn_off
+      entity_id: switch.stp_berging_droogkast #, automation.start_dryer
+    - delay:
+        seconds: 3
+    - service: notify.dageraad
+      data_template:
+        message: 'was program: {{states.switch.stp_berging_droogkast.state}}'
+    # - service: homeassistant.turn_on
+    #   entity_id: automation.start_dryer
+
+  turn_on_was:
+    sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.stp_berging_wasmachine
+    - delay:
+        seconds: 3
+    - service: notify.dageraad
+      data_template:
+        message: 'was program: {{states.switch.stp_berging_wasmachine.state}}'
+
+  turn_off_was:
+    sequence:
+    - service: homeassistant.turn_off
+      entity_id: switch.stp_berging_wasmachine #, automation.start_was
+    - delay:
+        seconds: 3
+    - service: notify.dageraad
+      data_template:
+        message: 'was program: {{states.switch.stp_berging_wasmachine.state}}'
+    # - service: homeassistant.turn_on
+    #   entity_id: automation.start_was
+
+  turn_on_dish:
+    sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.stp_keuken_vaatwasser
+    - delay:
+        seconds: 3
+    - service: notify.dageraad
+      data_template:
+        message: 'dish program: {{states.switch.stp_keuken_vaatwasser.state}}'
+
+  turn_off_dish:
+    sequence:
+    - service: homeassistant.turn_off
+      entity_id: switch.stp_keuken_vaatwasser #, automation.start_dish
+    - delay:
+        seconds: 3
+    - service: notify.dageraad
+      data_template:
+        message: 'dish program: {{states.switch.stp_keuken_vaatwasser.state}}'
+    # - service: homeassistant.turn_on
+    #   entity_id: automation.start_dish
+
+automation:
+  - id: scene_start_dryer
+    initial_state: 'true'
+    alias: start dryer
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.rf_btn_1c60b1
+      from: 'off'
+      to: 'on'
+    - platform: state
+      entity_id: switch.stp_berging_droogkast
+      from: 'off'
+      to: 'on'
+    action:
+    - service: python_script.easyplus
+      data:
+        script_id: turn_on_dryer
+    - delay: '03:00:00'
+    - service: script.turn_off_dryer
+
+  - id: scene_start_was
+    initial_state: 'true'
+    alias: start was
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.rf_btn_4ffd01
+      from: 'off'
+      to: 'on'
+    - platform: state
+      entity_id: switch.stp_berging_wasmachine
+      from: 'off'
+      to: 'on'
+    action:
+    - service: python_script.easyplus
+      data:
+        script_id: turn_on_was
+    - delay: '02:50:00'
+    - service: script.turn_off_was
+
+  - id: scene_start_dish
+    initial_state: 'true'
+    alias: start was
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.rf_btn_45a081
+      from: 'off'
+      to: 'on'
+    - platform: state
+      entity_id: switch.stp_keuken_vaatwasser
+      from: 'off'
+      to: 'on'
+    action:
+    - service: python_script.easyplus
+      data:
+        script_id: turn_on_dish
+    - delay: '00:40:00'
+    - service: script.turn_off_dish

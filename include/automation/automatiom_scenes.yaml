@@ -1,22 +1,22 @@
 ---
-- id: Dishwaser_01
-  initial_state: 'true'
-  alias: 'Dishwasher Program'
-  trigger:
-  - platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/dishwasher'
-  - platform: state
-    entity_id: binary_sensor.rf_btn_45a081
-    from: 'off'
-    to: 'on'
-  action:
-  - service: python_script.easyplus
-    data:
-      script_id: turn_on_kitchen
-  - delay: '00:40:00'
-  - service: script.turn_off_kitchen
+# - id: Dishwaser_01
+#   initial_state: 'true'
+#   alias: 'Dishwasher Program'
+#   trigger:
+#   - platform: event
+#     event_type: telegram_command
+#     event_data:
+#       command: '/dishwasher'
+#   - platform: state
+#     entity_id: binary_sensor.rf_btn_45a081
+#     from: 'off'
+#     to: 'on'
+#   action:
+#   - service: python_script.easyplus
+#     data:
+#       script_id: turn_on_kitchen
+#   - delay: '00:40:00'
+#   - service: script.turn_off_kitchen
 
 
 # - id: rf_button_keuken_01

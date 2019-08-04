@@ -1,22 +1,20 @@
 ---
-- platform: template
+- platform: template # level 1
   sensors:
     easyplus:
       friendly_name: "Easyplus Master"
-      entity_id: input_boolean.easyplus_boiler, input_boolean.easyplus_boiler,  sensor.easyplus_cleaning
+      entity_id: sensor.easyplus_boiler, sensor.easyplus_cleaning
       device_class: power
       value_template: >-
-        {% if 'on' in states.input_boolean.easyplus_boiler.state %}
+        {% elif 'on' in states.sensor.easyplus_boiler.state %} #includes shower + heating zones
           on
-        {% elif 'on' in states.input_boolean.easyplus_boiler.state %}
-          on
-        {% elif 'on' in states.sensor.easyplus_cleaning.state %}
+        {% elif 'on' in states.sensor.easyplus_cleaning.state %} #includes dishwasher, wasmachine & dryer
           on
         {% else %}
           off
         {% endif %}
 
-- platform: template
+- platform: template # level 2
   sensors:
     easyplus_boiler:
       friendly_name: "Boiler Master"
@@ -31,7 +29,7 @@
           off
         {% endif %}
 
-- platform: template
+- platform: template  # level 3
   sensors:
     easyplus_boiler_heating:
       friendly_name: "Heating Master"

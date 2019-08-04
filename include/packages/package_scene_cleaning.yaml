@@ -13,7 +13,7 @@ script:
     - service: homeassistant.turn_on
       entity_id: switch.stp_berging_droogkast
     - service: timer.start
-      entity_id: timer.dryer
+      entity_id: timer.dry
     - delay:
         seconds: 4
     - service: notify.dageraad

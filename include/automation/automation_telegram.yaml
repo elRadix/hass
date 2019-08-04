@@ -412,7 +412,7 @@
   #     entity_id:
   #       - switch.stp_berging_wasmachine
   - service: python_script.easyplus
-     data:
+    data:
       script_id: turn_on_was
   - delay:
       seconds: 1

@@ -393,15 +393,15 @@ utility_meter:
       - peak
       - offpeak
 
-new_sensor:
-  module: module_name
-  class: class_name
-  new_sensor_name: sensor.master
-  main_sensor: sensor.easyplus
-  attributes:
-    level_1: sensor.easyplus_boiler
-    level_2: sensor.easyplus_kitchen
-    level_3: sensor.easyplus_was
+# new_sensor:
+#   module: module_name
+#   class: class_name
+#   new_sensor_name: sensor.master
+#   main_sensor: sensor.easyplus
+#   attributes:
+#     level_1: sensor.easyplus_boiler
+#     level_2: sensor.easyplus_kitchen
+#     level_3: sensor.easyplus_was
 
 
 

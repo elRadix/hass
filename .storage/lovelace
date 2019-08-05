@@ -7544,6 +7544,11 @@
                                     "type": "custom:button-card"
                                 },
                                 {
+                                    "entity": "sensor.battery_sonoff_remote_days2go",
+                                    "icon": "mdi:battery",
+                                    "name": "RF Sonoff Remote"
+                                },
+                                {
                                     "entity": "sensor.battery_inkomhal_days2go",
                                     "icon": "mdi:battery"
                                 },
@@ -8348,9 +8353,6 @@
                                 },
                                 {
                                     "entity": "sensor.easyplus_was"
-                                },
-                                {
-                                    "entity": "timer.dish"
                                 }
                             ],
                             "show_empty": true,
@@ -8362,7 +8364,13 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "timer.espresso"
+                                },
+                                {
                                     "entity": "timer.dish"
+                                },
+                                {
+                                    "entity": "timer.waterkoker"
                                 },
                                 {
                                     "entity": "timer.dryer"

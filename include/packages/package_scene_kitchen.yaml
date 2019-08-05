@@ -277,7 +277,7 @@ automation:
       from: 'off'
       to: 'on'
     action:
-    - service: python_script.easyplus
+    - service: python_script.easyplus_switch
       data_template:
         switch_id: '{{ trigger.to_state.entity_id }}'
     - service: script.turn_on_kitchen

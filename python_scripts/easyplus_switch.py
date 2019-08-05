@@ -2,7 +2,7 @@ sn = data.get('switch_id')
 ep = hass.states.get('switch.easyplus')
 
 if sn is not None:
-  ss = hass.states.get('script.' + sn)
+  ss = hass.states.get('switch.' + sn)
   if ss is not None:
     if ep is not None:
       if ep.state == 'off':

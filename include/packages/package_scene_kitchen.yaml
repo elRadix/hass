@@ -24,7 +24,37 @@ timer:
   samsung:
     duration: '02:00:00'
     icon: mdi:television-box
+
 script:
+
+  turn_on_kitchen:
+    sequence:
+    - service: homeassistant.turn_on
+      data_template:
+        entity_id: '{{ entity }}'
+    - service: timer.start
+      data_template:
+         entity_id: '{{ timer }}'
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: '{{ friendly_name }} program: {{state}}'
+
+  turn_off_kitchen:
+    sequence:
+    - service: homeassistant.turn_off
+      data_template:
+        entity_id: '{{ entity }}'
+    - service: timer.cancel
+      data_template:
+         entity_id: '{{ timer }}'
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: '{{ friendly_name }} program: {{state}}'
+
 
   turn_on_samsung:
     sequence:
@@ -49,31 +79,6 @@ script:
     - service: notify.dageraad
       data_template:
         message: 'samsung program: {{states.switch.stp_eetkamer_tv.state}}'
-
-  turn_on_microgolf:
-    sequence:
-    - service: homeassistant.turn_on
-      entity_id: switch.stp_keuken_microgolf
-    - service: timer.start
-      entity_id: timer.microgolf
-    - delay:
-        seconds: 4
-    - service: notify.dageraad
-      data_template:
-        message: 'microgolf program: {{states.switch.stp_keuken_microgolf.state}}'
-
-  turn_off_microgolf:
-    sequence:
-    - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_microgolf
-    - service: timer.cancel
-      entity_id: timer.microgolf
-    - delay:
-        seconds: 4
-    - service: notify.dageraad
-      data_template:
-        message: 'microgolf program: {{states.switch.stp_keuken_microgolf.state}}'
-
 
   turn_on_oven:
     sequence:
@@ -277,7 +282,12 @@ automation:
     action:
     - service: python_script.easyplus
       data_template:
-        script_id: "turn_on_{{ trigger.to_state.name }}"
+        script_id: "turn_on_kitchen"
+        entity: '{{ trigger.to_state.entity_id }}'
+        timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
+        friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+        state: '{{ trigger.to_state.state }}'
+
 
   - id: stop_scenes
     initial_state: 'true'
@@ -288,7 +298,12 @@ automation:
       from: 'on'
       to: 'off'
     action:
-    - service_template: "script.turn_off_{{ trigger.to_state.name }}"
+    - service: script.turn_off_kitchen
+      data_template:
+        entity: '{{ trigger.to_state.entity_id }}'
+        timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
+        friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+        state: '{{ trigger.to_state.state }}'
 
   - id: timers_stop
     initial_state: 'true'

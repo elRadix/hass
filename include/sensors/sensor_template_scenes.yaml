@@ -117,6 +117,8 @@
       value_template: >-
          {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
           on
+         {% elif 'on' in states.switch.stp_keuken_water.state %}
+          on
          {% elif 'on' in states.switch.stp_keuken_espresso.state %}
           on
          {% elif 'on' in states.switch.stp_keuken_commander.state %}
@@ -126,7 +128,9 @@
          {% endif %}
       icon_template: >-
         {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
-           mdi:dishwasher
+          mdi:dishwasher
+        {% elif 'on' in states.switch.stp_keuken_water.state %}
+          mdi:water-pump
         {% elif 'on' in states.switch.stp_keuken_espresso.state %}
           mdi:coffee
         {% elif 'on' in states.switch.stp_keuken_commander.state %}

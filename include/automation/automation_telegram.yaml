@@ -1121,7 +1121,7 @@
   - platform: event
     event_type: telegram_command
     event_data:
-      command: '/Keukena'
+      command: '/Keuken'
   action:
   - service: telegram_bot.send_message
     data_template:
@@ -1301,10 +1301,13 @@
     event_data:
       command: '/Commander'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus
     data:
-      entity_id:
-        - switch.stp_keuken_commander
+      script_id: turn_on_dryer
+  # - service: homeassistant.toggle
+  #   data:
+  #     entity_id:
+  #       - switch.stp_keuken_commander
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -1397,10 +1400,13 @@
     event_data:
       command: '/Waterkoker'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus
     data:
-      entity_id:
-        - switch.stp_keuken_water
+      script_id: turn_on_water
+  # - service: homeassistant.toggle
+  #   data:
+  #     entity_id:
+  #       - switch.stp_keuken_water
   - delay:
       seconds: 1
   - service: telegram_bot.send_message

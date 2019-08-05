@@ -50,7 +50,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: '{{ friendly_name }} program: {{state}}'
+        message: '{{ trigger.to_state.entity_id }} - {{ friendly_name }} program: {{state}}'
 
 
   turn_on_samsung:

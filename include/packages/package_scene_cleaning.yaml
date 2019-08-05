@@ -66,7 +66,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'Turn on dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
+        message: 'dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
 
   turn_off_dish:
     sequence:
@@ -122,7 +122,7 @@ automation:
     alias: 'stop scenes manual'
     trigger:
     - platform: state
-      entity_id: switch.stp_berging_droogkast,switch.stp_berging_vaatwasser,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander
+      entity_id: switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander
       from: 'on'
       to: 'off'
     action:

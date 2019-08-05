@@ -6761,40 +6761,6 @@
                             "type": "custom:search-card"
                         },
                         {
-                            "card": {
-                                "show_name": true,
-                                "show_state": false,
-                                "title": "Current Activities",
-                                "type": "glance"
-                            },
-                            "entities": [
-                                {
-                                    "entity": "sensor.easyplus",
-                                    "icon": "mdi:power"
-                                },
-                                {
-                                    "entity": "sensor.easyplus_boiler"
-                                },
-                                {
-                                    "entity": "sensor.easyplus_boiler_heating"
-                                },
-                                {
-                                    "entity": "sensor.easyplus_kitchen"
-                                },
-                                {
-                                    "entity": "sensor.easyplus_was"
-                                },
-                                {
-                                    "entity": "timer.dish"
-                                }
-                            ],
-                            "show_empty": true,
-                            "state_filter": [
-                                "on"
-                            ],
-                            "type": "entity-filter"
-                        },
-                        {
                             "entities": [
                                 {
                                     "name": "EASYPLUS AUTO SHUTDOWN",
@@ -6860,24 +6826,6 @@
                                 }
                             ],
                             "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "timer.dish"
-                                },
-                                {
-                                    "entity": "timer.dry"
-                                },
-                                {
-                                    "entity": "timer.was"
-                                }
-                            ],
-                            "show_icon": true,
-                            "show_name": true,
-                            "show_state": true,
-                            "title": "Timers",
-                            "type": "glance"
                         },
                         {
                             "entities": [
@@ -8373,6 +8321,62 @@
                     ],
                     "icon": "mdi:wifi",
                     "title": "esp"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "card": {
+                                "show_name": true,
+                                "show_state": false,
+                                "title": "Current Activities",
+                                "type": "glance"
+                            },
+                            "entities": [
+                                {
+                                    "entity": "sensor.easyplus",
+                                    "icon": "mdi:power"
+                                },
+                                {
+                                    "entity": "sensor.easyplus_boiler"
+                                },
+                                {
+                                    "entity": "sensor.easyplus_boiler_heating"
+                                },
+                                {
+                                    "entity": "sensor.easyplus_kitchen"
+                                },
+                                {
+                                    "entity": "sensor.easyplus_was"
+                                },
+                                {
+                                    "entity": "timer.dish"
+                                }
+                            ],
+                            "show_empty": true,
+                            "state_filter": [
+                                "on"
+                            ],
+                            "type": "entity-filter"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "timer.dish"
+                                },
+                                {
+                                    "entity": "timer.dryer"
+                                },
+                                {
+                                    "entity": "timer.was"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Timers",
+                            "type": "entities"
+                        }
+                    ],
+                    "title": "SCENES"
                 },
                 {
                     "badges": [],

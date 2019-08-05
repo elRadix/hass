@@ -1,8 +1,8 @@
-sn = data.get('entity_name')
+sn = data.get('entity_id')
 ep = hass.states.get('switch.easyplus')
 
 if sn is not None:
-  ss = hass.states.get(entity_id)
+  ss = hass.states.get(sn)
   if ss is not None:
     if ep is not None:
       if ep.state == 'off':
@@ -10,10 +10,10 @@ if sn is not None:
         hass.services.call('switch', 'turn_on', service_data, False)
         time.sleep(17)
 
-      hass.services.call('switch', 'turn_on', service_data={ 'entity_id': 'sn', False })
+      hass.services.call('switch', 'turn_on', service_data={ 'entity_id': sn })
     else:
-      logger.warning('<easyplus> nr1 switch.easyplus does not exist')
+      logger.warning('<easyplus> switch.easyplus does not exist')
   else:
-    logger.warning('<easyplus> nr2 switch does not exist')
+    logger.warning('<easyplus> switch does not exist')
 else:
-  logger.warning('<easyplus> nr3 no switch supplied')
+  logger.warning('<easyplus> no switch supplied')

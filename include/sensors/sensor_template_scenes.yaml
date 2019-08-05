@@ -112,10 +112,14 @@
   sensors:
     easyplus_kitchen:
       friendly_name: "Kitchen"
-      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander,switch.stp_keuken_espresso
+      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_oven,switch.stp_keuken_water,switch.stp_keuken_microgolf
       device_class: power
       value_template: >-
          {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
+          on
+         {% elif 'on' in states.switch.stp_keuken_microgolf.state %}
+          on
+         {% elif 'on' in states.switch.stp_keuken_oven.state %}
           on
          {% elif 'on' in states.switch.stp_keuken_water.state %}
           on
@@ -129,6 +133,10 @@
       icon_template: >-
         {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
           mdi:dishwasher
+        {% elif 'on' in states.switch.stp_keuken_micrgolf.state %}
+          mdi:microwave
+        {% elif 'on' in states.switch.stp_keuken_oven.state %}
+          mdi:toaster-oven
         {% elif 'on' in states.switch.stp_keuken_water.state %}
           mdi:water-pump
         {% elif 'on' in states.switch.stp_keuken_espresso.state %}

@@ -19,7 +19,7 @@
       keyboard:
         - '/Verwarming'
         - '/Keuken, /Berging, /Eetkamer'
-        - '/Living, /Media' 
+        - '/Living, /Media'
         - '/Slaapkamers'
         - '/Settings, /Alarm'
 
@@ -1259,7 +1259,7 @@
   action:
     service: telegram_bot.send_message
     data_template:
-      target: '{{ trigger.event.data.user_id }}' 
+      target: '{{ trigger.event.data.user_id }}'
       message: '
       Keuken Toestellen:
 
@@ -1301,22 +1301,19 @@
     event_data:
       command: '/Commander'
   action:
-  - service: python_script.easyplus
+  - service: homeassistant.toggle
     data:
-      script_id: turn_on_dryer
-  # - service: homeassistant.toggle
-  #   data:
-  #     entity_id:
-  #       - switch.stp_keuken_commander
+      entity_id:
+        - switch.stp_keuken_commander
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
-      message: ' 
+      message: '
         Commander is {{states.switch.stp_keuken_commander.state}}'
 
 #{{% if is_state('switch.stp_keuken_commander', 'on') %}staat aan{% else %}staat uit{% endif %}})" '
 #        Commander is {{states.switch.stp_keuken_commander.state}}
-#{% if is_state('switch.stp_keuken_commander', 'on') %}staat aan{% else %}staat uit{% endif %} 
+#{% if is_state('switch.stp_keuken_commander', 'on') %}staat aan{% else %}staat uit{% endif %}
 #
 #
 #        {% if states.switch.stp_keuken_commander.state == 'on' %}
@@ -1379,10 +1376,13 @@
     event_data:
       command: '/Vaatwasser'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus
     data:
-      entity_id:
-        - switch.stp_keuken_vaatwasser    
+      script_id: turn_on_dish
+  # - service: homeassistant.toggle
+  #   data:
+  #     entity_id:
+  #       - switch.stp_keuken_vaatwasser
   - delay:
       seconds: 1
   - service: telegram_bot.send_message
@@ -1415,7 +1415,7 @@
       message: '
         Waterkoker is {{states.switch.stp_keuken_water.state}}'
 
-- id: Espresso 
+- id: Espresso
   initial_state: 'true'
   alias: 'Telegram reply Espresso toggle'
   trigger:
@@ -1424,10 +1424,13 @@
     event_data:
       command: '/Espresso'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus
     data:
-      entity_id:
-        - switch.stp_keuken_espresso     
+      script_id: turn_on_espresso
+  # - service: homeassistant.toggle
+  #   data:
+  #     entity_id:
+  #       - switch.stp_keuken_espresso
   - delay:
       seconds: 1
   - service: telegram_bot.send_message
@@ -1435,10 +1438,6 @@
       target: '{{ trigger.event.data.user_id }}'
       message: '
         Espresso is {{states.switch.stp_keuken_espresso.state}}'
-
-
-
-
 
 
 - id: telegram Lights off
@@ -1488,7 +1487,7 @@
   - service: homeassistant.turn_off
     data:
       entity_id:
-        - group.woon_sub_soc      
+        - group.woon_sub_soc
   - service: homeassistant.turn_off
     data:
       entity_id:

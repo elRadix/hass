@@ -15,8 +15,88 @@ timer:
   water:
     duration: '01:0:00'
     icon: mdi:water-pump
+  oven:
+    duration: '02:0:00'
+    icon: mdi:toaster-oven
+  microgolf:
+    duration: '01:0:00'
+    icon: mdi:microwave
 
 script:
+
+  turn_on_microgolf:
+    sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.stp_keuken_microgolf
+    - service: timer.start
+      entity_id: timer.microgolf
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'microgolf program: {{states.switch.stp_keuken_microgolf.state}}'
+
+  turn_off_microgolf:
+    sequence:
+    - service: homeassistant.turn_off
+      entity_id: switch.stp_keuken_microgolf
+    - service: timer.cancel
+      entity_id: timer.microgolf
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'microgolf program: {{states.switch.stp_keuken_microgolf.state}}'
+
+
+  turn_on_oven:
+    sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.stp_keuken_oven
+    - service: timer.start
+      entity_id: timer.oven
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'oven program: {{states.switch.stp_keuken_oven.state}}'
+
+  turn_off_oven:
+    sequence:
+    - service: homeassistant.turn_off
+      entity_id: switch.stp_keuken_oven
+    - service: timer.cancel
+      entity_id: timer.oven
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'oven program: {{states.switch.stp_keuken_oven.state}}'
+
+
+  turn_on_commander:
+    sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.stp_keuken_commander
+    - service: timer.start
+      entity_id: timer.dish
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'commander program: {{states.switch.stp_keuken_commander.state}}'
+
+  turn_off_commander:
+    sequence:
+    - service: homeassistant.turn_off
+      entity_id: switch.stp_keuken_commander
+    - service: timer.cancel
+      entity_id: timer.dish
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'commander program: {{states.switch.stp_keuken_commander.state}}'
 
   turn_on_waterkoker:
     sequence:
@@ -162,10 +242,10 @@ automation:
 
   - id: start_scenes
     initial_state: 'true'
-    alias: 'start scenes rf button'
+    alias: 'start scenes'
     trigger:
     - platform: state
-      entity_id: binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601
+      entity_id: switch.stp_keuken_microgolf,switch.stp_keuken_oven,binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
       from: 'off'
       to: 'on'
     action:
@@ -178,7 +258,7 @@ automation:
     alias: 'stop scenes manual'
     trigger:
     - platform: state
-      entity_id: switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
+      entity_id: switch.stp_keuken_microgolf,switch.stp_keuken_oven,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
       from: 'on'
       to: 'off'
     action:
@@ -196,14 +276,20 @@ automation:
         {{ trigger.event.data.entity_id in ['timer.dish',
                                             'timer.was',
                                             'timer.dryer',
-                                             "timer.espresso",
-                                             "timer.waterkoker"] }}
+                                            'timer.espresso',
+                                            'timer.waterkoker',
+                                            'timer.oven',
+                                            'timer.microgolf'] }}
     action:
     - service: homeassistant.turn_on
       data_template:
         entity_id: >-
           {% if trigger.event.data.entity_id == 'timer.dish' %}
             script.turn_off_dish
+          {% elif trigger.event.data.entity_id == 'timer.microgolf' %}
+            script.turn_off_microgolf
+          {% elif trigger.event.data.entity_id == 'timer.oven' %}
+            script.turn_off_oven
           {% elif trigger.event.data.entity_id == 'timer.waterkoker' %}
             script.turn_off_waterkoker
           {% elif trigger.event.data.entity_id == 'timer.espresso' %}

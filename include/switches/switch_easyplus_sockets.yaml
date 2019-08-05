@@ -42,7 +42,7 @@
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 33,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 33,0'"
         command_state: "/opt/scripts/status/state.sh -D 33"
-        friendly_name: Microgolf
+        friendly_name: microgolf
 
 - platform: command_line
   scan_interval: 110
@@ -51,7 +51,7 @@
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 34,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 34,0'"
         command_state: "/opt/scripts/status/state.sh -D 34"
-        friendly_name: Oven
+        friendly_name: oven
 
 - platform: command_line
   scan_interval: 110

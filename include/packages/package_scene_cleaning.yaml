@@ -80,45 +80,81 @@ script:
       data_template:
         message: 'Turn off dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
 
+  turn_on_away:
+    sequence:
+    - service: script.lights
+    - service: notify.dageraad
+      data:
+        message: "away mode, lights off"
+    - delay:
+        seconds: 30
+    - service: script.switches
+    - service: notify.dageraad
+      data:
+        message: "away mode, switches off"
+    - delay:
+        seconds: 30
+    - service: switch.turn_off
+      entity_id: switch.easyplus
+    - service: notify.dageraad
+      data:
+        message: "away mode, easyplus off"
+
+
+
 automation:
-  - id: start_dryer
-    initial_state: 'true'
-    alias: start dryer
-    trigger:
-    - platform: state
-      entity_id: binary_sensor.rf_btn_1c60b1
-      from: 'off'
-      to: 'on'
-    action:
-    - service: python_script.easyplus
-      data:
-        script_id: turn_on_dryer
 
-  - id: start_was
+  - id: start_scenes
     initial_state: 'true'
-    alias: start was
+    alias: 'start scenes rf button'
     trigger:
     - platform: state
-      entity_id: binary_sensor.rf_btn_4ffd01
+      entity_id: binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081
       from: 'off'
       to: 'on'
     action:
     - service: python_script.easyplus
       data:
-        script_id: turn_on_was
+        script_id: "turn_on_{{ trigger.to_state.name }}"
 
-  - id: start_dish
-    initial_state: 'true'
-    alias: start dish
-    trigger:
-    - platform: state
-      entity_id: binary_sensor.rf_btn_45a081
-      from: 'off'
-      to: 'on'
-    action:
-    - service: python_script.easyplus
-      data:
-        script_id: turn_on_dish
+  # - id: start_dryer
+  #   initial_state: 'true'
+  #   alias: start dryer
+  #   trigger:
+  #   - platform: state
+  #     entity_id: binary_sensor.rf_btn_1c60b1
+  #     from: 'off'
+  #     to: 'on'
+  #   action:
+  #   - service: python_script.easyplus
+  #     data:
+  #       script_id: turn_on_dryer
+
+  # - id: start_was
+  #   initial_state: 'true'
+  #   alias: start was
+  #   trigger:
+  #   - platform: state
+  #     entity_id: binary_sensor.rf_btn_4ffd01
+  #     from: 'off'
+  #     to: 'on'
+  #   action:
+  #   - service: python_script.easyplus
+  #     data:
+  #       script_id: turn_on_was
+
+  # - id: start_dish
+  #   initial_state: 'true'
+  #   alias: start dish
+  #   trigger:
+  #   - platform: state
+  #     entity_id: binary_sensor.rf_btn_45a081
+  #     from: 'off'
+  #     to: 'on'
+  #   action:
+  #   - service: python_script.easyplus
+  #     data:
+  #       script_id: turn_on_dish
 
   - id: timers_stop
     alias: 'timers stop'
@@ -145,3 +181,21 @@ automation:
     - service: notify.dageraad
       data_template:
         message: 'program: {{trigger.event.data.entity_id}} completed'
+
+  - id: away_modus
+    initial_state: 'true'
+    alias: away modus
+    trigger:
+    - platform: state
+      entity_id: sensor.easyplus_away
+      to: 'on'
+      for:
+        minutes: 3
+    action:
+    # - service: homeassistant.turn_off
+    #   entity_id: switch.easyplus
+    # - delay:
+    #     seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'Away modus: {{states.switch.easyplus.state}}'

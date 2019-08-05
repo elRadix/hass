@@ -67,7 +67,7 @@
       value_template: '{{ is_state("sensor.rf_stream", "45A081") }}' 
       delay_off: '00:00:01'
       device_class: plug
-      friendly_name: "Button 45A081"
+      friendly_name: "dish"
 
 - platform: template
   sensors:
@@ -75,7 +75,7 @@
       value_template: '{{ is_state("sensor.rf_stream", "4FFD01") }}' 
       delay_off: '00:00:01'
       device_class: plug
-      friendly_name: "Button 4FFD01"
+      friendly_name: "was"
 
 - platform: template
   sensors:
@@ -91,7 +91,7 @@
       value_template: '{{ is_state("sensor.rf_stream", "1C60B1") }}' 
       delay_off: '00:00:01'
       device_class: plug
-      friendly_name: "Button 1C60B1"
+      friendly_name: "dryer"
 
 # - platform: template
 #   sensors:

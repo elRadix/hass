@@ -78,7 +78,7 @@
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 38,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 38,0'"
         command_state: "/opt/scripts/status/state.sh -D 38"
-        friendly_name: Vaatwasser
+        friendly_name: dish
 
 - platform: command_line 
   scan_interval: 110
@@ -96,7 +96,7 @@
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 36,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 36,0'"
         command_state: "/opt/scripts/status/state.sh -D 36"
-        friendly_name: Wasmachine 
+        friendly_name: was 
 
 - platform: command_line
   scan_interval: 110
@@ -105,7 +105,7 @@
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 37,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 37,0'"
         command_state: "/opt/scripts/status/state.sh -D 37"
-        friendly_name: Droogkast
+        friendly_name: dryer
 
 - platform: command_line
   scan_interval: 110

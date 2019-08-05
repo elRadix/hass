@@ -4,7 +4,7 @@ timer:
     duration: '00:45:00'
   was:
     duration: '02:00:00'
-  dry:
+  dryer:
     duration: '02:30:00'
 
 script:
@@ -13,7 +13,7 @@ script:
     - service: homeassistant.turn_on
       entity_id: switch.stp_berging_droogkast
     - service: timer.start
-      entity_id: timer.dry
+      entity_id: timer.dryer
     - delay:
         seconds: 4
     - service: notify.dageraad
@@ -138,7 +138,7 @@ automation:
       value_template: >
         {{ trigger.event.data.entity_id in ['timer.dish',
                                             'timer.was',
-                                            'timer.dry'] }}
+                                            'timer.dryer'] }}
     action:
     - service: homeassistant.turn_on
       data_template:

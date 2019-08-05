@@ -78,7 +78,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'Turn off dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
+        message: 'dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
 
   turn_on_away:
     sequence:
@@ -99,8 +99,6 @@ script:
     - service: notify.dageraad
       data:
         message: "away mode, easyplus off"
-
-
 
 automation:
 
@@ -129,6 +127,7 @@ automation:
     - service_template: "script.turn_off_{{ trigger.to_state.name }}"
 
   - id: timers_stop
+    initial_state: 'true'
     alias: 'timers stop'
     trigger:
     - platform: event

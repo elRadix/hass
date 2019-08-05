@@ -60,7 +60,7 @@
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 35,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 35,0'"
         command_state: "/opt/scripts/status/state.sh -D 35"
-        friendly_name: Espresso 
+        friendly_name: espresso 
 
 - platform: command_line 
   scan_interval: 110

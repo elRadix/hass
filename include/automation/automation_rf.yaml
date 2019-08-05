@@ -459,27 +459,27 @@
 #   action:
 #   - service: script.turn_off_dishwasher
 
-- id: rf_15
-  initial_state: 'true'
-  alias: '[RF] Easyplus'
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.rf_btn_793401
-    from: 'off'
-    to: 'on'
-  action:
-  - service: homeassistant.toggle
-    entity_id: switch.easyplus
-  - delay:
-      seconds: 2
-  - service: notify.telegram_rachid
-    data_template:
-      message: '{{ trigger.to_state.name }} toggled Easyplus'
-  - delay:
-      seconds: 18
-  - service: notify.telegram_rachid
-    data_template:
-      message: 'Easyplus is {{states.switch.easyplus.state}}'
+# - id: rf_15
+  # initial_state: 'true'
+  # alias: '[RF] Easyplus'
+  # trigger:
+  # - platform: state
+  #   entity_id: binary_sensor.rf_btn_793401
+  #   from: 'off'
+  #   to: 'on'
+  # action:
+  # - service: homeassistant.toggle
+  #   entity_id: switch.easyplus
+  # - delay:
+  #     seconds: 2
+  # - service: notify.telegram_rachid
+  #   data_template:
+  #     message: '{{ trigger.to_state.name }} toggled Easyplus'
+  # - delay:
+  #     seconds: 18
+  # - service: notify.telegram_rachid
+  #   data_template:
+  #     message: 'Easyplus is {{states.switch.easyplus.state}}'
 
 
 

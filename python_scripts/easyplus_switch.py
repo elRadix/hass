@@ -1,4 +1,4 @@
-sn = data.get('script_id')
+sn = data.get('switch_id')
 ep = hass.states.get('switch.easyplus')
 
 if sn is not None:
@@ -10,7 +10,7 @@ if sn is not None:
         hass.services.call('switch', 'turn_on', service_data, False)
         time.sleep(20)
 
-      hass.services.call('script', sn, '', False)
+        hass.services.call('switch', 'turn_on', service_data={ 'entity_id': 'sn' })
     else:
       logger.warning('<easyplus> switch.easyplus does not exist.')
   else:

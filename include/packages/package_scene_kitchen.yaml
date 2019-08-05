@@ -29,9 +29,6 @@ script:
 
   turn_on_kitchen:
     sequence:
-    - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
     - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
@@ -282,7 +279,9 @@ automation:
     action:
     - service: python_script.easyplus
       data_template:
-        script_id: "turn_on_kitchen"
+        switch_id: '{{ trigger.to_state.entity_id }}'
+    - service: script.turn_on_kitchen
+      data_template:
         entity: '{{ trigger.to_state.entity_id }}'
         timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
         friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'

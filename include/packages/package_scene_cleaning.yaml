@@ -8,7 +8,7 @@ timer:
     duration: '02:30:00'
 
 script:
-  turn_on_dryer: 
+  turn_on_dryer:
     sequence:
     - service: homeassistant.turn_on
       entity_id: switch.stp_berging_droogkast
@@ -58,6 +58,10 @@ script:
 
   turn_on_dish:
     sequence:
+    # - service: homeassistant.turn_on
+    #   entity_id: switch.easyplus
+    # - delay:
+    #     seconds: 20
     - service: homeassistant.turn_on
       entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
     - service: timer.start
@@ -113,8 +117,11 @@ automation:
       from: 'off'
       to: 'on'
     action:
+    # - service: homeassistant.turn_on
+    #   data_template:
+    #     entity_id: "script_turn_on_{{ trigger.to_state.entity_id }}" 
     - service: python_script.easyplus
-      data:
+      data_template:
         script_id: "turn_on_{{ trigger.to_state.name }}"
 
   # - id: start_dryer

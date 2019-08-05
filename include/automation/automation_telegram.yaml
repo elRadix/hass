@@ -1061,10 +1061,13 @@
     event_data:
       command: '/Samsung'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus
     data:
-      entity_id:
-        - switch.stp_eetkamer_tv
+      script_id: turn_on_samsung
+  # - service: homeassistant.toggle
+  #   data:
+  #     entity_id:
+  #       - switch.stp_eetkamer_tv
   - delay:
       seconds: 1
   - service: telegram_bot.send_message
@@ -1402,7 +1405,7 @@
   action:
   - service: python_script.easyplus
     data:
-      script_id: turn_on_water
+      script_id: turn_on_waterkoker
   # - service: homeassistant.toggle
   #   data:
   #     entity_id:

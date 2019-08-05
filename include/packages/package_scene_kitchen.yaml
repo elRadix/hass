@@ -21,8 +21,34 @@ timer:
   microgolf:
     duration: '01:00:00'
     icon: mdi:microwave
-
+  samsung:
+    duration: '02:00:00'
+    icon: mdi:television-box
 script:
+
+  turn_on_samsung:
+    sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.stp_eetkamer_tv
+    - service: timer.start
+      entity_id: timer.samsung
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'Samsung program: {{states.switch.stp_eetkamer_tv.state}}'
+
+  turn_off_samsung:
+    sequence:
+    - service: homeassistant.turn_off
+      entity_id: switch.stp_eetkamer_tv
+    - service: timer.cancel
+      entity_id: timer.samsung
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'samsung program: {{states.switch.stp_eetkamer_tv.state}}'
 
   turn_on_microgolf:
     sequence:
@@ -245,7 +271,7 @@ automation:
     alias: 'start scenes'
     trigger:
     - platform: state
-      entity_id: switch.stp_keuken_microwave,switch.stp_keuken_oven,binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
+      entity_id: switch.stp_eetkamer_tv,switch.stp_keuken_microwave,switch.stp_keuken_oven,binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
       from: 'off'
       to: 'on'
     action:
@@ -258,7 +284,7 @@ automation:
     alias: 'stop scenes manual'
     trigger:
     - platform: state
-      entity_id: switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
+      entity_id: switch.stp_eetkamer_tv,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
       from: 'on'
       to: 'off'
     action:
@@ -278,6 +304,7 @@ automation:
                                             'timer.dryer',
                                             'timer.espresso',
                                             'timer.waterkoker',
+                                            'timer.samsung',
                                             'timer.oven',
                                             'timer.microgolf'] }}
     action:
@@ -286,6 +313,8 @@ automation:
         entity_id: >-
           {% if trigger.event.data.entity_id == 'timer.dish' %}
             script.turn_off_dish
+          {% elif trigger.event.data.entity_id == 'timer.samsung' %}
+            script.turn_off_samsung
           {% elif trigger.event.data.entity_id == 'timer.microgolf' %}
             script.turn_off_microgolf
           {% elif trigger.event.data.entity_id == 'timer.oven' %}

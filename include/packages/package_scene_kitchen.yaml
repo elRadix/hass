@@ -14,7 +14,7 @@ timer:
     icon: mdi:coffee
   water:
     duration: '01:0:00'
-    icon: water-pump
+    icon: mdi:water-pump
 
 script:
 

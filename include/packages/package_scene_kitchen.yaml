@@ -13,13 +13,13 @@ timer:
     duration: '00:15:00'
     icon: mdi:coffee
   water:
-    duration: '01:0:00'
+    duration: '01:00:00'
     icon: mdi:water-pump
   oven:
-    duration: '02:0:00'
+    duration: '02:00:00'
     icon: mdi:toaster-oven
   microgolf:
-    duration: '01:0:00'
+    duration: '01:00:00'
     icon: mdi:microwave
 
 script:

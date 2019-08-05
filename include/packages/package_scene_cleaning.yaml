@@ -58,10 +58,6 @@ script:
 
   turn_on_dish:
     sequence:
-    # - service: homeassistant.turn_on
-    #   entity_id: switch.easyplus
-    # - delay:
-    #     seconds: 20
     - service: homeassistant.turn_on
       entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
     - service: timer.start
@@ -117,51 +113,20 @@ automation:
       from: 'off'
       to: 'on'
     action:
-    # - service: homeassistant.turn_on
-    #   data_template:
-    #     entity_id: "script_turn_on_{{ trigger.to_state.entity_id }}" 
     - service: python_script.easyplus
       data_template:
         script_id: "turn_on_{{ trigger.to_state.name }}"
 
-  # - id: start_dryer
-  #   initial_state: 'true'
-  #   alias: start dryer
-  #   trigger:
-  #   - platform: state
-  #     entity_id: binary_sensor.rf_btn_1c60b1
-  #     from: 'off'
-  #     to: 'on'
-  #   action:
-  #   - service: python_script.easyplus
-  #     data:
-  #       script_id: turn_on_dryer
-
-  # - id: start_was
-  #   initial_state: 'true'
-  #   alias: start was
-  #   trigger:
-  #   - platform: state
-  #     entity_id: binary_sensor.rf_btn_4ffd01
-  #     from: 'off'
-  #     to: 'on'
-  #   action:
-  #   - service: python_script.easyplus
-  #     data:
-  #       script_id: turn_on_was
-
-  # - id: start_dish
-  #   initial_state: 'true'
-  #   alias: start dish
-  #   trigger:
-  #   - platform: state
-  #     entity_id: binary_sensor.rf_btn_45a081
-  #     from: 'off'
-  #     to: 'on'
-  #   action:
-  #   - service: python_script.easyplus
-  #     data:
-  #       script_id: turn_on_dish
+  - id: stop_scenes
+    initial_state: 'true'
+    alias: 'stop scenes manual'
+    trigger:
+    - platform: state
+      entity_id: switch.stp_berging_droogkast,switch.stp_berging_vaatwasser,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander
+      from: 'on'
+      to: 'off'
+    action:
+    - service_template: "script.turn_off_{{ trigger.to_state.name }}"
 
   - id: timers_stop
     alias: 'timers stop'

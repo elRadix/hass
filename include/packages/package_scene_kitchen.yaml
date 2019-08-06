@@ -41,8 +41,7 @@ script:
   turn_on_samsung:
     sequence:
     - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_eetkamer_tv
     - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
@@ -54,8 +53,7 @@ script:
   turn_off_samsung:
     sequence:
     - service: homeassistant.turn_off
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_eetkamer_tv
     - service: timer.cancel
       data_template:
          entity_id: '{{ timer }}'
@@ -68,116 +66,111 @@ script:
   turn_on_microgolf:
     sequence:
     - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_keuken_microwave
     - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
         seconds: 5
-    - service: notify.dageraad
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
+
   turn_off_microgolf:
     sequence:
     - service: homeassistant.turn_off
-      data_template:
-        entity_id: '{{ entity }}'
-    - service: timer.cancel
+      entity_id: switch.stp_keuken_microwave
+    - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
         seconds: 5
-    - service: notify.dageraad
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
 
   turn_on_oven:
     sequence:
     - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_keuken_microwave
     - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
         seconds: 5
-    - service: notify.dageraad
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
+
   turn_off_oven:
     sequence:
     - service: homeassistant.turn_off
-      data_template:
-        entity_id: '{{ entity }}'
-    - service: timer.cancel
+      entity_id: switch.stp_keuken_oven
+    - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
-        seconds: 5
-    - service: notify.dageraad
+        seconds: 4
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
 
   turn_on_commander:
     sequence:
     - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_keuken_commander
     - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
-        seconds: 5
-    - service: notify.dageraad
+        seconds: 4
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
+
   turn_off_commander:
     sequence:
     - service: homeassistant.turn_off
-      data_template:
-        entity_id: '{{ entity }}'
-    - service: timer.cancel
+      entity_id: switch.stp_keuken_commander
+    - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
-        seconds: 5
-    - service: notify.dageraad
+        seconds: 4
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
 
   turn_on_waterkoker:
     sequence:
     - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_keuken_water
     - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
-        seconds: 5
-    - service: notify.dageraad
+        seconds: 4
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
+
   turn_off_waterkoker:
     sequence:
     - service: homeassistant.turn_off
-      data_template:
-        entity_id: '{{ entity }}'
-    - service: timer.cancel
+      entity_id: switch.stp_keuken_water
+    - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
-        seconds: 5
-    - service: notify.dageraad
+        seconds: 4
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
 
   turn_on_espresso:
     sequence:
     - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_keuken_espresso
     - service: homeassistant.turn_on
       entity_id: switch.stp_keuken_microwave
     - service: timer.start
@@ -188,11 +181,11 @@ script:
     - service: notify.dageraad
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
+
   turn_off_espresso:
     sequence:
     - service: homeassistant.turn_off
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_keuken_espresso
     - service: homeassistant.turn_on
       entity_id: switch.stp_keuken_microwave
     - service: timer.cancel
@@ -209,62 +202,59 @@ script:
   turn_on_dryer:
     sequence:
     - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_berging_droogkast
     - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
-        seconds: 5
-    - service: notify.dageraad
+        seconds: 4
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
+
   turn_off_dryer:
     sequence:
     - service: homeassistant.turn_off
-      data_template:
-        entity_id: '{{ entity }}'
-    - service: timer.cancel
+      entity_id: switch.stp_berging_droogkast
+    - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
-        seconds: 5
-    - service: notify.dageraad
+        seconds: 4
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
 
   turn_on_was:
     sequence:
     - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_berging_wasmachine
     - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
-        seconds: 5
-    - service: notify.dageraad
+        seconds: 4
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
+
   turn_off_was:
     sequence:
-    - service: homeassistant.turn_off
-      data_template:
-        entity_id: '{{ entity }}'
-    - service: timer.cancel
+    - service: homeassistant.turn_on
+      entity_id: switch.stp_berging_wasmachine
+    - service: timer.start
       data_template:
          entity_id: '{{ timer }}'
     - delay:
-        seconds: 5
-    - service: notify.dageraad
+        seconds: 4
+    - service: notify.telegram
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
 
   turn_on_dish:
     sequence:
     - service: homeassistant.turn_on
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_keuken_vaatwasser
     - service: homeassistant.turn_on
       entity_id: switch.stp_keuken_commander
     - service: timer.start
@@ -275,11 +265,11 @@ script:
     - service: notify.dageraad
       data_template:
         message: '{{ friendly_name }} program: {{state}}'
+
   turn_off_dish:
     sequence:
     - service: homeassistant.turn_off
-      data_template:
-        entity_id: '{{ entity }}'
+      entity_id: switch.stp_keuken_vaatwasser
     - service: homeassistant.turn_off
       entity_id: switch.stp_keuken_commander
     - service: timer.cancel
@@ -328,7 +318,6 @@ automation:
         timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
         friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
         state: '{{ trigger.to_state.state }}'
-        entity: '{{ trigger.to_state.entity_id }}'
 
   - id: start_scenes_switchx
     initial_state: 'true'
@@ -346,7 +335,9 @@ automation:
         timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
         friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
         state: '{{ trigger.to_state.state }}'
-        entity: '{{ trigger.to_state.entity_id }}'
+
+       # entity: '{{ trigger.to_state.entity_id }}'
+      #  entity: '{{ trigger.to_state.entity_id }}'
 
     # - service: python_script.easyplus_switch
     #   data:
@@ -374,7 +365,7 @@ automation:
         timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
         friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
         state: '{{ trigger.to_state.state }}'
-        entity: '{{ trigger.to_state.entity_id }}'
+
 
   - id: timers_stop
     initial_state: 'true'
@@ -416,7 +407,7 @@ automation:
           {% endif %}
     - service: notify.dageraad
       data_template:
-        message: 'program: {{trigger.event.data.entity_id}} completed'
+        message: 'program: {{trigger.event.data.entity_id.name}} completed'
 
   - id: scenes completed
     initial_state: 'true'

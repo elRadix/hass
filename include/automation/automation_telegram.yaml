@@ -1417,7 +1417,7 @@
   #     entity_id:
   #       - switch.stp_keuken_water
   - delay:
-      seconds: 1
+      seconds: 6
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'

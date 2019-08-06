@@ -279,7 +279,7 @@ automation:
     action:
     - service: python_script.easyplus
       data_template:
-        script_id: "turn_on_{{ trigger.to_state.name }"
+        script_id: "turn_on_{{ trigger.to_state.name}}  "
 
     # - service: python_script.easyplus_switch
     #   data:

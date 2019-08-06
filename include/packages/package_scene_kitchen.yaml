@@ -277,7 +277,7 @@ automation:
       from: 'off'
       to: 'on'
     action:
-   - service: python_script.easyplus
+    - service: python_script.easyplus
       data_template:
         script_id: "turn_on_{{ trigger.to_state.name }"
 

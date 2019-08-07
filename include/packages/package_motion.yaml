@@ -1,0 +1,142 @@
+---
+binary_sensor:
+  - platform: template
+    sensors:
+      eetkamer_occupied:
+        value_template: >
+          {{
+            is_state('timer.eetkamer_occupied','active')
+            or is_state('binary_sensor.motion_eetkamer','on')
+          }}
+        device_class: occupancy
+        delay_off: 2
+
+  - platform: template
+    sensors:
+      inmkomhal_occupied:
+        value_template: >
+          {{
+            is_state('timer.inkomhal_occupied','active')
+            or is_state('binary_sensor.motion_inkomhal','on')
+          }}
+        device_class: occupancy
+        delay_off: 2
+
+  - platform: template
+    sensors:
+      wc_occupied:
+        value_template: >
+          {{
+            is_state('timer.wc_occupied','active')
+            or is_state('binary_sensor.motion_wc','on')
+          }}
+        device_class: occupancy
+        delay_off: 2
+
+  - platform: template
+    sensors:
+      traphal_occupied:
+        value_template: >
+          {{
+            is_state('timer.traphal_occupied','active')
+            or is_state('binary_sensor.motion_traphal','on')
+          }}
+        device_class: occupancy
+        delay_off: 2
+
+
+  - platform: template
+    sensors:
+      badkamer_occupied:
+        value_template: >
+          {{
+            is_state('timer.badkamer_occupied','active')
+            or is_state('binary_sensor.motion_badkamer','on')
+          }}
+        device_class: occupancy
+        delay_off: 2
+
+timer:
+  eetkamer_occupied:
+  inkonhal_occupied:
+  wc_occupied:
+  traphal_occupied:
+  bad_occupied:
+
+# automation:
+#   - alias: Eetkaner Occupied Normal
+#     id: 'Eetkamer occupied_normal'
+#     trigger:
+#       - platform: state
+#         entity_id:
+#           - binary_sensor.motion_eetkamer
+
+#     condition:
+#       - entity_id: binary_sensor.office_occupied
+#         condition: state
+#         state: 'on'
+#     action:
+#       - service: homeassistant.turn_off
+#         data:
+#           entity_id:
+#             - switch.office_nightlight
+
+
+#   - alias: Office Motion Stop Normal
+#     id: 'office_motion_stop_normal'
+#     trigger:
+#       - platform: state
+#         entity_id:
+#           - binary_sensor.office_motion
+#           - input_select.house_mode
+#     condition:
+#       - entity_id: input_select.house_mode
+#         condition: state
+#         state: 'normal'
+#       - entity_id: binary_sensor.office_motion
+#         condition: state
+#         state: 'off'
+#     action:
+#       - service: timer.cancel
+#         data:
+#           entity_id: timer.office_occupied
+#       - service: timer.start
+#         data:
+#           entity_id: timer.office_occupied
+#           duration: '00:15:00'
+
+#   - alias: Office Motion Stop Sleep
+#     id: 'office_motion_stop_sleep'
+#     trigger:
+#       - platform: state
+#         entity_id:
+#           - binary_sensor.office_motion
+#           - input_select.house_mode
+#     condition:
+#       - entity_id: input_select.house_mode
+#         condition: state
+#         state: 'sleep'
+#       - entity_id: binary_sensor.office_motion
+#         condition: state
+#         state: 'off'
+#     action:
+#       - service: timer.cancel
+#         data:
+#           entity_id: timer.office_occupied
+#       - service: timer.start
+#         data:
+#           entity_id: timer.office_occupied
+#           duration: '00:05:00'
+
+#   - alias: Office Unoccupied
+#     id: 'office_unoccupied'
+#     trigger:
+#       - entity_id: binary_sensor.office_occupied
+#         platform: state
+#         to: 'off'
+#     action:
+#       - service: homeassistant.turn_off
+#         data:
+#           entity_id:
+#             - switch.office_overhead
+#             - switch.office_nightlight

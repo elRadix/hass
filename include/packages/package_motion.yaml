@@ -125,18 +125,24 @@ timer:
     action:
     - service: homeassistant.turn_on
       entity_id: switch.light_eetkamer_center
+    - service: timer.start
+      entity_id: timer.inkonhal_occupied
+      duration: '00:10:00'
 
   - id: motion_dinner_off
     alias: Motion Detection - Dinner Light off
     initial_state: 'true'
     trigger:
     - platform: state
-      entity_id:  binary_sensor.motion_eetkamer
+      entity_id:  binary_sensor.inkomhal_occupied
       to: 'off'
-      for: '00:03:00'
     action:
     - service: homeassistant.turn_off
       entity_id: switch.light_eetkamer_center
+    - service: timer.cancel
+      data:
+        entity_id: timer.eetkamer_occupied
+
 
   - id: motion_04
     alias: Motion Detection - Bad Light on

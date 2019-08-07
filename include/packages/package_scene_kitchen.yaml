@@ -365,12 +365,28 @@ automation:
     - condition: template
       value_template: "{{ states.sensor.period_of_day.state != 'night' }}"
     action:
-    - service: "script.scene_completed"
+    - service: script.scene_completed
     - delay:
         seconds: 65
     - service: notify.dageraad
       data_template:
         message: 'All scenes completed, easyplus: {{states.switch.easyplus.state}}'
+
+  - id: scenes completed notification
+    initial_state: 'true'
+    alias: scenes completed
+    trigger:
+    - platform: state
+      entity_id: sensor.easyplus
+      to: 'off'
+    action:
+    - service: notify.dageraad
+      data_template:
+        message: ' Warning Easyplus
+
+        All scenes completed,
+        easyplus will shutdown in 15min'
+
 
 
 # WIP

@@ -66,9 +66,9 @@ timer:
     alias: Motion Detection - Hall Light on
     initial_state: 'true'
     trigger:
-      - platform: state
-        entity_id:
-          - binary_sensor.inkomhal_occupied
+    - platform: state
+      entity_id:
+        - binary_sensor.inkomhal_occupied
     condition:
       condition: and
       conditions:

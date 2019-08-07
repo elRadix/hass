@@ -6829,6 +6829,12 @@
                             "entities": [
                                 {
                                     "entity": "group.easyplus_sensors"
+                                },
+                                {
+                                    "entity": "sensor.easyplus_away"
+                                },
+                                {
+                                    "entity": "group.floradix"
                                 }
                             ],
                             "type": "glance"

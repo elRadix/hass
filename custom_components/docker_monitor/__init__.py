@@ -16,16 +16,13 @@ from homeassistant.const import (
     CONF_MONITORED_CONDITIONS,
     CONF_NAME,
     CONF_SCAN_INTERVAL,
-    CONF_URL,
     EVENT_HOMEASSISTANT_STOP
 )
 from homeassistant.core import callback
 from homeassistant.helpers.discovery import load_platform
 from homeassistant.util import slugify as util_slugify
 
-VERSION = '0.0.3'
-
-REQUIREMENTS = ['docker==3.7.0', 'python-dateutil==2.7.5']
+VERSION = '0.0.4'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -92,7 +89,7 @@ CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
         vol.Optional(CONF_NAME, default=DEFAULT_NAME):
             cv.string,
-        vol.Optional(CONF_URL, default=DEFAULT_URL):
+        vol.Optional('url', default=DEFAULT_URL):
             cv.string,
         vol.Optional(CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL):
             cv.time_period,
@@ -109,7 +106,7 @@ CONFIG_SCHEMA = vol.Schema({
 def setup(hass, config):
     _LOGGER.info("Settings: {}".format(config[DOMAIN]))
 
-    host = config[DOMAIN].get(CONF_URL)
+    host = config[DOMAIN].get('url')
 
     try:
         api = DockerAPI(host)

@@ -6760,7 +6760,7 @@
                             "card": {
                                 "show_name": true,
                                 "show_state": false,
-                                "title": "Current Activities",
+                                "title": "Running  Activities",
                                 "type": "glance"
                             },
                             "entities": [
@@ -6788,6 +6788,13 @@
                             "type": "entity-filter"
                         },
                         {
+                            "card": {
+                                "show_header_toggle": false,
+                                "show_name": true,
+                                "show_state": false,
+                                "title": "Timers",
+                                "type": "entities"
+                            },
                             "entities": [
                                 {
                                     "entity": "timer.espresso"
@@ -6812,7 +6819,7 @@
                                 },
                                 {
                                     "entity": "timer.was",
-                                    "name": "washmachine"
+                                    "name": "wasmachine"
                                 },
                                 {
                                     "entity": "timer.samsung"
@@ -6821,9 +6828,11 @@
                                     "entity": "automation.scenes_completed"
                                 }
                             ],
-                            "show_header_toggle": false,
-                            "title": "Timers",
-                            "type": "entities"
+                            "show_empty": true,
+                            "state_filter": [
+                                "active"
+                            ],
+                            "type": "entity-filter"
                         },
                         {
                             "entities": [
@@ -6835,9 +6844,61 @@
                                 },
                                 {
                                     "entity": "group.floradix"
+                                },
+                                {
+                                    "entity": "automation.scenes_completed",
+                                    "icon": "mdi:power",
+                                    "name": "auto off"
                                 }
                             ],
                             "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.badkamer_occupied",
+                                    "name": "badkamer"
+                                },
+                                {
+                                    "entity": "binary_sensor.eetkamer_occupied",
+                                    "name": "eetkamer"
+                                },
+                                {
+                                    "entity": "binary_sensor.traphal_occupied",
+                                    "name": "traphal"
+                                },
+                                {
+                                    "entity": "binary_sensor.wc_occupied",
+                                    "name": "wc"
+                                },
+                                {
+                                    "entity": "binary_sensor.inkomhal_occupied",
+                                    "name": "inkonhall"
+                                }
+                            ],
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "timer.inkomhal_occupied"
+                                },
+                                {
+                                    "entity": "timer.eetkamer_occupied"
+                                },
+                                {
+                                    "entity": "timer.wc_occupied"
+                                },
+                                {
+                                    "entity": "timer.traphal_occupied"
+                                },
+                                {
+                                    "entity": "timer.bad_occupied"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Timers Motion",
+                            "type": "entities"
                         }
                     ],
                     "title": "SCENES"

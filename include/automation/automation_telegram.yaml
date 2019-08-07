@@ -1069,7 +1069,7 @@
   #     entity_id:
   #       - switch.stp_eetkamer_tv
   - delay:
-      seconds: 6
+      seconds: 7
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'

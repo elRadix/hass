@@ -45,7 +45,7 @@ script:
   turn_on_microgolf:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp.keuken_microwave
+      entity_id: switch.stp_keuken_microwave
     - service: timer.start
       entity_id: timer.microgolf
     - delay:
@@ -57,7 +57,7 @@ script:
   turn_off_microgolf:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp.keuken_microwave
+      entity_id: switch.stp_keuken_microwave
     - service: timer.cancel
       entity_id: timer.microgolf
     - delay:

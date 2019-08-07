@@ -122,7 +122,7 @@
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 19,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 19,0'"
         command_state: "/opt/scripts/status/state.sh -D 19"
-        friendly_name: samung 
+        friendly_name: samsung
 
 - platform: command_line
   scan_interval: 110

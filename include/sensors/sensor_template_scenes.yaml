@@ -117,7 +117,7 @@
       value_template: >-
          {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
           on
-         {% elif 'on' in states.switch.stp_keuken_microgolf.state %}
+         {% elif 'on' in states.switch.stp_keuken_microwave.state %}
           on
          {% elif 'on' in states.switch.stp_eetkamer_tv.state %}
           on
@@ -135,7 +135,7 @@
       icon_template: >-
         {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
           mdi:dishwasher
-        {% elif 'on' in states.switch.stp_keuken_micrgolf.state %}
+        {% elif 'on' in states.switch.stp_keuken_micowave.state %}
           mdi:microwave
         {% elif 'on' in states.switch.stp_keuken_oven.state %}
           mdi:toaster-oven

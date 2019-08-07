@@ -2,6 +2,8 @@
 group:
  easyplus_sensors:
     name: Easyplus
+    control: hidden
+    view: no
     icon: mdi:power
     entities:
       - sensor.easyplus
@@ -26,16 +28,43 @@ timer:
     duration: '01:00:00'
     icon: mdi:water-pump
   oven:
-    duration: '02:00:00'
+    duration: '01:30:00'
     icon: mdi:toaster-oven
   microgolf:
-    duration: '00:30:00'
+    duration: '00:45:00'
     icon: mdi:microwave
   samsung:
     duration: '02:00:00'
     icon: mdi:television-box
+  boiler_shower:
+    duration: '01:30:00'
+    icon: mdi:microwave
 
 script:
+
+  turn_on_microgolf:
+    sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.stp_keuken_microwave
+    - service: timer.start
+      entity_id: timer.microgolf
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'microgolf program: {{states.switch.stp_keuken_microwave.state}}'
+
+  turn_off_microgolf:
+    sequence:
+    - service: homeassistant.turn_off
+      entity_id: switch.stp_keuken_microwave
+    - service: timer.cancel
+      entity_id: timer.microgolf
+    - delay:
+        seconds: 4
+    - service: notify.dageraad
+      data_template:
+        message: 'microgolf program: {{states.switch.stp_keuken_microwave.state}}'
 
   turn_on_samsung:
     sequence:
@@ -269,41 +298,6 @@ automation:
     - service: python_script.easyplus
       data_template:
         script_id: "turn_on_{{ trigger.to_state.name}}"
-        # timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
-        # friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
-        # state: '{{ trigger.to_state.state }}'
-
-  # - id: start_scenes_switchx
-  #   initial_state: 'true'
-  #   alias: 'start scenes switchx'
-  #   trigger:
-  #   - platform: state
-  #     entity_id: switch.stp_keuken_microwave
-  #     from: 'off'
-  #     to: 'on'
-  #   action:
-  #   - service_template: 'script.{{ trigger.to_state.name }}'
-  #   - service: python_script.easyplus_switch
-  #     data_template:
-  #       entity_id: "{{ trigger.to_state.entity_id }}"
-  #       timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
-  #       friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
-  #       state: '{{ trigger.to_state.state }}'
-
-       # entity: '{{ trigger.to_state.entity_id }}'
-      #  entity: '{{ trigger.to_state.entity_id }}'
-
-    # - service: python_script.easyplus_switch
-    #   data:
-    #     entity_id: switch.stp_keuken_microwave
-    # - service: script.turn_on_kitchen
-    #   data_template:
-    #     timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
-    #     friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
-    #     state: '{{ trigger.to_state.state }}'
-    # # - service: python_script.easyplus_switch
-    # #   data_template:
-    # #     entity_id: "{{ trigger.to_state.entity_id }}"
 
   - id: stop_scenes
     initial_state: 'true'
@@ -315,11 +309,6 @@ automation:
       to: 'off'
     action:
     - service_template: "script.turn_off_{{ trigger.to_state.name }}"
-      # data_template:
-      #   timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
-      #   friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
-      #   state: '{{ trigger.to_state.state }}'
-
 
   - id: timers_stop
     initial_state: 'true'
@@ -382,3 +371,46 @@ automation:
     - service: notify.dageraad
       data_template:
         message: 'All scenes completed, easyplus: {{states.switch.easyplus.state}}'
+
+
+# WIP
+        # timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
+        # friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+        # state: '{{ trigger.to_state.state }}'
+
+  # - id: start_scenes_switchx
+  #   initial_state: 'true'
+  #   alias: 'start scenes switchx'
+  #   trigger:
+  #   - platform: state
+  #     entity_id: switch.stp_keuken_microwave
+  #     from: 'off'
+  #     to: 'on'
+  #   action:
+  #   - service_template: 'script.{{ trigger.to_state.name }}'
+  #   - service: python_script.easyplus_switch
+  #     data_template:
+  #       entity_id: "{{ trigger.to_state.entity_id }}"
+  #       timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
+  #       friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+  #       state: '{{ trigger.to_state.state }}'
+
+       # entity: '{{ trigger.to_state.entity_id }}'
+      #  entity: '{{ trigger.to_state.entity_id }}'
+
+    # - service: python_script.easyplus_switch
+    #   data:
+    #     entity_id: switch.stp_keuken_microwave
+    # - service: script.turn_on_kitchen
+    #   data_template:
+    #     timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
+    #     friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+    #     state: '{{ trigger.to_state.state }}'
+    # # - service: python_script.easyplus_switch
+    # #   data_template:
+    # #     entity_id: "{{ trigger.to_state.entity_id }}"
+      # data_template:
+      #   timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
+      #   friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+      #   state: '{{ trigger.to_state.state }}'
+

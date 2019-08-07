@@ -57,7 +57,7 @@ binary_sensor:
 
 timer:
   eetkamer_occupied:
-  inkonhal_occupied:
+  inkomhal_occupied:
   wc_occupied:
   traphal_occupied:
   bad_occupied:
@@ -67,8 +67,8 @@ timer:
     initial_state: 'true'
     trigger:
     - platform: state
-      entity_id:
-        - binary_sensor.inkomhal_occupied
+      entity_id: binary_sensor.motion_inkomhal
+    to: 'on'
     condition:
       condition: and
       conditions:

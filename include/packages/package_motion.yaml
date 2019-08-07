@@ -57,7 +57,9 @@ binary_sensor:
 
 timer:
   eetkamer_occupied:
+    duration: '00:10:00'
   inkomhal_occupied:
+    duration: '00:00:30'
   wc_occupied:
   traphal_occupied:
   bad_occupied:
@@ -70,7 +72,7 @@ automation:
     trigger:
     - platform: state
       entity_id: binary_sensor.motion_inkomhal
-    to: 'on'
+      to: 'on'
     condition:
       condition: and
       conditions:
@@ -87,8 +89,7 @@ automation:
           state: 'off'
     action:
     - service: timer.start
-      entity_id: timer.inkonhal_occupied
-      duration: '00:00:30'
+      entity_id: timer.inkomhal_occupied
     - service: homeassistant.turn_on
       entity_id: switch.light_vestiare
 
@@ -96,9 +97,9 @@ automation:
     alias: Motion Detection - Hall Light off
     initial_state: 'true'
     trigger:
-    - entity_id: binary_sensor.inkomhal_occupied
-      condition: state
-      state: 'off'
+    - platform: state
+      entity_id:  binary_sensor.inkomhal_occupied
+      to: 'off'
     action:
     - service: homeassistant.turn_off
       entity_id:  switch.light_vestiare
@@ -112,7 +113,7 @@ automation:
     trigger:
     - platform: state
       entity_id: binary_sensor.motion_eetkamer
-    to: 'on'
+      to: 'on'
     condition:
       condition: and
       conditions:
@@ -128,15 +129,15 @@ automation:
     - service: homeassistant.turn_on
       entity_id: switch.light_eetkamer_center
     - service: timer.start
-      entity_id: timer.inkonhal_occupied
-      duration: '00:10:00'
+      entity_id: timer.eetkamer_occupied
+
 
   - id: motion_dinner_off
     alias: Motion Detection - Dinner Light off
     initial_state: 'true'
     trigger:
     - platform: state
-      entity_id:  binary_sensor.inkomhal_occupied
+      entity_id:  binary_sensor.eetkamer_occupied
       to: 'off'
     action:
     - service: homeassistant.turn_off

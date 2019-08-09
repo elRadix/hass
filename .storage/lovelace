@@ -171,7 +171,8 @@
                         },
                         {
                             "card": {
-                                "name": " ",
+                                "meridiem": false,
+                                "name": "",
                                 "type": "custom:sun-card"
                             },
                             "style": {
@@ -276,38 +277,6 @@
                             "type": "entity-filter"
                         },
                         {
-                            "cards": [
-                                {
-                                    "cards": [
-                                        {
-                                            "aspect_ratio": 1,
-                                            "entity": "device_tracker.comp_rachid",
-                                            "image": "/local/elradix.png",
-                                            "show_name": false,
-                                            "type": "picture-entity"
-                                        },
-                                        {
-                                            "content": "<h3>Adress</h3> [[ geo_address.comp_rachid.attributes.road ]] [[ if(geo_address.comp_rachid.attributes.house_number != undefined, geo_address.comp_rachid.attributes.house_number, \"\") ]] [[ if(geo_address.comp_rachid.attributes.city != undefined, geo_address.comp_rachid.attributes.city, \"\") ]] [[ if(geo_address.comp_rachid.attributes.village != undefined, geo_address.comp_rachid.attributes.village, \"\") ]] [[ if(geo_address.comp_rachid.attributes.county != geo_address.comp_rachid.attributes.city, geo_address.comp_rachid.attributes.county, \"\") ]]  \n",
-                                            "type": "markdown"
-                                        },
-                                        {
-                                            "aspect_ratio": 1,
-                                            "entity": "device_tracker.comp_soumaya",
-                                            "image": "/local/soumaya.png",
-                                            "show_name": false,
-                                            "type": "picture-entity"
-                                        },
-                                        {
-                                            "content": "<h3>Adress</h3> [[ geo_address.comp_soumaya.attributes.road ]] [[ if(geo_address.comp_soumaya.attributes.house_number != undefined, geo_address.comp_soumaya.attributes.house_number, \"\") ]] [[ if(geo_address.comp_soumaya.attributes.city != undefined, geo_address.comp_soumaya.attributes.city, \"\") ]] [[ if(geo_address.comp_soumaya.attributes.village != undefined, geo_address.comp_soumaya.attributes.village, \"\") ]] [[ if(geo_address.comp_soumaya.attributes.county != geo_address.comp_soumaya.attributes.city, geo_address.comp_soumaya.attributes.county, \"\") ]]  \n",
-                                            "type": "markdown"
-                                        }
-                                    ],
-                                    "type": "vertical-stack"
-                                }
-                            ],
-                            "type": "custom:vertical-stack-in-card"
-                        },
-                        {
                             "card": {
                                 "show_name": true,
                                 "show_state": true,
@@ -348,6 +317,38 @@
                                 "on"
                             ],
                             "type": "entity-filter"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "aspect_ratio": 1,
+                                            "entity": "device_tracker.comp_rachid",
+                                            "image": "/local/elradix.png",
+                                            "show_name": false,
+                                            "type": "picture-entity"
+                                        },
+                                        {
+                                            "content": "<h3>Adress</h3> [[ geo_address.comp_rachid.attributes.road ]] [[ if(geo_address.comp_rachid.attributes.house_number != undefined, geo_address.comp_rachid.attributes.house_number, \"\") ]] [[ if(geo_address.comp_rachid.attributes.city != undefined, geo_address.comp_rachid.attributes.city, \"\") ]] [[ if(geo_address.comp_rachid.attributes.village != undefined, geo_address.comp_rachid.attributes.village, \"\") ]] [[ if(geo_address.comp_rachid.attributes.county != geo_address.comp_rachid.attributes.city, geo_address.comp_rachid.attributes.county, \"\") ]]  \n",
+                                            "type": "markdown"
+                                        },
+                                        {
+                                            "aspect_ratio": 1,
+                                            "entity": "device_tracker.comp_soumaya",
+                                            "image": "/local/soumaya.png",
+                                            "show_name": false,
+                                            "type": "picture-entity"
+                                        },
+                                        {
+                                            "content": "<h3>Adress</h3> [[ geo_address.comp_soumaya.attributes.road ]] [[ if(geo_address.comp_soumaya.attributes.house_number != undefined, geo_address.comp_soumaya.attributes.house_number, \"\") ]] [[ if(geo_address.comp_soumaya.attributes.city != undefined, geo_address.comp_soumaya.attributes.city, \"\") ]] [[ if(geo_address.comp_soumaya.attributes.village != undefined, geo_address.comp_soumaya.attributes.village, \"\") ]] [[ if(geo_address.comp_soumaya.attributes.county != geo_address.comp_soumaya.attributes.city, geo_address.comp_soumaya.attributes.county, \"\") ]]  \n",
+                                            "type": "markdown"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                }
+                            ],
+                            "type": "custom:vertical-stack-in-card"
                         },
                         {
                             "card": {
@@ -701,7 +702,7 @@
                                                 "hour24": true,
                                                 "line_width": 3,
                                                 "name": " ",
-                                                "points_per_hour": 0.2,
+                                                "points_per_hour": 1,
                                                 "show": {
                                                     "color_thresholds": [
                                                         {
@@ -807,7 +808,7 @@
                                                 "hour24": true,
                                                 "line_width": 3,
                                                 "name": " ",
-                                                "points_per_hour": 2,
+                                                "points_per_hour": 0.25,
                                                 "show": {
                                                     "color_thresholds": [
                                                         {

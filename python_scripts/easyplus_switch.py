@@ -7,7 +7,7 @@ if sn is not None:
     if ep is not None:
       if ep.state == 'off':
         service_data = {'entity_id':'switch.easyplus'}
-        hass.services.call('switch', 'turn_on', service_data, False)    
+        hass.services.call('switch', 'turn_on', service_data, False)
         time.sleep(17)
 
       hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn })

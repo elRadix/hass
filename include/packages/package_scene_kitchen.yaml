@@ -291,7 +291,7 @@ automation:
     alias: 'start scenes'
     trigger:
     - platform: state
-      entity_id: switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_keuken_oven,binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
+      entity_id: switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_keuken_oven,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water,binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601
       from: 'off'
       to: 'on'
     action:
@@ -352,6 +352,25 @@ automation:
       data_template:
         message: 'program: {{trigger.event.data.entity_id.name}} completed'
 
+  - id: scenes completed notification
+    initial_state: 'true'
+    alias: scenes completed
+    trigger:
+    - platform: state
+      entity_id: sensor.easyplus
+      to: 'off'
+    condition:
+      - condition: template
+        value_template: "{{ states.sensor.period_of_day.state != 'night' }}"
+    action:
+    - service: notify.dageraad
+      data_template:
+        message: ' Warning Easyplus
+
+        All scenes completed,
+        easyplus will shutdown in 15min'
+
+
   - id: scenes completed
     initial_state: 'true'
     alias: scenes completed
@@ -362,8 +381,8 @@ automation:
       for:
         minutes: 15
     condition:
-    - condition: template
-      value_template: "{{ states.sensor.period_of_day.state != 'night' }}"
+      - condition: template
+        value_template: "{{ states.sensor.period_of_day.state != 'night' }}"
     action:
     - service: script.scene_completed
     - delay:
@@ -372,20 +391,6 @@ automation:
       data_template:
         message: 'All scenes completed, easyplus: {{states.switch.easyplus.state}}'
 
-  - id: scenes completed notification
-    initial_state: 'true'
-    alias: scenes completed
-    trigger:
-    - platform: state
-      entity_id: sensor.easyplus
-      to: 'off'
-    action:
-    - service: notify.dageraad
-      data_template:
-        message: ' Warning Easyplus
-
-        All scenes completed,
-        easyplus will shutdown in 15min'
 
 
 

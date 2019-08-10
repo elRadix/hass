@@ -69,6 +69,128 @@ timer:
 
 automation:
 
+  - id: motion_occupied_on_eetkamer_occupied
+    alias: motion_occupied_on_eetkamer_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.eetkamer_occupied
+      to: 'on'
+    action:
+    - service: timer.start
+      data:
+        entity_id: timer.eetkamer_occupied
+
+  - id: motion_occupied_off_eetkamer_occupied
+    alias: motion_occupied_off_eetkamer_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.eetkamer_occupied
+      to: 'off'
+    action:
+    - service: timer.cancel
+      data:
+        entity_id: timer.eetkamer_occupied
+
+  - id: motion_occupied_on_inkomhal_occupied
+    alias: motion_occupied_on_inkomhal_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.inkomhal_occupied
+      to: 'on'
+    action:
+    - service: timer.start
+      data:
+        entity_id: timer.inkomhal_occupied
+
+  - id: motion_occupied_off_inkomhal_occupied
+    alias: motion_occupied_off_inkomhal_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.inkomhal_occupied
+      to: 'off'
+    action:
+    - service: timer.cancel
+      data:
+        entity_id: timer.inkomhal_occupied
+
+  - id: motion_occupied_on_wc_occupied
+    alias: motion_occupied_on_wc_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.wc_occupied
+      to: 'on'
+    action:
+    - service: timer.start
+      data:
+        entity_id: timer.wc_occupied
+
+  - id: motion_occupied_off_wc_occupied
+    alias: motion_occupied_off_wc_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.wc_occupied
+      to: 'off'
+    action:
+    - service: timer.cancel
+      data:
+        entity_id: timer.wc_occupied
+
+  - id: motion_occupied_on_traphal_occupied
+    alias: motion_occupied_on_traphal_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.traphal_occupied
+      to: 'on'
+    action:
+    - service: timer.start
+      data:
+        entity_id: timer.traphal_occupied
+
+  - id: motion_occupied_off_traphal_occupied
+    alias: motion_occupied_off_traphal_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.traphal_occupied
+      to: 'off'
+    action:
+    - service: timer.cancel
+      data:
+        entity_id: timer.traphal_occupied
+
+  - id: motion_occupied_on_bad_occupied
+    alias: motion_occupied_on_bad_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.bad_occupied
+      to: 'on'
+    action:
+    - service: timer.start
+      data:
+        entity_id: timer.bad_occupied
+
+  - id: motion_occupied_off_bad_occupied
+    alias: motion_occupied_bad_occupied
+    initial_state: 'true'
+    trigger:
+    - platform: state
+      entity_id:  binary_sensor.bad_occupied
+      to: 'off'
+    action:
+    - service: timer.cancel
+      data:
+        entity_id: timer.bad_occupied
+
+
+######
   - id: motion_01
     alias: Motion Detection - Hall Light on
     initial_state: 'true'

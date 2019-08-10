@@ -10,7 +10,7 @@ if sn is not None:
         hass.services.call('switch', 'turn_on', service_data, False)    
         time.sleep(17)
 
-      hass.services.call('switch', 'turn_on', service_data={ 'entity_id': sn })
+      hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn })
     else:
       logger.warning('<easyplus> switch.easyplus does not exist')
   else:

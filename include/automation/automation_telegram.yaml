@@ -1336,13 +1336,13 @@
     event_data:
       command: '/Microgolf'
   action:
-  - service: python_script.easyplus
+  - service: python_script.easyplus_switch
     data:
-      script_id: turn_on_microgolf
-  - service: homeassistant.toggle
-    data:
-      entity_id:
-        - switch.stp_keuken_microwave
+      entity_id: switch.stp_keuken_microwave
+  # - service: homeassistant.toggle
+  #   data:
+  #     entity_id:
+  #       - switch.stp_keuken_microwave
   - delay:
       seconds: 6
   - service: telegram_bot.send_message

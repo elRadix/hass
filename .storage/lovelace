@@ -239,6 +239,23 @@
                             "type": "custom:card-modder"
                         },
                         {
+                            "entities": [
+                                {
+                                    "artwork": "full-cover-fit",
+                                    "artwork_border": true,
+                                    "entity": "media_player.slaapkamer",
+                                    "group": false,
+                                    "icon": "mdi:kodi",
+                                    "info": "short",
+                                    "name": "Slaapkamer",
+                                    "show_source": "full",
+                                    "type": "custom:mini-media-player"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "type": "entities"
+                        },
+                        {
                             "card": {
                                 "show_name": true,
                                 "show_state": false,
@@ -417,32 +434,6 @@
                             "conditions": [
                                 {
                                     "entity": "media_player.ue55d7000_ue55d7000",
-                                    "state": "on"
-                                }
-                            ],
-                            "type": "conditional"
-                        },
-                        {
-                            "card": {
-                                "entities": [
-                                    {
-                                        "artwork": "full-cover-fit",
-                                        "artwork_border": true,
-                                        "entity": "media_player.kodi_slaapkamer",
-                                        "group": false,
-                                        "icon": "mdi:kodi",
-                                        "info": "short",
-                                        "name": "Slaapkamer",
-                                        "show_source": "full",
-                                        "type": "custom:mini-media-player"
-                                    }
-                                ],
-                                "show_header_toggle": false,
-                                "type": "entities"
-                            },
-                            "conditions": [
-                                {
-                                    "entity": "media_player.kodi_slaapkamer",
                                     "state": "on"
                                 }
                             ],
@@ -6224,7 +6215,7 @@
                                 }
                             ],
                             "font_size": 120,
-                            "height": 150,
+                            "height": 100,
                             "hour24": true,
                             "hours_to_show": 6,
                             "line_width": 5,
@@ -6232,13 +6223,11 @@
                             "location_state": "center",
                             "more_info": false,
                             "name": "CPU Load",
-                            "points_per_hour": 0.12222,
+                            "points_per_hour": 0.1,
                             "show": {
                                 "extrema": true,
                                 "labels": true,
-                                "legend": true,
-                                "points": false,
-                                "state": true
+                                "legend": true
                             },
                             "type": "custom:mini-graph-card"
                         },
@@ -6260,7 +6249,7 @@
                                 }
                             ],
                             "font_size": 120,
-                            "height": 120,
+                            "height": 100,
                             "hour24": true,
                             "hours_to_show": 12,
                             "line_width": 5,
@@ -6268,9 +6257,9 @@
                             "location_state": "center",
                             "more_info": false,
                             "name": "Memory",
-                            "points_per_hour": 0.25,
+                            "points_per_hour": 0.1,
                             "show": {
-                                "extrema": false,
+                                "extrema": true,
                                 "labels": true,
                                 "legend": true
                             },

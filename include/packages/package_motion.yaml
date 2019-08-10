@@ -59,13 +59,17 @@ timer:
   eetkamer_occupied:
     duration: '00:10:00'
   inkomhal_occupied:
-    duration: '00:00:15'
+    duration: '00:05:00'
   wc_occupied:
     duration: '00:01:30'
   traphal_occupied:
-    duration: '00:00:30'
+    duration: '00:05:00'
   bad_occupied:
     duration: '00:05:00'
+  inkomhal_motion:
+    duration: '00:00:15'
+  traphal_motion:
+    duration: '00:00:30'
 
 automation:
 
@@ -170,7 +174,7 @@ automation:
     initial_state: 'true'
     trigger:
     - platform: state
-      entity_id:  binary_sensor.bad_occupied
+      entity_id:  binary_sensor.badkamer_occupied
       to: 'on'
     action:
     - service: timer.start
@@ -182,7 +186,7 @@ automation:
     initial_state: 'true'
     trigger:
     - platform: state
-      entity_id:  binary_sensor.bad_occupied
+      entity_id:  binary_sensor.badkamer_occupied
       to: 'off'
     action:
     - service: timer.cancel
@@ -214,7 +218,7 @@ automation:
           state: 'off'
     action:
     - service: timer.start
-      entity_id: timer.inkomhal_occupied
+      entity_id: timer.inkomhal_motion
     - service: homeassistant.turn_on
       entity_id: switch.light_vestiare
 
@@ -230,7 +234,7 @@ automation:
       entity_id:  switch.light_vestiare
     - service: timer.cancel
       data:
-        entity_id: timer.inkomhal_occupied
+        entity_id: timer.inkomhal_motion
 
   - id: motion_03
     alias: Motion Detection - Dinner Light on

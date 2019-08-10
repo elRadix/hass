@@ -385,12 +385,11 @@
   - service: python_script.easyplus
     data:
       script_id: turn_on_dryer
-  # - service: homeassistant.toggle
-  #   data:
-  #     entity_id:
-  #       - switch.stp_berging_droogkast
+  - service: python_script.easyplus_switch
+    data:
+      entity_id: switch.stp_berging_droogkast
   - delay:
-      seconds: 1
+      seconds: 6
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -407,13 +406,9 @@
     event_data:
       command: '/Wasmachine'
   action:
-  # - service: homeassistant.toggle
-  #   data:
-  #     entity_id:
-  #       - switch.stp_berging_wasmachine
-  - service: python_script.easyplus
+  - service: python_script.easyplus_switch
     data:
-      script_id: turn_on_was
+      entity_id: switch.stp_berging_wasmachine
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -432,10 +427,9 @@
     event_data:
       command: '/Licht'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_berging_center
+      entity_id: switch.light_berging_center
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -834,10 +828,9 @@
     event_data:
       command: '/Bur_Lader'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.bureau_lader
+      entity_id: switch.bureau_lader
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -857,10 +850,9 @@
     event_data:
       command: '/Bur_Spot'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_bureau_spots
+      entity_id: switch.light_bureau_spots
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -878,10 +870,9 @@
     event_data:
       command: '/Bur_TL'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_bureau_tl
+      entity_id: switch.light_bureau_tl
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -899,10 +890,9 @@
     event_data:
       command: '/Liv_Center'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_living_center
+      entity_id: switch.light_living_center
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -920,10 +910,9 @@
     event_data:
       command: '/Liv_Dubbel'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_living_double_spot
+      entity_id: switch.light_living_double_spot
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -941,10 +930,9 @@
     event_data:
       command: '/Liv_Triple'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_living_triple_spot
+      entity_id: switch.light_living_triple_spott
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -963,12 +951,11 @@
     event_data:
       command: '/Sony'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.stp_living_sony
+      entity_id: switch.stp_living_sony
   - delay:
-      seconds: 1
+      seconds: 6
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -1009,14 +996,14 @@
   - service: media_player.turn_off
     data:
       entity_id:
-        - media_player.tv_slaapkamer
+        - media_player.slaapkamer
   - delay:
       seconds: 1
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
       message: '
-        Slaapkamer TV is {{states.switch.stp_living_sony.state}}'
+        Slaapkamer TV is {{states.media_player.slaapkamer.state}}'
 
 
 - id: 'Telegram reply with Eetkamer'
@@ -1061,15 +1048,11 @@
     event_data:
       command: '/Samsung'
   action:
-  - service: python_script.easyplus
+  - service: python_script.easyplus_switch
     data:
-      script_id: turn_on_samsung
-  # - service: homeassistant.toggle
-  #   data:
-  #     entity_id:
-  #       - switch.stp_eetkamer_tv
+      entity_id: switch.stp_eetkamer_tv
   - delay:
-      seconds: 7
+      seconds: 6
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -1085,10 +1068,9 @@
     event_data:
       command: '/Eet_Center'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_eetkamer_center
+      entity_id: switch.light_eetkamer_center
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -1106,10 +1088,9 @@
     event_data:
       command: '/Eet_Dubbel'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_eetkamer_double_spot
+      entity_id: switch.light_eetkamer_double_spot
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -1198,10 +1179,9 @@
     event_data:
       command: '/Spotwasbak'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_keuken_spot_front
+      entity_id: switch.light_keuken_spot_front
   - delay:
       seconds: 1
   - service: telegram_bot.send_message
@@ -1219,10 +1199,9 @@
     event_data:
       command: '/Spotlinks'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_keuken_spot_links
+      entity_id: switch.light_keuken_spot_links
   - delay:
       seconds: 1
   - service: telegram_bot.send_message
@@ -1240,10 +1219,9 @@
     event_data:
       command: '/Spotrechts'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_keuken_spot_rechts
+      entity_id: witch.light_keuken_spot_rechts
   - delay:
       seconds: 1
   - service: telegram_bot.send_message
@@ -1339,10 +1317,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_keuken_microwave
-  # - service: homeassistant.toggle
-  #   data:
-  #     entity_id:
-  #       - switch.stp_keuken_microwave
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -1361,13 +1335,9 @@
     event_data:
       command: '/Oven'
   action:
-  - service: python_script.easyplus
+  - service: python_script.easyplus_switch
     data:
-      script_id: turn_on_oven
-  # - service: homeassistant.toggle
-  #   data:
-  #     entity_id:
-  #       - switch.stp_keuken_oven
+      entity_id: switch.stp_keuken_oven
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -1385,13 +1355,9 @@
     event_data:
       command: '/Vaatwasser'
   action:
-  - service: python_script.easyplus
+  - service: python_script.easyplus_switch
     data:
-      script_id: turn_on_dish
-  # - service: homeassistant.toggle
-  #   data:
-  #     entity_id:
-  #       - switch.stp_keuken_vaatwasser
+      entity_id: switch.stp_keuken_vaatwasser
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -1409,13 +1375,9 @@
     event_data:
       command: '/Waterkoker'
   action:
-  - service: python_script.easyplus
+  - service: python_script.easyplus_switch
     data:
-      script_id: turn_on_waterkoker
-  # - service: homeassistant.toggle
-  #   data:
-  #     entity_id:
-  #       - switch.stp_keuken_water
+      entity_id: switch.stp_keuken_water
   - delay:
       seconds: 6
   - service: telegram_bot.send_message
@@ -1433,15 +1395,11 @@
     event_data:
       command: '/Espresso'
   action:
-  - service: python_script.easyplus
+  - service: python_script.easyplus_switch
     data:
-      script_id: turn_on_espresso
-  # - service: homeassistant.toggle
-  #   data:
-  #     entity_id:
-  #       - switch.stp_keuken_espresso
+      entity_id: switch.stp_keuken_espresso
   - delay:
-      seconds: 1
+      seconds: 6
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -1591,12 +1549,11 @@
     event_data:
       command: '/bureau'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_bureau_spots
+      entity_id: switch.light_bureau_spots
   - delay:
-      seconds: 1
+      seconds: 6
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'

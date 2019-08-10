@@ -691,6 +691,7 @@
                                                     }
                                                 ],
                                                 "hour24": true,
+                                                "hours_to_show": 168,
                                                 "line_width": 3,
                                                 "name": " ",
                                                 "points_per_hour": 1,
@@ -797,6 +798,7 @@
                                                     }
                                                 ],
                                                 "hour24": true,
+                                                "hours_to_show": 168,
                                                 "line_width": 3,
                                                 "name": " ",
                                                 "points_per_hour": 0.25,
@@ -5998,184 +6000,6 @@
                     "badges": [],
                     "cards": [
                         {
-                            "aspect_ratio": "16x9",
-                            "default_zoom": 15,
-                            "entities": [
-                                {
-                                    "entity": "device_tracker.life360_rachid"
-                                },
-                                {
-                                    "entity": "device_tracker.comp_rachid"
-                                }
-                            ],
-                            "type": "map"
-                        },
-                        {
-                            "aspect_ratio": "16x9",
-                            "default_zoom": 15,
-                            "entities": [
-                                {
-                                    "entity": "device_tracker.comp_soumaya"
-                                },
-                                {
-                                    "entity": "device_tracker.life360_soumaya"
-                                }
-                            ],
-                            "type": "map"
-                        },
-                        {
-                            "columns": 5,
-                            "entities": [
-                                {
-                                    "entity": "person.rachid"
-                                },
-                                {
-                                    "entity": "device_tracker.rachid",
-                                    "name": "router"
-                                },
-                                {
-                                    "entity": "device_tracker.rachid_mqtt",
-                                    "name": "mqtt"
-                                },
-                                {
-                                    "entity": "device_tracker.elradix",
-                                    "name": "BT"
-                                },
-                                {
-                                    "entity": "device_tracker.comp_rachid",
-                                    "name": "group"
-                                },
-                                {
-                                    "entity": "device_tracker.google_maps_elrachid_gmail_com",
-                                    "name": "google"
-                                },
-                                {
-                                    "entity": "device_tracker.life360_rachid",
-                                    "name": "life360"
-                                },
-                                {
-                                    "entity": "device_tracker.elradix_2",
-                                    "name": "gpslogger"
-                                }
-                            ],
-                            "show_name": true,
-                            "show_state": true,
-                            "type": "glance"
-                        },
-                        {
-                            "columns": 5,
-                            "entities": [
-                                {
-                                    "entity": "person.soumaya"
-                                },
-                                {
-                                    "entity": "device_tracker.soumaya",
-                                    "name": "router"
-                                },
-                                {
-                                    "entity": "device_tracker.soumaya_mqtt",
-                                    "name": "mqtt"
-                                },
-                                {
-                                    "entity": "device_tracker.soumaya_2",
-                                    "name": "BT"
-                                },
-                                {
-                                    "entity": "device_tracker.comp_soumaya",
-                                    "name": "group"
-                                },
-                                {
-                                    "entity": "device_tracker.google_maps_102675862650488616596",
-                                    "name": "google"
-                                },
-                                {
-                                    "entity": "device_tracker.life360_soumaya",
-                                    "name": "life360"
-                                },
-                                {
-                                    "entity": "device_tracker.flora_2",
-                                    "name": "gpslogger"
-                                }
-                            ],
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.soumaya_to_home"
-                                },
-                                {
-                                    "entity": "sensor.rachid_to_home"
-                                },
-                                {
-                                    "entity": "sensor.proximity_person"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Proximity",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.time_to_leave_for_home"
-                                },
-                                {
-                                    "entity": "sensor.time_to_home"
-                                },
-                                {
-                                    "entity": "sensor.me_traffic_density_to_home"
-                                },
-                                {
-                                    "entity": "sensor.time_to_leave_for_work"
-                                },
-                                {
-                                    "entity": "sensor.time_to_work"
-                                },
-                                {
-                                    "entity": "sensor.me_traffic_density_to_work"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Travel time BNP",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.time_to_leave_for_home",
-                                "sensor.time_to_home",
-                                "sensor.me_traffic_density_to_home",
-                                "sensor.time_to_leave_for_work",
-                                "sensor.time_to_work",
-                                "sensor.me_traffic_density_to_work"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Travel time Brussel",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "input_boolean.work",
-                                "sensor.time_at_work_today",
-                                "sensor.time_at_work_this_week",
-                                "sensor.time_at_work_this_month",
-                                "sensor.percent_at_work_daily",
-                                "sensor.percent_at_work_weekly",
-                                "sensor.percent_at_work_monthly"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Work Hours",
-                            "type": "entities"
-                        }
-                    ],
-                    "icon": "mdi:highway",
-                    "path": "",
-                    "title": "Travel"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
                             "animation": "off",
                             "entity": "sensor.processor_use",
                             "severity": [
@@ -6217,7 +6041,7 @@
                             "font_size": 120,
                             "height": 100,
                             "hour24": true,
-                            "hours_to_show": 6,
+                            "hours_to_show": 48,
                             "line_width": 5,
                             "location_icon": "left",
                             "location_state": "center",
@@ -6251,7 +6075,7 @@
                             "font_size": 120,
                             "height": 100,
                             "hour24": true,
-                            "hours_to_show": 12,
+                            "hours_to_show": 48,
                             "line_width": 5,
                             "location_icon": "left",
                             "location_state": "center",
@@ -6742,6 +6566,184 @@
                     "icon": "mdi:server",
                     "path": "",
                     "title": "Raspberry Pi"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "aspect_ratio": "16x9",
+                            "default_zoom": 15,
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.life360_rachid"
+                                },
+                                {
+                                    "entity": "device_tracker.comp_rachid"
+                                }
+                            ],
+                            "type": "map"
+                        },
+                        {
+                            "aspect_ratio": "16x9",
+                            "default_zoom": 15,
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.comp_soumaya"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_soumaya"
+                                }
+                            ],
+                            "type": "map"
+                        },
+                        {
+                            "columns": 5,
+                            "entities": [
+                                {
+                                    "entity": "person.rachid"
+                                },
+                                {
+                                    "entity": "device_tracker.rachid",
+                                    "name": "router"
+                                },
+                                {
+                                    "entity": "device_tracker.rachid_mqtt",
+                                    "name": "mqtt"
+                                },
+                                {
+                                    "entity": "device_tracker.elradix",
+                                    "name": "BT"
+                                },
+                                {
+                                    "entity": "device_tracker.comp_rachid",
+                                    "name": "group"
+                                },
+                                {
+                                    "entity": "device_tracker.google_maps_elrachid_gmail_com",
+                                    "name": "google"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_rachid",
+                                    "name": "life360"
+                                },
+                                {
+                                    "entity": "device_tracker.elradix_2",
+                                    "name": "gpslogger"
+                                }
+                            ],
+                            "show_name": true,
+                            "show_state": true,
+                            "type": "glance"
+                        },
+                        {
+                            "columns": 5,
+                            "entities": [
+                                {
+                                    "entity": "person.soumaya"
+                                },
+                                {
+                                    "entity": "device_tracker.soumaya",
+                                    "name": "router"
+                                },
+                                {
+                                    "entity": "device_tracker.soumaya_mqtt",
+                                    "name": "mqtt"
+                                },
+                                {
+                                    "entity": "device_tracker.soumaya_2",
+                                    "name": "BT"
+                                },
+                                {
+                                    "entity": "device_tracker.comp_soumaya",
+                                    "name": "group"
+                                },
+                                {
+                                    "entity": "device_tracker.google_maps_102675862650488616596",
+                                    "name": "google"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_soumaya",
+                                    "name": "life360"
+                                },
+                                {
+                                    "entity": "device_tracker.flora_2",
+                                    "name": "gpslogger"
+                                }
+                            ],
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.soumaya_to_home"
+                                },
+                                {
+                                    "entity": "sensor.rachid_to_home"
+                                },
+                                {
+                                    "entity": "sensor.proximity_person"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Proximity",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.time_to_leave_for_home"
+                                },
+                                {
+                                    "entity": "sensor.time_to_home"
+                                },
+                                {
+                                    "entity": "sensor.me_traffic_density_to_home"
+                                },
+                                {
+                                    "entity": "sensor.time_to_leave_for_work"
+                                },
+                                {
+                                    "entity": "sensor.time_to_work"
+                                },
+                                {
+                                    "entity": "sensor.me_traffic_density_to_work"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Travel time BNP",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.time_to_leave_for_home",
+                                "sensor.time_to_home",
+                                "sensor.me_traffic_density_to_home",
+                                "sensor.time_to_leave_for_work",
+                                "sensor.time_to_work",
+                                "sensor.me_traffic_density_to_work"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Travel time Brussel",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "input_boolean.work",
+                                "sensor.time_at_work_today",
+                                "sensor.time_at_work_this_week",
+                                "sensor.time_at_work_this_month",
+                                "sensor.percent_at_work_daily",
+                                "sensor.percent_at_work_weekly",
+                                "sensor.percent_at_work_monthly"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Work Hours",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:highway",
+                    "path": "",
+                    "title": "Travel"
                 },
                 {
                     "badges": [],

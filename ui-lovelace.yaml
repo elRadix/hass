@@ -1,0 +1,5163 @@
+background: center / cover no-repeat url("/local/background.jpg") fixed
+cch:
+  active_tab_color: red
+  clock_am_pm: false
+  date_locale: en-gb
+  hide_help: true
+  menu: overflow
+  notifications: hide
+  swipe: true
+  swipe_animate: swipe
+  swipe_prevent_default: true
+  swipe_wrap: false
+  voice: hide
+resources:
+- type: js
+  url: /local/card-mod.js
+- type: js
+  url: /local/card-tools.js
+- type: js
+  url: /local/card-modder.js
+- type: module
+  url: /local/search-card.js
+- type: js
+  url: /local/vertical-style-card.js
+- type: module
+  url: /local/check-button-card.js
+- type: js
+  url: /community_plugin/entity-attributes-card/entity-attributes-card.js
+- type: js
+  url: /community_plugin/bar-card/bar-card.js
+- type: module
+  url: /community_plugin/lovelace-markdown-mod/markdown-mod.js
+- type: module
+  url: /community_plugin/mini-graph-card/mini-graph-card.js
+- type: module
+  url: /community_plugin/compact-custom-header/compact-custom-header.js
+- type: module
+  url: /community_plugin/simple-thermostat/simple-thermostat.js
+- type: js
+  url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+- type: module
+  url: /community_plugin/banner-card/banner-card.js
+- type: module
+  url: /community_plugin/dual-gauge-card/dual-gauge-card.js
+- type: module
+  url: /community_plugin/text-divider-row/text-divider-row.js
+- type: module
+  url: /community_plugin/decluttering-card/decluttering-card.js
+- type: js
+  url: /community_plugin/list-card/list-card.js
+- url: /community_plugin/lovelace-card-mod/card-mod.js
+- type: js
+  url: /community_plugin/lovelace-text-input-row/text-input-row.js
+- type: js
+  url: /community_plugin/tracking-number-card/tracking-number-card.js
+- type: js
+  url: /community_plugin/monster-card/monster-card.js
+- type: module
+  url: /community_plugin/sun-card/sun-card.js
+- type: module
+  url: /community_plugin/button-card/button-card.js
+- type: module
+  url: /community_plugin/mini-media-player/mini-media-player.js
+- type: js
+  url: /community_plugin/travel-time-card/travel-time-card.js
+title: Home
+views:
+- badges: []
+  cards:
+  - card:
+      show_name: true
+      show_state: true
+      title: Alarm
+      type: glance
+    entities:
+    - entity: binary_sensor.gas_alarm
+      icon: mdi:periodic-table-co2
+    - entity: binary_sensor.fire_alarm
+      icon: mdi:fire
+    - entity: binary_sensor.inkomhal
+      name: Inkomhal
+    - entity: binary_sensor.terras
+      name: Terras
+    - entity: binary_sensor.keuken_lek
+      name: Keuken
+    - entity: binary_sensor.badkamer_lek
+      name: Badkamer
+    show_empty: false
+    state_filter:
+    - 'on'
+    type: entity-filter
+  - entity: weather.dark_sky
+    name: Mechelen
+    type: weather-forecast
+  - card:
+      meridiem: false
+      name: ''
+      type: custom:sun-card
+    style:
+      --sc-background: linear-gradient(rgba(1, 1, 254,  0%), rgb(0, 191, 255) 46%,
+        rgb(0, 250,  124) 54%, rgba(11, 1,  40,  0%))
+      --sc-event-line-color: white
+      --sc-horizon-color: null
+      --sc-sunbeam-color: white
+      background-repeat: no-repeat
+      background-size: 100% 100%
+      border: 'solid 1.5px  # rgba(57,128,228)'
+      border-radius: 10px
+    type: custom:card-modder
+  - card:
+      show_name: true
+      show_state: false
+      type: glance
+    entities:
+    - entity: switch.easyplus
+      tap_action:
+        action: toggle
+    - entity: switch.woon
+      tap_action:
+        action: toggle
+    - entity: switch.slaap
+      tap_action:
+        action: toggle
+    - entity: switch.socket_woon
+      tap_action:
+        action: toggle
+    - entity: switch.socket_slaap
+      tap_action:
+        action: toggle
+    show_empty: false
+    state_filter:
+    - 'on'
+    type: entity-filter
+  - card:
+      content: "##### [[ sensor.vrt_nws.attributes.friendly_name ]] - [[ sensor.vrt_nws.attributes.tag\
+        \ ]]        \n### [[ sensor.vrt_nws ]]   \n![vrtnws]([[ sensor.vrt_nws.attributes.picture\
+        \ ]])  \n\n[[ sensor.vrt_text ]]      \n###### [Lees meer] [[  sensor.vrt_nws.attributes.link\
+        \ ]] \n"
+      type: markdown
+    type: custom:card-modder
+  - entities:
+    - artwork: full-cover-fit
+      artwork_border: true
+      entity: media_player.slaapkamer
+      group: false
+      icon: mdi:kodi
+      info: short
+      name: Slaapkamer
+      show_source: full
+      type: custom:mini-media-player
+    show_header_toggle: false
+    type: entities
+  - card:
+      show_name: true
+      show_state: false
+      type: glance
+    entities:
+    - binary_sensor.motion_inkomhal
+    - binary_sensor.motion_eetkamer
+    - binary_sensor.motion_wc
+    - binary_sensor.motion_traphal
+    - binary_sensor.motion_badkamer
+    show_empty: false
+    state_filter:
+    - 'on'
+    type: entity-filter
+  - card:
+      show_name: true
+      show_state: false
+      type: glance
+    entities:
+    - switch.heating_eetkamer
+    - switch.heating_living
+    - switch.heating_floradix
+    - switch.heating_sara
+    - switch.heating_yassin
+    show_empty: false
+    state_filter:
+    - 'on'
+    type: entity-filter
+  - card:
+      show_name: true
+      show_state: true
+      type: glance
+    entities:
+    - entity: alert.inkomhal
+      icon: mdi:alert-decagram
+      tap_action:
+        action: toggle
+    - entity: alert.terras
+      icon: mdi:alert-decagram
+      tap_action:
+        action: toggle
+    - entity: alert.water_badkamer
+      icon: mdi:alert-decagram
+      tap_action:
+        action: toggle
+    - entity: alert.water_keuken
+      icon: mdi:alert-decagram
+      tap_action:
+        action: toggle
+    show_empty: false
+    state_filter:
+    - 'on'
+    type: entity-filter
+  - cards:
+    - cards:
+      - aspect_ratio: 1
+        entity: device_tracker.comp_rachid
+        image: /local/elradix.png
+        show_name: false
+        type: picture-entity
+      - content: "<h3>Adress</h3> [[ geo_address.comp_rachid.attributes.road ]] [[\
+          \ if(geo_address.comp_rachid.attributes.house_number != undefined, geo_address.comp_rachid.attributes.house_number,\
+          \ \"\") ]] [[ if(geo_address.comp_rachid.attributes.city != undefined, geo_address.comp_rachid.attributes.city,\
+          \ \"\") ]] [[ if(geo_address.comp_rachid.attributes.village != undefined,\
+          \ geo_address.comp_rachid.attributes.village, \"\") ]] [[ if(geo_address.comp_rachid.attributes.county\
+          \ != geo_address.comp_rachid.attributes.city, geo_address.comp_rachid.attributes.county,\
+          \ \"\") ]]  \n"
+        type: markdown
+      - aspect_ratio: 1
+        entity: device_tracker.comp_soumaya
+        image: /local/soumaya.png
+        show_name: false
+        type: picture-entity
+      - content: "<h3>Adress</h3> [[ geo_address.comp_soumaya.attributes.road ]] [[\
+          \ if(geo_address.comp_soumaya.attributes.house_number != undefined, geo_address.comp_soumaya.attributes.house_number,\
+          \ \"\") ]] [[ if(geo_address.comp_soumaya.attributes.city != undefined,\
+          \ geo_address.comp_soumaya.attributes.city, \"\") ]] [[ if(geo_address.comp_soumaya.attributes.village\
+          \ != undefined, geo_address.comp_soumaya.attributes.village, \"\") ]] [[\
+          \ if(geo_address.comp_soumaya.attributes.county != geo_address.comp_soumaya.attributes.city,\
+          \ geo_address.comp_soumaya.attributes.county, \"\") ]]  \n"
+        type: markdown
+      type: vertical-stack
+    type: custom:vertical-stack-in-card
+  - card:
+      entities:
+      - entity: input_boolean.work
+        tap_action:
+          action: toggle
+      - entity: sensor.time_at_work_today
+      - entity: sensor.time_at_work_this_week
+      title: BNP - Work hours
+      type: glance
+    conditions:
+    - entity: device_tracker.comp_rachid
+      state_not: home
+    type: conditional
+  - entities:
+    - entity: sensor.last_boot_date_time
+    - entity: sensor.rpi_uptime
+      icon: mdi:clock
+      name: RPI
+    - entity: sensor.ha_uptime
+      icon: mdi:clock
+      name: HASS
+    show_header_toggle: false
+    title: Uptime
+    type: entities
+  - card:
+      entities:
+      - artwork: cover
+        artwork_border: true
+        entity: media_player.ue55d7000_ue55d7000
+        group: true
+        icon: mdi:television-classic
+        name: Keuken
+        show_source: full
+        type: custom:mini-media-player
+      show_header_toggle: false
+      type: entities
+    conditions:
+    - entity: media_player.ue55d7000_ue55d7000
+      state: 'on'
+    type: conditional
+  - cards:
+    - color_type: label-card
+      name: AFVAL KALENDER
+      show_entity_picture: true
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entities:
+      - entity: sensor.ophaalkalender_restafval
+        name: Witte zak
+      - entity: sensor.wittezak
+        title: Laatste ophaling
+        type: custom:check-button-card
+      - entity: sensor.ophaalkalender_pmd
+        name: Blauwe zak
+      - entity: sensor.blauwezak
+        title: Laatste ophaling
+        type: custom:check-button-card
+      - entity: sensor.ophaalkalender_papier
+        name: Papier
+      - entity: sensor.papier
+        title: Laatste ophaling
+        type: custom:check-button-card
+      - entity: sensor.ophaalkalender_gemengde_plastics
+        name: Roze zak
+      - entity: sensor.rozezak
+        title: Laatste ophaling
+        type: custom:check-button-card
+      type: entities
+    type: vertical-stack
+  - card:
+      entities:
+      - entity: sensor.rachid
+      - entity: sensor.soumaya
+      show_header_toggle: false
+      title: Where are you?
+      type: entities
+    conditions:
+    - entity: device_tracker.comp_rachid
+      state_not: home
+    type: conditional
+  - card:
+      entities:
+      - artwork: full-cover-fit
+        artwork_border: true
+        entity: media_player.kodi
+        group: true
+        icon: mdi:television-classic
+        name: Living
+        show_source: full
+        type: custom:mini-media-player
+      - artwork: full-cover-fit
+        artwork_border: true
+        entity: media_player.soundbar
+        group: true
+        icon: mdi:speaker-wireless
+        name: SoundBar
+        show_source: full
+        type: custom:mini-media-player
+      show_header_toggle: false
+      type: entities
+    conditions:
+    - entity: media_player.soundbar
+      state: 'on'
+    type: conditional
+  - card:
+      entities:
+      - entity: sensor.time_to_home
+        name: Home
+        zone: zone.home
+      - entity: sensor.time_to_work
+        name: Work
+        zone: zone.bnp
+      header: true
+      metric: true
+      type: custom:travel-time-card
+    conditions:
+    - entity: device_tracker.comp_rachid
+      state_not: home
+    type: conditional
+  - cards:
+    - entities:
+      - color_type: label-card
+        name: SLAAPKAMERS
+        show_entity_picture: true
+        styles:
+          card:
+          - height: 40px
+          - font-weight: bold
+          - text-orientation: mixed
+          - font-size: 20px
+          - text-Transform: uppercase
+          - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+              7%, rgba(0,212,255,1) 100%)
+          - font-weight: bold
+          - padding: 2%
+          - color: white
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card:
+          align_state: left
+          entities:
+          - color: green
+            entity: sensor.tmp_slp_1
+            name: S&R
+          - color: red
+            entity: sensor.ht_sara_temp
+            name: Sara
+          - color: blue
+            entity: sensor.tmp_slp_3
+            name: Yassin
+          hour24: true
+          hours_to_show: 48
+          line_width: 3
+          name: ' '
+          points_per_hour: 1
+          show:
+            color_thresholds:
+            - color: '#f39c12'
+              value: 18
+            - color: '#d35400'
+              value: 19
+            - color: '#c0392b'
+              value: 22
+            extrema: true
+            icon: false
+            labels: true
+            points: false
+          type: custom:mini-graph-card
+        style:
+          background: transparent
+        type: custom:card-modder
+      show_header_toggle: false
+      type: entities
+    type: vertical-stack
+  - cards:
+    - entities:
+      - color_type: label-card
+        name: WOONKAMER
+        show_entity_picture: true
+        styles:
+          card:
+          - height: 40px
+          - font-weight: bold
+          - text-orientation: mixed
+          - font-size: 20px
+          - text-Transform: uppercase
+          - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+              7%, rgba(0,212,255,1) 100%)
+          - font-weight: bold
+          - padding: 2%
+          - color: white
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card:
+          align_state: left
+          entities:
+          - color: green
+            entity: sensor.ht_eetkamer_temp
+            name: Eetkamer
+          - color: orange
+            entity: sensor.tmp_living
+            name: Living
+          hour24: true
+          hours_to_show: 24
+          line_width: 3
+          name: ' '
+          points_per_hour: 0.25
+          show:
+            color_thresholds:
+            - color: '#f39c12'
+              value: 18
+            - color: '#d35400'
+              value: 20
+            - color: '#c0392b'
+              value: 24
+            extrema: true
+            icon: false
+            labels: true
+            points: false
+          type: custom:mini-graph-card
+        style:
+          background: transparent
+        type: custom:card-modder
+      show_header_toggle: false
+      type: entities
+    type: vertical-stack
+  icon: mdi:home-assistant
+  panel: false
+  path: ''
+  title: Home
+- badges: []
+  cards:
+  - cards:
+    - entity: sensor.train_work
+      max: 50
+      min: 0
+      severity:
+      - color: green
+        value: 0
+      - color: green
+        value: 30
+      - color: red
+        value: 31
+      title: Train Work
+      title_position: inside
+      type: custom:bar-card
+    - entities:
+      - filter:
+          exclude:
+          - sensor.train_work.at*
+          - sensor.train_work.fr*
+          - sensor.train_work.oc*
+          - sensor.train_work.ic*
+          - sensor.train_work.oc*
+          - sensor.train_work.uni*
+          - sensor.train_work.lat*
+          - sensor.train_work.lon*
+          - sensor.train_work.lon*
+          - sensor.train_work.platform_ar*
+          include:
+          - sensor.train_work.*
+        heading_name: ' '
+        heading_state: '  '
+        type: custom:entity-attributes-card
+      type: entities
+    type: vertical-stack
+  - cards:
+    - entity: sensor.train_home_noord
+      max: 50
+      min: 0
+      severity:
+      - color: green
+        value: 0
+      - color: green
+        value: 30
+      - color: red
+        value: 31
+      title: Train Home Noord
+      title_position: inside
+      type: custom:bar-card
+    - entities:
+      - filter:
+          exclude:
+          - sensor.train_home_noord.at*
+          - sensor.train_home_noord.fr*
+          - sensor.train_home_noord.oc*
+          - sensor.train_home_noord.ic*
+          - sensor.train_home_noord.oc*
+          - sensor.train_home_noord.uni*
+          - sensor.train_home_noord.lat*
+          - sensor.train_home_noord.lon*
+          - sensor.train_home_noord.lon*
+          - sensor.train_home_noord.platform_ar*
+          include:
+          - sensor.train_home_noord.*
+        heading_name: ' '
+        heading_state: '  '
+        type: custom:entity-attributes-card
+      type: entities
+    type: vertical-stack
+  - content: "Current delay [[ sensor.train_home.attributes.delay ]] \nArrival in\
+      \ [[ sensor.train_home.attributes.departure ]] min\nDuration [[ sensor.train_home\
+      \ ]] min\nGate [[ sensor.train_home.attributes.platform_departing ]]  \n"
+    title: Home via Brussel Centraal
+    type: markdown
+  icon: mdi:train
+  panel: false
+  title: Train
+- badges: []
+  cards:
+  - cards:
+    - cards:
+      - color: rgb(0,0,0.5)
+        color_off: var(--disabled-text-color)
+        color_type: card
+        default_color: var(--primary-text-color)
+        name: WAS & DROOG
+        styles:
+          card:
+          - font-size: 20px
+          - font-weight: bold
+          - padding: 0px
+          - height: 45px
+          - width: 225px
+          - border-color: '#ed17cc'
+          - border-radius: 25px
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - color: rgb(0,0,0.5)
+        color_off: var(--disabled-text-color)
+        color_type: card
+        default_color: var(--primary-text-color)
+        name: BERGING
+        styles:
+          card:
+          - font-size: 20px
+          - font-weight: bold
+          - padding: 0px
+          - height: 45px
+          - width: 225px
+          - border-color: '#ed17cc'
+          - border-radius: 25px
+        type: custom:button-card
+      type: horizontal-stack
+    - cards:
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_berging_wasmachine
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:washing-machine
+        name: Wasmachine
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_berging_droogkast
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:tumble-dryer
+        name: Droogkast
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: input_boolean.easyplus_boiler_shower
+        icon: mdi:fire
+        lock: true
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 50px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 50px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        color: yellow
+        color_type: card
+        entity: switch.easyplus
+        icon: mdi:power
+        lock: true
+        name: Easyplus
+        show_name: false
+        size: 100%
+        state:
+        - styles:
+            card:
+            - animation: blink 2s ease infinite
+            - height: 70px
+            - width: 70px
+            - border-radius: 50px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - color: green
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 50px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - color: red
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - cards:
+      - color: rgb(0,0,0.5)
+        color_off: var(--disabled-text-color)
+        color_type: card
+        default_color: var(--primary-text-color)
+        name: KEUKEN MUUR
+        styles:
+          card:
+          - font-size: 20px
+          - font-weight: bold
+          - padding: 0px
+          - height: 45px
+          - width: 230px
+          - border-color: '#ed17cc'
+          - border-radius: 25px
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - color: rgb(0,0,0.5)
+        color_off: var(--disabled-text-color)
+        color_type: card
+        default_color: var(--primary-text-color)
+        name: KEUKEN EILAND
+        styles:
+          card:
+          - font-size: 20px
+          - font-weight: bold
+          - padding: 0px
+          - height: 45px
+          - width: 230px
+          - border-color: '#ed17cc'
+          - border-radius: 25px
+        type: custom:button-card
+      type: horizontal-stack
+    - cards:
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_keuken_espresso
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:coffee
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_keuken_microwave
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:microwave
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_keuken_oven
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:stove
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_keuken_commander
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:bowl
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_keuken_vaatwasser
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:dishwasher
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_keuken_water
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:water-pump
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: 'font-size: 15px;
+
+        font-weight: bold;
+
+        '
+      color: rgb(0,0,0.5)
+      color_off: var(--disabled-text-color)(189, 255, 5)
+      color_type: card
+      default_color: var(--primary-text-color)
+      name: TV
+      size: 10%
+      styles:
+        card:
+        - font-size: 20px
+        - font-weight: bold
+        - padding-top: 2%
+        - height: 45px
+        - border-color: '#ed17cc'
+        - border-radius: 50px
+      type: custom:button-card
+    - cards:
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        entity: switch.stp_eetkamer_tv
+        entity_picture: /local/icons/samsungtv.png
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:television
+        name: Eetkamer
+        show_entity_picture: true
+        show_name: true
+        size: 100%
+        state:
+        - styles:
+            card:
+            - width: 100px
+            - border-radius: 5px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+          value: 'on'
+        - styles:
+            card:
+            - width: 100px
+            - border-radius: 5px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - filter: brightness(55%)
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        entity: switch.stp_living_sony
+        entity_picture: /local/icons/sonytv.png
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:television
+        name: Living
+        show_entity_picture: true
+        show_name: true
+        size: 100%
+        state:
+        - styles:
+            card:
+            - width: 100px
+            - border-radius: 5px
+          value: 'on'
+        - styles:
+            card:
+            - width: 100px
+            - filter: brightness(55%)
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        entity: switch.kodi
+        entity_picture: /local/icons/samsungtv2.png
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:television
+        name: Slaapkamer
+        show_entity_picture: true
+        show_name: true
+        size: 100%
+        state:
+        - styles:
+            card:
+            - width: 100px
+            - border-radius: 5px
+          value: 'on'
+        - styles:
+            card:
+            - width: 100px
+            - border-radius: 5px
+            - filter: brightness(55%)
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - cards:
+      - color: rgb(0,0,0.5)
+        color_off: var(--disabled-text-color)
+        color_type: card
+        default_color: var(--primary-text-color)
+        name: LIVING
+        styles:
+          card:
+          - font-size: 20px
+          - font-weight: bold
+          - padding: 0px
+          - height: 45px
+          - width: 250px
+          - border-color: '#ed17cc'
+          - border-radius: 25px
+        type: custom:button-card
+      - color: rgb(0,0,0.5)
+        color_off: var(--disabled-text-color)
+        color_type: card
+        default_color: var(--primary-text-color)
+        name: TV
+        styles:
+          card:
+          - font-size: 20px
+          - font-weight: bold
+          - padding: 0px
+          - height: 45px
+          - width: 230px
+          - border-color: '#ed17cc'
+          - border-radius: 25px
+        type: custom:button-card
+      type: horizontal-stack
+    - cards:
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_living_other
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:power-socket-eu
+        name: Muur
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_living_bureau
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:speaker-wireless
+        name: SUBWoofer
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - color_type: blank-card
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_living_other
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:power-socket-eu
+        name: Muur
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_living_bureau
+        hold_action:
+          action: more-info
+          haptic: success
+        icon: mdi:speaker-wireless
+        name: SUBWoofer
+        show_name: false
+        size: 75%
+        state:
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+            - white-space: nowrap
+          value: 'on'
+        - styles:
+            card:
+            - height: 70px
+            - width: 70px
+            - border-radius: 10px
+            - font-size: 11px
+            - box-shadow: 2px 2px rgba(0,0,0,0.3)
+            - white-space: nowrap
+          value: 'off'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: 'font-size: 15px;
+
+        font-weight: bold;
+
+        '
+      color: rgb(0,0,0.5)
+      color_off: var(--disabled-text-color)(189, 255, 5)
+      color_type: card
+      default_color: var(--primary-text-color)
+      name: SLAAPKAMERS
+      size: 10%
+      styles:
+        card:
+        - font-size: 20px
+        - font-weight: bold
+        - padding-top: 2%
+        - height: 45px
+        - border-color: '#ed17cc'
+        - border-radius: 25px
+      type: custom:button-card
+    - cards:
+      - entity: switch.stp_slp1_bed_soumaya
+        icon: mdi:hotel
+        layout: icon_name
+        name: Last tag
+        show_last_changed: true
+        show_name: false
+        show_state: true
+        styles:
+          card:
+          - height: 80px
+          - width: 150px
+          label:
+          - color: gray
+          - font-size: 11px
+          - font-family: Helvetica
+          - padding: 0px 10px
+          - justify-self: end
+          name:
+          - padding: 0px 10px
+          - font-size: 13px
+          - font-family: Helvetica
+          - justify-self: start
+          - font-weight: bold
+          state:
+          - font-size: 15px
+          - font-family: Helvetica
+          - padding: 0px 10px
+          - justify-self: end
+          - text-transform: capitalize
+          - font-weight: bold
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_slp1_bed
+        icon: mdi:power-socket-eu
+        name: BED Rachid
+        size: 20%
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.kodi
+        icon: mdi:kodi
+        name: KODI
+        size: 20%
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_slp1_bed_soumaya
+        icon: mdi:power-socket-eu
+        name: BED SOUMAYA
+        size: 20%
+        type: custom:button-card
+      type: horizontal-stack
+    - cards:
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_slp3_deur
+        icon: mdi:power-socket-eu
+        name: SLP2 Deur
+        size: 20%
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_slp3_bureau
+        icon: mdi:power-socket-eu
+        name: SLP2 Bureau
+        size: 20%
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_slp2_deur
+        icon: mdi:power-socket-eu
+        name: SLP1 deur
+        size: 20%
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_slp2_bureau
+        icon: mdi:power-socket-eu
+        name: SLP1 bureau
+        size: 20%
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  icon: mdi:power-plug
+  path: ''
+  title: Stopcontanten
+- badges: []
+  cards:
+  - cards:
+    - card_style: ''
+      color_off: var(--disabled-text-color)
+      color_type: label
+      default_color: var(--primary-text-color)
+      entity: group.living_light
+      name: Inkomhal
+      show_icon: false
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_vestiare
+        icon: mdi:door
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_berging_center
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_wc
+        icon: mdi:toilet
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      color_off: var(--disabled-text-color)
+      color_type: label
+      default_color: var(--primary-text-color)
+      entity: group.kitchen_light
+      name: Keuken
+      show_icon: false
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_keuken_spot_links
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_keuken_spot_front
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_keuken_spot_rechts
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      entity: group.dinner_light
+      name: Eetkamer
+      show_icon: false
+      show_name: true
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_eetkamer_center
+        icon: mdi:lamp
+        show_name: false
+        size: 10%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_eetkamer_double_spot
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 10%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      color_off: var(--disabled-text-color)
+      color_type: label
+      default_color: var(--primary-text-color)
+      entity: group.living_light
+      label_template: 'return ''Sensor name: '' + states[''sensor.tmp_living''].state;
+
+        '
+      name: Living
+      show_icon: false
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: icon
+        default_color: var(--primary-text-color)
+        entity: switch.light_living_double_spot
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_living_center
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_living_triple_spot
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      entity: group.bureau_light
+      name: Bureau
+      show_icon: false
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_bureau_spots
+        icon: mdi:lamp
+        show_name: false
+        size: 10%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_bureau_tl
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 10%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      color_type: label-card
+      entity: group.trap_light
+      name: Trappen
+      show_icon: false
+      state:
+      - color: white
+        value: 'off'
+      - color: yellow
+        value: 'on'
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_trap_1
+        icon: mdi:numeric-1-box-outline
+        show_name: false
+        size: 30%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_trap_2
+        icon: mdi:numeric-2-box-outline
+        show_name: false
+        size: 30%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_trap_3
+        icon: mdi:numeric-3-box-outline
+        show_name: false
+        size: 30%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_trap_4
+        icon: mdi:numeric-4-box-outline
+        show_name: false
+        size: 30%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_trap_5
+        icon: mdi:numeric-5-box-outline
+        show_name: false
+        size: 30%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      color_off: var(--disabled-text-color)
+      color_type: label
+      default_color: var(--primary-text-color)
+      entity: group.trap_boven
+      name: Traphal
+      show_icon: false
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_trap_achter
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 10%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_trap_achter
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 10%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      color_type: label-card
+      entity: group.slaapkamer2_light
+      name: Sara
+      show_icon: false
+      state:
+      - color: white
+        value: 'off'
+      - color: yellow
+        value: 'on'
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp2_deur
+        icon: mdi:door
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp2_kast
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp3_muur
+        icon: mdi:wall-sconce
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      color_type: label-card
+      entity: group.slaapkamer3_light
+      name: Yassin
+      show_icon: false
+      state:
+      - color: white
+        value: 'off'
+      - color: yellow
+        value: 'on'
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp3_deur
+        icon: mdi:door
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp3_kast
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp3_muur
+        icon: mdi:wall-sconce
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      color_off: var(--disabled-text-color)
+      color_type: label
+      default_color: var(--primary-text-color)
+      entity: group.slaapkamer1_light
+      name: FloRadix
+      show_icon: false
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255, 255, 0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp1_deur
+        icon: mdi:door
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp1_center
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.stp_slp1_bed_soumaya
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    - cards:
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp1_soumaya
+        icon: mdi:wall-sconce
+        show_name: false
+        size: 10%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(239, 239, 16)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_slp1_rachid
+        icon: mdi:wall-sconce
+        show_name: false
+        size: 10%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - card_style: ''
+      color_type: label-card
+      entity: group.badkamer_light
+      name: Badkamer
+      show_icon: false
+      state:
+      - color: white
+        value: 'off'
+      - color: yellow
+        value: 'on'
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_badkamer_spiegel
+        icon: mdi:toilet
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_badkamer_douche
+        icon: mdi:spotlight
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color: rgb(255,255,0)
+        color_off: var(--disabled-text-color)(189, 255, 5)
+        color_type: card
+        default_color: var(--primary-text-color)
+        entity: switch.light_badkamer_lavabo
+        icon: mdi:ceiling-light
+        show_name: false
+        size: 20%
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  icon: mdi:lamp
+  path: ''
+  title: Verlichting
+- badges: []
+  cards:
+  - cards:
+    - color_type: label-card
+      name: MEDIA
+      show_entity_picture: true
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - color_type: label-card
+        entity: switch.raspi_plex
+        entity_picture: /local/docker/plex.png
+        show_entity_picture: true
+        show_name: false
+        size: 30%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - color_type: label-card
+        entity: switch.raspi_tautulli
+        entity_picture: /local/docker/tautulli.png
+        show_entity_picture: true
+        show_name: false
+        size: 30%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - color_type: label-card
+        entity: switch.raspi_sambaserver
+        entity_picture: /local/docker/samba.png
+        show_entity_picture: true
+        show_name: false
+        size: 30%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: DOWNLOADS
+      show_entity_picture: true
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - color_type: label-card
+        entity: switch.raspi_transmission
+        entity_picture: /local/docker/transmission.png
+        show_entity_picture: true
+        show_name: false
+        size: 55%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(90%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - color_type: label-card
+        entity: switch.raspi_medusa
+        entity_picture: /local/docker/medusa.png
+        show_entity_picture: true
+        show_name: false
+        size: 55%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - color_type: label-card
+        entity: switch.raspi_couchpotato
+        entity_picture: /local/docker/couchpotato.png
+        show_entity_picture: true
+        show_name: false
+        size: 55%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - color_type: label-card
+        entity: switch.raspi_sabnzbd
+        entity_picture: /local/docker/sabnzbd.png
+        show_entity_picture: true
+        show_name: false
+        size: 55%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - color_type: label-card
+        entity: switch.raspi_jackett
+        entity_picture: /local/docker/jackett.png
+        show_entity_picture: true
+        show_name: false
+        size: 55%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: HOME-ASSISANT
+      show_entity_picture: true
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color_type: label-card
+        entity: switch.raspi_cloud9
+        entity_picture: /local/docker/cloud9.png
+        show_entity_picture: true
+        show_name: false
+        size: 50%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color_type: label-card
+        entity: switch.raspi_hassconfig
+        entity_picture: /local/docker/editor.svg
+        show_entity_picture: true
+        show_name: false
+        size: 50%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color_type: label-card
+        entity: switch.raspi_ouroboros
+        entity_picture: /local/docker/ouroborosv1.png
+        show_entity_picture: true
+        show_name: false
+        size: 50%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color_type: label-card
+        entity: switch.raspi_mosquitto
+        entity_picture: /local/docker/mosquitto.png
+        show_entity_picture: true
+        show_name: false
+        size: 50%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    - cards:
+      - card_style: ''
+        color_type: label-card
+        entity: switch.raspi_mariadb_hass
+        entity_picture: /local/docker/homeassitant.png
+        show_entity_picture: true
+        show_name: false
+        size: 30%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(90%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color_type: label-card
+        entity: switch.raspi_portainer
+        entity_picture: /local/docker/portainer.png
+        show_entity_picture: true
+        show_name: false
+        size: 30%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color_type: label-card
+        entity: switch.raspi_esphome
+        entity_picture: /local/docker/esphome.png
+        show_entity_picture: true
+        show_name: false
+        size: 30%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: WEB APPS
+      show_entity_picture: true
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - color_type: label-card
+        entity: switch.raspi_wetty
+        entity_picture: /local/docker/ssh.png
+        show_entity_picture: true
+        show_name: false
+        size: 50%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - color_type: label-card
+        entity: switch.raspi_wetty_ssh
+        entity_picture: /local/docker/ssh.png
+        show_entity_picture: true
+        show_name: false
+        size: 50%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - color_type: label-card
+        entity: switch.raspi_goaccess
+        entity_picture: /local/docker/webtools.png
+        show_entity_picture: true
+        show_name: false
+        size: 50%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - color_type: label-card
+        entity: switch.raspi_letsencrypt
+        entity_picture: /local/docker/ssl.png
+        show_entity_picture: true
+        show_name: false
+        size: 50%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: BACKUP
+      show_entity_picture: true
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - card_style: ''
+        color_type: label-card
+        entity: switch.raspi_duplicati
+        entity_picture: /local/docker/duplicati.png
+        show_entity_picture: true
+        show_name: false
+        size: 20%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      - card_style: ''
+        color_type: label-card
+        entity: switch.raspi_seafile
+        entity_picture: /local/docker/seafile.png
+        show_entity_picture: true
+        show_name: false
+        size: 20%
+        state:
+        - color: var(--paper-item-icon-color)
+          value: 'on'
+        - entity_picture_style:
+          - filter: grayscale(100%)
+          value: 'off'
+        styles:
+          card:
+          - border-radius: 50px
+          - border-style: solid
+          - border-width: 2px
+          - border-color: '#e5e5e5'
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  icon: mdi:docker
+  path: ''
+  title: Docker
+- badges: []
+  cards:
+  - columns: 4
+    entities:
+    - entity: sensor.ht_eetkamer_temp
+      name: Eetkamer
+    - entity: sensor.ht_eetkamer_humidity
+      name: Vochtigheid %
+    - entity: sensor.ht_eetkamer_battery
+      name: Batterij %
+    - entity: sensor.ht_eetkamer_online
+      icon: mdi:lan-connect
+      name: Online
+    - entity: sensor.ht_sara_temp
+      name: Sara
+    - entity: sensor.ht_sara_humidity
+      icon: mdi:water-percent
+      name: Vochtigheid %
+    - entity: sensor.ht_sara_battery
+      icon: mdi:battery
+      name: Batterij %
+    - entity: sensor.ht_sara_online
+      icon: mdi:lan-connect
+      name: Online
+    title: Shelly HT
+    type: glance
+  - entities:
+    - entity: input_boolean.1u_eetkamer
+      secondary_info: last-changed
+    - entity: input_boolean.2u_eetkamer
+      secondary_info: last-changed
+    - entity: switch.heating_eetkamer
+      secondary_info: last-changed
+    - entity: binary_sensor.heat_living
+      secondary_info: last-changed
+    - entity: climate.eetkamer
+      secondary_info: last-changed
+    - entity: sensor.tmp_set_eetkamer
+      secondary_info: last-changed
+    - entity: input_number.setpoint_eetkamer
+      secondary_info: last-changed
+    show_header_toggle: false
+    title: Eetkamer
+    type: entities
+  - entities:
+    - entity: input_boolean.1u_living
+      secondary_info: last-changed
+    - entity: input_boolean.2u_living
+      secondary_info: last-changed
+    - entity: switch.heating_living
+      secondary_info: last-changed
+    - entity: binary_sensor.heat_living
+      secondary_info: last-changed
+    - entity: climate.living
+      secondary_info: last-changed
+    - entity: sensor.tmp_set_living
+      secondary_info: last-changed
+    - entity: input_number.setpoint
+      secondary_info: last-changed
+    show_header_toggle: false
+    title: Living
+    type: entities
+  - entities:
+    - entity: input_boolean.1u_floradix
+      secondary_info: last-changed
+    - entity: input_boolean.2u_floradix
+      secondary_info: last-changed
+    - entity: switch.heating_floradix
+      secondary_info: last-changed
+    - entity: binary_sensor.heat_slp_1
+      secondary_info: last-changed
+    - entity: climate.floradix
+      secondary_info: last-changed
+    - entity: sensor.tmp_set_slp_1
+      secondary_info: last-changed
+    - entity: input_number.setpoint_slp1
+      secondary_info: last-changed
+    show_header_toggle: false
+    title: S&R
+    type: entities
+  - entities:
+    - entity: input_boolean.1u_sara
+      secondary_info: last-changed
+    - entity: switch.heating_sara
+      secondary_info: last-changed
+    - entity: binary_sensor.heat_slp_2
+      secondary_info: last-changed
+    - entity: climate.sara
+      secondary_info: last-changed
+    - entity: sensor.tmp_set_slp_2
+      secondary_info: last-changed
+    - entity: input_number.setpoint_slp2
+      secondary_info: last-changed
+    show_header_toggle: false
+    title: Sara
+    type: entities
+  - entities:
+    - entity: input_boolean.1u_floradix
+      secondary_info: last-changed
+    - entity: switch.heating_yassin
+      secondary_info: last-changed
+    - entity: binary_sensor.heat_slp_3
+      secondary_info: last-changed
+    - entity: climate.yassin
+      secondary_info: last-changed
+    - entity: sensor.tmp_set_slp_3
+      secondary_info: last-changed
+    - entity: input_number.setpoint_slp3
+      secondary_info: last-changed
+    show_header_toggle: false
+    title: Yassin
+    type: entities
+  - entities:
+    - entity: switch.heating_badkamer
+      secondary_info: last-changed
+    - entity: binary_sensor.heat_badkamer
+      secondary_info: last-changed
+    - entity: climate.badkamer
+      secondary_info: last-changed
+    - entity: sensor.tmp_set_badkamer
+      secondary_info: last-changed
+    - entity: input_number.setpoint_bad
+      secondary_info: last-changed
+    show_header_toggle: false
+    title: Badkamer
+    type: entities
+  icon: mdi:temperature-celsius
+  path: ''
+  title: Verwarming
+- badges: []
+  cards:
+  - entities:
+    - input_boolean.heating
+    show_header_toggle: false
+    title: Status verwarming
+    type: entities
+  - entities:
+    - input_number.auto_heat_hour
+    - input_number.auto_heat_min
+    - sensor.auto_heat_time
+    - input_number.auto_heat_duration
+    - sensor.auto_heat_duration
+    show_header_toggle: false
+    title: Eetkamer - Timer
+    type: entities
+  - entities:
+    - input_number.auto_heat_hour_liv
+    - input_number.auto_heat_min_liv
+    - sensor.auto_heat_time_liv
+    - input_number.auto_heat_duration_liv
+    - sensor.auto_heat_duration_liv
+    show_header_toggle: false
+    title: Living - Timer
+    type: entities
+  - entities:
+    - input_number.auto_heat_hour_slp1
+    - input_number.auto_heat_min_slp1
+    - sensor.auto_heat_time_slp1
+    - input_number.auto_heat_duration_slp1
+    - sensor.auto_heat_duration_slp1
+    show_header_toggle: false
+    title: S&R - Timer
+    type: entities
+  - entities:
+    - input_number.auto_heat_hour_slp2
+    - input_number.auto_heat_min_slp2
+    - sensor.auto_heat_time_slp2
+    - input_number.auto_heat_duration_slp2
+    - sensor.auto_heat_duration_slp2
+    show_header_toggle: false
+    title: Sara - Timer
+    type: entities
+  - entities:
+    - input_number.auto_heat_hour_slp3
+    - input_number.auto_heat_min_slp3
+    - sensor.auto_heat_time_slp3
+    - input_number.auto_heat_duration_slp3
+    - sensor.auto_heat_duration_slp3
+    show_header_toggle: false
+    title: Yassin - Timer
+    type: entities
+  icon: mdi:oil-temperature
+  path: ''
+  title: Heating Timers
+- badges: []
+  cards:
+  - entities:
+    - entity: lock.1_vng740_lock
+      icon: mdi:car-key
+      name: Lock switch
+    - entity: sensor.1_vng740_lock
+      icon: mdi:car-key
+      name: Lock status
+    - entity: binary_sensor.1_vng740_park_brake_status
+      icon: mdi:car-brake-alert
+      name: Brake state
+    - entity: binary_sensor.1_vng740_tire_warning
+      icon: mdi:car-tire-alert
+      name: Tire Warning
+    - entity: binary_sensor.1_vng740_windows_closed
+      icon: mdi:car-door
+      name: Windows closed
+    - entity: sensor.1_vng740_fuel_level
+      icon: mdi:gas-station
+      name: Fuel level
+    image: /local/mercedes3.png
+    type: picture-glance
+  - entities:
+    - entity: device_tracker.wdd2052441f857325
+      icon: mdi:car
+      name: Car location
+    - entity: lock.1_vng740_lock
+      icon: mdi:car-key
+      name: Lock switch
+    - entity: sensor.1_vng740_lock
+      icon: mdi:car-key
+      name: Lock status
+    - entity: binary_sensor.1_vng740_park_brake_status
+      icon: mdi:car-brake-alert
+      name: Brake state
+    - entity: binary_sensor.1_vng740_tire_warning
+      icon: mdi:car-tire-alert
+      name: Tire Warning
+    - entity: binary_sensor.1_vng740_windows_closed
+      icon: mdi:car-door
+      name: Windows closed
+    - entity: sensor.1_vng740_fuel_level
+      icon: mdi:gas-station
+      name: Fuel level
+    - entity: sensor.1_vng740_odometer
+      icon: mdi:counter
+      name: Odometer
+    type: entities
+  - aspect_ratio: 16x13
+    default_zoom: 16
+    entities:
+    - entity: device_tracker.wdd2052441f857325
+    type: map
+  - entities:
+    - filter:
+        exclude:
+        - sensor.1_vng740_odometer.fr*
+        - sensor.1_vng740_odometer.car
+        - sensor.1_vng740_odometer.retr*
+        - sensor.1_vng740_odometer.unit*
+        include:
+        - sensor.1_vng740_odometer.*
+        - key: sensor.1_vng740_odometer.averageSpeedReset
+          name: Average Speed Reset
+      heading_name: 'Odometer details '
+      heading_state: '   '
+      title: null
+      type: custom:entity-attributes-card
+    type: entities
+  - entities:
+    - filter:
+        exclude:
+        - sensor.1_vng740_lock.fr*
+        - sensor.1_vng740_lock.car
+        - sensor.1_vng740_lock.retr*
+        - sensor.1_vng740_lock.unit*
+        include:
+        - sensor.1_vng740_lock.*
+      heading_name: 'Lock details '
+      heading_state: '   '
+      type: custom:entity-attributes-card
+    type: entities
+  - entities:
+    - filter:
+        exclude:
+        - binary_sensor.1_vng740_tire_warning.fr*
+        - binary_sensor.1_vng740_tire_warning.car
+        - binary_sensor.1_vng740_tire_warning.retr*
+        - binary_sensor.1_vng740_tire_warning.unit*
+        include:
+        - binary_sensor.1_vng740_tire_warning.*
+      heading_name: 'Tire details '
+      heading_state: '   '
+      type: custom:entity-attributes-card
+    type: entities
+  icon: mdi:car
+  title: car
+- badges: []
+  cards:
+  - animation: 'off'
+    entity: sensor.processor_use
+    severity:
+    - color: green
+      value: 60
+    - color: orange
+      value: 70
+    - color: red
+      value: 100
+    title: CPU
+    title_position: inside
+    type: custom:bar-card
+  - align_header: center
+    align_icon: left
+    animate: true
+    entities:
+    - entity: sensor.load_1m
+      name: 1m
+    - entity: sensor.load_5m
+      name: 5m
+    - entity: sensor.load_15m
+      name: 15m
+    font_size: 120
+    height: 100
+    hour24: true
+    hours_to_show: 48
+    line_width: 5
+    location_icon: left
+    location_state: center
+    more_info: false
+    name: CPU Load
+    points_per_hour: 0.1
+    show:
+      extrema: true
+      labels: true
+      legend: true
+    type: custom:mini-graph-card
+  - align_header: center
+    align_icon: left
+    animate: true
+    entities:
+    - entity: sensor.memory_free
+      name: Free
+    - entity: sensor.memory_use
+      name: Used
+    - entity: sensor.swap_use
+    font_size: 120
+    height: 100
+    hour24: true
+    hours_to_show: 48
+    line_width: 5
+    location_icon: left
+    location_state: center
+    more_info: false
+    name: Memory
+    points_per_hour: 0.1
+    show:
+      extrema: true
+      labels: true
+      legend: true
+    type: custom:mini-graph-card
+  - cards:
+    - content: '## Update Status'
+      type: markdown
+    - columns: 6
+      entities:
+      - entity: sensor.latest_version
+        icon: mdi:home-assistant
+        name: Latest
+      - entity: sensor.current_version
+        icon: mdi:home-assistant
+        name: Current
+      - entity: script.hass_update
+        icon: mdi:home-assistant
+        name: Update
+        tap_action:
+          action: toggle
+      - entity: sensor.hass_db_size
+        icon: mdi:database
+        name: Hass DB
+      - entity: sensor.data_log
+        icon: mdi:file
+        name: Easyplus
+      - entity: script.easyclean
+        icon: mdi:tumblr-reblog
+        name: Log Reset
+        tap_action:
+          action: toggle
+      type: glance
+    - entities:
+      - entity: sensor.hacs
+        name: HACS
+      - entity: sensor.potential_breaking_changes
+      show_header_toggle: false
+      type: glance
+    - card:
+        columns:
+        - add_link: doclink
+          field: component
+          title: Component
+        - add_link: prlink
+          field: description
+          title: Description
+        entity: sensor.potential_breaking_changes
+        type: custom:list-card
+      conditions:
+      - entity: sensor.potential_breaking_changes
+        state_not: '0'
+      type: conditional
+    type: custom:vertical-stack-in-card
+  - entities:
+    - entity: input_boolean.gitlab
+      icon: mdi:gitlab
+      name: GIT Pull + HA reboot
+    - entity: sensor.gitlab_ci
+      name: GiTLAB Pipline status
+    - entity: sensor.git_update_available
+      icon: mdi:gitlab
+      name: GIT Update available
+    - entity: sensor.latest_commit
+      icon: mdi:git
+    - entity: input_text.git_commit_message
+      type: custom:text-input-row
+    - action_name: push to Gitlab
+      icon: mdi:github-circle
+      name: ' '
+      service: shell_command.git_commit
+      type: call-service
+    show_header_toggle: false
+    title: GITLab-CI
+    type: entities
+  - entities:
+    - entity: input_select.log_level
+      name: Select log level
+    show_header_toggle: false
+    title: HASS Log level
+    type: entities
+  - columns: 3
+    entities:
+    - entity: sensor.count_automations
+      icon: mdi:autorenew
+      name: Automations
+    - entity: sensor.count_scripts
+      icon: mdi:script-text-outline
+      name: Scripts
+    - entity: sensor.count_zones
+      icon: mdi:map-marker-radius
+      name: Zones
+    - entity: sensor.count_device_trackers
+      icon: mdi:map-marker
+      name: Device Trackers
+    - entity: sensor.count_switches
+      icon: mdi:light-switch
+      name: Switches
+    - entity: sensor.count_lights
+      icon: mdi:lightbulb-on-outline
+      name: Lights
+    - entity: sensor.count_sensors
+      icon: mdi:resistor
+      name: Sensors
+    - entity: sensor.count_binary_sensors
+      icon: mdi:unfold-more-horizontal
+      name: Binary Sensors
+    - entity: sensor.count_input_booleans
+      icon: mdi:toggle-switch
+      name: Input Booleans
+    - entity: sensor.count_input_numbers
+      icon: mdi:numeric
+      name: Input Numbers
+    - entity: sensor.count_input_selects
+      icon: mdi:view-list
+      name: Input Select
+    - entity: sensor.count_input_datetimes
+      icon: mdi:calendar-clock
+      name: Input Date Times
+    theme: Backend-selected
+    title: HA Component Count
+    type: glance
+  - entities:
+    - entity: sensor.disk_free_home
+      name: SD Free
+    - entity: sensor.disk_free_mnt_usb_2
+      name: USB Free
+    - entity: sensor.disk_use_percent_mnt_usb_2
+      name: USB %
+    show_header_toggle: false
+    type: glance
+  - cards:
+    - entities:
+      - entity: binary_sensor.wan
+        name: Internet
+      - entity: switch.router_adblock
+        tap_action:
+          action: toggle
+      - entity: switch.router_firewall
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_server1
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_server2
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client1
+        name: US
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client2
+        name: NL
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client3
+        name: CANADA
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client4
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client5
+      show_state: false
+      title: Router
+      type: glance
+    - entities:
+      - type: divider
+      - sensor.elradix_be
+      - entity: sensor.geoip
+        name: Home IP
+      - sensor.ssl_certificate
+      - sensor.ssl_certificate_eu
+      - type: divider
+      - entity: sensor.asuswrt_download
+        icon: mdi:download
+        name: Download
+      - entity: sensor.asuswrt_download_speed
+        icon: mdi:download
+        name: Download speed
+      - entity: sensor.asuswrt_upload
+        icon: mdi:upload
+        name: Upload
+      - entity: sensor.asuswrt_upload_speed
+        icon: mdi:upload
+        name: Upload speed
+      - type: divider
+      label: router
+      type: entities
+    type: custom:vertical-stack-in-card
+  - columns: 3
+    entities:
+    - entity: sensor.rpi_power_description
+    - entity: sensor.cpu_speed
+    - entity: sensor.cpu_temp
+    - entity: sensor.load_1m
+    - entity: sensor.load_5m
+    - entity: sensor.load_15m
+    - sensor.memory_use
+    - sensor.memory_free
+    - sensor.swap_use
+    theme: Backend-selected
+    title: ''
+    type: glance
+  - columns: 7
+    entities:
+    - entity: binary_sensor.server_status
+      icon: mdi:check-decagram
+      name: Server
+    - entity: binary_sensor.easyplus_status
+      icon: mdi:check-decagram
+      name: Easyplus
+    - entity: binary_sensor.ketel_status
+      icon: mdi:check-decagram
+      name: Ketel
+    - entity: binary_sensor.living_status
+      icon: mdi:check-decagram
+      name: Living
+    - entity: binary_sensor.kodi_status
+      icon: mdi:check-decagram
+      name: Kodi
+    - entity: binary_sensor.rf_bridge
+      icon: mdi:check-decagram
+      name: RF
+    - entity: sensor.sonoff_bridge_status
+      icon: mdi:check-decagram
+      name: RF
+    show_name: true
+    show_state: false
+    theme: default
+    title: Sonoff Status
+    type: glance
+  - entities:
+    - entity: sensor.network_in_eth0
+    - entity: sensor.network_out_eth0
+    show_header_toggle: false
+    title: RPI Network
+    type: entities
+  - entities:
+    - entity: script.check_sonoffs_version
+    - entity: sensor.tasmota_current_version
+    - entity: sensor.sonoff_06_version
+    show_header_toggle: false
+    theme: Backend-selected
+    title: Sonoff Firmware
+    type: entities
+  - entities:
+    - entity: sensor.time
+    show_header_toggle: false
+    title: Time
+    type: entities
+  - entities:
+    - entity: script.nginx
+    - entity: script.php
+    - entity: script.docker
+    - entity: sensor.nginx
+    - entity: sensor.phpfpm
+    - entity: sensor.docker
+    show_header_toggle: false
+    title: Processes
+    type: entities
+  icon: mdi:server
+  path: ''
+  title: Raspberry Pi
+- badges: []
+  cards:
+  - aspect_ratio: 16x9
+    default_zoom: 15
+    entities:
+    - entity: device_tracker.life360_rachid
+    - entity: device_tracker.comp_rachid
+    type: map
+  - aspect_ratio: 16x9
+    default_zoom: 15
+    entities:
+    - entity: device_tracker.comp_soumaya
+    - entity: device_tracker.life360_soumaya
+    type: map
+  - columns: 5
+    entities:
+    - entity: person.rachid
+    - entity: device_tracker.rachid
+      name: router
+    - entity: device_tracker.rachid_mqtt
+      name: mqtt
+    - entity: device_tracker.elradix
+      name: BT
+    - entity: device_tracker.comp_rachid
+      name: group
+    - entity: device_tracker.google_maps_elrachid_gmail_com
+      name: google
+    - entity: device_tracker.life360_rachid
+      name: life360
+    - entity: device_tracker.elradix_2
+      name: gpslogger
+    show_name: true
+    show_state: true
+    type: glance
+  - columns: 5
+    entities:
+    - entity: person.soumaya
+    - entity: device_tracker.soumaya
+      name: router
+    - entity: device_tracker.soumaya_mqtt
+      name: mqtt
+    - entity: device_tracker.soumaya_2
+      name: BT
+    - entity: device_tracker.comp_soumaya
+      name: group
+    - entity: device_tracker.google_maps_102675862650488616596
+      name: google
+    - entity: device_tracker.life360_soumaya
+      name: life360
+    - entity: device_tracker.flora_2
+      name: gpslogger
+    type: glance
+  - entities:
+    - entity: sensor.soumaya_to_home
+    - entity: sensor.rachid_to_home
+    - entity: sensor.proximity_person
+    show_header_toggle: false
+    title: Proximity
+    type: entities
+  - entities:
+    - entity: sensor.time_to_leave_for_home
+    - entity: sensor.time_to_home
+    - entity: sensor.me_traffic_density_to_home
+    - entity: sensor.time_to_leave_for_work
+    - entity: sensor.time_to_work
+    - entity: sensor.me_traffic_density_to_work
+    show_header_toggle: false
+    title: Travel time BNP
+    type: entities
+  - entities:
+    - sensor.time_to_leave_for_home
+    - sensor.time_to_home
+    - sensor.me_traffic_density_to_home
+    - sensor.time_to_leave_for_work
+    - sensor.time_to_work
+    - sensor.me_traffic_density_to_work
+    show_header_toggle: false
+    title: Travel time Brussel
+    type: entities
+  - entities:
+    - input_boolean.work
+    - sensor.time_at_work_today
+    - sensor.time_at_work_this_week
+    - sensor.time_at_work_this_month
+    - sensor.percent_at_work_daily
+    - sensor.percent_at_work_weekly
+    - sensor.percent_at_work_monthly
+    show_header_toggle: false
+    title: Work Hours
+    type: entities
+  icon: mdi:highway
+  path: ''
+  title: Travel
+- badges: []
+  cards:
+  - card:
+      show_name: true
+      show_state: false
+      title: Running  Activities
+      type: glance
+    entities:
+    - entity: group.easyplus_sensors
+      icon: mdi:power
+    - entity: sensor.easyplus_boiler
+    - entity: sensor.easyplus_boiler_heating
+    - entity: sensor.easyplus_kitchen
+    - entity: sensor.easyplus_was
+    show_empty: true
+    state_filter:
+    - 'on'
+    type: entity-filter
+  - card:
+      show_header_toggle: false
+      show_name: true
+      show_state: false
+      title: Timers
+      type: entities
+    entities:
+    - entity: timer.espresso
+    - entity: timer.dish
+      name: vaatwasser
+    - entity: timer.water
+      name: waterkoker
+    - entity: timer.oven
+    - entity: timer.microgolf
+    - entity: timer.dryer
+      name: droogkast
+    - entity: timer.was
+      name: wasmachine
+    - entity: timer.samsung
+    - entity: automation.scenes_completed
+    show_empty: true
+    state_filter:
+    - active
+    type: entity-filter
+  - entities:
+    - entity: group.easyplus_sensors
+    - entity: sensor.easyplus_away
+    - entity: group.floradix
+    - entity: automation.scenes_completed
+      icon: mdi:power
+      name: auto off
+    type: glance
+  - entities:
+    - entity: binary_sensor.badkamer_occupied
+      name: badkamer
+    - entity: binary_sensor.eetkamer_occupied
+      name: eetkamer
+    - entity: binary_sensor.traphal_occupied
+      name: traphal
+    - entity: binary_sensor.wc_occupied
+      name: wc
+    - entity: binary_sensor.inkomhal_occupied
+      name: inkonhall
+    type: glance
+  - entities:
+    - entity: timer.inkomhal_occupied
+    - entity: timer.eetkamer_occupied
+    - entity: timer.wc_occupied
+    - entity: timer.traphal_occupied
+    - entity: timer.bad_occupied
+    show_header_toggle: false
+    title: Timers Motion
+    type: entities
+  title: SCENES
+- badges: []
+  cards:
+  - max_results: 20
+    type: custom:search-card
+  - entities:
+    - name: EASYPLUS AUTO SHUTDOWN
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: input_boolean.night
+      icon: mdi:weather-night
+      name: Midnight at 00h30
+    - entity: input_boolean.night_late
+      icon: mdi:weather-night
+      name: Late Night at 1h00
+    - entity: input_boolean.night_plus
+      icon: mdi:weather-night
+      name: Late Night at 1h30
+    type: entities
+  - entities:
+    - name: SETTINGS
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: group.floradix
+      icon: mdi:home
+      name: Family
+    - entity: automation.turn_easyplus_off_niemand_thuis
+      icon: mdi:home
+      name: Away Modus
+    - entity: input_boolean.switch
+    - entity: input_boolean.school
+      name: School modus
+    - entity: automation.easyplus_startup
+    - entity: automation.easyplus_startup_monday
+    - entity: automation.auto_off_day
+      name: Daylight OFF modus
+    - sensor.last_motion
+    show_header_toggle: false
+    type: entities
+  - entities:
+    - name: RF  RESET Devices
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: input_boolean.reset_rf_all
+      icon: mdi:restart
+      name: All
+      secondary_info: last-changed
+    - entity: input_boolean.reset_rf_terras
+      icon: mdi:restart
+      name: Terras
+      secondary_info: last-changed
+    - entity: input_boolean.reset_rf_inkomhal
+      icon: mdi:restart
+      name: Inkomhal
+      secondary_info: last-changed
+    - entity: input_boolean.reset_rf_keuken
+      icon: mdi:restart
+      name: Keuken
+      secondary_info: last-changed
+    - entity: input_boolean.reset_rf_badkamer
+      icon: mdi:restart
+      name: Badkamer
+      secondary_info: last-changed
+    - entity: input_boolean.reset_rf_fire
+      icon: mdi:restart
+      name: Fire
+      secondary_info: last-changed
+    - entity: input_boolean.reset_rf_gas
+      icon: mdi:restart
+      name: Gas
+      secondary_info: last-changed
+    type: entities
+  - entities:
+    - name: RF  Devices
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: binary_sensor.gas_alarm
+      icon: mdi:periodic-table-co2
+      secondary_info: last-changed
+    - entity: binary_sensor.fire_alarm
+      icon: mdi:fire
+      secondary_info: last-changed
+    - entity: binary_sensor.inkomhal
+      secondary_info: last-changed
+    - entity: binary_sensor.terras
+      secondary_info: last-changed
+    - entity: binary_sensor.keuken_lek
+      secondary_info: last-changed
+    - entity: binary_sensor.badkamer_lek
+      secondary_info: last-changed
+    - entity: sensor.rf_bridge
+      name: Latest RF Code
+      secondary_info: last-changed
+    - entity: sensor.rf_bridge_status
+      name: Latest RF Name
+      secondary_info: last-changed
+    - entity: sensor.rf_stream
+      name: Live RF stream
+      secondary_info: last-changed
+    - entity: sensor.sonoff_bridge_status
+      icon: mdi:wifi-star
+      name: RF Bridage Status
+    type: entities
+  - entities:
+    - entity: input_select.rf_bridge_device_select
+    - input_select.rf_bridge_mode_select
+    - input_select.rf_bridge_key_select
+    - script.rf_bridge_send_command
+    show_header_toggle: false
+    title: RF Bridge Control
+    type: entities
+  - entities:
+    - name: RF Wall Remote
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: binary_sensor.rf_switch_btns_left
+      secondary_info: last-changed
+    - entity: binary_sensor.rf_switch_btns_center
+      secondary_info: last-changed
+    - entity: binary_sensor.rf_switch_btns_right
+      secondary_info: last-changed
+    type: entities
+  - entities:
+    - entity: sensor.season
+    - entity: sun.sun
+    - entity: sensor.sunrise
+    - entity: sensor.sunset
+    - entity: sensor.period_of_day
+    - entity: sensor.dawn
+    - entity: sensor.nautical_dawn
+    - entity: sensor.astronomical_dawn
+    - entity: sensor.solar_noon
+    - entity: sensor.dusk
+    - entity: sensor.nautical_dusk
+    - entity: sensor.astronomical_dusk
+    - entity: sensor.astronomical_daylight
+    - entity: sensor.civil_daylight
+    - entity: sensor.daylight
+    - entity: sensor.nautical_daylight
+    - entity: sensor.max_elevation
+    - entity: sensor.solar_angle
+    show_header_toggle: false
+    title: 'Sun '
+    type: entities
+  - entities:
+    - name: RF Pocket Remote
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: binary_sensor.rf_switch_a
+      name: A - 2nd Floor Lights Off
+      secondary_info: last-changed
+    - entity: binary_sensor.rf_switch_b
+      name: B - 1st Floor Lights Off
+      secondary_info: last-changed
+    - entity: binary_sensor.rf_switch_c
+      name: C - Easyplus Toggle
+      secondary_info: last-changed
+    - entity: binary_sensor.rf_switch_d
+      name: D - Sockets Off
+      secondary_info: last-changed
+    type: entities
+  - entities:
+    - name: RF Buttons
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: binary_sensor.rf_btn_1c60b1
+      name: Droogkast
+      secondary_info: last-changed
+    - entity: binary_sensor.rf_btn_45a081
+      name: Commander/Vaatwasser
+      secondary_info: last-changed
+    - entity: binary_sensor.rf_btn_4ffd01
+      name: Wasmachine
+      secondary_info: last-changed
+    - entity: binary_sensor.rf_btn_793401
+      name: Easyplus
+      secondary_info: last-changed
+    - entity: binary_sensor.rf_btn_909601
+      name: 909601 unused
+      secondary_info: last-changed
+    - entity: counter.rf_909601
+      name: Count clicks 909601
+      secondary_info: last-changed
+    type: entities
+  - entities:
+    - name: SHELLY H/T
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: sensor.shelly_firmware
+      icon: mdi:update
+    - entity: sensor.ht_eetkamer_online
+      icon: mdi:network
+      name: Eetkamer Online
+    - entity: sensor.ht_sara_online
+      icon: mdi:network
+      name: Sara Online
+    - entity: sensor.ht_eetkamer_battery
+      icon: mdi:battery
+      name: Eetkamer Battery
+    - entity: sensor.ht_sara_battery
+      icon: mdi:battery
+      name: Sara Battery
+    - entity: sensor.shelly_firmware
+      filter:
+        include:
+        - key: sensor.shelly_firmware.fw_ver
+          name: Firmware
+        - key: sensor.shelly_firmware.id
+          name: ID
+        - key: sensor.shelly_firmware.mac
+          name: MAC
+        - key: sensor.shelly_firmware.ip
+          name: IP
+      heading_name: Shelly
+      heading_state: Value
+      type: custom:entity-attributes-card
+    type: entities
+  - entities:
+    - name: BATTERY - Days IN USE
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: sensor.battery_sonoff_remote_days2go
+      icon: mdi:battery
+      name: RF Sonoff Remote
+    - entity: sensor.battery_inkomhal_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_terras_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_water_badkamer_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_water_keuken_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_rf_1d60b1_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_rf_45a081_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_rf_4ffd01_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_rf_793401_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_rf_909601_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_shelly_eetkamer_days2go
+      icon: mdi:battery
+    - entity: sensor.battery_shelly_sara_days2go
+      icon: mdi:battery
+    type: entities
+  - columns: 7
+    entities:
+    - entity: counter.motion_hal
+      name: Inkom
+    - entity: counter.motion_eetkamer
+      name: Eet
+    - entity: counter.motion_wc
+    - entity: counter.motion_traphal
+      name: Trap
+    - entity: counter.motion_badkamer
+      name: Bad
+    - entity: counter.rf_inkomhal
+      name: Hal
+    - entity: counter.rf_terras
+      name: Terras
+    title: Motion Counter
+    type: glance
+  - entities:
+    - entity: sensor.period_of_day
+      name: Its now
+    - entity: sensor.illuminance
+      icon: mdi:theme-light-dark
+      name: Light
+    - entity: sun.sun
+      name: Sun
+    - entity: sensor.season
+      name: Season
+    - entity: sensor.moon
+      name: Moon
+    title: Daylight
+    type: glance
+  - entities:
+    - name: MONITORING
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - entity: sensor.daily_energy_live_offpeak
+    - entity: sensor.daily_energy_live_peak
+    - entity: sensor.daily_energy_offpeak
+    - entity: sensor.daily_energy_peak
+    - entity: sensor.monthly_energy_offpeak
+    - entity: sensor.monthly_energy_peak
+    - entity: sensor.pvoutput_energy_consumption
+    type: entities
+  icon: mdi:settings-outline
+  path: ''
+  theme: default
+  title: Settings
+- badges: []
+  cards:
+  - cards:
+    - color_type: label-card
+      name: ESPHOME STATUS
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - entity: binary_sensor.living_status
+          name: Living
+        - entity: binary_sensor.easyplus_status
+          name: Easyplus
+        - entity: binary_sensor.ketel_status
+          name: Ketel
+        - entity: binary_sensor.server_status
+          name: Server
+        - entity: binary_sensor.kodi_status
+          name: Kodi
+        show_state: false
+        type: glance
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: ESPHOME REBOOT
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - entity: switch.living_restart
+          name: Living
+          tap_action:
+            action: toggle
+        - entity: switch.easyplus_restart
+          name: Easyplus
+          tap_action:
+            action: toggle
+        - entity: switch.ketel_restart
+          name: Ketel
+          tap_action:
+            action: toggle
+        - entity: switch.server_restart
+          name: Server
+          tap_action:
+            action: toggle
+        - entity: switch.kodi_restart
+          name: Kodi
+          tap_action:
+            action: toggle
+        show_state: false
+        type: glance
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: ESPHOME LED
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - entity: light.living_green_led
+          name: Living
+          tap_action:
+            action: toggle
+        - entity: light.easyplus_green_led
+          name: Easyplus
+          tap_action:
+            action: toggle
+        - entity: light.ketel_green_led
+          name: Ketel
+          tap_action:
+            action: toggle
+        - entity: light.server_green_led
+          name: Server
+          tap_action:
+            action: toggle
+        - entity: light.kodi_green_led
+          name: Kodi
+          tap_action:
+            action: toggle
+        show_state: false
+        type: glance
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: ESPHOME SSID-IP-SIGNAL
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - entity: sensor.living_ssid
+          icon: mdi:wifi-star
+          name: Living
+        - entity: sensor.easyplus_ssid
+          icon: mdi:wifi-star
+          name: Easyplus
+        - entity: sensor.ketel_ssid
+          icon: mdi:wifi-star
+          name: Ketel
+        - entity: sensor.server_ssid
+          icon: mdi:wifi-star
+          name: Server
+        - entity: sensor.kodi_ssid
+          icon: mdi:wifi-star
+          name: Kodi
+        show_icon: false
+        type: glance
+      type: horizontal-stack
+    - cards:
+      - entities:
+        - entity: sensor.living_ip
+          icon: mdi:ip
+          name: Living
+        - entity: sensor.easyplus_ip
+          icon: mdi:ip
+          name: Easyplus
+        - entity: sensor.ketel_ip
+          icon: mdi:ip
+          name: Ketel
+        - entity: sensor.server_ip
+          icon: mdi:ip
+          name: Server
+        - entity: sensor.kodi_ip
+          icon: mdi:ip
+          name: Kodi
+        show_icon: false
+        show_name: false
+        type: glance
+      type: horizontal-stack
+    - cards:
+      - entities:
+        - entity: sensor.living_wifi
+          icon: mdi:wifi-star
+          name: Living
+        - entity: sensor.easyplus_wifi
+          icon: mdi:wifi-star
+          name: Easyplus
+        - entity: sensor.ketel_wifi
+          icon: mdi:wifi-star
+          name: Ketel
+        - entity: sensor.server_wifi
+          icon: mdi:wifi-star
+          name: Server
+        - entity: sensor.kodi_wifi
+          icon: mdi:wifi-star
+          name: Kodi
+        show_icon: false
+        show_name: false
+        type: glance
+      type: horizontal-stack
+    entities: null
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: ESPHOME UPTIME - VERSION
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - entity: sensor.living_uptime
+          name: Living
+        - entity: sensor.easyplus_uptime
+          name: Easyplus
+        - entity: sensor.ketel_uptime
+          name: Ketel
+        - entity: sensor.server_uptime
+          name: Server
+        - entity: sensor.kodi_uptime
+          name: Kodi
+        show_icon: false
+        type: glance
+      type: horizontal-stack
+    - cards:
+      - columns: 5
+        entities:
+        - entity: sensor.living_version
+          icon: mdi:arrow-up-bold-circle-outline
+          name: Living
+        - entity: sensor.easyplus_version
+          icon: mdi:arrow-up-bold-circle-outline
+          name: Easyplus
+        - entity: sensor.ketel_version
+          icon: mdi:arrow-up-bold-circle-outline
+          name: Ketel
+        - entity: sensor.server_version
+          icon: mdi:arrow-up-bold-circle-outline
+          name: Server
+        - entity: sensor.kodi_version
+          icon: mdi:arrow-up-bold-circle-outline
+          name: Kodi
+        show_icon: false
+        show_name: false
+        type: glance
+      type: horizontal-stack
+    - cards:
+      - entities:
+        - entity: sensor.esphome_current_version
+          icon: mdi:arrow-up-bold-circle-outline
+          name: Latest Version
+        show_icon: false
+        show_name: true
+        type: glance
+      type: horizontal-stack
+    type: vertical-stack
+  icon: mdi:wifi
+  title: esp
+- badges: []
+  cards:
+  - cards:
+    - card_style: ''
+      color_type: label
+      name: Synology
+      show_icon: false
+      style:
+      - font-size: 20px
+      - text-Transform: uppercase
+      - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+          7%, rgba(0,212,255,1) 100%)
+      - font-weight: bold
+      - padding: 2%
+      - height: 45px
+      - color: white
+      - border-radius: 50px
+      - border-style: solid
+      - border-width: 2px
+      - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - columns: 3
+        entities:
+        - entity: switch.dsm
+          icon: mdi:server
+          name: Synology
+          tap_action:
+            action: toggle
+        - entity: automation.shutdown_dsm_at_3am
+          icon: mdi:timelapse
+          name: Auto Poweroff
+          tap_action:
+            action: toggle
+        - entity: sensor.synology_dsm_used_space_volume_1
+          name: Used
+        - entity: sensor.synology_dsm_volume_used_volume_1
+          name: Used %
+        - entity: sensor.synology_dsm_cpu_load_total
+          name: CPU
+        - entity: sensor.synology_dsm_memory_usage_real
+          name: Mem %
+        type: glance
+      type: horizontal-stack
+    type: vertical-stack
+  - color: auto
+    entity: switch.dsm
+    hold_action:
+      action: more-info
+    layout: icon_label
+    lock: true
+    show_label: true
+    show_name: true
+    show_state: true
+    state:
+    - styles:
+        card:
+        - --paper-card-background-color: rgba(40, 40, 40)
+        - box-shadow: 0px 0px 20px 3px var(--button-card-light-color)
+        label:
+        - color: white
+        name:
+        - color: white
+        state:
+        - color: white
+      value: 'on'
+    - styles:
+        label:
+        - color: rgba(0, 0, 0, 0.0)
+      value: 'off'
+    styles:
+      card:
+      - border-radius: 15px
+      - height: 105px
+      - width: 105px
+      - margin: 5px 5px 0px 0px
+      grid:
+      - grid-template-rows: 30px auto 30px
+      icon:
+      - align-self: end
+      - height: 30px
+      - width: 30px
+      label:
+      - align-self: end
+      - padding: 1px
+      - font-size: 11px
+      - font-weight: bold
+      - font-family: Helvetica
+      name:
+      - justify-self: start
+      - padding: 0px 10px
+      - font-size: 13px
+      state:
+      - font-size: 11px
+      - font-family: Helvetica
+      - text-transform: capitalize
+      - font-weight: bold
+      - align-self: end
+      - justify-self: start
+      - padding: 5px 10px
+    tap_action:
+      action: toggle
+    type: custom:button-card
+  - color: auto
+    entity: switch.dsm_lun
+    hold_action:
+      action: more-info
+    icon: mdi:harddisk
+    layout: icon_label
+    lock: true
+    name: DietPi LUN
+    show_label: true
+    show_name: true
+    show_state: true
+    state:
+    - styles:
+        card:
+        - --paper-card-background-color: rgba(40, 40, 40)
+        - box-shadow: 0px 0px 20px 3px var(--button-card-light-color)
+        label:
+        - color: white
+        name:
+        - color: white
+        state:
+        - color: white
+      value: 'on'
+    - styles:
+        label:
+        - color: rgba(0, 0, 0, 0.0)
+      value: 'off'
+    styles:
+      card:
+      - border-radius: 15px
+      - height: 105px
+      - width: 105px
+      - margin: 5px 5px 0px 0px
+      grid:
+      - grid-template-rows: 30px auto 30px
+      icon:
+      - align-self: end
+      - height: 30px
+      - width: 30px
+      label:
+      - align-self: end
+      - padding: 2px
+      - font-size: 19px
+      - font-weight: bold
+      - font-family: Helvetica
+      name:
+      - justify-self: start
+      - padding: 0px 10px
+      - font-size: 12px
+      state:
+      - font-size: 11px
+      - font-family: Helvetica
+      - text-transform: capitalize
+      - font-weight: bold
+      - align-self: end
+      - justify-self: start
+      - padding: 5px 10px
+    tap_action:
+      action: toggle
+    type: custom:button-card
+  - cards:
+    - entities:
+      - entity: sensor.elradix_be
+        icon: mdi:ip-network
+      - card:
+          align_state: left
+          entities:
+          - color: green
+            entity: sensor.network_in_eth0
+            name: Download
+          - color: red
+            entity: sensor.network_out_eth0
+            name: Upload
+          font_size: 75
+          font_size_header: 22
+          hour24: true
+          line_width: 3
+          name: ' '
+          points_per_hour: 2
+          show:
+            extrema: true
+            icon: false
+            labels: true
+            points: false
+          type: custom:mini-graph-card
+        style:
+          background: transparent
+        type: custom:card-modder
+      show_header_toggle: false
+      title: -- Network --
+      type: entities
+    type: vertical-stack
+  - background: '#B0C2ED'
+    entities:
+    - entity: switch.dockerplex
+    - entity: media_player.kodi_slaapkamer
+      name: Kodi Bedroom
+      size: 4
+    heading: "\U0001F4BB Media"
+    link: /lovelace/8
+    row_size: 5
+    type: custom:banner-card
+  - cards:
+    - entity: switch.kodi
+      icon: mdi:door-open
+      name: test 1
+      template: button_light
+      type: custom:button-card
+    - entity: switch.kodi
+      name: test 2
+      state:
+      - icon: mdi:door-open
+        id: on-icon
+        value: 'on'
+      - icon: mdi:door-closed
+        id: off-icon
+        value: 'off'
+      template: button_light
+      type: custom:button-card
+    - color_type: blank-card
+      type: custom:button-card
+    - color_type: blank-card
+      type: custom:button-card
+    type: horizontal-stack
+  - cards:
+    - color_type: label-card
+      name: Synology
+      styles:
+        card:
+        - height: 30px
+        - font-weight: bold
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entity: switch.dsm
+        icon: mdi:power
+        template: button_switch
+        type: custom:button-card
+      - entity: switch.dsm_lun
+        icon: mdi:harddisk
+        template: button_switch
+        type: custom:button-card
+      - entity: sensor.total_size_volume_1
+        name: size
+        name_template: "var state = hass.localize(`state.${entity.entity_id.split('.')[0]}.${entity.state}`);\
+          \ return '<div>AC</div>' +\n       '<div style=\"font-size: 11px;\">' +\
+          \ (state ? state : entity.state ) + '</div>' +\n       '<div style=\"font-weight:\
+          \ normal; font-size: 10px;\">' + states['sensor.total_size_volume_1'].state\
+          \ + ' kW</div>';        \n"
+        styles:
+          grid:
+          - grid-template-areas: '"i l" "n n"'
+          - grid-template-columns: 1fr 1fr
+          - grid-template-rows: 1fr min-content
+        template: button_switch
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: Climate test
+      styles:
+        card:
+        - height: 30px
+        - font-weight: bold
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - cardwidth: 200
+        colors:
+        - color: var(--label-badge-red)
+          value: 25
+        - color: var(--label-badge-green)
+          value: 15
+        - color: var(--label-badge-yellow)
+          value: 21
+        - color: var(--label-badge-blue)
+          value: 0
+        inner:
+          attribute: temperature
+          entity: climate.living
+          label: Target
+          unit: "\xB0C"
+        max: 30
+        min: 0
+        outer:
+          attribute: current_temperature
+          entity: climate.living
+          label: Current
+          unit: "\xB0C"
+        title: Living
+        type: custom:dual-gauge-card
+      - cardwidth: 200
+        colors:
+        - color: var(--label-badge-red)
+          value: 25
+        - color: var(--label-badge-green)
+          value: 15
+        - color: var(--label-badge-yellow)
+          value: 21
+        - color: var(--label-badge-blue)
+          value: 0
+        inner:
+          attribute: temperature
+          entity: climate.eetkamer
+          label: Target
+          unit: "\xB0C"
+        max: 30
+        min: 0
+        outer:
+          attribute: current_temperature
+          entity: climate.eetkamer
+          label: Current
+          unit: "\xB0C"
+        title: Eetkamer
+        type: custom:dual-gauge-card
+      type: horizontal-stack
+    - cards:
+      - cardwidth: 200
+        colors:
+        - color: var(--label-badge-red)
+          value: 25
+        - color: var(--label-badge-green)
+          value: 15
+        - color: var(--label-badge-yellow)
+          value: 21
+        - color: var(--label-badge-blue)
+          value: 0
+        inner:
+          attribute: temperature
+          entity: climate.sara
+          label: Target
+          unit: "\xB0C"
+        max: 30
+        min: 0
+        outer:
+          attribute: current_temperature
+          entity: climate.yassin
+          label: Current
+          unit: "\xB0C"
+        title: Sara
+        type: custom:dual-gauge-card
+      - cardwidth: 200
+        colors:
+        - color: var(--label-badge-red)
+          value: 25
+        - color: var(--label-badge-green)
+          value: 15
+        - color: var(--label-badge-yellow)
+          value: 21
+        - color: var(--label-badge-blue)
+          value: 0
+        inner:
+          attribute: temperature
+          entity: climate.yassin
+          label: Target
+          unit: "\xB0C"
+        max: 30
+        min: 0
+        outer:
+          attribute: current_temperature
+          entity: climate.sara
+          label: Current
+          unit: "\xB0C"
+        title: Sara
+        type: custom:dual-gauge-card
+      type: horizontal-stack
+    type: vertical-stack
+  - entities:
+    - entity: sensor.sensor_smappee_power_integral
+      icon: mdi:power
+      name: Used power
+    - entity: sensor.smappee_always_on
+    - entity: sensor.smappee_power
+    - entity: sensor.smappee_usage_today
+    - entity: sensor.smappee_reactive_power
+    - entity: sensor.smappee_voltage
+    - entity: sensor.smappee_average_rms_voltage
+    - entity: sensor.smappee_server_power
+    - entity: sensor.smappee_xxx_power
+    - entity: sensor.smappee_dageraad_active_power
+    - entity: sensor.smappee_dageraad_always_on_today
+    - entity: sensor.smappee_dageraad_current
+    - entity: sensor.smappee_dageraad_power_factor
+    - entity: sensor.smappee_dageraad_power_today
+    - entity: sensor.smappee_dageraad_voltage
+    type: entities
+  - card:
+      content: "Current delay [[ sensor.train_home.attributes.delay ]] \nArrival in\
+        \ [[ sensor.train_home.attributes.departure ]] min\nDuration [[ sensor.train_home\
+        \ ]] min\nGate [[ sensor.train_home.attributes.platform_departing ]]  \n"
+      title: Train Home Centraal
+      type: markdown
+    type: custom:card-modder
+  - card:
+      content: '[[ sensor.ghosts_sensor.attributes.text ]]
+
+        '
+      type: markdown
+    type: custom:card-modder
+  title: test
+- badges: []
+  cards:
+  - cards:
+    - cards:
+      - aspect_ratio: 1/1
+        color: auto
+        entity: sensor.cpu_temp
+        icon: mdi:raspberry-pi
+        label_template: "return '<div align=\"left\">' +\n        '<div>' +\n    \
+          \      '<ha-icon icon=\"mdi:thermometer\" style=\"width: 12px; color: #f4e842;\
+          \ padding-bottom: 0px;\"></ha-icon> ' +\n          entity.state + '\xB0\
+          C' +\n        '</div>' +\n      '</div>';\n"
+        layout: icon_label
+        name_template: "return '<div align=\"left\" style=\"padding-top: 0px;\">'\
+          \ +\n        '<div style=\"font-weight: bold;font-size: 13px;\">' + \"RPI\"\
+          \ + '</div>' +\n        '<div style=\"margin-top: -5px;\">' +\n        \
+          \  '<ha-icon icon=\"mdi:server\" style=\"width: 12px; color: #03a9f4; padding-bottom:\
+          \ 2px;\"></ha-icon> ' +\n          \"CPU: \" + states['sensor.processor_use'].state\
+          \ + '%' +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\"\
+          >' +\n          '<ha-icon icon=\"mdi:memory\" style=\"width: 12px; color:\
+          \ #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"RAM: \" +\
+          \ Math.round(states['sensor.memory_use'].state) + \" MB\" +\n        '</div>'\
+          \ +\n        '<div style=\"margin-top: -10px;\">' +\n          '<ha-icon\
+          \ icon=\"mdi:harddisk\" style=\"width: 12px; color: #03a9f4; padding-bottom:\
+          \ 2px;\"></ha-icon> ' +\n          \"SD: \" + states['sensor.disk_free_home'].state\
+          \ + \" GB\" +\n        '</div>' +\n      '</div>';\n"
+        show_label: true
+        show_state: false
+        state:
+        - color: lime
+          operator: template
+          value: 'return entity.state < ''60''
+
+            '
+        - color: orange
+          operator: template
+          value: 'return entity.state < ''80''
+
+            '
+        - color: red
+          operator: template
+          value: 'return entity.state > ''80''
+
+            '
+        type: custom:button-card
+      - aspect_ratio: 1/1
+        color: auto
+        entity: sensor.cpu_temp
+        icon: mdi:raspberry-pi
+        label_template: "return '<div align=\"left\">' +\n        '<div>' +\n    \
+          \      '<ha-icon icon=\"mdi:thermometer\" style=\"width: 12px; color: #f4e842;\
+          \ padding-bottom: 0px;\"></ha-icon> ' +\n          entity.state + '\xB0\
+          C' +\n        '</div>' +\n      '</div>';\n"
+        layout: icon_label
+        name_template: "return '<div align=\"left\" style=\"padding-top: 0px;\">'\
+          \ +\n        '<div style=\"font-weight: bold;font-size: 13px;\">' + \"Synology\"\
+          \ + '</div>' +\n        '<div style=\"margin-top: -5px;\">' +\n        \
+          \  '<ha-icon icon=\"mdi:server\" style=\"width: 12px; color: #03a9f4; padding-bottom:\
+          \ 2px;\"></ha-icon> ' +\n          \"CPU: \" + states['sensor.synology_dsm_cpu_load_total'].state\
+          \ + '%' +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\"\
+          >' +\n          '<ha-icon icon=\"mdi:memory\" style=\"width: 12px; color:\
+          \ #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"RAM: \" +\
+          \ Math.round(states['sensor.synology_dsm_memory_usage_real'].state) + \"\
+          \ MB\" +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\"\
+          >' +\n          '<ha-icon icon=\"mdi:harddisk\" style=\"width: 12px; color:\
+          \ #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"SD: \" + states['sensor.disk_free_home'].state\
+          \ + \" GB\" +\n        '</div>' +\n      '</div>';\n"
+        show_label: true
+        show_state: false
+        state:
+        - color: lime
+          operator: template
+          value: 'return entity.state < ''60''
+
+            '
+        - color: orange
+          operator: template
+          value: 'return entity.state < ''80''
+
+            '
+        - color: red
+          operator: template
+          value: 'return entity.state > ''80''
+
+            '
+        type: custom:button-card
+      - aspect_ratio: 1/1
+        color: auto
+        entity: sensor.cpu_temp
+        icon: mdi:raspberry-pi
+        label_template: "return '<div align=\"left\">' +\n        '<div>' +\n    \
+          \      '<ha-icon icon=\"mdi:thermometer\" style=\"width: 12px; color: #f4e842;\
+          \ padding-bottom: 0px;\"></ha-icon> ' +\n          entity.state + '\xB0\
+          C' +\n        '</div>' +\n      '</div>';\n"
+        layout: icon_label
+        name_template: "return '<div align=\"left\" style=\"padding-top: 0px;\">'\
+          \ +\n        '<div style=\"font-weight: bold;font-size: 13px;\">' + \"RPI\"\
+          \ + '</div>' +\n        '<div style=\"margin-top: -5px;\">' +\n        \
+          \  '<ha-icon icon=\"mdi:server\" style=\"width: 12px; color: #03a9f4; padding-bottom:\
+          \ 2px;\"></ha-icon> ' +\n          \"CPU: \" + states['sensor.processor_use'].state\
+          \ + '%' +\n        '</div>' +\n        '<div style=\"margin-top: -10px;\"\
+          >' +\n          '<ha-icon icon=\"mdi:memory\" style=\"width: 12px; color:\
+          \ #03a9f4; padding-bottom: 2px;\"></ha-icon> ' +\n          \"RAM: \" +\
+          \ Math.round(states['sensor.memory_use'].state) + \" MB\" +\n        '</div>'\
+          \ +\n        '<div style=\"margin-top: -10px;\">' +\n          '<ha-icon\
+          \ icon=\"mdi:harddisk\" style=\"width: 12px; color: #03a9f4; padding-bottom:\
+          \ 2px;\"></ha-icon> ' +\n          \"SD: \" + states['sensor.disk_free_home'].state\
+          \ + \" GB\" +\n        '</div>' +\n      '</div>';\n"
+        show_label: true
+        show_state: false
+        state:
+        - color: lime
+          operator: template
+          value: 'return entity.state < ''60''
+
+            '
+        - color: orange
+          operator: template
+          value: 'return entity.state < ''80''
+
+            '
+        - color: red
+          operator: template
+          value: 'return entity.state > ''80''
+
+            '
+        type: custom:button-card
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - cards:
+      - color_thresholds:
+        - color: '#0da035'
+          value: -1
+        - color: '#e0b400'
+          value: 25
+        - color: '#e45e65'
+          value: 35
+        color_thresholds_transition: smooth
+        entities:
+        - sensor.processor_use
+        group: false
+        hour24: true
+        line_width: 6
+        name: CPU
+        points_per_hour: 1
+        show:
+          extrema: true
+          icon: true
+          labels: false
+          name: true
+          state: true
+        style: "ha-card {\n   border: solid 2px var(--primary-color);\n }\n"
+        type: custom:mini-graph-card
+      - color_thresholds:
+        - color: '#039BE5'
+          value: -50
+        - color: '#0da035'
+          value: 40
+        - color: '#e0b400'
+          value: 50
+        - color: '#e45e65'
+          value: 60
+        color_thresholds_transition: smooth
+        entities:
+        - sensor.cpu_temp
+        group: false
+        hour24: true
+        line_width: 6
+        name: Temperature
+        points_per_hour: 1
+        show:
+          extrema: true
+          icon: true
+          labels: false
+          name: true
+          state: true
+        style: "ha-card {\n   border: solid 2px var(--primary-color);\n }\n"
+        type: custom:mini-graph-card
+      type: horizontal-stack
+    - cards:
+      - color_thresholds:
+        - color: '#0da035'
+          value: -1
+        - color: '#e0b400'
+          value: 60
+        - color: '#e45e65'
+          value: 70
+        color_thresholds_transition: hard
+        entities:
+        - sensor.memory_use
+        group: false
+        hour24: true
+        line_width: 6
+        name: RAM
+        points_per_hour: 1
+        show:
+          fill: fade
+          icon: true
+          labels: false
+          name: true
+          state: true
+        style: "ha-card {\n   border: solid 2px var(--primary-color);\n }\n"
+        type: custom:mini-graph-card
+      - color_thresholds:
+        - color: '#0da035'
+          value: -1
+        - color: '#e0b400'
+          value: 60
+        - color: '#e45e65'
+          value: 70
+        color_thresholds_transition: hard
+        entities:
+        - sensor.swap_use
+        group: false
+        hour24: true
+        line_width: 6
+        name: Swap
+        points_per_hour: 1
+        show:
+          fill: fade
+          icon: true
+          labels: false
+          name: true
+          state: true
+        style: "ha-card {\n   border: solid 2px var(--primary-color);\n }\n"
+        type: custom:mini-graph-card
+      type: horizontal-stack
+    - cards:
+      - color_thresholds:
+        - color: '#0da035'
+          value: -1
+        - color: '#e0b400'
+          value: 30
+        - color: '#e45e65'
+          value: 40
+        color_thresholds_transition: hard
+        entities:
+        - sensor.disk_free_home
+        group: false
+        hour24: true
+        line_width: 6
+        name: Disk
+        points_per_hour: 1
+        show:
+          fill: fade
+          icon: true
+          labels: false
+          name: true
+          state: true
+        style: "ha-card {\n   border: solid 2px var(--primary-color);\n }\n"
+        type: custom:mini-graph-card
+      - color_thresholds:
+        - color: '#0da035'
+          value: -1
+        - color: '#e0b400'
+          value: 500
+        - color: '#e45e65'
+          value: 1000
+        color_thresholds_transition: hard
+        entities:
+        - sensor.hass_db_size
+        group: false
+        hour24: true
+        icon: mdi:database
+        line_width: 6
+        name: DB
+        points_per_hour: 1
+        show:
+          fill: fade
+          icon: true
+          labels: false
+          name: true
+          state: true
+        style: "ha-card {\n   border: solid 2px var(--primary-color);\n }\n"
+        type: custom:mini-graph-card
+      type: horizontal-stack
+    type: vertical-stack
+  - entities:
+    - entity: input_select.log_level
+    - entity: input_select.hass_template
+    show_header_toggle: false
+    style: "ha-card {\n   border: solid 2px var(--primary-color);\n }\n"
+    title: Options
+    type: entities
+  - content: "<h3>Rachid</h3>  [[ geo_address.comp_rachid.attributes.road ]] [[ if(geo_address.comp_rachid.attributes.house_number\
+      \ != undefined, geo_address.comp_rachid.attributes.house_number, \"\") ]]  [[\
+      \ geo_address.comp_rachid.attributes.city_district ]]  <h3>Soumaya</h3>  [[\
+      \ geo_address.comp_soumaya.attributes.road ]] [[ if(geo_address.comp_soumaya.attributes.house_number\
+      \ != undefined, geo_address.comp_soumaya.attributes.house_number, \"\") ]] \
+      \ [[ geo_address.comp_soumaya.attributes.city_district ]] \n"
+    title: Location
+    type: markdown
+  - card:
+      show_header_toggle: false
+      title: Shelly
+      type: entities
+    filter:
+      exclude:
+      - entity_id: '*rssi*'
+      - entity_id: '*uptime*'
+      - entity_id: '*firmware*'
+      include:
+      - entity_id: '*shelly*'
+    type: custom:monster-card
+  - card:
+      show_header_toggle: false
+      title: Shelly need update
+      type: entities
+    filter:
+      include:
+      - entity_id: '*firmware_update*'
+    type: custom:monster-card
+  - card:
+      show_header_toggle: false
+      title: Shelly
+      type: entities
+    filter:
+      include:
+      - entity_id: '*rssi*'
+    type: custom:monster-card
+  title: cards
+- badges: []
+  cards:
+  - columns: 7
+    entities:
+    - entity: sensor.elradix_s7a_call_state
+      name: Call
+    - entity: sensor.elradix_s7a_battery_sensor
+      icon: mdi:battery
+      name: Battery
+    - entity: sensor.elradix_s7a_bluetooth
+    - entity: sensor.elradix_s7a_wi_fi_sensor
+      icon: mdi:wifi
+      name: Wifi
+    - entity: sensor.elradix_s7a_step_counter_sensor
+      icon: mdi:walk
+      name: Steps
+    - entity: sensor.elradix_s7a_light_sensor
+    - entity: sensor.elradix_s7a_apps
+    - entity: sensor.elradix_s7a_available_status
+      icon: mdi:monitor
+    - entity: switch.screen_switch_rachid
+      icon: mdi:power
+    - entity: sensor.elradix_s7a_next_alarm
+    - entity: sensor.elradix_s7a_hfp
+    - entity: sensor.elradix_s7a_a2dp
+    show_name: false
+    show_state: true
+    title: ''
+    type: glance
+  - columns: 7
+    entities:
+    - entity: sensor.flora_s7a_call_state
+      name: Call
+    - entity: sensor.flora_s7a_battery_sensor
+      icon: mdi:battery
+      name: Battery
+    - entity: sensor.flora_s7a_bluetooth
+    - entity: sensor.flora_s7a_wi_fi_sensor
+      icon: mdi:wifi
+      name: Wifi
+    - entity: sensor.flora_s7a_step_counter_sensor
+      icon: mdi:walk
+      name: Steps
+    - entity: sensor.flora_s7a_light_sensor
+    - entity: sensor.flora_s7a_apps
+    - entity: sensor.flora_s7a_available_status
+      icon: mdi:monitor
+    - entity: switch.screen_switch_soumaya
+      icon: mdi:power
+    - entity: camera.flora_s7a_back_camera
+    - entity: camera.flora_s7a_front_camera
+    - entity: sensor.flora_s7a_next_alarm
+    show_name: false
+    title: ''
+    type: glance
+  - aspect_ratio: 16x9
+    default_zoom: 12
+    entities:
+    - entity: device_tracker.elradix_s7a
+    - entity: device_tracker.flora_s7a
+    - entity: device_tracker.comp_soumaya
+    type: map
+  - entities:
+    - card_style: 'font-size: 15px;
+
+        font-weight: bold;
+
+        '
+      color: rgb(44, 109, 214)
+      color_off: var(--disabled-text-color)
+      color_type: label-card
+      default_color: var(--primary-text-color)
+      name: Battery
+      size: 10%
+      style:
+      - font-size: 15px
+      - font-weight: bold
+      type: custom:button-card
+    - entity: sensor.elradix_s7a_battery_sensor
+      filter:
+        exclude:
+        - sensor.elradix_s7a_battery_sensor.f*
+        - sensor.elradix_s7a_battery_sensor.u*
+        - sensor.elradix_s7a_battery_sensor.u*
+        - sensor.elradix_s7a_battery_sensor.u*
+        - sensor.elradix_s7a_battery_sensor.t*
+        - sensor.elradix_s7a_battery_sensor.h*
+        - sensor.elradix_s7a_battery_sensor.l*
+        include:
+        - sensor.elradix_s7a_battery_sensor.*
+      heading_name: RACHID
+      heading_state: ' '
+      type: custom:entity-attributes-card
+    - entity: sensor.flora_s7a_battery_sensor
+      filter:
+        exclude:
+        - sensor.flora_s7a_battery_sensor.f*
+        - sensor.flora_s7a_battery_sensor.u*
+        - sensor.flora_s7a_battery_sensor.h*
+        - sensor.flora_s7a_battery_sensor.t*
+        - sensor.flora_s7a_battery_sensor.l*
+        include:
+        - sensor.flora_s7a_battery_sensor.*
+      heading_name: SOUMAYA
+      heading_state: ' '
+      type: custom:entity-attributes-card
+    type: entities
+  icon: mdi:android
+  path: ''
+  theme: Backend-selected
+  title: S7

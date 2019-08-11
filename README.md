@@ -26,15 +26,13 @@ Entities in the [`lock`](https://www.home-assistant.io/components/lock) domain |
 Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 2
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 95
-Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 408
+Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 409
 Entities in the [`sun`](https://www.home-assistant.io/components/sun) domain | 1
 Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 116
 Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 16
 Entities in the [`utility_meter`](https://www.home-assistant.io/components/utility_meter) domain | 4
 Entities in the [`weather`](https://www.home-assistant.io/components/weather) domain | 1
 Entities in the [`zone`](https://www.home-assistant.io/components/zone) domain | 9
-
-## Hardware and general setup
 
 For my setup I use an RPi3.
 
@@ -51,6 +49,7 @@ For my theme I use [slate](https://github.com/seangreen2/slate_theme) on all my 
 
 To access my instance I'm using my [NGINX❤️](https://www.nginx.org/) link.
 
+## Core integrations that I use
 
 ## custom_components that I use
 
@@ -64,13 +63,17 @@ A summary of custom_components that I use.
 
 ### [HACS (Home Assistant Community Store)](https://custom-components.github.io/hacs)
 
+_Manage (Install, track, upgrade) and discover custom elements for Home Assistant._
+
+I use this to discover new awesome stuff, and to keep the custom elements I use up to date with the latest version of it from the developer.
+
 ### [Sun2](https://github.com/pnbruckner/ha-sun2/blob/master/README.md)
 
 ### [Composite](https://github.com/pnbruckner/homeassistant-config/blob/master/docs/composite.md)
 
 ### [geo_address](https://github.com/Sha-Darim/geo_address)
 
-### [Lovelace Gen](https://github.com/thomasloven/hass-lovelace_gen)
+### [Lovelace Gen]()
 
 ### [Sun](https://www.home-assistant.io/components/sun)
 
@@ -92,8 +95,16 @@ A summary of custom_components that I use.
 
 ### [Generate readme](https://github.com/custom-components/readme)
 
+_Generates this awesome readme file._
+
+I use this integration to generate this readme, and to convert my lovelace configuration.
+
 ### [Bravia TV PSK](https://github.com/custom-components/media_player.braviatv_psk)
 
+
+## Custom Lovelace plugins that I use
+
+A summary of custom Lovelace plugins that I use.
 
 ## Custom Lovelace plugins that I use
 

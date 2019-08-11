@@ -54,16 +54,16 @@
           {% endif %}
 #        entity_id: proximity.home
 
-      duration_home_to_work_rachid:
-        entity_id: sensor.time_to_work, sensor.time
-        value_template: >
-          {% if states.sensor.time_to_work.state %}
-            {{ states.sensor.time_to_work.attributes.duration | int }}
-          {% else %}
-            0
-          {% endif %}
-#        entity_id: sensor.time_to_work
-        unit_of_measurement: 'min'
+#       duration_home_to_work_rachid:
+#         entity_id: sensor.time_to_work, sensor.time
+#         value_template: >
+#           {% if states.sensor.time_to_work.state %}
+#             {{ states.sensor.time_to_work.attributes.duration | int }}
+#           {% else %}
+#             0
+#           {% endif %}
+# #        entity_id: sensor.time_to_work
+#         unit_of_measurement: 'min'
 
       percent_at_work_daily:
         entity_id: sensor.time_at_work_today
@@ -76,10 +76,10 @@
         unit_of_measurement: "%"
         value_template: "{{ '%.1f'|format(states('sensor.time_at_work_this_week')|float * 100 / 168) }}"
         friendly_name: 'Weekly at Work'
-        
+
       percent_at_work_monthly:
         entity_id: sensor.time_at_work_this_month
         unit_of_measurement: "%"
         value_template: "{{ '%.1f'|format(states('sensor.time_at_work_this_month')|float * 100 / 720) }}"
         friendly_name: 'Monthly at Work'
-        
+

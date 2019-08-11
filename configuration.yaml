@@ -27,6 +27,12 @@ homeassistant:
 
   packages: !include_dir_named include/packages/
 
+readme:
+lovelace_gen:
+
+lovelace:
+  mode: yaml
+
 hacs:
   token: !secret hacs_token
 # appdeamon: true
@@ -408,8 +414,3 @@ utility_meter:
 #     level_1: sensor.easyplus_boiler
 #     level_2: sensor.easyplus_kitchen
 #     level_3: sensor.easyplus_
-
-readme:
-
-
-

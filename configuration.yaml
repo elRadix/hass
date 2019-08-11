@@ -407,7 +407,9 @@ utility_meter:
 #   attributes:
 #     level_1: sensor.easyplus_boiler
 #     level_2: sensor.easyplus_kitchen
-#     level_3: sensor.easyplus_was
+#     level_3: sensor.easyplus_
+
+readme:
 
 
 

@@ -28,10 +28,10 @@ homeassistant:
   packages: !include_dir_named include/packages/
 
 readme:
-lovelace_gen:
+# lovelace_gen:
 
-lovelace:
-  mode: yaml
+# lovelace:
+#   mode: yaml
 
 hacs:
   token: !secret hacs_token

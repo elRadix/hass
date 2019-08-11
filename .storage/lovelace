@@ -691,7 +691,7 @@
                                                     }
                                                 ],
                                                 "hour24": true,
-                                                "hours_to_show": 168,
+                                                "hours_to_show": 48,
                                                 "line_width": 3,
                                                 "name": " ",
                                                 "points_per_hour": 1,
@@ -798,7 +798,7 @@
                                                     }
                                                 ],
                                                 "hour24": true,
-                                                "hours_to_show": 168,
+                                                "hours_to_show": 24,
                                                 "line_width": 3,
                                                 "name": " ",
                                                 "points_per_hour": 0.25,

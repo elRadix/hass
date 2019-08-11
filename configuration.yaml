@@ -29,11 +29,11 @@ homeassistant:
 
 readme:
   convert_lovelace: true
-  
-lovelace_gen:
 
-lovelace:
-  mode: yaml
+# lovelace_gen:
+
+# lovelace:
+#   mode: yaml
 
 hacs:
   token: !secret hacs_token

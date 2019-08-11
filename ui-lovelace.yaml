@@ -1,4 +1,3 @@
-# lovelace_gen
 background: center / cover no-repeat url("/local/background.jpg") fixed
 cch:
   active_tab_color: red

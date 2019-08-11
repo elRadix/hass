@@ -26,7 +26,7 @@ Entities in the [`lock`](https://www.home-assistant.io/components/lock) domain |
 Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 2
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 95
-Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 409
+Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 408
 Entities in the [`sun`](https://www.home-assistant.io/components/sun) domain | 1
 Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 116
 Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 16
@@ -102,13 +102,6 @@ I use this integration to generate this readme, and to convert my lovelace confi
 ### [Bravia TV PSK](https://github.com/custom-components/media_player.braviatv_psk)
 
 
-## Custom Lovelace plugins that I use
-
-A summary of custom Lovelace plugins that I use.
-
-## Custom Lovelace plugins that I use
-
-A summary of custom Lovelace plugins that I use.
 
 ### [Compact Custom Header](https://github.com/maykar/compact-custom-header)
 

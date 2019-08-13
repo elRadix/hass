@@ -37,6 +37,7 @@ Entities in the [`zone`](https://www.home-assistant.io/components/zone) domain |
 
 For my setup I use an RPi3.
 
+
 OS | DietPi v6.25.3
 -- | --
 SD | 32GB

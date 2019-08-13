@@ -23,10 +23,11 @@ Entities in the [`input_select`](https://www.home-assistant.io/components/input_
 Entities in the [`input_text`](https://www.home-assistant.io/components/input_text) domain | 2
 Entities in the [`light`](https://www.home-assistant.io/components/light) domain | 40
 Entities in the [`lock`](https://www.home-assistant.io/components/lock) domain | 1
-Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 2
+Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 5
+Entities in the [`persistent_notification`](https://www.home-assistant.io/components/persistent_notification) domain | 2
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 95
-Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 408
+Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 412
 Entities in the [`sun`](https://www.home-assistant.io/components/sun) domain | 1
 Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 116
 Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 16

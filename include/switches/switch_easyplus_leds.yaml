@@ -1,6 +1,6 @@
 ---
 - platform: command_line
-  scan_interval: 20
+  scan_interval: 5
   switches:
    led_keuken_microgolf:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetLed 60,3'"
@@ -9,7 +9,7 @@
         friendly_name: microgolf
 
 - platform: command_line
-  scan_interval: 20
+  scan_interval: 6
   switches:
    led_keuken_oven:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetLed 61,3'"
@@ -18,7 +18,7 @@
         friendly_name: oven
 
 - platform: command_line
-  scan_interval: 20
+  scan_interval: 7
   switches:
    led_keuken_waterkoker:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetLed 62,3'"
@@ -27,7 +27,7 @@
         friendly_name: waterkoker
 
 - platform: command_line
-  scan_interval: 20
+  scan_interval: 8
   switches:
    led_keuken_vaatwasser:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetLed 63,3'"

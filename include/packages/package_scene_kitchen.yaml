@@ -291,7 +291,7 @@ automation:
     alias: 'start scenes'
     trigger:
     - platform: state
-      entity_id: switch.led_keuken_micogolf,switch.led_keuken_waterkoker,switch.led_keuken_vaatwasser,switch.led_keuken_oven,switch.stp_keuken_oven,switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water,binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601
+      entity_id: switch.led_keuken_microgolf,switch.led_keuken_waterkoker,switch.led_keuken_vaatwasser,switch.led_keuken_oven,switch.stp_keuken_oven,switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water,binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601
       from: 'off'
       to: 'on'
     action:
@@ -304,7 +304,7 @@ automation:
     alias: 'stop scenes manual'
     trigger:
     - platform: state
-      entity_id: switch.led_keuken_micogolf,switch.led_keuken_waterkoker,switch.led_keuken_vaatwasser,switch.led_keuken_oven,switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
+      entity_id: switch.led_keuken_microgolf,switch.led_keuken_waterkoker,switch.led_keuken_vaatwasser,switch.led_keuken_oven,switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
       from: 'on'
       to: 'off'
     action:

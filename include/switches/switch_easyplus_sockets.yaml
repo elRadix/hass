@@ -27,7 +27,7 @@
         friendly_name: Other
 
 - platform: command_line
-  scan_interval: 11
+  scan_interval: 100
   switches:
    stp_keuken_commander:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 40,1'"

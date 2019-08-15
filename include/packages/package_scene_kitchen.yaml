@@ -93,7 +93,7 @@ script:
   turn_on_oven:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_keuken_oven
+      entity_id: switch.stp_keuken_oven,swicht.led_keuken_oven
     - service: timer.start
       entity_id: timer.oven
     - delay:
@@ -105,7 +105,7 @@ script:
   turn_off_oven:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_oven
+      entity_id: switch.stp_keuken_oven,swicht.led_keuken_oven
     - service: timer.cancel
       entity_id: timer.oven
     - delay:
@@ -141,7 +141,7 @@ script:
   turn_on_waterkoker:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_keuken_water
+      entity_id: switch.stp_keuken_water,switch.led_keuken_waterkoker
     - service: timer.start
       entity_id: timer.water
     - delay:
@@ -153,7 +153,7 @@ script:
   turn_off_waterkoker:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_water
+      entity_id: switch.stp_keuken_water,switch.led_keuken_waterkoker
     - service: timer.cancel
       entity_id: timer.water
     - delay:
@@ -243,7 +243,7 @@ script:
   turn_on_dish:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
+      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander, switch.led_keuken_vaatwasser
     - service: timer.start
       entity_id: timer.dish
     - delay:
@@ -255,7 +255,7 @@ script:
   turn_off_dish:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander
+      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander, switch.led_keuken_vaatwasser
     - service: timer.cancel
       entity_id: timer.dish
     - delay:
@@ -291,7 +291,7 @@ automation:
     alias: 'start scenes'
     trigger:
     - platform: state
-      entity_id: switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_keuken_oven,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water,binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601
+      entity_id: switch.led_keuken_micogolf,switch.led_keuken_waterkoker,switch.led_keuken_vaatwasser,switch.led_keuken_oven,switch.stp_keuken_oven,switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water,binary_sensor.rf_btn_1c60b1, binary_sensor.rf_btn_4ffd01, binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.rf_btn_909601
       from: 'off'
       to: 'on'
     action:
@@ -304,7 +304,7 @@ automation:
     alias: 'stop scenes manual'
     trigger:
     - platform: state
-      entity_id: switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
+      entity_id: switch.led_keuken_micogolf,switch.led_keuken_waterkoker,switch.led_keuken_vaatwasser,switch.led_keuken_oven,switch.stp_keuken_microwave,switch.stp_eetkamer_tv,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_keuken_vaatwasser,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_water
       from: 'on'
       to: 'off'
     action:
@@ -434,4 +434,5 @@ automation:
       #   timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'
       #   friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
       #   state: '{{ trigger.to_state.state }}'
+
 

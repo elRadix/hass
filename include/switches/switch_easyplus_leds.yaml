@@ -1,0 +1,36 @@
+---
+- platform: command_line
+  scan_interval: 20
+  switches:
+   led_keuken_microgolf:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetLed 60,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh  'SetLed 60,0'"
+        command_state: "/opt/scripts/status/state.sh -l 60"
+        friendly_name: microgolf
+
+- platform: command_line
+  scan_interval: 20
+  switches:
+   led_keuken_oven:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetLed 61,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh  'SetLed 61,0'"
+        command_state: "/opt/scripts/status/state.sh -l 61"
+        friendly_name: oven
+
+- platform: command_line
+  scan_interval: 20
+  switches:
+   led_keuken_waterkoker:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetLed 62,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh  'SetLed 62,0'"
+        command_state: "/opt/scripts/status/state.sh -l 62"
+        friendly_name: waterkoker
+
+- platform: command_line
+  scan_interval: 20
+  switches:
+   led_keuken_vaatwasser:
+        command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetLed 63,1'"
+        command_off: "/usr/bin/expect -f /opt/scripts/apex.sh  'SetLed 63,0'"
+        command_state: "/opt/scripts/status/state.sh -l 63"
+        friendly_name: dish

@@ -420,10 +420,10 @@
                                     {
                                         "artwork": "cover",
                                         "artwork_border": true,
-                                        "entity": "media_player.ue55d7000_ue55d7000",
+                                        "entity": "media_player.living",
                                         "group": true,
                                         "icon": "mdi:television-classic",
-                                        "name": "Keuken",
+                                        "name": "Living",
                                         "show_source": "full",
                                         "type": "custom:mini-media-player"
                                     }
@@ -433,7 +433,7 @@
                             },
                             "conditions": [
                                 {
-                                    "entity": "media_player.ue55d7000_ue55d7000",
+                                    "entity": "media_player.living",
                                     "state": "on"
                                 }
                             ],

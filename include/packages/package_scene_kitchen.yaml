@@ -93,7 +93,7 @@ script:
   turn_on_oven:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_keuken_oven,swicht.led_keuken_oven
+      entity_id: switch.stp_keuken_oven,switch.led_keuken_oven
     - service: timer.start
       entity_id: timer.oven
     - delay:
@@ -105,7 +105,7 @@ script:
   turn_off_oven:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_oven,swicht.led_keuken_oven
+      entity_id: switch.stp_keuken_oven,switch.led_keuken_oven
     - service: timer.cancel
       entity_id: timer.oven
     - delay:

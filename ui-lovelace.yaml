@@ -3000,34 +3000,34 @@ views:
 - badges: []
   cards:
   - entities:
-    - entity: lock.1_vng740_lock
+    - entity: lock.1_wmx_794_lock
       icon: mdi:car-key
       name: Lock switch
-    - entity: sensor.1_vng740_lock
+    - entity: sensor.1_wmx_794_lock
       icon: mdi:car-key
       name: Lock status
-    - entity: binary_sensor.1_vng740_park_brake_status
+    - entity: binary_sensor.1_wmx_794_park_brake_status
       icon: mdi:car-brake-alert
       name: Brake state
-    - entity: binary_sensor.1_vng740_tire_warning
+    - entity: binary_sensor.1_wmx_794_tire_warning
       icon: mdi:car-tire-alert
       name: Tire Warning
-    - entity: binary_sensor.1_vng740_windows_closed
+    - entity: binary_sensor.1_wmx_794_windows_closed
       icon: mdi:car-door
       name: Windows closed
-    - entity: sensor.1_vng740_fuel_level
+    - entity: sensor.1_wmx_794_fuel_level
       icon: mdi:gas-station
       name: Fuel level
     image: /local/mercedes3.png
     type: picture-glance
   - entities:
-    - entity: device_tracker.wdd2052441f857325
+    - entity: device_tracker.wdd1771871j112618
       icon: mdi:car
       name: Car location
-    - entity: lock.1_vng740_lock
+    - entity: sensor.1_wmx_794_lock
       icon: mdi:car-key
       name: Lock switch
-    - entity: sensor.1_vng740_lock
+    - entity: binary_sensor.1_wmx_794_park_brake_status
       icon: mdi:car-key
       name: Lock status
     - entity: binary_sensor.1_vng740_park_brake_status
@@ -3049,7 +3049,7 @@ views:
   - aspect_ratio: 16x13
     default_zoom: 16
     entities:
-    - entity: device_tracker.wdd2052441f857325
+    - entity: device_tracker.wdd1771871j112618
     type: map
   - entities:
     - filter:

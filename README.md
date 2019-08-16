@@ -83,8 +83,6 @@ I use this to discover new awesome stuff, and to keep the custom elements I use 
 
 ### [Ophaalkalender](https://github.com/pippyn/Home-Assistant-Sensor-Ophaalkalender)
 
-### [Shelly smart home](https://github.com/StyraHem/ShellyForHASS/blob/master/README.md)
-
 ### [Docker Monitor](https://github.com/Sanderhuisman/docker_monitor)
 
 ### [HANotify](https://github.com/Crewski/HANotify)

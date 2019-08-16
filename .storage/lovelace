@@ -5887,27 +5887,27 @@
                                     "name": "Lock status"
                                 },
                                 {
-                                    "entity": "binary_sensor.1_vng740_park_brake_status",
+                                    "entity": "binary_sensor.1_wmx_794_park_brake_status",
                                     "icon": "mdi:car-brake-alert",
                                     "name": "Brake state"
                                 },
                                 {
-                                    "entity": "binary_sensor.1_vng740_tire_warning",
+                                    "entity": "binary_sensor.1_wmx_794_tire_warning",
                                     "icon": "mdi:car-tire-alert",
                                     "name": "Tire Warning"
                                 },
                                 {
-                                    "entity": "binary_sensor.1_vng740_windows_closed",
+                                    "entity": "binary_sensor.1_wmx_794_windows_closed",
                                     "icon": "mdi:car-door",
                                     "name": "Windows closed"
                                 },
                                 {
-                                    "entity": "sensor.1_vng740_fuel_level",
+                                    "entity": "sensor.1_wmx_794_fuel_level",
                                     "icon": "mdi:gas-station",
                                     "name": "Fuel level"
                                 },
                                 {
-                                    "entity": "sensor.1_vng740_odometer",
+                                    "entity": "sensor.1_wmx_794_odometer",
                                     "icon": "mdi:counter",
                                     "name": "Odometer"
                                 }
@@ -5929,15 +5929,15 @@
                                 {
                                     "filter": {
                                         "exclude": [
-                                            "sensor.1_vng740_odometer.fr*",
-                                            "sensor.1_vng740_odometer.car",
-                                            "sensor.1_vng740_odometer.retr*",
-                                            "sensor.1_vng740_odometer.unit*"
+                                            "sensor.1_wmx_794_odometer.fr*",
+                                            "sensor.1_wmx_794_odometer.car",
+                                            "sensor.1_wmx_794_odometer.retr*",
+                                            "sensor.1_wmx_794_odometer.unit*"
                                         ],
                                         "include": [
-                                            "sensor.1_vng740_odometer.*",
+                                            "sensor.1_wmx_794_odometer.*",
                                             {
-                                                "key": "sensor.1_vng740_odometer.averageSpeedReset",
+                                                "key": "sensor.1_wmx_794_odometer.averageSpeedReset",
                                                 "name": "Average Speed Reset"
                                             }
                                         ]
@@ -5955,13 +5955,13 @@
                                 {
                                     "filter": {
                                         "exclude": [
-                                            "sensor.1_vng740_lock.fr*",
-                                            "sensor.1_vng740_lock.car",
-                                            "sensor.1_vng740_lock.retr*",
-                                            "sensor.1_vng740_lock.unit*"
+                                            "sensor.1_wmx_794_lock.fr*",
+                                            "sensor.1_wmx_794_lock.car",
+                                            "sensor.1_wmx_794_lock.retr*",
+                                            "sensor.1_wmx_794_lock.unit*"
                                         ],
                                         "include": [
-                                            "sensor.1_vng740_lock.*"
+                                            "sensor.1_wmx_794_lock.*"
                                         ]
                                     },
                                     "heading_name": "Lock details ",
@@ -5976,13 +5976,13 @@
                                 {
                                     "filter": {
                                         "exclude": [
-                                            "binary_sensor.1_vng740_tire_warning.fr*",
-                                            "binary_sensor.1_vng740_tire_warning.car",
-                                            "binary_sensor.1_vng740_tire_warning.retr*",
-                                            "binary_sensor.1_vng740_tire_warning.unit*"
+                                            "binary_sensor.1_wmx_794_tire_warning.fr*",
+                                            "binary_sensor.1_wmx_794_tire_warning.car",
+                                            "binary_sensor.1_wmx_794_tire_warning.retr*",
+                                            "binary_sensor.1_wmx_794_tire_warning.unit*"
                                         ],
                                         "include": [
-                                            "binary_sensor.1_vng740_tire_warning.*"
+                                            "binary_sensor.1_wmx_794_tire_warning.*"
                                         ]
                                     },
                                     "heading_name": "Tire details ",

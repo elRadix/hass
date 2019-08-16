@@ -23,20 +23,18 @@ Entities in the [`input_select`](https://www.home-assistant.io/components/input_
 Entities in the [`input_text`](https://www.home-assistant.io/components/input_text) domain | 2
 Entities in the [`light`](https://www.home-assistant.io/components/light) domain | 40
 Entities in the [`lock`](https://www.home-assistant.io/components/lock) domain | 1
-Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 5
-Entities in the [`persistent_notification`](https://www.home-assistant.io/components/persistent_notification) domain | 2
+Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 6
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 95
-Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 412
+Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 399
 Entities in the [`sun`](https://www.home-assistant.io/components/sun) domain | 1
-Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 116
+Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 120
 Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 16
 Entities in the [`utility_meter`](https://www.home-assistant.io/components/utility_meter) domain | 4
 Entities in the [`weather`](https://www.home-assistant.io/components/weather) domain | 1
 Entities in the [`zone`](https://www.home-assistant.io/components/zone) domain | 9
 
 For my setup I use an RPi3.
-
 
 OS | DietPi v6.25.3
 -- | --
@@ -70,6 +68,8 @@ _Manage (Install, track, upgrade) and discover custom elements for Home Assistan
 I use this to discover new awesome stuff, and to keep the custom elements I use up to date with the latest version of it from the developer.
 
 ### [Sun2](https://github.com/pnbruckner/ha-sun2/blob/master/README.md)
+
+### [Favicon changer]()
 
 ### [Composite](https://github.com/pnbruckner/homeassistant-config/blob/master/docs/composite.md)
 

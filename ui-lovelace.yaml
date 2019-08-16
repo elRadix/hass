@@ -261,16 +261,16 @@ views:
       entities:
       - artwork: cover
         artwork_border: true
-        entity: media_player.ue55d7000_ue55d7000
+        entity: media_player.living
         group: true
         icon: mdi:television-classic
-        name: Keuken
+        name: Living
         show_source: full
         type: custom:mini-media-player
       show_header_toggle: false
       type: entities
     conditions:
-    - entity: media_player.ue55d7000_ue55d7000
+    - entity: media_player.living
       state: 'on'
     type: conditional
   - cards:
@@ -3580,6 +3580,18 @@ views:
     - entity: timer.bad_occupied
     show_header_toggle: false
     title: Timers Motion
+    type: entities
+  - entities:
+    - entity: switch.led_keuken_microgolf
+    - entity: switch.led_keuken_oven
+    - entity: switch.led_keuken_vaatwasser
+    - entity: switch.led_keuken_waterkoker
+    - entity: switch.stp_keuken_microwave
+    - entity: switch.stp_keuken_oven
+    - entity: switch.stp_keuken_vaatwasser
+    - entity: switch.stp_keuken_water
+    show_header_toggle: false
+    title: Led + switches
     type: entities
   title: SCENES
 - badges: []

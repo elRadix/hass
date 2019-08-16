@@ -5866,7 +5866,7 @@
                                     "name": "Fuel level"
                                 }
                             ],
-                            "image": "/local/mercedes3.png",
+                            "image": "/local/a200.png",
                             "type": "picture-glance"
                         },
                         {

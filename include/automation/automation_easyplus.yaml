@@ -142,7 +142,7 @@
 
 - id: easyplus_9a
   initial_state: 'true'
-  alias: Auto Easyplus off 1u30 - Lights
+  alias: Auto Easyplus off 1u30
   trigger:
     platform: time
     at: '01:01:00'
@@ -153,62 +153,59 @@
         entity_id: input_boolean.night_late
         state: 'on'
       - condition: state
-        entity_id: group.easyplus_lights
-        state: 'on'
-      - condition: state
         entity_id: switch.easyplus
         state: 'on'
   action:
-  - service: script.lights
+  - service: python_script.easyplus_off
   - service: notify.dageraad
     data:
-      message: "Night 1am Modus, Lights off"
+      message: "Night 1am, All off"
 
-- id: easyplus_9b
-  initial_state: 'true'
-  alias: Auto Easyplus off 1u30 - Switches
-  trigger:
-    platform: time
-    at: '01:02:00'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: input_boolean.night_late
-        state: 'on'
-      - condition: state
-        entity_id: group.easyplus_switches
-        state: 'on'
-      - condition: state
-        entity_id: switch.easyplus
-        state: 'on'
-  action:
-  - service: script.switches
-  - service: notify.dageraad
-    data:
-      message: "Night 1am Modus, Switches off"
+# - id: easyplus_9b
+#   initial_state: 'true'
+#   alias: Auto Easyplus off 1u30 - Switches
+#   trigger:
+#     platform: time
+#     at: '01:02:00'
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.night_late
+#         state: 'on'
+#       - condition: state
+#         entity_id: group.easyplus_switches
+#         state: 'on'
+#       - condition: state
+#         entity_id: switch.easyplus
+#         state: 'on'
+#   action:
+#   - service: script.switches
+#   - service: notify.dageraad
+#     data:
+#       message: "Night 1am Modus, Switches off"
 
-- id: easyplus_9c
-  initial_state: 'true'
-  alias: Auto Easyplus off 1u00 - Easyplus
-  trigger:
-    platform: time
-    at: '01:03:00'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: input_boolean.night_late
-        state: 'on'
-      - condition: state
-        entity_id: switch.easyplus
-        state: 'on'
-  action:
-  - service: homeassistant.turn_off
-    entity_id: switch.easyplus
-  - service: notify.dageraad
-    data:
-      message: "Night 1am Modus, Easyplus off"
+# - id: easyplus_9c
+#   initial_state: 'true'
+#   alias: Auto Easyplus off 1u00 - Easyplus
+#   trigger:
+#     platform: time
+#     at: '01:03:00'
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.night_late
+#         state: 'on'
+#       - condition: state
+#         entity_id: switch.easyplus
+#         state: 'on'
+#   action:
+#   - service: homeassistant.turn_off
+#     entity_id: switch.easyplus
+#   - service: notify.dageraad
+#     data:
+#       message: "Night 1am Modus, Easyplus off"
 
 ##########################################################
 - id: easyplus_10a
@@ -248,62 +245,59 @@
         entity_id: input_boolean.night_plus
         state: 'on'
       - condition: state
-        entity_id: group.easyplus_lights
-        state: 'on'
-      - condition: state
         entity_id: switch.easyplus
         state: 'on'
   action:
-  - service: script.lights
+  - service: python_script.easyplus_off
   - service: notify.dageraad
     data:
-      message: "Late Night Modus, Lights off"
+      message: "Late Night, All off"
 
-- id: easyplus_10b
-  initial_state: 'true'
-  alias: Auto Easyplus off 1u30 - Switches
-  trigger:
-    platform: time
-    at: '01:32:00'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: input_boolean.night_plus
-        state: 'on'
-      - condition: state
-        entity_id: group.easyplus_switches
-        state: 'on'
-      - condition: state
-        entity_id: switch.easyplus
-        state: 'on'
-  action:
-  - service: script.switches
-  - service: notify.dageraad
-    data:
-      message: "Late Night Modus, Switches off"
+# - id: easyplus_10b
+#   initial_state: 'true'
+#   alias: Auto Easyplus off 1u30 - Switches
+#   trigger:
+#     platform: time
+#     at: '01:32:00'
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.night_plus
+#         state: 'on'
+#       - condition: state
+#         entity_id: group.easyplus_switches
+#         state: 'on'
+#       - condition: state
+#         entity_id: switch.easyplus
+#         state: 'on'
+#   action:
+#   - service: script.switches
+#   - service: notify.dageraad
+#     data:
+#       message: "Late Night Modus, Switches off"
 
-- id: easyplus_10c
-  initial_state: 'true'
-  alias: Auto Easyplus off 1u30 - Easyplus
-  trigger:
-    platform: time
-    at: '01:33:00'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: input_boolean.night_plus
-        state: 'on'
-      - condition: state
-        entity_id: switch.easyplus
-        state: 'on'
-  action:
-  - service: homeassistant.turn_off
-    entity_id: switch.easyplus
-  - service: notify.dageraad
-    data:
-      message: "Late Night Modus, Easyplus off"
+# - id: easyplus_10c
+#   initial_state: 'true'
+#   alias: Auto Easyplus off 1u30 - Easyplus
+#   trigger:
+#     platform: time
+#     at: '01:33:00'
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.night_plus
+#         state: 'on'
+#       - condition: state
+#         entity_id: switch.easyplus
+#         state: 'on'
+#   action:
+#   - service: homeassistant.turn_off
+#     entity_id: switch.easyplus
+#   - service: notify.dageraad
+#     data:
+#       message: "Late Night Modus, Easyplus off"
 
 #######################################################################
 - id: easyplus_11

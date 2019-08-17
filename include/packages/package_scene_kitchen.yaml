@@ -476,3 +476,23 @@ automation:
     - service: notify.dageraad
       data_template:
         message: 'Oven - Microwave: {{states.switch.stp_keuken_oven.state}} - {{states.switch.stp_keuken_microwave.state}}'
+
+  # - id: easyplus_off_night
+  #   initial_state: 'true'
+  #   alias: 'test multi script'
+  #   trigger:
+  #   - platform: time
+  #     at: '00:30:00'
+  #   condition:
+  #     - condition: state
+  #       entity_id: input_boolean.night
+  #       state: 'on'
+  #   action:
+  #   - service: python_script.easyplus_off
+  #     data_template:
+  #       script_1: script.lights
+  #       script_2: script.switches
+  #       entity_id: switch.easyplus
+  #   - service: notify.dageraad
+  #     data:
+  #       message: "Night Modus, Lights, Switches and Easyplus Off"

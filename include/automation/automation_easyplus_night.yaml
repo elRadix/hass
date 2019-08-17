@@ -1,42 +1,42 @@
 ---
-- alias:  easyplus_night_1_mobile_app_night now
-  trigger:
-  - event_data:
-      action: night_now
-    event_type: ariela_notification_clicked
-    platform: event
-  action:
-  - service: script.lights
-  - delay:
-      seconds: 5
-  - service: script.switches
-  - delay:
-      seconds: 5
-  - service: homeassistant.turn_off
-    entity_id: switch.easyplus
-  - service: notify.mobile_app_elradix
-    data:
-      message: House is in Night Mode
-  - service: notify.mobile_app_flora
-    data:
-      message: House is in Night Mode
+# - alias:  easyplus_night_1_mobile_app_night now
+#   trigger:
+#   - event_data:
+#       action: night_now
+#     event_type: ariela_notification_clicked
+#     platform: event
+#   action:
+#   - service: script.lights
+#   - delay:
+#       seconds: 5
+#   - service: script.switches
+#   - delay:
+#       seconds: 5
+#   - service: homeassistant.turn_off
+#     entity_id: switch.easyplus
+#   - service: notify.mobile_app_elradix
+#     data:
+#       message: House is in Night Mode
+#   - service: notify.mobile_app_flora
+#     data:
+#       message: House is in Night Mode
 
 
-- alias: easyplus_night_1_mobile_app_delay
-  trigger:
-  - event_data:
-      action: night_delay
-    event_type: ariela_notification_clicked
-    platform: event
-  action:
-  - service: homeassistant.turn_off
-    entity_id: input_boolean.night 
-  - service: notify.mobile_app_elradix
-    data:
-      message: Night Mode has been delayed
-  - service: notify.mobile_app_flora
-    data:
-      message: Night Mode has been delayed
+# - alias: easyplus_night_1_mobile_app_delay
+#   trigger:
+#   - event_data:
+#       action: night_delay
+#     event_type: ariela_notification_clicked
+#     platform: event
+#   action:
+#   - service: homeassistant.turn_off
+#     entity_id: input_boolean.night
+#   - service: notify.mobile_app_elradix
+#     data:
+#       message: Night Mode has been delayed
+#   - service: notify.mobile_app_flora
+#     data:
+#       message: Night Mode has been delayed
 
 
 - id: easyplus_night_1
@@ -58,24 +58,24 @@
         entity_id: switch.easyplus
         state: 'on'
   action:
-  - service: notify.mobile_app_elradix
-    data:
-      message: Night Modus Starting in 15min
-      data:
-        actions:
-          - action: night_now
-            title: Shutdown Easyplus now
-          - action: night_delay
-            title: Delay Shutdown Easyplus to 1am
-  - service: notify.mobile_app_flora
-    data:
-      message: Night Modus Starting in 15min
-      data:
-        actions:
-          - action: night_now
-            title: Shutdown Easyplus now
-          - action: night_delay
-            title: Delay Shutdown Easyplus to 1am
+  # - service: notify.mobile_app_elradix
+  #   data:
+  #     message: Night Modus Starting in 15min
+  #     data:
+  #       actions:
+  #         - action: night_now
+  #           title: Shutdown Easyplus now
+  #         - action: night_delay
+  #           title: Delay Shutdown Easyplus to 1am
+  # - service: notify.mobile_app_flora
+  #   data:
+  #     message: Night Modus Starting in 15min
+  #     data:
+  #       actions:
+  #         - action: night_now
+  #           title: Shutdown Easyplus now
+  #         - action: night_delay
+  #           title: Delay Shutdown Easyplus to 1am
   - service: telegram_bot.send_message
     data_template:
       title: 'Night Modus will start over 15min'
@@ -131,72 +131,91 @@
       target: '{{ trigger.event.data.user_id }}'
       message: 'Night Modus has been delayed till 1am'
 
-- id: easyplus_night_4
+- id: easyplus_off_night
   initial_state: 'true'
-  alias: 'Night Modus Lights Off'
+  alias: 'easyplus_off_night'
   trigger:
-    platform: time
-    at: '00:30:00'
+   - platform: time
+     at: '00:25:00'
   condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: input_boolean.night
-        state: 'on'
-      - condition: state
-        entity_id: group.easyplus_lights
-        state: 'on'
-      - condition: state
-        entity_id: switch.easyplus
-        state: 'on'
+     - condition: state
+       entity_id: switch.easyplus
+       state: 'on'
+     - condition: state
+       entity_id: input_boolean.night
+       state: 'on'
   action:
-  - service: script.lights
-  - service: notify.dageraad
-    data:
-      message: "Night Modus, Lights Off"
+   - service: python_script.easyplus_off
+   - service: notify.dageraad
+     data:
+       message: "Night, All Off"
 
-- id: easyplus_night_5
-  initial_state: 'true'
-  alias:  'Night Modus Switches Off'
-  trigger:
-    platform: time
-    at: '00:30:30'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: input_boolean.night
-        state: 'on'
-      - condition: state
-        entity_id: group.easyplus_switches
-        state: 'on'
-      - condition: state
-        entity_id: switch.easyplus
-        state: 'on'
-  action:
-  - service: script.switches
-  - service: notify.dageraad
-    data:
-      message: "Night Modus, Switches Off"
+# - id: easyplus_night_4
+#   initial_state: 'true'
+#   alias: 'Night Modus Lights Off'
+#   trigger:
+#     platform: time
+#     at: '00:30:00'
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.night
+#         state: 'on'
+#       - condition: state
+#         entity_id: group.easyplus_lights
+#         state: 'on'
+#       - condition: state
+#         entity_id: switch.easyplus
+#         state: 'on'
+#   action:
+#   - service: script.lights
+#   - service: notify.dageraad
+#     data:
+#       message: "Night Modus, Lights Off"
 
-- id: easyplus_night_6
-  initial_state: 'true'
-  alias: 'Night Modus Easyplus Off'
-  trigger:
-    platform: time
-    at: '00:30:55'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: input_boolean.night
-        state: 'on'
-      - condition: state
-        entity_id: switch.easyplus
-        state: 'on'
-  action:
-  - service: homeassistant.turn_off
-    entity_id: switch.easyplus
-  - service: notify.dageraad
-    data:
-      message: "Night Modus, Easyplus Off"
+# - id: easyplus_night_5
+#   initial_state: 'true'
+#   alias:  'Night Modus Switches Off'
+#   trigger:
+#     platform: time
+#     at: '00:30:30'
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.night
+#         state: 'on'
+#       - condition: state
+#         entity_id: group.easyplus_switches
+#         state: 'on'
+#       - condition: state
+#         entity_id: switch.easyplus
+#         state: 'on'
+#   action:
+#   - service: script.switches
+#   - service: notify.dageraad
+#     data:
+#       message: "Night Modus, Switches Off"
+
+# - id: easyplus_night_6
+#   initial_state: 'true'
+#   alias: 'Night Modus Easyplus Off'
+#   trigger:
+#     platform: time
+#     at: '00:30:55'
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.night
+#         state: 'on'
+#       - condition: state
+#         entity_id: switch.easyplus
+#         state: 'on'
+#   action:
+#   - service: homeassistant.turn_off
+#     entity_id: switch.easyplus
+#   - service: notify.dageraad
+#     data:
+#       message: "Night Modus, Easyplus Off"

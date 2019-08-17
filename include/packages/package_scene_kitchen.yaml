@@ -381,11 +381,11 @@ automation:
       for:
         minutes: 15
     condition:
-      - condition: state
-        entity_id: sensor.period_of_day
-        state: 'day'
-      # - condition: template
-      #   value_template: "{{ states.sensor.period_of_day.state != 'night' }}"
+      # - condition: state
+      #   entity_id: sensor.period_of_day
+      #   state: 'day'
+      - condition: template
+        value_template: "{{ states.sensor.period_of_day.state = 'day' }}"
     action:
     - service: script.scene_completed
     - delay:

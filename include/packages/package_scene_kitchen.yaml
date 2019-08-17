@@ -459,3 +459,20 @@ automation:
       # - condition: time
       #   before: '20:00:00'
       #   after: '08:00:00'
+
+  - id: test multi switch
+    initial_state: 'true'
+    alias: 'test multi script'
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.rf_btn_909601
+      from: 'off'
+      to: 'on'
+    action:
+    - service: python_script.easyplus_multi
+      data_template:
+        entity_main: switch.stp_keuken_oven
+        entity_sub: switch.stp_keuken_microwave
+    - service: notify.dageraad
+      data_template:
+        message: 'Oven - Microwave: {{states.switch.stp_keuken_oven.state}} - {{states.switch.stp_keuken_microwave.state}}'

@@ -22,13 +22,15 @@ def doWork(hass, data, logger):
     return
 
   if ls.state == 'on':
-        hass.services.call('script', lights, '', False)
+        service_data = {'entity_id':'script.lights'}
+        hass.services.call('switch', 'turn_on', service_data, False)
         time.sleep(15)
         hass.services.call('notify', 'dageraad', {'message': 'Lights off'})
         logger.info('Easyplus lights off')
 
   if sw.state == 'on':
-        hass.services.call('script', switches, '', False)
+        service_data = {'entity_id':'script.switches'}
+        hass.services.call('switch', 'turn_on', service_data, False)
         time.sleep(15)
         hass.services.call('notify', 'dageraad', {'message': 'Switches off'})
         logger.info('Easyplus switches off')

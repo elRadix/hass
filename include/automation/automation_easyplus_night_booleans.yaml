@@ -1,19 +1,19 @@
 ---
 - id: easyplus_night_booleans
   initial_state: 'true'
-  alias: 'Night Modus Notification'
+  alias: 'easyplus_night_booleans'
   trigger:
   - platform: state
-    entity_id: input_boolean.night,input_boolean.night_late,input_boolean.night_plus
+    entity_id: input_boolean.night, input_boolean.night_late, input_boolean.night_plus
     from: 'on'
     to: 'off'
   - platform: state
-    entity_id: input_boolean.night,input_boolean.night_late,input_boolean.night_plus
+    entity_id: input_boolean.night, input_boolean.night_late, input_boolean.night_plus
     from: 'off'
     to: 'on'
   action:
   - service: notify.dageraad
-    data:
+    data_template :
       message: "{{ trigger.to_state.attributes.friendly_name }} {{ trigger.to_state.state }}"
 
 # - id: easyplus_night_boolean_off

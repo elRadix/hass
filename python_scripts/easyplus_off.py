@@ -7,8 +7,6 @@ def doWork(hass, data, logger):
   ep = hass.states.get('switch.easyplus')
   ls = hass.states.get('group.easyplus_lights')
   sw = hass.states.get('group.easyplus_switches')
-# time  = hass.states.get('sensor.time').state
-# header  = ( 'Easysplus') + ' @ ' + time
 
   if ep is None:
     logger.warning('<easyplus> switch.easyplus does not exist')

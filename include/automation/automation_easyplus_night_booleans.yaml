@@ -14,7 +14,7 @@
   action:
   - service: notify.dageraad
     data:
-      message: "{{ trigger.to_state.name}} {{ trigger.to_state.state }}"
+      message: "{{ trigger.to_state.attributes.friendly_name }} {{ trigger.to_state.state }}"
 
 # - id: easyplus_night_boolean_off
 #   initial_state: 'true'

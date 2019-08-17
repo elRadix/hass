@@ -692,9 +692,9 @@
                                                 ],
                                                 "hour24": true,
                                                 "hours_to_show": 48,
-                                                "line_width": 3,
+                                                "line_width": 5,
                                                 "name": " ",
-                                                "points_per_hour": 1,
+                                                "points_per_hour": 0.5,
                                                 "show": {
                                                     "color_thresholds": [
                                                         {
@@ -798,10 +798,10 @@
                                                     }
                                                 ],
                                                 "hour24": true,
-                                                "hours_to_show": 24,
-                                                "line_width": 3,
+                                                "hours_to_show": 48,
+                                                "line_width": 5,
                                                 "name": " ",
-                                                "points_per_hour": 0.25,
+                                                "points_per_hour": 0.5,
                                                 "show": {
                                                     "color_thresholds": [
                                                         {
@@ -6026,16 +6026,19 @@
                             "animate": true,
                             "entities": [
                                 {
+                                    "color": "green",
                                     "entity": "sensor.load_1m",
-                                    "name": "1m"
+                                    "name": "1'"
                                 },
                                 {
+                                    "color": "orange",
                                     "entity": "sensor.load_5m",
-                                    "name": "5m"
+                                    "name": "5'"
                                 },
                                 {
+                                    "color": "red",
                                     "entity": "sensor.load_15m",
-                                    "name": "15m"
+                                    "name": "15'"
                                 }
                             ],
                             "font_size": 120,
@@ -6047,7 +6050,7 @@
                             "location_state": "center",
                             "more_info": false,
                             "name": "CPU Load",
-                            "points_per_hour": 0.1,
+                            "points_per_hour": 0.5,
                             "show": {
                                 "extrema": true,
                                 "labels": true,
@@ -6061,15 +6064,19 @@
                             "animate": true,
                             "entities": [
                                 {
+                                    "color": "green",
                                     "entity": "sensor.memory_free",
                                     "name": "Free"
                                 },
                                 {
+                                    "color": "red",
                                     "entity": "sensor.memory_use",
                                     "name": "Used"
                                 },
                                 {
-                                    "entity": "sensor.swap_use"
+                                    "color": "yellow",
+                                    "entity": "sensor.swap_use",
+                                    "name": "Swap"
                                 }
                             ],
                             "font_size": 120,
@@ -6081,7 +6088,7 @@
                             "location_state": "center",
                             "more_info": false,
                             "name": "Memory",
-                            "points_per_hour": 0.1,
+                            "points_per_hour": 0.5,
                             "show": {
                                 "extrema": true,
                                 "labels": true,

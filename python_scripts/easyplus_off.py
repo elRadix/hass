@@ -2,7 +2,6 @@ def doWork(hass, data, logger):
   lights = 'script.lights'
   switches = 'script.switches'
   main = 'switch.easyplus'
-  time  = hass.states.get('sensor.time').state
 
   ep = hass.states.get('switch.easyplus')
   ls = hass.states.get('group.easyplus_lights')

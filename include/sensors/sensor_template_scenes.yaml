@@ -160,3 +160,35 @@
         {% else %}
           mdi:close-circle-outline
         {% endif %}
+
+
+- platform: template
+  sensors:
+    day:
+      friendly_name: "Day"
+      entity_id: sensor.time,sensor.period_of_day
+      device_class: light
+      value_template: >-
+        {% if is_state('sensor.period_of_day', 'day') %}
+          on
+        {% elif is_state('sensor.period_of_day', 'dawn') %}
+          on
+        {% elif is_state('sensor.period_of_day', 'dusk') %}
+          on
+        {% elif is_state('sensor.period_of_day', 'unknown') %}
+          on
+        {% else %}
+          off
+        {% endif %}
+      icon_template: >-
+        {% if 'day' in states.sensor.period_of_day.state %}
+          mdi:weather-sunny
+        {% elif 'dawn' in states.sensor.period_of_day.state %}
+          mdi:weather-sunset-down
+        {% elif 'dusk' in states.sensor.period_of_day.state %}
+          mdi:weather-sunset-up
+        {% elif 'unkown' in states.sensor.period_of_day.state %}
+          mdi:weather-sunny-alert
+        {% else %}
+          mdi:weather-night
+        {% endif %}

@@ -381,12 +381,29 @@ automation:
       for:
         minutes: 15
     condition:
-      - condition: template
-        value_template: "{{ states.sensor.period_of_day.state != 'night' }}"
+      - condition: state
+        entity_id: sensor.day
+        state: 'on'
     action:
-    - service: script.scene_completed
+    - service: script.lights
+    - service: notify.dageraad
+      data:
+        message: "scences completed, lights off"
     - delay:
-        seconds: 65
+        seconds: 10
+    - service: script.switches
+    - service: notify.dageraad
+      data:
+        message: "scences completed, switches off"
+    - delay:
+        seconds: 10
+    - service: switch.turn_off
+      entity_id: switch.easyplus
+    - service: notify.dageraad
+      data:
+        message: "scences completed, easyplus off"
+    - delay:
+        seconds: 1
     - service: notify.dageraad
       data_template:
         message: 'All scenes completed, easyplus: {{states.switch.easyplus.state}}'
@@ -436,3 +453,9 @@ automation:
       #   state: '{{ trigger.to_state.state }}'
 
 
+
+      # - condition: template
+      #   value_template: "{{ states.sensor.period_of_day.state != 'night' }}"
+      # - condition: time
+      #   before: '20:00:00'
+      #   after: '08:00:00'

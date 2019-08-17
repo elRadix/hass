@@ -1,5 +1,4 @@
 ---
-
 - id: easyplus_night_booleans
   initial_state: 'true'
   alias: 'Night Modus Notification'
@@ -15,7 +14,7 @@
   action:
   - service: notify.dageraad
     data:
-      message: "{{ trigger.to_state.name}} Modus: {{ trigger.to_state}}"
+      message: "{{ trigger.to_state.name}} {{ trigger.to_state.state }}"
 
 # - id: easyplus_night_boolean_off
 #   initial_state: 'true'

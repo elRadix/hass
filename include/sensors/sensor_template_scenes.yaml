@@ -167,7 +167,7 @@
     day:
       friendly_name: "Day"
       entity_id: sensor.time,sensor.period_of_day
-      device_class: light
+#      device_class: power
       value_template: >-
         {% if is_state('sensor.period_of_day', 'day') %}
           on

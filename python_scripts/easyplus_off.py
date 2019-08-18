@@ -15,8 +15,7 @@ def doWork(hass, data, logger):
     return
 
   if ls.state == 'on':
-        service_data = {'entity_id':'script.lights'}
-        hass.services.call('script', 'turn_on', service_data, False)
+        hass.services.call('script', 'lights', '', False)
         time.sleep(15)
         state = hass.states.get(ls).state
         lights = (hass.states.get(ls).attributes["friendly_name"])
@@ -25,8 +24,7 @@ def doWork(hass, data, logger):
         logger.info('Easyplus lights off')
 
   if sw.state == 'on':
-        service_data = {'entity_id':'script.switches'}
-        hass.services.call('script', 'turn_on', service_data, False)
+        hass.services.call('script', 'switches', '', False)
         time.sleep(15)
         state = hass.states.get(sw).state
         switches = (hass.states.get(sw).attributes["friendly_name"])
@@ -34,8 +32,7 @@ def doWork(hass, data, logger):
         hass.services.call('notify', 'dageraad', {'message': switches + ' are now ' + state })
         logger.info('Easyplus Switches off')
 
-  service_data = {'entity_id':'switch.easyplus'}
-  hass.services.call('switch', 'turn_off', service_data, False)
+  hass.services.call('switch', 'turn_off', { 'entity_id': 'switch.easyplus' }, False)
   time.sleep(5)
   state = hass.states.get(ep).state
   switch = (hass.states.get(ep).attributes["friendly_name"])

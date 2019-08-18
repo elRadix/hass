@@ -38,7 +38,7 @@
 - platform: command_line
   scan_interval: 110
   switches:
-   stp_keuken_microwave:
+   stp_keuken_microgolf:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 33,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 33,0'"
         command_state: "/opt/scripts/status/state.sh -D 33"
@@ -65,7 +65,7 @@
 - platform: command_line
   scan_interval: 110
   switches:
-   stp_keuken_water:
+   stp_keuken_waterkoker:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 39,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 39,0'"
         command_state: "/opt/scripts/status/state.sh -D 39"
@@ -74,7 +74,7 @@
 - platform: command_line
   scan_interval: 110
   switches:
-   stp_keuken_vaatwasser:
+   stp_keuken_dish:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 38,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 38,0'"
         command_state: "/opt/scripts/status/state.sh -D 38"
@@ -92,7 +92,7 @@
 - platform: command_line
   scan_interval: 110
   switches:
-   stp_berging_wasmachine:
+   stp_berging_was:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 36,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 36,0'"
         command_state: "/opt/scripts/status/state.sh -D 36"
@@ -101,7 +101,7 @@
 - platform: command_line
   scan_interval: 110
   switches:
-   stp_berging_droogkast:
+   stp_berging_dryer:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 37,1'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 37,0'"
         command_state: "/opt/scripts/status/state.sh -D 37"

@@ -396,7 +396,7 @@
       command: '/Wasmachine'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.stp_berging_wasmachine
 
 - id: tgbot_19
@@ -409,7 +409,7 @@
       command: '/Licht'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_berging_center
 
 - id: tgbot_20
@@ -795,7 +795,7 @@
       command: '/Bur_Lader'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.bureau_lader
 
 - id: Bureau TL
@@ -808,7 +808,7 @@
       command: '/Bur_Spot'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_bureau_spots
 
 - id: Bureau TL
@@ -834,7 +834,7 @@
       command: '/Liv_Center'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_living_center
 
 - id: living Spot2
@@ -860,7 +860,7 @@
       command: '/Liv_Triple'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_living_triple_spott
 
 - id: Living SonyTV
@@ -873,7 +873,7 @@
       command: '/Sony'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.stp_living_sony
 
 - id: Living KodiTV
@@ -963,7 +963,7 @@
       command: '/Samsung'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.stp_eetkamer_tv
 
 - id: Eetkamer Center
@@ -976,7 +976,7 @@
       command: '/Eet_Center'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_eetkamer_center
 
 - id: Eetkamer Dubbel
@@ -989,7 +989,7 @@
       command: '/Eet_Dubbel'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_eetkamer_double_spot
 
 - id: 'Telegram reply with Kitchen'
@@ -1073,7 +1073,7 @@
       command: '/Spotwasbak'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_keuken_spot_front
 
 - id: spotlinks
@@ -1086,7 +1086,7 @@
       command: '/Spotlinks'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_keuken_spot_links
 
 - id: spotrechts
@@ -1099,7 +1099,7 @@
       command: '/Spotrechts'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_keuken_spot_rechts
 
 - id: 'Telegram reply with Keuken_Toestellen'
@@ -1155,7 +1155,7 @@
       command: '/Commander'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.stp_keuken_commander
 
 - id: Microgolf
@@ -1168,7 +1168,7 @@
       command: '/Microgolf'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.stp_keuken_microwave
 
 - id: Oven
@@ -1181,7 +1181,7 @@
       command: '/Oven'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.stp_keuken_oven
 
 - id: Vaatwasser
@@ -1194,7 +1194,7 @@
       command: '/Vaatwasser'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.stp_keuken_vaatwasser
 
 - id: Waterkoker
@@ -1207,7 +1207,7 @@
       command: '/Waterkoker'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.stp_keuken_water
 
 - id: Espresso
@@ -1220,7 +1220,7 @@
       command: '/Espresso'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.stp_keuken_espresso
 
 - id: telegram Lights off
@@ -1292,7 +1292,7 @@
       command: '/S&R'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_slp1_deur_morning
 
 
@@ -1335,7 +1335,7 @@
       command: '/bureau'
   action:
   - service: python_script.easyplus_switch
-    data:
+    data_template:
       entity_id: switch.light_bureau_spots
 
 - id: telegram_easyplus_notification

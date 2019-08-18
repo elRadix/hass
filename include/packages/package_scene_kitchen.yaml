@@ -16,7 +16,7 @@ timer:
     duration: '00:40:00'
     icon: mdi:dishwasher
   was:
-    duration: '02:00:00'
+    duration: '02:10:00'
     icon: mdi:washing-machine
   dryer:
     duration: '02:30:00'
@@ -25,7 +25,7 @@ timer:
     duration: '00:15:00'
     icon: mdi:coffee
   water:
-    duration: '01:00:00'
+    duration: '00:30:00'
     icon: mdi:water-pump
   oven:
     duration: '01:30:00'
@@ -34,7 +34,7 @@ timer:
     duration: '00:45:00'
     icon: mdi:microwave
   samsung:
-    duration: '02:00:00'
+    duration: '01:30:00'
     icon: mdi:television-box
   boiler_shower:
     duration: '01:30:00'
@@ -52,7 +52,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'microgolf program: {{states.switch.stp_keuken_microwave.state}}'
+        message: 'microgolf timer: {{states.switch.stp_keuken_microwave.state}}'
 
   turn_off_microgolf:
     sequence:
@@ -64,7 +64,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'microgolf program: {{states.switch.stp_keuken_microwave.state}}'
+        message: 'microgolf timer: {{states.switch.stp_keuken_microwave.state}}'
 
   turn_on_samsung:
     sequence:
@@ -76,7 +76,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'Samsung program: {{states.switch.stp_eetkamer_tv.state}}'
+        message: 'Samsung timer: {{states.switch.stp_eetkamer_tv.state}}'
 
   turn_off_samsung:
     sequence:
@@ -88,7 +88,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'samsung program: {{states.switch.stp_eetkamer_tv.state}}'
+        message: 'samsung timer: {{states.switch.stp_eetkamer_tv.state}}'
 
   turn_on_oven:
     sequence:
@@ -100,7 +100,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'oven program: {{states.switch.stp_keuken_oven.state}}'
+        message: 'oven timer: {{states.switch.stp_keuken_oven.state}}'
 
   turn_off_oven:
     sequence:
@@ -112,7 +112,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'oven program: {{states.switch.stp_keuken_oven.state}}'
+        message: 'oven timer: {{states.switch.stp_keuken_oven.state}}'
 
   turn_on_commander:
     sequence:
@@ -124,7 +124,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'commander program: {{states.switch.stp_keuken_commander.state}}'
+        message: 'commander timer: {{states.switch.stp_keuken_commander.state}}'
 
   turn_off_commander:
     sequence:
@@ -136,52 +136,52 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'commander program: {{states.switch.stp_keuken_commander.state}}'
+        message: 'commander timer: {{states.switch.stp_keuken_commander.state}}'
 
   turn_on_waterkoker:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_keuken_water,switch.led_keuken_waterkoker
+      entity_id: switch.stp_keuken_waterkoker,switch.led_keuken_waterkoker
     - service: timer.start
       entity_id: timer.water
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'waterkoker program: {{states.switch.stp_keuken_water.state}}'
+        message: 'waterkoker timer: {{states.switch.stp_keuken_water.state}}'
 
   turn_off_waterkoker:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_water,switch.led_keuken_waterkoker
+      entity_id: switch.stp_keuken_waterkoker,switch.led_keuken_waterkoker
     - service: timer.cancel
       entity_id: timer.water
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'waterkoker program: {{states.switch.stp_keuken_water.state}}'
+        message: 'waterkoker timer: {{states.switch.stp_keuken_water.state}}'
 
   turn_on_espresso:
     sequence:
     - service: homeassistant.turn_on
       entity_id: switch.stp_keuken_espresso
     - service: homeassistant.turn_on
-      entity_id: switch.stp_keuken_microwave
+      entity_id: switch.stp_keuken_microgolf
     - service: timer.start
       entity_id: timer.espresso
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'espresso program: {{states.switch.stp_keuken_espresso.state}}'
+        message: 'espresso timer: {{states.switch.stp_keuken_espresso.state}}'
 
   turn_off_espresso:
     sequence:
     - service: homeassistant.turn_off
       entity_id: switch.stp_keuken_espresso
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_microwave
+      entity_id: switch.stp_keuken_microgolf
     - service: timer.cancel
       entity_id: timer.espresso
     - service: timer.cancel
@@ -190,7 +190,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'espresso program: {{states.switch.stp_keuken_espresso.state}}'
+        message: 'espresso timer: {{states.switch.stp_keuken_espresso.state}}'
 
   turn_on_dryer:
     sequence:
@@ -202,87 +202,67 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'dryer program: {{states.switch.stp_berging_droogkast.state}}'
+        message: 'dryer timer: {{states.switch.stp_berging_dryer.state}}'
 
   turn_off_dryer:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_berging_droogkast
+      entity_id: switch.stp_berging_dryer
     - service: timer.cancel
       entity_id: timer.dryer
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'was program: {{states.switch.stp_berging_droogkast.state}}'
+        message: 'was timer: {{states.switch.stp_berging_dryer.state}}'
 
   turn_on_was:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_berging_wasmachine
+      entity_id: switch.stp_berging_was
     - service: timer.start
       entity_id: timer.was
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'was program: {{states.switch.stp_berging_wasmachine.state}}'
+        message: 'was timer: {{states.switch.stp_berging_was.state}}'
 
   turn_off_was:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_berging_wasmachine
+      entity_id: switch.stp_berging_was
     - service: timer.cancel
       entity_id: timer.was
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'was program: {{states.switch.stp_berging_wasmachine.state}}'
+        message: 'was timer: {{states.switch.stp_berging_was.state}}'
 
   turn_on_dish:
     sequence:
     - service: homeassistant.turn_on
-      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander, switch.led_keuken_vaatwasser
+      entity_id: switch.stp_keuken_dish, switch.stp_keuken_commander, switch.led_keuken_vaatwasser
     - service: timer.start
       entity_id: timer.dish
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
+        message: 'dish timer: {{states.switch.stp_keuken_dish.state}}/{{states.switch.stp_keuken_commander.state}}'
 
   turn_off_dish:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander, switch.led_keuken_vaatwasser
+      entity_id: switch.stp_keuken_dish, switch.stp_keuken_commander, switch.led_keuken_vaatwasser
     - service: timer.cancel
       entity_id: timer.dish
     - delay:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'dish program: {{states.switch.stp_keuken_vaatwasser.state}}/{{states.switch.stp_keuken_commander.state}}'
-
-  scene_completed:
-    sequence:
-    - service: script.lights
-    - service: notify.dageraad
-      data:
-        message: "scences completed, lights off"
-    - delay:
-        seconds: 30
-    - service: script.switches
-    - service: notify.dageraad
-      data:
-        message: "scences completed,  switches off"
-    - delay:
-        seconds: 30
-    - service: switch.turn_off
-      entity_id: switch.easyplus
-    - service: notify.dageraad
-      data:
-        message: "scences completed, easyplus off"
+        message: 'dish timer: {{states.switch.stp_keuken_dish.state}}/{{states.switch.stp_keuken_commander.state}}'
 
 automation:
 
@@ -376,7 +356,7 @@ automation:
           {% endif %}
     - service: notify.dageraad
       data_template:
-        message: 'program: {{trigger.event.data.entity_id.name}} completed'
+        message: 'timer: {{trigger.event.data.entity_id.name}} completed'
 
   - id: scenes completed notification
     initial_state: 'true'
@@ -468,19 +448,19 @@ automation:
       #   before: '20:00:00'
       #   after: '08:00:00'
 
-  - id: test multi switch
-    initial_state: 'true'
-    alias: 'test multi script'
-    trigger:
-    - platform: state
-      entity_id: binary_sensor.rf_btn_909601
-      from: 'off'
-      to: 'on'
-    action:
-    - service: python_script.easyplus_multi
-      data_template:
-        entity_main: switch.stp_keuken_oven
-        entity_sub: switch.stp_keuken_microwave
+  # - id: test multi switch
+  #   initial_state: 'true'
+  #   alias: 'test multi script'
+  #   trigger:
+  #   - platform: state
+  #     entity_id: binary_sensor.rf_btn_909601
+  #     from: 'off'
+  #     to: 'on'
+  #   action:
+  #   - service: python_script.easyplus_multi
+  #     data_template:
+  #       entity_main: switch.stp_keuken_oven
+  #       entity_sub: switch.stp_keuken_microwave
 
 
   # - id: easyplus_off_night

@@ -1219,9 +1219,10 @@
     event_data:
       command: '/Espresso'
   action:
-  - service: python_script.easyplus_switch
+  - service: python_script.easyplus_switch_multi
     data_template:
-      entity_id: switch.stp_keuken_espresso
+      entity_main: switch.stp_keuken_espresso
+      entity_sub: switch.stp_keuken_microgolf
 
 - id: telegram Lights off
   initial_state: 'true'

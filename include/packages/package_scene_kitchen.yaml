@@ -148,7 +148,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'waterkoker timer: {{states.switch.stp_keuken_water.state}}'
+        message: 'waterkoker timer: {{states.switch.stp_keuken_waterkoker.state}}'
 
   turn_off_waterkoker:
     sequence:
@@ -160,7 +160,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'waterkoker timer: {{states.switch.stp_keuken_water.state}}'
+        message: 'waterkoker timer: {{states.switch.stp_keuken_waterkoker.state}}'
 
   turn_on_espresso:
     sequence:

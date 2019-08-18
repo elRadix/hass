@@ -998,7 +998,7 @@
   - platform: event
     event_type: telegram_command
     event_data:
-      command: '/Keuken'
+      command: '/Keukens'
   action:
   - service: telegram_bot.send_message
     data_template:
@@ -1008,7 +1008,7 @@
       Keuken Toestellen:
 
 
-      Microgolf is {{states.switch.stp_keuken_microwave.state}}
+      Microgolf is {{states.switch.stp_keuken_microgolf.state}}
 
       Commander is {{states.switch.stp_keuken_commander.state}}
 
@@ -1169,7 +1169,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_keuken_microwave
+      entity_id: switch.stp_keuken_microgolf
 
 - id: Oven
   initial_state: 'true'

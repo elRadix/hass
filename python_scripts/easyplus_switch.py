@@ -1,5 +1,5 @@
 def doWork(hass, data, logger):
-  sn = data.get('switch_id')
+  sn = data.get('entity_id')
   ep = hass.states.get('switch.easyplus')
 
   if sn is None:

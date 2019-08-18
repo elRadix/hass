@@ -1817,7 +1817,7 @@
                                             "color_off": "var(--disabled-text-color)(189, 255, 5)",
                                             "color_type": "card",
                                             "default_color": "var(--primary-text-color)",
-                                            "entity": "switch.stp_keuken_water",
+                                            "entity": "switch.stp_keuken_waterkoker",
                                             "hold_action": {
                                                 "action": "more-info",
                                                 "haptic": "success"

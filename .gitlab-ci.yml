@@ -94,12 +94,12 @@ latest:
   image:
     name: homeassistant/home-assistant:latest
     entrypoint: [""]
-rc:
-  <<: *test
-  image:
-    name: homeassistant/home-assistant:rc
-    entrypoint: [""]
-  allow_failure: true
+# rc:
+#   <<: *test
+#   image:
+#     name: homeassistant/home-assistant:rc
+#     entrypoint: [""]
+#   allow_failure: true
 
 dev:
   <<: *test

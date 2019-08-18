@@ -5914,6 +5914,9 @@
                                     "entity": "sensor.1_wmx_794_odometer",
                                     "icon": "mdi:counter",
                                     "name": "Odometer"
+                                },
+                                {
+                                    "entity": "lock.1_wmx_794_lock"
                                 }
                             ],
                             "type": "entities"
@@ -6924,16 +6927,16 @@
                                     "entity": "switch.led_keuken_waterkoker"
                                 },
                                 {
-                                    "entity": "switch.stp_keuken_microwave"
+                                    "entity": "switch.stp_keuken_microgolf"
                                 },
                                 {
                                     "entity": "switch.stp_keuken_oven"
                                 },
                                 {
-                                    "entity": "switch.stp_keuken_vaatwasser"
+                                    "entity": "switch.stp_keuken_dish"
                                 },
                                 {
-                                    "entity": "switch.stp_keuken_water"
+                                    "entity": "switch.stp_keuken_waterkoker"
                                 }
                             ],
                             "show_header_toggle": false,

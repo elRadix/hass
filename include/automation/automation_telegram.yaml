@@ -385,14 +385,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_berging_droogkast
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-
-      Droogkast is {{states.switch.stp_berging_droogkast.state}}'
 
 - id: tgbot_18
   initial_state: 'true'
@@ -406,14 +398,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_berging_wasmachine
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-
-      Wasmachine is {{states.switch.stp_berging_wasmachine.state}}'
 
 - id: tgbot_19
   initial_state: 'true'
@@ -427,16 +411,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_berging_center
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-
-      Light is {{states.switch.light_berging_center.state}}'
-
-
 
 - id: tgbot_20
   initial_state: 'true'
@@ -547,11 +521,6 @@
       target: '{{ trigger.event.data.user_id }}'
       file: http://s2.lan:8000/shot.jpg
       caption: Current picture in Berging @ {{now().strftime("%H:%M:%S")}}
-
-
-
-
-
 
 
 - id: ALL OFF status
@@ -828,17 +797,8 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.bureau_lader
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Bureau lader is {{states.switch.bureau_lader.state}}'
 
-
-
-- id: Bureau TL 
+- id: Bureau TL
   initial_state: 'true'
   alias: 'Telegram reply Bureau Spot toggle'
   trigger:
@@ -850,13 +810,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_bureau_spots
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Bureau Spot is {{states.switch.light_bureau_spots.state}}'
 
 - id: Bureau TL
   initial_state: 'true'
@@ -870,13 +823,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_bureau_tl
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Bureau TL is {{states.switch.light_bureau_tl.state}}'
 
 - id: Living Spotcenter 
   initial_state: 'true'
@@ -890,13 +836,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_living_center
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Spot Center is {{states.switch.light_living_center.state}}'
 
 - id: living Spot2
   initial_state: 'true'
@@ -910,13 +849,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_living_double_spot
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Spot Dubbel is {{states.switch.light_living_double_spot.state}}'
 
 - id: Living Spot3
   initial_state: 'true'
@@ -930,14 +862,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_living_triple_spott
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Spot Triple is {{states.switch.light_living_triple_spot.state}}'
-
 
 - id: Living SonyTV
   initial_state: 'true'
@@ -951,13 +875,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_living_sony
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Kodi is {{states.switch.stp_living_sony.state}}'
 
 - id: Living KodiTV
   initial_state: 'true'
@@ -1048,13 +965,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_eetkamer_tv
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Samsung TV is {{states.switch.stp_eetkamer_tv.state}}'
 
 - id: Eetkamer Center
   initial_state: 'true'
@@ -1068,13 +978,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_eetkamer_center
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Spot Center is {{states.switch.light_eetkamer_center.state}}'
 
 - id: Eetkamer Dubbel
   initial_state: 'true'
@@ -1088,13 +991,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_eetkamer_double_spot
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Spot Dubbel is {{states.switch.light_eetkamer_double_spot.state}}'
 
 - id: 'Telegram reply with Kitchen'
   initial_state: 'true'
@@ -1179,13 +1075,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_keuken_spot_front
-  - delay:
-      seconds: 1
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Spot Wasbak is {{states.switch.light_keuken_spot_front.state}}'
 
 - id: spotlinks
   initial_state: 'true'
@@ -1199,13 +1088,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_keuken_spot_links
-  - delay:
-      seconds: 1
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Spot Links is {{states.switch.light_keuken_spot_links.state}}'
 
 - id: spotrechts
   initial_state: 'true'
@@ -1219,13 +1101,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_keuken_spot_rechts
-  - delay:
-      seconds: 1
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Spot Rechts is {{states.switch.light_keuken_spot_rechts.state}}'
 
 - id: 'Telegram reply with Keuken_Toestellen'
   initial_state: 'true'
@@ -1313,14 +1188,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_keuken_microwave
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Micogolf is {{states.switch.stp_keuken_microwave.state}}'
-
 
 - id: Oven
   initial_state: 'true'
@@ -1334,13 +1201,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_keuken_oven
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Oven is {{states.switch.stp_keuken_oven.state}}'
 
 - id: Vaatwasser
   initial_state: 'true'
@@ -1354,13 +1214,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_keuken_vaatwasser
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Vaatwasser is {{states.switch.stp_keuken_vaatwasser.state}}'
 
 - id: Waterkoker
   initial_state: 'true'
@@ -1374,13 +1227,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_keuken_water
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Waterkoker is {{states.switch.stp_keuken_water.state}}'
 
 - id: Espresso
   initial_state: 'true'
@@ -1394,14 +1240,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_keuken_espresso
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Espresso is {{states.switch.stp_keuken_espresso.state}}'
-
 
 - id: telegram Lights off
   initial_state: 'true'
@@ -1424,14 +1262,13 @@
   - service: homeassistant.turn_off
     data:
       entity_id:
-        - group.slaap_sub 
+        - group.slaap_sub
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
       message: "
       1st floor lights is {{states.group.woon_sub.state}}
       2nd floor lights is {{states.group.slaap_sub.state}}"
-
 
 - id: telegram Socket off
   initial_state: 'true'
@@ -1462,8 +1299,6 @@
       1st floor sockets is {{states.group.woon_sub_soc.state}}
 
       2nd floor sockets is {{states.group.slaap_sub_soc.state}}"
-
-
 
 - id: telegram_s&r_notification
   initial_state: 'true'
@@ -1509,7 +1344,6 @@
       target: '{{ trigger.event.data.user_id }}'
       message: "Sara light is {{ states.group.slaapkamer2_light.state}}"
 
-
 - id: telegram_Yassin_notification
   initial_state: 'true'
   alias: 'Telegram reply with Yassin light toggle'
@@ -1548,13 +1382,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.light_bureau_spots
-  - delay:
-      seconds: 6
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: "Bureau light is {{ states.switch.light_bureau_spots.state}}"
-
 
 - id: telegram_easyplus_notification
   initial_state: 'true'
@@ -1629,7 +1456,7 @@
       Adblock is {{states.switch.router_adblock.state}}
 
       VPN Server 1 is {{states.switch.router_vpn_server1.state}}
-      
+
       VPN Server 2 is {{states.switch.router_vpn_server2.state}}'
 
       keyboard:
@@ -1657,7 +1484,7 @@
     data_template:
       target: '{{ trigger.event.data.user_id }}'
       message: "Firewall is {{ states.switch.router_firewall.state}}"
-      
+
 - id: telegram_router_adblock
   initial_state: 'true'
   alias: 'Adblock toggle'
@@ -1717,9 +1544,6 @@
     data_template:
       target: '{{ trigger.event.data.user_id }}'
       message: "vpnserver2 is {{ states.switch.router_vpn_server2.state}}"
-
-
-
 
 - id: telegram_router_reboot
   initial_state: 'true'

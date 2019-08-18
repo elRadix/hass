@@ -102,7 +102,7 @@
 #       friendly_name: "Button 909601"
 
 - platform: mqtt
-  name: 'rf_btn_909601'
+  name: 'waterkoker'
   state_topic: 'home/circle1'
   off_delay: 1
   device_class: plug

@@ -18,6 +18,7 @@ def doWork(hass, data, logger):
   if ep.state == 'off':
      service_data = {'entity_id':'switch.easyplus'}
      hass.services.call('switch', 'turn_on', service_data, False)
+     hass.services.call('notify', 'dageraad', {'message':  'Starting EasyPlus' })
      time.sleep(17)
 
   hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn })

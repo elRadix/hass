@@ -1383,9 +1383,25 @@
                Odometer: {{ states.sensor.wmx_794_odometer.state}} km
 
          latitude: {{ states.device_tracker.wdd1771871j112618.attributes.latitude }}
+
          longitude: {{ states.device_tracker.wdd1771871j112618.attributes.longitude }}"
 
 
+
+- id: telegram_mercedes_location
+  initial_state: 'true'
+  alias: 'Telegram reply with mercedes location'
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/location'
+  action:
+  - service: script.location
+  - service: telegram_bot.send_location
+    data_template:
+      latitude: '{{states.device_tracker.wdd1771871j112618.attributes.latitude}'
+      longitude: '{{states.device_tracker.wdd1771871j112618.attributes.longitude}
 
 #### ROUTER
 

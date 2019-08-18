@@ -42,6 +42,14 @@ timer:
 
 script:
 
+location:
+  alias: 'mercedes location'
+  sequence:
+    - service: telegram_bot.send_location
+      data_template:
+        latitude: '{{states.device_tracker.wdd1771871j112618.attributes.latitude}'
+        longitude: '{{states.device_tracker.wdd1771871j112618.attributes.longitude}}'
+
   turn_on_microgolf:
     sequence:
     - service: homeassistant.turn_on
@@ -57,7 +65,7 @@ script:
   turn_off_microgolf:
     sequence:
     - service: homeassistant.turn_off
-      entity_id: switch.stp_keuken_micogolf,switch.led_keuken_microgolf
+      entity_id: switch.stp_keuken_microgolf,switch.led_keuken_microgolf
     - service: timer.cancel
       entity_id: timer.microgolf
     - delay:

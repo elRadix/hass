@@ -2,7 +2,7 @@ def doWork(hass, data, logger):
   sn = data.get('entity_id')
   ep = hass.states.get('switch.easyplus')
   ss = hass.states.get(sn)
-  id = hass.states.get(entity_id).state
+  id = hass.states.get(sn).state
 
   if sn is None:
     logger.warning('<easyplus> no switch id supplied')

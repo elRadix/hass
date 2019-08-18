@@ -114,8 +114,6 @@
     data:
       message: "Easyplus Off"
 
-
-
 ################################################
 - id: easyplus_9
   initial_state: 'true'
@@ -320,7 +318,6 @@
   - service: notify.android
     data:
       message: Wakker worden Yassin, Zayd en Sara - {{now().strftime("%H:%M:%S")}}
-
 
 - id: easyplus_14a
   initial_state: 'true'

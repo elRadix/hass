@@ -24,19 +24,19 @@ def doWork(hass, data, logger):
 
 
   hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn })
-  time.sleep(5)
+  time.sleep(6)
   hass.services.call('notify', 'dageraad', {'message': switch + ' is now ' + state })
 
 
-switch_group = 'group.easyplus_switches'
+# switch_group = 'group.easyplus_switches'
 
-entities_on = []
-for entity_id in hass.states.get(switch_group).attributes['entity_id']:
-    if hass.states.get(entity_id).state is 'on':
-        entities_on.append(hass.states.get(entity_id).attributes["friendly_name"])
+# entities_on = []
+# for entity_id in hass.states.get(switch_group).attributes['entity_id']:
+#     if hass.states.get(entity_id).state is 'on':
+#         entities_on.append(hass.states.get(entity_id).attributes["friendly_name"])
 
-if len(entities_on) > 0:
-    notification_message = "The following Switches are on: " + ', '.join(entities_on)
-    hass.services.call('notify', 'dageraad', {'message': notification_message})
+# if len(entities_on) > 0:
+#     notification_message = "The following Switches are on: " + ', '.join(entities_on)
+#     hass.services.call('notify', 'dageraad', {'message': notification_message})
 
 doWork(hass, data, logger)

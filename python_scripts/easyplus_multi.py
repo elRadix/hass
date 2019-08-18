@@ -13,10 +13,10 @@ if sn is not None:
         time.sleep(20)
 
       hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn })
-      time.sleep(2)
+      time.sleep(3)
       state = hass.states.get(sn).state
       switch = (hass.states.get(sn).attributes["friendly_name"])
-      time.sleep(1)
+      time.sleep(3)
       hass.services.call('notify', 'dageraad', {'message': switch + ' is now ' + state })
 
       hass.services.call('switch', 'toggle', service_data={ 'entity_id': sub })

@@ -455,9 +455,7 @@ automation:
       data_template:
         entity_main: switch.stp_keuken_oven
         entity_sub: switch.stp_keuken_microwave
-    - service: notify.dageraad
-      data_template:
-        message: 'Oven - Microwave: {{states.switch.stp_keuken_oven.state}} - {{states.switch.stp_keuken_microwave.state}}'
+
 
   # - id: easyplus_off_night
   #   initial_state: 'true'

@@ -6,32 +6,33 @@ def doWork(hass, data, logger):
   name = hass.states.get(sn).state.attribute.friendly_name
 
   if sn is None:
-    logger.warning('<easyplus> no switch id supplied')
-    return
+     logger.warning('<easyplus> no switch id supplied')
+     return
 
   if ep is None:
-    logger.warning('<easyplus> switch.easyplus does not exist')
-    return
+     logger.warning('<easyplus> switch.easyplus does not exist')
+     return
 
   if ss is None:
-    logger.warning('<easyplus> switch does not exist')
-    return
+     logger.warning('<easyplus> switch does not exist')
+     return
 
   if ep.state == 'off':
-    service_data = {'entity_id':'switch.easyplus'}
-    hass.services.call('switch', 'turn_on', service_data, False)
-    time.sleep(17)
+     service_data = {'entity_id':'switch.easyplus'}
+     hass.services.call('switch', 'turn_on', service_data, False)
+     time.sleep(17)
 
 
   hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn })
+  time.sleep(5)
 
   hass.services.call('notify', 'dageraad',
-                    {'message':'Switch status is {}'.format(state)})
+                    {'message':'Switch status is {}'.format(name)})
 
  # hass.services.call('notify', 'dageraad',
  #                   {'message': 'The Switch' ss })
 
-  hass.services.call('notify', 'dageraad', {'message': name  })
+  hass.services.call('notify', 'dageraad', {'message': ss  })
 
 
 doWork(hass, data, logger)

@@ -52,7 +52,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'microgolf timer: {{states.switch.stp_keuken_microwave.state}}'
+        message: 'microgolf timer: {{states.switch.stp_keuken_microgolf.state}}'
 
   turn_off_microgolf:
     sequence:
@@ -64,7 +64,7 @@ script:
         seconds: 4
     - service: notify.dageraad
       data_template:
-        message: 'microgolf timer: {{states.switch.stp_keuken_microwave.state}}'
+        message: 'microgolf timer: {{states.switch.stp_keuken_microgolf.state}}'
 
   turn_on_samsung:
     sequence:

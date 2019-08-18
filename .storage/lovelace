@@ -5845,11 +5845,6 @@
                                     "name": "Lock switch"
                                 },
                                 {
-                                    "entity": "sensor.1_wmx_794_lock",
-                                    "icon": "mdi:car-key",
-                                    "name": "Lock status"
-                                },
-                                {
                                     "entity": "binary_sensor.1_wmx_794_park_brake_status",
                                     "icon": "mdi:car-brake-alert",
                                     "name": "Brake state"
@@ -5875,6 +5870,9 @@
                         },
                         {
                             "entities": [
+                                {
+                                    "entity": "lock.1_wmx_794_lock"
+                                },
                                 {
                                     "entity": "device_tracker.wdd1771871j112618",
                                     "icon": "mdi:car",
@@ -5914,9 +5912,6 @@
                                     "entity": "sensor.1_wmx_794_odometer",
                                     "icon": "mdi:counter",
                                     "name": "Odometer"
-                                },
-                                {
-                                    "entity": "lock.1_wmx_794_lock"
                                 }
                             ],
                             "type": "entities"
@@ -7573,8 +7568,8 @@
                                     "secondary_info": "last-changed"
                                 },
                                 {
-                                    "entity": "binary_sensor.rf_btn_909601",
-                                    "name": "909601 unused",
+                                    "entity": "binary_sensor.waterkoker",
+                                    "name": "Waterkoker",
                                     "secondary_info": "last-changed"
                                 },
                                 {

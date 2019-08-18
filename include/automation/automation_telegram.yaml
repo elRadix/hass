@@ -363,9 +363,9 @@
       Light is {{states.switch.light_berging_center.state}}
 
 
-      Wasmachine is {{states.switch.stp_berging_wasmachine.state}}
+      Wasmachine is {{states.switch.stp_berging_was.state}}
 
-      Droogkast is {{states.switch.stp_berging_droogkast.state}}'
+      Droogkast is {{states.switch.stp_berging_dryer.state}}'
 
       keyboard:
         - '/Licht'
@@ -384,7 +384,7 @@
   action:
   - service: python_script.easyplus_switch
     data:
-      entity_id: switch.stp_berging_droogkast
+      entity_id: switch.stp_berging_dryer
 
 - id: tgbot_18
   initial_state: 'true'
@@ -397,7 +397,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_berging_wasmachine
+      entity_id: switch.stp_berging_was
 
 - id: tgbot_19
   initial_state: 'true'
@@ -861,7 +861,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_living_triple_spott
+      entity_id: switch.light_living_triple_spot
 
 - id: Living SonyTV
   initial_state: 'true'
@@ -1117,17 +1117,17 @@
       Keuken Toestellen:
 
 
-      Microgolf is {{states.switch.stp_keuken_microwave.state}}
+      Microgolf is {{states.switch.stp_keuken_microgof.state}}
 
       Commander is {{states.switch.stp_keuken_commander.state}}
 
-      Waterkoker is {{states.switch.stp_keuken_water.state}}
+      Waterkoker is {{states.switch.stp_keuken_waterkoker.state}}
 
       Espresso is {{states.switch.stp_keuken_espresso.state}}
 
       Oven is {{states.switch.stp_keuken_oven.state}}
 
-      Vaatwasser is {{states.switch.stp_keuken_vaatwasser.state}}
+      Vaatwasser is {{states.switch.stp_keuken_dish.state}}
 
       Keuken Spots:
 
@@ -1195,7 +1195,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_keuken_vaatwasser
+      entity_id: switch.stp_keuken_dish
 
 - id: Waterkoker
   initial_state: 'true'
@@ -1208,7 +1208,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_keuken_water
+      entity_id: switch.stp_keuken_waterkoker
 
 - id: Espresso
   initial_state: 'true'

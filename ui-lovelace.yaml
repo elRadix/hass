@@ -63,6 +63,8 @@ resources:
   url: /community_plugin/mini-media-player/mini-media-player.js
 - type: js
   url: /community_plugin/travel-time-card/travel-time-card.js
+- type: js
+  url: /community_plugin/button-entity-row/button-entity-row.js
 title: Home
 views:
 - badges: []
@@ -609,7 +611,7 @@ views:
         color_off: var(--disabled-text-color)(189, 255, 5)
         color_type: card
         default_color: var(--primary-text-color)
-        entity: switch.stp_berging_wasmachine
+        entity: switch.stp_berging_was
         hold_action:
           action: more-info
           haptic: success
@@ -645,7 +647,7 @@ views:
         color_off: var(--disabled-text-color)(189, 255, 5)
         color_type: card
         default_color: var(--primary-text-color)
-        entity: switch.stp_berging_droogkast
+        entity: switch.stp_berging_dryer
         hold_action:
           action: more-info
           haptic: success
@@ -824,7 +826,7 @@ views:
         color_off: var(--disabled-text-color)(189, 255, 5)
         color_type: card
         default_color: var(--primary-text-color)
-        entity: switch.stp_keuken_microwave
+        entity: switch.stp_keuken_microgolf
         hold_action:
           action: more-info
           haptic: success
@@ -927,7 +929,7 @@ views:
         color_off: var(--disabled-text-color)(189, 255, 5)
         color_type: card
         default_color: var(--primary-text-color)
-        entity: switch.stp_keuken_vaatwasser
+        entity: switch.stp_keuken_dish
         hold_action:
           action: more-info
           haptic: success
@@ -960,7 +962,7 @@ views:
         color_off: var(--disabled-text-color)(189, 255, 5)
         color_type: card
         default_color: var(--primary-text-color)
-        entity: switch.stp_keuken_water
+        entity: switch.stp_keuken_waterkoker
         hold_action:
           action: more-info
           haptic: success
@@ -3000,49 +3002,47 @@ views:
 - badges: []
   cards:
   - entities:
-    - entity: lock.1_wmx_794_lock
+    - entity: lock.wmx_794_lock
       icon: mdi:car-key
       name: Lock switch
-    - entity: sensor.1_wmx_794_lock
-      icon: mdi:car-key
-      name: Lock status
-    - entity: binary_sensor.1_wmx_794_park_brake_status
+    - entity: binary_sensor.wmx_794_park_brake_status
       icon: mdi:car-brake-alert
       name: Brake state
-    - entity: binary_sensor.1_wmx_794_tire_warning
+    - entity: binary_sensor.wmx_794_tire_warning
       icon: mdi:car-tire-alert
       name: Tire Warning
-    - entity: binary_sensor.1_wmx_794_windows_closed
+    - entity: binary_sensor.wmx_794_windows_closed
       icon: mdi:car-door
       name: Windows closed
-    - entity: sensor.1_wmx_794_fuel_level
+    - entity: sensor.wmx_794_fuel_level
       icon: mdi:gas-station
       name: Fuel level
     image: /local/a200.png
     type: picture-glance
   - entities:
+    - entity: lock.wmx_794_lock
     - entity: device_tracker.wdd1771871j112618
       icon: mdi:car
       name: Car location
-    - entity: sensor.1_wmx_794_lock
+    - entity: sensor.wmx_794_lock
       icon: mdi:car-key
       name: Lock switch
-    - entity: binary_sensor.1_wmx_794_park_brake_status
+    - entity: binary_sensor.wmx_794_park_brake_status
       icon: mdi:car-key
       name: Lock status
-    - entity: binary_sensor.1_wmx_794_park_brake_status
+    - entity: binary_sensor.wmx_794_park_brake_status
       icon: mdi:car-brake-alert
       name: Brake state
-    - entity: binary_sensor.1_wmx_794_tire_warning
+    - entity: binary_sensor.wmx_794_tire_warning
       icon: mdi:car-tire-alert
       name: Tire Warning
-    - entity: binary_sensor.1_wmx_794_windows_closed
+    - entity: binary_sensor.wmx_794_windows_closed
       icon: mdi:car-door
       name: Windows closed
-    - entity: sensor.1_wmx_794_fuel_level
+    - entity: sensor.wmx_794_fuel_level
       icon: mdi:gas-station
       name: Fuel level
-    - entity: sensor.1_wmx_794_odometer
+    - entity: sensor.wmx_794_odometer
       icon: mdi:counter
       name: Odometer
     type: entities
@@ -3054,13 +3054,13 @@ views:
   - entities:
     - filter:
         exclude:
-        - sensor.1_wmx_794_odometer.fr*
-        - sensor.1_wmx_794_odometer.car
-        - sensor.1_wmx_794_odometer.retr*
-        - sensor.1_wmx_794_odometer.unit*
+        - sensor.wmx_794_odometer.fr*
+        - sensor.wmx_794_odometer.car
+        - sensor.wmx_794_odometer.retr*
+        - sensor.wmx_794_odometer.unit*
         include:
-        - sensor.1_wmx_794_odometer.*
-        - key: sensor.1_wmx_794_odometer.averageSpeedReset
+        - sensor.wmx_794_odometer.*
+        - key: sensor.wmx_794_odometer.averageSpeedReset
           name: Average Speed Reset
       heading_name: 'Odometer details '
       heading_state: '   '
@@ -3070,12 +3070,12 @@ views:
   - entities:
     - filter:
         exclude:
-        - sensor.1_wmx_794_lock.fr*
-        - sensor.1_wmx_794_lock.car
-        - sensor.1_wmx_794_lock.retr*
-        - sensor.1_wmx_794_lock.unit*
+        - sensor.wmx_794_lock.fr*
+        - sensor.wmx_794_lock.car
+        - sensor.wmx_794_lock.retr*
+        - sensor.wmx_794_lock.unit*
         include:
-        - sensor.1_wmx_794_lock.*
+        - sensor.wmx_794_lock.*
       heading_name: 'Lock details '
       heading_state: '   '
       type: custom:entity-attributes-card
@@ -3083,12 +3083,12 @@ views:
   - entities:
     - filter:
         exclude:
-        - binary_sensor.1_wmx_794_tire_warning.fr*
-        - binary_sensor.1_wmx_794_tire_warning.car
-        - binary_sensor.1_wmx_794_tire_warning.retr*
-        - binary_sensor.1_wmx_794_tire_warning.unit*
+        - binary_sensor.wmx_794_tire_warning.fr*
+        - binary_sensor.wmx_794_tire_warning.car
+        - binary_sensor.wmx_794_tire_warning.retr*
+        - binary_sensor.wmx_794_tire_warning.unit*
         include:
-        - binary_sensor.1_wmx_794_tire_warning.*
+        - binary_sensor.wmx_794_tire_warning.*
       heading_name: 'Tire details '
       heading_state: '   '
       type: custom:entity-attributes-card
@@ -3597,10 +3597,10 @@ views:
     - entity: switch.led_keuken_oven
     - entity: switch.led_keuken_vaatwasser
     - entity: switch.led_keuken_waterkoker
-    - entity: switch.stp_keuken_microwave
+    - entity: switch.stp_keuken_microgolf
     - entity: switch.stp_keuken_oven
-    - entity: switch.stp_keuken_vaatwasser
-    - entity: switch.stp_keuken_water
+    - entity: switch.stp_keuken_dish
+    - entity: switch.stp_keuken_waterkoker
     show_header_toggle: false
     title: Led + switches
     type: entities
@@ -3886,8 +3886,8 @@ views:
     - entity: binary_sensor.rf_btn_793401
       name: Easyplus
       secondary_info: last-changed
-    - entity: binary_sensor.rf_btn_909601
-      name: 909601 unused
+    - entity: binary_sensor.waterkoker
+      name: Waterkoker
       secondary_info: last-changed
     - entity: counter.rf_909601
       name: Count clicks 909601

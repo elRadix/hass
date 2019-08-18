@@ -42,13 +42,12 @@ timer:
 
 script:
 
-location:
-  alias: 'mercedes location'
-  sequence:
-    - service: telegram_bot.send_location
-      data_template:
-        latitude: '{{states.device_tracker.wdd1771871j112618.attributes.latitude}'
-        longitude: '{{states.device_tracker.wdd1771871j112618.attributes.longitude}}'
+  location:
+    sequence:
+      - service: telegram_bot.send_location
+        data_template:
+          latitude: '{{states.device_tracker.wdd1771871j112618.attributes.latitude}'
+          longitude: '{{states.device_tracker.wdd1771871j112618.attributes.longitude}}'
 
   turn_on_microgolf:
     sequence:

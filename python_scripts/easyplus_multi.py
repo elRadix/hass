@@ -1,6 +1,5 @@
 sn = data.get('entity_main')
 sub = data.get('entity_sub')
-
 ep = hass.states.get('switch.easyplus')
 
 if sn is not None:
@@ -19,14 +18,12 @@ if sn is not None:
       time.sleep(1)
       hass.services.call('notify', 'dageraad', {'message': switch + ' is now ' + state })
 
-
       hass.services.call('switch', 'toggle', service_data={ 'entity_id': sub })
       time.sleep(2)
       state = hass.states.get(sub).state
       switch = (hass.states.get(sub).attributes["friendly_name"])
       time.sleep(1)
       hass.services.call('notify', 'dageraad', {'message': switch + ' is now ' + state })
-
 
     else:
       logger.warning('<easyplus> switch.easyplus does not exist')

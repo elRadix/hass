@@ -1374,33 +1374,21 @@
       message: "Mercedes status:
 
 
-               Door locked: {{states.lock.wmx_794_lock.state}}
+               Doors: {{states.lock.wmx_794_lock.state}}
 
                Windows closed: {{ states.binary_sensor.wmx_794_windows_closed.state}}
 
-               Fuel Status: {{ states.sensor.wmx_794_fuel_level.state}}%
+               Fuel Status: {{ states.sensor.wmx_794_fuel_level.state}} %
 
-               Odometer: {{ states.sensor.wmx_794_odometer.state}} km
-
-         latitude: {{ states.device_tracker.wdd1771871j112618.attributes.latitude }}
-
-         longitude: {{ states.device_tracker.wdd1771871j112618.attributes.longitude }}"
-
-
-
-- id: telegram_mercedes_location
-  initial_state: 'true'
-  alias: 'Telegram reply with mercedes location'
-  trigger:
-  - platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/location'
-  action:
-  - service: telegram_bot.send_location
+               Odometer: {{ states.sensor.wmx_794_odometer.state}} km"
+  - service: notify.telegram_rachid
     data:
-      latitude: '{{states.device_tracker.wdd1771871j112618.attributes.latitude}'
-      longitude: '{{states.device_tracker.wdd1771871j112618.attributes.longitude}'
+      message: "Mercedes location"
+      data:
+        location:
+          latitude: "{{ states.device_tracker.wdd1771871j112618.attributes.latitude }}"
+          longitude: "{{ states.device_tracker.wdd1771871j112618.attributes.longitude }}"
+
 
 #### ROUTER
 

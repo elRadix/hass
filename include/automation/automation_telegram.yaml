@@ -1397,7 +1397,6 @@
     event_data:
       command: '/location'
   action:
-  - service: script.location
   - service: telegram_bot.send_location
     data:
       latitude: '{{states.device_tracker.wdd1771871j112618.attributes.latitude}'

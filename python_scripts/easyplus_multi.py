@@ -10,7 +10,7 @@ if sn is not None:
         service_data = {'entity_id':'switch.easyplus'}
         hass.services.call('switch', 'turn_on', service_data, False)
         hass.services.call('notify', 'dageraad', {'message':  'Starting EasyPlus' })
-        time.sleep(17)
+        time.sleep(20)
 
       hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn })
       time.sleep(2)

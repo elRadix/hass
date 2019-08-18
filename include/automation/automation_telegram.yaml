@@ -1359,31 +1359,31 @@
       target: '{{ trigger.event.data.user_id }}'
       message: "Easyplus is {{ states.switch.easyplus.state}}"
 
-- id: telegram_mercedes_location
-  initial_state: 'true'
-  alias: 'Telegram reply with mercedes location'
-  trigger:
-  - platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/mercedes'
-  action:
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: "Mercedes status:
+# - id: telegram_mercedes_location
+#   initial_state: 'true'
+#   alias: 'Telegram reply with mercedes location'
+#   trigger:
+#   - platform: event
+#     event_type: telegram_command
+#     event_data:
+#       command: '/mercedes'
+#   action:
+#   - service: telegram_bot.send_message
+#     data_template:
+#       target: '{{ trigger.event.data.user_id }}'
+#       message: "Mercedes status:
 
 
-               Door locked: {{states.sensor.1_wmx_794_lock.state}}
+#                Door locked: {{states.lock.1_wmx_794_lock.state}}
 
-               Windows closed: {{ states.binary_sensor.1_wmx_794_windows_closed.state}}
+#                Windows closed: {{ states.binary_sensor.1_wmx_794_windows_closed.state}}
 
-               Fuel Status: {{ states.sensor.1_wmx_794_fuel_level.state}}%
+#                Fuel Status: {{ states.sensor.1_wmx_794_fuel_level.state}}%
 
-               Odometer: {{ states.sensor.1_wmx_794_odometer.state}} km
+#                Odometer: {{ states.sensor.1_wmx_794_odometer.state}} km
 
-         latitude: {{ states.device_tracker.wdd1771871j112618.attributes.latitude }}
-         longitude: {{ states.device_tracker.wdd1771871j112618attributes.longitude }}"
+#          latitude: {{ states.device_tracker.wdd1771871j112618.attributes.latitude }}
+#          longitude: {{ states.device_tracker.wdd1771871j112618.attributes.longitude }}"
 
 
 

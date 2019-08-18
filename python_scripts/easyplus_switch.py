@@ -39,7 +39,7 @@ switch_group = 'group.easyplus_switches'
 
 entities_on = []
 for entity_id in hass.states.get(switch_group).attributes['entity_id']:
-    if hass.states.get(entity_id).state is 'on' and entity_id not in excluded:
+    if hass.states.get(entity_id).state is 'on':
         entities_on.append(hass.states.get(entity_id).attributes["friendly_name"])
 
 if len(entities_on) > 0:

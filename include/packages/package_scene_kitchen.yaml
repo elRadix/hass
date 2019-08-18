@@ -385,25 +385,7 @@ automation:
         entity_id: sensor.day
         state: 'on'
     action:
-    - service: script.lights
-    - service: notify.dageraad
-      data:
-        message: "scences completed, lights off"
-    - delay:
-        seconds: 10
-    - service: script.switches
-    - service: notify.dageraad
-      data:
-        message: "scences completed, switches off"
-    - delay:
-        seconds: 10
-    - service: switch.turn_off
-      entity_id: switch.easyplus
-    - service: notify.dageraad
-      data:
-        message: "scences completed, easyplus off"
-    - delay:
-        seconds: 1
+    - service: python_script.easyplus_off
     - service: notify.dageraad
       data_template:
         message: 'All scenes completed, easyplus: {{states.switch.easyplus.state}}'

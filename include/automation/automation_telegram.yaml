@@ -1157,24 +1157,6 @@
   - service: python_script.easyplus_switch
     data:
       entity_id: switch.stp_keuken_commander
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: '
-        Commander is {{states.switch.stp_keuken_commander.state}}'
-
-#{{% if is_state('switch.stp_keuken_commander', 'on') %}staat aan{% else %}staat uit{% endif %}})" '
-#        Commander is {{states.switch.stp_keuken_commander.state}}
-#{% if is_state('switch.stp_keuken_commander', 'on') %}staat aan{% else %}staat uit{% endif %}
-#
-#
-#        {% if states.switch.stp_keuken_commander.state == 'on' %}
-#          Commander staat aan
-#        {% else %}
-#          Commander staat uit
-#        {% endif %}
-
-
 
 - id: Microgolf
   initial_state: 'true'
@@ -1309,16 +1291,10 @@
     event_data:
       command: '/S&R'
   action:
-  - service: homeassistant.toggle
+  - service: python_script.easyplus_switch
     data:
-      entity_id:
-        - switch.light_slp1_deur_morning
-  - delay:
-      seconds: 1
-  - service: telegram_bot.send_message
-    data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: "S&R light is {{ states.switch.light_slp1_deur.state}}"
+      entity_id: switch.light_slp1_deur_morning
+
 
 - id: telegram_sara_notification
   initial_state: 'true'
@@ -1329,20 +1305,11 @@
     event_data:
       command: '/Sara'
   action:
-  - service: homeassistant.toggle
-    data:
-      entity_id:
-        - switch.light_slp2_kast
-  - service: homeassistant.toggle
-    data:
-      entity_id:
-        - switch.light_slp2_deur
-  - delay:
-      seconds: 1
-  - service: telegram_bot.send_message
+  - service: python_script.easyplus_multi
     data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: "Sara light is {{ states.group.slaapkamer2_light.state}}"
+      entity_main: switch.light_slp2_kast
+      entity_sub: switch.light_slp2_deur
+
 
 - id: telegram_Yassin_notification
   initial_state: 'true'
@@ -1353,22 +1320,10 @@
     event_data:
       command: '/Yassin'
   action:
-  - service: homeassistant.toggle
-    data:
-      entity_id:
-        - switch.light_slp3_deur
-  - service: homeassistant.toggle
-    data:
-      entity_id:
-        - switch.light_slp3_kast
-  - delay:
-      seconds: 1
-  - service: telegram_bot.send_message
+  - service: python_script.easyplus_multi
     data_template:
-      target: '{{ trigger.event.data.user_id }}'
-      message: "Yassin light is {{ states.group.slaapkamer3_light.state}}"
-
-
+      entity_main: switch.light_slp3_deur
+      entity_sub: switch.light_slp3_kast
 
 - id: telegram_bureau_notification
   initial_state: 'true'
@@ -1504,7 +1459,7 @@
     data_template:
       target: '{{ trigger.event.data.user_id }}'
       message: "Adblock is {{ states.switch.router_adblock.state}}"
-      
+
 - id: telegram_router_vpnserver1
   initial_state: 'true'
   alias: 'vpnserver1 toggle'

@@ -29,7 +29,7 @@ def doWork(hass, data, logger):
                     {'message':'Switch status is {}'.format(ss)})
 
   hass.services.call('notify', 'dageraad',
-                    {'message': "The Switch" (name)  state })
+                    {'message': "The Switch" state })
 
 #  hass.services.call('notify', 'dageraad', {'message': name  })
 

@@ -118,6 +118,10 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/travel-time-card/travel-time-card.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/button-entity-row/button-entity-row.js"
                 }
             ],
             "title": "Home",

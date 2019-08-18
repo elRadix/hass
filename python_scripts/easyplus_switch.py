@@ -3,7 +3,7 @@ def doWork(hass, data, logger):
   ep = hass.states.get('switch.easyplus')
   ss = hass.states.get(sn)
   state = hass.states.get(sn).state
-  name = (hass.states.get(sn).attributes["friendly_name"])
+  switch = (hass.states.get(sn).attributes["friendly_name"])
 
   if sn is None:
      logger.warning('<easyplus> no switch id supplied')
@@ -32,18 +32,18 @@ def doWork(hass, data, logger):
  # hass.services.call('notify', 'dageraad',
  #                   {'message': 'The Switch' ss })
 
-  hass.services.call('notify', 'dageraad', {'message': name  })
+  hass.services.call('notify', 'dageraad', {'message': switch is state })
 
 
-switch_group = 'group.easyplus_switches'
+# switch_group = 'group.easyplus_switches'
 
-entities_on = []
-for entity_id in hass.states.get(switch_group).attributes['entity_id']:
-    if hass.states.get(entity_id).state is 'on':
-        entities_on.append(hass.states.get(entity_id).attributes["friendly_name"])
+# entities_on = []
+# for entity_id in hass.states.get(switch_group).attributes['entity_id']:
+#     if hass.states.get(entity_id).state is 'on':
+#         entities_on.append(hass.states.get(entity_id).attributes["friendly_name"])
 
-if len(entities_on) > 0:
-    notification_message = "The following lights are on: " + ', '.join(entities_on)
-    hass.services.call('notify', 'dageraad', {'message': notification_message})
+# if len(entities_on) > 0:
+#     notification_message = "The following Switches are on: " + ', '.join(entities_on)
+#     hass.services.call('notify', 'dageraad', {'message': notification_message})
 
 doWork(hass, data, logger)

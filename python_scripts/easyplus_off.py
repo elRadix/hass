@@ -1,8 +1,4 @@
 def doWork(hass, data, logger):
-  lights = 'script.lights'
-  switches = 'script.switches'
-  main = 'switch.easyplus'
-
   ep = hass.states.get('switch.easyplus')
   ls = hass.states.get('group.easyplus_lights')
   sw = hass.states.get('group.easyplus_switches')
@@ -23,17 +19,18 @@ def doWork(hass, data, logger):
         hass.services.call('script', 'turn_on', service_data, False)
         time.sleep(15)
         hass.services.call('notify', 'dageraad', {'message': 'Lights off'})
-        logger.warning('Easyplus lights off')
+        logger.info('Easyplus lights off')
 
   if sw.state == 'on':
         service_data = {'entity_id':'script.switches'}
         hass.services.call('script', 'turn_on', service_data, False)
         time.sleep(15)
         hass.services.call('notify', 'dageraad', {'message': 'Switches off'})
-        logger.warning('Easyplus switches off')
+        logger.info('Easyplus switches off')
 
-  hass.services.call('switch', 'turn_off', service_data={ 'entity_id': main })
+  service_data = {'entity_id':'switch.easyplus'}
+  hass.services.call('switch', 'turn_off', service_data, False)
   hass.services.call('notify', 'dageraad', {'message': 'Easyplus off'})
-  logger.warning('Easyplus off')
+  logger.info('Easyplus off')
 
 doWork(hass, data, logger)

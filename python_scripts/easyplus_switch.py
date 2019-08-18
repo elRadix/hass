@@ -32,7 +32,7 @@ def doWork(hass, data, logger):
  # hass.services.call('notify', 'dageraad',
  #                   {'message': 'The Switch' ss })
 
-  hass.services.call('notify', 'dageraad', {'message': switch is state })
+  hass.services.call('notify', 'dageraad', {'message': switch ('IS') state })
 
 
 # switch_group = 'group.easyplus_switches'

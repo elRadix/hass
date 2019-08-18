@@ -6045,7 +6045,7 @@
                             "height": 100,
                             "hour24": true,
                             "hours_to_show": 48,
-                            "line_width": 5,
+                            "line_width": 3,
                             "location_icon": "left",
                             "location_state": "center",
                             "more_info": false,
@@ -6839,10 +6839,16 @@
                                     "entity": "group.easyplus_sensors"
                                 },
                                 {
-                                    "entity": "sensor.easyplus_away"
+                                    "entity": "sensor.easyplus_away",
+                                    "icon": "mdi:home-account",
+                                    "name": "Away"
                                 },
                                 {
-                                    "entity": "group.floradix"
+                                    "entity": "group.floradix",
+                                    "icon": "mdi:home-heart"
+                                },
+                                {
+                                    "entity": "sensor.day"
                                 },
                                 {
                                     "entity": "automation.scenes_completed",

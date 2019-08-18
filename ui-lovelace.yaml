@@ -403,9 +403,9 @@ views:
             name: Yassin
           hour24: true
           hours_to_show: 48
-          line_width: 3
+          line_width: 5
           name: ' '
-          points_per_hour: 1
+          points_per_hour: 0.5
           show:
             color_thresholds:
             - color: '#f39c12'
@@ -457,10 +457,10 @@ views:
             entity: sensor.tmp_living
             name: Living
           hour24: true
-          hours_to_show: 24
-          line_width: 3
+          hours_to_show: 48
+          line_width: 5
           name: ' '
-          points_per_hour: 0.25
+          points_per_hour: 0.5
           show:
             color_thresholds:
             - color: '#f39c12'
@@ -3018,7 +3018,7 @@ views:
     - entity: sensor.1_wmx_794_fuel_level
       icon: mdi:gas-station
       name: Fuel level
-    image: /local/mercedes3.png
+    image: /local/a200.png
     type: picture-glance
   - entities:
     - entity: device_tracker.wdd1771871j112618
@@ -3030,19 +3030,19 @@ views:
     - entity: binary_sensor.1_wmx_794_park_brake_status
       icon: mdi:car-key
       name: Lock status
-    - entity: binary_sensor.1_vng740_park_brake_status
+    - entity: binary_sensor.1_wmx_794_park_brake_status
       icon: mdi:car-brake-alert
       name: Brake state
-    - entity: binary_sensor.1_vng740_tire_warning
+    - entity: binary_sensor.1_wmx_794_tire_warning
       icon: mdi:car-tire-alert
       name: Tire Warning
-    - entity: binary_sensor.1_vng740_windows_closed
+    - entity: binary_sensor.1_wmx_794_windows_closed
       icon: mdi:car-door
       name: Windows closed
-    - entity: sensor.1_vng740_fuel_level
+    - entity: sensor.1_wmx_794_fuel_level
       icon: mdi:gas-station
       name: Fuel level
-    - entity: sensor.1_vng740_odometer
+    - entity: sensor.1_wmx_794_odometer
       icon: mdi:counter
       name: Odometer
     type: entities
@@ -3054,13 +3054,13 @@ views:
   - entities:
     - filter:
         exclude:
-        - sensor.1_vng740_odometer.fr*
-        - sensor.1_vng740_odometer.car
-        - sensor.1_vng740_odometer.retr*
-        - sensor.1_vng740_odometer.unit*
+        - sensor.1_wmx_794_odometer.fr*
+        - sensor.1_wmx_794_odometer.car
+        - sensor.1_wmx_794_odometer.retr*
+        - sensor.1_wmx_794_odometer.unit*
         include:
-        - sensor.1_vng740_odometer.*
-        - key: sensor.1_vng740_odometer.averageSpeedReset
+        - sensor.1_wmx_794_odometer.*
+        - key: sensor.1_wmx_794_odometer.averageSpeedReset
           name: Average Speed Reset
       heading_name: 'Odometer details '
       heading_state: '   '
@@ -3070,12 +3070,12 @@ views:
   - entities:
     - filter:
         exclude:
-        - sensor.1_vng740_lock.fr*
-        - sensor.1_vng740_lock.car
-        - sensor.1_vng740_lock.retr*
-        - sensor.1_vng740_lock.unit*
+        - sensor.1_wmx_794_lock.fr*
+        - sensor.1_wmx_794_lock.car
+        - sensor.1_wmx_794_lock.retr*
+        - sensor.1_wmx_794_lock.unit*
         include:
-        - sensor.1_vng740_lock.*
+        - sensor.1_wmx_794_lock.*
       heading_name: 'Lock details '
       heading_state: '   '
       type: custom:entity-attributes-card
@@ -3083,12 +3083,12 @@ views:
   - entities:
     - filter:
         exclude:
-        - binary_sensor.1_vng740_tire_warning.fr*
-        - binary_sensor.1_vng740_tire_warning.car
-        - binary_sensor.1_vng740_tire_warning.retr*
-        - binary_sensor.1_vng740_tire_warning.unit*
+        - binary_sensor.1_wmx_794_tire_warning.fr*
+        - binary_sensor.1_wmx_794_tire_warning.car
+        - binary_sensor.1_wmx_794_tire_warning.retr*
+        - binary_sensor.1_wmx_794_tire_warning.unit*
         include:
-        - binary_sensor.1_vng740_tire_warning.*
+        - binary_sensor.1_wmx_794_tire_warning.*
       heading_name: 'Tire details '
       heading_state: '   '
       type: custom:entity-attributes-card
@@ -3113,22 +3113,25 @@ views:
     align_icon: left
     animate: true
     entities:
-    - entity: sensor.load_1m
-      name: 1m
-    - entity: sensor.load_5m
-      name: 5m
-    - entity: sensor.load_15m
-      name: 15m
+    - color: green
+      entity: sensor.load_1m
+      name: 1'
+    - color: orange
+      entity: sensor.load_5m
+      name: 5'
+    - color: red
+      entity: sensor.load_15m
+      name: 15'
     font_size: 120
     height: 100
     hour24: true
     hours_to_show: 48
-    line_width: 5
+    line_width: 3
     location_icon: left
     location_state: center
     more_info: false
     name: CPU Load
-    points_per_hour: 0.1
+    points_per_hour: 0.5
     show:
       extrema: true
       labels: true
@@ -3138,11 +3141,15 @@ views:
     align_icon: left
     animate: true
     entities:
-    - entity: sensor.memory_free
+    - color: green
+      entity: sensor.memory_free
       name: Free
-    - entity: sensor.memory_use
+    - color: red
+      entity: sensor.memory_use
       name: Used
-    - entity: sensor.swap_use
+    - color: yellow
+      entity: sensor.swap_use
+      name: Swap
     font_size: 120
     height: 100
     hour24: true
@@ -3152,7 +3159,7 @@ views:
     location_state: center
     more_info: false
     name: Memory
-    points_per_hour: 0.1
+    points_per_hour: 0.5
     show:
       extrema: true
       labels: true
@@ -3555,7 +3562,11 @@ views:
   - entities:
     - entity: group.easyplus_sensors
     - entity: sensor.easyplus_away
+      icon: mdi:home-account
+      name: Away
     - entity: group.floradix
+      icon: mdi:home-heart
+    - entity: sensor.day
     - entity: automation.scenes_completed
       icon: mdi:power
       name: auto off

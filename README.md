@@ -9,12 +9,12 @@ This repository exists mostly for my own amusement, but it may contain some thin
 Description | Value
 -- | --
 Entities in the [`alert`](https://www.home-assistant.io/components/alert) domain | 6
-Entities in the [`automation`](https://www.home-assistant.io/components/automation) domain | 317
-Entities in the [`binary_sensor`](https://www.home-assistant.io/components/binary_sensor) domain | 57
+Entities in the [`automation`](https://www.home-assistant.io/components/automation) domain | 305
+Entities in the [`binary_sensor`](https://www.home-assistant.io/components/binary_sensor) domain | 58
 Entities in the [`climate`](https://www.home-assistant.io/components/climate) domain | 6
 Entities in the [`counter`](https://www.home-assistant.io/components/counter) domain | 10
 Entities in the [`device_tracker`](https://www.home-assistant.io/components/device_tracker) domain | 19
-Entities in the [`geo_address`](https://www.home-assistant.io/components/geo_address) domain | 4
+Entities in the [`geo_address`](https://www.home-assistant.io/components/geo_address) domain | 5
 Entities in the [`group`](https://www.home-assistant.io/components/group) domain | 67
 Entities in the [`input_boolean`](https://www.home-assistant.io/components/input_boolean) domain | 45
 Entities in the [`input_datetime`](https://www.home-assistant.io/components/input_datetime) domain | 12
@@ -22,10 +22,10 @@ Entities in the [`input_number`](https://www.home-assistant.io/components/input_
 Entities in the [`input_select`](https://www.home-assistant.io/components/input_select) domain | 7
 Entities in the [`input_text`](https://www.home-assistant.io/components/input_text) domain | 2
 Entities in the [`light`](https://www.home-assistant.io/components/light) domain | 40
-Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 2
+Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 6
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 95
-Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 408
+Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 413
 Entities in the [`sun`](https://www.home-assistant.io/components/sun) domain | 1
 Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 120
 Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 16

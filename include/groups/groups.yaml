@@ -613,7 +613,7 @@
 
       
   easyplus_lights:
-    name: Easyplus Lights All
+    name: Lights
     icon: mdi:flash
     view: no
     entities:
@@ -689,7 +689,7 @@
       - switch.stp_slp3_deur
 
   easyplus_switches:
-    name: Easyplus Switches
+    name: Switches
     icon: mdi:flash
     view: no
     entities:
@@ -714,6 +714,4 @@
       - switch.stp_slp3_bureau
       - switch.stp_slp3_deur
       - switch.ketel
-      
-      
          #  - switch.living

@@ -21,7 +21,7 @@ def doWork(hass, data, logger):
     hass.services.call('switch', 'turn_on', service_data, False)
     time.sleep(17)
 
-  hass.services.call('switch', 'turn_on', service_data={ 'entity_id': ss })
+  hass.services.call('switch', 'turn_on', service_data={ 'entity_id': sn })
   hass.services.call('notify', 'dageraad',
                     {'message':'Switch status is {}'.format(status)})
   hass.services.call('notify', 'dageraad', {'message': id })

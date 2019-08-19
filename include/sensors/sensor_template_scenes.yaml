@@ -192,3 +192,9 @@
         {% else %}
           mdi:weather-night
         {% endif %}
+
+- platform: template
+  sensors:
+    blank:
+      value_template: ''
+      friendly_name: ''

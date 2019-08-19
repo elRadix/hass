@@ -852,127 +852,6 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "sensor.train_work",
-                                    "max": 50,
-                                    "min": 0,
-                                    "severity": [
-                                        {
-                                            "color": "green",
-                                            "value": 0
-                                        },
-                                        {
-                                            "color": "green",
-                                            "value": 30
-                                        },
-                                        {
-                                            "color": "red",
-                                            "value": 31
-                                        }
-                                    ],
-                                    "title": "Train Work",
-                                    "title_position": "inside",
-                                    "type": "custom:bar-card"
-                                },
-                                {
-                                    "entities": [
-                                        {
-                                            "filter": {
-                                                "exclude": [
-                                                    "sensor.train_work.at*",
-                                                    "sensor.train_work.fr*",
-                                                    "sensor.train_work.oc*",
-                                                    "sensor.train_work.ic*",
-                                                    "sensor.train_work.oc*",
-                                                    "sensor.train_work.uni*",
-                                                    "sensor.train_work.lat*",
-                                                    "sensor.train_work.lon*",
-                                                    "sensor.train_work.lon*",
-                                                    "sensor.train_work.platform_ar*"
-                                                ],
-                                                "include": [
-                                                    "sensor.train_work.*"
-                                                ]
-                                            },
-                                            "heading_name": " ",
-                                            "heading_state": "  ",
-                                            "type": "custom:entity-attributes-card"
-                                        }
-                                    ],
-                                    "type": "entities"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "sensor.train_home_noord",
-                                    "max": 50,
-                                    "min": 0,
-                                    "severity": [
-                                        {
-                                            "color": "green",
-                                            "value": 0
-                                        },
-                                        {
-                                            "color": "green",
-                                            "value": 30
-                                        },
-                                        {
-                                            "color": "red",
-                                            "value": 31
-                                        }
-                                    ],
-                                    "title": "Train Home Noord",
-                                    "title_position": "inside",
-                                    "type": "custom:bar-card"
-                                },
-                                {
-                                    "entities": [
-                                        {
-                                            "filter": {
-                                                "exclude": [
-                                                    "sensor.train_home_noord.at*",
-                                                    "sensor.train_home_noord.fr*",
-                                                    "sensor.train_home_noord.oc*",
-                                                    "sensor.train_home_noord.ic*",
-                                                    "sensor.train_home_noord.oc*",
-                                                    "sensor.train_home_noord.uni*",
-                                                    "sensor.train_home_noord.lat*",
-                                                    "sensor.train_home_noord.lon*",
-                                                    "sensor.train_home_noord.lon*",
-                                                    "sensor.train_home_noord.platform_ar*"
-                                                ],
-                                                "include": [
-                                                    "sensor.train_home_noord.*"
-                                                ]
-                                            },
-                                            "heading_name": " ",
-                                            "heading_state": "  ",
-                                            "type": "custom:entity-attributes-card"
-                                        }
-                                    ],
-                                    "type": "entities"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "content": "Current delay [[ sensor.train_home.attributes.delay ]] \nArrival in [[ sensor.train_home.attributes.departure ]] min\nDuration [[ sensor.train_home ]] min\nGate [[ sensor.train_home.attributes.platform_departing ]]  \n",
-                            "title": "Home via Brussel Centraal",
-                            "type": "markdown"
-                        }
-                    ],
-                    "icon": "mdi:train",
-                    "panel": false,
-                    "title": "Train"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "cards": [
-                                {
                                     "cards": [
                                         {
                                             "color": "rgb(0,0,0.5)",
@@ -6156,8 +6035,30 @@
                                             "entity": "sensor.potential_breaking_changes",
                                             "name": "Breaking ?"
                                         },
-                                        "counter.warning_counter",
-                                        "counter.error_counter",
+                                        {
+                                            "entity": "counter.warning_counter",
+                                            "name": "Warning",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "counter.reset",
+                                                "service_data": {
+                                                    "entity_id": "counter.warning_counter"
+                                                }
+                                            },
+                                            "type": "call-service"
+                                        },
+                                        {
+                                            "entity": "counter.error_counter",
+                                            "name": "Error",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "counter.reset",
+                                                "service_data": {
+                                                    "entity_id": "counter.error_counter"
+                                                }
+                                            },
+                                            "type": "call-service"
+                                        },
                                         {
                                             "entity": "automation.notify_error_in_hass_log",
                                             "icon": "mdi:message-alert",
@@ -6580,6 +6481,35 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Processes",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "counter.error_counter"
+                                },
+                                {
+                                    "entity": "counter.warning_counter"
+                                },
+                                {
+                                    "action_name": "Reset counter",
+                                    "name": "Error",
+                                    "service": "counter.reset",
+                                    "service_data": {
+                                        "entity_id": "counter.error_counter"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "action_name": "Reset counter",
+                                    "name": "Warning",
+                                    "service": "counter.reset",
+                                    "service_data": {
+                                        "entity_id": "counter.warning_counter"
+                                    },
+                                    "type": "call-service"
+                                }
+                            ],
                             "type": "entities"
                         }
                     ],
@@ -7616,8 +7546,7 @@
                                     "entity": "timer.espresso"
                                 },
                                 {
-                                    "entity": "timer.dish",
-                                    "name": "vaatwasser"
+                                    "entity": "timer.dish"
                                 },
                                 {
                                     "entity": "timer.water",
@@ -7630,8 +7559,7 @@
                                     "entity": "timer.microgolf"
                                 },
                                 {
-                                    "entity": "timer.dryer",
-                                    "name": "droogkast"
+                                    "entity": "timer.dryer"
                                 },
                                 {
                                     "entity": "timer.was",
@@ -7639,14 +7567,12 @@
                                 },
                                 {
                                     "entity": "timer.samsung"
-                                },
-                                {
-                                    "entity": "automation.scenes_completed"
                                 }
                             ],
                             "show_empty": true,
                             "state_filter": [
-                                "active"
+                                "active",
+                                "paused"
                             ],
                             "type": "entity-filter"
                         },
@@ -7831,6 +7757,32 @@
                             ],
                             "title": null,
                             "type": "custom:vertical-stack-in-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "timer.microgolf"
+                                },
+                                {
+                                    "action_name": "pause",
+                                    "name": "microgolf",
+                                    "service": "timer.pause",
+                                    "service_data": {
+                                        "entity_id": "timer.microgolf"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "action_name": "start",
+                                    "name": "microgolf",
+                                    "service": "timer.start",
+                                    "service_data": {
+                                        "entity_id": "timer.microgolf"
+                                    },
+                                    "type": "call-service"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "title": "SCENES"
@@ -9257,6 +9209,127 @@
                         }
                     ],
                     "title": "test"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.train_work",
+                                    "max": 50,
+                                    "min": 0,
+                                    "severity": [
+                                        {
+                                            "color": "green",
+                                            "value": 0
+                                        },
+                                        {
+                                            "color": "green",
+                                            "value": 30
+                                        },
+                                        {
+                                            "color": "red",
+                                            "value": 31
+                                        }
+                                    ],
+                                    "title": "Train Work",
+                                    "title_position": "inside",
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "filter": {
+                                                "exclude": [
+                                                    "sensor.train_work.at*",
+                                                    "sensor.train_work.fr*",
+                                                    "sensor.train_work.oc*",
+                                                    "sensor.train_work.ic*",
+                                                    "sensor.train_work.oc*",
+                                                    "sensor.train_work.uni*",
+                                                    "sensor.train_work.lat*",
+                                                    "sensor.train_work.lon*",
+                                                    "sensor.train_work.lon*",
+                                                    "sensor.train_work.platform_ar*"
+                                                ],
+                                                "include": [
+                                                    "sensor.train_work.*"
+                                                ]
+                                            },
+                                            "heading_name": " ",
+                                            "heading_state": "  ",
+                                            "type": "custom:entity-attributes-card"
+                                        }
+                                    ],
+                                    "type": "entities"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.train_home_noord",
+                                    "max": 50,
+                                    "min": 0,
+                                    "severity": [
+                                        {
+                                            "color": "green",
+                                            "value": 0
+                                        },
+                                        {
+                                            "color": "green",
+                                            "value": 30
+                                        },
+                                        {
+                                            "color": "red",
+                                            "value": 31
+                                        }
+                                    ],
+                                    "title": "Train Home Noord",
+                                    "title_position": "inside",
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "filter": {
+                                                "exclude": [
+                                                    "sensor.train_home_noord.at*",
+                                                    "sensor.train_home_noord.fr*",
+                                                    "sensor.train_home_noord.oc*",
+                                                    "sensor.train_home_noord.ic*",
+                                                    "sensor.train_home_noord.oc*",
+                                                    "sensor.train_home_noord.uni*",
+                                                    "sensor.train_home_noord.lat*",
+                                                    "sensor.train_home_noord.lon*",
+                                                    "sensor.train_home_noord.lon*",
+                                                    "sensor.train_home_noord.platform_ar*"
+                                                ],
+                                                "include": [
+                                                    "sensor.train_home_noord.*"
+                                                ]
+                                            },
+                                            "heading_name": " ",
+                                            "heading_state": "  ",
+                                            "type": "custom:entity-attributes-card"
+                                        }
+                                    ],
+                                    "type": "entities"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "content": "Current delay [[ sensor.train_home.attributes.delay ]] \nArrival in [[ sensor.train_home.attributes.departure ]] min\nDuration [[ sensor.train_home ]] min\nGate [[ sensor.train_home.attributes.platform_departing ]]  \n",
+                            "title": "Home via Brussel Centraal",
+                            "type": "markdown"
+                        }
+                    ],
+                    "icon": "mdi:train",
+                    "panel": false,
+                    "title": "Train"
                 },
                 {
                     "badges": [],

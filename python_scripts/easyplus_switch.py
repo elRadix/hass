@@ -2,9 +2,9 @@ def doWork(hass, data, logger):
   sn = data.get('entity_id')
   ep = hass.states.get('switch.easyplus')
   ss = hass.states.get(sn)
-  switch = (hass.states.get(sn).attributes["friendly_name"])
+  id = (hass.states.get(sn).attributes["friendly_name"])
 
-  hass.services.call('notify', 'dageraad', {'message':' Starting your switch: ' + switch })
+  hass.services.call('notify', 'dageraad', {'message':' Starting your switch: ' + id })
 
   if sn is None:
      logger.warning('<easyplus> no switch id supplied')
@@ -25,12 +25,12 @@ def doWork(hass, data, logger):
      time.sleep(17)
      hass.services.call('notify', 'dageraad', {'message':  'Startup EasyPlus completed' })
 
-  time.sleep(4)
+
   hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn })
   time.sleep(4)
   state = hass.states.get(sn).state
   switch = (hass.states.get(sn).attributes["friendly_name"])
-  time.sleep(2
+  time.sleep(2)
   hass.services.call('notify', 'dageraad', {'message': switch + ' is now ' + state })
 
 doWork(hass, data, logger)

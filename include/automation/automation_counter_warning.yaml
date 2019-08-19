@@ -45,7 +45,7 @@
     event_data:
       level: ERROR
   action:
-    - service: notify.telegram_rachid
-      data_template:
-        message: '{{ trigger.event.data.message }}'
-        title:  Home Assistant Server
+  - service: notify.telegram_rachid
+    data_template:
+      message: '{{ trigger.event.data.message }}'
+      title:  Home Assistant Server

@@ -6937,6 +6937,85 @@
                             "show_header_toggle": false,
                             "title": "Led + switches",
                             "type": "entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "elements": [
+                                        {
+                                            "entity": "binary_sensor.inkomhal",
+                                            "style": {
+                                                "bottom": "20%",
+                                                "front-weight": "bold",
+                                                "right": "24%",
+                                                "transform": "initial"
+                                            },
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.motion_inkomhal",
+                                            "style": {
+                                                "bottom": "20%",
+                                                "font-weight": "bold",
+                                                "right": "17%",
+                                                "transform": "initial"
+                                            },
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "sensor.tmp_living",
+                                            "style": {
+                                                "bottom": "20%",
+                                                "right": "5%",
+                                                "transform": "initial"
+                                            },
+                                            "type": "state-label"
+                                        },
+                                        {
+                                            "entity": "sensor.blank",
+                                            "hold-action": "none",
+                                            "prefix": "Living Room",
+                                            "style": {
+                                                "bottom": "20%",
+                                                "font-size": "150%",
+                                                "left": "5%",
+                                                "transform": "initial"
+                                            },
+                                            "tap-action": "none",
+                                            "type": "state-label"
+                                        }
+                                    ],
+                                    "image": "/local/title.png",
+                                    "type": "picture-elements"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "group.living_light"
+                                        },
+                                        {
+                                            "entity": "switch.stp_living_sony"
+                                        },
+                                        {
+                                            "entity": "switch.stp_living_bureau"
+                                        }
+                                    ],
+                                    "show_name": true,
+                                    "show_state": false,
+                                    "type": "glance"
+                                },
+                                {
+                                    "entity": "media_player.living",
+                                    "hide": {
+                                        "power": true,
+                                        "volume": true
+                                    },
+                                    "icon": "mdi:cast",
+                                    "type": "custom:mini-media-player"
+                                }
+                            ],
+                            "title": null,
+                            "type": "custom:vertical-stack-in-card"
                         }
                     ],
                     "title": "SCENES"

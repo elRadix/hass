@@ -4,7 +4,7 @@ def doWork(hass, data, logger):
   ss = hass.states.get(sn)
   id = (hass.states.get(sn).attributes["friendly_name"])
 
-  hass.services.call('notify', 'dageraad', {'message':' Starting your switch: ' + id })
+  hass.services.call('notify', 'dageraad', {'message':' Starting, pls wait: ' + id })
 
   if sn is None:
      logger.warning('<easyplus> no switch id supplied')

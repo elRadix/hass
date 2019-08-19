@@ -26,10 +26,10 @@ def doWork(hass, data, logger):
      time.sleep(20)
      hass.services.call('notify', 'dageraad', {'message':  'Startup EasyPlus completed' })
 
-  time.sleep(4)
+  time.sleep(5)
   sn2 = data.get('entity_id')
   hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn2 })
-  time.sleep(2)
+  time.sleep(3)
   state = hass.states.get(sn2).state
   switch = (hass.states.get(sn2).attributes["friendly_name"])
   time.sleep(2)

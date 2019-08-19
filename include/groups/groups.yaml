@@ -81,73 +81,7 @@
 
 
 
-########################################
-  lights:
-    name: Verlichting
-    view: yes
-    icon: mdi:lamp
-    entities:
-      - group.berging_light
-      - group.kitchen_light
-      - group.dinner_light
-      - group.wc_light
-      - group.hall_light
-      - group.bureau_light
-      - group.living_light
-      - group.trap_light
-      - group.trap_boven
-      - group.slaapkamer1_light
-      - group.slaapkamer2_light
-      - group.slaapkamer3_light
-      - group.badkamer_light
 
-
-  sockets:
-    name: Stopcontanten
-    view: yes
-    icon: mdi:power-plug
-    entities:
-      - group.sonoff
-      - group.berging_sockets
-      - group.kitchen_wall
-      - group.kitchen_eiland
-      - group.dinner_sockets
-      - group.bureau_sockets
-      - group.living_sockets
-      - group.slaapkamer1_sockets
-      - group.slaapkamer2_sockets
-      - group.slaapkamer3_sockets
-      - group.badkamer_sockets
-
-  temps:
-    name: Verwarming
-    view: yes
-    icon: mdi:temperature-celsius
-    entities:
-      - group.dinner_tmp
-      - group.living_tmp
-      - group.slaapkamer1_tmp
-      - group.slaapkamer2_tmp
-      - group.slaapkamer3_tmp
-      - group.badkamer_tmp
-
-
-      
-  allhome:
-    name: Status Light & Sockets
-    view: no
-    control: hidden
-    icon: mdi:flash
-    entities:
-      - switch.easyplus
-      - group.woon_sub
-      - group.slaap_sub
-      - group.woon_sub_soc
-      - group.slaap_sub_soc
-# ################################
-
-
-# ###################################
   berging:
     name: Berging
     icon: mdi:server
@@ -401,7 +335,7 @@
       - sensor.tmp_set_slp_1
       - input_number.setpoint_slp1
   slaapkamer1_light:
-    name: S&R 
+    name: S&R
     view: no
     icon: mdi:hotel
     entities:
@@ -543,7 +477,7 @@
       - sensor.tmp_set_badkamer
       - input_number.setpoint_bad
   badkamer_light:
-    name: Badkamer 
+    name: Badkamer
     view: no
     icon: mdi:water-pump
     entities:
@@ -611,7 +545,6 @@
       - light.vestiaire
       - light.wc
 
-      
   easyplus_lights:
     name: Lights
     icon: mdi:flash
@@ -675,6 +608,11 @@
       - switch.stp_living_sony
     #  - switch.living
       - switch.ketel
+      - switch.led_keuken_microgolf
+      - switch.led_keuken_oven
+      - switch.led_keuken_vaatwasser
+      - switch.led_keuken_waterkoker
+
 
   easyplus_switches_slaap:
     name: Easyplus Switches Slaap
@@ -714,4 +652,8 @@
       - switch.stp_slp3_bureau
       - switch.stp_slp3_deur
       - switch.ketel
+      - switch.led_keuken_microgolf
+      - switch.led_keuken_oven
+      - switch.led_keuken_vaatwasser
+      - switch.led_keuken_waterkoker
          #  - switch.living

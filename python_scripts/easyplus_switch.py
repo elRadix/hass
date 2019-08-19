@@ -17,7 +17,7 @@ def doWork(hass, data, logger):
      logger.warning('<easyplus> switch does not exist')
      return
 
-  hass.services.call('notify', 'dageraad', {'message':' Toggle switch, pls wait: ' + id })
+  hass.services.call('notify', 'dageraad', {'message':' Toggle ' + id })
 
   if ep.state == 'off':
      service_data = {'entity_id':'switch.easyplus'}

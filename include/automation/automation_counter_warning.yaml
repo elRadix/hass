@@ -44,6 +44,9 @@
     event_type: system_log_event
     event_data:
       level: ERROR
+  condition:
+    condition: template
+    value_template: '{{ "service" in trigger.event.data.message }}'
   action:
   - service: notify.telegram_rachid
     data_template:

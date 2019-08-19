@@ -282,9 +282,10 @@ automation:
       from: 'off'
       to: 'on'
     action:
-    - service: python_script.easyplus
-      data_template:
-        script_id: "turn_on_{{ trigger.to_state.name}}"
+    - service_template: "script.turn_on_{{ trigger.to_state.name }}"
+    # - service: python_script.easyplus
+    #   data_template:
+    #     script_id: "turn_on_{{ trigger.to_state.name}}"
 
   - id: stop_scenes
     initial_state: 'true'

@@ -2,6 +2,9 @@ def doWork(hass, data, logger):
   sn = data.get('script_id')
   ep = hass.states.get('switch.easyplus')
 
+  hass.services.call('notify', 'dageraad', {'message':  'Starting EasyPlus, pls wait' })
+
+
   if sn is None:
     logger.warning('<easyplus> no script id supplied')
     return
@@ -22,6 +25,7 @@ def doWork(hass, data, logger):
     hass.services.call('notify', 'dageraad', {'message':  'Starting EasyPlus' })
     time.sleep(21)
 
+  hass.services.call('notify', 'dageraad', {'message':  'Starting yr script, pls wait' })
   hass.services.call('script', sn, '', False)
 
 doWork(hass, data, logger)

@@ -381,7 +381,7 @@ automation:
         message: ' Warning Easyplus
 
         All scenes completed,
-        easyplus will shutdown in 15min'
+        easyplus will shutdown in 10min'
 
 
   - id: scenes completed
@@ -392,7 +392,7 @@ automation:
       entity_id: sensor.easyplus
       to: 'off'
       for:
-        minutes: 15
+        minutes: 10
     condition:
       - condition: state
         entity_id: sensor.day
@@ -401,7 +401,7 @@ automation:
     - service: python_script.easyplus_off
     - service: notify.dageraad
       data_template:
-        message: 'All scenes completed, easyplus: {{states.switch.easyplus.state}}'
+        message: 'All programs completed, easyplus is {{states.switch.easyplus.state}}'
 
 
 

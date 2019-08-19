@@ -2,6 +2,8 @@ sn = data.get('entity_main')
 sub = data.get('entity_sub')
 ep = hass.states.get('switch.easyplus')
 
+hass.services.call('notify', 'dageraad', {'message':  'Starting EasyPlus, pls wait' })
+
 if sn is not None:
   ss = hass.states.get(sn)
   if ss is not None:

@@ -29,7 +29,7 @@
 - platform: template
   sensors:
     easyplus_away:
-      friendly_name: "Easyplus Master Away"
+      friendly_name: "Easyplus Away"
       entity_id: sensor.easyplus_was, group.floradix
       device_class: power
       value_template: >-
@@ -40,6 +40,16 @@
         {% else %}
           off
         {% endif %}
+      icon_template: >-
+        {% if 'on' in states.group.floradix.state %}
+          mdi:home-account
+        {% elif 'on' in states.sensor.easyplus.state %}
+          mdi:power
+        {% else %}
+          mdi:home-alert
+        {% endif %}
+
+
 
 - platform: template
   sensors:
@@ -99,7 +109,7 @@
   sensors:
     easyplus_was:
       friendly_name: "Was"
-      entity_id: switch.stp_berging_droogkast,switch.stp_berging_wasmachine
+      entity_id: switch.stp_berging_dryer,switch.stp_berging_was
       device_class: power
       value_template: >-
         {% if 'on' in states.switch.stp_berging_wasmachine.state %}
@@ -110,9 +120,9 @@
           off
         {% endif %}
       icon_template: >-
-        {% if 'on' in states.switch.stp_berging_wasmachine.state %}
+        {% if 'on' in states.switch.stp_berging_was.state %}
            mdi:washing-machine
-        {% elif 'on' in states.switch.stp_berging_droogkast.state %}
+        {% elif 'on' in states.switch.stp_berging_dryer.state %}
             mdi:tumble-dryer
         {% else %}
             mdi:close-circle-outline
@@ -122,18 +132,18 @@
   sensors:
     easyplus_kitchen:
       friendly_name: "Kitchen"
-      entity_id: switch.stp_keuken_vaatwasser, switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_oven,switch.stp_keuken_water,switch.stp_keuken_microwave,switch.stp_eetkamer_tv
+      entity_id: switch.stp_keuken_dish, switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_oven,switch.stp_keuken_waterkoker,switch.stp_keuken_microgolf,switch.stp_eetkamer_tv
       device_class: power
       value_template: >-
-         {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
+         {% if 'on' in states.switch.stp_keuken_dish.state %}
           on
-         {% elif 'on' in states.switch.stp_keuken_microwave.state %}
+         {% elif 'on' in states.switch.stp_keuken_microgolf.state %}
           on
          {% elif 'on' in states.switch.stp_eetkamer_tv.state %}
           on
          {% elif 'on' in states.switch.stp_keuken_oven.state %}
           on
-         {% elif 'on' in states.switch.stp_keuken_water.state %}
+         {% elif 'on' in states.switch.stp_keuken_waterkoker.state %}
           on
          {% elif 'on' in states.switch.stp_keuken_espresso.state %}
           on
@@ -143,13 +153,13 @@
           off
          {% endif %}
       icon_template: >-
-        {% if 'on' in states.switch.stp_keuken_vaatwasser.state %}
+        {% if 'on' in states.switch.stp_keuken_dish.state %}
           mdi:dishwasher
-        {% elif 'on' in states.switch.stp_keuken_micowave.state %}
+        {% elif 'on' in states.switch.stp_keuken_microgolf.state %}
           mdi:microwave
         {% elif 'on' in states.switch.stp_keuken_oven.state %}
           mdi:toaster-oven
-        {% elif 'on' in states.switch.stp_keuken_water.state %}
+        {% elif 'on' in states.switch.stp_keuken_waterkoker.state %}
           mdi:water-pump
         {% elif 'on' in states.switch.stp_keuken_espresso.state %}
           mdi:coffee

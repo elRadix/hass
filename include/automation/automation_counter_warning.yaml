@@ -1,37 +1,51 @@
 ---
-  - alias: Count warnings
-    id: 'Count warnings'
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: system_log_event
-      event_data:
-        level: WARNING
-    action:
-      service: counter.increment
-      entity_id: counter.warning_counter
+- alias: Count warnings
+  id: 'Count warnings'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: system_log_event
+    event_data:
+      level: WARNING
+  action:
+    service: counter.increment
+    entity_id: counter.warning_counter
 
-  - alias: Count errors
-    id: 'Count errors'
-    initial_state: 'on'
-    trigger:
-      platform: event
-      event_type: system_log_event
-      event_data:
-        level: ERROR
-    action:
-      service: counter.increment
-      entity_id: counter.error_counter
+- alias: Count errors
+  id: 'Count errors'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: system_log_event
+    event_data:
+      level: ERROR
+  action:
+    service: counter.increment
+    entity_id: counter.error_counter
 
-  # - id: Create notifications for "service" errors
-  #   trigger:
-  #     platform: event
-  #     event_type: system_log_event
-  #   condition:
-  #     condition: template
-  #     value_template: '{{ "service" in trigger.event.data.message }}'
-  #   action:
-  #     service: persistent_notification.create
-  #     data_template:
-  #       title: Something bad happened
-  #       message: '{{ trigger.event.data.message }}'
+- id: Create notifications for "service" errors
+  trigger:
+    platform: event
+    event_type: system_log_event
+  condition:
+    condition: template
+    value_template: '{{ "service" in trigger.event.data.message }}'
+  action:
+    service: persistent_notification.create
+    data_template:
+      title: Something bad happened
+      message: '{{ trigger.event.data.message }}'
+
+
+- id: Error_Hass_Log
+  alias: 'Notify Error in HASS Log'
+  trigger:
+  - platform: event
+    event_type: system_log_event
+    event_data:
+      level: ERROR
+  action:
+    - service: notify.telegram_rachid
+      data_template:
+        message: '{{ trigger.event.data.message }}'
+        title:  Home Assistant Server

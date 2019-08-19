@@ -1012,7 +1012,7 @@
 
       Commander is {{states.switch.stp_keuken_commander.state}}
 
-      Waterkoker is {{states.switch.stp_keuken_water.state}}
+      Waterkoker is {{states.switch.stp_keuken_waterkoker.state}}
 
       Espresso is {{states.switch.stp_keuken_espresso.state}}
 
@@ -1028,7 +1028,7 @@
 
       Spot Rechts is {{states.switch.light_keuken_spot_rechts.state}}"
       keyboard:
-        - '/Keuken_Toestellen, /Keuken_Spots' 
+        - '/Keuken_Toestellen, /Keuken_Spots'
         - '/Eetkamer, /home'
 
 

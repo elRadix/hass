@@ -90,9 +90,6 @@
     to: 'on'
   action:
   - service: script.easyplus_on
-  - service: notify.mobile_app_elradix
-    data:
-      message: "Easyplus On"
   - service: notify.dageraad
     data:
       message: "Easyplus On"
@@ -107,9 +104,6 @@
     to: 'off'
   action:
   - service: script.easyplus_off
-  - service: notify.mobile_app_elradix
-    data:
-      message: "Easyplus Off"
   - service: notify.dageraad
     data:
       message: "Easyplus Off"
@@ -122,7 +116,7 @@
     platform: time
     at: '00:45:00'
   condition:
-    condition: and
+    condition: or
     conditions:
       - condition: state
         entity_id: input_boolean.night_late
@@ -233,15 +227,12 @@
         entity_id: input_boolean.school
         state: 'on'
   action:
-  - service: script.turn_on_easyplus
-  - service: homeassistant.turn_on
-    entity_id: switch.stp_keuken_water
+  - service: python_script.easyplus_switch
+    data_template:
+      entity_id: switch.stp_keuken_waterkoker
   - service: notify.dageraad
     data:
-      message: "Shool Modus, Easyplus On"
-  - service: notify.android
-    data:
-      message: "Shool Modus, Easyplus + Waterkoker On"
+      message: "Shool Modus activated"
 
 - id: easyplus_12
   initial_state: 'true'
@@ -274,9 +265,6 @@
   - service: notify.dageraad
     data:
       message: "School Modus, TV on"
-  - service: notify.android
-    data:
-      message: School Modus, TV on
 
 - id: easyplus_13
   initial_state: 'true'
@@ -355,7 +343,7 @@
 ########### WED ########
 - id: easyplus_15a
   initial_state: 'true'
-  alias: Easyplus shutdown Morning School Lights
+  alias: Easyplus shutdown Morning School Wed
   trigger:
     platform: time
     at: '08:15:00'
@@ -400,9 +388,9 @@
   - service: notify.dageraad
     data:
       message: "Auto Easyplus has been deactivated, its weekend."
-  - service: notify.android
-    data:
-      message: Auto Easyplus has been deactivated, its weekend - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data:
+  #     message: Auto Easyplus has been deactivated, its weekend - {{now().strftime("%H:%M:%S")}}
 
 - id: easyplus_17
   initial_state: 'true'
@@ -420,9 +408,6 @@
   - service: notify.dageraad
     data:
       message: "Auto Easyplus has been activated, it's Monday."
-  - service: notify.android
-    data:
-      message: Easyplus startup has been activated, it's Monday - {{now().strftime("%H:%M:%S")}}
 
 - id: easyplus_18
   initial_state: 'true'
@@ -433,7 +418,7 @@
 #    seconds: 1
   - platform: sun
     event: sunset
-    offset: "-00:15:00"
+    offset: "-01:00:00"
   - platform: state
     entity_id: group.floradix
     from: 'not_home'
@@ -459,7 +444,7 @@
         state: home
       - condition: sun
         after: sunset
-        after_offset: "-00:15:00"
+        after_offset: "-01:00:00"
       - condition: state
         entity_id: switch.easyplus
         state: 'off'
@@ -479,39 +464,12 @@
   initial_state: 'true'
   alias: Turn Easyplus Off Niemand thuis
   trigger:
-  # - platform: time_pattern
-  #   minutes: '/5'
-  #   seconds: 1
   - platform: state
-    entity_id: group.floradix
-    from: 'home'
-    to: 'not_home'
+    entity_id:  sensor.easyplus_away
+    from: 'on'
+    to: 'off'
     for:
-      minutes: 3
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: group.floradix
-        state: not_home
-      - condition: state
-        entity_id: switch.easyplus
-        state: 'on'
-      - condition: state
-        entity_id: switch.stp_berging_wasmachine
-        state: 'off'
-      - condition: state
-        entity_id: switch.stp_berging_droogkast
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.ketel_1h
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.ketel_2h
-        state: 'off'
-      - condition: state
-        entity_id: group.easyplus_lights
-        state: 'on'
+      minutes: 5
   action:
   - service: python_script.easyplus_off
   - service: notify.dageraad

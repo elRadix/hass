@@ -9,9 +9,9 @@ def doWork(hass, data, logger):
      logger.warning('<easyplus> no switch id supplied')
      return
 
-  if ep is None:
+  if ep is #None:
      logger.warning('<easyplus> switch.easyplus does not exist')
-     return
+     retur
 
   if ss is None:
      logger.warning('<easyplus> switch does not exist')
@@ -28,8 +28,8 @@ def doWork(hass, data, logger):
      time.sleep(5)
 
 
-  sn2 = data.get('entity_id')
-  hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn2 })
+#  sn2 = data.get('entity_id')
+  hass.services.call('switch', 'toggle', service_data={ 'entity_id': sn })
   time.sleep(3)
   sn3 = data.get('entity_id')
   state = hass.states.get(sn3).state

@@ -98,6 +98,7 @@ automation:
       entity_id: input_number.energyid_gas_current
     action:
     - service: rest_command.post_energyid_gas
+
   - id: energyid_02
     alias: post energyid water
     trigger:
@@ -105,6 +106,7 @@ automation:
       entity_id: input_number.energyid_water_current
     action:
     - service: rest_command.post_energyid_water
+
   - id: energyid_03
     alias: post energyid e day
     trigger:
@@ -112,6 +114,7 @@ automation:
       entity_id: input_number.energyid_e_day_current
     action:
     - service: rest_command.post_energyid_e_day
+
   - id: energyid_04
     alias: post energyid e night
     trigger:
@@ -123,9 +126,3 @@ automation:
 
 ## my token eyJhbGciOiJSUzI1NiIsImtpZCI6IjhlZTBmYmExNTQzMmVmNzZhMjk4MDVhYzYyMmViNzBhIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NjY0OTc2MjEsImV4cCI6MTU2NjUwMTIyMSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5lbmVyZ3lpZC5ldSIsImF1ZCI6WyJodHRwczovL2lkZW50aXR5LmVuZXJneWlkLmV1L3Jlc291cmNlcyIsIndlYi1hcGkiXSwiY2xpZW50X2lkIjoiRW5lcmd5SUQtQVBJLUV4cGxvcmVyIiwic3ViIjoiY2FkYTAzNWUtOThiMC00MDFjLWEyYTUtMjExZTgwZWM5NWYwIiwiYXV0aF90aW1lIjoxNTY2NDk3NjE0LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoiZWxyYWNoaWRAZ21haWwuY29tIiwic2NvcGUiOlsicHJvZmlsZTp3cml0ZSIsInJlY29yZHM6d3JpdGUiLCJncm91cHM6d3JpdGUiXSwiYW1yIjpbInB3ZCJdfQ.FZFYiDTFzGP0DfgiW5uYISOHdqkAnAAsh1aokisIrWOOpbRWHoBqrCdwemuE97m1O1W71vDRtVTwkONdeKZWg25PmyMXj2LeJ1IJiOHTqd_EXj_eToDQ68TRLu9gELoWyS0rU_msCarOHZRolQM6j_Sf_EiL5QYerOldlTeaaMERZ-dzW6Y0Lx_5YO_l4WVvSdbGNNCZ-2DJPTeUakA0RhRypPKV66wilnBdY2HVIkFotQFkZwGQ5Vqkm77HyNoOqyrR9Q_V0-thAajpBL30AsE2G1hffa6gxklyPkcv8SIaPl2K00QCbs5JvgPPUD6j5FFxIkAo5xkuNQgm8h-uIg
 # eyJhbGciOiJSUzI1NiIsImtpZCI6IjhlZTBmYmExNTQzMmVmNzZhMjk4MDVhYzYyMmViNzBhIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NjY0OTc2NjcsImV4cCI6MTU2NjUwMTI2NywiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5lbmVyZ3lpZC5ldSIsImF1ZCI6WyJodHRwczovL2lkZW50aXR5LmVuZXJneWlkLmV1L3Jlc291cmNlcyIsIndlYi1hcGkiXSwiY2xpZW50X2lkIjoiRW5lcmd5SUQtQVBJLUV4cGxvcmVyIiwic3ViIjoiY2FkYTAzNWUtOThiMC00MDFjLWEyYTUtMjExZTgwZWM5NWYwIiwiYXV0aF90aW1lIjoxNTY2NDk3NjE0LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoiZWxyYWNoaWRAZ21haWwuY29tIiwic2NvcGUiOlsicHJvZmlsZTp3cml0ZSIsInJlY29yZHM6d3JpdGUiLCJncm91cHM6d3JpdGUiXSwiYW1yIjpbInB3ZCJdfQ.KOdGwbUVkXvBl20K3guKtAZU74snCf5lIr7Z6Fu2qCbIGLCAEd5LKTc_wnK7kr0j7vbuw8taOPsgqtgdS8nMkB3xz9J-AX30MvfbzsgtPImWl5di10ykoo6GtFrU2X4RYF-VWAsOPZcQ12IJoWobJfFEdEXjKgoYncTPt835Iwo9841A4dSUWGZkJIgEjo2Ww5eUoxgN1U8lcpg0cXki4hp94SUcEC34Om1dggCPj_R7msiXRw1rOmqLiHwnwKgTcRHYq-NWiuM1aSzOZsXduQRV5-msF10M7PGXMdr0OUxdesvC3LYKwk_jTKxUyDw0AVY4YN0equEV-lrFwqAI6A
-
-# current day
-
-# 9677c2f3-5eff-431c-9423-a9ac8f3e9d82 
-# 541448860008645412
-#541448860008645412

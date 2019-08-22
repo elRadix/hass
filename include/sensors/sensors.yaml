@@ -248,14 +248,26 @@
 #    display_options:
 #      - time #'time_date'
 
+
+
   - platform: time_date
     display_options:
-      - 'time'
-      - 'date'
-      - 'date_time'
-      - 'time_date'
-      - 'time_utc'
-      - 'beat'
+        - 'time'
+        - 'date'
+        - 'date_time'
+        - 'date_time_iso'
+        - 'time_date'
+        - 'time_utc'
+        - 'beat'
+
+  # - platform: time_date
+  #   display_options:
+  #     - 'time'
+  #     - 'date'
+  #     - 'date_time'
+  #     - 'time_date'
+  #     - 'time_utc'
+  #     - 'beat'
 
   - platform: uptime
     name: "HA runtime in minutes"

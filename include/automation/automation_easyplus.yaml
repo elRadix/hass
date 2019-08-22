@@ -229,7 +229,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_keuken_waterkoker
+      switch_id: switch.stp_keuken_waterkoker
   - service: notify.dageraad
     data:
       message: "Shool Modus activated"

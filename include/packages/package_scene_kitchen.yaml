@@ -309,7 +309,7 @@ automation:
     action:
     - service: python_script.easyplus_switch
       data_template:
-        entity_id: "switch.stp_keuken_{{ trigger.to_state.name}}"
+        switch_id: "switch.stp_keuken_{{ trigger.to_state.name}}"
 
   - id: toggle_scenes_rf_berging
     initial_state: 'true'
@@ -322,7 +322,7 @@ automation:
     action:
     - service: python_script.easyplus_switch
       data_template:
-        entity_id: "switch.stp_berging_{{ trigger.to_state.name}}"
+        switch_id: "switch.stp_berging_{{ trigger.to_state.name}}"
 
   - id: timers_stop
     initial_state: 'true'

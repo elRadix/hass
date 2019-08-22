@@ -384,7 +384,7 @@
   action:
   - service: python_script.easyplus_switch
     data:
-      entity_id: switch.stp_berging_dryer
+      switch_id: switch.stp_berging_dryer
 
 - id: tgbot_18
   initial_state: 'true'
@@ -397,7 +397,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_berging_was
+      switch_id: switch.stp_berging_was
 
 - id: tgbot_19
   initial_state: 'true'
@@ -410,7 +410,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_berging_center
+      switch_id: switch.light_berging_center
 
 - id: tgbot_20
   initial_state: 'true'
@@ -656,7 +656,7 @@
       Ketel is {{states.switch.ketel.state}}'
       keyboard:
         - '/Ketel_On, /Ketel_Off'
-        - '/Settings, /home' 
+        - '/Settings, /home'
 
 
 - id: Ketel On
@@ -705,7 +705,7 @@
       message: '
         Ketel is {{states.switch.ketel.state}}'
 
-- id: Easyplus TG Off 
+- id: Easyplus TG Off
   initial_state: 'true'
   alias: 'Telegram reply Easyplus Off'
   trigger:
@@ -796,7 +796,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.bureau_lader
+      switch_id: switch.bureau_lader
 
 - id: Bureau TL
   initial_state: 'true'
@@ -809,7 +809,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_bureau_spots
+      switch_id: switch.light_bureau_spots
 
 - id: Bureau TL
   initial_state: 'true'
@@ -822,7 +822,7 @@
   action:
   - service: python_script.easyplus_switch
     data:
-      entity_id: switch.light_bureau_tl
+      switch_id: switch.light_bureau_tl
 
 - id: Living Spotcenter 
   initial_state: 'true'
@@ -835,7 +835,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_living_center
+      switch_id: switch.light_living_center
 
 - id: living Spot2
   initial_state: 'true'
@@ -848,7 +848,7 @@
   action:
   - service: python_script.easyplus_switch
     data:
-      entity_id: switch.light_living_double_spot
+      switch_id: switch.light_living_double_spot
 
 - id: Living Spot3
   initial_state: 'true'
@@ -861,7 +861,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_living_triple_spot
+      switch_id: switch.light_living_triple_spot
 
 - id: Living SonyTV
   initial_state: 'true'
@@ -874,7 +874,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_living_sony
+      switch_id: switch.stp_living_sony
 
 - id: Living KodiTV
   initial_state: 'true'
@@ -964,7 +964,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_eetkamer_tv
+      switch_id: switch.stp_eetkamer_tv
 
 - id: Eetkamer Center
   initial_state: 'true'
@@ -977,7 +977,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_eetkamer_center
+      switch_id: switch.light_eetkamer_center
 
 - id: Eetkamer Dubbel
   initial_state: 'true'
@@ -990,7 +990,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_eetkamer_double_spot
+      switch_id: switch.light_eetkamer_double_spot
 
 - id: 'Telegram reply with Kitchen'
   initial_state: 'true'
@@ -1074,7 +1074,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_keuken_spot_front
+      switch_id: switch.light_keuken_spot_front
 
 - id: spotlinks
   initial_state: 'true'
@@ -1087,7 +1087,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_keuken_spot_links
+      switch_id: switch.light_keuken_spot_links
 
 - id: spotrechts
   initial_state: 'true'
@@ -1100,7 +1100,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_keuken_spot_rechts
+      switch_id: switch.light_keuken_spot_rechts
 
 - id: 'Telegram reply with Keuken_Toestellen'
   initial_state: 'true'
@@ -1156,7 +1156,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_keuken_commander
+      switch_id: switch.stp_keuken_commander
 
 - id: Microgolf
   initial_state: 'true'
@@ -1169,7 +1169,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_keuken_microgolf
+      switch_id: switch.stp_keuken_microgolf
 
 - id: Oven
   initial_state: 'true'
@@ -1182,7 +1182,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_keuken_oven
+      switch_id: switch.stp_keuken_oven
 
 - id: Vaatwasser
   initial_state: 'true'
@@ -1195,7 +1195,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_keuken_dish
+      switch_id: switch.stp_keuken_dish
 
 - id: Waterkoker
   initial_state: 'true'
@@ -1208,7 +1208,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.stp_keuken_waterkoker
+      switch_id: switch.stp_keuken_waterkoker
 
 - id: Espresso
   initial_state: 'true'
@@ -1294,7 +1294,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_slp1_deur_morning
+      switch_id: switch.light_slp1_deur_morning
 
 
 - id: telegram_sara_notification
@@ -1337,7 +1337,7 @@
   action:
   - service: python_script.easyplus_switch
     data_template:
-      entity_id: switch.light_bureau_spots
+      switch_id: switch.light_bureau_spots
 
 - id: telegram_easyplus_notification
   initial_state: 'true'

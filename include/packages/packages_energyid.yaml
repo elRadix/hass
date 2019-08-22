@@ -47,11 +47,22 @@ input_number:
     mode: box
 
 sensor:
-  - platform: template
-    sensors:
-      blank:
-        value_template: ''
-        friendly_name: ''
+  - platform: file
+    file_path: !secret scripts_directory_energyID_day
+    name: energyid_current_day
+    unit_of_measurement: 'kWh'
+  - platform: file
+    file_path: !secret scripts_directory_energyID_night
+    name: energyid_current_day
+    unit_of_measurement: 'kWh'
+  - platform: file
+    file_path: !secret scripts_directory_energyID_water
+    name: energyid_water
+    unit_of_measurement: 'm3'
+  - platform: file
+    file_path: !secret scripts_directory_energyID_gas
+    name: energyid_gas
+    unit_of_measurement: 'm3'
 
 rest_command:
   post_energyid_gas:

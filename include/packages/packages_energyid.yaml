@@ -68,7 +68,7 @@ sensor:
 
   - platform: rest
     name: energyid_get_gas
-    resource: https://api.energyid.eu/api/v1/meters/6f190ba2-247d-4c86-9019-bb67ed023eb1/readings
+    resource: https://api.energyid.eu/api/v1/meters/6f190ba2-247d-4c86-9019-bb67ed023eb1/readings?Take=1
     scan_interval: 60
     value_template: '{{ value_json.value }}'
     headers:

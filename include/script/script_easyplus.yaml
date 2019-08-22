@@ -2,7 +2,7 @@
 lights:
   alias: Lights Off All
   sequence:
-  - service: light.turn_off
+  - service: homeassistant.turn_off
     data_template:
       entity_id: >
         {% set lights_on = states.light |
@@ -13,7 +13,7 @@ lights:
 switches:
   alias: Switches Off All
   sequence:
-  - service: switch.turn_off
+  - service: homeassistant.turn_off
     data_template:
       entity_id: >
         {% set switches_on = states.switch |
@@ -25,7 +25,7 @@ switches:
 lights_woon:
   alias: Lights Off Woon
   sequence:
-  - service: light.turn_off
+  - service: homeassistant.turn_off
     data_template:
       entity_id: >
         {% set lights_on = states.light |
@@ -36,7 +36,7 @@ lights_woon:
 lights_slaap:
   alias: Lights Off Slaap
   sequence:
-  - service: light.turn_off
+  - service: homeassistant.turn_off
     data_template:
       entity_id: >
         {% set lights_on = states.light |
@@ -47,7 +47,7 @@ lights_slaap:
 switches_woon:
   alias: Switches Off Woon
   sequence:
-  - service: switch.turn_off
+  - service: homeassistant.turn_off
     data_template:
       entity_id: >
         {% set switches_on = states.switch |
@@ -58,7 +58,7 @@ switches_woon:
 switches_slaap:
   alias: Switches Off Slaap
   sequence:
-  - service: switch.turn_off
+  - service: homeassistant.turn_off
     data_template:
       entity_id: >
         {% set switches_on = states.switch |

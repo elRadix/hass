@@ -502,6 +502,7 @@
     icon: mdi:flash
     view: no
     entities:
+      - switch.light_badkamer_spiegel
       - light.bathroom_douche
       - light.bathroom_lavabo
       - light.bathroom_mirror

@@ -5717,170 +5717,6 @@
                     "badges": [],
                     "cards": [
                         {
-                            "entities": [
-                                {
-                                    "entity": "lock.wmx_794_lock",
-                                    "icon": "mdi:car-key",
-                                    "name": "Lock switch"
-                                },
-                                {
-                                    "entity": "binary_sensor.wmx_794_park_brake_status",
-                                    "icon": "mdi:car-brake-alert",
-                                    "name": "Brake state"
-                                },
-                                {
-                                    "entity": "binary_sensor.wmx_794_tire_warning",
-                                    "icon": "mdi:car-tire-alert",
-                                    "name": "Tire Warning"
-                                },
-                                {
-                                    "entity": "binary_sensor.wmx_794_windows_closed",
-                                    "icon": "mdi:car-door",
-                                    "name": "Windows closed"
-                                },
-                                {
-                                    "entity": "sensor.wmx_794_fuel_level",
-                                    "icon": "mdi:gas-station",
-                                    "name": "Fuel level"
-                                }
-                            ],
-                            "image": "/local/a200.png",
-                            "type": "picture-glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "lock.wmx_794_lock"
-                                },
-                                {
-                                    "entity": "device_tracker.wdd1771871j112618",
-                                    "icon": "mdi:car",
-                                    "name": "Car location"
-                                },
-                                {
-                                    "entity": "sensor.wmx_794_lock",
-                                    "icon": "mdi:car-key",
-                                    "name": "Lock switch"
-                                },
-                                {
-                                    "entity": "binary_sensor.wmx_794_park_brake_status",
-                                    "icon": "mdi:car-key",
-                                    "name": "Lock status"
-                                },
-                                {
-                                    "entity": "binary_sensor.wmx_794_park_brake_status",
-                                    "icon": "mdi:car-brake-alert",
-                                    "name": "Brake state"
-                                },
-                                {
-                                    "entity": "binary_sensor.wmx_794_tire_warning",
-                                    "icon": "mdi:car-tire-alert",
-                                    "name": "Tire Warning"
-                                },
-                                {
-                                    "entity": "binary_sensor.wmx_794_windows_closed",
-                                    "icon": "mdi:car-door",
-                                    "name": "Windows closed"
-                                },
-                                {
-                                    "entity": "sensor.wmx_794_fuel_level",
-                                    "icon": "mdi:gas-station",
-                                    "name": "Fuel level"
-                                },
-                                {
-                                    "entity": "sensor.wmx_794_odometer",
-                                    "icon": "mdi:counter",
-                                    "name": "Odometer"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "aspect_ratio": "16x13",
-                            "default_zoom": 16,
-                            "entities": [
-                                {
-                                    "entity": "device_tracker.wdd1771871j112618"
-                                }
-                            ],
-                            "type": "map"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "filter": {
-                                        "exclude": [
-                                            "sensor.wmx_794_odometer.fr*",
-                                            "sensor.wmx_794_odometer.car",
-                                            "sensor.wmx_794_odometer.retr*",
-                                            "sensor.wmx_794_odometer.unit*"
-                                        ],
-                                        "include": [
-                                            "sensor.wmx_794_odometer.*",
-                                            {
-                                                "key": "sensor.wmx_794_odometer.averageSpeedReset",
-                                                "name": "Average Speed Reset"
-                                            }
-                                        ]
-                                    },
-                                    "heading_name": "Odometer details ",
-                                    "heading_state": "   ",
-                                    "title": null,
-                                    "type": "custom:entity-attributes-card"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "filter": {
-                                        "exclude": [
-                                            "sensor.wmx_794_lock.fr*",
-                                            "sensor.wmx_794_lock.car",
-                                            "sensor.wmx_794_lock.retr*",
-                                            "sensor.wmx_794_lock.unit*"
-                                        ],
-                                        "include": [
-                                            "sensor.wmx_794_lock.*"
-                                        ]
-                                    },
-                                    "heading_name": "Lock details ",
-                                    "heading_state": "   ",
-                                    "type": "custom:entity-attributes-card"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "filter": {
-                                        "exclude": [
-                                            "binary_sensor.wmx_794_tire_warning.fr*",
-                                            "binary_sensor.wmx_794_tire_warning.car",
-                                            "binary_sensor.wmx_794_tire_warning.retr*",
-                                            "binary_sensor.wmx_794_tire_warning.unit*"
-                                        ],
-                                        "include": [
-                                            "binary_sensor.wmx_794_tire_warning.*"
-                                        ]
-                                    },
-                                    "heading_name": "Tire details ",
-                                    "heading_state": "   ",
-                                    "type": "custom:entity-attributes-card"
-                                }
-                            ],
-                            "type": "entities"
-                        }
-                    ],
-                    "icon": "mdi:car",
-                    "title": "car"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
                             "animation": "off",
                             "entity": "sensor.processor_use",
                             "severity": [
@@ -6516,6 +6352,170 @@
                     "icon": "mdi:server",
                     "path": "",
                     "title": "Raspberry Pi"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.wmx_794_lock",
+                                    "icon": "mdi:car-key",
+                                    "name": "Lock switch"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_park_brake_status",
+                                    "icon": "mdi:car-brake-alert",
+                                    "name": "Brake state"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_tire_warning",
+                                    "icon": "mdi:car-tire-alert",
+                                    "name": "Tire Warning"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_windows_closed",
+                                    "icon": "mdi:car-door",
+                                    "name": "Windows closed"
+                                },
+                                {
+                                    "entity": "sensor.wmx_794_fuel_level",
+                                    "icon": "mdi:gas-station",
+                                    "name": "Fuel level"
+                                }
+                            ],
+                            "image": "/local/a200.png",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.wmx_794_lock"
+                                },
+                                {
+                                    "entity": "device_tracker.wdd1771871j112618",
+                                    "icon": "mdi:car",
+                                    "name": "Car location"
+                                },
+                                {
+                                    "entity": "sensor.wmx_794_lock",
+                                    "icon": "mdi:car-key",
+                                    "name": "Lock switch"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_park_brake_status",
+                                    "icon": "mdi:car-key",
+                                    "name": "Lock status"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_park_brake_status",
+                                    "icon": "mdi:car-brake-alert",
+                                    "name": "Brake state"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_tire_warning",
+                                    "icon": "mdi:car-tire-alert",
+                                    "name": "Tire Warning"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_windows_closed",
+                                    "icon": "mdi:car-door",
+                                    "name": "Windows closed"
+                                },
+                                {
+                                    "entity": "sensor.wmx_794_fuel_level",
+                                    "icon": "mdi:gas-station",
+                                    "name": "Fuel level"
+                                },
+                                {
+                                    "entity": "sensor.wmx_794_odometer",
+                                    "icon": "mdi:counter",
+                                    "name": "Odometer"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "aspect_ratio": "16x13",
+                            "default_zoom": 16,
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.wdd1771871j112618"
+                                }
+                            ],
+                            "type": "map"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "filter": {
+                                        "exclude": [
+                                            "sensor.wmx_794_odometer.fr*",
+                                            "sensor.wmx_794_odometer.car",
+                                            "sensor.wmx_794_odometer.retr*",
+                                            "sensor.wmx_794_odometer.unit*"
+                                        ],
+                                        "include": [
+                                            "sensor.wmx_794_odometer.*",
+                                            {
+                                                "key": "sensor.wmx_794_odometer.averageSpeedReset",
+                                                "name": "Average Speed Reset"
+                                            }
+                                        ]
+                                    },
+                                    "heading_name": "Odometer details ",
+                                    "heading_state": "   ",
+                                    "title": null,
+                                    "type": "custom:entity-attributes-card"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "filter": {
+                                        "exclude": [
+                                            "sensor.wmx_794_lock.fr*",
+                                            "sensor.wmx_794_lock.car",
+                                            "sensor.wmx_794_lock.retr*",
+                                            "sensor.wmx_794_lock.unit*"
+                                        ],
+                                        "include": [
+                                            "sensor.wmx_794_lock.*"
+                                        ]
+                                    },
+                                    "heading_name": "Lock details ",
+                                    "heading_state": "   ",
+                                    "type": "custom:entity-attributes-card"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "filter": {
+                                        "exclude": [
+                                            "binary_sensor.wmx_794_tire_warning.fr*",
+                                            "binary_sensor.wmx_794_tire_warning.car",
+                                            "binary_sensor.wmx_794_tire_warning.retr*",
+                                            "binary_sensor.wmx_794_tire_warning.unit*"
+                                        ],
+                                        "include": [
+                                            "binary_sensor.wmx_794_tire_warning.*"
+                                        ]
+                                    },
+                                    "heading_name": "Tire details ",
+                                    "heading_state": "   ",
+                                    "type": "custom:entity-attributes-card"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:car",
+                    "title": "car"
                 },
                 {
                     "badges": [],
@@ -7780,6 +7780,23 @@
                                         "entity_id": "timer.microgolf"
                                     },
                                     "type": "call-service"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_number.energyid_e_day_current"
+                                },
+                                {
+                                    "entity": "input_number.energyid_e_night_current"
+                                },
+                                {
+                                    "entity": "input_number.energyid_gas_current"
+                                },
+                                {
+                                    "entity": "input_number.energyid_water_current"
                                 }
                             ],
                             "type": "entities"

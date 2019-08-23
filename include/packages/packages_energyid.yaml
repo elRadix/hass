@@ -163,6 +163,8 @@ automation:
         date: "{{ states.input_datetime.current_gas.state }}"
         source: https://www.energieid.be
     - service: rest_command.post_energyid_gas
+    - delay:
+        seconds: 60
     - service: input_text.set_value
       data_template:
         entity_id: input_text.previous_gas

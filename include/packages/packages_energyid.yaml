@@ -128,7 +128,7 @@ rest_command:
   post_energyid_gas:
     url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
     method: POST
-    payload: '{"meterId": "{{ states.input_text.energyid_gas.state }}", "data": [["{{ states.input_datetime.meter_iso.state }}", {{ states.input_number.energyid_gas_current.state }}]]}'
+    payload: '{"meterId": "{{ states.input_text.energyid_gas.state }}", "data": [["{{ states.input_datetime.meter.state }}", {{ states.input_number.energyid_gas_current.state }}]]}'
     content_type: application/json
     verify_ssl: true
   post_energyid_water:
@@ -160,7 +160,7 @@ automation:
     - service: input_datetime.set_datetime
       entity_id: input_datetime.meter
       data_template:
-        datetime: "{{ now() }}"
+        datetime: "{{ utcnow() }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_gas
@@ -188,7 +188,7 @@ automation:
     - service: input_datetime.set_datetime
       entity_id: input_datetime.meter
       data_template:
-        datetime: "{{ now() }}"
+        datetime: "{{ utcnow() }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_water
@@ -213,6 +213,10 @@ automation:
     - platform: state
       entity_id: input_number.energyid_e_day_current
     action:
+    - service: input_datetime.set_datetime
+      entity_id: input_datetime.meter
+      data_template:
+        datetime: "{{ utcnow() }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_e_day
@@ -237,6 +241,10 @@ automation:
     - platform: state
       entity_id: input_number.energyid_e_night_current
     action:
+    - service: input_datetime.set_datetime
+      entity_id: input_datetime.meter
+      data_template:
+        datetime: "{{ utcnow() }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_e_night

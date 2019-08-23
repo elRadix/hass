@@ -260,7 +260,7 @@ automation:
         unit_of_measurement: 'm3'
         date:  "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
-   - service: python_script.set_state
+    - service: python_script.set_state
       data_template:
         entity_id: sensor.current_gas
         state: "{{ states('input_text.current_water') }}"

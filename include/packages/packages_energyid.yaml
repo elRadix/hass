@@ -77,6 +77,30 @@ input_number:
 #      Authorization: eyJhbGciOiJSUzI1NiIsImtpZCI6IjhlZTBmYmExNTQzMmVmNzZhMjk4MDVhYzYyMmViNzBhIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NjY1MDk3MTMsImV4cCI6MTU2NjUxMzMxMywiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5lbmVyZ3lpZC5ldSIsImF1ZCI6WyJodHRwczovL2lkZW50aXR5LmVuZXJneWlkLmV1L3Jlc291cmNlcyIsIndlYi1hcGkiXSwiY2xpZW50X2lkIjoiRW5lcmd5SUQtQVBJLUV4cGxvcmVyIiwic3ViIjoiY2FkYTAzNWUtOThiMC00MDFjLWEyYTUtMjExZTgwZWM5NWYwIiwiYXV0aF90aW1lIjoxNTY2NDk3NjE0LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoiZWxyYWNoaWRAZ21haWwuY29tIiwic2NvcGUiOlsicHJvZmlsZTp3cml0ZSIsInJlY29yZHM6d3JpdGUiLCJncm91cHM6d3JpdGUiXSwiYW1yIjpbInB3ZCJdfQ.YtX0hu2hqIa5t6Xw3QqO7VbUUde-FNsFUvFKztayM9Ir8Our_wMki0NI6lecD9OftK9vPYWfheTvFcNtVgIEcrZgSRwZX7KSm9XIUETzhN7lSYhbYX7fbG2-fRmOgA1uA8S5Yl7umkKkWnMuDj2QBtiWT9YAN5hSjasOm0tCzj17KX4ZDTpPXfyXyhN3RwagxrbnHTh_RBsVN2JHP-PJToY62bEupImrB2mnd9ULnsGvZhuI1fQaxUpv0n2qdNCH7t9FB8c5C7g04p1ucm6Oys8TjESkvZygUGDJM4SfzYO1UBlUEQXW7dmitknis7gywxstWHohEKmYHu0zLunb9g
 #      Content-Type: application/json
 
+sensor:
+
+  - platform: template
+    sensors:
+      current_gas:
+        value_template: ''
+        friendly_name: 'Meter gas'
+  - platform: template
+    sensors:
+      current_water:
+        value_template: ''
+        friendly_name: 'Meter water'
+  - platform: template
+    sensors:
+      current_e_day:
+        value_template: ''
+        friendly_name: 'Meter day'
+  - platform: template
+    sensors:
+      current_e_night:
+        value_template: ''
+        friendly_name: 'Meter night'
+
+
 rest_command:
   post_energyid_gas:
     url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK

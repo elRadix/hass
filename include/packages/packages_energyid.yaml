@@ -2,26 +2,22 @@ input_text:
   energyid_gas:
     name: "gas"
     initial: "6f190ba2-247d-4c86-9019-bb67ed023eb1"
-    max: 250
   energyid_water:
     name: "water"
     initial: "c66a0c47-4937-4d76-b650-658588900b66"
-    max: 250
   energyid_e_day:
     name: "current_day"
     initial: "9677c2f3-5eff-431c-9423-a9ac8f3e9d82"
-    max: 250
   energyid_e_night:
     name: "current_night"
     initial: "234731ea-0276-4d3c-a9c9-9d333ec0d189"
-    max: 250
   current_gas:
     name: "current_gas"
   current_water:
     name: "current_water"
   current_e_day:
     name: "current_e_day"
-  current_e_day:
+  current_e_night:
     name: "current_e_night"
 
 input_number:

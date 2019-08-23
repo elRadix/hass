@@ -112,7 +112,7 @@ automation:
     action:
     - service: rest_command.post_energyid_gas
     - service: python_script.set_state
-      data:
+      data_template:
         entity_id: sensor.gas
         state: "{{ states.input_text.energyid_gas.state }}"
         date: "{{ states.sensor.date_time_iso.state }}"
@@ -126,7 +126,7 @@ automation:
     action:
     - service: rest_command.post_energyid_water
     - service: python_script.set_state
-      data:
+      data_template:
         entity_id: sensor.water
         state: "{{ states.input_text.energyid_water.state }}"
         date:  "{{ states.sensor.date_time_iso.state }}"
@@ -140,7 +140,7 @@ automation:
     action:
     - service: rest_command.post_energyid_e_day
     - service: python_script.set_state
-      data:
+      data_template:
         entity_id: sensor.e_day
         state: "{{ states.input_text.energyid_e_day.state }}"
         date: "{{ states.sensor.date_time_iso.state }}"
@@ -154,7 +154,7 @@ automation:
     action:
     - service: rest_command.post_energyid_e_night
     - service: python_script.set_state
-      data:
+      data_template:
         entity_id: sensor.e_night
         state: "{{ states.input_text.energyid_e_night.state }}"
         date: "{{ states.sensor.date_time_iso.state }}"

@@ -173,25 +173,25 @@ automation:
     action:
     - service: python_script.set_state
       data_template:
-        entity_id: sensor_baseline_gas
+        entity_id: sensor.baseline_gas
         state: 5612
         unit_of_measurement: 'm3'
-        date: 31/01/2019
+        Meter date: 31/01/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_water
         unit_of_measurement: 'm3'
         state: 781
-        date: 31/01/2019
+        Meter date: 31/01/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_e_day
         state: 13915
         unit_of_measurement: 'kWh'
-        date: 31/01/2019
+        Meter date: 31/01/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_e_night
         unit_of_measurement: 'kWh'
         state: 16218
-        date: 31/01/2019
+        Meter date: 31/01/2019

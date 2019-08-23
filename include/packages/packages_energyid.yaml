@@ -135,49 +135,49 @@ rest_command:
     verify_ssl: true
 
 automation:
-  - id: energyid_01
-    alias: post energyid gas
-    trigger:
-    - platform: state
-      entity_id: input_number.energyid_gas_current
-    action:
-    - service: input_datetime.set_datetime
-      entity_id: input_datetime.current_gas
-      data_template:
-        datetime: "{{ utcnow() }}"
-    - service: input_text.set_value
-      data_template:
-        entity_id: input_text.current_gas
-        value: "{{ states('input_number.energyid_gas_current') }}"
-    - service: input_text.set_value
-      data_template:
-        entity_id: input_text.date_current_gas
-        value: "{{ states('input_datetime.current_gas') }}"
-    - service: python_script.set_state
-      data_template:
-        entity_id: sensor.current_gas
-        state: "{{ states('input_text.current_gas') }}"
-        unit_of_measurement: 'm3'
-        icon: mdi:counter
-        date: "{{ states.input_datetime.current_gas.state }}"
-        source: https://www.energieid.be
-    - service: rest_command.post_energyid_gas
-    - service: input_text.set_value
-      data_template:
-        entity_id: input_text.previous_gas
-        value: "{{ states('input_number.energyid_gas_current') }}"
-    - service: input_text.set_value
-      data_template:
-        entity_id: input_text.date_previous_gas
-        value: "{{ states('input_datetime.current_gas') }}"
-    - service: python_script.set_state
-      data_template:
-        entity_id: sensor.previous_gas
-        state: "{{ states('input_text.current_gas') }}"
-        unit_of_measurement: 'm3'
-        icon: mdi:counter
-        date: "{{ states.input_datetime.previous_gas.state }}"
-        source: https://www.energieid.be
+  # - id: energyid_01
+  #   alias: post energyid gas
+  #   trigger:
+  #   - platform: state
+  #     entity_id: input_number.energyid_gas_current
+  #   action:
+  #   - service: input_datetime.set_datetime
+  #     entity_id: input_datetime.current_gas
+  #     data_template:
+  #       datetime: "{{ utcnow() }}"
+  #   - service: input_text.set_value
+  #     data_template:
+  #       entity_id: input_text.current_gas
+  #       value: "{{ states('input_number.energyid_gas_current') }}"
+  #   - service: input_text.set_value
+  #     data_template:
+  #       entity_id: input_text.date_current_gas
+  #       value: "{{ states('input_datetime.current_gas') }}"
+  #   - service: python_script.set_state
+  #     data_template:
+  #       entity_id: sensor.current_gas
+  #       state: "{{ states('input_text.current_gas') }}"
+  #       unit_of_measurement: 'm3'
+  #       icon: mdi:counter
+  #       date: "{{ states.input_datetime.current_gas.state }}"
+  #       source: https://www.energieid.be
+  #   - service: rest_command.post_energyid_gas
+  #   - service: input_text.set_value
+  #     data_template:
+  #       entity_id: input_text.previous_gas
+  #       value: "{{ states('input_number.energyid_gas_current') }}"
+  #   - service: input_text.set_value
+  #     data_template:
+  #       entity_id: input_text.date_previous_gas
+  #       value: "{{ states('input_datetime.current_gas') }}"
+  #   - service: python_script.set_state
+  #     data_template:
+  #       entity_id: sensor.previous_gas
+  #       state: "{{ states('input_text.current_gas') }}"
+  #       unit_of_measurement: 'm3'
+  #       icon: mdi:counter
+  #       date: "{{ states.input_datetime.previous_gas.state }}"
+  #       source: https://www.energieid.be
 
   - id: energyid_02
     alias: post energyid water

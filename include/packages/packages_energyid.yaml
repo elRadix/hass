@@ -28,6 +28,8 @@ input_datetime:
     has_date: true
     has_time: true
 
+
+
 input_text:
   energyid_gas:
     initial: "6f190ba2-247d-4c86-9019-bb67ed023eb1"
@@ -38,21 +40,37 @@ input_text:
   energyid_e_night:
     initial: "234731ea-0276-4d3c-a9c9-9d333ec0d189"
   current_gas:
+    name: current gas
   current_water:
+    name: current water
   current_e_day:
+    name: current e day
   current_e_night:
+    name: current e night
   current_date_gas:
+    name: current date gas
   current_date_water:
+    name: current date water
   current_date_e_day:
+    name: current date e day
   current_date_e_night:
+    name: current date e night
   previous_gas:
+    name: previous gas
   previous_water:
-  previous_day:
+    name: previous water
+  previous_e_day:
+    name: previous e day
   previous_e_night:
+    name: previous e night
   previous_date_gas:
+    name: previous date gas
   previous_date_water:
+    name: previous date water
   previous_date_e_day:
+    name: previous date e day
   previous_date_e_night:
+    name: previous date e night
 
 input_number:
   energyid_gas_current:

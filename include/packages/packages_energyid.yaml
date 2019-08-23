@@ -87,17 +87,17 @@ sensor:
   - platform: template
     sensors:
       current_water:
-        value_template: ''
+        # value_template: ''
         friendly_name: 'Meter water'
   - platform: template
     sensors:
       current_e_day:
-        value_template: ''
+        # value_template: ''
         friendly_name: 'Meter day'
   - platform: template
     sensors:
       current_e_night:
-        value_template: ''
+        # value_template: ''
         friendly_name: 'Meter night'
 
 
@@ -200,22 +200,22 @@ automation:
         entity_id: sensor.baseline_gas
         state: 5612
         unit_of_measurement: 'm3'
-        Meter date: 31/01/2019
+        Snapshot date: 31/01/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_water
         unit_of_measurement: 'm3'
         state: 781
-        Meter date: 31/01/2019
+        Snapshot date: 31/01/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_e_day
         state: 13915
         unit_of_measurement: 'kWh'
-        Meter date: 31/01/2019
+        Snapshot date: 31/01/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_e_night
         unit_of_measurement: 'kWh'
         state: 16218
-        Meter date: 31/01/2019
+        Snapshot date: 31/01/2019

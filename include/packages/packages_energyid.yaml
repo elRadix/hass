@@ -23,30 +23,34 @@ input_text:
 input_number:
   energyid_gas_current:
     name: gas current
-    initial: 6000
-    min: 6000
-    max: 99999
+    icon: mdi:counter
+    initial: 5770
+    min: 5770
+    max: 65000
     step: 0.001
     mode: box
   energyid_water_current:
     name: water current
-    initial: 900
-    min: 800
-    max: 9999
+    icon: mdi:counter
+    initial: 821
+    min: 821
+    max: 12000
     step: 0.001
     mode: box
   energyid_e_day_current:
     name: day current
-    initial: 14000
-    min: 14000
-    max: 99999
+    icon: mdi:counter
+    initial: 14284
+    min: 14284
+    max: 17000
     step: 0.001
     mode: box
   energyid_e_night_current:
     name: night current
-    initial: 17000
-    min: 16200
-    max: 99999
+    icon: mdi:counter
+    initial: 16849
+    min: 16848
+    max: 18500
     step: 0.001
     mode: box
 
@@ -148,6 +152,7 @@ automation:
         entity_id: sensor.current_gas
         state: "{{ states('input_text.current_gas') }}"
         unit_of_measurement: 'm3'
+        icon: mdi:counter
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
 
@@ -167,6 +172,7 @@ automation:
         entity_id: sensor.current_water
         state: "{{ states('input_text.current_water') }}"
         unit_of_measurement: 'm3'
+        icon: mdi:counter
         date:  "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
 
@@ -186,6 +192,7 @@ automation:
         entity_id: sensor.current_e_day
         state: "{{ states('input_text.current_e_day') }}"
         unit_of_measurement: 'kWh'
+        icon: mdi:counter
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
 
@@ -205,6 +212,7 @@ automation:
         entity_id: sensor.current_e_night
         state: "{{ states('input_text.current_e_night') }}"
         unit_of_measurement: 'kWh'
+        icon: mdi:counter
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
 
@@ -220,11 +228,13 @@ automation:
         entity_id: sensor.baseline_gas
         state: 5612
         unit_of_measurement: 'm3'
+        icon: mdi:counter
         Snapshot date: 31/01/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_water
         unit_of_measurement: 'm3'
+        icon: mdi:counter
         state: 781
         Snapshot date: 31/01/2019
     - service: python_script.set_state
@@ -232,11 +242,13 @@ automation:
         entity_id: sensor.baseline_e_day
         state: 13915
         unit_of_measurement: 'kWh'
+        icon: mdi:counter
         Snapshot date: 31/01/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_e_night
         unit_of_measurement: 'kWh'
+        icon: mdi:counter
         state: 16218
         Snapshot date: 31/01/2019
     - service: python_script.set_state
@@ -244,6 +256,7 @@ automation:
         entity_id: sensor.current_e_night
         state: "{{ states('input_text.current_e_night') }}"
         unit_of_measurement: 'kWh'
+        icon: mdi:counter
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
     - service: python_script.set_state
@@ -251,6 +264,7 @@ automation:
         entity_id: sensor.current_e_day
         state: "{{ states('input_text.current_e_day') }}"
         unit_of_measurement: 'kWh'
+        icon: mdi:counter
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
     - service: python_script.set_state
@@ -258,6 +272,7 @@ automation:
         entity_id: sensor.current_water
         state: "{{ states('input_text.current_water') }}"
         unit_of_measurement: 'm3'
+        icon: mdi:counter
         date:  "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
     - service: python_script.set_state
@@ -265,5 +280,6 @@ automation:
         entity_id: sensor.current_gas
         state: "{{ states('input_text.current_water') }}"
         unit_of_measurement: 'm3'
+        icon: mdi:counter
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be

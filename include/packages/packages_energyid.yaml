@@ -1,3 +1,10 @@
+
+input_datetime:
+  meter:
+    name: date meter
+    has_date: true
+    has_time: true
+
 input_text:
   energyid_gas:
     name: "gas"
@@ -19,6 +26,14 @@ input_text:
     name: "current_e_day"
   current_e_night:
     name: "current_e_night"
+  current_date_gas:
+    name: "current_date_gas"
+  current_date_water:
+    name: "current_date_water"
+  current_date_e_day:
+    name: "current_date_e_day"
+  current_date_e_night:
+    name: "current_date_e_night"
 
 input_number:
   energyid_gas_current:
@@ -113,25 +128,25 @@ rest_command:
   post_energyid_gas:
     url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
     method: POST
-    payload: '{"meterId": "{{ states.input_text.energyid_gas.state }}", "data": [["{{ states.sensor.date_time_iso.state }}", {{ states.input_number.energyid_gas_current.state }}]]}'
+    payload: '{"meterId": "{{ states.input_text.energyid_gas.state }}", "data": [["{{ states.input_datetime.meter_iso.state }}", {{ states.input_number.energyid_gas_current.state }}]]}'
     content_type: application/json
     verify_ssl: true
   post_energyid_water:
     url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
     method: POST
-    payload: '{"meterId": "{{ states.input_text.energyid_water.state }}", "data": [["{{ states.sensor.date_time_iso.state }}", {{ states.input_number.energyid_water_current.state }}]]}'
+    payload: '{"meterId": "{{ states.input_text.energyid_water.state }}", "data": [["{{ states.input_datetime.meter.state }}", {{ states.input_number.energyid_water_current.state }}]]}'
     content_type: application/json
     verify_ssl: true
   post_energyid_e_day:
     url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
     method: POST
-    payload: '{"meterId": "{{ states.input_text.energyid_e_day.state }}", "data": [["{{ states.sensor.date_time_iso.state }}", {{ states.input_number.energyid_e_day_current.state }}]]}'
+    payload: '{"meterId": "{{ states.input_text.energyid_e_day.state }}", "data": [["{{ states.input_datetime.meter.state }}", {{ states.input_number.energyid_e_day_current.state }}]]}'
     content_type: application/json
     verify_ssl: true
   post_energyid_e_night:
     url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
     method: POST
-    payload: '{"meterId": "{{ states.input_text.energyid_e_night.state }}", "data": [["{{ states.sensor.date_time_iso.state }}", {{ states.input_number.energyid_e_night_current.state }}]]}'
+    payload: '{"meterId": "{{ states.input_text.energyid_e_night.state }}", "data": [["{{ states.input_datetime.meter.state }}", {{ states.input_number.energyid_e_night_current.state }}]]}'
     content_type: application/json
     verify_ssl: true
 
@@ -142,11 +157,18 @@ automation:
     - platform: state
       entity_id: input_number.energyid_gas_current
     action:
-    - service: rest_command.post_energyid_gas
+    - service: input_datetime.set_datetime
+      entity_id: input_datetime.meter
+      data_template:
+        datetime: "{{ now() }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_gas
         value: "{{ states('input_number.energyid_gas_current') }}"
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.date_current_gas
+        value: "{{ states('sensor.date_time_iso') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_gas
@@ -155,6 +177,7 @@ automation:
         icon: mdi:counter
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
+    - service: rest_command.post_energyid_gas
 
   - id: energyid_02
     alias: post energyid water
@@ -162,19 +185,27 @@ automation:
     - platform: state
       entity_id: input_number.energyid_water_current
     action:
-    - service: rest_command.post_energyid_water
+    - service: input_datetime.set_datetime
+      entity_id: input_datetime.meter
+      data_template:
+        datetime: "{{ now() }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_water
         value: "{{ states('input_number.energyid_water_current') }}"
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.date_current_water
+        value: "{{ states('sensor.date_time_iso') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_water
         state: "{{ states('input_text.current_water') }}"
         unit_of_measurement: 'm3'
         icon: mdi:counter
-        date:  "{{ states.sensor.date_time_iso.state }}"
+        date:  "{{ states.input_datetime.meter.state }}"
         source: https://www.energieid.be
+    - service: rest_command.post_energyid_water
 
   - id: energyid_03
     alias: post energyid e day
@@ -182,19 +213,23 @@ automation:
     - platform: state
       entity_id: input_number.energyid_e_day_current
     action:
-    - service: rest_command.post_energyid_e_day
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_e_day
         value: "{{ states('input_number.energyid_e_day_current') }}"
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.date_current_e_day
+        value: "{{ states('input_datetime.meter') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_e_day
         state: "{{ states('input_text.current_e_day') }}"
         unit_of_measurement: 'kWh'
         icon: mdi:counter
-        date: "{{ states.sensor.date_time_iso.state }}"
+        date: "{{ states.input_datetime.meter.state }}"
         source: https://www.energieid.be
+    - service: rest_command.post_energyid_e_day
 
   - id: energyid_04
     alias: post energyid e night
@@ -202,19 +237,23 @@ automation:
     - platform: state
       entity_id: input_number.energyid_e_night_current
     action:
-    - service: rest_command.post_energyid_e_night
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_e_night
         value: "{{ states('input_number.energyid_e_night_current') }}"
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.date_current_e_night
+        value: "{{ states('input_datetime.meter') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_e_night
         state: "{{ states('input_text.current_e_night') }}"
         unit_of_measurement: 'kWh'
         icon: mdi:counter
-        date: "{{ states.sensor.date_time_iso.state }}"
+        date: "{{ states.input_datetime.meter.state }}"
         source: https://www.energieid.be
+    - service: rest_command.post_energyid_e_night
 
   - id: energyid_05
     initial_state: 'true'
@@ -257,7 +296,7 @@ automation:
         state: "{{ states('input_text.current_e_night') }}"
         unit_of_measurement: 'kWh'
         icon: mdi:counter
-        date: "{{ states.sensor.date_time_iso.state }}"
+        date: "{{ states.input_text.date_current_e_night.state }}"
         source: https://www.energieid.be
     - service: python_script.set_state
       data_template:
@@ -265,7 +304,7 @@ automation:
         state: "{{ states('input_text.current_e_day') }}"
         unit_of_measurement: 'kWh'
         icon: mdi:counter
-        date: "{{ states.sensor.date_time_iso.state }}"
+        date: "{{ states.input_text.date_current_e_day.state }}"
         source: https://www.energieid.be
     - service: python_script.set_state
       data_template:
@@ -273,7 +312,7 @@ automation:
         state: "{{ states('input_text.current_water') }}"
         unit_of_measurement: 'm3'
         icon: mdi:counter
-        date:  "{{ states.sensor.date_time_iso.state }}"
+        date:  "{{ states.input_text.date_current_water.state }}"
         source: https://www.energieid.be
     - service: python_script.set_state
       data_template:
@@ -281,5 +320,5 @@ automation:
         state: "{{ states('input_text.current_water') }}"
         unit_of_measurement: 'm3'
         icon: mdi:counter
-        date: "{{ states.sensor.date_time_iso.state }}"
+        date: "{{ states.input_text.date_current_gas.state }}"
         source: https://www.energieid.be

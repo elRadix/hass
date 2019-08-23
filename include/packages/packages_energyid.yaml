@@ -242,9 +242,9 @@ automation:
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_e_night
-        state: "{{  states.input_number.energyid_e_night_current.state }}"
+        state: "{{ states('input_text.current_e_night') }}"
         unit_of_measurement: 'kWh'
-        date: "{{ states('input_text.current_e_night') }}"
+        date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
     - service: python_script.set_state
       data_template:
@@ -263,7 +263,7 @@ automation:
    - service: python_script.set_state
       data_template:
         entity_id: sensor.current_gas
-        state: "{{ states('input_text.current_gas') }}"
+        state: "{{ states('input_text.current_water') }}"
         unit_of_measurement: 'm3'
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be

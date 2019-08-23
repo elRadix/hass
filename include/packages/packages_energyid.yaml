@@ -1,7 +1,30 @@
 
 input_datetime:
   meter:
-    name: date meter
+    has_date: true
+    has_time: true
+  current_gas:
+    has_date: true
+    has_time: true
+  previous_gas:
+    has_date: true
+    has_time: true
+  current_water:
+    has_date: true
+    has_time: true
+  previous_water:
+    has_date: true
+    has_time: true
+  current_e_day:
+    has_date: true
+    has_time: true
+  previous_e_day:
+    has_date: true
+    has_time: true
+  current_e_night:
+    has_date: true
+    has_time: true
+  previous_e_night:
     has_date: true
     has_time: true
 

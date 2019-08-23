@@ -115,7 +115,7 @@ automation:
       data:
         entity_id: sensor.gas
         state: "{{ states.input_text.energyid_gas.state }}"
-        date: {{ states.sensor.date_time_iso.state }}
+        date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be/workspace#/reports/gas-consumption/general
 
   - id: energyid_02

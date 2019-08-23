@@ -170,11 +170,11 @@ automation:
     - service: input_text.set_value
       data_template:
         entity_id: input_text.date_previous_gas
-        value: "{{ states('input_text.date_current_gas') }}"
+        value: "{{ states('input_datetime.current_gas') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.previous_gas
-        state: "{{ states('input_text.current_gas') }}"
+        state: "{{ states('input_text.previous_gas') }}"
         unit_of_measurement: 'm3'
         icon: mdi:counter
         date: "{{ states.input_text.date_previous_gas.state }}"

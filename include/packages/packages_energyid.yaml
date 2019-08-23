@@ -112,7 +112,7 @@ rest_command:
   post_energyid_gas:
     url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
     method: POST
-    payload: '{"meterId": "{{ states.input_text.energyid_gas.state }}","data": [["{{ states.input_datetime.previous_gas.state }}", {{ states.sensor.previous_gas.state }}],["{{ states.input_datetime.current_gas.state }}", {{ states.input_number.energyid_gas_current.state }}]]}'
+    payload: '{"meterId": "{{ states.input_text.energyid_gas.state }}","data": [["{{ states.input_text.date_previous_gas.state }}", {{ states.input_text.previous_gas.state }}],["{{ states.input_datetime.current_gas.state }}", {{ states.input_number.energyid_gas_current.state }}]]}'
     content_type: application/json
     verify_ssl: true
 
@@ -170,14 +170,14 @@ automation:
     - service: input_text.set_value
       data_template:
         entity_id: input_text.date_previous_gas
-        value: "{{ states('input_datetime.current_gas') }}"
+        value: "{{ states('input_text.date_current_gas') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.previous_gas
         state: "{{ states('input_text.current_gas') }}"
         unit_of_measurement: 'm3'
         icon: mdi:counter
-        date: "{{ states.input_datetime.previous_gas.state }}"
+        date: "{{ states.input_text.date_previous_gas.state }}"
         source: https://www.energieid.be
 
   - id: energyid_02

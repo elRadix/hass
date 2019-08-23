@@ -146,11 +146,11 @@ automation:
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_gas
-        value: "{{ states('input_number.energyid_gas_current) }}"
+        value: "{{ states('input_number.energyid_gas_current') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_gas
-        state: "{{ states('input_text.current_gas) }}"
+        state: "{{ states('input_text.current_gas') }}"
         unit_of_measurement: 'm3'
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
@@ -165,11 +165,11 @@ automation:
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_water
-        value: "{{ states('input_number.energyid_water_current) }}"
+        value: "{{ states('input_number.energyid_water_current') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_water
-        state: "{{ states('input_text.current_water) }}"
+        state: "{{ states('input_text.current_water') }}"
         unit_of_measurement: 'm3'
         date:  "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
@@ -184,11 +184,11 @@ automation:
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_e_day
-        value: "{{ states('input_number.energyid_e_day_current) }}"
+        value: "{{ states('input_number.energyid_e_day_current') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_e_day
-        state: "{{ states('input_text.current_e_day) }}"
+        state: "{{ states('input_text.current_e_day') }}"
         unit_of_measurement: 'kWh'
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be
@@ -203,11 +203,11 @@ automation:
     - service: input_text.set_value
       data_template:
         entity_id: input_text.current_e_night
-        value: "{{ states('input_number.energyid_e_night_current) }}"
+        value: "{{ states('input_number.energyid_e_night_current') }}"
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_e_night
-        state: "{{ states('input_text.current_e_night) }}"
+        state: "{{ states('input_text.current_e_night') }}"
         unit_of_measurement: 'kWh'
         date: "{{ states.sensor.date_time_iso.state }}"
         source: https://www.energieid.be

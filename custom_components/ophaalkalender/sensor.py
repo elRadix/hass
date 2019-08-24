@@ -1,11 +1,13 @@
 """
 Sensor component for waste pickup dates from belgium waste collectors
 Original Author: Pippijn Stortelder
-Current Version: 1.1.0 20190611 - Pippijn Stortelder
+Current Version: 1.1.2 20190822 - Pippijn Stortelder
 20190207 - Changed Groenafval to GFT
 20190218 - Fixed typo
 20190223 - Fix for HA 88
 20190611 - HACS compatible
+20190612 - Fixed HACS
+20180822 - Fixed version numbering
 """
 
 import logging
@@ -20,7 +22,7 @@ from homeassistant.const import (CONF_RESOURCES)
 from homeassistant.util import Throttle
 from homeassistant.helpers.entity import Entity
 
-__version__ = '1.1.0'
+__version__ = '1.1.2'
 
 _LOGGER = logging.getLogger(__name__)
 

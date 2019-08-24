@@ -5717,6 +5717,170 @@
                     "badges": [],
                     "cards": [
                         {
+                            "entities": [
+                                {
+                                    "entity": "lock.wmx_794_lock",
+                                    "icon": "mdi:car-key",
+                                    "name": "Lock switch"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_park_brake_status",
+                                    "icon": "mdi:car-brake-alert",
+                                    "name": "Brake state"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_tire_warning",
+                                    "icon": "mdi:car-tire-alert",
+                                    "name": "Tire Warning"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_windows_closed",
+                                    "icon": "mdi:car-door",
+                                    "name": "Windows closed"
+                                },
+                                {
+                                    "entity": "sensor.wmx_794_fuel_level",
+                                    "icon": "mdi:gas-station",
+                                    "name": "Fuel level"
+                                }
+                            ],
+                            "image": "/local/a200.png",
+                            "type": "picture-glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "lock.wmx_794_lock"
+                                },
+                                {
+                                    "entity": "device_tracker.wdd1771871j112618",
+                                    "icon": "mdi:car",
+                                    "name": "Car location"
+                                },
+                                {
+                                    "entity": "sensor.wmx_794_lock",
+                                    "icon": "mdi:car-key",
+                                    "name": "Lock switch"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_park_brake_status",
+                                    "icon": "mdi:car-key",
+                                    "name": "Lock status"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_park_brake_status",
+                                    "icon": "mdi:car-brake-alert",
+                                    "name": "Brake state"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_tire_warning",
+                                    "icon": "mdi:car-tire-alert",
+                                    "name": "Tire Warning"
+                                },
+                                {
+                                    "entity": "binary_sensor.wmx_794_windows_closed",
+                                    "icon": "mdi:car-door",
+                                    "name": "Windows closed"
+                                },
+                                {
+                                    "entity": "sensor.wmx_794_fuel_level",
+                                    "icon": "mdi:gas-station",
+                                    "name": "Fuel level"
+                                },
+                                {
+                                    "entity": "sensor.wmx_794_odometer",
+                                    "icon": "mdi:counter",
+                                    "name": "Odometer"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "aspect_ratio": "16x13",
+                            "default_zoom": 16,
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.wdd1771871j112618"
+                                }
+                            ],
+                            "type": "map"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "filter": {
+                                        "exclude": [
+                                            "sensor.wmx_794_odometer.fr*",
+                                            "sensor.wmx_794_odometer.car",
+                                            "sensor.wmx_794_odometer.retr*",
+                                            "sensor.wmx_794_odometer.unit*"
+                                        ],
+                                        "include": [
+                                            "sensor.wmx_794_odometer.*",
+                                            {
+                                                "key": "sensor.wmx_794_odometer.averageSpeedReset",
+                                                "name": "Average Speed Reset"
+                                            }
+                                        ]
+                                    },
+                                    "heading_name": "Odometer details ",
+                                    "heading_state": "   ",
+                                    "title": null,
+                                    "type": "custom:entity-attributes-card"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "filter": {
+                                        "exclude": [
+                                            "sensor.wmx_794_lock.fr*",
+                                            "sensor.wmx_794_lock.car",
+                                            "sensor.wmx_794_lock.retr*",
+                                            "sensor.wmx_794_lock.unit*"
+                                        ],
+                                        "include": [
+                                            "sensor.wmx_794_lock.*"
+                                        ]
+                                    },
+                                    "heading_name": "Lock details ",
+                                    "heading_state": "   ",
+                                    "type": "custom:entity-attributes-card"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "filter": {
+                                        "exclude": [
+                                            "binary_sensor.wmx_794_tire_warning.fr*",
+                                            "binary_sensor.wmx_794_tire_warning.car",
+                                            "binary_sensor.wmx_794_tire_warning.retr*",
+                                            "binary_sensor.wmx_794_tire_warning.unit*"
+                                        ],
+                                        "include": [
+                                            "binary_sensor.wmx_794_tire_warning.*"
+                                        ]
+                                    },
+                                    "heading_name": "Tire details ",
+                                    "heading_state": "   ",
+                                    "type": "custom:entity-attributes-card"
+                                }
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:car",
+                    "title": "car"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
                             "animation": "off",
                             "entity": "sensor.processor_use",
                             "severity": [
@@ -6357,165 +6521,442 @@
                     "badges": [],
                     "cards": [
                         {
+                            "card": {
+                                "show_name": true,
+                                "show_state": false,
+                                "title": "Running  Activities",
+                                "type": "glance"
+                            },
                             "entities": [
                                 {
-                                    "entity": "lock.wmx_794_lock",
-                                    "icon": "mdi:car-key",
-                                    "name": "Lock switch"
+                                    "entity": "group.easyplus_sensors",
+                                    "icon": "mdi:power"
                                 },
                                 {
-                                    "entity": "binary_sensor.wmx_794_park_brake_status",
-                                    "icon": "mdi:car-brake-alert",
-                                    "name": "Brake state"
+                                    "entity": "sensor.easyplus_boiler"
                                 },
                                 {
-                                    "entity": "binary_sensor.wmx_794_tire_warning",
-                                    "icon": "mdi:car-tire-alert",
-                                    "name": "Tire Warning"
+                                    "entity": "sensor.easyplus_boiler_heating"
                                 },
                                 {
-                                    "entity": "binary_sensor.wmx_794_windows_closed",
-                                    "icon": "mdi:car-door",
-                                    "name": "Windows closed"
+                                    "entity": "sensor.easyplus_kitchen"
                                 },
                                 {
-                                    "entity": "sensor.wmx_794_fuel_level",
-                                    "icon": "mdi:gas-station",
-                                    "name": "Fuel level"
+                                    "entity": "sensor.easyplus_was"
                                 }
                             ],
-                            "image": "/local/a200.png",
-                            "type": "picture-glance"
+                            "show_empty": true,
+                            "state_filter": [
+                                "on"
+                            ],
+                            "type": "entity-filter"
+                        },
+                        {
+                            "card": {
+                                "show_header_toggle": false,
+                                "show_name": true,
+                                "show_state": false,
+                                "title": "Timers",
+                                "type": "entities"
+                            },
+                            "entities": [
+                                {
+                                    "entity": "timer.espresso"
+                                },
+                                {
+                                    "entity": "timer.dish"
+                                },
+                                {
+                                    "entity": "timer.water",
+                                    "name": "waterkoker"
+                                },
+                                {
+                                    "entity": "timer.oven"
+                                },
+                                {
+                                    "entity": "timer.microgolf"
+                                },
+                                {
+                                    "entity": "timer.dryer"
+                                },
+                                {
+                                    "entity": "timer.was",
+                                    "name": "wasmachine"
+                                },
+                                {
+                                    "entity": "timer.samsung"
+                                }
+                            ],
+                            "show_empty": true,
+                            "state_filter": [
+                                "active",
+                                "paused"
+                            ],
+                            "type": "entity-filter"
                         },
                         {
                             "entities": [
                                 {
-                                    "entity": "lock.wmx_794_lock"
+                                    "entity": "group.easyplus_sensors"
                                 },
                                 {
-                                    "entity": "device_tracker.wdd1771871j112618",
-                                    "icon": "mdi:car",
-                                    "name": "Car location"
+                                    "entity": "sensor.easyplus_away",
+                                    "icon": "mdi:home-account",
+                                    "name": "Away"
                                 },
                                 {
-                                    "entity": "sensor.wmx_794_lock",
-                                    "icon": "mdi:car-key",
-                                    "name": "Lock switch"
+                                    "entity": "group.floradix",
+                                    "icon": "mdi:home-heart"
                                 },
                                 {
-                                    "entity": "binary_sensor.wmx_794_park_brake_status",
-                                    "icon": "mdi:car-key",
-                                    "name": "Lock status"
+                                    "entity": "sensor.day"
                                 },
                                 {
-                                    "entity": "binary_sensor.wmx_794_park_brake_status",
-                                    "icon": "mdi:car-brake-alert",
-                                    "name": "Brake state"
-                                },
-                                {
-                                    "entity": "binary_sensor.wmx_794_tire_warning",
-                                    "icon": "mdi:car-tire-alert",
-                                    "name": "Tire Warning"
-                                },
-                                {
-                                    "entity": "binary_sensor.wmx_794_windows_closed",
-                                    "icon": "mdi:car-door",
-                                    "name": "Windows closed"
-                                },
-                                {
-                                    "entity": "sensor.wmx_794_fuel_level",
-                                    "icon": "mdi:gas-station",
-                                    "name": "Fuel level"
-                                },
-                                {
-                                    "entity": "sensor.wmx_794_odometer",
-                                    "icon": "mdi:counter",
-                                    "name": "Odometer"
+                                    "entity": "automation.scenes_completed",
+                                    "icon": "mdi:power",
+                                    "name": "auto off"
                                 }
                             ],
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.badkamer_occupied",
+                                    "name": "badkamer"
+                                },
+                                {
+                                    "entity": "binary_sensor.eetkamer_occupied",
+                                    "name": "eetkamer"
+                                },
+                                {
+                                    "entity": "binary_sensor.traphal_occupied",
+                                    "name": "traphal"
+                                },
+                                {
+                                    "entity": "binary_sensor.wc_occupied",
+                                    "name": "wc"
+                                },
+                                {
+                                    "entity": "binary_sensor.inkomhal_occupied",
+                                    "name": "inkonhall"
+                                }
+                            ],
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "timer.inkomhal_occupied"
+                                },
+                                {
+                                    "entity": "timer.eetkamer_occupied"
+                                },
+                                {
+                                    "entity": "timer.wc_occupied"
+                                },
+                                {
+                                    "entity": "timer.traphal_occupied"
+                                },
+                                {
+                                    "entity": "timer.bad_occupied"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Timers Motion",
                             "type": "entities"
                         },
                         {
-                            "aspect_ratio": "16x13",
-                            "default_zoom": 16,
                             "entities": [
                                 {
-                                    "entity": "device_tracker.wdd1771871j112618"
-                                }
-                            ],
-                            "type": "map"
-                        },
-                        {
-                            "entities": [
+                                    "entity": "switch.led_keuken_microgolf"
+                                },
                                 {
-                                    "filter": {
-                                        "exclude": [
-                                            "sensor.wmx_794_odometer.fr*",
-                                            "sensor.wmx_794_odometer.car",
-                                            "sensor.wmx_794_odometer.retr*",
-                                            "sensor.wmx_794_odometer.unit*"
-                                        ],
-                                        "include": [
-                                            "sensor.wmx_794_odometer.*",
-                                            {
-                                                "key": "sensor.wmx_794_odometer.averageSpeedReset",
-                                                "name": "Average Speed Reset"
-                                            }
-                                        ]
-                                    },
-                                    "heading_name": "Odometer details ",
-                                    "heading_state": "   ",
-                                    "title": null,
-                                    "type": "custom:entity-attributes-card"
+                                    "entity": "switch.led_keuken_oven"
+                                },
+                                {
+                                    "entity": "switch.led_keuken_vaatwasser"
+                                },
+                                {
+                                    "entity": "switch.led_keuken_waterkoker"
+                                },
+                                {
+                                    "entity": "switch.stp_keuken_microgolf"
+                                },
+                                {
+                                    "entity": "switch.stp_keuken_oven"
+                                },
+                                {
+                                    "entity": "switch.stp_keuken_dish"
+                                },
+                                {
+                                    "entity": "switch.stp_keuken_waterkoker"
                                 }
                             ],
+                            "show_header_toggle": false,
+                            "title": "Led + switches",
                             "type": "entities"
                         },
                         {
-                            "entities": [
+                            "cards": [
                                 {
-                                    "filter": {
-                                        "exclude": [
-                                            "sensor.wmx_794_lock.fr*",
-                                            "sensor.wmx_794_lock.car",
-                                            "sensor.wmx_794_lock.retr*",
-                                            "sensor.wmx_794_lock.unit*"
-                                        ],
-                                        "include": [
-                                            "sensor.wmx_794_lock.*"
-                                        ]
+                                    "elements": [
+                                        {
+                                            "entity": "binary_sensor.inkomhal",
+                                            "style": {
+                                                "bottom": "20%",
+                                                "front-weight": "bold",
+                                                "right": "24%",
+                                                "transform": "initial"
+                                            },
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.motion_inkomhal",
+                                            "style": {
+                                                "bottom": "20%",
+                                                "font-weight": "bold",
+                                                "right": "17%",
+                                                "transform": "initial"
+                                            },
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "sensor.tmp_living",
+                                            "style": {
+                                                "bottom": "20%",
+                                                "right": "5%",
+                                                "transform": "initial"
+                                            },
+                                            "type": "state-label"
+                                        },
+                                        {
+                                            "entity": "sensor.blank",
+                                            "hold-action": "none",
+                                            "prefix": "Living Room",
+                                            "style": {
+                                                "bottom": "20%",
+                                                "font-size": "150%",
+                                                "left": "5%",
+                                                "transform": "initial"
+                                            },
+                                            "tap-action": "none",
+                                            "type": "state-label"
+                                        }
+                                    ],
+                                    "image": "/local/title.png",
+                                    "type": "picture-elements"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "group.living_light"
+                                        },
+                                        {
+                                            "entity": "switch.stp_living_sony"
+                                        },
+                                        {
+                                            "entity": "switch.stp_living_bureau"
+                                        }
+                                    ],
+                                    "show_name": true,
+                                    "show_state": false,
+                                    "type": "glance"
+                                },
+                                {
+                                    "entity": "media_player.living",
+                                    "hide": {
+                                        "power": true,
+                                        "volume": true
                                     },
-                                    "heading_name": "Lock details ",
-                                    "heading_state": "   ",
-                                    "type": "custom:entity-attributes-card"
+                                    "icon": "mdi:cast",
+                                    "type": "custom:mini-media-player"
                                 }
                             ],
-                            "type": "entities"
+                            "title": null,
+                            "type": "custom:vertical-stack-in-card"
                         },
                         {
                             "entities": [
                                 {
-                                    "filter": {
-                                        "exclude": [
-                                            "binary_sensor.wmx_794_tire_warning.fr*",
-                                            "binary_sensor.wmx_794_tire_warning.car",
-                                            "binary_sensor.wmx_794_tire_warning.retr*",
-                                            "binary_sensor.wmx_794_tire_warning.unit*"
-                                        ],
-                                        "include": [
-                                            "binary_sensor.wmx_794_tire_warning.*"
-                                        ]
+                                    "entity": "timer.was"
+                                },
+                                {
+                                    "action_name": "pause",
+                                    "name": "was",
+                                    "service": "timer.pause",
+                                    "service_data": {
+                                        "entity_id": "timer.was"
                                     },
-                                    "heading_name": "Tire details ",
-                                    "heading_state": "   ",
-                                    "type": "custom:entity-attributes-card"
+                                    "type": "call-service"
+                                },
+                                {
+                                    "action_name": "start",
+                                    "name": "was",
+                                    "service": "timer.start",
+                                    "service_data": {
+                                        "entity_id": "timer.was"
+                                    },
+                                    "type": "call-service"
                                 }
                             ],
                             "type": "entities"
                         }
                     ],
-                    "icon": "mdi:car",
-                    "title": "car"
+                    "title": "SCENES"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "input_number.energyid_e_day_current"
+                                },
+                                {
+                                    "entity": "input_number.energyid_e_night_current"
+                                },
+                                {
+                                    "entity": "input_number.energyid_gas_current"
+                                },
+                                {
+                                    "entity": "input_number.energyid_water_current"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.baseline_e_day"
+                                },
+                                {
+                                    "entity": "sensor.baseline_e_night"
+                                },
+                                {
+                                    "entity": "sensor.baseline_gas"
+                                },
+                                {
+                                    "entity": "sensor.baseline_water"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.current_e_day"
+                                },
+                                {
+                                    "entity": "sensor.current_e_night"
+                                },
+                                {
+                                    "entity": "sensor.current_water"
+                                },
+                                {
+                                    "entity": "sensor.current_gas"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.previous_gas"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=zM8Wfv6hue5MytxOwzVIjqFfYTYIj02qLm8yOfBUQ76vDoFy5Oj5biuOYKYuX%2f0bOk11zjr5DRib%2bXwhEUjS4gtviArcX9u5Iu7zFlTS3%2fAHE0jrpdSSxgbItn4MaKPUTGvRryr%2bB8DR01TK8U0pvdT1Bf3fxcznQsn%2fyOoFpSI%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=g36NWCpJuh%2bTmeebiJpLyNUcl7El8eFyJ3XLLRs5co75%2fKlDe8J67nwtyP6pqFeQ3%2fBeegr%2bXt0og5KHMJIyL2zsdM%2bP3nPE69BH%2bmJF7jhivfDHkh%2fNR%2bznytrX9QVO8WWboxdzWupH8nlaQBLQoCUn0xSFBkxHPOAfOu1nXSY%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=R0i0NoJ%2bMVDrGzt1K9WS1ncKxYwwmbKs03TH5tGHdeG67t1gn1hVS08%2b3HJIywKrCj7%2fiQiz%2fwgfhA2RyboElAP014duFFDOdgzDsNZ1THaMv10FHt7%2f8DtW6QEHBsMO9trn9P2MOHPJdp3aJ33Yuw%3d%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=8CqJNfM7YbifE71jvvstTKb2BGLodKNMkgZumiIoCg2%2biK20QT73GT6ibDtMe2cyjA6d90HXLbhyQcoulIodjIXVgelW2MR79x1eeQb%2biHh3DAduVw0x7X%2bqjtZ2xRx0jtg28r4R81B9GATUWUqWMCEQvEBJI%2fnwpgG8SnbHiJQ%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=DamOuVufcFAQxdGTtmHPHEQAxlXWfURkNeDpmFP3Icgi%2b4xkEGrJ0YQJgRG5MiCC5H8ntw7cGcp4ER3i0OLkGZd2Kd92K3y%2fPjcYM7dXGbmFSPEFODKlj%2beoPo0GUVghOdEtuUdj7%2be3nmhAEv%2bHJDKj0IPUup95kMdOoc6aj%2bo%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=1y2nHFWuq%2fOxCA75IY%2fNZ%2fPh%2fCEXMBM%2fxfHUg1Zn0H1M7XVQ2pGfdTYDSLLOWTfd%2fYUOoYp%2fpV2UdrzRYf3w1doVM2b1rhP4DqBQGXJ2i%2bR5CT9jg1O3B7uvcPdsPUU%2btB1vyNsJdtOxttImCvW29w%3d%3d"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_number.energyid_gas_current",
+                                    "name": " "
+                                },
+                                {
+                                    "action_name": "gas",
+                                    "name": " ",
+                                    "service": "input_number.set_value",
+                                    "service_data": {
+                                        "entity_id": "input_number.energyid_gas_current"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "entity": "input_number.energyid_water_current",
+                                    "name": " "
+                                },
+                                {
+                                    "action_name": "water",
+                                    "name": " ",
+                                    "service": "input_number.set_value",
+                                    "service_data": {
+                                        "entity_id": "input_number.energyid_water_current"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "entity": "input_number.energyid_e_day_current",
+                                    "name": " "
+                                },
+                                {
+                                    "action_name": "day",
+                                    "name": " ",
+                                    "service": "input_number.set_value",
+                                    "service_data": {
+                                        "entity_id": "input_number.energyid_e_day_current"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "entity": "input_number.energyid_e_night_current",
+                                    "name": " "
+                                },
+                                {
+                                    "action_name": "night",
+                                    "name": " ",
+                                    "service": "input_number.set_value",
+                                    "service_data": {
+                                        "entity_id": "input_number.energyid_e_night_current"
+                                    },
+                                    "type": "call-service"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "EnergieID",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:power",
+                    "path": "energieid",
+                    "title": "EnergieID"
                 },
                 {
                     "badges": [],
@@ -7498,311 +7939,6 @@
                     "path": "",
                     "theme": "default",
                     "title": "Settings"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "card": {
-                                "show_name": true,
-                                "show_state": false,
-                                "title": "Running  Activities",
-                                "type": "glance"
-                            },
-                            "entities": [
-                                {
-                                    "entity": "group.easyplus_sensors",
-                                    "icon": "mdi:power"
-                                },
-                                {
-                                    "entity": "sensor.easyplus_boiler"
-                                },
-                                {
-                                    "entity": "sensor.easyplus_boiler_heating"
-                                },
-                                {
-                                    "entity": "sensor.easyplus_kitchen"
-                                },
-                                {
-                                    "entity": "sensor.easyplus_was"
-                                }
-                            ],
-                            "show_empty": true,
-                            "state_filter": [
-                                "on"
-                            ],
-                            "type": "entity-filter"
-                        },
-                        {
-                            "card": {
-                                "show_header_toggle": false,
-                                "show_name": true,
-                                "show_state": false,
-                                "title": "Timers",
-                                "type": "entities"
-                            },
-                            "entities": [
-                                {
-                                    "entity": "timer.espresso"
-                                },
-                                {
-                                    "entity": "timer.dish"
-                                },
-                                {
-                                    "entity": "timer.water",
-                                    "name": "waterkoker"
-                                },
-                                {
-                                    "entity": "timer.oven"
-                                },
-                                {
-                                    "entity": "timer.microgolf"
-                                },
-                                {
-                                    "entity": "timer.dryer"
-                                },
-                                {
-                                    "entity": "timer.was",
-                                    "name": "wasmachine"
-                                },
-                                {
-                                    "entity": "timer.samsung"
-                                }
-                            ],
-                            "show_empty": true,
-                            "state_filter": [
-                                "active",
-                                "paused"
-                            ],
-                            "type": "entity-filter"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "group.easyplus_sensors"
-                                },
-                                {
-                                    "entity": "sensor.easyplus_away",
-                                    "icon": "mdi:home-account",
-                                    "name": "Away"
-                                },
-                                {
-                                    "entity": "group.floradix",
-                                    "icon": "mdi:home-heart"
-                                },
-                                {
-                                    "entity": "sensor.day"
-                                },
-                                {
-                                    "entity": "automation.scenes_completed",
-                                    "icon": "mdi:power",
-                                    "name": "auto off"
-                                }
-                            ],
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.badkamer_occupied",
-                                    "name": "badkamer"
-                                },
-                                {
-                                    "entity": "binary_sensor.eetkamer_occupied",
-                                    "name": "eetkamer"
-                                },
-                                {
-                                    "entity": "binary_sensor.traphal_occupied",
-                                    "name": "traphal"
-                                },
-                                {
-                                    "entity": "binary_sensor.wc_occupied",
-                                    "name": "wc"
-                                },
-                                {
-                                    "entity": "binary_sensor.inkomhal_occupied",
-                                    "name": "inkonhall"
-                                }
-                            ],
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "timer.inkomhal_occupied"
-                                },
-                                {
-                                    "entity": "timer.eetkamer_occupied"
-                                },
-                                {
-                                    "entity": "timer.wc_occupied"
-                                },
-                                {
-                                    "entity": "timer.traphal_occupied"
-                                },
-                                {
-                                    "entity": "timer.bad_occupied"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Timers Motion",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "switch.led_keuken_microgolf"
-                                },
-                                {
-                                    "entity": "switch.led_keuken_oven"
-                                },
-                                {
-                                    "entity": "switch.led_keuken_vaatwasser"
-                                },
-                                {
-                                    "entity": "switch.led_keuken_waterkoker"
-                                },
-                                {
-                                    "entity": "switch.stp_keuken_microgolf"
-                                },
-                                {
-                                    "entity": "switch.stp_keuken_oven"
-                                },
-                                {
-                                    "entity": "switch.stp_keuken_dish"
-                                },
-                                {
-                                    "entity": "switch.stp_keuken_waterkoker"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Led + switches",
-                            "type": "entities"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "elements": [
-                                        {
-                                            "entity": "binary_sensor.inkomhal",
-                                            "style": {
-                                                "bottom": "20%",
-                                                "front-weight": "bold",
-                                                "right": "24%",
-                                                "transform": "initial"
-                                            },
-                                            "type": "state-icon"
-                                        },
-                                        {
-                                            "entity": "binary_sensor.motion_inkomhal",
-                                            "style": {
-                                                "bottom": "20%",
-                                                "font-weight": "bold",
-                                                "right": "17%",
-                                                "transform": "initial"
-                                            },
-                                            "type": "state-icon"
-                                        },
-                                        {
-                                            "entity": "sensor.tmp_living",
-                                            "style": {
-                                                "bottom": "20%",
-                                                "right": "5%",
-                                                "transform": "initial"
-                                            },
-                                            "type": "state-label"
-                                        },
-                                        {
-                                            "entity": "sensor.blank",
-                                            "hold-action": "none",
-                                            "prefix": "Living Room",
-                                            "style": {
-                                                "bottom": "20%",
-                                                "font-size": "150%",
-                                                "left": "5%",
-                                                "transform": "initial"
-                                            },
-                                            "tap-action": "none",
-                                            "type": "state-label"
-                                        }
-                                    ],
-                                    "image": "/local/title.png",
-                                    "type": "picture-elements"
-                                },
-                                {
-                                    "entities": [
-                                        {
-                                            "entity": "group.living_light"
-                                        },
-                                        {
-                                            "entity": "switch.stp_living_sony"
-                                        },
-                                        {
-                                            "entity": "switch.stp_living_bureau"
-                                        }
-                                    ],
-                                    "show_name": true,
-                                    "show_state": false,
-                                    "type": "glance"
-                                },
-                                {
-                                    "entity": "media_player.living",
-                                    "hide": {
-                                        "power": true,
-                                        "volume": true
-                                    },
-                                    "icon": "mdi:cast",
-                                    "type": "custom:mini-media-player"
-                                }
-                            ],
-                            "title": null,
-                            "type": "custom:vertical-stack-in-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "timer.microgolf"
-                                },
-                                {
-                                    "action_name": "pause",
-                                    "name": "microgolf",
-                                    "service": "timer.pause",
-                                    "service_data": {
-                                        "entity_id": "timer.microgolf"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "action_name": "start",
-                                    "name": "microgolf",
-                                    "service": "timer.start",
-                                    "service_data": {
-                                        "entity_id": "timer.microgolf"
-                                    },
-                                    "type": "call-service"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "input_number.energyid_e_day_current"
-                                },
-                                {
-                                    "entity": "input_number.energyid_e_night_current"
-                                },
-                                {
-                                    "entity": "input_number.energyid_gas_current"
-                                },
-                                {
-                                    "entity": "input_number.energyid_water_current"
-                                }
-                            ],
-                            "type": "entities"
-                        }
-                    ],
-                    "title": "SCENES"
                 },
                 {
                     "badges": [],
@@ -9929,6 +10065,26 @@
                                 ]
                             },
                             "type": "custom:monster-card"
+                        },
+                        {
+                            "aspect_ratio": "90%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/workspace/meters/6f190ba2-247d-4c86-9019-bb67ed023eb1/add-reading"
+                        },
+                        {
+                            "aspect_ratio": "90%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/workspace/meters/9677c2f3-5eff-431c-9423-a9ac8f3e9d82/add-reading"
+                        },
+                        {
+                            "aspect_ratio": "90%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/workspace/meters/234731ea-0276-4d3c-a9c9-9d333ec0d189/add-reading"
+                        },
+                        {
+                            "aspect_ratio": "90%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/workspace/meters/c66a0c47-4937-4d76-b650-658588900b66/add-reading"
                         }
                     ],
                     "title": "cards"

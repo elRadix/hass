@@ -92,7 +92,7 @@ stages:
 latest:
   <<: *test
   image:
-    name: homeassistant/home-assistant:latest
+    name: homeassistant/raspberrypi3-homeassistant:latest
     entrypoint: [""]
 # rc:
 #   <<: *test
@@ -104,6 +104,6 @@ latest:
 #dev:
 #  <<: *test
 #  image:
-#    name: homeassistant/home-assistant:dev
+#    name: homeassistant/raspberrypi3-homeassistant:beta #homeassistant/home-assistant:dev
 #    entrypoint: [""]
 #  allow_failure: true

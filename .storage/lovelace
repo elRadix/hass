@@ -679,17 +679,14 @@
                                                 "align_state": "left",
                                                 "entities": [
                                                     {
-                                                        "color": "green",
                                                         "entity": "sensor.tmp_slp_1",
                                                         "name": "S&R"
                                                     },
                                                     {
-                                                        "color": "red",
                                                         "entity": "sensor.ht_sara_temp",
                                                         "name": "Sara"
                                                     },
                                                     {
-                                                        "color": "blue",
                                                         "entity": "sensor.tmp_slp_3",
                                                         "name": "Yassin"
                                                     }
@@ -703,15 +700,15 @@
                                                     "color_thresholds": [
                                                         {
                                                             "color": "#f39c12",
-                                                            "value": 18
+                                                            "value": 24
                                                         },
                                                         {
                                                             "color": "#d35400",
-                                                            "value": 19
+                                                            "value": 23
                                                         },
                                                         {
                                                             "color": "#c0392b",
-                                                            "value": 22
+                                                            "value": 25
                                                         }
                                                     ],
                                                     "extrema": true,
@@ -822,8 +819,10 @@
                                                         }
                                                     ],
                                                     "extrema": true,
-                                                    "icon": false,
+                                                    "icon": true,
+                                                    "icon_adaptive_color": true,
                                                     "labels": true,
+                                                    "name_adaptive_color": true,
                                                     "points": false
                                                 },
                                                 "type": "custom:mini-graph-card"

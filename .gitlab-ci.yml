@@ -104,6 +104,6 @@ rc:
 dev:
  <<: *test
  image:
-   name: homeassistant/raspberrypi3-homeassistant:beta #homeassistant/home-assistant:dev
+   name: homeassistant/home-assistant:dev
    entrypoint: [""]
  allow_failure: true

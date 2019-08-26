@@ -24,7 +24,6 @@ Entities in the [`input_text`](https://www.home-assistant.io/components/input_te
 Entities in the [`light`](https://www.home-assistant.io/components/light) domain | 40
 Entities in the [`lock`](https://www.home-assistant.io/components/lock) domain | 1
 Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 10
-Entities in the [`persistent_notification`](https://www.home-assistant.io/components/persistent_notification) domain | 11
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 94
 Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 422

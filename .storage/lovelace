@@ -9368,305 +9368,6 @@
                         {
                             "cards": [
                                 {
-                                    "entity": "sensor.train_work",
-                                    "max": 50,
-                                    "min": 0,
-                                    "severity": [
-                                        {
-                                            "color": "green",
-                                            "value": 0
-                                        },
-                                        {
-                                            "color": "green",
-                                            "value": 30
-                                        },
-                                        {
-                                            "color": "red",
-                                            "value": 31
-                                        }
-                                    ],
-                                    "title": "Train Work",
-                                    "title_position": "inside",
-                                    "type": "custom:bar-card"
-                                },
-                                {
-                                    "entities": [
-                                        {
-                                            "filter": {
-                                                "exclude": [
-                                                    "sensor.train_work.at*",
-                                                    "sensor.train_work.fr*",
-                                                    "sensor.train_work.oc*",
-                                                    "sensor.train_work.ic*",
-                                                    "sensor.train_work.oc*",
-                                                    "sensor.train_work.uni*",
-                                                    "sensor.train_work.lat*",
-                                                    "sensor.train_work.lon*",
-                                                    "sensor.train_work.lon*",
-                                                    "sensor.train_work.platform_ar*"
-                                                ],
-                                                "include": [
-                                                    "sensor.train_work.*"
-                                                ]
-                                            },
-                                            "heading_name": " ",
-                                            "heading_state": "  ",
-                                            "type": "custom:entity-attributes-card"
-                                        }
-                                    ],
-                                    "type": "entities"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "entity": "sensor.train_home_noord",
-                                    "max": 50,
-                                    "min": 0,
-                                    "severity": [
-                                        {
-                                            "color": "green",
-                                            "value": 0
-                                        },
-                                        {
-                                            "color": "green",
-                                            "value": 30
-                                        },
-                                        {
-                                            "color": "red",
-                                            "value": 31
-                                        }
-                                    ],
-                                    "title": "Train Home Noord",
-                                    "title_position": "inside",
-                                    "type": "custom:bar-card"
-                                },
-                                {
-                                    "entities": [
-                                        {
-                                            "filter": {
-                                                "exclude": [
-                                                    "sensor.train_home_noord.at*",
-                                                    "sensor.train_home_noord.fr*",
-                                                    "sensor.train_home_noord.oc*",
-                                                    "sensor.train_home_noord.ic*",
-                                                    "sensor.train_home_noord.oc*",
-                                                    "sensor.train_home_noord.uni*",
-                                                    "sensor.train_home_noord.lat*",
-                                                    "sensor.train_home_noord.lon*",
-                                                    "sensor.train_home_noord.lon*",
-                                                    "sensor.train_home_noord.platform_ar*"
-                                                ],
-                                                "include": [
-                                                    "sensor.train_home_noord.*"
-                                                ]
-                                            },
-                                            "heading_name": " ",
-                                            "heading_state": "  ",
-                                            "type": "custom:entity-attributes-card"
-                                        }
-                                    ],
-                                    "type": "entities"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "content": "Current delay [[ sensor.train_home.attributes.delay ]] \nArrival in [[ sensor.train_home.attributes.departure ]] min\nDuration [[ sensor.train_home ]] min\nGate [[ sensor.train_home.attributes.platform_departing ]]  \n",
-                            "title": "Home via Brussel Centraal",
-                            "type": "markdown"
-                        }
-                    ],
-                    "icon": "mdi:train",
-                    "panel": false,
-                    "title": "Train"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "aspect_ratio": "16x9",
-                            "default_zoom": 15,
-                            "entities": [
-                                {
-                                    "entity": "device_tracker.life360_rachid"
-                                },
-                                {
-                                    "entity": "device_tracker.comp_rachid"
-                                }
-                            ],
-                            "type": "map"
-                        },
-                        {
-                            "aspect_ratio": "16x9",
-                            "default_zoom": 15,
-                            "entities": [
-                                {
-                                    "entity": "device_tracker.comp_soumaya"
-                                },
-                                {
-                                    "entity": "device_tracker.life360_soumaya"
-                                }
-                            ],
-                            "type": "map"
-                        },
-                        {
-                            "columns": 5,
-                            "entities": [
-                                {
-                                    "entity": "person.rachid"
-                                },
-                                {
-                                    "entity": "device_tracker.rachid",
-                                    "name": "router"
-                                },
-                                {
-                                    "entity": "device_tracker.rachid_mqtt",
-                                    "name": "mqtt"
-                                },
-                                {
-                                    "entity": "device_tracker.elradix",
-                                    "name": "BT"
-                                },
-                                {
-                                    "entity": "device_tracker.comp_rachid",
-                                    "name": "group"
-                                },
-                                {
-                                    "entity": "device_tracker.google_maps_elrachid_gmail_com",
-                                    "name": "google"
-                                },
-                                {
-                                    "entity": "device_tracker.life360_rachid",
-                                    "name": "life360"
-                                },
-                                {
-                                    "entity": "device_tracker.elradix_2",
-                                    "name": "gpslogger"
-                                }
-                            ],
-                            "show_name": true,
-                            "show_state": true,
-                            "type": "glance"
-                        },
-                        {
-                            "columns": 5,
-                            "entities": [
-                                {
-                                    "entity": "person.soumaya"
-                                },
-                                {
-                                    "entity": "device_tracker.soumaya",
-                                    "name": "router"
-                                },
-                                {
-                                    "entity": "device_tracker.soumaya_mqtt",
-                                    "name": "mqtt"
-                                },
-                                {
-                                    "entity": "device_tracker.soumaya_2",
-                                    "name": "BT"
-                                },
-                                {
-                                    "entity": "device_tracker.comp_soumaya",
-                                    "name": "group"
-                                },
-                                {
-                                    "entity": "device_tracker.google_maps_102675862650488616596",
-                                    "name": "google"
-                                },
-                                {
-                                    "entity": "device_tracker.life360_soumaya",
-                                    "name": "life360"
-                                },
-                                {
-                                    "entity": "device_tracker.flora_2",
-                                    "name": "gpslogger"
-                                }
-                            ],
-                            "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.soumaya_to_home"
-                                },
-                                {
-                                    "entity": "sensor.rachid_to_home"
-                                },
-                                {
-                                    "entity": "sensor.proximity_person"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Proximity",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.time_to_leave_for_home"
-                                },
-                                {
-                                    "entity": "sensor.time_to_home"
-                                },
-                                {
-                                    "entity": "sensor.me_traffic_density_to_home"
-                                },
-                                {
-                                    "entity": "sensor.time_to_leave_for_work"
-                                },
-                                {
-                                    "entity": "sensor.time_to_work"
-                                },
-                                {
-                                    "entity": "sensor.me_traffic_density_to_work"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Travel time BNP",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "sensor.time_to_leave_for_home",
-                                "sensor.time_to_home",
-                                "sensor.me_traffic_density_to_home",
-                                "sensor.time_to_leave_for_work",
-                                "sensor.time_to_work",
-                                "sensor.me_traffic_density_to_work"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Travel time Brussel",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "input_boolean.work",
-                                "sensor.time_at_work_today",
-                                "sensor.time_at_work_this_week",
-                                "sensor.time_at_work_this_month",
-                                "sensor.percent_at_work_daily",
-                                "sensor.percent_at_work_weekly",
-                                "sensor.percent_at_work_monthly"
-                            ],
-                            "show_header_toggle": false,
-                            "title": "Work Hours",
-                            "type": "entities"
-                        }
-                    ],
-                    "icon": "mdi:highway",
-                    "path": "",
-                    "title": "Travel"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "cards": [
-                                {
                                     "cards": [
                                         {
                                             "aspect_ratio": "1/1",
@@ -9786,6 +9487,7 @@
                                             ],
                                             "group": false,
                                             "hour24": true,
+                                            "hours_to_show": 24,
                                             "line_width": 6,
                                             "name": "CPU",
                                             "points_per_hour": 1,
@@ -10087,6 +9789,305 @@
                         }
                     ],
                     "title": "cards"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.train_work",
+                                    "max": 50,
+                                    "min": 0,
+                                    "severity": [
+                                        {
+                                            "color": "green",
+                                            "value": 0
+                                        },
+                                        {
+                                            "color": "green",
+                                            "value": 30
+                                        },
+                                        {
+                                            "color": "red",
+                                            "value": 31
+                                        }
+                                    ],
+                                    "title": "Train Work",
+                                    "title_position": "inside",
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "filter": {
+                                                "exclude": [
+                                                    "sensor.train_work.at*",
+                                                    "sensor.train_work.fr*",
+                                                    "sensor.train_work.oc*",
+                                                    "sensor.train_work.ic*",
+                                                    "sensor.train_work.oc*",
+                                                    "sensor.train_work.uni*",
+                                                    "sensor.train_work.lat*",
+                                                    "sensor.train_work.lon*",
+                                                    "sensor.train_work.lon*",
+                                                    "sensor.train_work.platform_ar*"
+                                                ],
+                                                "include": [
+                                                    "sensor.train_work.*"
+                                                ]
+                                            },
+                                            "heading_name": " ",
+                                            "heading_state": "  ",
+                                            "type": "custom:entity-attributes-card"
+                                        }
+                                    ],
+                                    "type": "entities"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entity": "sensor.train_home_noord",
+                                    "max": 50,
+                                    "min": 0,
+                                    "severity": [
+                                        {
+                                            "color": "green",
+                                            "value": 0
+                                        },
+                                        {
+                                            "color": "green",
+                                            "value": 30
+                                        },
+                                        {
+                                            "color": "red",
+                                            "value": 31
+                                        }
+                                    ],
+                                    "title": "Train Home Noord",
+                                    "title_position": "inside",
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "filter": {
+                                                "exclude": [
+                                                    "sensor.train_home_noord.at*",
+                                                    "sensor.train_home_noord.fr*",
+                                                    "sensor.train_home_noord.oc*",
+                                                    "sensor.train_home_noord.ic*",
+                                                    "sensor.train_home_noord.oc*",
+                                                    "sensor.train_home_noord.uni*",
+                                                    "sensor.train_home_noord.lat*",
+                                                    "sensor.train_home_noord.lon*",
+                                                    "sensor.train_home_noord.lon*",
+                                                    "sensor.train_home_noord.platform_ar*"
+                                                ],
+                                                "include": [
+                                                    "sensor.train_home_noord.*"
+                                                ]
+                                            },
+                                            "heading_name": " ",
+                                            "heading_state": "  ",
+                                            "type": "custom:entity-attributes-card"
+                                        }
+                                    ],
+                                    "type": "entities"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "content": "Current delay [[ sensor.train_home.attributes.delay ]] \nArrival in [[ sensor.train_home.attributes.departure ]] min\nDuration [[ sensor.train_home ]] min\nGate [[ sensor.train_home.attributes.platform_departing ]]  \n",
+                            "title": "Home via Brussel Centraal",
+                            "type": "markdown"
+                        }
+                    ],
+                    "icon": "mdi:train",
+                    "panel": false,
+                    "title": "Train"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "aspect_ratio": "16x9",
+                            "default_zoom": 15,
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.life360_rachid"
+                                },
+                                {
+                                    "entity": "device_tracker.comp_rachid"
+                                }
+                            ],
+                            "type": "map"
+                        },
+                        {
+                            "aspect_ratio": "16x9",
+                            "default_zoom": 15,
+                            "entities": [
+                                {
+                                    "entity": "device_tracker.comp_soumaya"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_soumaya"
+                                }
+                            ],
+                            "type": "map"
+                        },
+                        {
+                            "columns": 5,
+                            "entities": [
+                                {
+                                    "entity": "person.rachid"
+                                },
+                                {
+                                    "entity": "device_tracker.rachid",
+                                    "name": "router"
+                                },
+                                {
+                                    "entity": "device_tracker.rachid_mqtt",
+                                    "name": "mqtt"
+                                },
+                                {
+                                    "entity": "device_tracker.elradix",
+                                    "name": "BT"
+                                },
+                                {
+                                    "entity": "device_tracker.comp_rachid",
+                                    "name": "group"
+                                },
+                                {
+                                    "entity": "device_tracker.google_maps_elrachid_gmail_com",
+                                    "name": "google"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_rachid",
+                                    "name": "life360"
+                                },
+                                {
+                                    "entity": "device_tracker.elradix_2",
+                                    "name": "gpslogger"
+                                }
+                            ],
+                            "show_name": true,
+                            "show_state": true,
+                            "type": "glance"
+                        },
+                        {
+                            "columns": 5,
+                            "entities": [
+                                {
+                                    "entity": "person.soumaya"
+                                },
+                                {
+                                    "entity": "device_tracker.soumaya",
+                                    "name": "router"
+                                },
+                                {
+                                    "entity": "device_tracker.soumaya_mqtt",
+                                    "name": "mqtt"
+                                },
+                                {
+                                    "entity": "device_tracker.soumaya_2",
+                                    "name": "BT"
+                                },
+                                {
+                                    "entity": "device_tracker.comp_soumaya",
+                                    "name": "group"
+                                },
+                                {
+                                    "entity": "device_tracker.google_maps_102675862650488616596",
+                                    "name": "google"
+                                },
+                                {
+                                    "entity": "device_tracker.life360_soumaya",
+                                    "name": "life360"
+                                },
+                                {
+                                    "entity": "device_tracker.flora_2",
+                                    "name": "gpslogger"
+                                }
+                            ],
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.soumaya_to_home"
+                                },
+                                {
+                                    "entity": "sensor.rachid_to_home"
+                                },
+                                {
+                                    "entity": "sensor.proximity_person"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Proximity",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.time_to_leave_for_home"
+                                },
+                                {
+                                    "entity": "sensor.time_to_home"
+                                },
+                                {
+                                    "entity": "sensor.me_traffic_density_to_home"
+                                },
+                                {
+                                    "entity": "sensor.time_to_leave_for_work"
+                                },
+                                {
+                                    "entity": "sensor.time_to_work"
+                                },
+                                {
+                                    "entity": "sensor.me_traffic_density_to_work"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Travel time BNP",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "sensor.time_to_leave_for_home",
+                                "sensor.time_to_home",
+                                "sensor.me_traffic_density_to_home",
+                                "sensor.time_to_leave_for_work",
+                                "sensor.time_to_work",
+                                "sensor.me_traffic_density_to_work"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Travel time Brussel",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "input_boolean.work",
+                                "sensor.time_at_work_today",
+                                "sensor.time_at_work_this_week",
+                                "sensor.time_at_work_this_month",
+                                "sensor.percent_at_work_daily",
+                                "sensor.percent_at_work_weekly",
+                                "sensor.percent_at_work_monthly"
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Work Hours",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:highway",
+                    "path": "",
+                    "title": "Travel"
                 },
                 {
                     "badges": [],

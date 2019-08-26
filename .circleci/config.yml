@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Check config
+          name: HA Prod - Check config
           command: |
             mv secrets_redacted.yaml secrets.yaml
             mkdir fake_directory
@@ -21,10 +21,8 @@ jobs:
             source bin/activate
             pip install --upgrade pip
             pip3 install homeassistant
-            pip3 install colorlog
             hass -c . --script check_config #--info all
             hass --version
-
 
   dev:
     docker:
@@ -33,7 +31,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Check config
+          name: HA Beta - Check config
           command: |
             mv secrets_redacted.yaml secrets.yaml
             mkdir fake_directory
@@ -46,10 +44,8 @@ jobs:
             source bin/activate
             pip install --upgrade pip
             pip3 install --pre --upgrade homeassistant
-            pip3 install colorlog
             hass -c . --script check_config #--info all
             hass --version
-
 
 workflows:
   version: 2.1

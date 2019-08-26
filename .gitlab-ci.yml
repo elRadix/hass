@@ -92,7 +92,7 @@ stages:
 latest:
   <<: *test
   image:
-    name: homeassistant/raspberrypi3-homeassistant:latest
+    name: homeassistant/home-assistant:latest
     entrypoint: [""]
 # rc:
 #   <<: *test

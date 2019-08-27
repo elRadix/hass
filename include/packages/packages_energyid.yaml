@@ -345,3 +345,4 @@ automation:
         icon: mdi:counter
         date: "{{ states.input_datetime.previous_gas.state }}"
         source: https://www.energieid.be
+

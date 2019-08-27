@@ -1,14 +1,14 @@
 ---
 version: 2.1
 jobs:
-  build:
+  prod:
     docker:
       - image: circleci/python:3.7.3
     working_directory: ~/repo
     steps:
       - checkout
       - run:
-          name: Check config
+          name: HA Prod - Check config
           command: |
             mv secrets_redacted.yaml secrets.yaml
             mkdir fake_directory
@@ -21,7 +21,29 @@ jobs:
             source bin/activate
             pip install --upgrade pip
             pip3 install homeassistant
-            pip3 install colorlog
+            hass -c . --script check_config #--info all
+            hass --version
+
+  dev:
+    docker:
+      - image: circleci/python:3.7.3
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: HA Beta - Check config
+          command: |
+            mv secrets_redacted.yaml secrets.yaml
+            mkdir fake_directory
+            touch fake_directory/data.log
+            touch fake_directory/cert.log
+            touch fake_directory/cert_eu.log
+            echo "10" > fake_directory/cert.log
+            echo "10" > fake_directory/cert_eu.log
+            python3.7 -m venv .
+            source bin/activate
+            pip install --upgrade pip
+            pip3 install --pre --upgrade homeassistant
             hass -c . --script check_config #--info all
             hass --version
 
@@ -29,4 +51,5 @@ workflows:
   version: 2.1
   build_and_test:
     jobs:
-      - build
+      - prod
+      - dev

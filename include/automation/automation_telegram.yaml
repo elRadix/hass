@@ -824,7 +824,7 @@
     data:
       switch_id: switch.light_bureau_tl
 
-- id: Living Spotcenter 
+- id: Living Spotcenter
   initial_state: 'true'
   alias: 'Telegram reply Spotcenter toggle'
   trigger:

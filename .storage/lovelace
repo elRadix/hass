@@ -254,6 +254,28 @@
                                     "name": "Slaapkamer",
                                     "show_source": "full",
                                     "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "artwork": "full-cover-fit",
+                                    "artwork_border": true,
+                                    "entity": "media_player.eetkamer",
+                                    "group": false,
+                                    "icon": "mdi:television",
+                                    "info": "short",
+                                    "name": "Eetkamer",
+                                    "show_source": "full",
+                                    "type": "custom:mini-media-player"
+                                },
+                                {
+                                    "artwork": "full-cover-fit",
+                                    "artwork_border": true,
+                                    "entity": "media_player.living",
+                                    "group": false,
+                                    "icon": "mdi:television",
+                                    "info": "short",
+                                    "name": "Living",
+                                    "show_source": "full",
+                                    "type": "custom:mini-media-player"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -5924,7 +5946,7 @@
                             "font_size": 120,
                             "height": 100,
                             "hour24": true,
-                            "hours_to_show": 48,
+                            "hours_to_show": 72,
                             "line_width": 3,
                             "location_icon": "left",
                             "location_state": "center",
@@ -6778,7 +6800,22 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "timer.was"
+                                    "action_name": "pause",
+                                    "name": "dryer",
+                                    "service": "timer.pause",
+                                    "service_data": {
+                                        "entity_id": "timer.dryer"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "action_name": "start",
+                                    "name": "dryer",
+                                    "service": "timer.dryer",
+                                    "service_data": {
+                                        "entity_id": "timer.dryer"
+                                    },
+                                    "type": "call-service"
                                 },
                                 {
                                     "action_name": "pause",
@@ -6795,6 +6832,24 @@
                                     "service": "timer.start",
                                     "service_data": {
                                         "entity_id": "timer.was"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "action_name": "pause",
+                                    "name": "dish",
+                                    "service": "timer.pause",
+                                    "service_data": {
+                                        "entity_id": "timer.dish"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "action_name": "start",
+                                    "name": "dish",
+                                    "service": "timer.start",
+                                    "service_data": {
+                                        "entity_id": "timer.dish"
                                     },
                                     "type": "call-service"
                                 }

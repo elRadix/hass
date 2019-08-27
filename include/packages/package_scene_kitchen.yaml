@@ -549,6 +549,8 @@ automation:
       event_data:
         entity_id: timer.camera
     action:
+    - service: counter.reset
+      entity_id: counter.camera
     - service: mqtt.publish
       data:
         topic: camera/motion/living

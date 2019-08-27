@@ -330,8 +330,8 @@ automation:
       to: 'on'
     action:
     - service: python_script.easyplus_switch
-       data_template :
-        switch_id: "switch.stp_berging_{{ trigger.to_state.name}}"
+      data_template :
+      switch_id: "switch.stp_berging_{{ trigger.to_state.name}}"
 
   - id: timers_stop
     initial_state: 'true'

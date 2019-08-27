@@ -45,6 +45,9 @@ timer:
   boiler_shower:
     duration: '01:30:00'
     icon: mdi:microwave
+  camera:
+    duration: '00:01:00'
+    icon: mdi:webcam
 
 script:
 
@@ -309,7 +312,7 @@ automation:
     alias: 'toggle scenes rf keuken'
     trigger:
     - platform: state
-      entity_id:  binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401,binary_sensor.waterkoker
+      entity_id:  binary_sensor.rf_btn_45a081,binary_sensor.rf_btn_793401
       from: 'off'
       to: 'on'
     action:
@@ -327,7 +330,7 @@ automation:
       to: 'on'
     action:
     - service: python_script.easyplus_switch
-      data_template:
+       data_t emplate :
         switch_id: "switch.stp_berging_{{ trigger.to_state.name}}"
 
   - id: timers_stop
@@ -496,3 +499,57 @@ automation:
   #   - service: notify.dageraad
   #     data:
   #       message: "Night Modus, Lights, Switches and Easyplus Off"
+
+
+
+
+automation:
+  - alias: alarm living motion
+    initial_state: true
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.waterkoker
+        to: 'on'
+    action:
+    - service: timer.start
+      entity_id: timer.camera
+    - service: notify.dageraad
+      data_template:
+        message: 'alert: run script camera'
+
+  - id: camera_02
+    initial_state: 'true'
+    alias: 'camera recording'
+    trigger:
+      - platform: state
+        entity_id: sensor.camera_living 
+        to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: timer.camera
+          state: 'active'
+    action:
+    - service: timer.start
+      entity_id: timer.camera
+    - service: counter.increment
+      entity_id: counter.camera
+    - service: notify.dageraad
+      data_template:
+        message: "alert: run script camera, take {{ states.counter.camera.staten }}"
+
+  - id: camera_03
+    initial_state: 'true'
+    alias: 'camer timers stop'
+    trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.camera
+    action:
+    - service: mqtt.publish
+      data:
+        topic: camera/motion/living
+        payload: OFF

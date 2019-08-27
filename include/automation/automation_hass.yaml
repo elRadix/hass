@@ -9,9 +9,9 @@
   - service: notify.telegram_rachid
     data:
       message: 'Home Assistant back online!'
-  - service: notify.android
-    data:
-      message: Home Assistant back online! - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data:
+  #     message: Home Assistant back online! - {{now().strftime("%H:%M:%S")}}
 
 - id: hass_2
   initial_state: 'true'
@@ -23,9 +23,9 @@
   - service: notify.telegram_rachid
     data:
       message: 'Home Assistant is going down!'
-  - service: notify.android
-    data:
-      message: Home Assistant is going down! - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data:
+  #     message: Home Assistant is going down! - {{now().strftime("%H:%M:%S")}}
 
 - id: hass_3
   initial_state: 'true'
@@ -36,7 +36,7 @@
   action:
   - service: notify.dageraad
     data_template:
-      message: HASS {{states.updater.updater.state}} is now available.
+      message: 'HASS {{states.updater.updater.state}} is now available.'
 
 - id: hass_4
   initial_state: 'true'
@@ -47,4 +47,4 @@
   action:
   - service: notify.dageraad
     data_template:
-      message: Home Assistant {{states.sensor.ha_version.state}} is now available.
+      message: 'Home Assistant {{states.sensor.ha_version.state}} is now available.'

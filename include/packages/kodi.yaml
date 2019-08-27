@@ -116,8 +116,8 @@ automation:
         data_template:
           entity_id: media_player.kodi_slaapkamer
           volume_level: '{{ trigger.to_state.state }}'
-          
-          
+
+
 ##################################################
 ## Scripts
 ##################################################

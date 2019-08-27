@@ -28,9 +28,9 @@
   # - service: notify.html5
   #   data_template:
   #     message: 'Door {{ trigger.to_state.name }} is OPEN'
-  - service: notify.android
-    data_template:
-      message: Door {{ trigger.to_state.name }} is OPEN - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data_template:
+  #     message: Door {{ trigger.to_state.name }} is OPEN - {{now().strftime("%H:%M:%S")}}
 
 - id: rf_02
   initial_state: 'true'
@@ -49,9 +49,9 @@
   # - service: notify.html5
   #   data_template:
   #     message: 'Door {{ trigger.to_state.name }} is OPEN'
-  - service: notify.android
-    data_template:
-      message: Door {{ trigger.to_state.name }} is OPEN - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data_template:
+  #     message: Door {{ trigger.to_state.name }} is OPEN - {{now().strftime("%H:%M:%S")}}
 
 - id: rf_03
   initial_state: 'true'
@@ -68,9 +68,9 @@
   # - service: notify.html5
   #   data_template:
   #     message: 'Door {{ trigger.to_state.name }} is CLOSED'
-  - service: notify.android
-    data_template:
-      message: Door {{ trigger.to_state.name }} is CLOSED - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data_template:
+  #     message: Door {{ trigger.to_state.name }} is CLOSED - {{now().strftime("%H:%M:%S")}}
 # ####### OPEN - CLOSED ########
 
 # ####### OPEN - REMINDER ########
@@ -116,9 +116,9 @@
   # - service: notify.html5
   #   data_template:
   #     message: 'Door {{ trigger.to_state.name }} is OPEN for 5 minutes'
-  - service: notify.android
-    data_template:
-      message: Door {{ trigger.to_state.name }} is OPEN for 5 minutes - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data_template:
+  #     message: Door {{ trigger.to_state.name }} is OPEN for 5 minutes - {{now().strftime("%H:%M:%S")}}
   - service: persistent_notification.create
     data_template:
       notification_id: door_open
@@ -143,9 +143,9 @@
   # - service: notify.html5
   #   data:
   #     message: 'ALERT WATER DAMAGE - KEUKEN - {{now().strftime("%H:%M:%S")}}'
-  - service: notify.android
-    data:
-      message: ALERT WATER DAMAGE - KEUKEN - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data:
+  #     message: ALERT WATER DAMAGE - KEUKEN - {{now().strftime("%H:%M:%S")}}
   - service: persistent_notification.create
     data_template:
       notification_id: water_keukent
@@ -172,9 +172,9 @@
   # - service: notify.html5
   #   data:
   #     message: 'ALERT WATER DAMAGE - BADKAMER - {{now().strftime("%H:%M:%S")}}'
-  - service: notify.android
-    data:
-      message: ALERT - {{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data:
+  #     message: ALERT - {{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}
   - service: persistent_notification.create
     data_template:
       notification_id: water_badkamer
@@ -201,9 +201,9 @@
   # - service: notify.html5
   #   data:
   #     message: 'FIRE ALARM - {{now().strftime("%H:%M:%S")}}'
-  - service: notify.android
-    data:
-      message: ALARM - {{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data:
+  #     message: ALARM - {{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}
   - service: persistent_notification.create
     data_template:
       notification_id: fire
@@ -230,9 +230,9 @@
   # - service: notify.html5
   #   data:
   #     message: 'GAS ALARM - {{now().strftime("%H:%M:%S")}}'
-  - service: notify.android
-    data:
-      message: ALARM - {{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}
+  # - service: notify.android
+  #   data:
+  #     message: ALARM - {{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}
   - service: persistent_notification.create
     data_template:
       notification_id: gas
@@ -253,37 +253,14 @@
     from: 'off'
     to: 'on'
   action:
-  - service_template: "script.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}" 
+  - service_template: "script.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}"
   - service: input_boolean.turn_off
     data_template:
-      entity_id: "input_boolean.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}" 
+      entity_id: "input_boolean.reset_rf_{{ trigger.to_state.entity_id.split('_')[-1] }}"
   - service: notify.telegram_rachid
     data_template:
       message: 'RF {{ trigger.to_state.name }} Reset Activated'
-  # - service: mqtt.publish
-  #   data:
-  #     topic: home/inkomhal
-  #     payload: OFF
-  # - service: mqtt.publish
-  #   data:
-  #     topic: home/terras
-  #     payload: OFF
-  # - service: mqtt.publish
-  #   data:
-  #     topic: home/water-badkamer
-  #     payload: OFF
-  # - service: mqtt.publish
-  #   data:
-  #     topic: home/water-keuken
-  #     payload: OFF
-  # - service: mqtt.publish
-  #   data:
-  #     topic: home/gas
-  #     payload: OFF
-  # - service: mqtt.publish
-  #   data:
-  #     topic: home/fire
-  #     payload: OFF
+
 ######## RESET RF ########
 ######## RF BUTTONS ########
 - id: rf_06

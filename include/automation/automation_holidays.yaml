@@ -1,23 +1,23 @@
 ---
-  - id: Notify Holiday State Change
-    hide_entity: false
-    initial_state: 'true'
-    trigger:
-      - platform: state
-        entity_id:
-          - sensor.holiday
-    condition:
-      - condition: template
-        value_template: "{{ states('sensor.holiday') != 'unknown' }}"
-      - condition: template
-        value_template: "{{ states.sensor.holiday.state | trim != '' }}"
-    action:
-      - service: persistent_notification.create
-        data:
-          message: 'Today is {{ states.sensor.holiday.state }}.'
-          title: '{{ states.sensor.holiday.state }}'
-      - service: notify.dageraad
-        data_template:
-          title: '{{ states.sensor.holiday.state }}'
-          message: '
-                     Today is {{ states.sensor.holiday.state }}.'
+  # - id: Notify Holiday State Change
+  #   hide_entity: false
+  #   initial_state: 'true'
+  #   trigger:
+  #     - platform: state
+  #       entity_id:
+  #         - sensor.holiday
+  #   condition:
+  #     - condition: template
+  #       value_template: "{{ states('sensor.holiday') != 'unknown' }}"
+  #     - condition: template
+  #       value_template: "{{ states.sensor.holiday.state | trim != '' }}"
+  #   action:
+  #     - service: persistent_notification.create
+  #       data:
+  #         message: 'Today is {{ states.sensor.holiday.state }}.'
+  #         title: '{{ states.sensor.holiday.state }}'
+  #     - service: notify.dageraad
+  #       data_template:
+  #         title: '{{ states.sensor.holiday.state }}'
+  #         message: '
+  #                    Today is {{ states.sensor.holiday.state }}.'

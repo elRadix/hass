@@ -1,39 +1,39 @@
 ---
-- id: Switch On
-  alias: 'Switch On'
-  initial_state: True
-  trigger:
-    platform: state
-    entity_id: switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_eetkamer_other,switch.stp_eetkamer_tv,switch.stp_keuken_commander,switch.stp_keuken_dampkap,switch.stp_keuken_espresso,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_keuken_vaatwasser,switch.stp_keuken_water,switch.stp_living_bureau,switch.stp_living_other,switch.stp_living_sony,switch.stp_slp1_bed,switch.stp_slp1_bed_soumaya,switch.stp_slp2_bureau,switch.stp_slp2_deur,switch.stp_slp3_bureau,switch.stp_slp3_deur,switch.stp_smappee,switch.ketel,switch.easyplus,switch.bureau_lader
-    to: "on"
-    for:
-      minutes: 1
-#  condition:
-#    condition: state
-#    entity_id: input_boolean.switch
-#    state: 'on'
-  condition:
-    condition: or
-    conditions:
-#      - condition: state
-#        entity_id: group.rachid
-#        state: 'not_home'
-      - condition: state
-        entity_id: input_boolean.switch
-        state: 'on'
-  action:
-  - service: notify.android
-    data_template:
-      message: '{{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}'
-      title: Activated
-      data:
-        image: "https://home.elradix.be/local/on.png"
-  - service: notify.android
-    data:
-      title: Home 
-      message: Actiated Switch
-      data:
-        image: "https://notify.elradix.be/on.png"
+# - id: Switch On
+#   alias: 'Switch On'
+#   initial_state: True
+#   trigger:
+#     platform: state
+#     entity_id: switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_eetkamer_other,switch.stp_eetkamer_tv,switch.stp_keuken_commander,switch.stp_keuken_dampkap,switch.stp_keuken_espresso,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_keuken_vaatwasser,switch.stp_keuken_water,switch.stp_living_bureau,switch.stp_living_other,switch.stp_living_sony,switch.stp_slp1_bed,switch.stp_slp1_bed_soumaya,switch.stp_slp2_bureau,switch.stp_slp2_deur,switch.stp_slp3_bureau,switch.stp_slp3_deur,switch.stp_smappee,switch.ketel,switch.easyplus,switch.bureau_lader
+#     to: "on"
+#     for:
+#       minutes: 1
+# #  condition:
+# #    condition: state
+# #    entity_id: input_boolean.switch
+# #    state: 'on'
+#   condition:
+#     condition: or
+#     conditions:
+# #      - condition: state
+# #        entity_id: group.rachid
+# #        state: 'not_home'
+#       - condition: state
+#         entity_id: input_boolean.switch
+#         state: 'on'
+#   action:
+#   - service: notify.android
+#     data_template:
+#       message: '{{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}'
+#       title: Activated
+#       data:
+#         image: "https://home.elradix.be/local/on.png"
+#   - service: notify.android
+#     data:
+#       title: Home 
+#       message: Actiated Switch
+#       data:
+#         image: "https://notify.elradix.be/on.png"
 
 #  - service: notify.android
 #    data:
@@ -48,36 +48,35 @@
 #
 # https://home.elradix.be/local/on.png
 
-- id: Switch Off
-  alias: 'Switch Off'
-  initial_state: True
-  trigger:
-    platform: state
-    entity_id: switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_eetkamer_other,switch.stp_eetkamer_tv,switch.stp_keuken_commander,switch.stp_keuken_dampkap,switch.stp_keuken_espresso,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_keuken_vaatwasser,switch.stp_keuken_water,switch.stp_living_bureau,switch.stp_living_other,switch.stp_living_sony,switch.stp_slp1_bed,switch.stp_slp1_bed_soumaya,switch.stp_slp2_bureau,switch.stp_slp2_deur,switch.stp_slp3_bureau,switch.stp_slp3_deur,switch.stp_smappee,switch.ketel,switch.easyplus,switch.bureau_lader
-    to: "off"
-    for:
-      minutes: 1
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: input_boolean.switch
-        state: 'on'
-  action:
-  - service: notify.android
-    data_template:
-      message: '{{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}'
-      title: De-Activated
-      data:
-        icon: "https://notify.elradix.be/on.png"
-  - service: notify.android
-    data:
-#      title: Home Assistant
-      message: De-Actiated Switch
-      data:
-        image: "https://notify.elradix.be/on.png"
+# - id: Switch Off
+#   alias: 'Switch Off'
+#   initial_state: True
+#   trigger:
+#     platform: state
+#     entity_id: switch.stp_berging_droogkast,switch.stp_berging_wasmachine,switch.stp_eetkamer_other,switch.stp_eetkamer_tv,switch.stp_keuken_commander,switch.stp_keuken_dampkap,switch.stp_keuken_espresso,switch.stp_keuken_microwave,switch.stp_keuken_oven,switch.stp_keuken_vaatwasser,switch.stp_keuken_water,switch.stp_living_bureau,switch.stp_living_other,switch.stp_living_sony,switch.stp_slp1_bed,switch.stp_slp1_bed_soumaya,switch.stp_slp2_bureau,switch.stp_slp2_deur,switch.stp_slp3_bureau,switch.stp_slp3_deur,switch.stp_smappee,switch.ketel,switch.easyplus,switch.bureau_lader
+#     to: "off"
+#     for:
+#       minutes: 1
+#   condition:
+#     condition: or
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.switch
+#         state: 'on'
+#   action:
+#   - service: notify.android
+#     data_template:
+#       message: '{{ trigger.to_state.name }} - {{now().strftime("%H:%M:%S")}}'
+#       title: De-Activated
+#       data:
+#         icon: "https://notify.elradix.be/on.png"
+#   - service: notify.android
+#     data:
+# #      title: Home Assistant
+#       message: De-Actiated Switch
+#       data:
+#         image: "https://notify.elradix.be/on.png"
 
-    
 #
 #      data:
 #        icon: "https://elradix.be/off.png"

@@ -49,10 +49,10 @@
     icon: mdi:alert-circle-outline
     restore: true
     step: 1
-  camera:
-    name: camera living
-    icon: mdi:webcam
-    step: 1
+  # camera:
+  #   name: camera living
+  #   icon: mdi:webcam
+  #   step: 1
  
   # rf_keuken:
   #   name: RF Button Keuken

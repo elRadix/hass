@@ -11,10 +11,10 @@ group:
       - sensor.easyplus_was
       - sensor.easyplus_boiler
 
-sensor:
-  - platform: mqtt
-    name: camera living
-    state_topic: "camera/motion/living"
+# sensor:
+#   - platform: mqtt
+#     name: camera living
+#     state_topic: "camera/motion/living"
 
 
 timer:
@@ -45,9 +45,9 @@ timer:
   boiler_shower:
     duration: '01:30:00'
     icon: mdi:microwave
-  camera:
-    duration: '00:01:30'
-    icon: mdi:webcam
+  # camera:
+  #   duration: '00:01:30'
+  #   icon: mdi:webcam
 
 script:
 
@@ -503,56 +503,56 @@ automation:
 
 
 
-automation:
-  - alias: alarm living motion
-    initial_state: true
-    hide_entity: False
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.waterkoker
-        to: 'on'
-    action:
-    - service: timer.start
-      entity_id: timer.camera
-    - service: notify.dageraad
-      data_template:
-        message: 'alert: run script camera'
+# automation:
+#   - id: camera_01
+#     initial_state: 'true'
+#     alias: 'alarm living motion'
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.waterkoker
+#         to: 'on'
+#     action:
+#     - service: timer.start
+#       entity_id: timer.camera
+#     - service: notify.dageraad
+#       data_template:
+#         message: 'alert: run script camera'
 
-  - id: camera_02
-    initial_state: 'true'
-    alias: 'camera recording'
-    trigger:
-      - platform: state
-        entity_id: sensor.camera_living
-        to: 'on'
-    condition:
-      condition: and
-      conditions:
-        - condition: state
-          entity_id: timer.camera
-          state: 'active'
-    action:
-    - service: counter.increment
-      entity_id: counter.camera
-    - service: notify.dageraad
-      data_template:
-        message: "alert: run script camera, take {{ states.counter.camera.state }}"
+#   - id: camera_02
+#     initial_state: 'true'
+#     alias: 'camera recording'
+#     trigger:
+#       - platform: state
+#         entity_id: sensor.camera_living
+#         to: 'on'
+#     condition:
+#       condition: and
+#       conditions:
+#         - condition: state
+#           entity_id: timer.camera
+#           state: 'active'
+#     action:
+#     - service: counter.increment
+#       entity_id: counter.camera
+#     - service: notify.dageraad
+#       data_template:
+#         message: "alert: run script camera, take {{ states.counter.camera.state }}"
 
-  - id: camera_03
-    initial_state: 'true'
-    alias: 'camera timers stop'
-    trigger:
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.camera
-    action:
-    - service: counter.reset
-      entity_id: counter.camera
-    - service: mqtt.publish
-      data:
-        topic: camera/motion/living
-        payload: OFF
-    - service: notify.dageraad
-      data:
-        message: "camera: stop recording and reset counter"
+#   - id: camera_03
+#     initial_state: 'true'
+#     alias: 'camera timers stop'
+#     trigger:
+#     - platform: event
+#       event_type: timer.finished
+#       event_data:
+#         entity_id: timer.camera
+#     action:
+#     - service: counter.reset
+#       entity_id: counter.camera
+#     - service: mqtt.publish
+#       data:
+#         topic: camera/motion/living
+#         payload: 'off'
+#     - service: notify.dageraad
+#       data:
+#         message: "camera: stop recording and reset counter"

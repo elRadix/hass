@@ -9,10 +9,10 @@ This repository exists mostly for my own amusement, but it may contain some thin
 Description | Value
 -- | --
 Entities in the [`alert`](https://www.home-assistant.io/components/alert) domain | 6
-Entities in the [`automation`](https://www.home-assistant.io/components/automation) domain | 308
+Entities in the [`automation`](https://www.home-assistant.io/components/automation) domain | 304
 Entities in the [`binary_sensor`](https://www.home-assistant.io/components/binary_sensor) domain | 58
 Entities in the [`climate`](https://www.home-assistant.io/components/climate) domain | 6
-Entities in the [`counter`](https://www.home-assistant.io/components/counter) domain | 10
+Entities in the [`counter`](https://www.home-assistant.io/components/counter) domain | 11
 Entities in the [`device_tracker`](https://www.home-assistant.io/components/device_tracker) domain | 19
 Entities in the [`geo_address`](https://www.home-assistant.io/components/geo_address) domain | 5
 Entities in the [`group`](https://www.home-assistant.io/components/group) domain | 64
@@ -23,13 +23,13 @@ Entities in the [`input_select`](https://www.home-assistant.io/components/input_
 Entities in the [`input_text`](https://www.home-assistant.io/components/input_text) domain | 22
 Entities in the [`light`](https://www.home-assistant.io/components/light) domain | 40
 Entities in the [`lock`](https://www.home-assistant.io/components/lock) domain | 1
-Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 10
+Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 2
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 94
-Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 422
+Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 427
 Entities in the [`sun`](https://www.home-assistant.io/components/sun) domain | 1
-Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 119
-Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 16
+Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 122
+Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 17
 Entities in the [`utility_meter`](https://www.home-assistant.io/components/utility_meter) domain | 4
 Entities in the [`weather`](https://www.home-assistant.io/components/weather) domain | 1
 Entities in the [`zone`](https://www.home-assistant.io/components/zone) domain | 9
@@ -76,6 +76,8 @@ I use this to discover new awesome stuff, and to keep the custom elements I use 
 ### [geo_address](https://github.com/Sha-Darim/geo_address)
 
 ### [Lovelace Gen]()
+
+### [Garbage Collection](https://github.com/bruxy70/Garbage-Collection/)
 
 ### [Sun](https://www.home-assistant.io/components/sun)
 

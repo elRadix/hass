@@ -6855,6 +6855,24 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.camera_living",
+                                    "icon": "mdi:webcam",
+                                    "name": "camera sensor"
+                                },
+                                {
+                                    "entity": "timer.camera",
+                                    "name": "camera timer"
+                                },
+                                {
+                                    "entity": "counter.camera",
+                                    "name": "camera counter"
+                                }
+                            ],
+                            "type": "entities"
                         }
                     ],
                     "title": "SCENES"

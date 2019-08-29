@@ -62,7 +62,6 @@ steps:
   #     - pip3 install --upgrade pip yamllint
   #     - yamllint .
 
-
 pipeline:
   telegram-notification:
     image: appleboy/drone-telegram

@@ -4,7 +4,6 @@ language: python
 cache: pip
 python:
   - "3.7.3"
-#  - "3.6.4"
 before_install:
   - mkdir -p fake_directory
   - touch fake_directory/data.log

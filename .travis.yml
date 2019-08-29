@@ -5,9 +5,8 @@ python:
   - "3.7.3"
 #  - "3.6.4"
 before_install:
-  - mkdir -p fake_directory/
-  - mkdir -p fake_directory/status/
-  - touch fake_directory/status/data.log
+  - mkdir -p fake_directory
+  - touch fake_directory/data.log
   - touch fake_directory/cert.log
   - echo "10" > fake_directory/cert.log
   - touch fake_directory/cert_eu.log

@@ -2,7 +2,7 @@ kind: pipeline
 name: Home Assistant
 
 steps:
-  - name: Config Check
+  - name: Config
     image: homeassistant/home-assistant:latest
     commands:
       - mkdir -p fake_directory

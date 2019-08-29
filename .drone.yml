@@ -5,23 +5,18 @@
 #   - name: test
 #     image: homeassistant/home-assistant:latest
 #     commands:
-      # - mkdir -p fake_directory
-      # - touch fake_directory/data.log
-      # - touch fake_directory/cert.log
-      # - echo "10" > fake_directory/cert.log
-      # - touch fake_directory/cert_eu.log
-      # - echo "10" > fake_directory/cert_eu.log
-      # - mv secrets_redacted.yaml secrets.yaml
-      # - hass -c . --script check_config
+#       - mkdir -p fake_directory
+#       - touch fake_directory/data.log
+#       - touch fake_directory/cert.log
+#       - echo "10" > fake_directory/cert.log
+#       - touch fake_directory/cert_eu.log
+#       - echo "10" > fake_directory/cert_eu.log
+#       - mv secrets_redacted.yaml secrets.yaml
+#       - hass -c . --script check_config
 
----
+# ---
 kind: pipeline
 name: Home Assistant
-
-trigger:
-  branch:
-    - master
-    - feature/*
 
 steps:
   - name: "Config Check: Dev"

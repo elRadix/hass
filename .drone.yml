@@ -33,6 +33,7 @@ steps:
   - name: "Config Check: RC"
     image: homeassistant/home-assistant:rc
     pull: always
+    failure: ignore
     commands:
       - mkdir -p fake_directory
       - touch fake_directory/data.log

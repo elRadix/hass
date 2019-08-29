@@ -1,8 +1,13 @@
 
-pipeline:
-  # Fetch folders from distributed cache
-  HA_PROD:
-    image: homeassistant/home-assistant:latest
+---
+kind: pipeline
+name: Home Assistant
+
+steps:
+  - name: "Config Check: Dev"
+    image: homeassistant/home-assistant:dev
+    pull: always
+    failure: ignore
     commands:
       - mkdir -p fake_directory
       - touch fake_directory/data.log
@@ -11,29 +16,76 @@ pipeline:
       - touch fake_directory/cert_eu.log
       - echo "10" > fake_directory/cert_eu.log
       - mv secrets_redacted.yaml secrets.yaml
+      - hass --version
       - hass -c . --script check_config
-  HA_RC:
+  - name: "Config Check: Latest"
+    image: homeassistant/home-assistant:latest
+    pull: always
+    commands:
+      - mkdir -p fake_directory
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - echo "10" > fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert_eu.log
+      - mv secrets_redacted.yaml secrets.yaml
+      - hass --version
+      - hass -c . --script check_config
+  - name: "Config Check: RC"
     image: homeassistant/home-assistant:rc
+    pull: always
     commands:
-      # - mkdir -p fake_directory
-      # - touch fake_directory/data.log
-      # - touch fake_directory/cert.log
-      # - echo "10" > fake_directory/cert.log
-      # - touch fake_directory/cert_eu.log
-      # - echo "10" > fake_directory/cert_eu.log
-      # - mv secrets_redacted.yaml secrets.yaml
+      - mkdir -p fake_directory
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - echo "10" > fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert_eu.log
+      - mv secrets_redacted.yaml secrets.yaml
+      - hass --version
       - hass -c . --script check_config
-  HA_DEV:
-    image: homeassistant/home-assistant:dev
+  - name: Linting
+    image: python:3
     commands:
-      # - mkdir -p fake_directory
-      # - touch fake_directory/data.log
-      # - touch fake_directory/cert.log
-      # - echo "10" > fake_directory/cert.log
-      # - touch fake_directory/cert_eu.log
-      # - echo "10" > fake_directory/cert_eu.log
-      # - mv secrets_redacted.yaml secrets.yaml
-      - hass -c . --script check_config
+      - pip3 install --upgrade pip yamllint
+      - yamllint .
+
+
+# pipeline:
+#   # Fetch folders from distributed cache
+#   HA_PROD:
+#     image: homeassistant/home-assistant:latest
+#     commands:
+#       - mkdir -p fake_directory
+#       - touch fake_directory/data.log
+#       - touch fake_directory/cert.log
+#       - echo "10" > fake_directory/cert.log
+#       - touch fake_directory/cert_eu.log
+#       - echo "10" > fake_directory/cert_eu.log
+#       - mv secrets_redacted.yaml secrets.yaml
+#       - hass -c . --script check_config
+#   HA_RC:
+#     image: homeassistant/home-assistant:rc
+#     commands:
+#       # - mkdir -p fake_directory
+#       # - touch fake_directory/data.log
+#       # - touch fake_directory/cert.log
+#       # - echo "10" > fake_directory/cert.log
+#       # - touch fake_directory/cert_eu.log
+#       # - echo "10" > fake_directory/cert_eu.log
+#       # - mv secrets_redacted.yaml secrets.yaml
+#       - hass -c . --script check_config
+#   HA_DEV:
+#     image: homeassistant/home-assistant:dev
+#     commands:
+#       # - mkdir -p fake_directory
+#       # - touch fake_directory/data.log
+#       # - touch fake_directory/cert.log
+#       # - echo "10" > fake_directory/cert.log
+#       # - touch fake_directory/cert_eu.log
+#       # - echo "10" > fake_directory/cert_eu.log
+#       # - mv secrets_redacted.yaml secrets.yaml
+#       - hass -c . --script check_config
 
   telegram-notification:
     image: appleboy/drone-telegram

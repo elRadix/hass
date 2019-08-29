@@ -5,14 +5,17 @@ steps:
   - name: test
     image: homeassistant/home-assistant:latest
     commands:
-      # - echo "Downloading here_travel_time component"
-      # - wget -O /tmp/here.zip https://github.com/eifinger/here_travel_time/archive/master.zip
-      # - unzip /tmp/here.zip 'here_travel_time-master/custom_components/here_travel_time/*' -d /tmp/
-      # - cp -R /tmp/here_travel_time-master/custom_components/here_travel_time ./custom_components/
+      - mkdir -p fake_directory
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - echo "10" > fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert_eu.log
+      - mv secrets_redacted.yaml secrets.yaml
       - hass -c . --script check_config
       # - echo "Cleaning up custom components"
       # - rm -rf ./custom_components/here_travel_time
-  
+
   # - name: deploy
   #   image: appleboy/drone-scp
   #   settings:
@@ -25,7 +28,7 @@ steps:
   #     target: /share/VM/homeautomation/home-assistant
   #     source:
   #        - .
-  
+
   # - name: update
   #   image: appleboy/drone-ssh
   #   settings:

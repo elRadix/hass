@@ -27,24 +27,28 @@
   #   data:
   #     message: Home Assistant is going down! - {{now().strftime("%H:%M:%S")}}
 
+
+
 - id: hass_3
   initial_state: 'true'
   alias: Update is available
   trigger:
   - platform: state
-    entity_id: updater.updater
+    entity_id: binary_sensor.updater
+    from: 'off'
+    to: 'on'
   action:
   - service: notify.dageraad
     data_template:
-      message: 'HASS {{states.updater.updater.state}} is now available.'
+      message: 'HASS {{states.sensor.ha_version.state}} is now available.'
 
-- id: hass_4
-  initial_state: 'true'
-  alias: Update is available version
-  trigger:
-  - platform: state
-    entity_id: sensor.ha_version
-  action:
-  - service: notify.dageraad
-    data_template:
-      message: 'Home Assistant {{states.sensor.ha_version.state}} is now available.'
+# - id: hass_4
+#   initial_state: 'true'
+#   alias: Update is available version
+#   trigger:
+#   - platform: state
+#     entity_id: sensor.ha_version
+#   action:
+#   - service: notify.dageraad
+#     data_template:
+#       message: 'Home Assistant {{states.sensor.ha_version.state}} is now available.'

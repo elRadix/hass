@@ -62,6 +62,13 @@ steps:
     pull: always
     failure: ignore
     commands:
+      - cp secrets_redacted.yaml secrets.yaml
+      - mkdir fake_directory/
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert.log
+      - echo "10" > fake_directory/cert_eu.log
       - cd /usr/src/homeassistant
       - "python -m homeassistant -c /drone/src/home-assistant/settings \
          --script check_config"
@@ -69,6 +76,13 @@ steps:
     image: homeassistant/home-assistant:latest
     pull: always
     commands:
+      - cp secrets_redacted.yaml secrets.yaml
+      - mkdir fake_directory/
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert.log
+      - echo "10" > fake_directory/cert_eu.log 
       - cd /usr/src/app
       - "python -m homeassistant -c /drone/src/home-assistant/settings \
          --script check_config"
@@ -76,6 +90,13 @@ steps:
     image: homeassistant/home-assistant:rc
     pull: always
     commands:
+      - cp secrets_redacted.yaml secrets.yaml
+      - mkdir fake_directory/
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert.log
+      - echo "10" > fake_directory/cert_eu.log
       - cd /usr/src/homeassistant
       - "python -m homeassistant -c /drone/src/home-assistant/settings \
          --script check_config"

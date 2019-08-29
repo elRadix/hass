@@ -12,7 +12,6 @@
       mac: '{{ trigger.payload_json.mac }}'
       fw_ver: '{{ trigger.payload_json.fw_ver }}'
 
-
 - id: 'Shelly synch'
   alias: Shelly sync at HA start
   trigger:

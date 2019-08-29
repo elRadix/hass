@@ -19,22 +19,10 @@ kind: pipeline
 name: Home Assistant
 
 steps:
-  - name: "Config Check: Dev"
-    image: homeassistant/home-assistant:dev
-    pull: always
-    failure: ignore
-    commands:
-      - mkdir -p fake_directory
-      - touch fake_directory/data.log
-      - touch fake_directory/cert.log
-      - echo "10" > fake_directory/cert.log
-      - touch fake_directory/cert_eu.log
-      - echo "10" > fake_directory/cert_eu.log
-      - mv secrets_redacted.yaml secrets.yaml
-      - hass -c . --script check_config
-  - name: "Config Check: Latest"
+  - name: "Config Check: latest
     image: homeassistant/home-assistant:latest
-    pull: always
+    # pull: always
+    # failure: ignore
     commands:
       - mkdir -p fake_directory
       - touch fake_directory/data.log
@@ -44,23 +32,35 @@ steps:
       - echo "10" > fake_directory/cert_eu.log
       - mv secrets_redacted.yaml secrets.yaml
       - hass -c . --script check_config
-  - name: "Config Check: RC"
-    image: homeassistant/home-assistant:rc
-    pull: always
-    commands:
-      - mkdir -p fake_directory
-      - touch fake_directory/data.log
-      - touch fake_directory/cert.log
-      - echo "10" > fake_directory/cert.log
-      - touch fake_directory/cert_eu.log
-      - echo "10" > fake_directory/cert_eu.log
-      - mv secrets_redacted.yaml secrets.yaml
-      - hass -c . --script check_config
-  - name: Linting
-    image: python:3
-    commands:
-      - pip3 install --upgrade pip yamllint
-      - yamllint .
+  # - name: "Config Check: Latest"
+  #   image: homeassistant/home-assistant:latest
+  #   pull: always
+  #   commands:
+  #     - mkdir -p fake_directory
+  #     - touch fake_directory/data.log
+  #     - touch fake_directory/cert.log
+  #     - echo "10" > fake_directory/cert.log
+  #     - touch fake_directory/cert_eu.log
+  #     - echo "10" > fake_directory/cert_eu.log
+  #     - mv secrets_redacted.yaml secrets.yaml
+  #     - hass -c . --script check_config
+  # - name: "Config Check: RC"
+  #   image: homeassistant/home-assistant:rc
+  #   pull: always
+  #   commands:
+  #     - mkdir -p fake_directory
+  #     - touch fake_directory/data.log
+  #     - touch fake_directory/cert.log
+  #     - echo "10" > fake_directory/cert.log
+  #     - touch fake_directory/cert_eu.log
+  #     - echo "10" > fake_directory/cert_eu.log
+  #     - mv secrets_redacted.yaml secrets.yaml
+  #     - hass -c . --script check_config
+  # - name: Linting
+  #   image: python:3
+  #   commands:
+  #     - pip3 install --upgrade pip yamllint
+  #     - yamllint .
 
 
 pipeline:

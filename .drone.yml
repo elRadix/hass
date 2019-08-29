@@ -31,9 +31,7 @@ steps:
       - touch fake_directory/cert_eu.log
       - echo "10" > fake_directory/cert_eu.log
       - mv secrets_redacted.yaml secrets.yaml
-      - cd /usr/src/homeassistant
-      - "python -m homeassistant -c /drone/src \
-         --script check_config"
+      - hass -c . --script check_config
   - name: "Config Check: Latest"
     image: homeassistant/home-assistant:latest
     pull: always
@@ -45,9 +43,7 @@ steps:
       - touch fake_directory/cert_eu.log
       - echo "10" > fake_directory/cert_eu.log
       - mv secrets_redacted.yaml secrets.yaml
-      - cd /usr/src/app
-      - "python -m homeassistant -c /drone/src \
-         --script check_config"
+      - hass -c . --script check_config
   - name: "Config Check: RC"
     image: homeassistant/home-assistant:rc
     pull: always
@@ -59,14 +55,12 @@ steps:
       - touch fake_directory/cert_eu.log
       - echo "10" > fake_directory/cert_eu.log
       - mv secrets_redacted.yaml secrets.yaml
-      - cd /usr/src/homeassistant
-      - "python -m homeassistant -c /drone/src \
-         --script check_config"
+      - hass -c . --script check_config
   - name: Linting
     image: python:3
     commands:
       - pip3 install --upgrade pip yamllint
-      - yamllint ./home-assistant/settings/
+      - yamllint .
 
 
 pipeline:
@@ -104,7 +98,7 @@ pipeline:
       {{/success}}
 
 
-      
+
 
   # - name: deploy
   #   image: appleboy/drone-scp

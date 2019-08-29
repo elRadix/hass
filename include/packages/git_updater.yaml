@@ -4,7 +4,6 @@ input_text:
     name: "Commit Message"
     initial: "HACS / Lovelace"
 
-
 sensor:
   # - platform: gitlab_ci
   #   name: gitlab_ci

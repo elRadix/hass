@@ -5,13 +5,13 @@ python:
   - "3.7.3"
 #  - "3.6.4"
 before_install:
-  - mkdir -p /opt/scripts/
-  - mkdir -p /opt/scripts/status/
-  - touch /opt/scripts/status/data.log
-  - touch /opt/scripts/cert.log
-  - echo "10" > /opt/scripts/cert.log
-  - touch /opt/scripts/cert_eu.log
-  - echo "10" > /opt/scripts/cert_eu.log
+  - mkdir -p /fake_directory/
+  - mkdir -p /fake_directory/status/
+  - touch /fake_directory/status/data.log
+  - touch /fake_directory/cert.log
+  - echo "10" > /fake_directory/cert.log
+  - touch /fake_directory/cert_eu.log
+  - echo "10" > /fake_directory/cert_eu.log
   - mv secrets_redacted.yaml secrets.yaml
 install:
   - pip3 install homeassistant

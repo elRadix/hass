@@ -1,3 +1,19 @@
+kind: pipeline
+name: Home Assistant
+
+steps:
+  - name: Config Check
+    image: homeassistant/home-assistant:latest
+    commands:
+      - mkdir -p fake_directory
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - echo "10" > fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert_eu.log
+      - mv secrets_redacted.yaml secrets.yaml
+      - hass -c . --script check_config
+
 # kind: pipeline
 # name: default
 
@@ -15,23 +31,23 @@
 #       - hass -c . --script check_config
 
 # ---
-kind: pipeline
-name: Home Assistant
+# kind: pipeline
+# name: Home Assistant
 
-steps:
-  - name: "Config Check: latest"
-    image: homeassistant/home-assistant:latest
-    # pull: always
-    # failure: ignore
-    commands:
-      - mkdir -p fake_directory
-      - touch fake_directory/data.log
-      - touch fake_directory/cert.log
-      - echo "10" > fake_directory/cert.log
-      - touch fake_directory/cert_eu.log
-      - echo "10" > fake_directory/cert_eu.log
-      - mv secrets_redacted.yaml secrets.yaml
-      - hass -c . --script check_config
+# steps:
+#   - name: "Config Check: latest"
+#     image: homeassistant/home-assistant:latest
+#     # pull: always
+#     # failure: ignore
+#     commands:
+#       - mkdir -p fake_directory
+#       - touch fake_directory/data.log
+#       - touch fake_directory/cert.log
+#       - echo "10" > fake_directory/cert.log
+#       - touch fake_directory/cert_eu.log
+#       - echo "10" > fake_directory/cert_eu.log
+#       - mv secrets_redacted.yaml secrets.yaml
+#       - hass -c . --script check_config
   # - name: "Config Check: Latest"
   #   image: homeassistant/home-assistant:latest
   #   pull: always

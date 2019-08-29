@@ -1,52 +1,51 @@
-
 ---
-kind: pipeline
-name: AppDaemon
+# kind: pipeline
+# name: AppDaemon
 
-trigger:
-  branch:
-    - master
-    - feature/*
+# trigger:
+#   branch:
+#     - master
+#     - feature/*
 
-steps:
-  - name: Linting & Typing
-    image: python:3
-    commands:
-      - pip3 install --upgrade pip black flake8 mypy pylint yamllint
-      - black --check --fast ./appdaemon/settings/apps/
-      - flake8 ./appdaemon/settings/apps/
-      - mypy --ignore-missing-imports ./appdaemon/settings/apps/
-      - pylint --rcfile ./appdaemon/settings/pylintrc appdaemon/settings/apps/
-      - yamllint ./appdaemon/settings/
+# steps:
+#   - name: Linting & Typing
+#     image: python:3
+#     commands:
+#       - pip3 install --upgrade pip black flake8 mypy pylint yamllint
+#       - black --check --fast ./appdaemon/settings/apps/
+#       - flake8 ./appdaemon/settings/apps/
+#       - mypy --ignore-missing-imports ./appdaemon/settings/apps/
+#       - pylint --rcfile ./appdaemon/settings/pylintrc appdaemon/settings/apps/
+#       - yamllint ./appdaemon/settings/
 
----
-kind: pipeline
-name: ESPHome
+# ---
+# kind: pipeline
+# name: ESPHome
 
-trigger:
-  branch:
-    - master
-    - feature/*
+# trigger:
+#   branch:
+#     - master
+#     - feature/*
 
-steps:
-  - name: "Config Check: Beta"
-    image: esphome/esphome:beta
-    pull: always
-    failure: ignore
-    commands:
-      - "for file in $(find /drone/src/esphome -type f -name \"*.yaml\" -not \
-         -name \"secrets.yaml\"); do esphome \"$file\" config; done"
-  - name: "Config Check: Latest"
-    image: esphome/esphome:latest
-    pull: always
-    commands:
-      - "for file in $(find /drone/src/esphome -type f -name \"*.yaml\" -not \
-         -name \"secrets.yaml\"); do esphome \"$file\" config; done"
-  - name: Linting
-    image: python:3
-    commands:
-      - pip3 install --upgrade pip yamllint
-      - yamllint ./esphome/
+# steps:
+#   - name: "Config Check: Beta"
+#     image: esphome/esphome:beta
+#     pull: always
+#     failure: ignore
+#     commands:
+#       - "for file in $(find /drone/src/esphome -type f -name \"*.yaml\" -not \
+#          -name \"secrets.yaml\"); do esphome \"$file\" config; done"
+#   - name: "Config Check: Latest"
+#     image: esphome/esphome:latest
+#     pull: always
+#     commands:
+#       - "for file in $(find /drone/src/esphome -type f -name \"*.yaml\" -not \
+#          -name \"secrets.yaml\"); do esphome \"$file\" config; done"
+#   - name: Linting
+#     image: python:3
+#     commands:
+#       - pip3 install --upgrade pip yamllint
+#       - yamllint ./esphome/
 
 ---
 kind: pipeline
@@ -86,37 +85,37 @@ steps:
       - pip3 install --upgrade pip yamllint
       - yamllint ./home-assistant/settings/
 
----
-kind: pipeline
-name: NGINX
+# ---
+# kind: pipeline
+# name: NGINX
 
-trigger:
-  branch:
-    - master
-    - feature/*
+# trigger:
+#   branch:
+#     - master
+#     - feature/*
 
-steps:
-  - name: "Config Check: NGINX"
-    image: alpine:3.10.1
-    commands:
-      - apk update && apk add --no-cache nginx
-      - ln -s /drone/src/nginx/settings/nginx /etc/nginx
-      - nginx -t -c /etc/nginx/nginx.conf -g 'pid /tmp/nginx.pid; daemon off;'
-  - name: "Config Check: Fail2Ban"
-    image: alpine:3.10.1
-    commands:
-      - apk update && apk add --no-cache fail2ban
-      - ln -s ./nginx/settings/fail2ban /etc/fail2ban
-      - touch /var/log/messages
-      - "mkdir -p /var/log/nginx && touch /var/log/nginx/access.log \
-         && touch /var/log/nginx/error.log"
-      - fail2ban-client -t
-  - name: "Static Analysis: NGINX"
-    image: yandex/gixy:latest
-    pull: always
-    commands:
-      - ln -s /drone/src/nginx/settings/nginx /etc/nginx
-      - gixy /etc/nginx/nginx.conf
+# steps:
+#   - name: "Config Check: NGINX"
+#     image: alpine:3.10.1
+#     commands:
+#       - apk update && apk add --no-cache nginx
+#       - ln -s /drone/src/nginx/settings/nginx /etc/nginx
+#       - nginx -t -c /etc/nginx/nginx.conf -g 'pid /tmp/nginx.pid; daemon off;'
+#   - name: "Config Check: Fail2Ban"
+#     image: alpine:3.10.1
+#     commands:
+#       - apk update && apk add --no-cache fail2ban
+#       - ln -s ./nginx/settings/fail2ban /etc/fail2ban
+#       - touch /var/log/messages
+#       - "mkdir -p /var/log/nginx && touch /var/log/nginx/access.log \
+#          && touch /var/log/nginx/error.log"
+#       - fail2ban-client -t
+#   - name: "Static Analysis: NGINX"
+#     image: yandex/gixy:latest
+#     pull: always
+#     commands:
+#       - ln -s /drone/src/nginx/settings/nginx /etc/nginx
+#       - gixy /etc/nginx/nginx.conf
 
 ---
 kind: pipeline
@@ -148,10 +147,10 @@ trigger:
     - success
 
 depends_on:
-  - AppDaemon
-  - ESPHome
+  # - AppDaemon
+  # - ESPHome
   - Home Assistant
-  - NGINX
+  # - NGINX
   - Shell Scripts
 
 # steps:
@@ -172,36 +171,3 @@ depends_on:
 #       status:
 #         - failure
 #         - success
-
-  # pipeline:
-  # telegram-notification:
-  #   image: appleboy/drone-telegram
-  #   secrets: [ telegram_token, telegram_to ]
-  #   when:
-  #     status: [ success, failure ]
-  #   format: markdown
-  #   message: >
-  #     {{#success build.status}}
-  #     ✅ Build #{{build.number}} of `{{repo.name}}` succeeded.
-
-
-  #     📝 Commit by {{commit.author}} on `{{commit.branch}}`:
-
-  #     ```
-  #     {{commit.message}}
-  #     ```
-
-
-  #     🌐 {{ build.link }}
-  #     {{else}}
-  #     ❌ Build #{{build.number}} of `{{repo.name}}` failed.
-
-
-  #     📝 Commit by {{commit.author}} on `{{commit.branch}}`:
-
-  #     ```
-  #     {{commit.message}}
-  #     ```
-
-
-  #     🌐 {{ build.link }}

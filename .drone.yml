@@ -1,8 +1,30 @@
 
 pipeline:
   # Fetch folders from distributed cache
-  hass_check:
+  HA_PROD:
     image: homeassistant/home-assistant:latest
+    commands:
+      - mkdir -p fake_directory
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - echo "10" > fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert_eu.log
+      - mv secrets_redacted.yaml secrets.yaml
+      - hass -c . --script check_config
+  HA_RC:
+    image: homeassistant/home-assistant:rc
+    commands:
+      - mkdir -p fake_directory
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - echo "10" > fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert_eu.log
+      - mv secrets_redacted.yaml secrets.yaml
+      - hass -c . --script check_config
+  HA_DEV:
+    image: homeassistant/home-assistant:dev
     commands:
       - mkdir -p fake_directory
       - touch fake_directory/data.log

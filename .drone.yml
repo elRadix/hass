@@ -1,9 +1,33 @@
+# kind: pipeline
+# name: default
+
+# steps:
+#   - name: test
+#     image: homeassistant/home-assistant:latest
+#     commands:
+      # - mkdir -p fake_directory
+      # - touch fake_directory/data.log
+      # - touch fake_directory/cert.log
+      # - echo "10" > fake_directory/cert.log
+      # - touch fake_directory/cert_eu.log
+      # - echo "10" > fake_directory/cert_eu.log
+      # - mv secrets_redacted.yaml secrets.yaml
+      # - hass -c . --script check_config
+
+---
 kind: pipeline
-name: default
+name: Home Assistant
+
+trigger:
+  branch:
+    - master
+    - feature/*
 
 steps:
-  - name: test
-    image: homeassistant/home-assistant:latest
+  - name: "Config Check: Dev"
+    image: homeassistant/home-assistant:dev
+    pull: always
+    failure: ignore
     commands:
       - mkdir -p fake_directory
       - touch fake_directory/data.log
@@ -12,7 +36,43 @@ steps:
       - touch fake_directory/cert_eu.log
       - echo "10" > fake_directory/cert_eu.log
       - mv secrets_redacted.yaml secrets.yaml
-      - hass -c . --script check_config
+      - cd /usr/src/homeassistant
+      - "python -m homeassistant -c /drone/src \
+         --script check_config"
+  - name: "Config Check: Latest"
+    image: homeassistant/home-assistant:latest
+    pull: always
+    commands:
+      - mkdir -p fake_directory
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - echo "10" > fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert_eu.log
+      - mv secrets_redacted.yaml secrets.yaml
+      - cd /usr/src/app
+      - "python -m homeassistant -c /drone/src \
+         --script check_config"
+  - name: "Config Check: RC"
+    image: homeassistant/home-assistant:rc
+    pull: always
+    commands:
+      - mkdir -p fake_directory
+      - touch fake_directory/data.log
+      - touch fake_directory/cert.log
+      - echo "10" > fake_directory/cert.log
+      - touch fake_directory/cert_eu.log
+      - echo "10" > fake_directory/cert_eu.log
+      - mv secrets_redacted.yaml secrets.yaml
+      - cd /usr/src/homeassistant
+      - "python -m homeassistant -c /drone/src \
+         --script check_config"
+  - name: Linting
+    image: python:3
+    commands:
+      - pip3 install --upgrade pip yamllint
+      - yamllint ./home-assistant/settings/
+
 
 pipeline:
   telegram-notification:

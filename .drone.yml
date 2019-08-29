@@ -19,7 +19,7 @@ kind: pipeline
 name: Home Assistant
 
 steps:
-  - name: "Config Check: latest
+  - name: "Config Check: latest"
     image: homeassistant/home-assistant:latest
     # pull: always
     # failure: ignore
@@ -61,6 +61,7 @@ steps:
   #   commands:
   #     - pip3 install --upgrade pip yamllint
   #     - yamllint .
+
 
 pipeline:
   telegram-notification:

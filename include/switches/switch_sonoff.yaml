@@ -28,7 +28,7 @@
 #  name: "Easyplus"
 #  state_topic: "stat/easyplus/POWER1"
 #  command_topic: "cmnd/easyplus/POWER1"
-#  availability_topic: "tele/easyplus/LWT"  
+#  availability_topic: "tele/easyplus/LWT"
 #  payload_available: "Online"
 #  payload_not_available: "Offline"
 ##  qos: 1
@@ -91,15 +91,14 @@
 #   name: "Ketel"
 #   state_topic: "stat/ketel/POWER"
 #   command_topic: "cmnd/ketel/POWER"
-#   availability_topic: "tele/ketel/LWT"  
+#   availability_topic: "tele/ketel/LWT"
 #   payload_available: "Online"
 #   payload_not_available: "Offline"
 # #  qos: 1
 #   payload_on: "ON"
 #   payload_off: "OFF"
 #   # retain: false
-  
-  
+
 # - platform: mqtt # NEW FW
 #   name: "Ketel"
 #   state_topic: "ketel/tele/STATE"
@@ -118,7 +117,6 @@
 #   state_topic: "homeassistant/switch/android_elradix_s7a_screen/state"
 #   command_topic: "homeassistant/switch/android_elradix_s7a_screen/set"
 #   value_template: "{{ value_json.state }}"
-  
 # - platform: mqtt
 #   name: "SCREEN SWITCH Soumaya"
 #   state_topic: "homeassistant/switch/android_flora_s7a_screen/state"

@@ -1,6 +1,6 @@
 ---
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 70
   switches:
    light_berging_center:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 0,1'"
@@ -9,7 +9,7 @@
         friendly_name: Lamp
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 72
   switches:
    light_eetkamer_double_spot:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 2,150'"
@@ -19,7 +19,7 @@
 
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 74
   switches:
    light_eetkamer_center:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 3,250'"
@@ -28,7 +28,7 @@
         friendly_name: Center spot
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 76
   switches:
    light_living_double_spot:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 8,200'"
@@ -37,7 +37,7 @@
         friendly_name: Double spot 
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 78
   switches:
    light_living_triple_spot:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 12,200'"
@@ -46,7 +46,7 @@
         friendly_name: Triple spot
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 80
   switches:
    light_living_center:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 10,200'"
@@ -55,7 +55,7 @@
         friendly_name: Center 
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 82
   switches:
    light_keuken_spot_links:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 0,255'"
@@ -64,7 +64,7 @@
         friendly_name: Spot left 
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 84
   switches:
    light_keuken_spot_rechts:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 1,255'"
@@ -73,7 +73,7 @@
         friendly_name: Spot right 
 
 - platform: command_line 
-  scan_interval: 90
+  scan_interval: 86
   switches:
    light_keuken_spot_front:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 7,255'"
@@ -82,7 +82,7 @@
         friendly_name: Spot wasbak
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 88
   switches:
    light_bureau_spots:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 13,80'"
@@ -100,7 +100,7 @@
         friendly_name: Muur TL
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 92
   switches:
    light_slp1_deur:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 17,150'"
@@ -109,7 +109,7 @@
         friendly_name: Deur
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 94
   switches:
    light_slp1_deur_morning:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 17,100'"
@@ -118,7 +118,7 @@
         friendly_name: Deur_morgend
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 96
   switches:
    light_slp1_center:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 13,50'"
@@ -127,7 +127,7 @@
         friendly_name: Center
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 98
   switches:
    light_slp1_double:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 16,150'"
@@ -136,7 +136,7 @@
         friendly_name: Double
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 100
   switches:
    light_slp1_soumaya:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 18,150'"
@@ -145,7 +145,7 @@
         friendly_name: Light Soumaya
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 112
   switches:
    light_slp1_rachid:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 19,150'"
@@ -155,7 +155,7 @@
 
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 114
   switches:
    light_slp2_deur:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 20,150'"
@@ -164,7 +164,7 @@
         friendly_name: Deur
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 116
   switches:
    light_slp2_kast:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 21,150'"
@@ -173,7 +173,7 @@
         friendly_name: Kast
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 118
   switches:
    light_slp3_deur:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 22,150'"
@@ -182,7 +182,7 @@
         friendly_name: Deur
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 120
   switches:
    light_slp3_kast:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 4,1'"
@@ -191,7 +191,7 @@
         friendly_name: Kast
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 122
   switches:
    light_slp3_muur:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 5,1'"
@@ -200,7 +200,7 @@
         friendly_name: Muur
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 124
   switches:
    light_badkamer_spiegel:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 32,1'"
@@ -209,7 +209,7 @@
         friendly_name: Spiegel
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 126
   switches:
    light_badkamer_wc:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 23,150'"
@@ -218,7 +218,7 @@
         friendly_name: Spot 
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 128
   switches:
    light_badkamer_douche:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 6,1'"
@@ -227,7 +227,7 @@
         friendly_name: Douche
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 130
   switches:
    light_badkamer_lavabo:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 7,1'"
@@ -236,7 +236,7 @@
         friendly_name: Lavabo
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 132
   switches:
    light_trap_voor:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 14,150'"
@@ -245,7 +245,7 @@
         friendly_name: Slaapkamer
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 134
   switches:
    light_trap_achter:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 15,30'"
@@ -254,7 +254,7 @@
         friendly_name: Badkamer
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 136
   switches:
    light_vestiare:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 2,1'"
@@ -263,7 +263,7 @@
         friendly_name: Vestiaire
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 138
   switches:
    light_inkom:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 5,150'"
@@ -272,7 +272,7 @@
         friendly_name: Inkom
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 140
   switches:
    light_wc:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 4,150'"
@@ -281,7 +281,7 @@
         friendly_name: WC
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 142
   switches:
    light_trap_1:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 12,1'"
@@ -290,7 +290,7 @@
         friendly_name: Trap 1
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 144
   switches:
    light_trap_2:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 11,1'"
@@ -299,7 +299,7 @@
         friendly_name: Trap 2
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 146
   switches:
    light_trap_3:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 10,1'"
@@ -308,7 +308,7 @@
         friendly_name: Trap 3
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 148
   switches:
    light_trap_4:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 9,1'"
@@ -317,7 +317,7 @@
         friendly_name: Trap 4
 
 - platform: command_line
-  scan_interval: 90
+  scan_interval: 150
   switches:
    light_trap_5:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 8,1'"

@@ -1,6 +1,6 @@
 ---
 - platform: command_line
-  scan_interval: 120
+  scan_interval: 400
   switches:
    heating_eetkamer:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 64,1'"
@@ -9,7 +9,7 @@
         friendly_name: Eetkamer
 
 - platform: command_line
-  scan_interval: 120
+  scan_interval: 402
   switches:
    heating_living:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 65,1'"
@@ -18,7 +18,7 @@
         friendly_name: Living
 
 - platform: command_line
-  scan_interval: 120
+  scan_interval: 404
   switches:
    heating_badkamer:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 66,1'"
@@ -27,7 +27,7 @@
         friendly_name: Badkamer
 
 - platform: command_line
-  scan_interval: 120
+  scan_interval: 406
   switches:
    heating_floradix:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 67,1'"
@@ -36,7 +36,7 @@
         friendly_name: S&R
 
 - platform: command_line
-  scan_interval: 120
+  scan_interval: 408
   switches:
    heating_sara:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 68,1'"
@@ -45,7 +45,7 @@
         friendly_name: Sara
 
 - platform: command_line
-  scan_interval: 120
+  scan_interval: 410
   switches:
    heating_yassin:
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'Setrelay 69,1'"

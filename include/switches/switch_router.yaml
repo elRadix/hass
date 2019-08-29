@@ -1,6 +1,6 @@
 ---
 - platform: command_line
-  scan_interval: 160
+  scan_interval: 500
   switches:
    router_adblock:
         command_on: "/opt/scripts/diversion_on.sh"
@@ -10,7 +10,7 @@
         friendly_name: Adblock
 
 - platform: command_line
-  scan_interval: 160
+  scan_interval: 502
   switches:
    router_firewall:
         command_on: "/opt/scripts/firewall_on.sh"
@@ -20,7 +20,7 @@
         friendly_name: Firewall
 
 - platform: command_line
-  scan_interval: 160
+  scan_interval: 504
   switches:
    router_vpn_server1:
         command_on: "/opt/scripts/vpn_server1_on.sh"
@@ -30,7 +30,7 @@
         friendly_name: VPN Server 1
 
 - platform: command_line
-  scan_interval: 160
+  scan_interval: 508
   switches:
    router_vpn_server2:
         command_on: "/opt/scripts/vpn_server2_on.sh"
@@ -40,7 +40,7 @@
         friendly_name: VPN Server 2
 
 - platform: command_line
-  scan_interval: 160
+  scan_interval: 510
   switches:
    router_vpn_client1:
         command_on: "/opt/scripts/vpn_client1_on.sh"
@@ -50,7 +50,7 @@
         friendly_name: VPN Client 1
 
 - platform: command_line
-  scan_interval: 160
+  scan_interval: 512
   switches:
    router_vpn_client2:
         command_on: "/opt/scripts/ vpn_client2_on.sh"
@@ -60,7 +60,7 @@
         friendly_name: VPN Client 2
 
 - platform: command_line
-  scan_interval: 160
+  scan_interval: 514
   switches:
    router_vpn_client3:
         command_on: "/opt/scripts/vpn_client3_on.sh"
@@ -70,7 +70,7 @@
         friendly_name: VPN Client 3
 
 - platform: command_line
-  scan_interval: 160
+  scan_interval: 518
   switches:
    router_vpn_client4:
         command_on: "/opt/scripts/vpn_client4_on.sh"
@@ -80,7 +80,7 @@
         friendly_name: VPN Client 4
 
 - platform: command_line
-  scan_interval: 160
+  scan_interval: 520
   switches:
    router_vpn_client5:
         command_on: "/opt/scripts/vpn_client5_on.sh"

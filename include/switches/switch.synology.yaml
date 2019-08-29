@@ -1,6 +1,6 @@
 ---
  - platform: command_line
-   scan_interval: 60
+   scan_interval: 500
    switches:
     dsm:
         command_on: "/opt/scripts/dsm_on.sh"
@@ -10,7 +10,7 @@
         friendly_name: Synology
 
  - platform: command_line
-   scan_interval: 90
+   scan_interval: 502
    switches:
     dsm_lun:
         command_on: "/opt/scripts/dietpi_on.sh"

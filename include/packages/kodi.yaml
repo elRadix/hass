@@ -188,7 +188,7 @@ script:
           addonid: script.tv.show.last.episode
       - delay: 00:00:02
       - service: script.kodi_tv_on
-  
+
   # Addon
   kodi_addon:
     alias: Kodi Addon
@@ -200,7 +200,7 @@ script:
           addonid: "{{ value }}"
           params:
             command: activate
-  
+
   # Play/Puase
   kodi_playpause:
     alias: Kodi Play/Pause
@@ -220,7 +220,7 @@ script:
           entity_id: media_player.kodi_slaapkamer
           method: Player.Stop
           playerid: 0
-  
+
   # Home
   kodi_home:
     alias: Kodi Home
@@ -235,7 +235,7 @@ script:
           entity_id: media_player.kodi_slaapkamer
           method: Input.Home
       - service: script.kodi_tv_on
-  
+
   # Test
   kodi_test:
     alias: Kodi Test
@@ -245,7 +245,7 @@ script:
           entity_id: media_player.kodi_slaapkamer
           method: GUI.ActivateWindow
           window: Videos,videodb://recentlyaddedepisodes/
-  
+
   # Update Library
   kodi_update_library:
     alias: Update Kodi Library
@@ -266,11 +266,11 @@ script:
         data:
           entity_id: media_player.kodi_slaapkamer
           method: AudioLibrary.Clean
-          
+
 ##################################################
 ## Specified shows
 ##################################################
-  
+
   # Flash
   kodi_play_tvshow01:
     alias: Kodi Play Playlist

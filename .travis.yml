@@ -23,10 +23,9 @@
 #   webhooks: https://fathomless-fjord-24024.herokuapp.com/notify?secret=elradix_hass
 
 
-# stages:
-#   - dev
-#   - rc
-#   - prod
+stages:
+  - PROD
+  - DEV
 
 
 dist: xenial
@@ -49,11 +48,18 @@ install:
 
 jobs:
   include:
-    - stage: HA Test
+    - stage: PROD
       script:
         - hass -c . --script check_config
       after_script:
         - bash ./telegram_notification.sh
       notifications:
         webhooks: https://fathomless-fjord-24024.herokuapp.com/notify?secret=elradix_hass
-
+    - stage: DEV
+      script:
+        - pip3 install --pre --upgrade homeassistant
+        - hass -c . --script check_config
+      after_script:
+        - bash ./telegram_notification.sh
+      notifications:
+        webhooks: https://fathomless-fjord-24024.herokuapp.com/notify?secret=elradix_hass

@@ -55,11 +55,6 @@ jobs:
         - hass --version
       script:
         - hass -c . --script check_config
-      after_script:
-        - bash ./telegram_notification.sh
-      notifications:
-        webhooks: https://fathomless-fjord-24024.herokuapp.com/notify?secret=elradix_hass
-
     - stage: DEV
       before_install:
         - mkdir -p fake_directory

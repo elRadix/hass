@@ -30,6 +30,8 @@ homeassistant:
 readme:
   convert_lovelace: true
 
+updater:
+
 # lovelace_gen:
 
 # lovelace:

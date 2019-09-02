@@ -320,7 +320,7 @@ automation:
     - service: python_script.set_state
       data_template:
         entity_id: sensor.budget_power_monthly
-        state: 70
+        state: 70.29
         unit_of_measurement: 'eur'
         icon: mdi:counter
         Start date: 31/01/2019
@@ -379,7 +379,7 @@ automation:
     - service: python_script.set_state
       data_template:
         entity_id: sensor.current_gas
-        state: "{{ states('input_text.current_water') }}"
+        state: "{{ states('input_text.current_gas') }}"
         unit_of_measurement: 'm3'
         icon: mdi:counter
         date: "{{ states.input_text.date_current_gas.state }}"

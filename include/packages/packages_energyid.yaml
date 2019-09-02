@@ -153,11 +153,11 @@ sensor:
     sensors:
       cost_power_month:
         friendly_name: cost power month
-        value_template: "{{ (states('sensor.cost_power_year')|float / states('sensor.mega')|float) |round(2) }}"
+        value_template: "{{ (states('sensor.cost_power_year')|float / states('sensor.billing')|float) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
-      billing_period:
+      billing:
         friendly_name: month
         value_template: >-
             {% set date = 'January 2019' %}

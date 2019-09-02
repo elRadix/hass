@@ -55,6 +55,7 @@ jobs:
         - hass --version
       script:
         - hass -c . --script check_config
+        
     - stage: DEV
       before_install:
         - mkdir -p fake_directory

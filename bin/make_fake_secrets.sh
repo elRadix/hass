@@ -22,7 +22,7 @@ faker() {
     value='tests/example.com.fake_key'
   elif [ "$key" == "time_zone" ]; then
     value='America/Los_Angeles'
-  elif echo ${key} | grep -q '_\(login\|username\|password\)$'; then
+  elif echo ${key} | grep -q '_\(login\|username\|password\|user\)$'; then
     value='super_5EcREt'
   elif echo ${key} | grep -q '_\(lat\|lon\|latitude\|longitude\)$'; then
     value='00.000000'

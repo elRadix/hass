@@ -156,7 +156,6 @@ sensor:
         value_template: "{{ (states('sensor.energy_yearly') | float / 12 |round(1) ) }}"
         unit_of_measurement: 'eur'
 
-
 rest_command:
   post_energyid_gas:
     url: !secret post_energyid_gas

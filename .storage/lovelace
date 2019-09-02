@@ -2668,7 +2668,7 @@
                         }
                     ],
                     "icon": "mdi:power-plug",
-                    "path": "",
+                    "path": "switch",
                     "title": "Stopcontanten"
                 },
                 {

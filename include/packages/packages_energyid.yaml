@@ -160,10 +160,10 @@ sensor:
       billing_period:
         friendly_name: month
         value_template: >-
-         {% set date = "{{ states.sensor.mega.state }}" %}
-         {% set date = strptime(date, '%B %Y') %}
-         {% set today = now() %}
-         {{ today.year*12+today.month - (date.year*12+date.month) - 1 }}
+            {% set date = 'January 2019' %}
+            {% set date = strptime(date, '%B %Y') %}
+            {% set today = now() %}
+            {{ today.year*12+today.month - (date.year*12+date.month) - 1 }}
 
 
 rest_command:

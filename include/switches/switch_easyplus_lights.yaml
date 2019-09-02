@@ -61,7 +61,7 @@
         command_on: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 0,255'"
         command_off: "/usr/bin/expect -f /opt/scripts/apex.sh 'SetAnalogOut 0,0'"
         command_state: "/opt/scripts/status/state.sh -A 0"
-        friendly_name: Spot left 
+        friendly_name: Spot left
 
 - platform: command_line
   scan_interval: 84

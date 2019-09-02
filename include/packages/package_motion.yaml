@@ -73,6 +73,9 @@ timer:
 
 automation:
 
+
+# start or stop timer on motion day or night
+
   - id: motion_occupied_on_eetkamer_occupied
     alias: motion_occupied_on_eetkamer_occupied
     initial_state: 'true'
@@ -194,7 +197,8 @@ automation:
         entity_id: timer.bad_occupied
 
 
-######
+# perform actions on ie lights on or off
+
   - id: motion_01
     alias: Motion Detection - Hall Light on
     initial_state: 'true'
@@ -355,126 +359,3 @@ automation:
     action:
     - service: homeassistant.turn_off
       entity_id: switch.light_wc
-
-# binary_sensor:
-#   - platform: template
-#     sensors:
-#       office_occupied:
-#         value_template: >
-#           {{
-#             is_state('timer.office_occupied','active')
-#             or is_state('binary_sensor.office_motion','on')
-#           }}
-#         device_class: occupancy
-#         delay_off: 2
-
-# timer:
-#   office_occupied:
-
-# automation:
-#   - alias: Office Occupied Normal
-#     id: 'office_occupied_normal'
-#     trigger:
-#       - platform: state
-#         entity_id:
-#           - binary_sensor.office_occupied
-#           - input_select.house_mode
-#     condition:
-#       - entity_id: input_select.house_mode
-#         condition: state
-#         state: 'normal'
-#       - entity_id: binary_sensor.office_occupied
-#         condition: state
-#         state: 'on'
-#     action:
-#       - service: homeassistant.turn_on
-#         data:
-#           entity_id:
-#             - switch.office_overhead
-#       - service: homeassistant.turn_off
-#         data:
-#           entity_id:
-#             - switch.office_nightlight
-
-#   - alias: Office Occupied Sleep
-#     id: 'office_occupied_sleep'
-#     trigger:
-#       - platform: state
-#         entity_id:
-#           - binary_sensor.office_occupied
-#           - input_select.house_mode
-#     condition:
-#       - entity_id: input_select.house_mode
-#         condition: state
-#         state: 'sleep'
-#       - entity_id: binary_sensor.office_occupied
-#         condition: state
-#         state: 'on'
-#     action:
-#       - service: homeassistant.turn_on
-#         data:
-#           entity_id:
-#             - switch.office_nightlight
-#       - service: homeassistant.turn_off
-#         data:
-#           entity_id:
-#             - switch.office_overhead
-
-#   - alias: Office Motion Stop Normal
-#     id: 'office_motion_stop_normal'
-#     trigger:
-#       - platform: state
-#         entity_id:
-#           - binary_sensor.office_motion
-#           - input_select.house_mode
-#     condition:
-#       - entity_id: input_select.house_mode
-#         condition: state
-#         state: 'normal'
-#       - entity_id: binary_sensor.office_motion
-#         condition: state
-#         state: 'off'
-#     action:
-#       - service: timer.cancel
-#         data:
-#           entity_id: timer.office_occupied
-#       - service: timer.start
-#         data:
-#           entity_id: timer.office_occupied
-#           duration: '00:15:00'
-
-#   - alias: Office Motion Stop Sleep
-#     id: 'office_motion_stop_sleep'
-#     trigger:
-#       - platform: state
-#         entity_id:
-#           - binary_sensor.office_motion
-#           - input_select.house_mode
-#     condition:
-#       - entity_id: input_select.house_mode
-#         condition: state
-#         state: 'sleep'
-#       - entity_id: binary_sensor.office_motion
-#         condition: state
-#         state: 'off'
-#     action:
-#       - service: timer.cancel
-#         data:
-#           entity_id: timer.office_occupied
-#       - service: timer.start
-#         data:
-#           entity_id: timer.office_occupied
-#           duration: '00:05:00'
-
-#   - alias: Office Unoccupied
-#     id: 'office_unoccupied'
-#     trigger:
-#       - entity_id: binary_sensor.office_occupied
-#         platform: state
-#         to: 'off'
-#     action:
-#       - service: homeassistant.turn_off
-#         data:
-#           entity_id:
-#             - switch.office_overhead
-#             - switch.office_nightlight

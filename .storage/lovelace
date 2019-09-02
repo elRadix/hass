@@ -6693,6 +6693,12 @@
                                     "entity": "automation.scenes_completed",
                                     "icon": "mdi:power",
                                     "name": "auto off"
+                                },
+                                {
+                                    "entity": "sensor.period_of_day2"
+                                },
+                                {
+                                    "entity": "sensor.period_of_day"
                                 }
                             ],
                             "type": "glance"

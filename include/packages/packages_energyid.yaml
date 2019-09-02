@@ -141,13 +141,13 @@ sensor:
     sensors:
       cost_electricity:
         friendly_name: cost electricity
-        value_template: "{{ ((float(states.sensor.cost_day.state) + float(states.sensor.cost_night.state) )) }}"
+        value_template: "{{ float(states.sensor.cost_day.state) + float(states.sensor.cost_night.state) | float | round(1) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       cost_power_year:
         friendly_name: cost power year
-        value_template: "{{ ((float(states.sensor.cost_energy) + float(states.sensor.cost_gas.state) )) }}"
+        value_template:  "{{ float(states.sensor.cost_electricity.state) + float(states.sensor.cost_gas.state) | float | round(1) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:

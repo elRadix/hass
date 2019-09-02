@@ -15,6 +15,86 @@
                 "swipe_wrap": false,
                 "voice": "hide"
             },
+            "line01": {
+                "color": "rgb(3,169,244)",
+                "color_off": "var(--disabled-text-color)",
+                "color_type": "card",
+                "default_color": "var(--primary-text-color)",
+                "style": {
+                    "card": [
+                        {
+                            "font-size": "20px"
+                        },
+                        {
+                            "font-weight": "bold"
+                        },
+                        {
+                            "padding": "0px"
+                        },
+                        {
+                            "height": "45px"
+                        },
+                        {
+                            "border-color": "#ed17cc"
+                        },
+                        {
+                            "border-radius": "25px"
+                        }
+                    ]
+                }
+            },
+            "mod01": {
+                "color": "rgb(255, 255, 0)",
+                "color_off": "var(--disabled-text-color)(189, 255, 5)",
+                "color_type": "card",
+                "default_color": "var(--primary-text-color)",
+                "hold_action": {
+                    "action": "more-info",
+                    "haptic": "success"
+                },
+                "show_name": false,
+                "state": [
+                    {
+                        "styles": {
+                            "icon": [
+                                {
+                                    "color": "green"
+                                }
+                            ]
+                        },
+                        "value": "open"
+                    },
+                    {
+                        "styles": {
+                            "icon": [
+                                {
+                                    "color": "red"
+                                }
+                            ]
+                        },
+                        "value": "closed"
+                    }
+                ],
+                "styles": {
+                    "card": [
+                        {
+                            "height": "50px"
+                        },
+                        {
+                            "width": "50px"
+                        },
+                        {
+                            "size": "75%"
+                        },
+                        {
+                            "border-radius": "50%"
+                        },
+                        {
+                            "box-shadow": "0px 0px 2px 2px rgba(0,0,0,0.3)"
+                        }
+                    ]
+                }
+            },
             "resources": [
                 {
                     "type": "js",
@@ -2588,7 +2668,7 @@
                         }
                     ],
                     "icon": "mdi:power-plug",
-                    "path": "",
+                    "path": "switch",
                     "title": "Stopcontanten"
                 },
                 {
@@ -6334,29 +6414,6 @@
                                         "sensor.ssl_certificate_eu",
                                         {
                                             "type": "divider"
-                                        },
-                                        {
-                                            "entity": "sensor.asuswrt_download",
-                                            "icon": "mdi:download",
-                                            "name": "Download"
-                                        },
-                                        {
-                                            "entity": "sensor.asuswrt_download_speed",
-                                            "icon": "mdi:download",
-                                            "name": "Download speed"
-                                        },
-                                        {
-                                            "entity": "sensor.asuswrt_upload",
-                                            "icon": "mdi:upload",
-                                            "name": "Upload"
-                                        },
-                                        {
-                                            "entity": "sensor.asuswrt_upload_speed",
-                                            "icon": "mdi:upload",
-                                            "name": "Upload speed"
-                                        },
-                                        {
-                                            "type": "divider"
                                         }
                                     ],
                                     "label": "router",
@@ -6811,7 +6868,7 @@
                                 {
                                     "action_name": "start",
                                     "name": "dryer",
-                                    "service": "timer.dryer",
+                                    "service": "timer.start",
                                     "service_data": {
                                         "entity_id": "timer.dryer"
                                     },
@@ -6857,178 +6914,11 @@
                             "type": "entities"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "sensor.camera_living",
-                                    "icon": "mdi:webcam",
-                                    "name": "camera sensor"
-                                },
-                                {
-                                    "entity": "timer.camera",
-                                    "name": "camera timer"
-                                },
-                                {
-                                    "entity": "counter.camera",
-                                    "name": "camera counter"
-                                }
-                            ],
-                            "type": "entities"
+                            "content": "# <font color= grey> Home Summary</font>\n___\n**Status**\n<font color = {% set count = states('sensor.family_home') %}\n              {% if count == '0' %} grey\n              {% elif count == '1'%} yellow\n              {% elif count == '2' %} blue\n              {% elif count == '3'%} orange\n              {% elif count == '4'%} green\n              {% elif count == '5'%} brown\n              {% else %} red\n              {% endif %} > - {{state_attr('sensor.home_badge','desc')}} </font>\n\n< font color = {% if states('sensor.status_badge') == '0' %} green\n               {% else %} red\n               {% endif %} > - {{state_attr('sensor.status_badge','desc')}} </font>\n\n< font color=  {% if states('sensor.play_badge') == '0' %} grey\n  {% else %} #2196f3\n  {% endif %} > - {{state_attr('sensor.play_badge','desc')}} </font>\n\n<[[ if(sensor.track_badge == '0' , font color= grey, font color= #2196f3) ]]> - {{state_attr('sensor.track_badge','desc')}} </font>\n<[[ if(sensor.lamps_badge == '0' , font color= grey, font color= #fbb911) ]] > - {{state_attr('sensor.lamps_badge','desc')}} </font> \n<[[ if(sensor.switch_badge == '0' , font color= grey, font color= #2196f3) ]]> - {{state_attr('sensor.switch_badge','desc')}} </font>\n<[[ if(sensor.appli_badge == '0' , font color= grey, font color= #2196f3) ]]> - {{state_attr('sensor.appli_badge','desc')}} </font>\n<[[ if(sensor.active_badge == '0' , font color= grey, font color= #4caf50) ]]> - {{state_attr('sensor.active_badge','desc')}} </font>\n<[[ if(sensor.appli_badge == '0' , font color= grey, font color= #4caf50) ]]> - {{state_attr('sensor.appli_badge','desc')}} </font>\n___\n**Settings**\n_<[[ if(sensor.alarms_badge.attributes.unit_of_measurement == 'Off' , font color= grey, font color= red) ]]>- {{state_attr('sensor.alarms_badge','love')}} </font>_\n___\n**Modes**\n<font color= brown> - {{state_attr('sensor.activity_badge','love')}} </font> **<font color= black> - {{state_attr('sensor.mode_badge','love')}} </font>**\n",
+                            "type": "markdown"
                         }
                     ],
                     "title": "SCENES"
-                },
-                {
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "type": "divider"
-                                },
-                                {
-                                    "entity": "input_number.energyid_e_day_current"
-                                },
-                                {
-                                    "entity": "input_number.energyid_e_night_current"
-                                },
-                                {
-                                    "entity": "input_number.energyid_gas_current"
-                                },
-                                {
-                                    "entity": "input_number.energyid_water_current"
-                                },
-                                {
-                                    "type": "divider"
-                                },
-                                {
-                                    "entity": "sensor.baseline_e_day"
-                                },
-                                {
-                                    "entity": "sensor.baseline_e_night"
-                                },
-                                {
-                                    "entity": "sensor.baseline_gas"
-                                },
-                                {
-                                    "entity": "sensor.baseline_water"
-                                },
-                                {
-                                    "type": "divider"
-                                },
-                                {
-                                    "entity": "sensor.current_e_day"
-                                },
-                                {
-                                    "entity": "sensor.current_e_night"
-                                },
-                                {
-                                    "entity": "sensor.current_water"
-                                },
-                                {
-                                    "entity": "sensor.current_gas"
-                                },
-                                {
-                                    "type": "divider"
-                                },
-                                {
-                                    "entity": "sensor.previous_gas"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "aspect_ratio": "100%",
-                            "type": "iframe",
-                            "url": "https://www.energieid.be/permalink?q=zM8Wfv6hue5MytxOwzVIjqFfYTYIj02qLm8yOfBUQ76vDoFy5Oj5biuOYKYuX%2f0bOk11zjr5DRib%2bXwhEUjS4gtviArcX9u5Iu7zFlTS3%2fAHE0jrpdSSxgbItn4MaKPUTGvRryr%2bB8DR01TK8U0pvdT1Bf3fxcznQsn%2fyOoFpSI%3d"
-                        },
-                        {
-                            "aspect_ratio": "100%",
-                            "type": "iframe",
-                            "url": "https://www.energieid.be/permalink?q=g36NWCpJuh%2bTmeebiJpLyNUcl7El8eFyJ3XLLRs5co75%2fKlDe8J67nwtyP6pqFeQ3%2fBeegr%2bXt0og5KHMJIyL2zsdM%2bP3nPE69BH%2bmJF7jhivfDHkh%2fNR%2bznytrX9QVO8WWboxdzWupH8nlaQBLQoCUn0xSFBkxHPOAfOu1nXSY%3d"
-                        },
-                        {
-                            "aspect_ratio": "100%",
-                            "type": "iframe",
-                            "url": "https://www.energieid.be/permalink?q=R0i0NoJ%2bMVDrGzt1K9WS1ncKxYwwmbKs03TH5tGHdeG67t1gn1hVS08%2b3HJIywKrCj7%2fiQiz%2fwgfhA2RyboElAP014duFFDOdgzDsNZ1THaMv10FHt7%2f8DtW6QEHBsMO9trn9P2MOHPJdp3aJ33Yuw%3d%3d"
-                        },
-                        {
-                            "aspect_ratio": "100%",
-                            "type": "iframe",
-                            "url": "https://www.energieid.be/permalink?q=8CqJNfM7YbifE71jvvstTKb2BGLodKNMkgZumiIoCg2%2biK20QT73GT6ibDtMe2cyjA6d90HXLbhyQcoulIodjIXVgelW2MR79x1eeQb%2biHh3DAduVw0x7X%2bqjtZ2xRx0jtg28r4R81B9GATUWUqWMCEQvEBJI%2fnwpgG8SnbHiJQ%3d"
-                        },
-                        {
-                            "aspect_ratio": "100%",
-                            "type": "iframe",
-                            "url": "https://www.energieid.be/permalink?q=DamOuVufcFAQxdGTtmHPHEQAxlXWfURkNeDpmFP3Icgi%2b4xkEGrJ0YQJgRG5MiCC5H8ntw7cGcp4ER3i0OLkGZd2Kd92K3y%2fPjcYM7dXGbmFSPEFODKlj%2beoPo0GUVghOdEtuUdj7%2be3nmhAEv%2bHJDKj0IPUup95kMdOoc6aj%2bo%3d"
-                        },
-                        {
-                            "aspect_ratio": "100%",
-                            "type": "iframe",
-                            "url": "https://www.energieid.be/permalink?q=1y2nHFWuq%2fOxCA75IY%2fNZ%2fPh%2fCEXMBM%2fxfHUg1Zn0H1M7XVQ2pGfdTYDSLLOWTfd%2fYUOoYp%2fpV2UdrzRYf3w1doVM2b1rhP4DqBQGXJ2i%2bR5CT9jg1O3B7uvcPdsPUU%2btB1vyNsJdtOxttImCvW29w%3d%3d"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "input_number.energyid_gas_current",
-                                    "name": " "
-                                },
-                                {
-                                    "action_name": "gas",
-                                    "name": " ",
-                                    "service": "input_number.set_value",
-                                    "service_data": {
-                                        "entity_id": "input_number.energyid_gas_current"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "entity": "input_number.energyid_water_current",
-                                    "name": " "
-                                },
-                                {
-                                    "action_name": "water",
-                                    "name": " ",
-                                    "service": "input_number.set_value",
-                                    "service_data": {
-                                        "entity_id": "input_number.energyid_water_current"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "entity": "input_number.energyid_e_day_current",
-                                    "name": " "
-                                },
-                                {
-                                    "action_name": "day",
-                                    "name": " ",
-                                    "service": "input_number.set_value",
-                                    "service_data": {
-                                        "entity_id": "input_number.energyid_e_day_current"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "entity": "input_number.energyid_e_night_current",
-                                    "name": " "
-                                },
-                                {
-                                    "action_name": "night",
-                                    "name": " ",
-                                    "service": "input_number.set_value",
-                                    "service_data": {
-                                        "entity_id": "input_number.energyid_e_night_current"
-                                    },
-                                    "type": "call-service"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "EnergieID",
-                            "type": "entities"
-                        }
-                    ],
-                    "icon": "mdi:power",
-                    "path": "energieid",
-                    "title": "EnergieID"
                 },
                 {
                     "badges": [],
@@ -8011,6 +7901,159 @@
                     "path": "",
                     "theme": "default",
                     "title": "Settings"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "input_number.energyid_e_day_current"
+                                },
+                                {
+                                    "entity": "input_number.energyid_e_night_current"
+                                },
+                                {
+                                    "entity": "input_number.energyid_gas_current"
+                                },
+                                {
+                                    "entity": "input_number.energyid_water_current"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.baseline_e_day"
+                                },
+                                {
+                                    "entity": "sensor.baseline_e_night"
+                                },
+                                {
+                                    "entity": "sensor.baseline_gas"
+                                },
+                                {
+                                    "entity": "sensor.baseline_water"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.current_e_day"
+                                },
+                                {
+                                    "entity": "sensor.current_e_night"
+                                },
+                                {
+                                    "entity": "sensor.current_water"
+                                },
+                                {
+                                    "entity": "sensor.current_gas"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.previous_gas"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=zM8Wfv6hue5MytxOwzVIjqFfYTYIj02qLm8yOfBUQ76vDoFy5Oj5biuOYKYuX%2f0bOk11zjr5DRib%2bXwhEUjS4gtviArcX9u5Iu7zFlTS3%2fAHE0jrpdSSxgbItn4MaKPUTGvRryr%2bB8DR01TK8U0pvdT1Bf3fxcznQsn%2fyOoFpSI%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=g36NWCpJuh%2bTmeebiJpLyNUcl7El8eFyJ3XLLRs5co75%2fKlDe8J67nwtyP6pqFeQ3%2fBeegr%2bXt0og5KHMJIyL2zsdM%2bP3nPE69BH%2bmJF7jhivfDHkh%2fNR%2bznytrX9QVO8WWboxdzWupH8nlaQBLQoCUn0xSFBkxHPOAfOu1nXSY%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=R0i0NoJ%2bMVDrGzt1K9WS1ncKxYwwmbKs03TH5tGHdeG67t1gn1hVS08%2b3HJIywKrCj7%2fiQiz%2fwgfhA2RyboElAP014duFFDOdgzDsNZ1THaMv10FHt7%2f8DtW6QEHBsMO9trn9P2MOHPJdp3aJ33Yuw%3d%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=8CqJNfM7YbifE71jvvstTKb2BGLodKNMkgZumiIoCg2%2biK20QT73GT6ibDtMe2cyjA6d90HXLbhyQcoulIodjIXVgelW2MR79x1eeQb%2biHh3DAduVw0x7X%2bqjtZ2xRx0jtg28r4R81B9GATUWUqWMCEQvEBJI%2fnwpgG8SnbHiJQ%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=DamOuVufcFAQxdGTtmHPHEQAxlXWfURkNeDpmFP3Icgi%2b4xkEGrJ0YQJgRG5MiCC5H8ntw7cGcp4ER3i0OLkGZd2Kd92K3y%2fPjcYM7dXGbmFSPEFODKlj%2beoPo0GUVghOdEtuUdj7%2be3nmhAEv%2bHJDKj0IPUup95kMdOoc6aj%2bo%3d"
+                        },
+                        {
+                            "aspect_ratio": "100%",
+                            "type": "iframe",
+                            "url": "https://www.energieid.be/permalink?q=1y2nHFWuq%2fOxCA75IY%2fNZ%2fPh%2fCEXMBM%2fxfHUg1Zn0H1M7XVQ2pGfdTYDSLLOWTfd%2fYUOoYp%2fpV2UdrzRYf3w1doVM2b1rhP4DqBQGXJ2i%2bR5CT9jg1O3B7uvcPdsPUU%2btB1vyNsJdtOxttImCvW29w%3d%3d"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_number.energyid_gas_current",
+                                    "name": " "
+                                },
+                                {
+                                    "action_name": "gas",
+                                    "name": " ",
+                                    "service": "input_number.set_value",
+                                    "service_data": {
+                                        "entity_id": "input_number.energyid_gas_current"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "entity": "input_number.energyid_water_current",
+                                    "name": " "
+                                },
+                                {
+                                    "action_name": "water",
+                                    "name": " ",
+                                    "service": "input_number.set_value",
+                                    "service_data": {
+                                        "entity_id": "input_number.energyid_water_current"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "entity": "input_number.energyid_e_day_current",
+                                    "name": " "
+                                },
+                                {
+                                    "action_name": "day",
+                                    "name": " ",
+                                    "service": "input_number.set_value",
+                                    "service_data": {
+                                        "entity_id": "input_number.energyid_e_day_current"
+                                    },
+                                    "type": "call-service"
+                                },
+                                {
+                                    "entity": "input_number.energyid_e_night_current",
+                                    "name": " "
+                                },
+                                {
+                                    "action_name": "night",
+                                    "name": " ",
+                                    "service": "input_number.set_value",
+                                    "service_data": {
+                                        "entity_id": "input_number.energyid_e_night_current"
+                                    },
+                                    "type": "call-service"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "EnergieID",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:power",
+                    "path": "energieid",
+                    "title": "EnergieID"
                 },
                 {
                     "badges": [],
@@ -9431,6 +9474,47 @@
                                 "type": "markdown"
                             },
                             "type": "custom:card-modder"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "color_type": "blank-card",
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "entity": "switch.microgolf",
+                                    "icon": "mdi:led-strip",
+                                    "name": "Luce Cucina",
+                                    "template": "mod01",
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "entity": "switch.microgolf",
+                                    "icon": "mdi:instagram",
+                                    "name": "Sensore cucina",
+                                    "template": "mod01",
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "entity": "switch.microgolf",
+                                    "icon": "mdi:blinds",
+                                    "name": "Scuro Cucina",
+                                    "template": "mod01",
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "entity": "switch.easyplus",
+                                    "icon": "mdi:toaster-oven",
+                                    "name": "MicroondeForno",
+                                    "template": "mod01",
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "color_type": "blank-card",
+                                    "type": "custom:button-card"
+                                }
+                            ],
+                            "type": "horizontal-stack"
                         }
                     ],
                     "title": "test"

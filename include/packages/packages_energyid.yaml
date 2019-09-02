@@ -120,9 +120,8 @@ sensor:
       cost_gas:
         friendly_name: gas
         value_template: >-
-            {% set c = states('sensor.current_gas')|float %}
-            {% set b = states('sensor.baseline_gas')|float %}
-            {{ (((c - b) * 10.15) * 0.05)|float |round(2) }}
+            {% set c = states('sensor.consumption_gas')|float %}
+            {{ (((c  * 10.15) * 0.05)|float |round(2)) }}
         unit_of_measurement: 'eur'
   - platform: template
     sensors:

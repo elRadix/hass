@@ -7,12 +7,12 @@ python:
 
 env:
   - BUILD=stable
-  - BUILD=beta
+  # - BUILD=beta
   - BUILD=dev
 matrix:
   allow_failures:
-    - python: 3.7.3
-      env: BUILD=beta
+    # - python: 3.7.3
+    #   env: BUILD=beta
     - python: 3.7.3
       env: BUILD=dev
 

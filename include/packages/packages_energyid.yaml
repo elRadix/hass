@@ -141,7 +141,7 @@ sensor:
     sensors:
       cost_electricity:
         friendly_name: cost electricity
-        value_template: "{{ (states('sensor.cost_day')|float + states('sensor.cost_night')|float) |round(2) }}"
+        value_template: "{{ (states('sensor.cost_day')|float + states('sensor.cost_night')|float) |round(2) }}"  # "{{ (states('sensor.cost_day')|float + states('sensor.cost_night')|float) / 12|round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
@@ -153,8 +153,18 @@ sensor:
     sensors:
       cost_power_month:
         friendly_name: cost power month
-        value_template: "{{ (states('sensor.cost_power_year')|float / 12)  |round(2) }}"
+        value_template: "{{ (states('sensor.cost_power_year')|float / states('sensor.mega')|float) |round(2) }}"
         unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      billing_period:
+        friendly_name: month
+        value_template: >-
+         {% set date = "{{ states.sensor.mega.state }}" %}
+         {% set date = strptime(date, '%B %Y') %}
+         {% set today = now() %}
+         {{ today.year*12+today.month - (date.year*12+date.month) - 1 }}
+
 
 rest_command:
   post_energyid_gas:
@@ -302,6 +312,19 @@ automation:
       platform: homeassistant
       event: start
     action:
+    - service: python_script.set_state
+      data_template:
+        entity_id: sensor.mega
+        state: January 2019
+        unit_of_measurement: 'eur'
+        Start date: 31/01/2019
+    - service: python_script.set_state
+      data_template:
+        entity_id: sensor.budget_power_monthly
+        state: 70
+        unit_of_measurement: 'eur'
+        icon: mdi:counter
+        Start date: 31/01/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_gas

@@ -86,39 +86,39 @@ input_number:
 sensor:
   - platform: template
     sensors:
-     water_verbruik:
+     consumption_water:
        friendly_name: Verbruik water
        value_template: "{{ (states('sensor.current_water')|float - states('sensor.baseline_water')|float)|round(1) }}"
        unit_of_measurement: 'm3'
   - platform: template
     sensors:
-      gas_verbruik:
+      consumption_gas:
         friendly_name: Verbruik gas
         value_template: "{{ (states('sensor.current_gas')|float - states('sensor.baseline_gas')|float)|round(1) }}"
         unit_of_measurement: 'm3'
   - platform: template
     sensors:
-      e_day_verbruik:
+      consumption_day:
         friendly_name: Verbruik dag
         value_template: "{{ (states('sensor.current_e_day')|float - states('sensor.baseline_e_day')|float)|round(1) }}"
         unit_of_measurement: 'kWh'
   - platform: template
     sensors:
-      e_night_verbruik:
+      consumption_night:
         friendly_name: Verbruik nacht
         value_template: "{{ (states('sensor.current_e_night')|float - states('sensor.baseline_e_night')|float)|round(1) }}"
         unit_of_measurement: 'kWh'
 
   - platform: template
     sensors:
-     water_kost:
-       friendly_name: Water
-       value_template: "{{ (states('sensor.water_verbruik') | float * 5 |round(1) ) }}"
+     cost_water:
+       friendly_name: cost water
+       value_template: "{{ (states('sensor.consumption_water') | float * 5 |round(1) ) }}"
        unit_of_measurement: 'eur'
   - platform: template
     sensors:
-      gas_kost:
-        friendly_name: gas
+      cost_gas:
+        friendly_name: cost gas
         value_template: >-
             {% set c = states('sensor.current_gas')|float %}
             {% set b = states('sensor.baseline_gas')|float %}
@@ -126,34 +126,34 @@ sensor:
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
-      e_day_kost:
-        friendly_name: dag
-        value_template: "{{ (states('sensor.e_day_verbruik') | float * 0.33 |round(1) ) }}"
+      cost_day:
+        friendly_name: cost day
+        value_template: "{{ (states('sensor.consumption_day') | float * 0.33 |round(1) ) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
-      e_night_kost:
-        friendly_name: nacht
-        value_template: "{{ (states('sensor.e_night_verbruik') | float * 0.33 |round(1) ) }}"
+      cost_night:
+        friendly_name: cost night
+        value_template: "{{ (states('sensor.consumption_night') | float * 0.33 |round(1) ) }}"
         unit_of_measurement: 'eur'
 
   - platform: template
     sensors:
-      energy_kost:
-        friendly_name: Electricity
-        value_template: "{{ (states.sensor.e_day_kost.state) + (states.sensor.e_night_kost.state) ) }}"
+      cost_electricity:
+        friendly_name: cost electricity
+        value_template: "{{ (states.sensor.cost_day.state) + (states.sensor.cost_night.state) ) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
-      energy_yearly:
-        friendly_name: Electricity + Gas
-        value_template: "{{ (states.sensor.energy_kost) + (states.sensor.gas_kost.state) ) }}"
+      cost_power_year:
+        friendly_name: cost power year
+        value_template: "{{ float(states.sensor.cost_energy) + (states.sensor.cost_gas.state) ) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
-      energy_kost:
-        friendly_name: Energy Monthly
-        value_template: "{{ (states('sensor.energy_yearly') | float / 12 |round(1) ) }}"
+      cost_power_month:
+        friendly_name: cost power month
+        value_template: "{{ float(states(sensor.energy_yearly) | float / 12 |round(1) ) }}"
         unit_of_measurement: 'eur'
 
 rest_command:

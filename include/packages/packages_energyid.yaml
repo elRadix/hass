@@ -19,7 +19,6 @@ input_datetime:
     has_date: true
     has_time: true
 
-
 input_text:
   energyid_gas:
     name: "gas"
@@ -49,7 +48,6 @@ input_text:
     name: "current_date_e_day"
   current_date_e_night:
     name: "current_date_e_night"
-
 
 input_number:
   energyid_gas_current:
@@ -85,27 +83,58 @@ input_number:
     step: 0.001
     mode: box
 
+sensor:
+  - platform: template
+    sensors:
+     water_verbruik:
+       entity_id: sensor.current_water
+       friendly_name: Verbruik water
+       value_template: "{{ (states('sensor.current_water')|float - states('sensor.baseline_water')|float)|round(1) }}"
+       unit_of_measurement: 'm3'
+  - platform: template
+    sensors:
+      gas_verbruik:
+        entity_id: sensor.current_gas
+        friendly_name: Verbruik gas
+        value_template: "{{ (states('sensor.current_gas')|float - states('sensor.baseline_gas')|float)|round(1) }}"
+       unit_of_measurement: 'm3'
+  - platform: template
+    sensors:
+      e_day_verbruik:
+        entity_id: sensor.current_e_day
+        friendly_name: Verbruik dag
+        value_template: "{{ (states('sensor.current_e_day')|float - states('sensor.baseline_e_day')|float)|round(1) }}"
+       unit_of_measurement: 'kWh'
+  - platform: template
+    sensors:
+      e_night_verbruik:
+        entity_id: sensor.current_e_night
+        friendly_name: Verbruik nacht
+        value_template: "{{ (states('sensor.current_e_night')|float - states('sensor.baseline_e_night')|float)|round(1) }}"
+       unit_of_measurement: 'kWh'
+
+
 rest_command:
   post_energyid_gas:
-    url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
+    url: !secret post_energyid_gas
     method: POST
     payload: '{"meterId": "{{ states.input_text.energyid_gas.state }}", "data": [["{{ states.input_datetime.current_gas.state }}", {{ states.input_number.energyid_gas_current.state }}]]}'
     content_type: application/json
     verify_ssl: true
   post_energyid_water:
-    url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
+    url:  !secret post_energyid_water
     method: POST
     payload: '{"meterId": "{{ states.input_text.energyid_water.state }}", "data": [["{{ states.input_datetime.current_water.state }}", {{ states.input_number.energyid_water_current.state }}]]}'
     content_type: application/json
     verify_ssl: true
   post_energyid_e_day:
-    url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
+    url: !secret post_energyid_e_day
     method: POST
     payload: '{"meterId": "{{ states.input_text.energyid_e_day.state }}", "data": [["{{ states.input_datetime.current_e_day.state }}", {{ states.input_number.energyid_e_day_current.state }}]]}'
     content_type: application/json
     verify_ssl: true
   post_energyid_e_night:
-    url: https://hooks.energyid.eu/services/WebhookIn/7dc3ffcb-5048-4c4f-bd95-96a8ffb6004f/GLX548G43FNK
+    url: !secret post_energyid_e_night
     method: POST
     payload: '{"meterId": "{{ states.input_text.energyid_e_night.state }}", "data": [["{{ states.input_datetime.current_e_night.state }}", {{ states.input_number.energyid_e_night_current.state }}]]}'
     content_type: application/json

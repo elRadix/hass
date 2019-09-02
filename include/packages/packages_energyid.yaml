@@ -113,7 +113,7 @@ sensor:
     sensors:
      water_kost:
        friendly_name: Water
-       value_template: "{{ (states('sensor.water_verbruik | float * 5 |round(1) }}"
+       value_template: "{{ (states('sensor.water_verbruik') | float * 5 |round(1) }}"
        unit_of_measurement: 'eur'
   - platform: template
     sensors:
@@ -128,13 +128,13 @@ sensor:
     sensors:
       e_day_kost:
         friendly_name: dag
-        value_template: "{{ (states('sensor.e_day_verbruik | float * 0.33 |round(1) }}"
+        value_template: "{{ (states('sensor.e_day_verbruik') | float * 0.33 |round(1) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       e_night_kost:
         friendly_name: nacht
-        value_template: "{{ (states('sensor.e_night_verbruik | float * 0.33 |round(1) }}"
+        value_template: "{{ (states('sensor.e_night_verbruik') | float * 0.33 |round(1) }}"
         unit_of_measurement: 'eur'
 
 rest_command:

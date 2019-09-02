@@ -1,4 +1,3 @@
-
 #!/usr/bin/env sh
 ##
 ## This is service function which can parse YAML-file.                                ##

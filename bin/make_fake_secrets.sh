@@ -20,7 +20,7 @@ faker() {
     value='tests/example.com.fake_crt'
   elif [ "$key" == "ssl_key" ]; then
     value='tests/example.com.fake_key'
-  elif [ "$key" == "home_timezone" ]; then
+  elif [ "$key" == "time_zone" ]; then
     value='America/Los_Angeles'
   elif echo ${key} | grep -q '_\(login\|username\|password\)$'; then
     value='super_5EcREt'

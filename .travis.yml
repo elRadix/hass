@@ -89,6 +89,8 @@ matrix:
   allow_failures:
     - python: 3.7.3
       env: BUILD=dev
+    - python: 3.7.3
+      env: BUILD=beta
 
 before_install:
   - mv tests/fake_secrets.yaml secrets.yaml

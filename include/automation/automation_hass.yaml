@@ -23,10 +23,6 @@
   - service: notify.telegram_rachid
     data:
       message: 'Home Assistant is going down!'
-  # - service: notify.android
-  #   data:
-  #     message: Home Assistant is going down! - {{now().strftime("%H:%M:%S")}}
-
 
 
 - id: hass_3

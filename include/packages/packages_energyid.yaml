@@ -141,10 +141,20 @@ sensor:
     sensors:
       energy_kost:
         friendly_name: Electricity
-        value_template: "{{ (states.sensor.e_day_kost.state) + (states.sensor.e_night_kost.state) }}"
+        value_template: "{{ (states.sensor.e_day_kost.state) + (states.sensor.e_night_kost.state) ) }}"
         unit_of_measurement: 'eur'
-
-
+  - platform: template
+    sensors:
+      energy_yearly:
+        friendly_name: Electricity + Gas
+        value_template: "{{ (states.sensor.energy_kost) + (states.sensor.gas_kost.state) ) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      energy_kost:
+        friendly_name: Energy Monthly
+        value_template: "{{ (states('sensor.energy_yearly') | float / 12 |round(1) ) }}"
+        unit_of_measurement: 'eur'
 
 
 rest_command:

@@ -55,7 +55,7 @@ input_number:
   energyid_gas_current:
     name: gas current
     icon: mdi:counter
-    initial: "{{ states.input_text.date_current_gas.state }}"
+    # initial: 5770
     min: 5770
     max: 65000
     step: 0.001
@@ -63,25 +63,25 @@ input_number:
   energyid_water_current:
     name: water current
     icon: mdi:counter
-    initial: "{{ states.input_text.date_current_water.state }}"
+    # initial: 821
     min: 821
-    max: 2000
+    max: 12000
     step: 0.001
     mode: box
   energyid_e_day_current:
     name: day current
     icon: mdi:counter
-    initial: "{{ states.input_text.date_current_e_day.state }}"
+    # initial: 14284
     min: 14284
-    max: 20000
+    max: 17000
     step: 0.001
     mode: box
   energyid_e_night_current:
     name: night current
     icon: mdi:counter
-    initial: "{{ states.input_text.date_current_e_night.state }}"
+    # initial: 16849
     min: 16848
-    max: 20000
+    max: 18500
     step: 0.001
     mode: box
 
@@ -291,4 +291,3 @@ automation:
         icon: mdi:counter
         date: "{{ states.input_text.date_current_gas.state }}"
         source: https://www.energieid.be
-

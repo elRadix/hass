@@ -157,10 +157,6 @@ sensor:
         unit_of_measurement: 'eur'
 
 
- value_template: >
-        {{ ((float(states.sensor.power_consumption_normal.state) - float(states.input_number.midnight_power_consumption_normal.state))  | round(3) }}
-      unit_of_measurement: 'kWh'
-
 rest_command:
   post_energyid_gas:
     url: !secret post_energyid_gas

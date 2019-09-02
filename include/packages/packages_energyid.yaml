@@ -87,31 +87,27 @@ sensor:
   - platform: template
     sensors:
      water_verbruik:
-       entity_id: sensor.current_water
        friendly_name: Verbruik water
        value_template: "{{ (states('sensor.current_water')|float - states('sensor.baseline_water')|float)|round(1) }}"
        unit_of_measurement: 'm3'
   - platform: template
     sensors:
       gas_verbruik:
-        entity_id: sensor.current_gas
         friendly_name: Verbruik gas
         value_template: "{{ (states('sensor.current_gas')|float - states('sensor.baseline_gas')|float)|round(1) }}"
-       unit_of_measurement: 'm3'
+        unit_of_measurement: 'm3'
   - platform: template
     sensors:
       e_day_verbruik:
-        entity_id: sensor.current_e_day
         friendly_name: Verbruik dag
         value_template: "{{ (states('sensor.current_e_day')|float - states('sensor.baseline_e_day')|float)|round(1) }}"
-       unit_of_measurement: 'kWh'
+        unit_of_measurement: 'kWh'
   - platform: template
     sensors:
       e_night_verbruik:
-        entity_id: sensor.current_e_night
         friendly_name: Verbruik nacht
         value_template: "{{ (states('sensor.current_e_night')|float - states('sensor.baseline_e_night')|float)|round(1) }}"
-       unit_of_measurement: 'kWh'
+        unit_of_measurement: 'kWh'
 
 
 rest_command:

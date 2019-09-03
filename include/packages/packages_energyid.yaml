@@ -186,7 +186,7 @@ sensor:
   - platform: template
     sensors:
       month_power:
-        friendly_name: month
+        friendly_name: month power
         value_template: >-
             {% set date = 'January 2019' %}
             {% set date = strptime(date, '%B %Y') %}
@@ -195,7 +195,7 @@ sensor:
   - platform: template
     sensors:
       month_water:
-        friendly_name: month
+        friendly_name: month water
         value_template: >-
             {% set date = 'December 2018' %}
             {% set date = strptime(date, '%B %Y') %}
@@ -372,7 +372,7 @@ automation:
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_gas
-        state: 5612,36
+        state: 5612.36
         unit_of_measurement: 'm3'
         icon: mdi:counter
         Snapshot date: 31/01/2019
@@ -386,7 +386,7 @@ automation:
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_e_day
-        state: 13915,6
+        state: 13915.6
         unit_of_measurement: 'kWh'
         icon: mdi:counter
         Snapshot date: 31/01/2019

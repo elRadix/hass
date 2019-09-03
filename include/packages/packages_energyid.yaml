@@ -119,6 +119,24 @@ sensor:
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
+      water_prepaid_period:
+        friendly_name: water prepaid period
+        value_template: "{{ ((states.sensor.water_prepaid_monthly.state|float) * (states.sensor.water_period.state|float)) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      gas_prepaid_period:
+        friendly_name: gas prepaid period
+        value_template: "{{ ((states.sensor.gas_prepaid_monthly.state|float) * (states.sensor.power_period.state|float)) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      electricity_total_prepaid_period:
+        friendly_name: electricity total prepaid period
+        value_template: "{{ ((states.sensor.electricity_total_prepaid_monthly.state|float) * (states.sensor.power_period.state|float)) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
       power_prepaid_period:
         friendly_name: power prepaid period
         value_template: "{{ ((states.sensor.power_prepaid_monthly.state|float) * (states.sensor.power_period.state|float)) |round(2) }}"
@@ -180,7 +198,7 @@ sensor:
   - platform: template
     sensors:
       electricity_total_cost_monthly:
-        friendly_name: gas cost monthly
+        friendly_name: electricity total cost monthly
         value_template: "{{ ((states.sensor.electricity_total_cost_period.state|float) / (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
@@ -189,6 +207,33 @@ sensor:
         friendly_name: power cost monthly
         value_template: "{{ ((states.sensor.power_cost_period.state|float) / (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
+
+# utilities analys balance period
+  - platform: template
+    sensors:
+      water_balance_period:
+        friendly_name: water balance period
+        value_template: "{{ (states('sensor.water_prepaid_period')|float - states('sensor.water_cost_period')|float) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      gas_balance_period:
+        friendly_name: gas balance period
+        value_template: "{{ (states('sensor.gas_prepaid_period')|float - states('sensor.gas_cost_period')|float) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      electricity_total_balance_period:
+        friendly_name: electricity total balance period
+        value_template: "{{ (states('sensor.electricity_total_prepaid_period')|float - states('sensor.electricity_total_cost_period')|float) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      power_balance_period:
+        friendly_name: power balance period
+        value_template: "{{ (states('sensor.power_prepaid_period')|float - states('sensor.power_cost_period')|float) |round(2) }}"
+        unit_of_measurement: 'eur'
+
 
 rest_command:
   post_gas:

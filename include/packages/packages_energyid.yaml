@@ -113,7 +113,13 @@ sensor:
     sensors:
      cost_water:
        friendly_name: water
-       value_template: "{{ (states('sensor.consumption_water')|float * 5) |round(2) }}"
+       value_template: "{{ (states('sensor.consumption_water')|float * 3.7) |round(2) }}"
+       unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+     cost_water_monthly:
+       friendly_name: water
+       value_template: "{{ (states('sensor.cost_water')|float / 12) |round(2) }}"
        unit_of_measurement: 'eur'
   - platform: template
     sensors:
@@ -121,19 +127,19 @@ sensor:
         friendly_name: gas
         value_template: >-
             {% set c = states('sensor.consumption_gas')|float %}
-            {{ (((c  * 10.15) * 0.05)|float |round(2)) }}
+            {{ (((c  * 10.15) * 0.005618255)|float |round(2)) }}
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       cost_day:
         friendly_name: cost day
-        value_template: "{{ (states('sensor.consumption_day') | float * 0.33 |round(1) ) }}"
+        value_template: "{{ (states('sensor.consumption_day') | float * 0.265747801 |round(1) ) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       cost_night:
         friendly_name: cost night
-        value_template: "{{ (states('sensor.consumption_night') | float * 0.33 |round(1) ) }}"
+        value_template: "{{ (states('sensor.consumption_night') | float *  0.265747801 |round(1) ) }}"
         unit_of_measurement: 'eur'
 
   - platform: template
@@ -324,6 +330,13 @@ automation:
         unit_of_measurement: 'eur'
         icon: mdi:counter
         Start date: 31/01/2019
+    - service: python_script.set_state
+      data_template:
+        entity_id: sensor.budget_water_monthly
+        state: 27.33
+        unit_of_measurement: 'eur'
+        icon: mdi:counter
+        Start date: 11/03/2019
     - service: python_script.set_state
       data_template:
         entity_id: sensor.baseline_gas

@@ -5,7 +5,7 @@ input_datetime:
     has_time: true
   current_gas:
     has_date: true
-    has_time: truee
+    has_time: true
   current_water:
     has_date: true
     has_time: true

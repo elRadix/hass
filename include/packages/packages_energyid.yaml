@@ -121,7 +121,7 @@ sensor:
     sensors:
       power_prepaid_period:
         friendly_name: power prepaid period
-        value_template: "{{ ((states.sensor.power_prepaid_monthly|float) * (states.sensor.water_period.state|float)) |round(2) }}"
+        value_template: "{{ ((states.sensor.power_prepaid_monthly|float) * (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
 
 # utilities cost - actuals
@@ -176,16 +176,19 @@ sensor:
       gas_cost_monthly:
         friendly_name: gas cost monthly
         value_template: "{{ ((states.sensor.gas_cost_period.state|float) / (states.sensor.power_period.state|float)) |round(2) }}"
+        unit_of_measurement: 'eur'
   - platform: template
     sensors:
       electricity_total_cost_monthly:
         friendly_name: gas cost monthly
         value_template: "{{ ((states.sensor.electricity_total_cost_period.state|float) / (states.sensor.power_period.state|float)) |round(2) }}"
+        unit_of_measurement: 'eur'
   - platform: template
     sensors:
       power_cost_monthly:
         friendly_name: cost power month
         value_template: "{{ ((states.sensor.power_cost_period.state|float) / (states.sensor.power_period.state|float)) |round(2) }}"
+        unit_of_measurement: 'eur'
 
 rest_command:
   post_gas:

@@ -121,7 +121,7 @@ sensor:
     sensors:
       power_prepaid_period:
         friendly_name: power prepaid period
-        value_template: "{{ ((states.sensor.power_prepaid_monthly|float) * (states.sensor.power_period.state|float)) |round(2) }}"
+        value_template: "{{ ((states.sensor.power_prepaid_monthly.state|float) * (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
 
 # utilities cost - actuals
@@ -186,7 +186,7 @@ sensor:
   - platform: template
     sensors:
       power_cost_monthly:
-        friendly_name: cost power month
+        friendly_name: power cost monthly
         value_template: "{{ ((states.sensor.power_cost_period.state|float) / (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
 
@@ -418,82 +418,3 @@ automation:
         icon: mdi:counter
         date: "{{ states.input_text.date_gas_last.state }}"
         source: https://www.energyid.eu
-
-
-
-
-#   - id: energyid_05
-#     initial_state: 'true'
-#     alias: update baseline and current energie meters
-#     trigger:
-#       platform: homeassistant
-#       event: start
-#     action:
-
-#     - service: python_script.set_state
-#       data_template:
-#         entity_id: sensor.budget_power_monthly
-#         state: 70.29
-#         unit_of_measurement: 'eur'
-#         icon: mdi:counter
-#         Start date: 31/01/2019
-#     - service: python_script.set_state
-#       data_template:
-#         entity_id: sensor.baseline_gas
-#         state: 5612
-#         unit_of_measurement: 'm3'
-#         icon: mdi:counter
-#         Snapshot date: 31/01/2019
-#     - service: python_script.set_state
-#       data_template:
-#         entity_id: sensor.baseline_water
-#         unit_of_measurement: 'm3'
-#         icon: mdi:counter
-#         state: 781
-#         Snapshot date: 31/01/2019
-#     - service: python_script.set_state
-#       data_template:
-#         entity_id: sensor.baseline_e_day
-#         state: 13915
-#         unit_of_measurement: 'kWh'
-#         icon: mdi:counter
-#         Snapshot date: 31/01/2019
-#     - service: python_script.set_state
-#       data_template:
-#         entity_id: sensor.baseline_e_night
-#         unit_of_measurement: 'kWh'
-#         icon: mdi:counter
-#         state: 16218
-#         Snapshot date: 31/01/2019
-#     - service: python_script.set_state
-#       data_template:
-#         entity_id: sensor.current_e_night
-#         state: "{{ states('input_text.current_e_night') }}"
-#         unit_of_measurement: 'kWh'
-#         icon: mdi:counter
-#         date: "{{ states.input_text.date_current_e_night.state }}"
-#         source: https://www.energieid.be
-#     - service: python_script.set_state
-#       data_template:
-#         entity_id: sensor.current_e_day
-#         state: "{{ states('input_text.current_e_day') }}"
-#         unit_of_measurement: 'kWh'
-#         icon: mdi:counter
-#         date: "{{ states.input_text.date_current_e_day.state }}"
-#         source: https://www.energieid.be
-#     - service: python_script.set_state
-#       data_template:
-#         entity_id: sensor.current_water
-#         state: "{{ states('input_text.current_water') }}"
-#         unit_of_measurement: 'm3'
-#         icon: mdi:counter
-#         date:  "{{ states.input_text.date_current_water.state }}"
-#         source: https://www.energieid.be
-#     - service: python_script.set_state
-#       data_template:
-#         entity_id: sensor.current_gas
-#         state: "{{ states('input_text.current_gas') }}"
-#         unit_of_measurement: 'm3'
-#         icon: mdi:counter
-#         date: "{{ states.input_text.date_current_gas.state }}"
-#         source: https://www.energieid.be

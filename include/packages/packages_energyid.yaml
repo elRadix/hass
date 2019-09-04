@@ -148,7 +148,7 @@ sensor:
     sensors:
      water_cost_period:
        friendly_name: water cost period
-       value_template: "{{ (states('sensor.water_consumption_period')|float * 5.5142) |round(2) }}"
+       value_template: "{{ (states('sensor.water_consumption_period')|float * 3.8 ) |round(2) }}"
        unit_of_measurement: 'eur'
   - platform: template
     sensors:

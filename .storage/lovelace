@@ -1,18 +1,6 @@
 {
     "data": {
         "config": {
-            "animated_background": {
-                "default_url": "/community_plugin/lovelace-animated-background/background-animations/sunny.html",
-                "entity": "weather.dark_sky",
-                "state_url": {
-                    "clear-night": "/community_plugin/lovelace-animated-background/background-animations/night.html",
-                    "cloudy": "/community_plugin/lovelace-animated-background/background-animations/cloudy.html",
-                    "fog": "/community_plugin/lovelace-animated-background/background-animations/fog.html",
-                    "mostlycloudy": "/community_plugin/lovelace-animated-background/background-animations/mostlycloudy.html",
-                    "partlycloudy": "/community_plugin/lovelace-animated-background/background-animations/cloudy.html",
-                    "sunny": "/community_plugin/lovelace-animated-background/background-animations/sunny.html"
-                }
-            },
             "cch": {
                 "active_tab_color": "red",
                 "clock_am_pm": false,
@@ -8548,56 +8536,6 @@
                     "badges": [],
                     "cards": [
                         {
-                            "entities": [
-                                {
-                                    "type": "divider"
-                                },
-                                {
-                                    "entity": "input_number.energyid_e_day_current"
-                                },
-                                {
-                                    "entity": "input_number.energyid_e_night_current"
-                                },
-                                {
-                                    "entity": "input_number.energyid_gas_current"
-                                },
-                                {
-                                    "entity": "input_number.energyid_water_current"
-                                },
-                                {
-                                    "type": "divider"
-                                },
-                                {
-                                    "entity": "sensor.baseline_e_day"
-                                },
-                                {
-                                    "entity": "sensor.baseline_e_night"
-                                },
-                                {
-                                    "entity": "sensor.baseline_gas"
-                                },
-                                {
-                                    "entity": "sensor.baseline_water"
-                                },
-                                {
-                                    "type": "divider"
-                                },
-                                {
-                                    "entity": "sensor.current_e_day"
-                                },
-                                {
-                                    "entity": "sensor.current_e_night"
-                                },
-                                {
-                                    "entity": "sensor.current_water"
-                                },
-                                {
-                                    "entity": "sensor.current_gas"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
                             "aspect_ratio": "100%",
                             "type": "iframe",
                             "url": "https://www.energieid.be/permalink?q=zM8Wfv6hue5MytxOwzVIjqFfYTYIj02qLm8yOfBUQ76vDoFy5Oj5biuOYKYuX%2f0bOk11zjr5DRib%2bXwhEUjS4gtviArcX9u5Iu7zFlTS3%2fAHE0jrpdSSxgbItn4MaKPUTGvRryr%2bB8DR01TK8U0pvdT1Bf3fxcznQsn%2fyOoFpSI%3d"
@@ -8626,65 +8564,6 @@
                             "aspect_ratio": "100%",
                             "type": "iframe",
                             "url": "https://www.energieid.be/permalink?q=1y2nHFWuq%2fOxCA75IY%2fNZ%2fPh%2fCEXMBM%2fxfHUg1Zn0H1M7XVQ2pGfdTYDSLLOWTfd%2fYUOoYp%2fpV2UdrzRYf3w1doVM2b1rhP4DqBQGXJ2i%2bR5CT9jg1O3B7uvcPdsPUU%2btB1vyNsJdtOxttImCvW29w%3d%3d"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "input_number.energyid_gas_current",
-                                    "name": " GAS"
-                                },
-                                {
-                                    "action_name": "SEND GAS",
-                                    "name": " ",
-                                    "service": "input_number.set_value",
-                                    "service_data": {
-                                        "entity_id": "input_number.energyid_gas_current"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "entity": "input_number.energyid_water_current",
-                                    "name": "WATER "
-                                },
-                                {
-                                    "action_name": "send water",
-                                    "name": " ",
-                                    "service": "input_number.set_value",
-                                    "service_data": {
-                                        "entity_id": "input_number.energyid_water_current"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "entity": "input_number.energyid_e_day_current",
-                                    "name": " "
-                                },
-                                {
-                                    "action_name": "send day",
-                                    "name": " ELECTRIC DAY",
-                                    "service": "input_number.set_value",
-                                    "service_data": {
-                                        "entity_id": "input_number.energyid_e_day_current"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "entity": "input_number.energyid_e_night_current",
-                                    "name": " "
-                                },
-                                {
-                                    "action_name": "send night",
-                                    "name": " ELETRIC NIGHT ",
-                                    "service": "input_number.set_value",
-                                    "service_data": {
-                                        "entity_id": "input_number.energyid_e_night_current"
-                                    },
-                                    "type": "call-service"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "EnergieID",
-                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:power",
@@ -10482,6 +10361,249 @@
                     "path": "",
                     "theme": "Backend-selected",
                     "title": "S7"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_number.water_last",
+                                    "icon": "mdi:water-outline",
+                                    "name": "water"
+                                },
+                                {
+                                    "entity": "input_number.gas_last",
+                                    "icon": "mdi:fire",
+                                    "name": "gas"
+                                },
+                                {
+                                    "entity": "input_number.electricity_day_last",
+                                    "icon": "mdi:flash-outline",
+                                    "name": "electricity day"
+                                },
+                                {
+                                    "entity": "input_number.electricity_night_last",
+                                    "icon": "mdi:flash",
+                                    "name": "electricity night"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "input meters",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "align": "split",
+                                    "animation": "on",
+                                    "columns": 1,
+                                    "decimal": "2",
+                                    "entities": [
+                                        "sensor.power_cost_monthly"
+                                    ],
+                                    "height": "40px",
+                                    "indicator": "right",
+                                    "max": 75,
+                                    "min": 0,
+                                    "rounding": "12px",
+                                    "saturation": "75%",
+                                    "severity": [
+                                        {
+                                            "color": "green",
+                                            "value": 70
+                                        },
+                                        {
+                                            "color": "orange",
+                                            "value": 71
+                                        },
+                                        {
+                                            "color": "red",
+                                            "value": 75
+                                        }
+                                    ],
+                                    "target": 70,
+                                    "title": "consumption",
+                                    "title_position": "inside",
+                                    "title_style": {
+                                        "color": "#00FF00",
+                                        "font-size": "15px",
+                                        "text-transform": "uppercase"
+                                    },
+                                    "type": "custom:bar-card"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.power_prepaid_period",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "prepaid period"
+                                },
+                                {
+                                    "entity": "sensor.power_cost_period",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "cost period"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.power_balance_period",
+                                    "icon": "mdi:scale-balance",
+                                    "name": "BALANCE"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Mega Summary",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.gas_consumption_period",
+                                    "icon": "mdi:fire",
+                                    "name": "consumption period"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.gas_prepaid_monthly",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "prepaid monthly"
+                                },
+                                {
+                                    "entity": "sensor.gas_cost_monthly",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "cost monthly"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.gas_prepaid_period",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "prepaid period"
+                                },
+                                {
+                                    "entity": "sensor.gas_cost_period",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "cost period"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.gas_balance_period",
+                                    "icon": "mdi:scale-balance",
+                                    "name": "BALANCE"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "gas",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.electricity_day_consumption_period",
+                                    "icon": "mdi:flash-outline",
+                                    "name": "day - consumption period"
+                                },
+                                {
+                                    "entity": "sensor.electricity_night_consumption_period",
+                                    "icon": "mdi:flash",
+                                    "name": "night - consumption period"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.electricity_total_prepaid_monthly",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "prepaid monthly"
+                                },
+                                {
+                                    "entity": "sensor.electricity_total_cost_monthly",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "cost monthly"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.electricity_total_prepaid_period",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "prepaid period"
+                                },
+                                {
+                                    "entity": "sensor.electricity_total_cost_period",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "cost period"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.electricity_total_balance_period",
+                                    "icon": "mdi:scale-balance",
+                                    "name": "BALANCE"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "electricity",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.water_consumption_period",
+                                    "icon": "mdi:water-outline",
+                                    "name": "consumption period"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.water_prepaid_monthly",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "prepaid monthly"
+                                },
+                                {
+                                    "entity": "sensor.water_cost_monthly",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "cost monthly"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.water_prepaid_period",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "prepaid period"
+                                },
+                                {
+                                    "entity": "sensor.water_cost_period",
+                                    "icon": "mdi:currency-eur",
+                                    "name": "cost period"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.water_balance_period",
+                                    "icon": "mdi:scale-balance",
+                                    "name": "BALANCE"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "water",
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "energy",
+                    "title": "Energy"
                 }
             ]
         }

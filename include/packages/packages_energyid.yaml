@@ -244,7 +244,7 @@ sensor:
         value_template: >-
             {% set a = states('sensor.water_prepaid_monthly')|float %}
             {% set b = states('sensor.water_cost_monthly')|float %}
-            {{  (((a *12 ) - (b  * 12)))|float |round(2)  }}
+            {{  (((a * 12 ) - (b  * 12)))|float |round(2)  }}
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
@@ -253,7 +253,7 @@ sensor:
         value_template: >-
             {% set a = states('sensor.gas_prepaid_monthly')|float %}
             {% set b = states('sensor.gas_cost_monthly')|float %}
-            {{  (((a *12 ) - (b  * 12)))|float |round(2)  }}
+            {{  (((a * 12 ) - (b  * 12)))|float |round(2)  }}
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
@@ -262,18 +262,16 @@ sensor:
         value_template: >-
             {% set a = states('sensor.electricity_total_prepaid_monthly')|float %}
             {% set b = states('sensor.electricity_total_cost_monthly')|float %}
-            {{  (((a *12 ) - (b  * 12)))|float |round(2)  }}
+            {{  (((a * 12 ) - (b  * 12)))|float |round(2)  }}
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       power_balance_fcst:
-        friendly_name: power balance
+        friendly_name: power balance fcst
         value_template: >-
-            {% set a = states('sensor.electricity_prepaid_fcst')|float %}
-            {% set b = states('sensor.gas_prepaid_fcst')|float %}
-            {% set c = states('sensor.electricity_cost_fcst')|float %}
-            {% set d = states('sensor.gas_cost_fcst')|float %}
-            {{  ((a + b) - (c + d))|float |round(2)  }}
+            {% set a = states('sensor.electricity_total_balance_fcst')|float %}
+            {% set b = states('sensor.gas_balance_fcst')|float %}
+            {{  (a + b)|float |round(2)  }}
         unit_of_measurement: 'eur'
 
 

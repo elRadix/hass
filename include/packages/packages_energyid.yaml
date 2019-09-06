@@ -255,7 +255,6 @@ sensor:
     sensors:
       water_balance_prognose:
         friendly_name: water cost prognose
-        value_template: "{{ (states('sensor.power_prepaid_period')|float - states('sensor.power_cost_period')|float) |round(2) }}"
         value_template:  "{{ (states('sensor.water_cost_prognose')|float - states('sensor.water_period_prognose')|float)|round(2) }}"
         unit_of_measurement: 'eur'
 

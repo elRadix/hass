@@ -306,7 +306,7 @@ sensor:
   - platform: template
     sensors:
       power_balance_prognose:
-        friendly_name: electricity balance
+        friendly_name: power balance
         value_template:  "{{ (states('sensor.power_period_prognose')|float - states('sensor.power_cost_prognose')|float)|round(2) }}"
         unit_of_measurement: 'eur'
 

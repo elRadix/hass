@@ -237,8 +237,6 @@ sensor:
         unit_of_measurement: 'eur'
 
 # prognose
-
-
   - platform: template
     sensors:
       water_period_prognose:
@@ -254,9 +252,85 @@ sensor:
   - platform: template
     sensors:
       water_balance_prognose:
-        friendly_name: water cost prognose
-        value_template:  "{{ (states('sensor.water_cost_prognose')|float - states('sensor.water_period_prognose')|float)|round(2) }}"
+        friendly_name: water balance
+        value_template:  "{{ (states('sensor.water_period_prognose')|float - states('sensor.water_cost_prognose')|float)|round(2) }}"
         unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      gas_period_prognose:
+        friendly_name: gas period prognose
+        value_template: "{{ (states('sensor.gas_prepaid_monthly')|float * 12) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      gas_cost_prognose:
+        friendly_name: gas cost prognose
+        value_template: "{{ (states('sensor.gas_cost_monthly')|float * 12) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      gas_balance_prognose:
+        friendly_name: gas balance
+        value_template:  "{{ (states('sensor.gas_period_prognose')|float - states('sensor.gas_cost_prognose')|float)|round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      electricity_period_prognose:
+        friendly_name: electricity period prognose
+        value_template: "{{ (states('sensor.electricity_total_prepaid_monthly')|float * 12) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      electricity_cost_prognose:
+        friendly_name: electricity cost prognose
+        value_template: "{{ (states('sensor.electricity_total_cost_monthly')|float * 12) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      electricity_balance_prognose:
+        friendly_name: electricity balance
+        value_template:  "{{ (states('sensor.electricity_period_prognose')|float - states('sensor.electricity_cost_prognose')|float)|round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      power_period_prognose:
+        friendly_name: power period prognose
+        value_template: "{{ (states('sensor.electricity_period_prognose')|float - states('gas_period_prognose')|float)|round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      power_cost_prognose:
+        friendly_name: power cost prognose
+        value_template: "{{ (states('sensor.electricity_total_cost_monthly')|float * 12) |round(2) }}"
+        unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      power_balance_prognose:
+        friendly_name: electricity balance
+        value_template:  "{{ (states('sensor.power_period_prognose')|float - states('sensor.power_cost_prognose')|float)|round(2) }}"
+        unit_of_measurement: 'eur'
+
+
+  # - platform: template
+  #   sensors:
+  #     power_balance_prognose:
+  #       friendly_name: gas period prognose
+  #       value_template: "{{ (states('sensor.electricity_total_prepaid_monthly')|float  * 12) +  "{{ (states('sensor.gas_period_prognose')|float |round(2) }}"
+  #       unit_of_measurement: 'eur'
+
+  # - platform: template
+  #   sensors:
+  #     power_cost_prognose:
+  #       friendly_name: electricity cost prognose
+  #       value_template: "{{ (states('sensor.power_total_cost_monthly')|float * 12) |round(2) }}"
+  #       unit_of_measurement: 'eur'
+  # - platform: template
+  #   sensors:
+  #     power_balance_prognose:
+  #       friendly_name: electricity balance
+  #       value_template:  "{{ (states('sensor.power_period_prognose')|float - states('sensor.powercost_prognose')|float)|round(2) }}"
+  #       unit_of_measurement: 'eur'
+
 
 rest_command:
   post_gas:

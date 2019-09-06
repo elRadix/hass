@@ -60,6 +60,7 @@ sensor:
   - platform: template
     sensors:
       water_period:
+        entity_id: sensor.date
         friendly_name: water period
         value_template: >-
             {% set date = 'December 2018' %}
@@ -69,6 +70,7 @@ sensor:
   - platform: template
     sensors:
       power_period:
+        entity_id: sensor.date
         friendly_name: power period
         value_template: >-
             {% set date = 'January 2019' %}

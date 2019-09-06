@@ -238,25 +238,26 @@ sensor:
 
 # prognose
 
+
   - platform: template
     sensors:
       water_period_prognose:
         friendly_name: water period prognose
-        value_template: "{{ ((states.sensor.water_prepaid_monthly.state|float) * 12 |round(2) }}"
+        value_template: "{{ (states('sensor.water_prepaid_monthly')|float * 12) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       water_cost_prognose:
         friendly_name: water cost prognose
-        value_template: "{{ ((states.water_cost_monthly.state|float)  * 12 |round(2) }}"
+        value_template: "{{ (states('sensor.water_cost_monthly')|float * 12) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
-      water_prognose:
-        friendly_name: water prognose
-        value_template: "{{ ((states.water_cost_prognose.state|float)  - states('sensor.water_period_prognose')|float) |round(2) }}"
+      water_balance_prognose:
+        friendly_name: water cost prognose
+        value_template: "{{ (states('sensor.power_prepaid_period')|float - states('sensor.power_cost_period')|float) |round(2) }}"
+        value_template:  "{{ (states('sensor.water_cost_prognose')|float - states('sensor.water_period_prognose')|float)|round(2) }}"
         unit_of_measurement: 'eur'
-
 
 rest_command:
   post_gas:

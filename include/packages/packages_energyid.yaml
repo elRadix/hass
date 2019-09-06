@@ -289,19 +289,19 @@ sensor:
     sensors:
       electricity_balance_prognose:
         friendly_name: electricity balance
-        value_template:  "{{ (states('sensor.electricity_period_prognose')|float - states('sensor.electricity_cost_prognose')|float)|round(2) }}"
+        value_template:  "{{ (states('sensor.electricity_period_prognose')|float + states('sensor.electricity_cost_prognose')|float)|round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       power_period_prognose:
         friendly_name: power period prognose
-        value_template: "{{ (states('sensor.electricity_period_prognose')|float - states('gas_period_prognose')|float)|round(2) }}"
+        value_template: "{{ (states('sensor.electricity_period_prognose')|float + states('sensor.gas_period_prognose')|float)|round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       power_cost_prognose:
         friendly_name: power cost prognose
-        value_template: "{{ (states('sensor.electricity_total_cost_monthly')|float * 12) |round(2) }}"
+        value_template: "{{ (states('sensor.electricity_period_prognose')|float + states('sensor.gas_cost_prognose')|float)|round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:

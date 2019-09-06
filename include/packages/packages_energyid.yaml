@@ -256,7 +256,7 @@ sensor:
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
-      electricity_balance_fcst:
+      electricity_total_balance_fcst:
         friendly_name: electricity fcst
         value_template: >-
             {% set a = states('sensor.electricity_total_prepaid_monthly')|float %}

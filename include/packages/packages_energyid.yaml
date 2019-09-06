@@ -235,12 +235,11 @@ sensor:
         friendly_name: power balance period
         value_template: "{{ (states('sensor.power_prepaid_period')|float - states('sensor.power_cost_period')|float) |round(2) }}"
         unit_of_measurement: 'eur'
-
 # fcst
   - platform: template
     sensors:
       water_balance_fcst:
-        friendly_name: gas balance
+        friendly_name: gas fcst
         value_template: >-
             {% set a = states('sensor.water_prepaid_monthly')|float %}
             {% set b = states('sensor.water_cost_monthly')|float %}
@@ -249,7 +248,7 @@ sensor:
   - platform: template
     sensors:
       gas_balance_fcst:
-        friendly_name: gas balance
+        friendly_name: gas fcst
         value_template: >-
             {% set a = states('sensor.gas_prepaid_monthly')|float %}
             {% set b = states('sensor.gas_cost_monthly')|float %}
@@ -258,7 +257,7 @@ sensor:
   - platform: template
     sensors:
       electricity_balance_fcst:
-        friendly_name: electricity balance
+        friendly_name: electricity fcst
         value_template: >-
             {% set a = states('sensor.electricity_total_prepaid_monthly')|float %}
             {% set b = states('sensor.electricity_total_cost_monthly')|float %}
@@ -273,7 +272,6 @@ sensor:
             {% set b = states('sensor.gas_balance_fcst')|float %}
             {{  (a + b)|float |round(2)  }}
         unit_of_measurement: 'eur'
-
 
 rest_command:
   post_gas:

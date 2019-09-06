@@ -239,77 +239,42 @@ sensor:
 # fcst
   - platform: template
     sensors:
-      water_prepaid_fcst:
-        friendly_name: water prepaid fcst
-        value_template: "{{ (states('sensor.water_prepaid_monthly')|float * 12) |round(2) }}"
-        unit_of_measurement: 'eur'
-  - platform: template
-    sensors:
-      water_cost_fcst:
-        friendly_name: water cost fcst
-        value_template: "{{ (states('sensor.water_cost_monthly')|float * 12) |round(2) }}"
-        unit_of_measurement: 'eur'
-  - platform: template
-    sensors:
       water_balance_fcst:
-        friendly_name: water balance
-        value_template:  "{{ (states('sensor.water_prepaid_fcst')|float - states('sensor.water_cost_fcst')|float)|round(2) }}"
-        unit_of_measurement: 'eur'
-  - platform: template
-    sensors:
-      gas_prepaid_fcst:
-        friendly_name: gas prepaid fcst
-        value_template: "{{ (states('sensor.gas_prepaid_monthly')|float * 12) |round(2) }}"
-        unit_of_measurement: 'eur'
-  - platform: template
-    sensors:
-      gas_cost_fcst:
-        friendly_name: gas cost fcst
-        value_template: "{{ (states('sensor.gas_cost_monthly')|float * 12) |round(2) }}"
+        friendly_name: gas balance
+        value_template: >-
+            {% set a = states('sensor.water_prepaid_monthly')|float %}
+            {% set b = states('sensor.water_cost_monthly')|float %}
+            {{  (((a *12 ) - (b  * 12)))|float |round(2)  }}
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       gas_balance_fcst:
         friendly_name: gas balance
-        value_template:  "{{ (states('sensor.gas_prepaid_fcst')|float - states('sensor.gas_cost_fcst')|float)|round(2) }}"
-        unit_of_measurement: 'eur'
-  - platform: template
-    sensors:
-      electricity_prepaid_fcst:
-        friendly_name: electricity prepaid fcst
-        value_template: "{{ (states('sensor.electricity_total_prepaid_monthly')|float * 12) |round(2) }}"
-        unit_of_measurement: 'eur'
-  - platform: template
-    sensors:
-      electricity_cost_fcst:
-        friendly_name: electricity cost fcst
-        value_template: "{{ (states('sensor.electricity_total_cost_monthly')|float * 12) |round(2) }}"
+        value_template: >-
+            {% set a = states('sensor.gas_prepaid_monthly')|float %}
+            {% set b = states('sensor.gas_cost_monthly')|float %}
+            {{  (((a *12 ) - (b  * 12)))|float |round(2)  }}
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       electricity_balance_fcst:
         friendly_name: electricity balance
-        value_template:  "{{ (states('sensor.electricity_prepaid_fcst')|float - states('sensor.electricity_cost_fcst')|float)|round(2) }}"
-        unit_of_measurement: 'eur'
-  - platform: template
-    sensors:
-      power_prepaid_fcst:
-        friendly_name: power prepaid fcst
-        value_template: "{{ (states('sensor.electricity_prepaid_fcst')|float + states('sensor.gas_prepaid_fcst')|float)|round(2) }}"
-        unit_of_measurement: 'eur'
-  - platform: template
-    sensors:
-      power_cost_fcst:
-        friendly_name: power cost fcst
-        value_template: "{{ (states('sensor.electricity_cost_fcst')|float + states('sensor.gas_cost_fcst')|float)|round(2) }}"
+        value_template: >-
+            {% set a = states('sensor.electricity_total_prepaid_monthly')|float %}
+            {% set b = states('sensor.electricity_total_cost_monthly')|float %}
+            {{  (((a *12 ) - (b  * 12)))|float |round(2)  }}
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       power_balance_fcst:
         friendly_name: power balance
-        value_template:  "{{ (states('sensor.power_prepaid_fcst')|float - states('sensor.power_cost_fcst')|float)|round(2) }}"
+        value_template: >-
+            {% set a = states('sensor.electricity_prepaid_fcst')|float %}
+            {% set b = states('sensor.gas_prepaid_fcst')|float %}
+            {% set c = states('sensor.electricity_cost_fcst')|float %}
+            {% set d = states('sensor.gas_cost_fcst')|float %}
+            {{  ((a + b) - (c + d))|float |round(2)  }}
         unit_of_measurement: 'eur'
-
 
 
 rest_command:

@@ -1,0 +1,246 @@
+---
+switch:
+  - platform: template
+    switches:
+      heat_living:
+        friendly_name: "heating living"
+        value_template: "{{ is_state('switch.heating_living', 'on') }}"
+        turn_on:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_living
+        turn_off:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_living
+
+  - platform: template
+    switches:
+      heat_eetkamer:
+        friendly_name: "heating eetkamer"
+        value_template: "{{ is_state('switch.heating_eetkamer', 'on') }}"
+        turn_on:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_eetkamer
+        turn_off:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_eetkamer
+
+  - platform: template
+    switches:
+      heat_sara:
+        friendly_name: "heating sara"
+        value_template: "{{ is_state('switch.heating_sara', 'on') }}"
+        turn_on:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_sara
+        turn_off:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_sara
+
+  - platform: template
+    switches:
+      heat_yassin:
+        friendly_name: "heating yassin"
+        value_template: "{{ is_state('switch.heating_yassin', 'on') }}"
+        turn_on:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_yassin
+        turn_off:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_yassin
+
+  - platform: template
+    switches:
+      heat_floradix:
+        friendly_name: "heating floradix"
+        value_template: "{{ is_state('switch.heating_floradix', 'on') }}"
+        turn_on:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_floradix
+        turn_off:
+          service: python_script.easyplus_switch_entity
+          entity_id: switch.heating_floradix
+
+
+# group:
+#   heating:
+#     name: heating
+#     control: hidden
+#     view: no
+#     icon: mdi:radiator
+#     entities:
+#       -  XXXXX
+
+# timer:
+#   heating_short_living:
+#     duration: '01:00:00'
+#     icon: 'mdi:radiator'
+#   heating_long_living:
+#     duration: '02:00:00'
+#     icon: 'mdi:radiator'
+#   heating_short_dinner:
+#     duration: '01:00:00'
+#     icon: 'mdi:radiator'
+#   heating_long_dinner:
+#     duration: '02:00:00'
+#     icon: 'mdi:radiator'
+#   heating_short_kids:
+#     duration: '01:00:00'
+#     icon: 'mdi:radiator'
+#   heating_long_kids:
+#     duration: '02:00:00'
+#     icon: 'mdi:radiator'
+#   heating_short_parents:
+#     duration: '01:00:00'
+#     icon: 'mdi:radiator'
+#   heating_long_parents:
+#     duration: '02:00:00'
+#     icon: 'mdi:radiator'
+
+# script:
+#   heating_short_turn_on:
+#     sequence:
+#     - service: python_script.easyplus_switch
+#       entity_id: switch.boiler
+#     - service: shell_command.tmp_{{XXX}}_auto
+#     - service: climate.set_operation_mode
+#       data:
+#         entity_id: climate.{{XXX}}
+#         operation_mode: "heat"
+#     - service: climate.set_temperature
+#       data:
+#         entity_id: climate.living
+#         temperature: 24
+#         hvac_mode: heat
+#     - service: notify.dageraad
+#       data:
+#         message: "heating living on - short"
+#     - service: timer.start
+#       entity_id: timer.heating_short_living
+
+#   heating_short_turn_off:
+#     sequence:
+#     - service: timer.cancel
+#       entity_id: timer.heating_short_living
+#     - service: climate.set_temperature
+#       data:
+#         entity_id: climate.living
+#         temperature: 5
+#         hvac_mode: heat
+#     - service: climate.set_operation_mode
+#       data:
+#         entity_id: climate.living
+#         operation_mode: "off"
+
+# automation:
+#   - id: scenes_heating_start
+#     initial_state: 'true'
+#     alias: 'scenes heating start'
+#     trigger:
+#     - platform: state
+#       entity_id: switch.oled_1, binary_sensor.toilet, switch.oled_2, switch.oled_3, switch.oled_4, switch.oled_5, input_boolean.brush, input_boolean.shave, input_boolean.shower, input_boolean.bath
+#       to: 'on'
+#      action:
+#     - service: python_script.easyplus
+#       data_template:
+#         entity_id: "{{ trigger.to_state.name }}_turn_on"
+#     - service: script.tts_notify_scene
+#       data_template:
+#         friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+#         state: '{{ trigger.to_state.state }}'
+
+#   - id: scenes_heating_stop
+#     initial_state: 'true'
+#     alias: 'scenes bath stop'
+#     trigger:
+#     - platform: state
+#       entity_id: switch.oled_1, switch.oled_2, switch.oled_3, switch.oled_4, switch.oled_5, input_boolean.brush, input_boolean.shave, input_boolean.shower, input_boolean.bath
+#       to: 'off'
+#      action:
+#     - service_template: "script.{{ trigger.to_state.name }}_turn_off"
+#     - service: script.tts_notify_scene
+#       data_template:
+#         friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+#         state: '{{ trigger.to_state.state }}'
+
+
+#     - service: climate.set_temperature
+#       data:
+#         entity_id: climate.kitchen
+#         temperature: 24
+#         hvac_mode: heat
+
+# shell_command_heating_tmp_living: "/opt/scripts/apex.sh 'setsetpoint 0,{{ states.input_number.setpoint.state | int}}'"
+# shell_command_heating_tmp_living_auto: "/opt/scripts/apex.sh 'setsetpoint 0,19'"
+# shell_command_heating_tmp_living_off: "/opt/scripts/apex.sh 'setsetpoint 0,5'"
+# shell_command_heating_tmp_slp1_on: "/opt/scripts/apex.sh 'setsetpoint 7,{{ states.input_number.setpoint_slp1.state | int}}'"
+# shell_command_heating_tmp_slp1_auto: "/opt/scripts/apex.sh 'setsetpoint 7,23'"
+# shell_command_heating_tmp_slp1_off: "/opt/scripts/apex.sh 'setsetpoint 7,5'"
+# shell_command_heating_tmp_slp2_on: "/opt/scripts/apex.sh 'setsetpoint 5,{{ states.input_number.setpoint_slp2.state | int }}'"
+# shell_command_heating_tmp_slp2_auto: "/opt/scripts/apex.sh 'setsetpoint 5,19'"
+# shell_command_heating_tmp_slp2_off: "/opt/scripts/apex.sh 'setsetpoint 5,5'"
+# shell_command_heating_tmp_slp3_on: "/opt/scripts/apex.sh 'setsetpoint 6,{{ states.input_number.setpoint_slp3.state | int }}'"
+# shell_command_heating_tmp_slp3_auto: "/opt/scripts/apex.sh 'setsetpoint 6,19'"
+# shell_command_heating_tmp_slp3_off: "/opt/scripts/apex.sh 'setsetpoint 6,5'"
+# shell_command_heating_tmp_bad_on: "/opt/scripts/apex.sh 'setsetpoint 10,{{ states.input_number.setpoint_bad.state | int }}'"
+# shell_command_heating_tmp_bad_auto: "/opt/scripts/apex.sh 'setsetpoint 10,18'"
+# shell_command_heating_tmp_bad_off: "/opt/scripts/apex.sh 'setsetpoint 10,5'"
+# shell_command_heating_tmp_eetkamer_on: "/opt/scripts/apex.sh 'setsetpoint 0,{{ states.input_number.setpoint_eetkamer.state | int}}'"
+# shell_command_heating_tmp_eetkamer_auto: "/opt/scripts/apex.sh 'setsetpoint 0,19'"
+# shell_command_heating_tmp_eetkamer_off: "/opt/scripts/apex.sh 'setsetpoint 0,5'"
+
+#   - service: script.turn_on_easyplus
+#   - service: homeassistant.turn_on
+#     entity_id: switch.ketel
+#   - service: shell_command.tmp_living_auto
+#   - service: input_boolean.turn_on
+#     entity_id: input_boolean.1u_living
+#   - service: input_boolean.turn_on
+#     entity_id: input_boolean.ketel_1h
+#   - service: climate.set_operation_mode
+#     data:
+#       entity_id: climate.living
+#       operation_mode: "heat"
+#   - service: climate.set_temperature
+#     data:
+#       entity_id: climate.living
+#       temperature: 19
+#       operation_mode: "heat"
+
+# heating_short_turn_on:
+#     sequence:
+#     - service: python_script.easyplus_switch
+#       entity_id: switch.ketel
+#     - service: shell_command.tmp_{{XXX}}_auto
+#     - service: climate.set_operation_mode
+#       data:
+#         entity_id: climate.{{XXX}}
+#         operation_mode: "heat"
+#     - service: climate.set_temperature
+#       data:
+#         entity_id: climate.{{XXX}}
+#         temperature: 22
+#     - service: notify.merwone
+#       data:
+#         message: "heating {{XXX}} on - short"
+#     - service: timer.start
+#       entity_id: timer.heating_short
+
+# automation:
+#   - id: scenes_bath_start
+#     initial_state: 'true'
+#     alias: 'scenes bath start'
+#     trigger:
+#     - platform: state
+#       entity_id: switch.oled_1, binary_sensor.toilet, switch.oled_2, switch.oled_3, switch.oled_4, switch.oled_5, input_boolean.brush, input_boolean.shave, input_boolean.shower, input_boolean.bath
+#       to: 'on'
+#     condition:
+#     - condition: template
+#       value_template: "{{ is_state('script.' ~ trigger.to_state.name ~ '_turn_on', 'off') }}"
+#     action:
+#     - service: python_script.easyplus
+#       data_template:
+#         entity_id: "{{ trigger.to_state.name }}_turn_on"
+#     - service: script.tts_notify_scene
+#       data_template:
+#         friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+#         state: '{{ trigger.to_state.state }}'

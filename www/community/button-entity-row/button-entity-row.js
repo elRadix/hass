@@ -46,6 +46,7 @@ class ButtonEntityRow extends LitElement {
               const entityState = this.hass.states[button.entityId] || {}
               const icon = this._getCurrentIcon(button, entityState)
               const style = this._getCurrentStyle(button, entityState)
+              const iconStyle = this._getCurrentIconStyle(button, entityState)
               const name =
                 button.name || (!icon && entityState.attributes ? entityState.attributes.friendly_name : null)
 
@@ -57,7 +58,7 @@ class ButtonEntityRow extends LitElement {
                 >
                   ${icon &&
                     html`
-                      <ha-icon icon="${icon}" style="${name ? "padding-right: 5px;" : ""}"></ha-icon>
+                      <ha-icon icon="${icon}" style="${iconStyle} ${name ? "padding-right: 5px;" : ""}"></ha-icon>
                     `}
                   ${name}
                   <paper-ripple center class="${name ? "" : "circle"}"></paper-ripple>
@@ -85,21 +86,25 @@ class ButtonEntityRow extends LitElement {
         let button =
           typeof item === "string"
             ? {
-                entityId: item,
-                icon: undefined,
-                stateIcons: undefined,
-                stateStyles: undefined,
-                style: undefined,
-                name: undefined,
-                service: undefined,
-                serviceData: undefined
+              entityId: item,
+              icon: undefined,
+              stateIcons: undefined,
+              stateStyles: undefined,
+              stateIconStyles: undefined,
+              style: undefined,
+              iconStyle: undefined,
+              name: undefined,
+              service: undefined,
+              serviceData: undefined
               }
             : {
                 entityId: item.entity,
                 icon: item.icon,
                 stateIcons: item.state_icons,
                 stateStyles: item.state_styles,
+                stateIconStyles: item.state_icon_styles,
                 style: item.style,
+                iconStyle: item.icon_style,
                 name: item.name,
                 service: item.service,
                 serviceData: item.service_data
@@ -170,6 +175,19 @@ class ButtonEntityRow extends LitElement {
     const mergedStyle = {
       ...this._getObjectData(button.style || {}),
       ...this._getObjectData((button.stateStyles && button.stateStyles[entityState.state]) || {})
+    }
+
+    return Object.keys(mergedStyle)
+      .reduce((style, rule) => {
+        return [...style, `${rule}: ${mergedStyle[rule]};`]
+      }, [])
+      .join(" ")
+  }
+
+  _getCurrentIconStyle(button, entityState) {
+    const mergedStyle = {
+      ...this._getObjectData(button.iconStyle || {}),
+      ...this._getObjectData((button.stateIconStyles && button.stateStyles[entityState.state]) || {})
     }
 
     return Object.keys(mergedStyle)

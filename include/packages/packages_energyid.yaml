@@ -12,7 +12,10 @@ input_datetime:
   electricity_night_last:
     has_date: true
     has_time: true
-
+  datum_eindafrekening
+    has_date: true
+    has_time: true
+    
 input_text:
   gas_last:
     name: "gas_last"
@@ -54,6 +57,16 @@ input_number:
     mode: box
 
 sensor:
+
+# Bereken aantal dagen
+  - platform: template
+    sensors:
+      aantal_verbruiksdagen:
+        friendly_name: "Aantal verbruiksdagen"
+        value_template: '{{ (((as_timestamp(now())-states.input_datetime.datum_eindafrekening.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'dagen'
+        entity_id: input_datetime.datum_eindafrekening,sensor.time
+
 
 #period power + water
 

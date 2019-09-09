@@ -12,7 +12,7 @@ input_datetime:
   electricity_night_last:
     has_date: true
     has_time: true
-  datum_eindafrekening
+  datum_eindafrekening:
     has_date: true
     has_time: true
     

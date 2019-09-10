@@ -65,9 +65,7 @@
       - astronomical_night
       - max_elevation
 
-  - platform: filesize
-    file_paths:
-      - !secret scripts_directory_log
+
 
 
   - platform: vrtnws
@@ -115,6 +113,9 @@
   - platform: filesize
     file_paths:
       - !secret hassdb
+  - platform: filesize
+    file_paths:
+      - !secret scripts_directory_log
 
 
 # docker mariadb

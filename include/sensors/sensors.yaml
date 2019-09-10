@@ -110,6 +110,12 @@
     source: sensor.smappee_power
     unit_prefix: k
     round: 2
+# local db
+  - platform: filesize
+    file_paths:
+      - /home/homeassistant/.homeassistant/home-assistant_v2.db
+
+
 
 # docker mariadb
 #   - platform: sql
@@ -133,10 +139,6 @@
 
 
 
-# local db
-   - platform: filesize
-     file_paths:
-       - /home/homeassistant/.homeassistant/home-assistant_v2.db
 
 
 

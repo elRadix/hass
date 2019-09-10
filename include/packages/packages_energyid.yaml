@@ -68,7 +68,7 @@ sensor:
         friendly_name: "Days consumed"
         value_template: '{{ (((as_timestamp(now())-states.input_datetime.meter_start.attributes.timestamp)) | int /60/1440) | round(0) }}'
         unit_of_measurement: 'days'
-        entity_id: input_datetime.datum_eindafrekening,sensor.time
+        entity_id: input_datetime.meter_start,sensor.time
 
   - platform: template
     sensors:
@@ -175,6 +175,16 @@ sensor:
         friendly_name: electricity daily
         value_template: "{{ (states('sensor.electricity_total_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
         unit_of_measurement: 'kWh'
+
+  - platform: template
+    sensors:
+      gas_day_forecast:
+        friendly_name: gas monhtly
+        value_template: >-
+            {% set a = states('sensor.gas_consumption_day')|float %}
+            {% set b = states('sensor.gas_cost_monthly')|float %}
+            {{  (((a * 365 ) /12 ))|float |round(2)  }}
+
 
 #prepaid utilities
 
@@ -290,6 +300,34 @@ sensor:
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
+      gas_balance_period_tweaked:
+        friendly_name: gas cost period tweaked
+        value_template: >-
+            {% set consumption = states('sensor.gas_consumption_day') |float %}
+            {% set days = states('sensor.days_consumed') |float %}
+            {% set price = 0.0674190647482014 |float %}
+            {% set conversion = 10.15 |float %}
+            {% set prepaid = states('sensor.gas_prepaid_monthly') |float %}
+            {% set cost =  (((consumption * days ) * conversion * price ))|float |round(2) %}
+            {% set prepaid_day =  (((prepaid *12 /365) * days )) |float |round(2) %}
+            {{  (prepaid_day - cost )  |float |round(2)  }}
+        unit_of_measurement: 'eur'
+
+  - platform: template
+    sensors:
+      gas_cost_period_tweaked:
+        friendly_name: gas cost period tweaked
+        value_template: >-
+            {% set day = states('sensor.gas_consumption_day')|float %}
+            {% set consumed = states('sensor.days_consumed')|float %}
+            {% set price = 0.0674190647482014 |float %}
+            {% set conversion = 10.15 |float %}
+            {% set cost =  (((day * consumed )  * conversion * price ))|float |round(2) %}
+            {{  (cost )  |float |round(2)  }}
+        unit_of_measurement: 'eur'
+
+  - platform: template
+    sensors:
       electricity_total_balance_period:
         friendly_name: electricity total balance period
         value_template: "{{ (states('sensor.electricity_total_prepaid_period')|float - states('sensor.electricity_total_cost_period')|float) |round(2) }}"
@@ -319,6 +357,22 @@ sensor:
             {% set b = states('sensor.gas_cost_monthly')|float %}
             {{  (((a * 12 ) - (b  * 12)))|float |round(2)  }}
         unit_of_measurement: 'eur'
+  - platform: template
+    sensors:
+      gas_balance_fcst_tweaked:
+        friendly_name: gas cost period tweaked
+        value_template: >-
+            {% set consumption = states('sensor.gas_consumption_day') |float %}
+            {% set days = states('sensor.days_consumed') |float %}
+            {% set price = 0.0674190647482014 |float %}
+            {% set conversion = 10.15 |float %}
+            {% set prepaid = states('sensor.gas_prepaid_monthly') |float %}
+            {% set cost =  (((consumption * days ) * conversion * price ))|float |round(2) %}
+            {% set prepaid_day =  (((prepaid *12 /365) * days )) |float |round(2) %}
+            {% set gas_balance = (prepaid_day - cost )  |float |round(2) %}
+            {{  (gas_balance / days * 365 )  |float |round(2)  }}
+        unit_of_measurement: 'eur'
+
   - platform: template
     sensors:
       electricity_total_balance_fcst:

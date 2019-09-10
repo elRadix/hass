@@ -12,10 +12,13 @@ input_datetime:
   electricity_night_last:
     has_date: true
     has_time: true
-  datum_eindafrekening:
+  meter_start:  # 31/01/2018 pidpa
     has_date: true
     has_time: true
-    
+  water_start:  #24/11/2018 mega
+    has_date: true
+    has_time: true
+
 input_text:
   gas_last:
     name: "gas_last"
@@ -61,13 +64,19 @@ sensor:
 # Bereken aantal dagen
   - platform: template
     sensors:
-      aantal_verbruiksdagen:
-        friendly_name: "Aantal verbruiksdagen"
-        value_template: '{{ (((as_timestamp(now())-states.input_datetime.datum_eindafrekening.attributes.timestamp)) | int /60/1440) | round(0) }}'
-        unit_of_measurement: 'dagen'
+      days_consumed:
+        friendly_name: "Days consumed"
+        value_template: '{{ (((as_timestamp(now())-states.input_datetime.meter_start.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'days'
         entity_id: input_datetime.datum_eindafrekening,sensor.time
 
-
+  - platform: template
+    sensors:
+      days_water_consumed:
+        friendly_name: "Days consumed"
+        value_template: '{{ (((as_timestamp(now())-states.input_datetime.water_start.attributes.timestamp)) | int /60/1440) | round(0) }}'
+        unit_of_measurement: 'days'
+        entity_id: input_datetime.datum_eindafrekening,sensor.time
 #period power + water
 
   - platform: template
@@ -122,6 +131,38 @@ sensor:
       electricity_total_consumption_period:
         friendly_name: electricity total consumption period
         value_template: "{{ (states('sensor.electricity_day_consumption_period')|float + states('sensor.electricity_night_consumption_period')|float) |round(2) }}"
+        unit_of_measurement: 'kWh'
+
+#consumption utilities - per day
+  - platform: template
+    sensors:
+     water_consumption_day:
+       friendly_name: water daily
+       value_template: "{{ (states('sensor.water_consumption_period')|float / states('sensor.days_water_consumed')|float) |round(2) }}"
+       unit_of_measurement: 'm3'
+  - platform: template
+    sensors:
+      gas_consumption_day:
+        friendly_name: gas daily
+        value_template: "{{ (states('sensor.gas_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
+        unit_of_measurement: 'm3'
+  - platform: template
+    sensors:
+      electricity_day_consumption_day:
+        friendly_name: electricity day daily
+        value_template: "{{ (states('sensor.electricity_day_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
+        unit_of_measurement: 'kWh'
+  - platform: template
+    sensors:
+      electricity_night_consumption_day:
+        friendly_name: electricity night daily
+        value_template: "{{ (states('sensor.electricity_night_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
+        unit_of_measurement: 'kWh'
+  - platform: template
+    sensors:
+      electricity_total_consumption_day:
+        friendly_name: electricity daily
+        value_template: "{{ (states('sensor.electricity_total_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
         unit_of_measurement: 'kWh'
 
 #prepaid utilities

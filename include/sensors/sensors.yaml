@@ -111,6 +111,7 @@
     unit_prefix: k
     round: 2
 
+# docker mariadb
 #   - platform: sql
 #     db_url: !secret db_url_local
 #     queries:
@@ -119,22 +120,23 @@
 #         column: 'value'
 #         unit_of_measurement: MB
 
-  - platform: sql
-    db_url: !secret db_url_aws
-    queries:
-      - name: HASS DB size
-        query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / POWER(1024,3), 1) "value" FROM information_schema.tables WHERE table_schema="hassdb" GROUP BY table_schema;'
-        column: 'value'
-        unit_of_measurement: GB
+# amazon db
+#  - platform: sql
+#    db_url: !secret db_url_aws
+#    queries:
+#      - name: HASS DB size
+#        query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / POWER(1024,3), 1) "value" FROM information_schema.tables WHERE table_schema="hassdb" GROUP BY table_schema;'
+#        column: 'value'
+#        unit_of_measurement: GB
 
         #query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1048576, 2) "value" FROM information_schema.tables WHERE table_schema="hassdb" GROUP BY table_schema;'
 
 
 
-
-#   - platform: filesize
-#     file_paths:
-#       - /home/homeassistant/.homeassistant/home-assistant_v2.db
+# local db
+   - platform: filesize
+     file_paths:
+       - /home/homeassistant/.homeassistant/home-assistant_v2.db
 
 
 

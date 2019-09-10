@@ -116,6 +116,12 @@ sensor:
         unit_of_measurement: 'm3'
   - platform: template
     sensors:
+      gas_consumption_period_kwh:
+        friendly_name: gas consumption period kwh
+        value_template: "{{ ((states('sensor.gas_last')|float - states('sensor.gas_start')|float) *  10.15 ) |float |round(0) }}"
+        unit_of_measurement: 'kWh'
+  - platform: template
+    sensors:
       electricity_day_consumption_period:
         friendly_name: electricity day consumption period
         value_template: "{{ (states('sensor.electricity_day_last')|float - states('sensor.electricity_day_start')|float) |round(2) }}"
@@ -138,14 +144,23 @@ sensor:
     sensors:
      water_consumption_day:
        friendly_name: water daily
-       value_template: "{{ (states('sensor.water_consumption_period')|float / states('sensor.days_water_consumed')|float) |round(2) }}"
-       unit_of_measurement: 'm3'
+       value_template: "{{ ((states('sensor.water_consumption_period')|float / states('sensor.days_water_consumed')|float) *  1000 ) |float |round(0) }}"
+       unit_of_measurement: 'liter'
+
+  - platform: template
+    sensors:
+      gas_consumption_day_kwh:
+        friendly_name: gas daily
+        value_template: "{{ ((states('sensor.gas_consumption_period')|float / states('sensor.days_consumed')|float) *  10.15 ) |float |round(0) }}"
+        unit_of_measurement: 'kWh'
   - platform: template
     sensors:
       gas_consumption_day:
         friendly_name: gas daily
         value_template: "{{ (states('sensor.gas_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
         unit_of_measurement: 'm3'
+
+
   - platform: template
     sensors:
       electricity_day_consumption_day:

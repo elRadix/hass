@@ -204,6 +204,12 @@
 
           {{ text }}
 
+      light_offset_1h:
+        friendly_name: Lights go on
+        value_template: '{%- if states.sun.sun -%}{{ ((as_timestamp(states.sun.sun.attributes.next_setting)-(60*60)) | timestamp_local)[11:16] }}{%- else -%}{{"0:00"}}{%- endif -%}'
+        entity_id:
+          - sun.sun
+
       period_of_day:
         friendly_name: 'period of the day'
         value_template: >-
@@ -268,3 +274,6 @@
 #         friendly_name: "Total current"
 #         unit_of_measurement: "A"
 #         value_template: "{{ states('sensor.current__phase_1')|int }}"
+
+
+

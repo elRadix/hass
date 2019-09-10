@@ -100,8 +100,7 @@ sensor:
             {% set today = now() %}
             {{ today.year*12+today.month - (date.year*12+date.month) - 1 }}
 
-#consumption utilities - actuals
-
+#consumption in m3 / kwh
   - platform: template
     sensors:
      water_consumption_period:
@@ -146,7 +145,6 @@ sensor:
        friendly_name: water daily
        value_template: "{{ ((states('sensor.water_consumption_period')|float / states('sensor.days_water_consumed')|float) *  1000 ) |float |round(0) }}"
        unit_of_measurement: 'liter'
-
   - platform: template
     sensors:
       gas_consumption_day_kwh:
@@ -159,8 +157,6 @@ sensor:
         friendly_name: gas daily
         value_template: "{{ (states('sensor.gas_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
         unit_of_measurement: 'm3'
-
-
   - platform: template
     sensors:
       electricity_day_consumption_day:
@@ -374,16 +370,16 @@ automation:
     alias: post energyid gas
     trigger:
     - platform: state
-      entity_id: input_number.gas_last
+      entity_id: input_text.gas_last
     action:
     - service: input_datetime.set_datetime
       entity_id: input_datetime.gas_last
       data_template:
         datetime: "{{ utcnow() }}"
-    - service: input_text.set_value
+    - service: input_number.set_value
       data_template:
-        entity_id: input_text.gas_last
-        value: "{{ states('input_number.gas_last') }}"
+        entity_id: input_number.gas_last
+        value: "{{ states('input_text.gas_last') }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.date_gas_last
@@ -402,16 +398,16 @@ automation:
     alias: post energyid water
     trigger:
     - platform: state
-      entity_id: input_number.water_last
+      entity_id: input_text.water_last
     action:
     - service: input_datetime.set_datetime
       entity_id: input_datetime.water_last
       data_template:
         datetime: "{{ utcnow() }}"
-    - service: input_text.set_value
+    - service: input_number.set_value
       data_template:
-        entity_id: input_text.water_last
-        value: "{{ states('input_number.water_last') }}"
+        entity_id: input_number.water_last
+        value: "{{ states('input_text.water_last') }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.date_water_last
@@ -430,16 +426,16 @@ automation:
     alias: post energyid e day
     trigger:
     - platform: state
-      entity_id: input_number.electricity_day_last
+      entity_id: input_text.electricity_day_last
     action:
     - service: input_datetime.set_datetime
       entity_id: input_datetime.electricity_day_last
       data_template:
         datetime: "{{ utcnow() }}"
-    - service: input_text.set_value
+    - service: input_number.set_value
       data_template:
-        entity_id: input_text.electricity_day_last
-        value: "{{ states('input_number.electricity_day_last') }}"
+        entity_id: input_number.electricity_day_last
+        value: "{{ states('input_text.electricity_day_last') }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.date_electricity_day_last
@@ -458,16 +454,16 @@ automation:
     alias: post energyid e night
     trigger:
     - platform: state
-      entity_id: input_number.electricity_night_last
+      entity_id: input_text.electricity_night_last
     action:
     - service: input_datetime.set_datetime
       entity_id: input_datetime.electricity_night_last
       data_template:
         datetime: "{{ utcnow() }}"
-    - service: input_text.set_value
+    - service: input_number.set_value
       data_template:
-        entity_id: input_text.electricity_night_last
-        value: "{{ states('input_number.electricity_night_last') }}"
+        entity_id: input_number.electricity_night_last
+        value: "{{ states('input_text.electricity_night_last') }}"
     - service: input_text.set_value
       data_template:
         entity_id: input_text.date_electricity_night_last

@@ -98,23 +98,23 @@
 #       - link
 #       - description
 #       - image
-#       - pubDate
-#       - language      
+#       - pubDat
+#       - language
 #     exclusions:
 #       - language
 
 
   - platform: websocket_api
 
-  - platform: integration 
+  - platform: integration
     source: sensor.smappee_power
     unit_prefix: k
     round: 2
+
 # local db
   - platform: filesize
     file_paths:
-      - /home/homeassistant/.homeassistant/home-assistant_v2.db
-
+      - !secret hassdb
 
 
 # docker mariadb

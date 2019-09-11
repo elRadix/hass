@@ -182,9 +182,9 @@
         {% if is_state('sensor.period_of_day', 'day') %}
           on
         {% elif is_state('sensor.period_of_day', 'dawn') %}
-          on
+         off
         {% elif is_state('sensor.period_of_day', 'dusk') %}
-          on
+          off
         {% elif is_state('sensor.period_of_day', 'unknown') %}
           on
         {% else %}

@@ -59,7 +59,8 @@ shellcheck:
       if [ "${FAILED}" = "1" ]; then
         exit 1
       fi
-
+  allow_failure: true
+  
 yamllint:
   <<: *preflight
   image: sdesbure/yamllint
@@ -67,6 +68,7 @@ yamllint:
     - yamllint --version
   script:
     - yamllint .
+  allow_failure: true
 
 jsonlint:
   <<: *preflight
@@ -85,7 +87,8 @@ jsonlint:
       if [ "${FAILED}" = "1" ]; then
         exit 1
       fi
-
+  allow_failure: true
+  
 markdownlint:
   <<: *preflight
   image:
@@ -96,6 +99,7 @@ markdownlint:
     - mdl --version
   script:
     - mdl --style all --warnings .
+  allow_failure: true
 
 # Home Assistant test jobs
 ha-latest:

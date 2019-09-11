@@ -25,7 +25,6 @@ stages:
     - echo "10" > fake_directory/cert.log
     - echo "10" > fake_directory/cert_eu.log
     - python -m homeassistant --version
-    - cp -R ./.stubs/* ./config
   script:
     - |
       python -m homeassistant \

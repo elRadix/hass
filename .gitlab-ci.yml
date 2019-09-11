@@ -6,8 +6,8 @@ stages:
   - homeassistant
 
 # Generic preflight template
-.preflight: &preflight
-  stage: preflight
+#.preflight: &preflight
+#  stage: preflight
 #  tags:
 #    - preflight
 

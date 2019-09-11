@@ -2,7 +2,7 @@
 image: docker:latest
 
 stages:
-  - preflight
+#  - preflight
   - homeassistant
 
 # Generic preflight template
@@ -107,16 +107,16 @@ ha-latest:
     name: homeassistant/home-assistant:latest
     entrypoint: [""]
 
-ha-rc:
-  <<: *ha
-  image:
-    name: homeassistant/home-assistant:rc
-    entrypoint: [""]
-  allow_failure: true
+#ha-rc:
+#  <<: *ha
+#  image:
+#    name: homeassistant/home-assistant:rc
+#    entrypoint: [""]
+#  allow_failure: true
 
-ha-dev:
-  <<: *ha
-  image:
-    name: homeassistant/home-assistant:dev
-    entrypoint: [""]
-  allow_failure: true
+#ha-dev:
+#  <<: *ha
+#  image:
+#    name: homeassistant/home-assistant:dev
+#    entrypoint: [""]
+#  allow_failure: true

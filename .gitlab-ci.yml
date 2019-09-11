@@ -11,7 +11,7 @@ stages:
 #  tags:
 #    - preflight
 
-# Generic Home Assistant template /config/
+# Generic Home Assistant template 
 .ha: &ha
   stage: homeassistant
   variables:
@@ -30,7 +30,7 @@ stages:
       python -m homeassistant \
         --config . \
         --script check_config \
-        --info all
+#        --info all
 #  tags:
 #    - test
 

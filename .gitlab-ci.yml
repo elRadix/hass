@@ -8,8 +8,8 @@ stages:
 # Generic preflight template
 .preflight: &preflight
   stage: preflight
-  tags:
-    - preflight
+#  tags:
+#    - preflight
 
 # Generic Home Assistant template
 .ha: &ha
@@ -32,8 +32,8 @@ stages:
         --config ./config/ \
         --script check_config \
         --info all
-  tags:
-    - test
+#  tags:
+#    - test
 
 # Preflight jobs
 shellcheck:

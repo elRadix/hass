@@ -104,7 +104,7 @@ class NotiFreeze(hass.Hass):  # type: ignore
         if (
             difference > float(self.app_config["max_difference"])
             and self.get_state(entity) == "on"
-            and entity != "binary_sensor.door_window_sensor_basement_window"
+            and entity != "binary_sensor.terras"
         ):
 
             # exact state-change time but not relative/readable time

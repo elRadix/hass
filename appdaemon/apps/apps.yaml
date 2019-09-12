@@ -1,4 +1,11 @@
 
+
+appdaemonnotifreeze:
+  module: notifreeze
+  class: Notifreeze
+  notify_service: notify.dageraad
+  outdoor_temperature: sensor.dark_sky_temperature
+
 schedy_heating:
   module: hass_apps_loader
   class: SchedyApp

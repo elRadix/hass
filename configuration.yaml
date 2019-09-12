@@ -155,14 +155,21 @@ switch: !include_dir_merge_list include/switches
 zone: !include_dir_merge_list include/zones
 # scene: !include_dir_merge_named include/scenes
 
-docker_monitor:
-  name: raspi
-  # url: !secret hadockermon_host
-  monitored_conditions:
-    - container_status
-    - container_uptime
-    - container_image
+# docker_monitor:
+#   name: raspi
+#   # url: !secret hadockermon_host
+#   monitored_conditions:
+#     - container_status
+#     - container_uptime
+#     - container_image
 
+
+docker_monitor:
+  containers:
+  monitored_conditions:
+    - utilization_version
+    - container_status
+ 
 
 weather:
   - platform: darksky

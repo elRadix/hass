@@ -1,6 +1,5 @@
-
-
-appdaemonnotifreeze:
+---
+notifreeze:
   module: notifreeze
   class: Notifreeze
   notify_service: notify.dageraad

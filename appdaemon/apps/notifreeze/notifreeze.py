@@ -5,8 +5,8 @@
 notifreeze:
   module: notifreeze
   class: Notifreeze
-  notify_service: notify.me
-  outdoor_temperature: sensor.temperature_garden
+  notify_service: notify.dageraad
+  outdoor_temperature: sensor.dark_sky_temperature
 """
 import re
 from datetime import datetime as dt

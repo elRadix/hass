@@ -164,12 +164,12 @@ zone: !include_dir_merge_list include/zones
 #     - container_image
 
 
-docker_monitor:
-  containers:
-  monitored_conditions:
-    - utilization_version
-    - container_status
- 
+# docker_monitor:
+#   containers:
+#   monitored_conditions:
+#     - utilization_version
+#     - container_status
+
 
 weather:
   - platform: darksky

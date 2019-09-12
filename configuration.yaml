@@ -40,7 +40,7 @@ updater:
 
 hacs:
   token: !secret hacs_token
-# appdeamon: true
+  appdeamon: true
   python_script: true
   theme: true
 
@@ -205,7 +205,7 @@ geo_address:
   use_timed: true
   update_interval: 60
   update_period: 3600
-  fields_display: road house_number city_district country_code  
+  fields_display: road house_number city_district country_code
 
 sun:
   monitored_conditions:

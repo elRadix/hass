@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
----
->>>>>>> fc70de62783b24f89015b9a9b222a051aa4b183c
 notifreeze:
   module: notifreeze
   class: Notifreeze

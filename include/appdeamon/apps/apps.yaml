@@ -1,0 +1,57 @@
+
+schedy_heating:
+  module: hass_apps_loader
+  class: SchedyApp
+
+  actor_type: thermostat
+
+  schedule_snippets:
+    1_floor:
+#    - x: "8 if is_off('input_boolean.easyplus_boiler_heating') else Skip()
+    - { v: 19, start: "17:00", end: "19:00", weekdays: "1-5", weeks: "1-9, 44-52" }
+    kids:
+    - { v: 19, start: "18:30", end: "20:30", weekdays: "1-5", weeks: "1-9, 44-52" }
+    parents:
+    - { v: 21, start: "18:30", end: "22:30", weekdays: "1-5", weeks: "1-9, 44-52" }
+
+  schedule_prepend:
+  - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
+
+  schedule_append:
+  - v: "OFF"
+
+
+  rooms:
+    living:
+      actors:
+        climate.living:
+      watched_entities:
+      - binary_sensor.inkomhal
+      schedule:
+      - x: "IncludeSchedule(schedule_snippets['1_floor'])"
+
+    eetkamer:
+      actors:
+        climate.eetkamer:
+      watched_entities:
+      - binary_sensor.terras
+      schedule:
+      - x: "IncludeSchedule(schedule_snippets['1_floor'])"
+
+    sara:
+      actors:
+        climate.sara:
+      schedule:
+      - x: "IncludeSchedule(schedule_snippets['kids'])"
+
+    yassin:
+      actors:
+        climate.yassin:
+      schedule:
+      - x: "IncludeSchedule(schedule_snippets['kids'])"
+
+    floradix:
+      actors:
+        climate.floradix:
+      schedule:
+      - x: "IncludeSchedule(schedule_snippets['parents'])"

@@ -5,8 +5,8 @@
 notifreeze:
   module: notifreeze
   class: Notifreeze
-  notify_service: notify.dageraad
-  outdoor_temperature: sensor.dark_sky_temperature
+  notify_service: notify.me
+  outdoor_temperature: sensor.temperature_garden
 """
 import re
 from datetime import datetime as dt
@@ -104,7 +104,7 @@ class NotiFreeze(hass.Hass):  # type: ignore
         if (
             difference > float(self.app_config["max_difference"])
             and self.get_state(entity) == "on"
-            and entity != "binary_sensor.terras"
+            and entity != "binary_sensor.door_window_sensor_basement_window"
         ):
 
             # exact state-change time but not relative/readable time

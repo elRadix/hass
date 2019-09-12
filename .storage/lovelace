@@ -357,7 +357,7 @@
                                                             "value": 0
                                                         },
                                                         {
-                                                            "color": "orange",
+                                                            "color": "darkorange",
                                                             "value": 69
                                                         },
                                                         {
@@ -385,25 +385,25 @@
                                                     ],
                                                     "height": "25px",
                                                     "indicator": "right",
-                                                    "max": 45.31,
+                                                    "max": 50,
                                                     "min": 0,
                                                     "rounding": "1px",
                                                     "saturation": "70%",
                                                     "severity": [
                                                         {
                                                             "color": "green",
-                                                            "value": 40
-                                                        },
-                                                        {
-                                                            "color": "orange",
                                                             "value": 45
                                                         },
                                                         {
+                                                            "color": "coral",
+                                                            "value": 47
+                                                        },
+                                                        {
                                                             "color": "red",
-                                                            "value": 49
+                                                            "value": 50
                                                         }
                                                     ],
-                                                    "target": 70,
+                                                    "target": 45.31,
                                                     "title": "45.31 eur - ELECTRIC",
                                                     "title_position": "inside",
                                                     "title_style": {
@@ -436,7 +436,7 @@
                                                             "value": 25
                                                         },
                                                         {
-                                                            "color": "orange",
+                                                            "color": "darkorange",
                                                             "value": 24
                                                         },
                                                         {
@@ -484,7 +484,7 @@
                                                             "value": 25
                                                         },
                                                         {
-                                                            "color": "orange",
+                                                            "color": "darkorange",
                                                             "value": 29
                                                         },
                                                         {
@@ -816,89 +816,6 @@
                                 }
                             ],
                             "type": "conditional"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "color_type": "label-card",
-                                    "name": "meterstanden",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entities": [
-                                                {
-                                                    "entity": "input_number.water_last",
-                                                    "icon": "mdi:water-outline",
-                                                    "name": "water"
-                                                },
-                                                {
-                                                    "entity": "input_number.gas_last",
-                                                    "icon": "mdi:fire",
-                                                    "name": "gas"
-                                                },
-                                                {
-                                                    "entity": "input_number.electricity_day_last",
-                                                    "icon": "mdi:flash-outline",
-                                                    "name": "electricity day"
-                                                },
-                                                {
-                                                    "entity": "input_number.electricity_night_last",
-                                                    "icon": "mdi:flash",
-                                                    "name": "electricity night"
-                                                }
-                                            ],
-                                            "type": "glance"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                }
-                            ],
-                            "type": "vertical-stack"
                         },
                         {
                             "card": {
@@ -6309,7 +6226,7 @@
                                             }
                                         },
                                         {
-                                            "entity": "sensor.hass_db_size",
+                                            "entity": "sensor.home_assistant_v2_db",
                                             "icon": "mdi:database",
                                             "name": "Hass DB"
                                         },
@@ -8706,6 +8623,186 @@
                             "cards": [
                                 {
                                     "color_type": "label-card",
+                                    "name": "meterstanden",
+                                    "styles": {
+                                        "card": [
+                                            {
+                                                "height": "40px"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "text-orientation": "mixed"
+                                            },
+                                            {
+                                                "font-size": "20px"
+                                            },
+                                            {
+                                                "text-Transform": "uppercase"
+                                            },
+                                            {
+                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "padding": "2%"
+                                            },
+                                            {
+                                                "color": "white"
+                                            },
+                                            {
+                                                "border-radius": "50px"
+                                            },
+                                            {
+                                                "border-style": "solid"
+                                            },
+                                            {
+                                                "border-width": "2px"
+                                            },
+                                            {
+                                                "border-color": "#e5e5e5"
+                                            }
+                                        ]
+                                    },
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "input_text.water_last",
+                                                    "icon": "mdi:water-outline",
+                                                    "name": "water"
+                                                },
+                                                {
+                                                    "entity": "input_text.gas_last",
+                                                    "icon": "mdi:fire",
+                                                    "name": "gas"
+                                                },
+                                                {
+                                                    "entity": "input_text.electricity_day_last",
+                                                    "icon": "mdi:flash-outline",
+                                                    "name": "electricity day"
+                                                },
+                                                {
+                                                    "entity": "input_text.electricity_night_last",
+                                                    "icon": "mdi:flash",
+                                                    "name": "electricity night"
+                                                }
+                                            ],
+                                            "type": "entities"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "color_type": "label-card",
+                                    "name": "Daily consumption",
+                                    "styles": {
+                                        "card": [
+                                            {
+                                                "height": "40px"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "text-orientation": "mixed"
+                                            },
+                                            {
+                                                "font-size": "20px"
+                                            },
+                                            {
+                                                "text-Transform": "uppercase"
+                                            },
+                                            {
+                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "padding": "2%"
+                                            },
+                                            {
+                                                "color": "white"
+                                            },
+                                            {
+                                                "border-radius": "50px"
+                                            },
+                                            {
+                                                "border-style": "solid"
+                                            },
+                                            {
+                                                "border-width": "2px"
+                                            },
+                                            {
+                                                "border-color": "#e5e5e5"
+                                            }
+                                        ]
+                                    },
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.electricity_total_consumption_day",
+                                                    "icon": "mdi:flash-outline",
+                                                    "name": "Electricity"
+                                                },
+                                                {
+                                                    "entity": "sensor.gas_consumption_day",
+                                                    "icon": "mdi:gas-station",
+                                                    "name": "Gas"
+                                                },
+                                                {
+                                                    "entity": "sensor.water_consumption_day",
+                                                    "icon": "mdi:water-pump",
+                                                    "name": "Water"
+                                                },
+                                                {
+                                                    "type": "divider"
+                                                },
+                                                {
+                                                    "entity": "sensor.gas_consumption_day_kwh",
+                                                    "icon": "mdi:gas-station",
+                                                    "name": "Gas"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_day_consumption_day",
+                                                    "icon": "mdi:weather-sunny",
+                                                    "name": "Electricty Day"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_night_consumption_day",
+                                                    "icon": "mdi:weather-night",
+                                                    "name": "Electricty Night"
+                                                }
+                                            ],
+                                            "show_state": false,
+                                            "type": "entities"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "color_type": "label-card",
                                     "name": "mega factuur",
                                     "styles": {
                                         "card": [
@@ -8776,7 +8873,7 @@
                                                             "value": 0
                                                         },
                                                         {
-                                                            "color": "orange",
+                                                            "color": "coral",
                                                             "value": 69
                                                         },
                                                         {
@@ -8901,7 +8998,7 @@
                                                     ],
                                                     "height": "25px",
                                                     "indicator": "right",
-                                                    "max": 45,
+                                                    "max": 50,
                                                     "min": 0,
                                                     "rounding": "12px",
                                                     "saturation": "70%",
@@ -8911,15 +9008,15 @@
                                                             "value": 40
                                                         },
                                                         {
-                                                            "color": "orange",
+                                                            "color": "coral",
                                                             "value": 45
                                                         },
                                                         {
-                                                            "color": "red",
-                                                            "value": 49
+                                                            "color": "#B22222",
+                                                            "value": 50
                                                         }
                                                     ],
-                                                    "target": 70,
+                                                    "target": 45,
                                                     "title": "maandelijkse kost",
                                                     "title_position": "inside",
                                                     "title_style": {
@@ -9060,7 +9157,7 @@
                                                             "value": 25
                                                         },
                                                         {
-                                                            "color": "orange",
+                                                            "color": "coral",
                                                             "value": 24
                                                         },
                                                         {
@@ -9080,7 +9177,7 @@
                                                 },
                                                 {
                                                     "entity": "sensor.gas_consumption_period",
-                                                    "icon": "mdi:flash-outline",
+                                                    "icon": "mdi:gas-station",
                                                     "name": "dag verbruik"
                                                 },
                                                 {
@@ -9201,7 +9298,7 @@
                                                             "value": 25
                                                         },
                                                         {
-                                                            "color": "orange",
+                                                            "color": "darkorange",
                                                             "value": 29
                                                         },
                                                         {
@@ -9255,7 +9352,7 @@
                                                 },
                                                 {
                                                     "entity": "sensor.water_balance_fcst",
-                                                    "icon": "mdi:scale-water_balance_fcst",
+                                                    "icon": "mdi:scale-balance",
                                                     "name": "Saldo 2019"
                                                 }
                                             ],

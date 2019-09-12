@@ -40,13 +40,13 @@ updater:
 
 hacs:
   token: !secret hacs_token
-  appdeamon: true
+  appdaemon: true
   python_script: true
   theme: true
 
 config:
 system_health:
-# websocket_api:
+websocket_api:
 # default_config:
 person:
 python_script:

@@ -7985,6 +7985,28 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.miflower_battery"
+                                },
+                                {
+                                    "entity": "sensor.miflower_conductivity"
+                                },
+                                {
+                                    "entity": "sensor.miflower_light_intensity"
+                                },
+                                {
+                                    "entity": "sensor.miflower_moisture"
+                                },
+                                {
+                                    "entity": "sensor.miflower_temperature"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "miflower",
+                            "type": "entities"
                         }
                     ],
                     "title": "SCENES"

@@ -301,7 +301,7 @@ sensor:
   - platform: template
     sensors:
       gas_balance_period_tweaked:
-        friendly_name: gas cost period tweaked
+        friendly_name: gas balance period tweaked
         value_template: >-
             {% set consumption = states('sensor.gas_consumption_day') |float %}
             {% set days = states('sensor.days_consumed') |float %}
@@ -360,7 +360,7 @@ sensor:
   - platform: template
     sensors:
       gas_balance_fcst_tweaked:
-        friendly_name: gas cost period tweaked
+        friendly_name: gas balance fsct tweaked
         value_template: >-
             {% set consumption = states('sensor.gas_consumption_day') |float %}
             {% set days = states('sensor.days_consumed') |float %}

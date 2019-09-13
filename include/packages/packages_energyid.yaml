@@ -69,7 +69,6 @@ sensor:
         friendly_name: "Days consumed"
         value_template: '{{ (((as_timestamp(now())-states.input_datetime.meter_start.attributes.timestamp)) | int /60/1440) | round(0) }}'
         unit_of_measurement: 'days'
-        entity_id: input_datetime.meter_start,sensor.time
 
   - platform: template
     sensors:
@@ -194,7 +193,6 @@ sensor:
       gas_day_forecast:
         entity_id: sensor.date
         friendly_name: gas monhtly
-        entity_id: sensor.date
         value_template: >-
             {% set a = states('sensor.gas_consumption_day')|float %}
             {% set b = states('sensor.gas_cost_monthly')|float %}

@@ -18,7 +18,7 @@ def doWork(hass, data, logger):
 
   if ep.state == 'off':
     service_data = {'entity_id':'switch.easyplus'}
-    hass.services.call('switch', 'turn_on', service_data, False)
+    hass.services.call('switch', 'toggle', service_data, False)
     time.sleep(20)
 
   hass.services.call('homeassistant', 'toggle', service_data={ 'entity_id': sn })

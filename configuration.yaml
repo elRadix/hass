@@ -115,7 +115,7 @@ notify: !include_dir_merge_list include/notify
 proximity: !include_dir_merge_list include/proximity
 recorder:  # !include_dir_merge_list include/recorder
   ## db_url: mysql://admin:password@mydatabase.us-east-1.rds.amazonaws.com/homeassistant?charset=utf8
-  # amazon db_url: mysql://elradix:elradixhassdb@hassdb.c7bk9xalw0ea.us-west-2.rds.amazonaws.com:3306/hassdb?charset=utf8
+  db_url: mysql://elradix:elradixhassdb@hassdb.c7bk9xalw0ea.us-west-2.rds.amazonaws.com:3306/hassdb?charset=utf8
   ## db_url: mysql://user:pw@url:port/dbname?charset=utf8
   purge_keep_days: 7
   purge_interval: 0

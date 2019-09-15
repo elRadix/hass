@@ -25,6 +25,6 @@ def doWork(hass, data, logger):
   time.sleep(5)
   ss = hass.states.get(sn)
   time.sleep(7)
-  hass.services.call('notify', 'dageraad', {'message': your switch is + ': ' + ss.state})
+  hass.services.call('notify', 'dageraad', {'message': switch+ ': ' + ss.state})
 
 doWork(hass, data, logger)

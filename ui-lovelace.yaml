@@ -141,36 +141,6 @@ views:
         \ ]] \n"
       type: markdown
     type: custom:card-modder
-  - entities:
-    - artwork: full-cover-fit
-      artwork_border: true
-      entity: media_player.slaapkamer
-      group: false
-      icon: mdi:kodi
-      info: short
-      name: Slaapkamer
-      show_source: full
-      type: custom:mini-media-player
-    - artwork: full-cover-fit
-      artwork_border: true
-      entity: media_player.eetkamer
-      group: false
-      icon: mdi:television
-      info: short
-      name: Eetkamer
-      show_source: full
-      type: custom:mini-media-player
-    - artwork: full-cover-fit
-      artwork_border: true
-      entity: media_player.living
-      group: false
-      icon: mdi:television
-      info: short
-      name: Living
-      show_source: full
-      type: custom:mini-media-player
-    show_header_toggle: false
-    type: entities
   - card:
       show_name: true
       show_state: false
@@ -199,6 +169,151 @@ views:
     state_filter:
     - 'on'
     type: entity-filter
+  - cards:
+    - color_type: label-card
+      name: Energy BILL
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - align: split
+          animation: 'on'
+          columns: 1
+          decimal: '2'
+          entities:
+          - sensor.power_cost_monthly
+          height: 25px
+          indicator: le
+          max: 70.29
+          min: 0
+          rounding: 1px
+          saturation: 70%
+          severity:
+          - color: green
+            value: 0
+          - color: darkorange
+            value: 69
+          - color: red
+            value: 70
+          target: 70
+          title: 70.29 eur -  MEGA
+          title_position: inside
+          title_style:
+            color: white
+            font-size: 15px
+            text-transform: uppercase
+          type: custom:bar-card
+        - align: split
+          animation: 'on'
+          columns: 1
+          decimal: '2'
+          entities:
+          - sensor.electricity_total_cost_monthly
+          height: 25px
+          indicator: right
+          max: 50
+          min: 0
+          rounding: 1px
+          saturation: 70%
+          severity:
+          - color: green
+            value: 45
+          - color: coral
+            value: 47
+          - color: red
+            value: 50
+          target: 45.31
+          title: 45.31 eur - ELECTRIC
+          title_position: inside
+          title_style:
+            color: white
+            font-size: 15px
+            text-transform: uppercase
+          type: custom:bar-card
+        - align: split
+          animation: 'on'
+          bar_style:
+            border-radius: 5px
+            padding-left: 4px
+            text-align: left
+          columns: 1
+          decimal: '2'
+          entities:
+          - sensor.gas_cost_monthly
+          height: 25px
+          indicator: right
+          max: 25
+          min: 0
+          severity:
+          - color: green
+            value: 25
+          - color: darkorange
+            value: 24
+          - color: red
+            value: 26
+          style:
+            --paper-card-background-color: rgba(84, 95, 108, 0.7)
+            border-radius: 8px
+            left: 1%
+            overflow: hidden
+            top: 37.5%
+            transform: none
+            width: 48%
+          target: 25
+          title: 24.99 eur - gas
+          title_position: inside
+          title_style:
+            color: white
+            font-size: 15px
+            text-transform: uppercase
+          type: custom:bar-card
+        - align: split
+          animation: 'on'
+          columns: 1
+          decimal: '2'
+          entities:
+          - sensor.water_cost_monthly
+          height: 25px
+          icon: mdi:water
+          indicator: right
+          max: 27.3
+          min: 0
+          rounding: 1px
+          saturation: 70%
+          severity:
+          - color: green
+            value: 25
+          - color: darkorange
+            value: 29
+          - color: red
+            value: 30
+          target: 27.3
+          title: 27.33 eur - water
+          title_position: inside
+          title_style:
+            color: white
+            font-size: 15px
+            text-transform: uppercase
+          type: custom:bar-card
+        show_state: false
+        type: entities
+      type: horizontal-stack
+    type: vertical-stack
   - card:
       show_name: true
       show_state: true
@@ -224,36 +339,6 @@ views:
     state_filter:
     - 'on'
     type: entity-filter
-  - cards:
-    - cards:
-      - aspect_ratio: 1
-        entity: device_tracker.comp_rachid
-        image: /local/elradix.png
-        show_name: false
-        type: picture-entity
-      - content: "<h3>Adress</h3> [[ geo_address.comp_rachid.attributes.road ]] [[\
-          \ if(geo_address.comp_rachid.attributes.house_number != undefined, geo_address.comp_rachid.attributes.house_number,\
-          \ \"\") ]] [[ if(geo_address.comp_rachid.attributes.city != undefined, geo_address.comp_rachid.attributes.city,\
-          \ \"\") ]] [[ if(geo_address.comp_rachid.attributes.village != undefined,\
-          \ geo_address.comp_rachid.attributes.village, \"\") ]] [[ if(geo_address.comp_rachid.attributes.county\
-          \ != geo_address.comp_rachid.attributes.city, geo_address.comp_rachid.attributes.county,\
-          \ \"\") ]]  \n"
-        type: markdown
-      - aspect_ratio: 1
-        entity: device_tracker.comp_soumaya
-        image: /local/soumaya.png
-        show_name: false
-        type: picture-entity
-      - content: "<h3>Adress</h3> [[ geo_address.comp_soumaya.attributes.road ]] [[\
-          \ if(geo_address.comp_soumaya.attributes.house_number != undefined, geo_address.comp_soumaya.attributes.house_number,\
-          \ \"\") ]] [[ if(geo_address.comp_soumaya.attributes.city != undefined,\
-          \ geo_address.comp_soumaya.attributes.city, \"\") ]] [[ if(geo_address.comp_soumaya.attributes.village\
-          \ != undefined, geo_address.comp_soumaya.attributes.village, \"\") ]] [[\
-          \ if(geo_address.comp_soumaya.attributes.county != geo_address.comp_soumaya.attributes.city,\
-          \ geo_address.comp_soumaya.attributes.county, \"\") ]]  \n"
-        type: markdown
-      type: vertical-stack
-    type: custom:vertical-stack-in-card
   - card:
       entities:
       - entity: input_boolean.work
@@ -338,6 +423,36 @@ views:
         type: custom:check-button-card
       type: entities
     type: vertical-stack
+  - entities:
+    - artwork: full-cover-fit
+      artwork_border: true
+      entity: media_player.slaapkamer
+      group: false
+      icon: mdi:kodi
+      info: short
+      name: Slaapkamer
+      show_source: full
+      type: custom:mini-media-player
+    - artwork: full-cover-fit
+      artwork_border: true
+      entity: media_player.eetkamer
+      group: false
+      icon: mdi:television
+      info: short
+      name: Eetkamer
+      show_source: full
+      type: custom:mini-media-player
+    - artwork: full-cover-fit
+      artwork_border: true
+      entity: media_player.living
+      group: false
+      icon: mdi:television
+      info: short
+      name: Living
+      show_source: full
+      type: custom:mini-media-player
+    show_header_toggle: false
+    type: entities
   - card:
       entities:
       - entity: sensor.rachid
@@ -3121,7 +3236,7 @@ views:
         name: Update
         tap_action:
           action: toggle
-      - entity: sensor.hass_db_size
+      - entity: sensor.home_assistant_v2_db
         icon: mdi:database
         name: Hass DB
       - entity: sensor.data_log
@@ -3397,54 +3512,10 @@ views:
         value: 2
       entities:
       - sensor.load_1m
-      extrema: true
-      font_size: 120
-      height: 150
-      hour24: true
-      hours_to_show: 48
-      line_width: 8
-      more_info: false
-      show:
-        graph: bar
-        icon: false
-        name: false
-      show_legend: false
-      type: custom:mini-graph-card
-    - align_state: center
-      color_thresholds:
-      - color: green
-        value: 0.5
-      - color: yellow
-        value: 1.2
-      - color: orange
-        value: 2
-      entities:
       - sensor.load_5m
-      extrema: true
-      font_size: 120
-      height: 150
-      hour24: true
-      hours_to_show: 48
-      line_width: 8
-      more_info: false
-      show:
-        graph: bar
-        icon: false
-        name: false
-      show_legend: false
-      type: custom:mini-graph-card
-    - align_state: center
-      color_thresholds:
-      - color: green
-        value: 0.5
-      - color: yellow
-        value: 1.2
-      - color: orange
-        value: 2
-      entities:
       - sensor.load_15m
       extrema: true
-      font_size: 120
+      font_size: 10
       height: 150
       hour24: true
       hours_to_show: 48
@@ -3456,11 +3527,6 @@ views:
         name: false
       show_legend: false
       type: custom:mini-graph-card
-    style:
-      '#states > div > mini-graph-card':
-        $: "ha-card { \n\n--ha-card-box-shadow: none;\n\nmargin: 0px 0px 0px 0px;\n\
-          }\n"
-      .: "ha-card {\n  margin: 0px -16px -32px -16px;\n}\n"
     type: entities
   icon: mdi:server
   path: ''
@@ -3961,6 +4027,7 @@ views:
       name: auto off
     - entity: sensor.period_of_day2
     - entity: sensor.period_of_day
+    - entity: sensor.light_offset_1h
     type: glance
   - entities:
     - entity: binary_sensor.badkamer_occupied
@@ -3995,55 +4062,6 @@ views:
     show_header_toggle: false
     title: Led + switches
     type: entities
-  - cards:
-    - elements:
-      - entity: binary_sensor.inkomhal
-        style:
-          bottom: 20%
-          front-weight: bold
-          right: 24%
-          transform: initial
-        type: state-icon
-      - entity: binary_sensor.motion_inkomhal
-        style:
-          bottom: 20%
-          font-weight: bold
-          right: 17%
-          transform: initial
-        type: state-icon
-      - entity: sensor.tmp_living
-        style:
-          bottom: 20%
-          right: 5%
-          transform: initial
-        type: state-label
-      - entity: sensor.blank
-        hold-action: none
-        prefix: Living Room
-        style:
-          bottom: 20%
-          font-size: 150%
-          left: 5%
-          transform: initial
-        tap-action: none
-        type: state-label
-      image: /local/title.png
-      type: picture-elements
-    - entities:
-      - entity: group.living_light
-      - entity: switch.stp_living_sony
-      - entity: switch.stp_living_bureau
-      show_name: true
-      show_state: false
-      type: glance
-    - entity: media_player.living
-      hide:
-        power: true
-        volume: true
-      icon: mdi:cast
-      type: custom:mini-media-player
-    title: null
-    type: custom:vertical-stack-in-card
   - entities:
     - action_name: pause
       name: dryer
@@ -4081,6 +4099,15 @@ views:
       service_data:
         entity_id: timer.dish
       type: call-service
+    type: entities
+  - entities:
+    - entity: sensor.miflower_battery
+    - entity: sensor.miflower_conductivity
+    - entity: sensor.miflower_light_intensity
+    - entity: sensor.miflower_moisture
+    - entity: sensor.miflower_temperature
+    show_header_toggle: false
+    title: miflower
     type: entities
   title: SCENES
 - badges: []
@@ -4389,6 +4416,572 @@ views:
   icon: mdi:power
   path: energieid
   title: EnergieID
+- badges: []
+  cards:
+  - cards:
+    - color_type: label-card
+      name: meterstanden
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - entity: input_text.water_last
+          icon: mdi:water-outline
+          name: water
+        - entity: input_text.gas_last
+          icon: mdi:fire
+          name: gas
+        type: entities
+      - entities:
+        - entity: input_text.electricity_day_last
+          icon: mdi:flash-outline
+          name: day
+        - entity: input_text.electricity_night_last
+          icon: mdi:flash
+          name: night
+        type: entities
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: Daily consumption
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - entity: sensor.electricity_total_consumption_day
+          icon: mdi:flash-outline
+          name: Electricity
+        - entity: sensor.gas_consumption_day
+          icon: mdi:gas-station
+          name: Gas
+        - entity: sensor.water_consumption_day
+          icon: mdi:water-pump
+          name: Water
+        - type: divider
+        - entity: sensor.gas_consumption_day_kwh
+          icon: mdi:gas-station
+          name: Gas
+        - entity: sensor.electricity_day_consumption_day
+          icon: mdi:weather-sunny
+          name: Electricty Day
+        - entity: sensor.electricity_night_consumption_day
+          icon: mdi:weather-night
+          name: Electricty Night
+        - type: divider
+        - entity: sensor.days_consumed
+          icon: mdi:clock
+          name: Days consumed
+        show_state: false
+        type: entities
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: mega factuur
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - align: split
+          animation: 'on'
+          columns: 1
+          decimal: '2'
+          entities:
+          - sensor.power_cost_monthly
+          height: 25px
+          indicator: right
+          max: 75
+          min: 0
+          rounding: 12px
+          saturation: 70%
+          severity:
+          - color: green
+            value: 0
+          - color: coral
+            value: 69
+          - color: red
+            value: 70
+          target: 70
+          title: maandelijkse kost
+          title_position: inside
+          title_style:
+            color: white
+            font-size: 15px
+            text-transform: uppercase
+          type: custom:bar-card
+        - entity: sensor.power_prepaid_monthly
+          icon: mdi:currency-eur
+          name: Voorschot factuur
+        - entity: sensor.power_prepaid_period
+          icon: mdi:currency-eur
+          name: Betaalde voorschotten
+        - entity: sensor.power_cost_period
+          icon: mdi:currency-eur
+          name: Werkelijke kosten
+        - type: divider
+        - entity: sensor.power_balance_period
+          icon: mdi:scale-balance
+          name: Huidig saldo
+        - entity: sensor.power_balance_fcst
+          icon: mdi:scale-balance
+          name: Saldo 2020
+        show_state: false
+        type: entities
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: electriciteit
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - align: split
+          animation: 'on'
+          columns: 1
+          decimal: '2'
+          entities:
+          - sensor.electricity_total_cost_monthly
+          height: 25px
+          indicator: right
+          max: 50
+          min: 0
+          rounding: 12px
+          saturation: 70%
+          severity:
+          - color: green
+            value: 40
+          - color: coral
+            value: 45
+          - color: '#B22222'
+            value: 50
+          target: 45
+          title: maandelijkse kost
+          title_position: inside
+          title_style:
+            color: white
+            font-size: 15px
+            text-transform: uppercase
+          type: custom:bar-card
+        - entity: sensor.electricity_day_consumption_period
+          icon: mdi:flash-outline
+          name: dag verbruik
+        - entity: sensor.electricity_night_consumption_period
+          icon: mdi:flash
+          name: nacht verbruik
+        - type: divider
+        - entity: sensor.electricity_total_prepaid_monthly
+        - entity: sensor.electricity_total_prepaid_monthly
+          icon: mdi:currency-eur
+          name: maandelijke voorschot
+        - type: divider
+        - entity: sensor.electricity_total_prepaid_period
+          icon: mdi:currency-eur
+          name: Betaalde voorschotten
+        - entity: sensor.electricity_total_cost_period
+          icon: mdi:currency-eur
+          name: Werkelijke  kosten
+        - type: divider
+        - entity: sensor.electricity_total_balance_period
+          icon: mdi:scale-balance
+          name: Huidige saldo
+        - entity: sensor.electricity_total_balance_fcst
+          icon: mdi:scale-balance
+          name: Saldo 2020
+        show_state: false
+        type: entities
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: gas
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - align: split
+          animation: 'on'
+          columns: 1
+          decimal: '2'
+          entities:
+          - sensor.gas_cost_monthly
+          height: 25px
+          indicator: right
+          max: 30
+          min: 0
+          rounding: 12px
+          saturation: 70%
+          severity:
+          - color: green
+            value: 25
+          - color: coral
+            value: 24
+          - color: red
+            value: 26
+          target: 25
+          title: maandelijkse kost
+          title_position: inside
+          title_style:
+            color: white
+            font-size: 15px
+            text-transform: uppercase
+          type: custom:bar-card
+        - entity: sensor.gas_consumption_period
+          icon: mdi:gas-station
+          name: dag verbruik
+        - type: divider
+        - entity: sensor.gas_prepaid_monthly
+          icon: mdi:currency-eur
+          name: maandelijke voorschot
+        - type: divider
+        - entity: sensor.gas_prepaid_period
+          icon: mdi:currency-eur
+          name: Betaalde voorschotten
+        - entity: sensor.gas_cost_period
+          icon: mdi:currency-eur
+          name: Werkelijke  kosten
+        - entity: sensor.gas_cost_period_tweaked
+          icon: mdi:currency-eur
+          name: Werkelijke kosten twekaed
+        - type: divider
+        - entity: sensor.gas_balance_period
+          icon: mdi:scale-balance
+          name: Huidige saldo
+        - entity: sensor.gas_balance_period_tweaked
+          icon: mdi:scale-balance
+          name: Huidige saldo tweaked
+        - entity: sensor.gas_balance_fcst
+          icon: mdi:scale-balance
+          name: Saldo 2020
+        - entity: sensor.gas_balance_fcst_tweaked
+          name: Saldo 2020 tweaked
+        show_state: false
+        type: entities
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - color_type: label-card
+      name: water
+      styles:
+        card:
+        - height: 40px
+        - font-weight: bold
+        - text-orientation: mixed
+        - font-size: 20px
+        - text-Transform: uppercase
+        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+            7%, rgba(0,212,255,1) 100%)
+        - font-weight: bold
+        - padding: 2%
+        - color: white
+        - border-radius: 50px
+        - border-style: solid
+        - border-width: 2px
+        - border-color: '#e5e5e5'
+      type: custom:button-card
+    - cards:
+      - entities:
+        - align: split
+          animation: 'on'
+          columns: 1
+          decimal: '2'
+          entities:
+          - sensor.water_cost_monthly
+          height: 25px
+          indicator: right
+          max: 30
+          min: 0
+          rounding: 12px
+          saturation: 70%
+          severity:
+          - color: green
+            value: 25
+          - color: darkorange
+            value: 29
+          - color: red
+            value: 30
+          target: 25
+          title: maandelijkse kost
+          title_position: inside
+          title_style:
+            color: white
+            font-size: 15px
+            text-transform: uppercase
+          type: custom:bar-card
+        - entity: sensor.water_prepaid_monthly
+          icon: mdi:flash-outline
+          name: dag verbruik
+        - type: divider
+        - entity: sensor.water_cost_monthly
+          icon: mdi:currency-eur
+          name: maandelijke voorschot
+        - type: divider
+        - entity: sensor.water_prepaid_period
+          icon: mdi:currency-eur
+          name: Betaalde voorschotten
+        - entity: sensor.water_cost_period
+          icon: mdi:currency-eur
+          name: Werkelijke  kosten
+        - type: divider
+        - entity: sensor.water_balance_period
+          icon: mdi:scale-balance
+          name: Huidige saldo
+        - entity: sensor.water_balance_fcst
+          icon: mdi:scale-balance
+          name: Saldo 2019
+        show_state: false
+        type: entities
+      type: horizontal-stack
+    type: vertical-stack
+  path: energy
+  title: Energy
+- badges: []
+  cards:
+  - cards:
+    - entity: sensor.train_work
+      max: 50
+      min: 0
+      severity:
+      - color: green
+        value: 0
+      - color: green
+        value: 30
+      - color: red
+        value: 31
+      title: Train Work
+      title_position: inside
+      type: custom:bar-card
+    - entities:
+      - filter:
+          exclude:
+          - sensor.train_work.at*
+          - sensor.train_work.fr*
+          - sensor.train_work.oc*
+          - sensor.train_work.ic*
+          - sensor.train_work.oc*
+          - sensor.train_work.uni*
+          - sensor.train_work.lat*
+          - sensor.train_work.lon*
+          - sensor.train_work.lon*
+          - sensor.train_work.platform_ar*
+          include:
+          - sensor.train_work.*
+        heading_name: ' '
+        heading_state: '  '
+        type: custom:entity-attributes-card
+      type: entities
+    type: vertical-stack
+  - cards:
+    - entity: sensor.train_home_noord
+      max: 50
+      min: 0
+      severity:
+      - color: green
+        value: 0
+      - color: green
+        value: 30
+      - color: red
+        value: 31
+      title: Train Home Noord
+      title_position: inside
+      type: custom:bar-card
+    - entities:
+      - filter:
+          exclude:
+          - sensor.train_home_noord.at*
+          - sensor.train_home_noord.fr*
+          - sensor.train_home_noord.oc*
+          - sensor.train_home_noord.ic*
+          - sensor.train_home_noord.oc*
+          - sensor.train_home_noord.uni*
+          - sensor.train_home_noord.lat*
+          - sensor.train_home_noord.lon*
+          - sensor.train_home_noord.lon*
+          - sensor.train_home_noord.platform_ar*
+          include:
+          - sensor.train_home_noord.*
+        heading_name: ' '
+        heading_state: '  '
+        type: custom:entity-attributes-card
+      type: entities
+    type: vertical-stack
+  - content: "Current delay [[ sensor.train_home.attributes.delay ]] \nArrival in\
+      \ [[ sensor.train_home.attributes.departure ]] min\nDuration [[ sensor.train_home\
+      \ ]] min\nGate [[ sensor.train_home.attributes.platform_departing ]]  \n"
+    title: Home via Brussel Centraal
+    type: markdown
+  icon: mdi:train
+  panel: false
+  title: Train
+- badges: []
+  cards:
+  - aspect_ratio: 16x9
+    default_zoom: 15
+    entities:
+    - entity: device_tracker.life360_rachid
+    - entity: device_tracker.comp_rachid
+    type: map
+  - aspect_ratio: 16x9
+    default_zoom: 15
+    entities:
+    - entity: device_tracker.comp_soumaya
+    - entity: device_tracker.life360_soumaya
+    type: map
+  - columns: 5
+    entities:
+    - entity: person.rachid
+    - entity: device_tracker.rachid
+      name: router
+    - entity: device_tracker.rachid_mqtt
+      name: mqtt
+    - entity: device_tracker.elradix
+      name: BT
+    - entity: device_tracker.comp_rachid
+      name: group
+    - entity: device_tracker.google_maps_elrachid_gmail_com
+      name: google
+    - entity: device_tracker.life360_rachid
+      name: life360
+    - entity: device_tracker.elradix_2
+      name: gpslogger
+    show_name: true
+    show_state: true
+    type: glance
+  - columns: 5
+    entities:
+    - entity: person.soumaya
+    - entity: device_tracker.soumaya
+      name: router
+    - entity: device_tracker.soumaya_mqtt
+      name: mqtt
+    - entity: device_tracker.soumaya_2
+      name: BT
+    - entity: device_tracker.comp_soumaya
+      name: group
+    - entity: device_tracker.google_maps_102675862650488616596
+      name: google
+    - entity: device_tracker.life360_soumaya
+      name: life360
+    - entity: device_tracker.flora_2
+      name: gpslogger
+    type: glance
+  - entities:
+    - entity: sensor.soumaya_to_home
+    - entity: sensor.rachid_to_home
+    - entity: sensor.proximity_person
+    show_header_toggle: false
+    title: Proximity
+    type: entities
+  - entities:
+    - entity: sensor.time_to_leave_for_home
+    - entity: sensor.time_to_home
+    - entity: sensor.me_traffic_density_to_home
+    - entity: sensor.time_to_leave_for_work
+    - entity: sensor.time_to_work
+    - entity: sensor.me_traffic_density_to_work
+    show_header_toggle: false
+    title: Travel time BNP
+    type: entities
+  - entities:
+    - sensor.time_to_leave_for_home
+    - sensor.time_to_home
+    - sensor.me_traffic_density_to_home
+    - sensor.time_to_leave_for_work
+    - sensor.time_to_work
+    - sensor.me_traffic_density_to_work
+    show_header_toggle: false
+    title: Travel time Brussel
+    type: entities
+  - entities:
+    - input_boolean.work
+    - sensor.time_at_work_today
+    - sensor.time_at_work_this_week
+    - sensor.time_at_work_this_month
+    - sensor.percent_at_work_daily
+    - sensor.percent_at_work_weekly
+    - sensor.percent_at_work_monthly
+    show_header_toggle: false
+    title: Work Hours
+    type: entities
+  icon: mdi:highway
+  path: ''
+  title: Travel
 - badges: []
   cards:
   - cards:
@@ -4808,32 +5401,6 @@ views:
         '
       type: markdown
     type: custom:card-modder
-  - cards:
-    - color_type: blank-card
-      type: custom:button-card
-    - entity: switch.microgolf
-      icon: mdi:led-strip
-      name: Luce Cucina
-      template: mod01
-      type: custom:button-card
-    - entity: switch.microgolf
-      icon: mdi:instagram
-      name: Sensore cucina
-      template: mod01
-      type: custom:button-card
-    - entity: switch.microgolf
-      icon: mdi:blinds
-      name: Scuro Cucina
-      template: mod01
-      type: custom:button-card
-    - entity: switch.easyplus
-      icon: mdi:toaster-oven
-      name: MicroondeForno
-      template: mod01
-      type: custom:button-card
-    - color_type: blank-card
-      type: custom:button-card
-    type: horizontal-stack
   title: test
 - badges: []
   cards:
@@ -5172,177 +5739,6 @@ views:
   title: cards
 - badges: []
   cards:
-  - cards:
-    - entity: sensor.train_work
-      max: 50
-      min: 0
-      severity:
-      - color: green
-        value: 0
-      - color: green
-        value: 30
-      - color: red
-        value: 31
-      title: Train Work
-      title_position: inside
-      type: custom:bar-card
-    - entities:
-      - filter:
-          exclude:
-          - sensor.train_work.at*
-          - sensor.train_work.fr*
-          - sensor.train_work.oc*
-          - sensor.train_work.ic*
-          - sensor.train_work.oc*
-          - sensor.train_work.uni*
-          - sensor.train_work.lat*
-          - sensor.train_work.lon*
-          - sensor.train_work.lon*
-          - sensor.train_work.platform_ar*
-          include:
-          - sensor.train_work.*
-        heading_name: ' '
-        heading_state: '  '
-        type: custom:entity-attributes-card
-      type: entities
-    type: vertical-stack
-  - cards:
-    - entity: sensor.train_home_noord
-      max: 50
-      min: 0
-      severity:
-      - color: green
-        value: 0
-      - color: green
-        value: 30
-      - color: red
-        value: 31
-      title: Train Home Noord
-      title_position: inside
-      type: custom:bar-card
-    - entities:
-      - filter:
-          exclude:
-          - sensor.train_home_noord.at*
-          - sensor.train_home_noord.fr*
-          - sensor.train_home_noord.oc*
-          - sensor.train_home_noord.ic*
-          - sensor.train_home_noord.oc*
-          - sensor.train_home_noord.uni*
-          - sensor.train_home_noord.lat*
-          - sensor.train_home_noord.lon*
-          - sensor.train_home_noord.lon*
-          - sensor.train_home_noord.platform_ar*
-          include:
-          - sensor.train_home_noord.*
-        heading_name: ' '
-        heading_state: '  '
-        type: custom:entity-attributes-card
-      type: entities
-    type: vertical-stack
-  - content: "Current delay [[ sensor.train_home.attributes.delay ]] \nArrival in\
-      \ [[ sensor.train_home.attributes.departure ]] min\nDuration [[ sensor.train_home\
-      \ ]] min\nGate [[ sensor.train_home.attributes.platform_departing ]]  \n"
-    title: Home via Brussel Centraal
-    type: markdown
-  icon: mdi:train
-  panel: false
-  title: Train
-- badges: []
-  cards:
-  - aspect_ratio: 16x9
-    default_zoom: 15
-    entities:
-    - entity: device_tracker.life360_rachid
-    - entity: device_tracker.comp_rachid
-    type: map
-  - aspect_ratio: 16x9
-    default_zoom: 15
-    entities:
-    - entity: device_tracker.comp_soumaya
-    - entity: device_tracker.life360_soumaya
-    type: map
-  - columns: 5
-    entities:
-    - entity: person.rachid
-    - entity: device_tracker.rachid
-      name: router
-    - entity: device_tracker.rachid_mqtt
-      name: mqtt
-    - entity: device_tracker.elradix
-      name: BT
-    - entity: device_tracker.comp_rachid
-      name: group
-    - entity: device_tracker.google_maps_elrachid_gmail_com
-      name: google
-    - entity: device_tracker.life360_rachid
-      name: life360
-    - entity: device_tracker.elradix_2
-      name: gpslogger
-    show_name: true
-    show_state: true
-    type: glance
-  - columns: 5
-    entities:
-    - entity: person.soumaya
-    - entity: device_tracker.soumaya
-      name: router
-    - entity: device_tracker.soumaya_mqtt
-      name: mqtt
-    - entity: device_tracker.soumaya_2
-      name: BT
-    - entity: device_tracker.comp_soumaya
-      name: group
-    - entity: device_tracker.google_maps_102675862650488616596
-      name: google
-    - entity: device_tracker.life360_soumaya
-      name: life360
-    - entity: device_tracker.flora_2
-      name: gpslogger
-    type: glance
-  - entities:
-    - entity: sensor.soumaya_to_home
-    - entity: sensor.rachid_to_home
-    - entity: sensor.proximity_person
-    show_header_toggle: false
-    title: Proximity
-    type: entities
-  - entities:
-    - entity: sensor.time_to_leave_for_home
-    - entity: sensor.time_to_home
-    - entity: sensor.me_traffic_density_to_home
-    - entity: sensor.time_to_leave_for_work
-    - entity: sensor.time_to_work
-    - entity: sensor.me_traffic_density_to_work
-    show_header_toggle: false
-    title: Travel time BNP
-    type: entities
-  - entities:
-    - sensor.time_to_leave_for_home
-    - sensor.time_to_home
-    - sensor.me_traffic_density_to_home
-    - sensor.time_to_leave_for_work
-    - sensor.time_to_work
-    - sensor.me_traffic_density_to_work
-    show_header_toggle: false
-    title: Travel time Brussel
-    type: entities
-  - entities:
-    - input_boolean.work
-    - sensor.time_at_work_today
-    - sensor.time_at_work_this_week
-    - sensor.time_at_work_this_month
-    - sensor.percent_at_work_daily
-    - sensor.percent_at_work_weekly
-    - sensor.percent_at_work_monthly
-    show_header_toggle: false
-    title: Work Hours
-    type: entities
-  icon: mdi:highway
-  path: ''
-  title: Travel
-- badges: []
-  cards:
   - columns: 7
     entities:
     - entity: sensor.elradix_s7a_call_state
@@ -5448,63 +5844,37 @@ views:
       heading_state: ' '
       type: custom:entity-attributes-card
     type: entities
+  - cards:
+    - cards:
+      - aspect_ratio: 1
+        entity: device_tracker.comp_rachid
+        image: /local/elradix.png
+        show_name: false
+        type: picture-entity
+      - content: "<h3>Adress</h3> [[ geo_address.comp_rachid.attributes.road ]] [[\
+          \ if(geo_address.comp_rachid.attributes.house_number != undefined, geo_address.comp_rachid.attributes.house_number,\
+          \ \"\") ]] [[ if(geo_address.comp_rachid.attributes.city != undefined, geo_address.comp_rachid.attributes.city,\
+          \ \"\") ]] [[ if(geo_address.comp_rachid.attributes.village != undefined,\
+          \ geo_address.comp_rachid.attributes.village, \"\") ]] [[ if(geo_address.comp_rachid.attributes.county\
+          \ != geo_address.comp_rachid.attributes.city, geo_address.comp_rachid.attributes.county,\
+          \ \"\") ]]  \n"
+        type: markdown
+      - aspect_ratio: 1
+        entity: device_tracker.comp_soumaya
+        image: /local/soumaya.png
+        show_name: false
+        type: picture-entity
+      - content: "<h3>Adress</h3> [[ geo_address.comp_soumaya.attributes.road ]] [[\
+          \ if(geo_address.comp_soumaya.attributes.house_number != undefined, geo_address.comp_soumaya.attributes.house_number,\
+          \ \"\") ]] [[ if(geo_address.comp_soumaya.attributes.city != undefined,\
+          \ geo_address.comp_soumaya.attributes.city, \"\") ]] [[ if(geo_address.comp_soumaya.attributes.village\
+          \ != undefined, geo_address.comp_soumaya.attributes.village, \"\") ]] [[\
+          \ if(geo_address.comp_soumaya.attributes.county != geo_address.comp_soumaya.attributes.city,\
+          \ geo_address.comp_soumaya.attributes.county, \"\") ]]  \n"
+        type: markdown
+      type: vertical-stack
+    type: custom:vertical-stack-in-card
   icon: mdi:android
   path: ''
   theme: Backend-selected
   title: S7
-- badges: []
-  cards:
-  - entities:
-    - entity: input_number.gas_last
-    - entity: input_number.water_last
-    - entity: input_number.electricity_day_last
-    - entity: input_number.electricity_night_last
-    show_header_toggle: false
-    title: Meters
-    type: entities
-  - entities:
-    - entity: sensor.water_cost_monthly
-    - entity: sensor.gas_cost_monthly
-    - entity: sensor.electricity_total_cost_monthly
-    - entity: sensor.power_cost_monthly
-    show_header_toggle: false
-    title: utilities cost analysis
-    type: entities
-  - entities:
-    - entity: sensor.water_consumption_period
-    - entity: sensor.gas_consumption_period
-    - entity: sensor.electricity_day_consumption_period
-    - entity: sensor.electricity_night_consumption_period
-    - entity: sensor.electricity_total_consumption_period
-    show_header_toggle: false
-    title: consumption utilities - actuals
-    type: entities
-  - entities:
-    - entity: sensor.power_prepaid_monthly
-    - entity: sensor.gas_prepaid_period
-    - entity: sensor.water_prepaid_period
-    - entity: sensor.gas_prepaid_period
-    - entity: sensor.power_prepaid_period
-    show_header_toggle: false
-    title: prepaid utilities
-    type: entities
-  - entities:
-    - entity: sensor.water_cost_period
-    - entity: sensor.gas_cost_period
-    - entity: sensor.electricity_day_cost_period
-    - entity: sensor.electricity_night_cost_period
-    - entity: sensor.electricity_total_cost_period
-    - entity: sensor.power_cost_period
-    show_header_toggle: false
-    title: utilities cost - actuals
-    type: entities
-  - entities:
-    - entity: sensor.water_balance_period
-    - entity: sensor.gas_balance_period
-    - entity: sensor.electricity_total_balance_period
-    - entity: sensor.power_balance_period
-    show_header_toggle: false
-    title: utilities analys balance period
-    type: entities
-  path: energy
-  title: Energy

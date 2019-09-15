@@ -28,10 +28,6 @@
                     "url": "/local/card-modder.js"
                 },
                 {
-                    "type": "module",
-                    "url": "/local/search-card.js"
-                },
-                {
                     "type": "js",
                     "url": "/local/vertical-style-card.js"
                 },
@@ -119,12 +115,12 @@
                     "url": "/community_plugin/travel-time-card/travel-time-card.js"
                 },
                 {
-                    "type": "js",
-                    "url": "/community_plugin/button-entity-row/button-entity-row.js"
+                    "type": "module",
+                    "url": "/community_plugin/lovelace-animated-background/animated-background.js"
                 },
                 {
                     "type": "module",
-                    "url": "/community_plugin/lovelace-animated-background/animated-background.js"
+                    "url": "/community_plugin/search-card/search-card.js"
                 }
             ],
             "title": "Home",
@@ -178,24 +174,6 @@
                         },
                         {
                             "card": {
-                                "meridiem": false,
-                                "name": "",
-                                "type": "custom:sun-card"
-                            },
-                            "style": {
-                                "--sc-background": "linear-gradient(rgba(1, 1, 254,  0%), rgb(0, 191, 255) 46%, rgb(0, 250,  124) 54%, rgba(11, 1,  40,  0%))",
-                                "--sc-event-line-color": "white",
-                                "--sc-horizon-color": null,
-                                "--sc-sunbeam-color": "white",
-                                "background-repeat": "no-repeat",
-                                "background-size": "100% 100%",
-                                "border": "solid 1.5px  # rgba(57,128,228)",
-                                "border-radius": "10px"
-                            },
-                            "type": "custom:card-modder"
-                        },
-                        {
-                            "card": {
                                 "show_name": true,
                                 "show_state": false,
                                 "type": "glance"
@@ -240,13 +218,6 @@
                         },
                         {
                             "card": {
-                                "content": "##### [[ sensor.vrt_nws.attributes.friendly_name ]] - [[ sensor.vrt_nws.attributes.tag ]]        \n### [[ sensor.vrt_nws ]]   \n![vrtnws]([[ sensor.vrt_nws.attributes.picture ]])  \n\n[[ sensor.vrt_text ]]      \n###### [Lees meer] [[  sensor.vrt_nws.attributes.link ]] \n",
-                                "type": "markdown"
-                            },
-                            "type": "custom:card-modder"
-                        },
-                        {
-                            "card": {
                                 "show_name": true,
                                 "show_state": false,
                                 "type": "glance"
@@ -266,22 +237,10 @@
                         },
                         {
                             "card": {
-                                "show_name": true,
-                                "show_state": false,
-                                "type": "glance"
+                                "content": "##### [[ sensor.vrt_nws.attributes.friendly_name ]] - [[ sensor.vrt_nws.attributes.tag ]]        \n### [[ sensor.vrt_nws ]]   \n![vrtnws]([[ sensor.vrt_nws.attributes.picture ]])  \n\n[[ sensor.vrt_text ]]      \n###### [Lees meer] [[  sensor.vrt_nws.attributes.link ]] \n",
+                                "type": "markdown"
                             },
-                            "entities": [
-                                "switch.heating_eetkamer",
-                                "switch.heating_living",
-                                "switch.heating_floradix",
-                                "switch.heating_sara",
-                                "switch.heating_yassin"
-                            ],
-                            "show_empty": false,
-                            "state_filter": [
-                                "on"
-                            ],
-                            "type": "entity-filter"
+                            "type": "custom:card-modder"
                         },
                         {
                             "cards": [
@@ -400,7 +359,7 @@
                                                         },
                                                         {
                                                             "color": "red",
-                                                            "value": 50
+                                                            "value": 59
                                                         }
                                                     ],
                                                     "target": 45.31,
@@ -511,6 +470,43 @@
                                 }
                             ],
                             "type": "vertical-stack"
+                        },
+                        {
+                            "card": {
+                                "meridiem": false,
+                                "name": "",
+                                "type": "custom:sun-card"
+                            },
+                            "style": {
+                                "--sc-background": "linear-gradient(rgba(1, 1, 254,  0%), rgb(0, 191, 255) 46%, rgb(0, 250,  124) 54%, rgba(11, 1,  40,  0%))",
+                                "--sc-event-line-color": "white",
+                                "--sc-horizon-color": null,
+                                "--sc-sunbeam-color": "white",
+                                "background-repeat": "no-repeat",
+                                "background-size": "100% 100%",
+                                "border": "solid 1.5px  # rgba(57,128,228)",
+                                "border-radius": "10px"
+                            },
+                            "type": "custom:card-modder"
+                        },
+                        {
+                            "card": {
+                                "show_name": true,
+                                "show_state": false,
+                                "type": "glance"
+                            },
+                            "entities": [
+                                "switch.heating_eetkamer",
+                                "switch.heating_living",
+                                "switch.heating_floradix",
+                                "switch.heating_sara",
+                                "switch.heating_yassin"
+                            ],
+                            "show_empty": false,
+                            "state_filter": [
+                                "on"
+                            ],
+                            "type": "entity-filter"
                         },
                         {
                             "card": {
@@ -1555,10 +1551,6 @@
                                             "color_type": "card",
                                             "default_color": "var(--primary-text-color)",
                                             "entity": "switch.stp_keuken_espresso",
-                                            "hold_action": {
-                                                "action": "more-info",
-                                                "haptic": "success"
-                                            },
                                             "icon": "mdi:coffee",
                                             "show_name": false,
                                             "size": "75%",
@@ -1626,10 +1618,6 @@
                                             "color_type": "card",
                                             "default_color": "var(--primary-text-color)",
                                             "entity": "switch.stp_keuken_microgolf",
-                                            "hold_action": {
-                                                "action": "more-info",
-                                                "haptic": "success"
-                                            },
                                             "icon": "mdi:microwave",
                                             "show_name": false,
                                             "size": "75%",
@@ -1918,10 +1906,6 @@
                                             "color_type": "card",
                                             "default_color": "var(--primary-text-color)",
                                             "entity": "switch.stp_keuken_waterkoker",
-                                            "hold_action": {
-                                                "action": "more-info",
-                                                "haptic": "success"
-                                            },
                                             "icon": "mdi:water-pump",
                                             "show_name": false,
                                             "size": "75%",
@@ -1980,6 +1964,13 @@
                                                     "value": "off"
                                                 }
                                             ],
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "python_script.easyplus_switch_entity",
+                                                "service_data": {
+                                                    "entity_id": "switch.stp_keuken_waterkoker"
+                                                }
+                                            },
                                             "type": "custom:button-card"
                                         },
                                         {
@@ -6709,47 +6700,6 @@
                                 }
                             ],
                             "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "align_state": "center",
-                                    "color_thresholds": [
-                                        {
-                                            "color": "green",
-                                            "value": 0.5
-                                        },
-                                        {
-                                            "color": "yellow",
-                                            "value": 1.2
-                                        },
-                                        {
-                                            "color": "orange",
-                                            "value": 2
-                                        }
-                                    ],
-                                    "entities": [
-                                        "sensor.load_1m",
-                                        "sensor.load_5m",
-                                        "sensor.load_15m"
-                                    ],
-                                    "extrema": true,
-                                    "font_size": 10,
-                                    "height": 150,
-                                    "hour24": true,
-                                    "hours_to_show": 48,
-                                    "line_width": 8,
-                                    "more_info": false,
-                                    "show": {
-                                        "graph": "bar",
-                                        "icon": false,
-                                        "name": false
-                                    },
-                                    "show_legend": false,
-                                    "type": "custom:mini-graph-card"
-                                }
-                            ],
-                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:server",
@@ -8707,115 +8657,23 @@
                                                     "entity": "input_text.gas_last",
                                                     "icon": "mdi:fire",
                                                     "name": "gas"
-                                                },
+                                                }
+                                            ],
+                                            "type": "entities"
+                                        },
+                                        {
+                                            "entities": [
                                                 {
                                                     "entity": "input_text.electricity_day_last",
                                                     "icon": "mdi:flash-outline",
-                                                    "name": "electricity day"
+                                                    "name": "day"
                                                 },
                                                 {
                                                     "entity": "input_text.electricity_night_last",
                                                     "icon": "mdi:flash",
-                                                    "name": "electricity night"
+                                                    "name": "night"
                                                 }
                                             ],
-                                            "type": "entities"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "color_type": "label-card",
-                                    "name": "Daily consumption",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.electricity_total_consumption_day",
-                                                    "icon": "mdi:flash-outline",
-                                                    "name": "Electricity"
-                                                },
-                                                {
-                                                    "entity": "sensor.gas_consumption_day",
-                                                    "icon": "mdi:gas-station",
-                                                    "name": "Gas"
-                                                },
-                                                {
-                                                    "entity": "sensor.water_consumption_day",
-                                                    "icon": "mdi:water-pump",
-                                                    "name": "Water"
-                                                },
-                                                {
-                                                    "type": "divider"
-                                                },
-                                                {
-                                                    "entity": "sensor.gas_consumption_day_kwh",
-                                                    "icon": "mdi:gas-station",
-                                                    "name": "Gas"
-                                                },
-                                                {
-                                                    "entity": "sensor.electricity_day_consumption_day",
-                                                    "icon": "mdi:weather-sunny",
-                                                    "name": "Electricty Day"
-                                                },
-                                                {
-                                                    "entity": "sensor.electricity_night_consumption_day",
-                                                    "icon": "mdi:weather-night",
-                                                    "name": "Electricty Night"
-                                                }
-                                            ],
-                                            "show_state": false,
                                             "type": "entities"
                                         }
                                     ],
@@ -8935,11 +8793,6 @@
                                                     "type": "divider"
                                                 },
                                                 {
-                                                    "entity": "sensor.power_period",
-                                                    "icon": "mdi:clock",
-                                                    "name": "Facturatie maand"
-                                                },
-                                                {
                                                     "entity": "sensor.power_balance_period",
                                                     "icon": "mdi:scale-balance",
                                                     "name": "Huidig saldo"
@@ -8948,6 +8801,111 @@
                                                     "entity": "sensor.power_balance_fcst",
                                                     "icon": "mdi:scale-balance",
                                                     "name": "Saldo 2020"
+                                                }
+                                            ],
+                                            "show_state": false,
+                                            "type": "entities"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "color_type": "label-card",
+                                    "name": "Daily consumption",
+                                    "styles": {
+                                        "card": [
+                                            {
+                                                "height": "40px"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "text-orientation": "mixed"
+                                            },
+                                            {
+                                                "font-size": "20px"
+                                            },
+                                            {
+                                                "text-Transform": "uppercase"
+                                            },
+                                            {
+                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "padding": "2%"
+                                            },
+                                            {
+                                                "color": "white"
+                                            },
+                                            {
+                                                "border-radius": "50px"
+                                            },
+                                            {
+                                                "border-style": "solid"
+                                            },
+                                            {
+                                                "border-width": "2px"
+                                            },
+                                            {
+                                                "border-color": "#e5e5e5"
+                                            }
+                                        ]
+                                    },
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.electricity_total_consumption_day",
+                                                    "icon": "mdi:flash-outline",
+                                                    "name": "Electricity"
+                                                },
+                                                {
+                                                    "entity": "sensor.gas_consumption_day",
+                                                    "icon": "mdi:gas-station",
+                                                    "name": "Gas"
+                                                },
+                                                {
+                                                    "entity": "sensor.water_consumption_day",
+                                                    "icon": "mdi:water-pump",
+                                                    "name": "Water"
+                                                },
+                                                {
+                                                    "type": "divider"
+                                                },
+                                                {
+                                                    "entity": "sensor.gas_consumption_day_kwh",
+                                                    "icon": "mdi:gas-station",
+                                                    "name": "Gas"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_day_consumption_day",
+                                                    "icon": "mdi:weather-sunny",
+                                                    "name": "Electricty Day"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_night_consumption_day",
+                                                    "icon": "mdi:weather-night",
+                                                    "name": "Electricty Night"
+                                                },
+                                                {
+                                                    "type": "divider"
+                                                },
+                                                {
+                                                    "entity": "sensor.days_consumed",
+                                                    "icon": "mdi:clock",
+                                                    "name": "Days consumed"
                                                 }
                                             ],
                                             "show_state": false,
@@ -9038,7 +8996,7 @@
                                                         },
                                                         {
                                                             "color": "#B22222",
-                                                            "value": 50
+                                                            "value": 59
                                                         }
                                                     ],
                                                     "target": 45,
@@ -10534,47 +10492,6 @@
                                 "type": "markdown"
                             },
                             "type": "custom:card-modder"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "color_type": "blank-card",
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "entity": "switch.microgolf",
-                                    "icon": "mdi:led-strip",
-                                    "name": "Luce Cucina",
-                                    "template": "mod01",
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "entity": "switch.microgolf",
-                                    "icon": "mdi:instagram",
-                                    "name": "Sensore cucina",
-                                    "template": "mod01",
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "entity": "switch.microgolf",
-                                    "icon": "mdi:blinds",
-                                    "name": "Scuro Cucina",
-                                    "template": "mod01",
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "entity": "switch.easyplus",
-                                    "icon": "mdi:toaster-oven",
-                                    "name": "MicroondeForno",
-                                    "template": "mod01",
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "color_type": "blank-card",
-                                    "type": "custom:button-card"
-                                }
-                            ],
-                            "type": "horizontal-stack"
                         }
                     ],
                     "title": "test"

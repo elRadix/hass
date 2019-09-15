@@ -11,12 +11,6 @@ group:
       - sensor.easyplus_was
       - sensor.easyplus_boiler
 
-# sensor:
-#   - platform: mqtt
-#     name: camera living
-#     state_topic: "camera/motion/living"
-
-
 timer:
   dish:
     duration: '00:40:00'
@@ -45,18 +39,8 @@ timer:
   boiler_shower:
     duration: '01:30:00'
     icon: mdi:microwave
-  # camera:
-  #   duration: '00:01:30'
-  #   icon: mdi:webcam
 
 script:
-
-  # location:
-  #   sequence:
-  #   - service: telegram_bot.send_location
-  #     data_template:
-  #       latitude: '{{states.device_tracker.wdd1771871j112618.attributes.latitude}'
-  #       longitude: '{{states.device_tracker.wdd1771871j112618.attributes.longitude}}'
 
   turn_on_microgolf:
     sequence:

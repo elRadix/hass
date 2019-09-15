@@ -8780,6 +8780,9 @@
                                                     "name": "Voorschot factuur"
                                                 },
                                                 {
+                                                    "type": "divider"
+                                                },
+                                                {
                                                     "entity": "sensor.power_prepaid_period",
                                                     "icon": "mdi:currency-eur",
                                                     "name": "Betaalde voorschotten"
@@ -8815,57 +8818,57 @@
                         {
                             "cards": [
                                 {
-                                    "color_type": "label-card",
-                                    "name": "Daily consumption",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
                                     "cards": [
                                         {
                                             "entities": [
+                                                {
+                                                    "color_type": "label-card",
+                                                    "name": "Daily consumption",
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "40px"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "text-orientation": "mixed"
+                                                            },
+                                                            {
+                                                                "font-size": "20px"
+                                                            },
+                                                            {
+                                                                "text-Transform": "uppercase"
+                                                            },
+                                                            {
+                                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "padding": "2%"
+                                                            },
+                                                            {
+                                                                "color": "white"
+                                                            },
+                                                            {
+                                                                "border-radius": "50px"
+                                                            },
+                                                            {
+                                                                "border-style": "solid"
+                                                            },
+                                                            {
+                                                                "border-width": "2px"
+                                                            },
+                                                            {
+                                                                "border-color": "#e5e5e5"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "custom:button-card"
+                                                },
                                                 {
                                                     "entity": "sensor.electricity_total_consumption_day",
                                                     "icon": "mdi:flash-outline",
@@ -8900,12 +8903,85 @@
                                                     "name": "Electricty Night"
                                                 },
                                                 {
+                                                    "color_type": "label-card",
+                                                    "name": "consumption YTD",
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "40px"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "text-orientation": "mixed"
+                                                            },
+                                                            {
+                                                                "font-size": "20px"
+                                                            },
+                                                            {
+                                                                "text-Transform": "uppercase"
+                                                            },
+                                                            {
+                                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "padding": "2%"
+                                                            },
+                                                            {
+                                                                "color": "white"
+                                                            },
+                                                            {
+                                                                "border-radius": "50px"
+                                                            },
+                                                            {
+                                                                "border-style": "solid"
+                                                            },
+                                                            {
+                                                                "border-width": "2px"
+                                                            },
+                                                            {
+                                                                "border-color": "#e5e5e5"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "custom:button-card"
+                                                },
+                                                {
+                                                    "entity": "sensor.water_consumption_period",
+                                                    "icon": "mdi:water-pump",
+                                                    "name": "water"
+                                                },
+                                                {
+                                                    "entity": "sensor.gas_consumption_period",
+                                                    "icon": "mdi:gas-station",
+                                                    "name": "gas"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_day_consumption_period",
+                                                    "icon": "mdi:flash-outline",
+                                                    "name": "day"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_night_consumption_period",
+                                                    "icon": "mdi:flash",
+                                                    "name": "night"
+                                                },
+                                                {
                                                     "type": "divider"
                                                 },
                                                 {
                                                     "entity": "sensor.days_consumed",
-                                                    "icon": "mdi:clock",
-                                                    "name": "Days consumed"
+                                                    "icon": "mdi:flash-circle",
+                                                    "name": "power"
+                                                },
+                                                {
+                                                    "entity": "sensor.days_water_consumed",
+                                                    "icon": "mdi:water-pump",
+                                                    "name": "water"
                                                 }
                                             ],
                                             "show_state": false,
@@ -9008,22 +9084,6 @@
                                                         "text-transform": "uppercase"
                                                     },
                                                     "type": "custom:bar-card"
-                                                },
-                                                {
-                                                    "entity": "sensor.electricity_day_consumption_period",
-                                                    "icon": "mdi:flash-outline",
-                                                    "name": "dag verbruik"
-                                                },
-                                                {
-                                                    "entity": "sensor.electricity_night_consumption_period",
-                                                    "icon": "mdi:flash",
-                                                    "name": "nacht verbruik"
-                                                },
-                                                {
-                                                    "type": "divider"
-                                                },
-                                                {
-                                                    "entity": "sensor.electricity_total_prepaid_monthly"
                                                 },
                                                 {
                                                     "entity": "sensor.electricity_total_prepaid_monthly",
@@ -9159,14 +9219,6 @@
                                                     "type": "custom:bar-card"
                                                 },
                                                 {
-                                                    "entity": "sensor.gas_consumption_period",
-                                                    "icon": "mdi:gas-station",
-                                                    "name": "dag verbruik"
-                                                },
-                                                {
-                                                    "type": "divider"
-                                                },
-                                                {
                                                     "entity": "sensor.gas_prepaid_monthly",
                                                     "icon": "mdi:currency-eur",
                                                     "name": "maandelijke voorschot"
@@ -9180,36 +9232,22 @@
                                                     "name": "Betaalde voorschotten"
                                                 },
                                                 {
-                                                    "entity": "sensor.gas_cost_period",
-                                                    "icon": "mdi:currency-eur",
-                                                    "name": "Werkelijke  kosten"
-                                                },
-                                                {
                                                     "entity": "sensor.gas_cost_period_tweaked",
                                                     "icon": "mdi:currency-eur",
-                                                    "name": "Werkelijke kosten twekaed"
+                                                    "name": "Werkelijke kosten"
                                                 },
                                                 {
                                                     "type": "divider"
                                                 },
                                                 {
-                                                    "entity": "sensor.gas_balance_period",
+                                                    "entity": "sensor.gas_balance_period_tweaked",
                                                     "icon": "mdi:scale-balance",
                                                     "name": "Huidige saldo"
                                                 },
                                                 {
-                                                    "entity": "sensor.gas_balance_period_tweaked",
-                                                    "icon": "mdi:scale-balance",
-                                                    "name": "Huidige saldo tweaked"
-                                                },
-                                                {
-                                                    "entity": "sensor.gas_balance_fcst",
+                                                    "entity": "sensor.gas_balance_fcst_tweaked",
                                                     "icon": "mdi:scale-balance",
                                                     "name": "Saldo 2020"
-                                                },
-                                                {
-                                                    "entity": "sensor.gas_balance_fcst_tweaked",
-                                                    "name": "Saldo 2020 tweaked"
                                                 }
                                             ],
                                             "show_state": false,
@@ -9315,14 +9353,6 @@
                                                 },
                                                 {
                                                     "entity": "sensor.water_prepaid_monthly",
-                                                    "icon": "mdi:flash-outline",
-                                                    "name": "dag verbruik"
-                                                },
-                                                {
-                                                    "type": "divider"
-                                                },
-                                                {
-                                                    "entity": "sensor.water_cost_monthly",
                                                     "icon": "mdi:currency-eur",
                                                     "name": "maandelijke voorschot"
                                                 },

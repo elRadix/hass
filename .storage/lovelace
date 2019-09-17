@@ -8685,57 +8685,262 @@
                         {
                             "cards": [
                                 {
-                                    "color_type": "label-card",
-                                    "name": "mega factuur",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
+                                    "cards": [
+                                        {
+                                            "entities": [
+                                                {
+                                                    "color_type": "label-card",
+                                                    "name": "Daily consumption",
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "40px"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "text-orientation": "mixed"
+                                                            },
+                                                            {
+                                                                "font-size": "20px"
+                                                            },
+                                                            {
+                                                                "text-Transform": "uppercase"
+                                                            },
+                                                            {
+                                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "padding": "2%"
+                                                            },
+                                                            {
+                                                                "color": "white"
+                                                            },
+                                                            {
+                                                                "border-radius": "50px"
+                                                            },
+                                                            {
+                                                                "border-style": "solid"
+                                                            },
+                                                            {
+                                                                "border-width": "2px"
+                                                            },
+                                                            {
+                                                                "border-color": "#e5e5e5"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "custom:button-card"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_total_consumption_day",
+                                                    "icon": "mdi:flash-outline",
+                                                    "name": "Electricity"
+                                                },
+                                                {
+                                                    "entity": "sensor.gas_consumption_day",
+                                                    "icon": "mdi:gas-station",
+                                                    "name": "Gas"
+                                                },
+                                                {
+                                                    "entity": "sensor.water_consumption_day",
+                                                    "icon": "mdi:water-pump",
+                                                    "name": "Water"
+                                                },
+                                                {
+                                                    "type": "divider"
+                                                },
+                                                {
+                                                    "entity": "sensor.gas_consumption_day_kwh",
+                                                    "icon": "mdi:gas-station",
+                                                    "name": "Gas"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_day_consumption_day",
+                                                    "icon": "mdi:weather-sunny",
+                                                    "name": "Electricty Day"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_night_consumption_day",
+                                                    "icon": "mdi:weather-night",
+                                                    "name": "Electricty Night"
+                                                }
+                                            ],
+                                            "show_state": false,
+                                            "type": "entities"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
                                 {
                                     "cards": [
                                         {
                                             "entities": [
+                                                {
+                                                    "color_type": "label-card",
+                                                    "name": "consumption YTD",
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "40px"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "text-orientation": "mixed"
+                                                            },
+                                                            {
+                                                                "font-size": "20px"
+                                                            },
+                                                            {
+                                                                "text-Transform": "uppercase"
+                                                            },
+                                                            {
+                                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "padding": "2%"
+                                                            },
+                                                            {
+                                                                "color": "white"
+                                                            },
+                                                            {
+                                                                "border-radius": "50px"
+                                                            },
+                                                            {
+                                                                "border-style": "solid"
+                                                            },
+                                                            {
+                                                                "border-width": "2px"
+                                                            },
+                                                            {
+                                                                "border-color": "#e5e5e5"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "custom:button-card"
+                                                },
+                                                {
+                                                    "entity": "sensor.water_consumption_period",
+                                                    "icon": "mdi:water-pump",
+                                                    "name": "water"
+                                                },
+                                                {
+                                                    "entity": "sensor.gas_consumption_period",
+                                                    "icon": "mdi:gas-station",
+                                                    "name": "gas"
+                                                },
+                                                {
+                                                    "type": "divider"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_day_consumption_period",
+                                                    "icon": "mdi:flash-outline",
+                                                    "name": "day"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_night_consumption_period",
+                                                    "icon": "mdi:flash",
+                                                    "name": "night"
+                                                },
+                                                {
+                                                    "type": "divider"
+                                                },
+                                                {
+                                                    "entity": "sensor.electricity_total_consumption_period",
+                                                    "icon": "mdi:flash",
+                                                    "name": "total power"
+                                                },
+                                                {
+                                                    "type": "divider"
+                                                },
+                                                {
+                                                    "entity": "sensor.days_consumed",
+                                                    "icon": "mdi:flash-circle",
+                                                    "name": "power"
+                                                },
+                                                {
+                                                    "entity": "sensor.days_water_consumed",
+                                                    "icon": "mdi:water-pump",
+                                                    "name": "water"
+                                                }
+                                            ],
+                                            "show_state": false,
+                                            "type": "entities"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entities": [
+                                                {
+                                                    "color_type": "label-card",
+                                                    "name": "mega factuur",
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "40px"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "text-orientation": "mixed"
+                                                            },
+                                                            {
+                                                                "font-size": "20px"
+                                                            },
+                                                            {
+                                                                "text-Transform": "uppercase"
+                                                            },
+                                                            {
+                                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "padding": "2%"
+                                                            },
+                                                            {
+                                                                "color": "white"
+                                                            },
+                                                            {
+                                                                "border-radius": "50px"
+                                                            },
+                                                            {
+                                                                "border-style": "solid"
+                                                            },
+                                                            {
+                                                                "border-width": "2px"
+                                                            },
+                                                            {
+                                                                "border-color": "#e5e5e5"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "custom:button-card"
+                                                },
                                                 {
                                                     "align": "split",
                                                     "animation": "on",
@@ -8823,7 +9028,7 @@
                                             "entities": [
                                                 {
                                                     "color_type": "label-card",
-                                                    "name": "Daily consumption",
+                                                    "name": "electriciteit",
                                                     "styles": {
                                                         "card": [
                                                             {
@@ -8869,184 +9074,6 @@
                                                     },
                                                     "type": "custom:button-card"
                                                 },
-                                                {
-                                                    "entity": "sensor.electricity_total_consumption_day",
-                                                    "icon": "mdi:flash-outline",
-                                                    "name": "Electricity"
-                                                },
-                                                {
-                                                    "entity": "sensor.gas_consumption_day",
-                                                    "icon": "mdi:gas-station",
-                                                    "name": "Gas"
-                                                },
-                                                {
-                                                    "entity": "sensor.water_consumption_day",
-                                                    "icon": "mdi:water-pump",
-                                                    "name": "Water"
-                                                },
-                                                {
-                                                    "type": "divider"
-                                                },
-                                                {
-                                                    "entity": "sensor.gas_consumption_day_kwh",
-                                                    "icon": "mdi:gas-station",
-                                                    "name": "Gas"
-                                                },
-                                                {
-                                                    "entity": "sensor.electricity_day_consumption_day",
-                                                    "icon": "mdi:weather-sunny",
-                                                    "name": "Electricty Day"
-                                                },
-                                                {
-                                                    "entity": "sensor.electricity_night_consumption_day",
-                                                    "icon": "mdi:weather-night",
-                                                    "name": "Electricty Night"
-                                                },
-                                                {
-                                                    "color_type": "label-card",
-                                                    "name": "consumption YTD",
-                                                    "styles": {
-                                                        "card": [
-                                                            {
-                                                                "height": "40px"
-                                                            },
-                                                            {
-                                                                "font-weight": "bold"
-                                                            },
-                                                            {
-                                                                "text-orientation": "mixed"
-                                                            },
-                                                            {
-                                                                "font-size": "20px"
-                                                            },
-                                                            {
-                                                                "text-Transform": "uppercase"
-                                                            },
-                                                            {
-                                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                                            },
-                                                            {
-                                                                "font-weight": "bold"
-                                                            },
-                                                            {
-                                                                "padding": "2%"
-                                                            },
-                                                            {
-                                                                "color": "white"
-                                                            },
-                                                            {
-                                                                "border-radius": "50px"
-                                                            },
-                                                            {
-                                                                "border-style": "solid"
-                                                            },
-                                                            {
-                                                                "border-width": "2px"
-                                                            },
-                                                            {
-                                                                "border-color": "#e5e5e5"
-                                                            }
-                                                        ]
-                                                    },
-                                                    "type": "custom:button-card"
-                                                },
-                                                {
-                                                    "entity": "sensor.water_consumption_period",
-                                                    "icon": "mdi:water-pump",
-                                                    "name": "water"
-                                                },
-                                                {
-                                                    "entity": "sensor.gas_consumption_period",
-                                                    "icon": "mdi:gas-station",
-                                                    "name": "gas"
-                                                },
-                                                {
-                                                    "entity": "sensor.electricity_day_consumption_period",
-                                                    "icon": "mdi:flash-outline",
-                                                    "name": "day"
-                                                },
-                                                {
-                                                    "entity": "sensor.electricity_night_consumption_period",
-                                                    "icon": "mdi:flash",
-                                                    "name": "night"
-                                                },
-                                                {
-                                                    "type": "divider"
-                                                },
-                                                {
-                                                    "entity": "sensor.days_consumed",
-                                                    "icon": "mdi:flash-circle",
-                                                    "name": "power"
-                                                },
-                                                {
-                                                    "entity": "sensor.days_water_consumed",
-                                                    "icon": "mdi:water-pump",
-                                                    "name": "water"
-                                                }
-                                            ],
-                                            "show_state": false,
-                                            "type": "entities"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                }
-                            ],
-                            "type": "vertical-stack"
-                        },
-                        {
-                            "cards": [
-                                {
-                                    "color_type": "label-card",
-                                    "name": "electriciteit",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entities": [
                                                 {
                                                     "align": "split",
                                                     "animation": "on",
@@ -9129,57 +9156,57 @@
                         {
                             "cards": [
                                 {
-                                    "color_type": "label-card",
-                                    "name": "gas",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
                                     "cards": [
                                         {
                                             "entities": [
+                                                {
+                                                    "color_type": "label-card",
+                                                    "name": "gas",
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "40px"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "text-orientation": "mixed"
+                                                            },
+                                                            {
+                                                                "font-size": "20px"
+                                                            },
+                                                            {
+                                                                "text-Transform": "uppercase"
+                                                            },
+                                                            {
+                                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "padding": "2%"
+                                                            },
+                                                            {
+                                                                "color": "white"
+                                                            },
+                                                            {
+                                                                "border-radius": "50px"
+                                                            },
+                                                            {
+                                                                "border-style": "solid"
+                                                            },
+                                                            {
+                                                                "border-width": "2px"
+                                                            },
+                                                            {
+                                                                "border-color": "#e5e5e5"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "custom:button-card"
+                                                },
                                                 {
                                                     "align": "split",
                                                     "animation": "on",
@@ -9262,57 +9289,57 @@
                         {
                             "cards": [
                                 {
-                                    "color_type": "label-card",
-                                    "name": "water",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "height": "40px"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "text-orientation": "mixed"
-                                            },
-                                            {
-                                                "font-size": "20px"
-                                            },
-                                            {
-                                                "text-Transform": "uppercase"
-                                            },
-                                            {
-                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
-                                            },
-                                            {
-                                                "font-weight": "bold"
-                                            },
-                                            {
-                                                "padding": "2%"
-                                            },
-                                            {
-                                                "color": "white"
-                                            },
-                                            {
-                                                "border-radius": "50px"
-                                            },
-                                            {
-                                                "border-style": "solid"
-                                            },
-                                            {
-                                                "border-width": "2px"
-                                            },
-                                            {
-                                                "border-color": "#e5e5e5"
-                                            }
-                                        ]
-                                    },
-                                    "type": "custom:button-card"
-                                },
-                                {
                                     "cards": [
                                         {
                                             "entities": [
+                                                {
+                                                    "color_type": "label-card",
+                                                    "name": "water",
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "40px"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "text-orientation": "mixed"
+                                                            },
+                                                            {
+                                                                "font-size": "20px"
+                                                            },
+                                                            {
+                                                                "text-Transform": "uppercase"
+                                                            },
+                                                            {
+                                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                                            },
+                                                            {
+                                                                "font-weight": "bold"
+                                                            },
+                                                            {
+                                                                "padding": "2%"
+                                                            },
+                                                            {
+                                                                "color": "white"
+                                                            },
+                                                            {
+                                                                "border-radius": "50px"
+                                                            },
+                                                            {
+                                                                "border-style": "solid"
+                                                            },
+                                                            {
+                                                                "border-width": "2px"
+                                                            },
+                                                            {
+                                                                "border-color": "#e5e5e5"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "type": "custom:button-card"
+                                                },
                                                 {
                                                     "align": "split",
                                                     "animation": "on",

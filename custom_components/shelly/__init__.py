@@ -20,11 +20,11 @@ from homeassistant.util import slugify
 
 import time
 
-REQUIREMENTS = ['pyShelly==0.0.34']
+REQUIREMENTS = ['pyShelly==0.1.0']
 
 _LOGGER = logging.getLogger(__name__)
 
-__version__ = "0.0.19"
+__version__ = "0.1.0"
 VERSION = __version__
 
 DOMAIN = 'shelly'
@@ -151,8 +151,14 @@ def get_block_from_hass(hass, discovery_info):
         key = discovery_info[SHELLY_BLOCK_ID]
         return hass.data[SHELLY_BLOCKS][key] 
 
+def _dev_key(dev):
+    key = dev.id + "-" + dev.device_type   
+    if dev.device_sub_type is not None:
+        key += "-" + dev.device_sub_type
+    return key
+
 def _get_device_key(dev):
-    key = dev.id + dev.device_type
+    key = _dev_key(dev)
     if not key in DEVICES:
         DEVICES[key] = dev
     return key
@@ -165,8 +171,8 @@ def get_device_from_hass(hass, discovery_info):
 def _find_device_config(conf, id):
     device_conf_list = conf.get(CONF_DEVICES)
     for item in device_conf_list:
-            if item[CONF_ID] == id:
-                return item
+        if item[CONF_ID].upper() == id:
+            return item
     return None
 
 def _get_device_config(conf, id, id_2=None):
@@ -270,6 +276,11 @@ def setup(hass, config):
             'discover': discover_block
         }
         
+        #Config block
+        if block.unavailable_after_sec is None:
+            block.unavailable_after_sec \
+                = _get_specific_config_root(conf, CONF_UNAVALABLE_AFTER_SEC,
+                                                block.id)
 
         #if conf.get(CONF_ADDITIONAL_INFO):
             #block.update_status_information()
@@ -307,13 +318,13 @@ def setup(hass, config):
                 discovery.load_platform(hass, 'sensor', DOMAIN, attr, config)
         elif dev.device_type in ["SENSOR"]: #, "INFOSENSOR"]:            
             discovery.load_platform(hass, 'sensor', DOMAIN, attr, config)
-        elif dev.device_type == "LIGHT":
+        elif dev.device_type in ["LIGHT", "DIMMER"]:
             discovery.load_platform(hass, 'light', DOMAIN, attr, config)
 
     def _device_removed(dev, _code):
         dev.shelly_device.remove()
         try:
-            key = dev.id + dev.device_type
+            key = _dev_key(dev)
             del DEVICES[key]
         except KeyError:
             pass
@@ -336,7 +347,7 @@ def setup(hass, config):
         attr = {'version': VERSION, 'pyShellyVersion': pys.version()}
         discovery.load_platform(hass, 'sensor', DOMAIN, attr, config)
 
-    def stop_shelly():
+    def stop_shelly(_):
         """Stop Shelly."""
         _LOGGER.info("Shutting down Shelly")
         pys.close()
@@ -370,6 +381,7 @@ class ShellyBlock(Entity):
         entity_id = _get_specific_config(conf, CONF_ENTITY_ID , None, block.id)
         if entity_id is not None:
             self.entity_id = "." + slugify(id_prefix + "_" + entity_id + prefix)
+            self._unique_id += "_" + slugify(entity_id)
         self._name = block.type_name()
         if conf.get(CONF_SHOW_ID_IN_NAME):
             self._name += " [" + block.id + "]"
@@ -377,8 +389,7 @@ class ShellyBlock(Entity):
         self.hass = hass
         self._block.cb_updated.append(self._updated)
         block.shelly_device = self
-        self._name = _get_specific_config(conf, CONF_NAME, self.name, block.id)
-              
+        self._name = _get_specific_config(conf, CONF_NAME, self.name, block.id)              
         self._is_removed = False
 
     @property
@@ -422,11 +433,12 @@ class ShellyDevice(Entity):
                                                     None, dev.id, dev.block.id)
         if entity_id is not None:
             self.entity_id = "." + slugify(id_prefix + "_" + entity_id)
+            self._unique_id += "_" + slugify(entity_id)
         self._name = dev.type_name()
         if conf.get(CONF_SHOW_ID_IN_NAME):
             self._name += " [" + dev.id + "]"  # 'Test' #light.name
         self._dev = dev
-        self._hass = hass
+        self.hass = hass
         self._dev.cb_updated.append(self._updated)
         dev.shelly_device = self
         self._name = _get_specific_config(conf, CONF_NAME, self._name, dev.id, dev.block.id)
@@ -434,12 +446,6 @@ class ShellyDevice(Entity):
         self._sensor_conf = _get_sensor_config(conf, dev.id, dev.block.id)
 
         self._is_removed = False
-
-        #Config device
-        if dev.unavailable_after_sec is None:
-            dev.unavailable_after_sec \
-                = _get_specific_config_root(conf, CONF_UNAVALABLE_AFTER_SEC, 
-                                            dev.id, dev.block.id)
 
     def _updated(self, _block):
         """Receive events when the switch state changed (by mobile,
@@ -456,8 +462,8 @@ class ShellyDevice(Entity):
                         if SENSOR_TYPES[sensor].get('attr') == key:
                             attr = {'sensor_type':key,
                                     SHELLY_DEVICE_ID : _get_device_key(self._dev)}
-                            conf = self._hass.data[SHELLY_CONFIG]
-                            discovery.load_platform(self._hass, 'sensor',
+                            conf = self.hass.data[SHELLY_CONFIG]
+                            discovery.load_platform(self.hass, 'sensor',
                                                     DOMAIN, attr, conf)
     @property
     def name(self):

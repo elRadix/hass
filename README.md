@@ -23,11 +23,11 @@ Entities in the [`input_select`](https://www.home-assistant.io/components/input_
 Entities in the [`input_text`](https://www.home-assistant.io/components/input_text) domain | 6
 Entities in the [`light`](https://www.home-assistant.io/components/light) domain | 40
 Entities in the [`lock`](https://www.home-assistant.io/components/lock) domain | 1
-Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 2
+Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 4
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
 Entities in the [`schedy_room`](https://www.home-assistant.io/components/schedy_room) domain | 5
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 94
-Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 391
+Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 388
 Entities in the [`sun`](https://www.home-assistant.io/components/sun) domain | 1
 Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 98
 Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 16
@@ -93,8 +93,6 @@ I use this to discover new awesome stuff, and to keep the custom elements I use 
 ### [HANotify](https://github.com/Crewski/HANotify)
 
 ### [Places](https://github.com/tenly2000/HomeAssistant-Places)
-
-### [BWAlarm (ak74 edition)](https://github.com/akasma74/Hass-Custom-Alarm)
 
 ### [Breaking Changes](https://github.com/custom-components/breaking_changes)
 

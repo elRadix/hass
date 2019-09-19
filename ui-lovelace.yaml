@@ -17,8 +17,6 @@ resources:
   url: /local/card-tools.js
 - type: js
   url: /local/card-modder.js
-- type: module
-  url: /local/search-card.js
 - type: js
   url: /local/vertical-style-card.js
 - type: module
@@ -62,10 +60,10 @@ resources:
   url: /community_plugin/mini-media-player/mini-media-player.js
 - type: js
   url: /community_plugin/travel-time-card/travel-time-card.js
-- type: js
-  url: /community_plugin/button-entity-row/button-entity-row.js
 - type: module
   url: /community_plugin/lovelace-animated-background/animated-background.js
+- type: module
+  url: /community_plugin/search-card/search-card.js
 title: Home
 views:
 - badges: []
@@ -96,21 +94,6 @@ views:
     name: Mechelen
     type: weather-forecast
   - card:
-      meridiem: false
-      name: ''
-      type: custom:sun-card
-    style:
-      --sc-background: linear-gradient(rgba(1, 1, 254,  0%), rgb(0, 191, 255) 46%,
-        rgb(0, 250,  124) 54%, rgba(11, 1,  40,  0%))
-      --sc-event-line-color: white
-      --sc-horizon-color: null
-      --sc-sunbeam-color: white
-      background-repeat: no-repeat
-      background-size: 100% 100%
-      border: 'solid 1.5px  # rgba(57,128,228)'
-      border-radius: 10px
-    type: custom:card-modder
-  - card:
       show_name: true
       show_state: false
       type: glance
@@ -135,13 +118,6 @@ views:
     - 'on'
     type: entity-filter
   - card:
-      content: "##### [[ sensor.vrt_nws.attributes.friendly_name ]] - [[ sensor.vrt_nws.attributes.tag\
-        \ ]]        \n### [[ sensor.vrt_nws ]]   \n![vrtnws]([[ sensor.vrt_nws.attributes.picture\
-        \ ]])  \n\n[[ sensor.vrt_text ]]      \n###### [Lees meer] [[  sensor.vrt_nws.attributes.link\
-        \ ]] \n"
-      type: markdown
-    type: custom:card-modder
-  - card:
       show_name: true
       show_state: false
       type: glance
@@ -156,19 +132,12 @@ views:
     - 'on'
     type: entity-filter
   - card:
-      show_name: true
-      show_state: false
-      type: glance
-    entities:
-    - switch.heating_eetkamer
-    - switch.heating_living
-    - switch.heating_floradix
-    - switch.heating_sara
-    - switch.heating_yassin
-    show_empty: false
-    state_filter:
-    - 'on'
-    type: entity-filter
+      content: "##### [[ sensor.vrt_nws.attributes.friendly_name ]] - [[ sensor.vrt_nws.attributes.tag\
+        \ ]]        \n### [[ sensor.vrt_nws ]]   \n![vrtnws]([[ sensor.vrt_nws.attributes.picture\
+        \ ]])  \n\n[[ sensor.vrt_text ]]      \n###### [Lees meer] [[  sensor.vrt_nws.attributes.link\
+        \ ]] \n"
+      type: markdown
+    type: custom:card-modder
   - cards:
     - color_type: label-card
       name: Energy BILL
@@ -236,7 +205,7 @@ views:
           - color: coral
             value: 47
           - color: red
-            value: 50
+            value: 59
           target: 45.31
           title: 45.31 eur - ELECTRIC
           title_position: inside
@@ -314,6 +283,35 @@ views:
         type: entities
       type: horizontal-stack
     type: vertical-stack
+  - card:
+      meridiem: false
+      name: ''
+      type: custom:sun-card
+    style:
+      --sc-background: linear-gradient(rgba(1, 1, 254,  0%), rgb(0, 191, 255) 46%,
+        rgb(0, 250,  124) 54%, rgba(11, 1,  40,  0%))
+      --sc-event-line-color: white
+      --sc-horizon-color: null
+      --sc-sunbeam-color: white
+      background-repeat: no-repeat
+      background-size: 100% 100%
+      border: 'solid 1.5px  # rgba(57,128,228)'
+      border-radius: 10px
+    type: custom:card-modder
+  - card:
+      show_name: true
+      show_state: false
+      type: glance
+    entities:
+    - switch.heating_eetkamer
+    - switch.heating_living
+    - switch.heating_floradix
+    - switch.heating_sara
+    - switch.heating_yassin
+    show_empty: false
+    state_filter:
+    - 'on'
+    type: entity-filter
   - card:
       show_name: true
       show_state: true
@@ -849,9 +847,6 @@ views:
         color_type: card
         default_color: var(--primary-text-color)
         entity: switch.stp_keuken_espresso
-        hold_action:
-          action: more-info
-          haptic: success
         icon: mdi:coffee
         show_name: false
         size: 75%
@@ -882,9 +877,6 @@ views:
         color_type: card
         default_color: var(--primary-text-color)
         entity: switch.stp_keuken_microgolf
-        hold_action:
-          action: more-info
-          haptic: success
         icon: mdi:microwave
         show_name: false
         size: 75%
@@ -1018,9 +1010,6 @@ views:
         color_type: card
         default_color: var(--primary-text-color)
         entity: switch.stp_keuken_waterkoker
-        hold_action:
-          action: more-info
-          haptic: success
         icon: mdi:water-pump
         show_name: false
         size: 75%
@@ -1044,6 +1033,11 @@ views:
             - box-shadow: 2px 2px rgba(0,0,0,0.3)
             - white-space: nowrap
           value: 'off'
+        tap_action:
+          action: call-service
+          service: python_script.easyplus_switch_entity
+          service_data:
+            entity_id: switch.stp_keuken_waterkoker
         type: custom:button-card
       - color_type: blank-card
         type: custom:button-card
@@ -3152,387 +3146,6 @@ views:
   title: car
 - badges: []
   cards:
-  - animation: 'off'
-    entity: sensor.processor_use
-    severity:
-    - color: green
-      value: 60
-    - color: orange
-      value: 70
-    - color: red
-      value: 100
-    title: CPU
-    title_position: inside
-    type: custom:bar-card
-  - align_header: center
-    align_icon: left
-    animate: true
-    entities:
-    - color: green
-      entity: sensor.load_1m
-      name: 1'
-    - color: orange
-      entity: sensor.load_5m
-      name: 5'
-    - color: red
-      entity: sensor.load_15m
-      name: 15'
-    font_size: 120
-    height: 100
-    hour24: true
-    hours_to_show: 72
-    line_width: 3
-    location_icon: left
-    location_state: center
-    more_info: false
-    name: CPU Load
-    points_per_hour: 0.5
-    show:
-      extrema: true
-      labels: true
-      legend: true
-    type: custom:mini-graph-card
-  - align_header: center
-    align_icon: left
-    animate: true
-    entities:
-    - color: green
-      entity: sensor.memory_free
-      name: Free
-    - color: red
-      entity: sensor.memory_use
-      name: Used
-    - color: yellow
-      entity: sensor.swap_use
-      name: Swap
-    font_size: 120
-    height: 100
-    hour24: true
-    hours_to_show: 48
-    line_width: 5
-    location_icon: left
-    location_state: center
-    more_info: false
-    name: Memory
-    points_per_hour: 0.5
-    show:
-      extrema: true
-      labels: true
-      legend: true
-    type: custom:mini-graph-card
-  - cards:
-    - content: '## HA Overview'
-      type: markdown
-    - columns: 6
-      entities:
-      - entity: sensor.latest_version
-        icon: mdi:home-assistant
-        name: Latest
-      - entity: sensor.current_version
-        icon: mdi:home-assistant
-        name: Current
-      - entity: script.hass_update
-        icon: mdi:home-assistant
-        name: Update
-        tap_action:
-          action: toggle
-      - entity: sensor.home_assistant_v2_db
-        icon: mdi:database
-        name: Hass DB
-      - entity: sensor.data_log
-        icon: mdi:file
-        name: Easyplus
-      - entity: script.easyclean
-        icon: mdi:tumblr-reblog
-        name: Log Reset
-        tap_action:
-          action: toggle
-      type: glance
-    - entities:
-      - entity: sensor.hacs
-        name: HACS
-      - entity: sensor.potential_breaking_changes
-        name: Breaking ?
-      - entity: counter.warning_counter
-        name: Warning
-        tap_action:
-          action: call-service
-          service: counter.reset
-          service_data:
-            entity_id: counter.warning_counter
-        type: call-service
-      - entity: counter.error_counter
-        name: Error
-        tap_action:
-          action: call-service
-          service: counter.reset
-          service_data:
-            entity_id: counter.error_counter
-        type: call-service
-      - entity: automation.notify_error_in_hass_log
-        icon: mdi:message-alert
-        name: Telegram
-        tap_action:
-          action: toggle
-      show_header_toggle: false
-      type: glance
-    - card:
-        columns:
-        - add_link: doclink
-          field: component
-          title: Component
-        - add_link: prlink
-          field: description
-          title: Description
-        entity: sensor.potential_breaking_changes
-        type: custom:list-card
-      conditions:
-      - entity: sensor.potential_breaking_changes
-        state_not: '0'
-      type: conditional
-    type: custom:vertical-stack-in-card
-  - entities:
-    - entity: input_boolean.gitlab
-      icon: mdi:gitlab
-      name: GIT Pull + HA reboot
-    - entity: sensor.gitlab_ci
-      name: GiTLAB Pipline status
-    - entity: sensor.git_update_available
-      icon: mdi:gitlab
-      name: GIT Update available
-    - entity: sensor.latest_commit
-      icon: mdi:git
-    - entity: input_text.git_commit_message
-      type: custom:text-input-row
-    - action_name: push to Gitlab
-      icon: mdi:github-circle
-      name: ' '
-      service: shell_command.git_commit
-      type: call-service
-    show_header_toggle: false
-    title: GITLab-CI
-    type: entities
-  - entities:
-    - entity: input_select.log_level
-      name: Select log level
-    show_header_toggle: false
-    title: HASS Log level
-    type: entities
-  - columns: 3
-    entities:
-    - entity: sensor.count_automations
-      icon: mdi:autorenew
-      name: Automations
-    - entity: sensor.count_scripts
-      icon: mdi:script-text-outline
-      name: Scripts
-    - entity: sensor.count_zones
-      icon: mdi:map-marker-radius
-      name: Zones
-    - entity: sensor.count_device_trackers
-      icon: mdi:map-marker
-      name: Device Trackers
-    - entity: sensor.count_switches
-      icon: mdi:light-switch
-      name: Switches
-    - entity: sensor.count_lights
-      icon: mdi:lightbulb-on-outline
-      name: Lights
-    - entity: sensor.count_sensors
-      icon: mdi:resistor
-      name: Sensors
-    - entity: sensor.count_binary_sensors
-      icon: mdi:unfold-more-horizontal
-      name: Binary Sensors
-    - entity: sensor.count_input_booleans
-      icon: mdi:toggle-switch
-      name: Input Booleans
-    - entity: sensor.count_input_numbers
-      icon: mdi:numeric
-      name: Input Numbers
-    - entity: sensor.count_input_selects
-      icon: mdi:view-list
-      name: Input Select
-    - entity: sensor.count_input_datetimes
-      icon: mdi:calendar-clock
-      name: Input Date Times
-    theme: Backend-selected
-    title: HA Component Count
-    type: glance
-  - entities:
-    - entity: sensor.disk_free_home
-      name: SD Free
-    - entity: sensor.disk_free_mnt_usb_2
-      name: USB Free
-    - entity: sensor.disk_use_percent_mnt_usb_2
-      name: USB %
-    show_header_toggle: false
-    type: glance
-  - cards:
-    - entities:
-      - entity: binary_sensor.wan
-        name: Internet
-      - entity: switch.router_adblock
-        tap_action:
-          action: toggle
-      - entity: switch.router_firewall
-        tap_action:
-          action: toggle
-      - entity: switch.router_vpn_server1
-        tap_action:
-          action: toggle
-      - entity: switch.router_vpn_server2
-        tap_action:
-          action: toggle
-      - entity: switch.router_vpn_client1
-        name: US
-        tap_action:
-          action: toggle
-      - entity: switch.router_vpn_client2
-        name: NL
-        tap_action:
-          action: toggle
-      - entity: switch.router_vpn_client3
-        name: CANADA
-        tap_action:
-          action: toggle
-      - entity: switch.router_vpn_client4
-        tap_action:
-          action: toggle
-      - entity: switch.router_vpn_client5
-      show_state: false
-      title: Router
-      type: glance
-    - entities:
-      - type: divider
-      - sensor.elradix_be
-      - entity: sensor.geoip
-        name: Home IP
-      - sensor.ssl_certificate
-      - sensor.ssl_certificate_eu
-      - type: divider
-      label: router
-      type: entities
-    type: custom:vertical-stack-in-card
-  - columns: 3
-    entities:
-    - entity: sensor.rpi_power_description
-    - entity: sensor.cpu_speed
-    - entity: sensor.cpu_temp
-    - entity: sensor.load_1m
-    - entity: sensor.load_5m
-    - entity: sensor.load_15m
-    - sensor.memory_use
-    - sensor.memory_free
-    - sensor.swap_use
-    theme: Backend-selected
-    title: ''
-    type: glance
-  - columns: 7
-    entities:
-    - entity: binary_sensor.server_status
-      icon: mdi:check-decagram
-      name: Server
-    - entity: binary_sensor.easyplus_status
-      icon: mdi:check-decagram
-      name: Easyplus
-    - entity: binary_sensor.ketel_status
-      icon: mdi:check-decagram
-      name: Ketel
-    - entity: binary_sensor.living_status
-      icon: mdi:check-decagram
-      name: Living
-    - entity: binary_sensor.kodi_status
-      icon: mdi:check-decagram
-      name: Kodi
-    - entity: binary_sensor.rf_bridge
-      icon: mdi:check-decagram
-      name: RF
-    - entity: sensor.sonoff_bridge_status
-      icon: mdi:check-decagram
-      name: RF
-    show_name: true
-    show_state: false
-    theme: default
-    title: Sonoff Status
-    type: glance
-  - entities:
-    - entity: sensor.network_in_eth0
-    - entity: sensor.network_out_eth0
-    show_header_toggle: false
-    title: RPI Network
-    type: entities
-  - entities:
-    - entity: script.check_sonoffs_version
-    - entity: sensor.tasmota_current_version
-    - entity: sensor.sonoff_06_version
-    show_header_toggle: false
-    theme: Backend-selected
-    title: Sonoff Firmware
-    type: entities
-  - entities:
-    - entity: sensor.time
-    show_header_toggle: false
-    title: Time
-    type: entities
-  - entities:
-    - entity: script.nginx
-    - entity: script.php
-    - entity: script.docker
-    - entity: sensor.nginx
-    - entity: sensor.phpfpm
-    - entity: sensor.docker
-    show_header_toggle: false
-    title: Processes
-    type: entities
-  - entities:
-    - entity: counter.error_counter
-    - entity: counter.warning_counter
-    - action_name: Reset counter
-      name: Error
-      service: counter.reset
-      service_data:
-        entity_id: counter.error_counter
-      type: call-service
-    - action_name: Reset counter
-      name: Warning
-      service: counter.reset
-      service_data:
-        entity_id: counter.warning_counter
-      type: call-service
-    type: entities
-  - entities:
-    - align_state: center
-      color_thresholds:
-      - color: green
-        value: 0.5
-      - color: yellow
-        value: 1.2
-      - color: orange
-        value: 2
-      entities:
-      - sensor.load_1m
-      - sensor.load_5m
-      - sensor.load_15m
-      extrema: true
-      font_size: 10
-      height: 150
-      hour24: true
-      hours_to_show: 48
-      line_width: 8
-      more_info: false
-      show:
-        graph: bar
-        icon: false
-        name: false
-      show_legend: false
-      type: custom:mini-graph-card
-    type: entities
-  icon: mdi:server
-  path: ''
-  title: Raspberry Pi
-- badges: []
-  cards:
   - max_results: 20
     type: custom:search-card
   - entities:
@@ -3974,6 +3587,360 @@ views:
   path: ''
   theme: Backend-selected
   title: Settings
+- badges: []
+  cards:
+  - animation: 'off'
+    entity: sensor.processor_use
+    severity:
+    - color: green
+      value: 60
+    - color: orange
+      value: 70
+    - color: red
+      value: 100
+    title: CPU
+    title_position: inside
+    type: custom:bar-card
+  - align_header: center
+    align_icon: left
+    animate: true
+    entities:
+    - color: green
+      entity: sensor.load_1m
+      name: 1'
+    - color: orange
+      entity: sensor.load_5m
+      name: 5'
+    - color: red
+      entity: sensor.load_15m
+      name: 15'
+    font_size: 120
+    height: 100
+    hour24: true
+    hours_to_show: 72
+    line_width: 3
+    location_icon: left
+    location_state: center
+    more_info: false
+    name: CPU Load
+    points_per_hour: 0.5
+    show:
+      extrema: true
+      labels: true
+      legend: true
+    type: custom:mini-graph-card
+  - align_header: center
+    align_icon: left
+    animate: true
+    entities:
+    - color: green
+      entity: sensor.memory_free
+      name: Free
+    - color: red
+      entity: sensor.memory_use
+      name: Used
+    - color: yellow
+      entity: sensor.swap_use
+      name: Swap
+    font_size: 120
+    height: 100
+    hour24: true
+    hours_to_show: 48
+    line_width: 5
+    location_icon: left
+    location_state: center
+    more_info: false
+    name: Memory
+    points_per_hour: 0.5
+    show:
+      extrema: true
+      labels: true
+      legend: true
+    type: custom:mini-graph-card
+  - cards:
+    - content: '## HA Overview'
+      type: markdown
+    - columns: 6
+      entities:
+      - entity: sensor.latest_version
+        icon: mdi:home-assistant
+        name: Latest
+      - entity: sensor.current_version
+        icon: mdi:home-assistant
+        name: Current
+      - entity: script.hass_update
+        icon: mdi:home-assistant
+        name: Update
+        tap_action:
+          action: toggle
+      - entity: sensor.home_assistant_v2_db
+        icon: mdi:database
+        name: Hass DB
+      - entity: sensor.data_log
+        icon: mdi:file
+        name: Easyplus
+      - entity: script.easyclean
+        icon: mdi:tumblr-reblog
+        name: Log Reset
+        tap_action:
+          action: toggle
+      type: glance
+    - entities:
+      - entity: sensor.hacs
+        name: HACS
+      - entity: sensor.potential_breaking_changes
+        name: Breaking ?
+      - entity: counter.warning_counter
+        name: Warning
+        tap_action:
+          action: call-service
+          service: counter.reset
+          service_data:
+            entity_id: counter.warning_counter
+        type: call-service
+      - entity: counter.error_counter
+        name: Error
+        tap_action:
+          action: call-service
+          service: counter.reset
+          service_data:
+            entity_id: counter.error_counter
+        type: call-service
+      - entity: automation.notify_error_in_hass_log
+        icon: mdi:message-alert
+        name: Telegram
+        tap_action:
+          action: toggle
+      show_header_toggle: false
+      type: glance
+    - card:
+        columns:
+        - add_link: doclink
+          field: component
+          title: Component
+        - add_link: prlink
+          field: description
+          title: Description
+        entity: sensor.potential_breaking_changes
+        type: custom:list-card
+      conditions:
+      - entity: sensor.potential_breaking_changes
+        state_not: '0'
+      type: conditional
+    type: custom:vertical-stack-in-card
+  - entities:
+    - entity: input_boolean.gitlab
+      icon: mdi:gitlab
+      name: GIT Pull + HA reboot
+    - entity: sensor.gitlab_ci
+      name: GiTLAB Pipline status
+    - entity: sensor.git_update_available
+      icon: mdi:gitlab
+      name: GIT Update available
+    - entity: sensor.latest_commit
+      icon: mdi:git
+    - entity: input_text.git_commit_message
+      type: custom:text-input-row
+    - action_name: push to Gitlab
+      icon: mdi:github-circle
+      name: ' '
+      service: shell_command.git_commit
+      type: call-service
+    show_header_toggle: false
+    title: GITLab-CI
+    type: entities
+  - entities:
+    - entity: input_select.log_level
+      name: Select log level
+    show_header_toggle: false
+    title: HASS Log level
+    type: entities
+  - columns: 3
+    entities:
+    - entity: sensor.count_automations
+      icon: mdi:autorenew
+      name: Automations
+    - entity: sensor.count_scripts
+      icon: mdi:script-text-outline
+      name: Scripts
+    - entity: sensor.count_zones
+      icon: mdi:map-marker-radius
+      name: Zones
+    - entity: sensor.count_device_trackers
+      icon: mdi:map-marker
+      name: Device Trackers
+    - entity: sensor.count_switches
+      icon: mdi:light-switch
+      name: Switches
+    - entity: sensor.count_lights
+      icon: mdi:lightbulb-on-outline
+      name: Lights
+    - entity: sensor.count_sensors
+      icon: mdi:resistor
+      name: Sensors
+    - entity: sensor.count_binary_sensors
+      icon: mdi:unfold-more-horizontal
+      name: Binary Sensors
+    - entity: sensor.count_input_booleans
+      icon: mdi:toggle-switch
+      name: Input Booleans
+    - entity: sensor.count_input_numbers
+      icon: mdi:numeric
+      name: Input Numbers
+    - entity: sensor.count_input_selects
+      icon: mdi:view-list
+      name: Input Select
+    - entity: sensor.count_input_datetimes
+      icon: mdi:calendar-clock
+      name: Input Date Times
+    theme: Backend-selected
+    title: HA Component Count
+    type: glance
+  - entities:
+    - entity: sensor.disk_free_home
+      name: SD Free
+    - entity: sensor.disk_free_mnt_usb_2
+      name: USB Free
+    - entity: sensor.disk_use_percent_mnt_usb_2
+      name: USB %
+    show_header_toggle: false
+    type: glance
+  - cards:
+    - entities:
+      - entity: binary_sensor.wan
+        name: Internet
+      - entity: switch.router_adblock
+        tap_action:
+          action: toggle
+      - entity: switch.router_firewall
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_server1
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_server2
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client1
+        name: US
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client2
+        name: NL
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client3
+        name: CANADA
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client4
+        tap_action:
+          action: toggle
+      - entity: switch.router_vpn_client5
+      show_state: false
+      title: Router
+      type: glance
+    - entities:
+      - type: divider
+      - sensor.elradix_be
+      - entity: sensor.geoip
+        name: Home IP
+      - sensor.ssl_certificate
+      - sensor.ssl_certificate_eu
+      - type: divider
+      label: router
+      type: entities
+    type: custom:vertical-stack-in-card
+  - columns: 3
+    entities:
+    - entity: sensor.rpi_power_description
+    - entity: sensor.cpu_speed
+    - entity: sensor.cpu_temp
+    - entity: sensor.load_1m
+    - entity: sensor.load_5m
+    - entity: sensor.load_15m
+    - sensor.memory_use
+    - sensor.memory_free
+    - sensor.swap_use
+    theme: Backend-selected
+    title: ''
+    type: glance
+  - columns: 7
+    entities:
+    - entity: binary_sensor.server_status
+      icon: mdi:check-decagram
+      name: Server
+    - entity: binary_sensor.easyplus_status
+      icon: mdi:check-decagram
+      name: Easyplus
+    - entity: binary_sensor.ketel_status
+      icon: mdi:check-decagram
+      name: Ketel
+    - entity: binary_sensor.living_status
+      icon: mdi:check-decagram
+      name: Living
+    - entity: binary_sensor.kodi_status
+      icon: mdi:check-decagram
+      name: Kodi
+    - entity: binary_sensor.rf_bridge
+      icon: mdi:check-decagram
+      name: RF
+    - entity: sensor.sonoff_bridge_status
+      icon: mdi:check-decagram
+      name: RF
+    show_name: true
+    show_state: false
+    theme: default
+    title: Sonoff Status
+    type: glance
+  - entities:
+    - entity: sensor.network_in_eth0
+    - entity: sensor.network_out_eth0
+    show_header_toggle: false
+    title: RPI Network
+    type: entities
+  - entities:
+    - entity: script.check_sonoffs_version
+    - entity: sensor.tasmota_current_version
+    - entity: sensor.sonoff_06_version
+    show_header_toggle: false
+    theme: Backend-selected
+    title: Sonoff Firmware
+    type: entities
+  - entities:
+    - entity: sensor.time
+    show_header_toggle: false
+    title: Time
+    type: entities
+  - entities:
+    - entity: script.nginx
+    - entity: script.php
+    - entity: script.docker
+    - entity: sensor.nginx
+    - entity: sensor.phpfpm
+    - entity: sensor.docker
+    show_header_toggle: false
+    title: Processes
+    type: entities
+  - entities:
+    - entity: counter.error_counter
+    - entity: counter.warning_counter
+    - action_name: Reset counter
+      name: Error
+      service: counter.reset
+      service_data:
+        entity_id: counter.error_counter
+      type: call-service
+    - action_name: Reset counter
+      name: Warning
+      service: counter.reset
+      service_data:
+        entity_id: counter.warning_counter
+      type: call-service
+    type: entities
+  icon: mdi:server
+  path: ''
+  title: Raspberry Pi
 - badges: []
   cards:
   - card:
@@ -4458,27 +4425,27 @@ views:
       type: horizontal-stack
     type: vertical-stack
   - cards:
-    - color_type: label-card
-      name: Daily consumption
-      styles:
-        card:
-        - height: 40px
-        - font-weight: bold
-        - text-orientation: mixed
-        - font-size: 20px
-        - text-Transform: uppercase
-        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
-            7%, rgba(0,212,255,1) 100%)
-        - font-weight: bold
-        - padding: 2%
-        - color: white
-        - border-radius: 50px
-        - border-style: solid
-        - border-width: 2px
-        - border-color: '#e5e5e5'
-      type: custom:button-card
     - cards:
       - entities:
+        - color_type: label-card
+          name: Daily consumption
+          styles:
+            card:
+            - height: 40px
+            - font-weight: bold
+            - text-orientation: mixed
+            - font-size: 20px
+            - text-Transform: uppercase
+            - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+                7%, rgba(0,212,255,1) 100%)
+            - font-weight: bold
+            - padding: 2%
+            - color: white
+            - border-radius: 50px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+          type: custom:button-card
         - entity: sensor.electricity_total_consumption_day
           icon: mdi:flash-outline
           name: Electricity
@@ -4498,36 +4465,82 @@ views:
         - entity: sensor.electricity_night_consumption_day
           icon: mdi:weather-night
           name: Electricty Night
-        - type: divider
-        - entity: sensor.days_consumed
-          icon: mdi:clock
-          name: Days consumed
         show_state: false
         type: entities
       type: horizontal-stack
     type: vertical-stack
   - cards:
-    - color_type: label-card
-      name: mega factuur
-      styles:
-        card:
-        - height: 40px
-        - font-weight: bold
-        - text-orientation: mixed
-        - font-size: 20px
-        - text-Transform: uppercase
-        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
-            7%, rgba(0,212,255,1) 100%)
-        - font-weight: bold
-        - padding: 2%
-        - color: white
-        - border-radius: 50px
-        - border-style: solid
-        - border-width: 2px
-        - border-color: '#e5e5e5'
-      type: custom:button-card
     - cards:
       - entities:
+        - color_type: label-card
+          name: consumption YTD
+          styles:
+            card:
+            - height: 40px
+            - font-weight: bold
+            - text-orientation: mixed
+            - font-size: 20px
+            - text-Transform: uppercase
+            - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+                7%, rgba(0,212,255,1) 100%)
+            - font-weight: bold
+            - padding: 2%
+            - color: white
+            - border-radius: 50px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+          type: custom:button-card
+        - entity: sensor.water_consumption_period
+          icon: mdi:water-pump
+          name: water
+        - entity: sensor.gas_consumption_period
+          icon: mdi:gas-station
+          name: gas
+        - type: divider
+        - entity: sensor.electricity_day_consumption_period
+          icon: mdi:flash-outline
+          name: day
+        - entity: sensor.electricity_night_consumption_period
+          icon: mdi:flash
+          name: night
+        - type: divider
+        - entity: sensor.electricity_total_consumption_period
+          icon: mdi:flash
+          name: total power
+        - type: divider
+        - entity: sensor.days_consumed
+          icon: mdi:flash-circle
+          name: power
+        - entity: sensor.days_water_consumed
+          icon: mdi:water-pump
+          name: water
+        show_state: false
+        type: entities
+      type: horizontal-stack
+    type: vertical-stack
+  - cards:
+    - cards:
+      - entities:
+        - color_type: label-card
+          name: mega factuur
+          styles:
+            card:
+            - height: 40px
+            - font-weight: bold
+            - text-orientation: mixed
+            - font-size: 20px
+            - text-Transform: uppercase
+            - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+                7%, rgba(0,212,255,1) 100%)
+            - font-weight: bold
+            - padding: 2%
+            - color: white
+            - border-radius: 50px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+          type: custom:button-card
         - align: split
           animation: 'on'
           columns: 1
@@ -4558,6 +4571,7 @@ views:
         - entity: sensor.power_prepaid_monthly
           icon: mdi:currency-eur
           name: Voorschot factuur
+        - type: divider
         - entity: sensor.power_prepaid_period
           icon: mdi:currency-eur
           name: Betaalde voorschotten
@@ -4576,27 +4590,27 @@ views:
       type: horizontal-stack
     type: vertical-stack
   - cards:
-    - color_type: label-card
-      name: electriciteit
-      styles:
-        card:
-        - height: 40px
-        - font-weight: bold
-        - text-orientation: mixed
-        - font-size: 20px
-        - text-Transform: uppercase
-        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
-            7%, rgba(0,212,255,1) 100%)
-        - font-weight: bold
-        - padding: 2%
-        - color: white
-        - border-radius: 50px
-        - border-style: solid
-        - border-width: 2px
-        - border-color: '#e5e5e5'
-      type: custom:button-card
     - cards:
       - entities:
+        - color_type: label-card
+          name: electriciteit
+          styles:
+            card:
+            - height: 40px
+            - font-weight: bold
+            - text-orientation: mixed
+            - font-size: 20px
+            - text-Transform: uppercase
+            - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+                7%, rgba(0,212,255,1) 100%)
+            - font-weight: bold
+            - padding: 2%
+            - color: white
+            - border-radius: 50px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+          type: custom:button-card
         - align: split
           animation: 'on'
           columns: 1
@@ -4615,7 +4629,7 @@ views:
           - color: coral
             value: 45
           - color: '#B22222'
-            value: 50
+            value: 59
           target: 45
           title: maandelijkse kost
           title_position: inside
@@ -4624,14 +4638,6 @@ views:
             font-size: 15px
             text-transform: uppercase
           type: custom:bar-card
-        - entity: sensor.electricity_day_consumption_period
-          icon: mdi:flash-outline
-          name: dag verbruik
-        - entity: sensor.electricity_night_consumption_period
-          icon: mdi:flash
-          name: nacht verbruik
-        - type: divider
-        - entity: sensor.electricity_total_prepaid_monthly
         - entity: sensor.electricity_total_prepaid_monthly
           icon: mdi:currency-eur
           name: maandelijke voorschot
@@ -4654,27 +4660,27 @@ views:
       type: horizontal-stack
     type: vertical-stack
   - cards:
-    - color_type: label-card
-      name: gas
-      styles:
-        card:
-        - height: 40px
-        - font-weight: bold
-        - text-orientation: mixed
-        - font-size: 20px
-        - text-Transform: uppercase
-        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
-            7%, rgba(0,212,255,1) 100%)
-        - font-weight: bold
-        - padding: 2%
-        - color: white
-        - border-radius: 50px
-        - border-style: solid
-        - border-width: 2px
-        - border-color: '#e5e5e5'
-      type: custom:button-card
     - cards:
       - entities:
+        - color_type: label-card
+          name: gas
+          styles:
+            card:
+            - height: 40px
+            - font-weight: bold
+            - text-orientation: mixed
+            - font-size: 20px
+            - text-Transform: uppercase
+            - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+                7%, rgba(0,212,255,1) 100%)
+            - font-weight: bold
+            - padding: 2%
+            - color: white
+            - border-radius: 50px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+          type: custom:button-card
         - align: split
           animation: 'on'
           columns: 1
@@ -4702,10 +4708,6 @@ views:
             font-size: 15px
             text-transform: uppercase
           type: custom:bar-card
-        - entity: sensor.gas_consumption_period
-          icon: mdi:gas-station
-          name: dag verbruik
-        - type: divider
         - entity: sensor.gas_prepaid_monthly
           icon: mdi:currency-eur
           name: maandelijke voorschot
@@ -4713,50 +4715,42 @@ views:
         - entity: sensor.gas_prepaid_period
           icon: mdi:currency-eur
           name: Betaalde voorschotten
-        - entity: sensor.gas_cost_period
-          icon: mdi:currency-eur
-          name: Werkelijke  kosten
         - entity: sensor.gas_cost_period_tweaked
           icon: mdi:currency-eur
-          name: Werkelijke kosten twekaed
+          name: Werkelijke kosten
         - type: divider
-        - entity: sensor.gas_balance_period
-          icon: mdi:scale-balance
-          name: Huidige saldo
         - entity: sensor.gas_balance_period_tweaked
           icon: mdi:scale-balance
-          name: Huidige saldo tweaked
-        - entity: sensor.gas_balance_fcst
+          name: Huidige saldo
+        - entity: sensor.gas_balance_fcst_tweaked
           icon: mdi:scale-balance
           name: Saldo 2020
-        - entity: sensor.gas_balance_fcst_tweaked
-          name: Saldo 2020 tweaked
         show_state: false
         type: entities
       type: horizontal-stack
     type: vertical-stack
   - cards:
-    - color_type: label-card
-      name: water
-      styles:
-        card:
-        - height: 40px
-        - font-weight: bold
-        - text-orientation: mixed
-        - font-size: 20px
-        - text-Transform: uppercase
-        - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
-            7%, rgba(0,212,255,1) 100%)
-        - font-weight: bold
-        - padding: 2%
-        - color: white
-        - border-radius: 50px
-        - border-style: solid
-        - border-width: 2px
-        - border-color: '#e5e5e5'
-      type: custom:button-card
     - cards:
       - entities:
+        - color_type: label-card
+          name: water
+          styles:
+            card:
+            - height: 40px
+            - font-weight: bold
+            - text-orientation: mixed
+            - font-size: 20px
+            - text-Transform: uppercase
+            - background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1)
+                7%, rgba(0,212,255,1) 100%)
+            - font-weight: bold
+            - padding: 2%
+            - color: white
+            - border-radius: 50px
+            - border-style: solid
+            - border-width: 2px
+            - border-color: '#e5e5e5'
+          type: custom:button-card
         - align: split
           animation: 'on'
           columns: 1
@@ -4785,10 +4779,6 @@ views:
             text-transform: uppercase
           type: custom:bar-card
         - entity: sensor.water_prepaid_monthly
-          icon: mdi:flash-outline
-          name: dag verbruik
-        - type: divider
-        - entity: sensor.water_cost_monthly
           icon: mdi:currency-eur
           name: maandelijke voorschot
         - type: divider

@@ -76,9 +76,6 @@ shellyht-2200AA: 'ac_power' - means that ShellyH&T is AC powered via USB adapter
 
 You can install script manually or via HACS.
 """
-
-VERSION = "0.11.2"
-
 ATTR_DEVELOP = "develop"
 
 ATTR_ID = "id"
@@ -96,7 +93,7 @@ ATTR_TEMPLATE_REACTIVE_POWER = "{{ value | float | round(1) }}"
 ATTR_TEMPLATE_VOLTAGE = "{{ value | float | round(1) }}"
 ATTR_TEMPLATE_ENERGY = "{{ (value | float / 60 / 1000) | round(2) }}"
 ATTR_TEMPLATE_BATTERY = "{{ value | float | round }}"
-ATTR_TEMPALATE_OVERPOWER = "{{ value_json.overpower }}"
+ATTR_TEMPLATE_OVERPOWER = "{{ value_json.overpower }}"
 
 ATTR_MANUFACTURER = "Allterco Robotics"
 ATTR_MODEL_SHELLY1 = "Shelly1"
@@ -350,7 +347,7 @@ else:
         white_lights = 4
         lights_bin_sensors = [ATTR_OVERPOWER]
         lights_bin_sensors_classes = [ATTR_POWER]
-        lights_bin_sensors_templates = [ATTR_TEMPALATE_OVERPOWER]
+        lights_bin_sensors_templates = [ATTR_TEMPLATE_OVERPOWER]
         lights_bin_sensors_payload = [ATTR_TRUE_FALSE_PAYLOAD]
 
     if id[:-7] == "shellybulb":

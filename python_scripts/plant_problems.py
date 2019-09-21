@@ -38,8 +38,8 @@ else:
 
 # Set states
 hass.states.set('sensor.plants_problems', problemPlants, {
-    'unit_of_measurement': 'Pflanzen',
-    'friendly_name': 'Problempflanzen',
+    'unit_of_measurement': 'Plants',
+    'friendly_name': 'Problem plants',
     'icon': whichIcon,
     'problem_plants': allproblemPlants,
     'water': waterPlants,
@@ -49,14 +49,14 @@ hass.states.set('sensor.plants_problems', problemPlants, {
 })
 
 hass.states.set('sensor.plants_water_number', numberWater, {
-    'unit_of_measurement': 'Pflanzen',
-    'friendly_name': 'Anz. durstiger Pflanzen',
+    'unit_of_measurement': 'Plants',
+    'friendly_name': 'Num. thirsty plants',
     'icon': 'mdi:water'
 })
 
 hass.states.set('sensor.plants_battery_number', numberdeadBatteries, {
-    'unit_of_measurement': 'Sensoren',
-    'friendly_name': 'Anz. akkuschwacher Sensoren',
+    'unit_of_measurement': 'Sensors',
+    'friendly_name': 'Num. battery-powered sensors',
     'icon': 'mdi:battery-30'
 })
 
@@ -64,14 +64,14 @@ waterplantsList = ', '.join(waterPlants)
 if waterplantsList == "":
   waterplantsList = "Keine"
 hass.states.set('sensor.plants_water_friendly', waterplantsList, {
-    'friendly_name': 'Durstige Pflanzen',
+    'friendly_name': 'Thirsty plants',
     'icon': 'mdi:water'
 })
 
 batteryplantsList = ', '.join(deadBatteries)
 if batteryplantsList == "":
-  batteryplantsList = "Keine"
+  batteryplantsList = "None"
 hass.states.set('sensor.plants_battery_friendly', batteryplantsList, {
-    'friendly_name': 'Akkuschwache Sensoren',
+    'friendly_name': 'Low battery sensors',
     'icon': 'mdi:battery-30'
 })

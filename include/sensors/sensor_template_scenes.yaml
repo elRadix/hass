@@ -112,9 +112,9 @@
       entity_id: switch.stp_berging_dryer,switch.stp_berging_was
       device_class: power
       value_template: >-
-        {% if 'on' in states.switch.stp_berging_wasmachine.state %}
+        {% if 'on' in states.switch.stp_berging_was.state %}
           on
-        {% elif 'on' in states.switch.stp_berging_droogkast.state %}
+        {% elif 'on' in states.switch.stp_berging_dryer.state %}
           on
         {% else %}
           off

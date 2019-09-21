@@ -69,10 +69,13 @@ automation:
       entity_id: plant.giant_phalaenopsis
     action:
     - service: python_script.plant_problems
+    - delay:
+        seconds: 120
     - service: notify.dageraad
       data_template:
         message: >
           Plant status:
+
           {% if states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 0 %}
           No plants need watering and battery is fine.
           {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int == 0 %}
@@ -92,6 +95,7 @@ automation:
           {% else %}
           {{ states.sensor.plants_water_number.state }} Plants need water and that is. {{ states.sensor.plants_water_friendly.state }} and {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}
           {% endif %}
+
           {% if is_state_attr('sensor.plants_problems','fertilize_number',0) %}
           No plants need fertilizer.
           {% elif states.sensor.plants_problems.attributes.fertilize_number | float > 0 %}

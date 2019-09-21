@@ -5,7 +5,6 @@ sensor:
     name: miflower
     force_update: true
     median: 1
-    timeout: 15
     adapter: hci0
     monitored_conditions:
       - moisture

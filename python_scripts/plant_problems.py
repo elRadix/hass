@@ -5,6 +5,7 @@
 # sensor.plants_battery_number    -> Amount of plantsensors running out of battery
 # sensor.plants_battery_friendly  -> Name(s) of platsensors running out of battery
 # sensor.plants_problems          -> Amount of plants which either need water or have low battery
+# sensor.fertilize_plants_number >  Amount of plants that need to be fertilized
 #
 #  INSPIRED BY THIS GREAT BLOGPOST
 #  http://www.diyfuturism.com/making-houseplants-talk
@@ -82,7 +83,6 @@ hass.states.set('sensor.plants_battery_friendly', batteryplantsList, {
     'friendly_name': 'Low battery sensors',
     'icon': 'mdi:battery-30'
 })
-
 
 hass.states.set('sensor.fertilize_plants_number', numberFertilize, {
     'unit_of_measurement': 'plants',

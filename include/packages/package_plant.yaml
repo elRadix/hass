@@ -71,7 +71,11 @@ automation:
       data_template:
         message: >
           {% if states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 0 %}
-            All plants are fine.
+            No plants need watering and battery is fine.
+          {% elif is_state_attr('sensor.plant_problems','fertilize_number',0) %}
+            No plants need fertilizer.
+          {% elif states.sensor.plant_problems.attributes.fertilize_number | float > 0 %}
+            These plants {{states.sensor.plant_problems.attributes.fertilize}} need fertilizing.
           {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int == 0 %}
             A plant needs water, {{ states.sensor.plants_water_friendly.state }}
           {% elif states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 1 %}

@@ -44,6 +44,8 @@ hass.states.set('sensor.plants_problems', problemPlants, {
     'problem_plants': allproblemPlants,
     'water': waterPlants,
     'water_number': numberWater,
+    'fertilize': fertilizePlants,
+    'fertilize_number': numberFertilize,
     'battery_change': deadBatteries,
     'battery_number': numberdeadBatteries
 })
@@ -74,4 +76,20 @@ if batteryplantsList == "":
 hass.states.set('sensor.plants_battery_friendly', batteryplantsList, {
     'friendly_name': 'Low battery sensors',
     'icon': 'mdi:battery-30'
+})
+
+
+hass.states.set('sensor.fertilize_plants_number', numberFertilize, {
+    'unit_of_measurement': 'plants',
+    'friendly_name': 'Fertilize Plants Number',
+    'icon': 'mdi:emoticon-poop'
+})
+
+fertilizeplantsList = ', '.join(fertilizePlants)
+if waterplantsList == "":
+  waterplantsList = "None"
+hass.states.set('sensor.fertilize_plants_friendly', fertilizeplantsList, {
+    'unit_of_measurement': 'plants',
+    'friendly_name': 'Fertilize Plants',
+    'icon': 'mdi:emoticon-poop'
 })

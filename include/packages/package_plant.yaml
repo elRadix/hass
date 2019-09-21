@@ -13,47 +13,48 @@ sensor:
       - conductivity
       - battery
 
-  # - platform: template
-  #   sensors:
-  #     plants_detail:
-  #       friendly_name: "Plants Detail"
-  #       entity_id: group.all_plants
-  #       value_template: >
-  #         {%- if is_state('group.all_plants', 'ok') -%}
-  #           Good
-  #         {%- elif is_state('group.all_plants', 'problem') -%}
-  #           {%- set problems = namespace(plants = '') -%}
-  #           {%- for plant_id in state_attr('group.all_plants','entity_id') -%}
-  #             {%- if is_state(plant_id, 'problem') -%}
-  #               {%- set problems.plants = problems.plants ~ state_attr(plant_id, 'friendly_name') ~ ': ' ~ state_attr(plant_id, 'problem') ~ ', ' -%}
-  #             {%- endif -%}
-  #           {%- endfor -%}
-  #           {{ problems.plants | regex_replace(', $','') }}
-  #         {%- else -%}
-  #           Unknown
-  #         {%- endif %}
-  #       icon_template: >
-  #         {%- if is_state('group.all_plants', 'ok') -%}
-  #           mdi:flower
-  #         {%- elif is_state('group.all_plants', 'problem') -%}
-  #           mdi:flower-outline
-  #         {%- else -%}
-  #           mdi:help-circle
+  - platform: template
+    sensors:
+      plants_detail:
+        friendly_name: "Plants Detail"
+        entity_id: group.all_plants
+        value_template: >
+          {%- if is_state('group.all_plants', 'ok') -%}
+            Good
+          {%- elif is_state('group.all_plants', 'problem') -%}
+            {%- set problems = namespace(plants = '') -%}
+            {%- for plant_id in state_attr('group.all_plants','entity_id') -%}
+              {%- if is_state(plant_id, 'problem') -%}
+                {%- set problems.plants = problems.plants ~ state_attr(plant_id, 'friendly_name') ~ ': ' ~ state_attr(plant_id, 'problem') ~ ', ' -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ problems.plants | regex_replace(', $','') }}
+          {%- else -%}
+            Unknown
+          {%- endif %}
+        icon_template: >
+          {%- if is_state('group.all_plants', 'ok') -%}
+            mdi:flower
+          {%- elif is_state('group.all_plants', 'problem') -%}
+            mdi:flower-outline
+          {%- else -%}
+            mdi:help-circle
+          {%- endif %}
 
-# plant:
-#   phalaenopsis:
-#     sensors:
-#       moisture: sensor.miflower_moisture
-#       battery: sensor.miflower_battery
-#       temperature: sensor.miflower_temperature
-#       conductivity: sensor.miflower_conductivity
-#       brightness: sensor.miflower_light_intensity
-#     min_moisture: 15
-#     max_moisture: 65
-#     min_battery: 20
-#     min_conductivity: 350
-#     max_conductivity: 2000
-#     min_temperature: 15
-#     max_temperature: 32
-#     min_brightness: 2000
-#     max_brightness: 30000
+plant:
+  phalaenopsis:
+    sensors:
+      moisture: sensor.miflower_moisture
+      battery: sensor.miflower_battery
+      temperature: sensor.miflower_temperature
+      conductivity: sensor.miflower_conductivity
+      brightness: sensor.miflower_light_intensity
+    min_moisture: 15
+    max_moisture: 65
+    min_battery: 20
+    min_conductivity: 350
+    max_conductivity: 2000
+    min_temperature: 15
+    max_temperature: 32
+    min_brightness: 2000
+    max_brightness: 30000

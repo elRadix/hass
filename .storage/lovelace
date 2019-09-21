@@ -7723,14 +7723,10 @@
                             "type": "entity-filter"
                         },
                         {
-                            "card": {
-                                "show_header_toggle": false,
-                                "show_name": true,
-                                "show_state": false,
-                                "title": "Timers",
-                                "type": "entities"
-                            },
                             "entities": [
+                                {
+                                    "entity": "timer.samsung"
+                                },
                                 {
                                     "entity": "timer.espresso"
                                 },
@@ -7753,17 +7749,9 @@
                                 {
                                     "entity": "timer.was",
                                     "name": "wasmachine"
-                                },
-                                {
-                                    "entity": "timer.samsung"
                                 }
                             ],
-                            "show_empty": true,
-                            "state_filter": [
-                                "active",
-                                "paused"
-                            ],
-                            "type": "entity-filter"
+                            "type": "entities"
                         },
                         {
                             "entities": [
@@ -7876,65 +7864,6 @@
                             ],
                             "show_header_toggle": false,
                             "title": "Led + switches",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "action_name": "pause",
-                                    "name": "dryer",
-                                    "service": "timer.pause",
-                                    "service_data": {
-                                        "entity_id": "timer.dryer"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "action_name": "start",
-                                    "name": "dryer",
-                                    "service": "timer.start",
-                                    "service_data": {
-                                        "entity_id": "timer.dryer"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "action_name": "pause",
-                                    "name": "was",
-                                    "service": "timer.pause",
-                                    "service_data": {
-                                        "entity_id": "timer.was"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "action_name": "start",
-                                    "name": "was",
-                                    "service": "timer.start",
-                                    "service_data": {
-                                        "entity_id": "timer.was"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "action_name": "pause",
-                                    "name": "dish",
-                                    "service": "timer.pause",
-                                    "service_data": {
-                                        "entity_id": "timer.dish"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "action_name": "start",
-                                    "name": "dish",
-                                    "service": "timer.start",
-                                    "service_data": {
-                                        "entity_id": "timer.dish"
-                                    },
-                                    "type": "call-service"
-                                }
-                            ],
                             "type": "entities"
                         },
                         {

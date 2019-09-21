@@ -70,11 +70,13 @@ automation:
     action:
     - service: python_script.plant_problems
     - delay:
-        seconds: 120
+        seconds: 60
+    - service: python_script.plant_problems
     - service: notify.dageraad
       data_template:
         message: >
           Plant status:
+
 
           {% if states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 0 %}
           No plants need watering and battery is fine.

@@ -63,6 +63,8 @@ automation:
   - id: plant_01
     alias: Update Plant Problems
     trigger:
+    - platform: homeassistant
+      event: start
     - platform: state
       entity_id: plant.giant_phalaenopsis
     action:
@@ -70,27 +72,28 @@ automation:
     - service: notify.dageraad
       data_template:
         message: >
+          Plant status:
           {% if states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 0 %}
-            No plants need watering and battery is fine.
+          No plants need watering and battery is fine.
           {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int == 0 %}
-            A plant needs water, {{ states.sensor.plants_water_friendly.state }}
+          A plant needs water, {{ states.sensor.plants_water_friendly.state }}
           {% elif states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 1 %}
-            A plant sensor needs a new battery, {{ states.sensor.plants_battery_friendly.state }}
+          A plant sensor needs a new battery, {{ states.sensor.plants_battery_friendly.state }}
           {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int == 1 %}
-            A plant needs water {{ states.sensor.plants_water_friendly.state }} and a plant sensor needs a new battery {{ states.sensor.plants_battery_friendly.state }}.
+          A plant needs water {{ states.sensor.plants_water_friendly.state }} and a plant sensor needs a new battery {{ states.sensor.plants_battery_friendly.state }}.
           {% elif states.sensor.plants_water_number.state | int > 1 and states.sensor.plants_battery_number.state | int == 0 %}
-            {{ states.sensor.plants_water_number.state }} Plants need water and that is {{ states.sensor.plants_water_friendly.state }}.
+          {{ states.sensor.plants_water_number.state }} Plants need water and that is {{ states.sensor.plants_water_friendly.state }}.
           {% elif states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int > 1 %}
-            {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
+          {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
           {% elif states.sensor.plants_water_number.state | int > 1 and states.sensor.plants_battery_number.state | int == 1 %}
-            {{ states.sensor.plants_water_number.state }} Plants need water and that is {{ states.sensor.plants_water_friendly.state }} and a plant sensor needs a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
+          {{ states.sensor.plants_water_number.state }} Plants need water and that is {{ states.sensor.plants_water_friendly.state }} and a plant sensor needs a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
           {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int > 1 %}
-            A plant needs water and that is {{ states.sensor.plants_water_friendly.state }} and {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
+          A plant needs water and that is {{ states.sensor.plants_water_friendly.state }} and {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
           {% else %}
-            {{ states.sensor.plants_water_number.state }} Plants need water and that is. {{ states.sensor.plants_water_friendly.state }} and {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}
+          {{ states.sensor.plants_water_number.state }} Plants need water and that is. {{ states.sensor.plants_water_friendly.state }} and {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}
           {% endif %}
           {% if is_state_attr('sensor.plants_problems','fertilize_number',0) %}
-            No plants need fertilizer.
+          No plants need fertilizer.
           {% elif states.sensor.plants_problems.attributes.fertilize_number | float > 0 %}
-            These plants {{states.sensor.plants_problems.attributes.fertilize}} need fertilizing.
+          These plants {{states.sensor.plants_problems.attributes.fertilize}} need fertilizing.
           {% endif %}

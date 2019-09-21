@@ -62,7 +62,7 @@ hass.states.set('sensor.plants_battery_number', numberdeadBatteries, {
 
 waterplantsList = ', '.join(waterPlants)
 if waterplantsList == "":
-  waterplantsList = "Keine"
+  waterplantsList = "None"
 hass.states.set('sensor.plants_water_friendly', waterplantsList, {
     'friendly_name': 'Thirsty plants',
     'icon': 'mdi:water'

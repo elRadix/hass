@@ -2,6 +2,19 @@
 ## SENSORS
 #################################################################
 
+  - platform: miflora
+    mac: !secret miflora_1
+    name: miflower
+    force_update: true
+    median: 3
+    timeout: 15
+    adapter: hci0
+    monitored_conditions:
+      - moisture
+      - light
+      - temperature
+      - conductivity
+      - battery
 
 
   - platform: filter

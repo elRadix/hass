@@ -156,6 +156,25 @@ switch: !include_dir_merge_list include/switches
 zone: !include_dir_merge_list include/zones
 # scene: !include_dir_merge_named include/scenes
 
+plant:
+  phalaenopsis:
+    sensors:
+      moisture: sensor.miflower_moisture
+      battery: sensor.miflower_battery
+      temperature: sensor.miflower_temperature
+      conductivity: sensor.miflower_conductivity
+      brightness: sensor.miflower_light_intensity
+    min_moisture: 15
+    max_moisture: 65
+    min_battery: 20
+    min_conductivity: 350
+    max_conductivity: 2000
+    min_temperature: 15
+    max_temperature: 32
+    min_brightness: 2000
+    max_brightness: 30000
+
+
 # docker_monitor:
 #   name: raspi
 #   # url: !secret hadockermon_host

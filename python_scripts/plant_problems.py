@@ -13,6 +13,8 @@ problemPlants = 0
 allproblemPlants = []
 waterPlants = []
 numberWater = 0
+fertilizePlants = []
+numberFertilize = 0
 deadBatteries = []
 numberdeadBatteries = 0
 whichIcon = "mdi:help-circle-outline"
@@ -23,6 +25,9 @@ for entity_id in hass.states.entity_ids('plant'):
         problemPlants = problemPlants + 1
         allproblemPlants.append(state.name)
         problem = state.attributes.get('problem') or 'none'
+        if "conductivity low" in problem:
+          fertilizePlants.append(state.name)
+          numberFertilize = numberFertilize + 1
         if "moisture low" in problem:
           waterPlants.append(state.name)
           numberWater = numberWater + 1

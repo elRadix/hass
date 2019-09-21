@@ -1,4 +1,5 @@
 ---
+
 plant:
   phalaenopsis:
     sensors:
@@ -17,7 +18,7 @@ plant:
     min_brightness: 2000
     max_brightness: 30000
 
-sensors:
+sensor:
   - platform: miflora
     mac: !secret miflora_1
     name: miflower

@@ -293,3 +293,6 @@
     friendly_name: "Huidig verbruik"
   sensor.smappee_dageraad_current_today:
     friendly_name: "Dag verbruik"
+  plant.phalaenopsis:
+    friendly_name: Orchidee (Keuken)
+    entity_picture: /local/plant/phalaenopsis.jpg

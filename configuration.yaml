@@ -123,31 +123,25 @@ recorder:  #!include_dir_merge_list include/recorder
   exclude:
     domains:
       - automation
+      - weblink
+      - updater
+      - group
+      - calendar
+      - camera
+      - device_tracker
+      - group
+      - input_text
+      - input_number
+      - lock
+      - media_player
+      - remote
+      - script
+      - sun
+      - zone
+      - weather
 #    entities:
 #      - camera.porch_camera
 #      - camera.bedroom_tv_image
-  # exclude:
-  #   domains:
-  #     - automation
-  #     - weblink
-  #     - updater
-  #     - group
-  #     - calendar
-  #     - camera
-  #     - climate
-  #     - device_tracker
-  #     - group
-  #     - input_text
-  #     - input_number
-  #     - light
-  #     - lock
-  #     - media_player
-  #     - remote
-  #     - script
-  #     - sun
-  #     - switch
-  #     - zone
-  #     - weather
 script: !include_dir_merge_named include/script
 shell_command: !include_dir_merge_named include/shell_commands
 sensor: !include_dir_merge_list include/sensors
@@ -155,24 +149,6 @@ switch: !include_dir_merge_list include/switches
 # timer: !include_dir_merge_list include/timer
 zone: !include_dir_merge_list include/zones
 # scene: !include_dir_merge_named include/scenes
-
-# plant:
-#   phalaenopsis:
-#     sensors:
-#       moisture: sensor.miflower_moisture
-#       battery: sensor.miflower_battery
-#       temperature: sensor.miflower_temperature
-#       conductivity: sensor.miflower_conductivity
-#       brightness: sensor.miflower_light_intensity
-#     min_moisture: 15
-#     max_moisture: 65
-#     min_battery: 20
-#     min_conductivity: 350
-#     max_conductivity: 2000
-#     min_temperature: 15
-#     max_temperature: 32
-#     min_brightness: 2000
-#     max_brightness: 30000
 
 
 # docker_monitor:
@@ -372,10 +348,6 @@ media_player:
 #    #cache_dir: /tmp/tts           # Optional - make sure it matches the same setting in TTS confi
 
 panel_iframe:
-  configurator:
-    title: Editor
-    icon: mdi:wrench
-    url: !secret configurator_url
   esphome:
     title: ESPHome
     url: !secret esphome_url
@@ -423,13 +395,3 @@ utility_meter:
     tariffs:
       - peak
       - offpeak
-
-# new_sensor:
-#   module: module_name
-#   class: class_name
-#   new_sensor_name: sensor.master
-#   main_sensor: sensor.easyplus
-#   attributes:
-#     level_1: sensor.easyplus_boiler
-#     level_2: sensor.easyplus_kitchen
-#     level_3: sensor.easyplus_

@@ -7909,6 +7909,35 @@
                             "type": "custom:plant-card"
                         },
                         {
+                            "entities": [
+                                {
+                                    "entity": "sensor.esp32_ip"
+                                },
+                                {
+                                    "entity": "binary_sensor.esp32_status"
+                                },
+                                {
+                                    "entity": "sensor.esp32_uptime"
+                                },
+                                {
+                                    "entity": "sensor.miflora_moisture"
+                                },
+                                {
+                                    "entity": "sensor.miflora_illuminance"
+                                },
+                                {
+                                    "entity": "sensor.miflora_soil_conductivity"
+                                },
+                                {
+                                    "entity": "sensor.miflora_temperature"
+                                },
+                                {
+                                    "entity": "binary_sensor.miflora"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
                             "cards": [
                                 {
                                     "color_stops": {

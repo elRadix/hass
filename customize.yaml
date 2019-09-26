@@ -294,5 +294,8 @@
   sensor.smappee_dageraad_current_today:
     friendly_name: "Dag verbruik"
   plant.phalaenopsis:
-    friendly_name: Orchidee (Keuken)
+    friendly_name: orchidee (keuken)
     entity_picture: /local/plant/phalaenopsis.jpg
+  plant.dypsis_lutescens:
+    friendly_name: dypsis lutescens (living)
+    entity_picture: /local/plant/dypsis.jpg

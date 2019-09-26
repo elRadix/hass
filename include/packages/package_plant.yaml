@@ -59,6 +59,24 @@ plant:
     min_brightness: 2000
     max_brightness: 30000
 
+  dypsis_lutescens:
+    sensors:
+      moisture: sensor.miflower_moisture
+      battery: sensor.miflower_battery
+      temperature: sensor.miflower_temperature
+      conductivity: sensor.miflower_conductivity
+      brightness: sensor.miflower_light_intensity
+    min_moisture: 15
+    max_moisture: 60
+    min_battery: 20
+    min_conductivity: 350
+    max_conductivity: 2000
+    min_temperature: 10
+    max_temperature: 35
+    min_brightness: 2000
+    max_brightness: 30000
+
+
 automation:
   - id: plant_01
     alias: Update Plant Problems

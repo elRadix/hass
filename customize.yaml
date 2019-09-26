@@ -297,5 +297,5 @@
     friendly_name: orchidee (keuken)
     entity_picture: /local/plant/phalaenopsis.jpg
   plant.dypsis_lutescens:
-    friendly_name: dypsis lutescens (living)
+    friendly_name: areca palm (living)
     entity_picture: /local/plant/dypsis.jpg

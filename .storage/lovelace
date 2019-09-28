@@ -563,7 +563,7 @@
                             "type": "entity-filter"
                         },
                         {
-                            "entity": "plant.phalaenopsis",
+                            "entity": "plant.dypsis_lutescens",
                             "type": "plant-status"
                         },
                         {
@@ -854,6 +854,10 @@
                                 }
                             ],
                             "type": "conditional"
+                        },
+                        {
+                            "entity": "plant.phalaenopsis",
+                            "type": "plant-status"
                         },
                         {
                             "cards": [
@@ -7886,6 +7890,9 @@
                             "entities": [
                                 {
                                     "entity": "plant.phalaenopsis"
+                                },
+                                {
+                                    "entity": "plant.dypsis_lutescens"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -7905,19 +7912,13 @@
                             "min_conductivity": 350,
                             "min_moisture": 15,
                             "min_temperature": 12,
-                            "title": "Orchidee (Keuken)",
+                            "title": "orchidee (keuken)",
                             "type": "custom:plant-card"
                         },
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.esp32_ip"
-                                },
-                                {
-                                    "entity": "binary_sensor.esp32_status"
-                                },
-                                {
-                                    "entity": "sensor.esp32_uptime"
+                                    "entity": "sensor.esp32_uptime_hours"
                                 },
                                 {
                                     "entity": "sensor.miflora_moisture"
@@ -7926,16 +7927,45 @@
                                     "entity": "sensor.miflora_illuminance"
                                 },
                                 {
+                                    "entity": "sensor.accumulated_light",
+                                    "name": "MiFlora Accumulated light"
+                                },
+                                {
                                     "entity": "sensor.miflora_soil_conductivity"
                                 },
                                 {
                                     "entity": "sensor.miflora_temperature"
                                 },
                                 {
-                                    "entity": "binary_sensor.miflora"
+                                    "entity": "sensor.sun_azimuth"
+                                },
+                                {
+                                    "entity": "sensor.sun_elevation"
+                                },
+                                {
+                                    "entity": "sensor.sun_next_sunrise"
+                                },
+                                {
+                                    "entity": "sensor.sun_next_sunset"
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                "moisture:sensor.miflower_moisture",
+                                "intensity:sensor.miflower_light_intensity",
+                                "temperature:sensor.miflower_temperature",
+                                "conductivity:sensor.miflower_conductivity",
+                                "battery:sensor.miflower_battery"
+                            ],
+                            "image": "plant/dypsis.jpg",
+                            "max_moisture": 65,
+                            "min_conductivity": 350,
+                            "min_moisture": 15,
+                            "min_temperature": 12,
+                            "title": "areca palm (living)",
+                            "type": "custom:plant-card"
                         },
                         {
                             "cards": [
@@ -7954,7 +7984,7 @@
                                     },
                                     "entities": [
                                         {
-                                            "area": "orchidee",
+                                            "area": "Areca palm",
                                             "attribute": "moisture",
                                             "decimals": 0,
                                             "entity": "plant.phalaenopsis",
@@ -8424,7 +8454,7 @@
                                     },
                                     "entities": [
                                         {
-                                            "area": "orchidee",
+                                            "area": "Areca palm",
                                             "decimals": 0,
                                             "entity": "sensor.miflower_moisture",
                                             "icon": "mdi:memory",
@@ -8928,6 +8958,7 @@
                                 {
                                     "cards": [
                                         {
+                                            "columns": 3,
                                             "entities": [
                                                 {
                                                     "entity": "binary_sensor.living_status",
@@ -8948,6 +8979,10 @@
                                                 {
                                                     "entity": "binary_sensor.kodi_status",
                                                     "name": "Kodi"
+                                                },
+                                                {
+                                                    "entity": "binary_sensor.esp32_status",
+                                                    "name": "esp32"
                                                 }
                                             ],
                                             "show_state": false,
@@ -9012,6 +9047,7 @@
                                 {
                                     "cards": [
                                         {
+                                            "columns": 3,
                                             "entities": [
                                                 {
                                                     "entity": "switch.living_restart",
@@ -9044,6 +9080,13 @@
                                                 {
                                                     "entity": "switch.kodi_restart",
                                                     "name": "Kodi",
+                                                    "tap_action": {
+                                                        "action": "toggle"
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "switch.esp32_restart",
+                                                    "name": "esp32",
                                                     "tap_action": {
                                                         "action": "toggle"
                                                     }
@@ -9111,6 +9154,7 @@
                                 {
                                     "cards": [
                                         {
+                                            "columns": 3,
                                             "entities": [
                                                 {
                                                     "entity": "light.living_green_led",
@@ -9143,6 +9187,13 @@
                                                 {
                                                     "entity": "light.kodi_green_led",
                                                     "name": "Kodi",
+                                                    "tap_action": {
+                                                        "action": "toggle"
+                                                    }
+                                                },
+                                                {
+                                                    "entity": "light.esp32_blue_led",
+                                                    "name": "esp32",
                                                     "tap_action": {
                                                         "action": "toggle"
                                                     }
@@ -9210,6 +9261,7 @@
                                 {
                                     "cards": [
                                         {
+                                            "columns": 3,
                                             "entities": [
                                                 {
                                                     "entity": "sensor.living_ssid",
@@ -9235,6 +9287,11 @@
                                                     "entity": "sensor.kodi_ssid",
                                                     "icon": "mdi:wifi-star",
                                                     "name": "Kodi"
+                                                },
+                                                {
+                                                    "entity": "sensor.esp32_ssid",
+                                                    "icon": "mdi:wifi-star",
+                                                    "name": "esp32"
                                                 }
                                             ],
                                             "show_icon": false,
@@ -9246,16 +9303,17 @@
                                 {
                                     "cards": [
                                         {
+                                            "columns": 3,
                                             "entities": [
                                                 {
                                                     "entity": "sensor.living_ip",
                                                     "icon": "mdi:ip",
-                                                    "name": "Living"
+                                                    "name": "living"
                                                 },
                                                 {
                                                     "entity": "sensor.easyplus_ip",
                                                     "icon": "mdi:ip",
-                                                    "name": "Easyplus"
+                                                    "name": "easyplus"
                                                 },
                                                 {
                                                     "entity": "sensor.ketel_ip",
@@ -9271,10 +9329,15 @@
                                                     "entity": "sensor.kodi_ip",
                                                     "icon": "mdi:ip",
                                                     "name": "Kodi"
+                                                },
+                                                {
+                                                    "entity": "sensor.esp32_ip",
+                                                    "icon": "mdi:ip",
+                                                    "name": "esp32"
                                                 }
                                             ],
                                             "show_icon": false,
-                                            "show_name": false,
+                                            "show_name": true,
                                             "type": "glance"
                                         }
                                     ],
@@ -9283,35 +9346,35 @@
                                 {
                                     "cards": [
                                         {
+                                            "columns": 3,
                                             "entities": [
                                                 {
                                                     "entity": "sensor.living_wifi",
-                                                    "icon": "mdi:wifi-star",
-                                                    "name": "Living"
+                                                    "icon": "mdi:wifi-star"
                                                 },
                                                 {
                                                     "entity": "sensor.easyplus_wifi",
-                                                    "icon": "mdi:wifi-star",
-                                                    "name": "Easyplus"
+                                                    "icon": "mdi:wifi-star"
                                                 },
                                                 {
                                                     "entity": "sensor.ketel_wifi",
-                                                    "icon": "mdi:wifi-star",
-                                                    "name": "Ketel"
+                                                    "icon": "mdi:wifi-star"
                                                 },
                                                 {
                                                     "entity": "sensor.server_wifi",
-                                                    "icon": "mdi:wifi-star",
-                                                    "name": "Server"
+                                                    "icon": "mdi:wifi-star"
                                                 },
                                                 {
                                                     "entity": "sensor.kodi_wifi",
-                                                    "icon": "mdi:wifi-star",
-                                                    "name": "Kodi"
+                                                    "icon": "mdi:wifi-star"
+                                                },
+                                                {
+                                                    "entity": "sensor.esp32_wifi",
+                                                    "icon": "mdi:wifi-star"
                                                 }
                                             ],
                                             "show_icon": false,
-                                            "show_name": false,
+                                            "show_name": true,
                                             "type": "glance"
                                         }
                                     ],
@@ -9374,6 +9437,7 @@
                                 {
                                     "cards": [
                                         {
+                                            "columns": 3,
                                             "entities": [
                                                 {
                                                     "entity": "sensor.living_uptime",
@@ -9394,6 +9458,10 @@
                                                 {
                                                     "entity": "sensor.kodi_uptime",
                                                     "name": "Kodi"
+                                                },
+                                                {
+                                                    "entity": "sensor.esp32_uptime",
+                                                    "name": "esp32"
                                                 }
                                             ],
                                             "show_icon": false,
@@ -9405,7 +9473,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "columns": 5,
+                                            "columns": 3,
                                             "entities": [
                                                 {
                                                     "entity": "sensor.living_version",
@@ -9431,10 +9499,15 @@
                                                     "entity": "sensor.kodi_version",
                                                     "icon": "mdi:arrow-up-bold-circle-outline",
                                                     "name": "Kodi"
+                                                },
+                                                {
+                                                    "entity": "sensor.esp32_version",
+                                                    "icon": "mdi:arrow-up-bold-circle-outline",
+                                                    "name": "esp32"
                                                 }
                                             ],
                                             "show_icon": false,
-                                            "show_name": false,
+                                            "show_name": true,
                                             "type": "glance"
                                         }
                                     ],

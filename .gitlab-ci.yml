@@ -114,9 +114,9 @@ ha-latest:
 #    entrypoint: [""]
 #  allow_failure: true
 
-#ha-dev:
-#  <<: *ha
-#  image:
-#    name: homeassistant/home-assistant:dev
-#    entrypoint: [""]
-#  allow_failure: true
+ha-dev:
+  <<: *ha
+  image:
+    name: homeassistant/home-assistant:dev
+    entrypoint: [""]
+  allow_failure: true

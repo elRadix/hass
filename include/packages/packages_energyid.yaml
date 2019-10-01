@@ -100,7 +100,7 @@ sensor:
   - platform: template
     sensors:
       water_period: # do not delete
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: water period
         value_template: >-
             {% set date = 'December 2018' %}
@@ -110,7 +110,7 @@ sensor:
   - platform: template
     sensors:
       power_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: power period
         value_template: >-
             {% set date = 'January 2019' %}
@@ -118,46 +118,46 @@ sensor:
             {% set today = now() %}
             {{ today.year*12+today.month - (date.year*12+date.month) - 1 }}
 
-#consumption in m3 / kwh 
+#consumption in m3 / kwh
   - platform: template
     sensors:
      water_consumption_period:  # do not delete
        friendly_name: water consumption period
-       entity_id: sensor.time
+       entity_id: sensor.time, sensor.date
        value_template: "{{ (states('sensor.water_last')|float - states('sensor.water_start')|float) |round(2) }}"
        unit_of_measurement: 'm3'
   - platform: template
     sensors:
       gas_consumption_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas consumption period
         value_template: "{{ (states('sensor.gas_last')|float - states('sensor.gas_start')|float) |round(2) }}"
         unit_of_measurement: 'm3'
   - platform: template
     sensors:
       gas_consumption_period_kwh:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas consumption period kwh
         value_template: "{{ ((states('sensor.gas_last')|float - states('sensor.gas_start')|float) *  9.96468468468468 ) |float |round(0) }}"
         unit_of_measurement: 'kWh'
   - platform: template
     sensors:
       electricity_day_consumption_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity day consumption period
         value_template: "{{ (states('sensor.electricity_day_last')|float - states('sensor.electricity_day_start')|float) |round(2) }}"
         unit_of_measurement: 'kWh'
   - platform: template
     sensors:
       electricity_night_consumption_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity night consumption period
         value_template: "{{ (states('sensor.electricity_night_last')|float - states('sensor.electricity_night_start')|float) |round(2) }}"
         unit_of_measurement: 'kWh'
   - platform: template
     sensors:
       electricity_total_consumption_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity total consumption period
         value_template: "{{ (states('sensor.electricity_day_consumption_period')|float + states('sensor.electricity_night_consumption_period')|float) |round(2) }}"
         unit_of_measurement: 'kWh'
@@ -166,41 +166,41 @@ sensor:
   - platform: template
     sensors:
      water_consumption_day:  # do not delete
-       entity_id: sensor.time
+       entity_id: sensor.time, sensor.date
        friendly_name: water daily
        value_template: "{{ ((states('sensor.water_consumption_period')|float / states('sensor.days_water_consumed')|float) *  1000 ) |float |round(0) }}"
   - platform: template
     sensors:
       gas_consumption_day_kwh:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas daily
         value_template: "{{ ((states('sensor.gas_consumption_period')|float / states('sensor.days_consumed')|float) *  9.96468468468468 ) |float |round(2) }}"
         unit_of_measurement: 'kWh'
   - platform: template
     sensors:
       gas_consumption_day:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas daily
         value_template: "{{ (states('sensor.gas_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
         unit_of_measurement: 'm3'
   - platform: template
     sensors:
       electricity_day_consumption_day:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity day daily
         value_template: "{{ (states('sensor.electricity_day_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
         unit_of_measurement: 'kWh'
   - platform: template
     sensors:
       electricity_night_consumption_day:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity night daily
         value_template: "{{ (states('sensor.electricity_night_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
         unit_of_measurement: 'kWh'
   - platform: template
     sensors:
       electricity_total_consumption_day:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity daily
         value_template: "{{ (states('sensor.electricity_total_consumption_period')|float / states('sensor.days_consumed')|float) |round(2) }}"
         unit_of_measurement: 'kWh'
@@ -208,7 +208,7 @@ sensor:
   - platform: template
     sensors:
       gas_day_forecast:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas monhtly
         value_template: >-
             {% set a = states('sensor.gas_consumption_day')|float %}
@@ -221,35 +221,35 @@ sensor:
   - platform: template
     sensors:
       power_prepaid_monthly:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: power prepaid monthly
         value_template: "{{ (states('sensor.electricity_total_prepaid_monthly')|float + states('sensor.gas_prepaid_monthly')|float) |round(2)}}"
         unit_of_measurement: 'eur'
   # - platform: template
   #   sensors:
   #     water_prepaid_period: # DELETE
-  #       entity_id: sensor.time
+  #       entity_id: sensor.time, sensor.date
   #       friendly_name: water prepaid period
   #       value_template: "{{ ((states.sensor.water_prepaid_monthly.state|float) * (states.sensor.water_period.state|float)) |round(2) }}"
   #       unit_of_measurement: 'eur'
   - platform: template
     sensors:
       gas_prepaid_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas prepaid period
         value_template: "{{ ((states.sensor.gas_prepaid_monthly.state|float) * (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       electricity_total_prepaid_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity total prepaid period
         value_template: "{{ ((states.sensor.electricity_total_prepaid_monthly.state|float) * (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       power_prepaid_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: power prepaid period
         value_template: "{{ ((states.sensor.power_prepaid_monthly.state|float) * (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
@@ -259,42 +259,42 @@ sensor:
   # - platform: template
   #   sensors: # TO DELETE
   #    water_cost_period:
-  #      entity_id: sensor.time
+  #      entity_id: sensor.time, sensor.date
   #      friendly_name: water cost period
   #      value_template: "{{ (states('sensor.water_consumption_period')|float * 3.8 ) |round(2) }}"
   #      unit_of_measurement: 'eur'
   - platform: template
     sensors:
       gas_cost_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas cost period
         value_template: "{{ (states('sensor.gas_consumption_period')|float * 9.96468468468468 * 0.064663587) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       electricity_day_cost_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity day cost period
         value_template: "{{ (states('sensor.electricity_day_consumption_period')|float * 0.267609913) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
      electricity_night_cost_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity night cost period
         value_template: "{{ (states('sensor.electricity_night_consumption_period')|float * 0.267609913) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       electricity_total_cost_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity total cost period
         value_template: "{{ (states('sensor.electricity_day_cost_period')|float + states('sensor.electricity_night_cost_period')|float) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       power_cost_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: power period
         value_template: "{{ (states('sensor.electricity_total_cost_period')|float + states('sensor.gas_cost_period')|float) |round(2)}}"
         unit_of_measurement: 'eur'
@@ -304,28 +304,28 @@ sensor:
   - platform: template
     sensors:
       water_cost_monthly:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: water cost monthly
         value_template: "{{ ((states.sensor.water_cost_period.state|float) / (states.sensor.water_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       gas_cost_monthly:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas cost monthly
         value_template: "{{ ((states.sensor.gas_cost_period.state|float) / (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       electricity_total_cost_monthly:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity total cost monthly
         value_template: "{{ ((states.sensor.electricity_total_cost_period.state|float) / (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       power_cost_monthly:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: power cost monthly
         value_template: "{{ ((states.sensor.power_cost_period.state|float) / (states.sensor.power_period.state|float)) |round(2) }}"
         unit_of_measurement: 'eur'
@@ -334,21 +334,21 @@ sensor:
   # - platform: template
   #   sensors:
   #     water_balance_period: # to delete
-  #       entity_id: sensor.time
+  #       entity_id: sensor.time, sensor.date
   #       friendly_name: water balance period
   #       value_template: "{{ (states('sensor.water_prepaid_period')|float - states('sensor.water_cost_period')|float) |round(2) }}"
   #       unit_of_measurement: 'eur'
   - platform: template
     sensors:
       gas_balance_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas balance period
         value_template: "{{ (states('sensor.gas_prepaid_period')|float - states('sensor.gas_cost_period')|float) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       gas_balance_period_tweaked:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas balance period tweaked
         value_template: >-
             {% set consumption = states('sensor.gas_consumption_day') |float %}
@@ -364,7 +364,7 @@ sensor:
   - platform: template
     sensors:
       gas_cost_period_tweaked:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas cost period tweaked
         value_template: >-
             {% set day = states('sensor.gas_consumption_day')|float %}
@@ -378,14 +378,14 @@ sensor:
   - platform: template
     sensors:
       electricity_total_balance_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: electricity total balance period
         value_template: "{{ (states('sensor.electricity_total_prepaid_period')|float - states('sensor.electricity_total_cost_period')|float) |round(2) }}"
         unit_of_measurement: 'eur'
   - platform: template
     sensors:
       power_balance_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: power balance period
         value_template: "{{ (states('sensor.power_prepaid_period')|float - states('sensor.power_cost_period')|float) |round(2) }}"
         unit_of_measurement: 'eur'
@@ -393,7 +393,7 @@ sensor:
   # - platform: template
   #   sensors:
   #     water_balance_fcst:  # to delete
-  #       entity_id: sensor.time
+  #       entity_id: sensor.time, sensor.date
   #       friendly_name: gas fcst
   #       value_template: >-
   #           {% set a = states('sensor.water_prepaid_monthly')|float %}
@@ -403,7 +403,7 @@ sensor:
   - platform: template
     sensors:
       gas_balance_fcst:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: gas fcst
         value_template: >-
             {% set a = states('sensor.gas_prepaid_monthly')|float %}
@@ -414,7 +414,7 @@ sensor:
     sensors:
       gas_balance_fcst_tweaked:
         friendly_name: gas balance fsct tweaked
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         value_template: >-
             {% set consumption = states('sensor.gas_consumption_day') |float %}
             {% set days = states('sensor.days_consumed') |float %}
@@ -431,7 +431,7 @@ sensor:
     sensors:
       electricity_total_balance_fcst:
         friendly_name: electricity fcst
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         value_template: >-
             {% set a = states('sensor.electricity_total_prepaid_monthly')|float %}
             {% set b = states('sensor.electricity_total_cost_monthly')|float %}
@@ -441,7 +441,7 @@ sensor:
     sensors:
       power_balance_fcst:
         friendly_name: power balance fcst
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         value_template: >-
             {% set a = states('sensor.electricity_total_balance_fcst')|float %}
             {% set b = states('sensor.gas_balance_fcst')|float %}
@@ -452,7 +452,7 @@ sensor:
   # - platform: template
   #   sensors:
   #     water_template_:
-  #       entity_id: sensor.time
+  #       entity_id: sensor.time, sensor.date
   #       friendly_name: water template
   #       value_template: >-
   #           {% set used_day = states('sensor.water_consumption_day') |float %}
@@ -471,7 +471,7 @@ sensor:
   - platform: template
     sensors:
       water_prepaid_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: water prepaid period
         value_template: >-
             {% set month = states('sensor.water_period') |float %}
@@ -483,7 +483,7 @@ sensor:
   - platform: template
     sensors:
       water_cost_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: water cost period
         value_template: >-
             {% set used_day = states('sensor.water_consumption_day') |float %}
@@ -497,7 +497,7 @@ sensor:
   - platform: template
     sensors:
       water_balance_period:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: water balance period
         value_template: >-
             {% set used_day = states('sensor.water_consumption_day') |float %}
@@ -515,7 +515,7 @@ sensor:
   - platform: template
     sensors:
       water_balance_fcst:
-        entity_id: sensor.time
+        entity_id: sensor.time, sensor.date
         friendly_name: water fcst
         value_template: >-
             {% set used_day = states('sensor.water_consumption_day') |float %}
@@ -757,8 +757,41 @@ automation:
         icon: mdi:counter
         date: "{{ states.input_text.date_gas_last.state }}"
         source: https://www.energyid.eu
-
-
+    - service: python_script.set_state
+      data_template:
+        entity_id: sensor.power_year
+        state: 2046
+        unit_of_measurement: 'kWh'
+        icon: mdi:counter
+        start_date: 01/02/2019
+    - service: python_script.set_state
+      data_template:
+        entity_id: sensor.day_year
+        state: 794
+        unit_of_measurement: 'kWh'
+        icon: mdi:counter
+        start_date: 01/02/2019
+    - service: python_script.set_state
+      data_template:
+        entity_id: sensor.night_year
+        state: 1252
+        unit_of_measurement: 'kWh'
+        icon: mdi:counter
+        start_date: 01/02/2019
+    - service: python_script.set_state
+      data_template:
+        entity_id: sensor.gas_year_kwh
+        state: 4448
+        unit_of_measurement: 'kWh'
+        icon: mdi:counter
+        start_date: 01/02/2019
+    - service: python_script.set_state
+      data_template:
+        entity_id: sensor.gas_year
+        state: 446
+        unit_of_measurement: 'm3'
+        icon: mdi:counter
+        start_date: 01/02/2019
 
 
 

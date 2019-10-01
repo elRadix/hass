@@ -136,6 +136,9 @@ recorder:  #!include_dir_merge_list include/recorder
       - media_player
       - remote
       - script
+      - switch
+      - light
+      - sensor
       - sun
       - zone
       - weather

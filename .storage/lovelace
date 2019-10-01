@@ -356,7 +356,7 @@
                                                     ],
                                                     "height": "25px",
                                                     "indicator": "right",
-                                                    "max": 50,
+                                                    "max": 46,
                                                     "min": 0,
                                                     "rounding": "1px",
                                                     "saturation": "70%",
@@ -7918,7 +7918,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.esp32_uptime_hours"
+                                    "entity": "sensor.esp32_uptime_2"
                                 },
                                 {
                                     "entity": "sensor.miflora_moisture"
@@ -7927,7 +7927,7 @@
                                     "entity": "sensor.miflora_illuminance"
                                 },
                                 {
-                                    "entity": "sensor.accumulated_light",
+                                    "entity": "sensor.miflora_accumulated_light",
                                     "name": "MiFlora Accumulated light"
                                 },
                                 {
@@ -7947,6 +7947,12 @@
                                 },
                                 {
                                     "entity": "sensor.sun_next_sunset"
+                                },
+                                {
+                                    "entity": "sensor.esp32_humidity"
+                                },
+                                {
+                                    "entity": "sensor.esp32_temperature"
                                 }
                             ],
                             "type": "entities"
@@ -9460,7 +9466,7 @@
                                                     "name": "Kodi"
                                                 },
                                                 {
-                                                    "entity": "sensor.esp32_uptime",
+                                                    "entity": "sensor.esp32_uptime_2",
                                                     "name": "esp32"
                                                 }
                                             ],
@@ -9935,7 +9941,7 @@
                                                     ],
                                                     "height": "25px",
                                                     "indicator": "right",
-                                                    "max": 75,
+                                                    "max": 72,
                                                     "min": 0,
                                                     "rounding": "12px",
                                                     "saturation": "70%",
@@ -10201,7 +10207,7 @@
                                                     ],
                                                     "height": "25px",
                                                     "indicator": "right",
-                                                    "max": 30,
+                                                    "max": 25.5,
                                                     "min": 0,
                                                     "rounding": "12px",
                                                     "saturation": "70%",
@@ -10219,7 +10225,7 @@
                                                             "value": 26
                                                         }
                                                     ],
-                                                    "target": 25,
+                                                    "target": 24.99,
                                                     "title": "maandelijkse kost",
                                                     "title_position": "inside",
                                                     "title_style": {
@@ -10334,7 +10340,7 @@
                                                     ],
                                                     "height": "25px",
                                                     "indicator": "right",
-                                                    "max": 30,
+                                                    "max": 28,
                                                     "min": 0,
                                                     "rounding": "12px",
                                                     "saturation": "70%",

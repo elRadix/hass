@@ -12,6 +12,8 @@ cch:
   voice: hide
 resources:
 - type: js
+  url: /local/plant-card.js
+- type: js
   url: /local/card-mod.js
 - type: js
   url: /local/card-tools.js
@@ -64,6 +66,10 @@ resources:
   url: /community_plugin/lovelace-animated-background/animated-background.js
 - type: module
   url: /community_plugin/search-card/search-card.js
+- type: js
+  url: /community_plugin/miflora-card/miflora-card.
+- type: module
+  url: /community_plugin/flex-horseshoe-card/flex-horseshoe-card.js
 title: Home
 views:
 - badges: []
@@ -195,7 +201,7 @@ views:
           - sensor.electricity_total_cost_monthly
           height: 25px
           indicator: right
-          max: 50
+          max: 46
           min: 0
           rounding: 1px
           saturation: 70%
@@ -337,30 +343,8 @@ views:
     state_filter:
     - 'on'
     type: entity-filter
-  - card:
-      entities:
-      - entity: input_boolean.work
-        tap_action:
-          action: toggle
-      - entity: sensor.time_at_work_today
-      - entity: sensor.time_at_work_this_week
-      title: BNP - Work hours
-      type: glance
-    conditions:
-    - entity: device_tracker.comp_rachid
-      state_not: home
-    type: conditional
-  - entities:
-    - entity: sensor.last_boot_date_time
-    - entity: sensor.rpi_uptime
-      icon: mdi:clock
-      name: RPI
-    - entity: sensor.ha_uptime
-      icon: mdi:clock
-      name: HASS
-    show_header_toggle: false
-    title: Uptime
-    type: entities
+  - entity: plant.dypsis_lutescens
+    type: plant-status
   - card:
       entities:
       - artwork: cover
@@ -421,6 +405,30 @@ views:
         type: custom:check-button-card
       type: entities
     type: vertical-stack
+  - entities:
+    - entity: sensor.last_boot_date_time
+    - entity: sensor.rpi_uptime
+      icon: mdi:clock
+      name: RPI
+    - entity: sensor.ha_uptime
+      icon: mdi:clock
+      name: HASS
+    show_header_toggle: false
+    title: Uptime
+    type: entities
+  - card:
+      entities:
+      - entity: input_boolean.work
+        tap_action:
+          action: toggle
+      - entity: sensor.time_at_work_today
+      - entity: sensor.time_at_work_this_week
+      title: BNP - Work hours
+      type: glance
+    conditions:
+    - entity: device_tracker.comp_rachid
+      state_not: home
+    type: conditional
   - entities:
     - artwork: full-cover-fit
       artwork_border: true
@@ -501,6 +509,8 @@ views:
     - entity: device_tracker.comp_rachid
       state_not: home
     type: conditional
+  - entity: plant.phalaenopsis
+    type: plant-status
   - cards:
     - entities:
       - color_type: label-card
@@ -3959,13 +3969,8 @@ views:
     state_filter:
     - 'on'
     type: entity-filter
-  - card:
-      show_header_toggle: false
-      show_name: true
-      show_state: false
-      title: Timers
-      type: entities
-    entities:
+  - entities:
+    - entity: timer.samsung
     - entity: timer.espresso
     - entity: timer.dish
     - entity: timer.water
@@ -3975,12 +3980,7 @@ views:
     - entity: timer.dryer
     - entity: timer.was
       name: wasmachine
-    - entity: timer.samsung
-    show_empty: true
-    state_filter:
-    - active
-    - paused
-    type: entity-filter
+    type: entities
   - entities:
     - entity: group.easyplus_sensors
     - entity: sensor.easyplus_away
@@ -4006,7 +4006,8 @@ views:
     - entity: binary_sensor.wc_occupied
       name: wc
     - entity: binary_sensor.inkomhal_occupied
-      name: inkonhall
+      name: inkonhal
+      show_last_changed: true
     type: glance
   - entities:
     - entity: timer.inkomhal_occupied
@@ -4030,52 +4031,572 @@ views:
     title: Led + switches
     type: entities
   - entities:
-    - action_name: pause
-      name: dryer
-      service: timer.pause
-      service_data:
-        entity_id: timer.dryer
-      type: call-service
-    - action_name: start
-      name: dryer
-      service: timer.start
-      service_data:
-        entity_id: timer.dryer
-      type: call-service
-    - action_name: pause
-      name: was
-      service: timer.pause
-      service_data:
-        entity_id: timer.was
-      type: call-service
-    - action_name: start
-      name: was
-      service: timer.start
-      service_data:
-        entity_id: timer.was
-      type: call-service
-    - action_name: pause
-      name: dish
-      service: timer.pause
-      service_data:
-        entity_id: timer.dish
-      type: call-service
-    - action_name: start
-      name: dish
-      service: timer.start
-      service_data:
-        entity_id: timer.dish
-      type: call-service
-    type: entities
-  - entities:
-    - entity: sensor.miflower_battery
-    - entity: sensor.miflower_conductivity
-    - entity: sensor.miflower_light_intensity
-    - entity: sensor.miflower_moisture
-    - entity: sensor.miflower_temperature
+    - entity: plant.phalaenopsis
+    - entity: plant.dypsis_lutescens
     show_header_toggle: false
     title: miflower
     type: entities
+  - entities:
+    - moisture:sensor.miflower_moisture
+    - intensity:sensor.miflower_light_intensity
+    - temperature:sensor.miflower_temperature
+    - conductivity:sensor.miflower_conductivity
+    - battery:sensor.miflower_battery
+    image: plant/phalaenopsis.jpg
+    max_moisture: 65
+    min_conductivity: 350
+    min_moisture: 15
+    min_temperature: 12
+    title: orchidee (keuken)
+    type: custom:plant-card
+  - entities:
+    - entity: sensor.esp32_uptime_2
+    - entity: sensor.miflora_moisture
+    - entity: sensor.miflora_illuminance
+    - entity: sensor.miflora_accumulated_light
+      name: MiFlora Accumulated light
+    - entity: sensor.miflora_soil_conductivity
+    - entity: sensor.miflora_temperature
+    - entity: sensor.sun_azimuth
+    - entity: sensor.sun_elevation
+    - entity: sensor.sun_next_sunrise
+    - entity: sensor.sun_next_sunset
+    - entity: sensor.esp32_humidity
+    - entity: sensor.esp32_temperature
+    type: entities
+  - entities:
+    - moisture:sensor.miflower_moisture
+    - intensity:sensor.miflower_light_intensity
+    - temperature:sensor.miflower_temperature
+    - conductivity:sensor.miflower_conductivity
+    - battery:sensor.miflower_battery
+    image: plant/dypsis.jpg
+    max_moisture: 65
+    min_conductivity: 350
+    min_moisture: 15
+    min_temperature: 12
+    title: areca palm (living)
+    type: custom:plant-card
+  - cards:
+    - color_stops:
+        '0': '#FFF6E3'
+        '10': '#FFE9B9'
+        '20': '#FFDA8A'
+        '30': '#FFCB5B'
+        '40': '#FFBF37'
+        '50': '#ffb414'
+        '60': '#FFAD12'
+        '70': '#FFA40E'
+        '80': '#FF9C0B'
+        '90': '#FF8C06'
+      entities:
+      - area: Areca palm
+        attribute: moisture
+        decimals: 0
+        entity: plant.phalaenopsis
+        icon: mdi:memory
+        name: ' '
+      - attribute: conductivity
+        decimals: 0
+        entity: plant.phalaenopsis
+        icon: mdi:emoticon-poop
+        name: 'fertilizer '
+        unit: ''
+      - attribute: brightness
+        decimals: 0
+        entity: plant.phalaenopsis
+        name: light lx
+        unit: ''
+      horseshoe_scale:
+        color: var(--primary-background-color)
+        max: 100
+        min: 0
+        width: 4
+      horseshoe_state:
+        color: '#FFF6E3'
+      layout:
+        areas:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 1.5em;
+          xpos: 50
+          ypos: 85
+        hlines:
+        - color: '#FFF6E3'
+          id: 0
+          length: 40
+          styles:
+          - stroke: var(--primary-text-color);
+          - stroke-width: 2;
+          - opacity: 0.5;
+          - stroke-linecap: round;
+          xpos: 50
+          ypos: 38
+        names:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 1.2em;
+          xpos: 50
+          ypos: 100
+        - entity_index: 1
+          id: 1
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: end;
+          - opacity: 0.7;
+          xpos: 46
+          ypos: 62
+        - entity_index: 2
+          id: 2
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: start;
+          - opacity: 0.7;
+          xpos: 54
+          ypos: 62
+        states:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 3em;
+          - opacity: 0.9;
+          xpos: 50
+          ypos: 30
+        - entity_index: 1
+          id: 1
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: end;
+          xpos: 46
+          ypos: 54
+        - entity_index: 2
+          id: 2
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: start;
+          xpos: 54
+          ypos: 54
+        vlines:
+        - id: 0
+          length: 20
+          styles:
+          - stroke: var(--primary-text-color);
+          - opacity: 0.5;
+          - stroke-width: 2;
+          - stroke-linecap: round;
+          xpos: 50
+          ypos: 56
+      show:
+        horseshoe_style: lineargradient
+        scale_tickmarks: true
+      type: custom:flex-horseshoe-card
+    - color_stops:
+        '0': '#ffffff'
+        '100': '#0000ff'
+        '15': '#ffa500'
+        '25': '#b2b2ff'
+        '35': '#ccccff'
+        '45': '#9999ff'
+        '55': '#7f7fff'
+        '65': '#6666ff'
+        '75': '#4c4cff'
+        '85': '#3232ff'
+        '95': '#1919ff'
+      entities:
+      - area: orchidee
+        attribute: moisture
+        decimals: 0
+        entity: plant.phalaenopsis
+        name: ' '
+        unit: '%'
+      - attribute: conductivity
+        decimals: 0
+        entity: plant.phalaenopsis
+        icon: mdi:emoticon-poop
+        name: ' '
+        unit: "\xB5S"
+      - attribute: brightness
+        decimals: 0
+        entity: plant.phalaenopsis
+        name: ' '
+        unit: lx
+      - attribute: temperature
+        decimals: 0
+        entity: plant.phalaenopsis
+        name: ' '
+        unit: "\xBAC"
+      horseshoe_scale:
+        color: var(--primary-background-color)
+        max: 100
+        min: 0
+        width: 7
+      horseshoe_state:
+        color: '#FFA500'
+      layout:
+        areas:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 1.5em;
+          xpos: 50
+          ypos: 99
+        hlines:
+        - color: '#FFF6E3'
+          id: 0
+          length: 40
+          styles:
+          - stroke: var(--primary-text-color);
+          - stroke-width: 2;
+          - opacity: 0.5;
+          - stroke-linecap: round;
+          xpos: 50
+          ypos: 38
+        icons:
+        - align: end
+          entity_index: 1
+          id: 1
+          size: 1.3
+          xpos: 39
+          ypos: 65
+        - align: end
+          entity_index: 2
+          id: 2
+          size: 1.3
+          xpos: 75
+          ypos: 65
+        names:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 1.2em;
+          xpos: 50
+          ypos: 100
+        - entity_index: 1
+          id: 1
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: end;
+          - opacity: 0.7;
+          xpos: 46
+          ypos: 62
+        - entity_index: 2
+          id: 2
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: start;
+          - opacity: 0.7;
+          xpos: 54
+          ypos: 62
+        - entity_index: 3
+          id: 3
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: start;
+          - opacity: 0.7;
+          xpos: 50
+          ypos: 80
+        states:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 3em;
+          - opacity: 0.9;
+          xpos: 50
+          ypos: 30
+        - entity_index: 1
+          id: 1
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: end;
+          xpos: 46
+          ypos: 54
+        - entity_index: 2
+          id: 2
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: start;
+          xpos: 54
+          ypos: 54
+        - entity_index: 3
+          id: 3
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: start;
+          xpos: 39
+          ypos: 79
+        vlines:
+        - id: 0
+          length: 20
+          styles:
+          - stroke: var(--primary-text-color);
+          - opacity: 0.5;
+          - stroke-width: 2;
+          - stroke-linecap: round;
+          xpos: 50
+          ypos: 56
+      show:
+        horseshoe_style: colorstop
+        scale_tickmarks: false
+      type: custom:flex-horseshoe-card
+    type: horizontal-stack
+  - cards:
+    - color_stops:
+        '0': '#FFF6E3'
+        '10': '#FFE9B9'
+        '20': '#FFDA8A'
+        '30': '#FFCB5B'
+        '40': '#FFBF37'
+        '50': '#ffb414'
+        '60': '#FFAD12'
+        '70': '#FFA40E'
+        '80': '#FF9C0B'
+        '90': '#FF8C06'
+      entities:
+      - area: Areca palm
+        decimals: 0
+        entity: sensor.miflower_moisture
+        icon: mdi:memory
+        name: ' '
+      - decimals: 0
+        entity: sensor.miflower_conductivity
+        icon: mdi:emoticon-poop
+        name: 'fertilizer '
+        unit: ''
+      - decimals: 0
+        entity: sensor.miflower_light_intensity
+        name: light lx
+        unit: ''
+      horseshoe_scale:
+        color: var(--primary-background-color)
+        max: 100
+        min: 0
+        width: 6
+      horseshoe_state:
+        color: '#FFF6E3'
+      layout:
+        areas:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 1.5em;
+          xpos: 50
+          ypos: 85
+        hlines:
+        - color: '#FFF6E3'
+          id: 0
+          length: 40
+          styles:
+          - stroke: var(--primary-text-color);
+          - stroke-width: 2;
+          - opacity: 0.5;
+          - stroke-linecap: round;
+          xpos: 50
+          ypos: 38
+        names:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 1.2em;
+          xpos: 50
+          ypos: 100
+        - entity_index: 1
+          id: 1
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: end;
+          - opacity: 0.7;
+          xpos: 46
+          ypos: 62
+        - entity_index: 2
+          id: 2
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: start;
+          - opacity: 0.7;
+          xpos: 54
+          ypos: 62
+        states:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 3em;
+          - opacity: 0.9;
+          xpos: 50
+          ypos: 30
+        - entity_index: 1
+          id: 1
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: end;
+          xpos: 46
+          ypos: 54
+        - entity_index: 2
+          id: 2
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: start;
+          xpos: 54
+          ypos: 54
+        vlines:
+        - id: 0
+          length: 20
+          styles:
+          - stroke: var(--primary-text-color);
+          - opacity: 0.5;
+          - stroke-width: 2;
+          - stroke-linecap: round;
+          xpos: 50
+          ypos: 56
+      show:
+        horseshoe_style: lineargradient
+        scale_tickmarks: true
+      type: custom:flex-horseshoe-card
+    - color_stops:
+        '0': '#e3ffe7'
+        '10': '#e3eeff'
+        '20': '#e3e3ff'
+        '30': '#E3FFFC'
+        '40': '#E3FFFD'
+        '50': '#E3FFFE'
+        '60': '#E3FFFF'
+        '70': '#E3fdFF'
+        '80': '#E3fbFF'
+        '90': '#E3F5FF'
+      entities:
+      - area: orchidee
+        decimals: 0
+        entity: sensor.miflower_moisture
+        icon: mdi:memory
+        name: ' '
+      - decimals: 0
+        entity: sensor.miflower_conductivity
+        icon: mdi:emoticon-poop
+        name: ' '
+        unit: "\xB5S"
+      - decimals: 0
+        entity: sensor.miflower_light_intensity
+        name: ' '
+        unit: ''
+      - decimals: 0
+        entity: sensor.miflower_temperature
+        name: ' '
+        unit: ''
+      horseshoe_scale:
+        color: var(--primary-background-color)
+        max: 100
+        min: 0
+        width: 6
+      horseshoe_state:
+        color: '#e3ffe7'
+      layout:
+        areas:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 1.5em;
+          xpos: 50
+          ypos: 99
+        hlines:
+        - color: '#FFF6E3'
+          id: 0
+          length: 40
+          styles:
+          - stroke: var(--primary-text-color);
+          - stroke-width: 2;
+          - opacity: 0.5;
+          - stroke-linecap: round;
+          xpos: 50
+          ypos: 38
+        icons:
+        - align: end
+          entity_index: 1
+          id: 1
+          size: 1.3
+          xpos: 39
+          ypos: 65
+        - align: end
+          entity_index: 2
+          id: 2
+          size: 1.3
+          xpos: 75
+          ypos: 65
+        names:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 1.2em;
+          xpos: 50
+          ypos: 100
+        - entity_index: 1
+          id: 1
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: end;
+          - opacity: 0.7;
+          xpos: 46
+          ypos: 62
+        - entity_index: 2
+          id: 2
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: start;
+          - opacity: 0.7;
+          xpos: 54
+          ypos: 62
+        - entity_index: 3
+          id: 3
+          styles:
+          - font-size: 0.9em;
+          - text-anchor: start;
+          - opacity: 0.7;
+          xpos: 50
+          ypos: 80
+        states:
+        - entity_index: 0
+          id: 0
+          styles:
+          - font-size: 3em;
+          - opacity: 0.9;
+          xpos: 50
+          ypos: 30
+        - entity_index: 1
+          id: 1
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: end;
+          xpos: 46
+          ypos: 54
+        - entity_index: 2
+          id: 2
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: start;
+          xpos: 54
+          ypos: 54
+        - entity_index: 3
+          id: 3
+          styles:
+          - font-size: 1.8em;
+          - text-anchor: start;
+          xpos: 39
+          ypos: 79
+        vlines:
+        - id: 0
+          length: 20
+          styles:
+          - stroke: var(--primary-text-color);
+          - opacity: 0.5;
+          - stroke-width: 2;
+          - stroke-linecap: round;
+          xpos: 50
+          ypos: 56
+      show:
+        horseshoe_style: colorstopgradient
+        scale_tickmarks: false
+      type: custom:flex-horseshoe-card
+    type: horizontal-stack
   title: SCENES
 - badges: []
   cards:
@@ -4100,7 +4621,8 @@ views:
         - border-color: '#e5e5e5'
       type: custom:button-card
     - cards:
-      - entities:
+      - columns: 3
+        entities:
         - entity: binary_sensor.living_status
           name: Living
         - entity: binary_sensor.easyplus_status
@@ -4111,6 +4633,8 @@ views:
           name: Server
         - entity: binary_sensor.kodi_status
           name: Kodi
+        - entity: binary_sensor.esp32_status
+          name: esp32
         show_state: false
         type: glance
       type: horizontal-stack
@@ -4136,7 +4660,8 @@ views:
         - border-color: '#e5e5e5'
       type: custom:button-card
     - cards:
-      - entities:
+      - columns: 3
+        entities:
         - entity: switch.living_restart
           name: Living
           tap_action:
@@ -4155,6 +4680,10 @@ views:
             action: toggle
         - entity: switch.kodi_restart
           name: Kodi
+          tap_action:
+            action: toggle
+        - entity: switch.esp32_restart
+          name: esp32
           tap_action:
             action: toggle
         show_state: false
@@ -4182,7 +4711,8 @@ views:
         - border-color: '#e5e5e5'
       type: custom:button-card
     - cards:
-      - entities:
+      - columns: 3
+        entities:
         - entity: light.living_green_led
           name: Living
           tap_action:
@@ -4201,6 +4731,10 @@ views:
             action: toggle
         - entity: light.kodi_green_led
           name: Kodi
+          tap_action:
+            action: toggle
+        - entity: light.esp32_blue_led
+          name: esp32
           tap_action:
             action: toggle
         show_state: false
@@ -4228,7 +4762,8 @@ views:
         - border-color: '#e5e5e5'
       type: custom:button-card
     - cards:
-      - entities:
+      - columns: 3
+        entities:
         - entity: sensor.living_ssid
           icon: mdi:wifi-star
           name: Living
@@ -4244,17 +4779,21 @@ views:
         - entity: sensor.kodi_ssid
           icon: mdi:wifi-star
           name: Kodi
+        - entity: sensor.esp32_ssid
+          icon: mdi:wifi-star
+          name: esp32
         show_icon: false
         type: glance
       type: horizontal-stack
     - cards:
-      - entities:
+      - columns: 3
+        entities:
         - entity: sensor.living_ip
           icon: mdi:ip
-          name: Living
+          name: living
         - entity: sensor.easyplus_ip
           icon: mdi:ip
-          name: Easyplus
+          name: easyplus
         - entity: sensor.ketel_ip
           icon: mdi:ip
           name: Ketel
@@ -4264,29 +4803,30 @@ views:
         - entity: sensor.kodi_ip
           icon: mdi:ip
           name: Kodi
+        - entity: sensor.esp32_ip
+          icon: mdi:ip
+          name: esp32
         show_icon: false
-        show_name: false
+        show_name: true
         type: glance
       type: horizontal-stack
     - cards:
-      - entities:
+      - columns: 3
+        entities:
         - entity: sensor.living_wifi
           icon: mdi:wifi-star
-          name: Living
         - entity: sensor.easyplus_wifi
           icon: mdi:wifi-star
-          name: Easyplus
         - entity: sensor.ketel_wifi
           icon: mdi:wifi-star
-          name: Ketel
         - entity: sensor.server_wifi
           icon: mdi:wifi-star
-          name: Server
         - entity: sensor.kodi_wifi
           icon: mdi:wifi-star
-          name: Kodi
+        - entity: sensor.esp32_wifi
+          icon: mdi:wifi-star
         show_icon: false
-        show_name: false
+        show_name: true
         type: glance
       type: horizontal-stack
     entities: null
@@ -4312,7 +4852,8 @@ views:
         - border-color: '#e5e5e5'
       type: custom:button-card
     - cards:
-      - entities:
+      - columns: 3
+        entities:
         - entity: sensor.living_uptime
           name: Living
         - entity: sensor.easyplus_uptime
@@ -4323,11 +4864,13 @@ views:
           name: Server
         - entity: sensor.kodi_uptime
           name: Kodi
+        - entity: sensor.esp32_uptime_2
+          name: esp32
         show_icon: false
         type: glance
       type: horizontal-stack
     - cards:
-      - columns: 5
+      - columns: 3
         entities:
         - entity: sensor.living_version
           icon: mdi:arrow-up-bold-circle-outline
@@ -4344,8 +4887,11 @@ views:
         - entity: sensor.kodi_version
           icon: mdi:arrow-up-bold-circle-outline
           name: Kodi
+        - entity: sensor.esp32_version
+          icon: mdi:arrow-up-bold-circle-outline
+          name: esp32
         show_icon: false
-        show_name: false
+        show_name: true
         type: glance
       type: horizontal-stack
     - cards:
@@ -4549,7 +5095,7 @@ views:
           - sensor.power_cost_monthly
           height: 25px
           indicator: right
-          max: 75
+          max: 72
           min: 0
           rounding: 12px
           saturation: 70%
@@ -4689,7 +5235,7 @@ views:
           - sensor.gas_cost_monthly
           height: 25px
           indicator: right
-          max: 30
+          max: 25.5
           min: 0
           rounding: 12px
           saturation: 70%
@@ -4700,7 +5246,7 @@ views:
             value: 24
           - color: red
             value: 26
-          target: 25
+          target: 24.99
           title: maandelijkse kost
           title_position: inside
           title_style:
@@ -4759,7 +5305,7 @@ views:
           - sensor.water_cost_monthly
           height: 25px
           indicator: right
-          max: 30
+          max: 28
           min: 0
           rounding: 12px
           saturation: 70%

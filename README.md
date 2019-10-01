@@ -9,27 +9,28 @@ This repository exists mostly for my own amusement, but it may contain some thin
 Description | Value
 -- | --
 Entities in the [`alert`](https://www.home-assistant.io/components/alert) domain | 6
-Entities in the [`automation`](https://www.home-assistant.io/components/automation) domain | 304
-Entities in the [`binary_sensor`](https://www.home-assistant.io/components/binary_sensor) domain | 59
+Entities in the [`automation`](https://www.home-assistant.io/components/automation) domain | 305
+Entities in the [`binary_sensor`](https://www.home-assistant.io/components/binary_sensor) domain | 61
 Entities in the [`climate`](https://www.home-assistant.io/components/climate) domain | 6
 Entities in the [`counter`](https://www.home-assistant.io/components/counter) domain | 10
 Entities in the [`device_tracker`](https://www.home-assistant.io/components/device_tracker) domain | 19
 Entities in the [`geo_address`](https://www.home-assistant.io/components/geo_address) domain | 5
-Entities in the [`group`](https://www.home-assistant.io/components/group) domain | 64
+Entities in the [`group`](https://www.home-assistant.io/components/group) domain | 65
 Entities in the [`input_boolean`](https://www.home-assistant.io/components/input_boolean) domain | 45
 Entities in the [`input_datetime`](https://www.home-assistant.io/components/input_datetime) domain | 18
 Entities in the [`input_number`](https://www.home-assistant.io/components/input_number) domain | 40
 Entities in the [`input_select`](https://www.home-assistant.io/components/input_select) domain | 7
 Entities in the [`input_text`](https://www.home-assistant.io/components/input_text) domain | 6
-Entities in the [`light`](https://www.home-assistant.io/components/light) domain | 40
+Entities in the [`light`](https://www.home-assistant.io/components/light) domain | 41
 Entities in the [`lock`](https://www.home-assistant.io/components/lock) domain | 1
-Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 4
+Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 2
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
+Entities in the [`plant`](https://www.home-assistant.io/components/plant) domain | 2
 Entities in the [`schedy_room`](https://www.home-assistant.io/components/schedy_room) domain | 5
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 94
-Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 388
+Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 427
 Entities in the [`sun`](https://www.home-assistant.io/components/sun) domain | 1
-Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 98
+Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 99
 Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 16
 Entities in the [`utility_meter`](https://www.home-assistant.io/components/utility_meter) domain | 4
 Entities in the [`weather`](https://www.home-assistant.io/components/weather) domain | 1
@@ -68,7 +69,11 @@ _Manage (Install, track, upgrade) and discover custom elements for Home Assistan
 
 I use this to discover new awesome stuff, and to keep the custom elements I use up to date with the latest version of it from the developer.
 
+### [Climate Group](https://github.com/daenny/climate_group)
+
 ### [Sun2](https://github.com/pnbruckner/ha-sun2/blob/master/README.md)
+
+### [MercedesMeApi](https://github.com/ReneNulschDE/mbapipy)
 
 ### [Favicon changer]()
 

@@ -16,6 +16,7 @@ import random
 import string
 import time
 import uuid
+import datetime
 
 from urllib.parse import urlparse, parse_qs
 from multiprocessing import RLock
@@ -40,7 +41,7 @@ CAR_UNLOCK_URL = "{0}/api/v1/vehicles/%s/doors/unlock".format(URL_VHS_API)
 CAR_HEAT_ON_URL = "{0}/api/v1/vehicles/%s/auxheat/start".format(URL_VHS_API)
 CAR_HEAT_OFF_URL = "{0}/api/v1/vehicles/%s/auxheat/stop".format(URL_VHS_API)
 CAR_CLIMATE_ON_URL = "{0}/api/v1/vehicles/%s/precond/start".format(URL_VHS_API)
-CAR_CLIMATE_OFF_URL = "{0}/api/v1/vehicles/%s/precond/stop".format(URL_VHS_API)
+CAR_CLIMATE_OFF_URL = "{0}/api/v1/vehicles/%s/precondAtDeparture/disable".format(URL_VHS_API)
 CAR_FEATURE_URL = "{0}/api/v2/dashboarddata/%s/vehicle".format(URL_USR_API)
 
 APP_USER_AGENT = "MercedesMe/2.13.2+639 (Android 5.1)"
@@ -190,6 +191,7 @@ class Car(object):
         self.features = None
         self.auxheat = None
         self.precond = None
+        self.electric = None
 
 class StateOfObject(object):
     def __init__(self, unit=None, value=None, retrievalstatus=None, timestamp=None):
@@ -266,7 +268,7 @@ class Controller(object):
     """ Simple Mercedes me API.
     """
     def __init__(self, auth_handler, update_interval, accept_lang, country_code,
-                 excluded_cars, save_car_details, save_path):
+                 excluded_cars, save_car_details, pin, save_path):
 
         self.__lock = RLock()
         self.accept_lang = accept_lang
@@ -279,6 +281,7 @@ class Controller(object):
         self.last_update_time = 0
         self.save_car_details = save_car_details
         self.save_path = save_path
+        self.pin = pin
         self.session = requests.session()
         
         _LOGGER.debug("Controller init complete. Start _get_cars")
@@ -291,10 +294,10 @@ class Controller(object):
     def lock(self, car_id):
         return self._execute_car_action(CAR_LOCK_URL, car_id, 'car unlock', None)
 
-    def unlock(self, car_id, pin):
-        return self._execute_car_action(CAR_UNLOCK_URL, car_id, 'car unlock', pin)
+    def unlock(self, car_id):
+        return self._execute_car_action(CAR_UNLOCK_URL, car_id, 'car unlock', self.pin)
 
-    def switch_car_feature(self, action = None, car_id = None):
+    def switch_car_feature(self, action=None, car_id=None):
         function_list = {
             'heater_on': self.heater_on,
             'heater_off': self.heater_off,
@@ -308,42 +311,57 @@ class Controller(object):
         return function_list[action](parameters)
 
     def heater_on(self, car_id):
-        return self._execute_car_action(CAR_HEAT_ON_URL, car_id.get('car_id'), 'heater_on', None)
+        now = datetime.datetime.now()
+        post_data = json.dumps({ "currentDepartureTime":(now.hour*60 + now.minute) })
+        return self._execute_car_action(CAR_HEAT_ON_URL, car_id.get('car_id'),
+                                        'heater_on', None, post_data)
 
     def heater_off(self, car_id):
-        return self._execute_car_action(CAR_HEAT_OFF_URL, car_id.get('car_id'), 'heater_off', None)
+        return self._execute_car_action(CAR_HEAT_OFF_URL, car_id.get('car_id'),
+                                        'heater_off', None, None)
 
     def climate_on(self, car_id):
-        return self._execute_car_action(CAR_CLIMATE_ON_URL, car_id.get('car_id'), 'climate_on', None)
+        now = datetime.datetime.now()
+        post_data = json.dumps({ "currentDepartureTime":(now.hour*60 + now.minute) })
+        return self._execute_car_action(CAR_CLIMATE_ON_URL, car_id.get('car_id'), 'climate_on', None, post_data)
 
     def climate_off(self, car_id):
-        return self._execute_car_action(CAR_CLIMATE_OFF_URL, car_id.get('car_id'), 'climate_off', None)
+        return self._execute_car_action(CAR_CLIMATE_OFF_URL, car_id.get('car_id'),
+                                        'climate_off', None, None)
 
-    def _execute_car_action(self, url, car_id, action, pin):
+    def _execute_car_action(self, url, car_id, action, pin, post_data=None):
         _LOGGER.debug("%s for %s called", action, car_id)
         self._check_access_token()
         me_status_header = {
             "Accept-Language": self.accept_lang,
             "Authorization": "Bearer {}".format(self.auth_handler.token_info["access_token"]),
             "country_code": self.country_code,
-            "User-Agent": "MercedesMe/2.13.2+639 (Android 5.1)",
-            "x-pin": pin
+            "User-Agent": "MercedesMe/2.13.2+639 (Android 5.1)"
             }
         if pin is not None:
             me_status_header['x-pin'] = pin
 
-        result = self._retrieve_json_at_url(url % car_id, me_status_header, "post")
+        if post_data != None:
+            me_status_header['Content-Type']   = "application/json;charset=UTF-8"
+            me_status_header['Content-Length'] = str(len(post_data))
+        result = self._retrieve_json_at_url(url % car_id, me_status_header, "post", post_data)
         _LOGGER.debug(result)
+        if post_data != None:
+            del me_status_header['Content-Type']
+            del me_status_header['Content-Length']
+        
         if result.get("status") == 'PENDING':
             wait_counter = 0
             while wait_counter < 30:
-                result = self._retrieve_json_at_url(url % car_id, me_status_header, "get")
+                result = self._retrieve_json_at_url(url % car_id, me_status_header, "get", None)
                 _LOGGER.debug(result)
+
                 if result.get('status') == 'PENDING':
                     wait_counter = wait_counter + 1
                     time.sleep(1)
                 else:
                     break
+
         self.update()
         if result.get('status') == 'SUCCESS':
             return True
@@ -364,7 +382,10 @@ class Controller(object):
                     car.odometer = self._get_car_values(api_result, car.finorvin, Odometer(), ODOMETER_OPTIONS)
                     car.tires = self._get_car_values(api_result, car.finorvin, Tires(), TIRE_OPTIONS)
                     car.doors = self._get_car_values(api_result, car.finorvin, Doors(), DOOR_OPTIONS)
-                    car.location = self._get_location(car.finorvin)
+            
+                    if car.features.vehicle_locator:
+                        car.location = self._get_location(car.finorvin)
+            
                     car.binarysensors = self._get_car_values(api_result, car.finorvin, Binary_Sensors(), BINARY_SENSOR_OPTIONS)
                     car.windows = self._get_car_values(api_result, car.finorvin, Windows(), WINDOW_OPTIONS)
                     if car.features.charging_clima_control:
@@ -390,6 +411,10 @@ class Controller(object):
         cars = json.loads(
             response.content.decode('utf8'))['vehicles']
 
+        if self.save_car_details:
+            with open('{0}mercedesme_status.json'.format(self.save_path), 'w') as outfile:
+                json.dump(response.content.decode('utf8'), outfile)
+
         for c in cars:
             
             if c.get("fin") in self.excluded_cars:
@@ -397,7 +422,7 @@ class Controller(object):
 
             car = Car()
             car.finorvin = c.get("fin")
-            car.licenseplate = c.get("licensePlate")
+            car.licenseplate = c.get("licensePlate", car.finorvin)
             car.features = self._get_car_features(car.finorvin)
 
             api_result = self._retrieve_car_details(car.finorvin).get("dynamic")
@@ -407,7 +432,10 @@ class Controller(object):
             car.odometer = self._get_car_values(api_result, car.finorvin, Odometer(), ODOMETER_OPTIONS)
             car.tires = self._get_car_values(api_result, car.finorvin, Tires(), TIRE_OPTIONS)
             car.doors = self._get_car_values(api_result, car.finorvin, Doors(), DOOR_OPTIONS)
-            car.location = self._get_location(car.finorvin)
+
+            if car.features.vehicle_locator:
+                car.location = self._get_location(car.finorvin)
+
             car.binarysensors = self._get_car_values(api_result, car.finorvin, Binary_Sensors(), BINARY_SENSOR_OPTIONS)
             car.windows = self._get_car_values(api_result, car.finorvin, Windows(), WINDOW_OPTIONS)
             if car.features.charging_clima_control:
@@ -481,7 +509,7 @@ class Controller(object):
             "country_code": "DE",
             "User-Agent": APP_USER_AGENT
             }
-        features = self._retrieve_json_at_url(CAR_FEATURE_URL % car_id, me_status_header, "get")
+        features = self._retrieve_json_at_url(CAR_FEATURE_URL % car_id, me_status_header, "get", None)
 
         car_features = Features()
 
@@ -504,7 +532,7 @@ class Controller(object):
             "User-Agent": "MercedesMe/2.13.2+639 (Android 5.1)"
             }
 
-        result = self._retrieve_json_at_url(CAR_STATUS_URL % fin, me_status_header, "get")
+        result = self._retrieve_json_at_url(CAR_STATUS_URL % fin, me_status_header, "get", None)
         
         if self.save_car_details:
             with open('{0}state_{1}.json'.format(self.save_path, fin), 'w') as outfile:
@@ -524,10 +552,10 @@ class Controller(object):
             }
 
         res = self._retrieve_json_at_url(CAR_LOCAT_URL % car_id, 
-                                         me_status_header, "get")
+                                         me_status_header, "get", None)
         return res
 
-    def _retrieve_json_at_url(self, url, headers, type):
+    def _retrieve_json_at_url(self, url, headers, type, post_data=None):
         try:
             _LOGGER.debug("Connect to URL %s %s", type, str(url))
 
@@ -538,7 +566,8 @@ class Controller(object):
             else:
                 res = self.session.post(url,
                                         verify=LOGIN_VERIFY_SSL_CERT,
-                                        headers=headers)
+                                        headers=headers,
+                                        data=post_data)
         except requests.exceptions.Timeout:
             _LOGGER.exception(
                 "Connection to the api timed out at URL %s", url)

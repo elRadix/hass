@@ -140,7 +140,7 @@ recorder:  #!include_dir_merge_list include/recorder
       - script
       - switch
       - light
-      - sensor
+    # - sensor
       - sun
       - zone
       - weather

@@ -40,6 +40,8 @@ updater:
 
 hacs:
   token: !secret hacs_token
+  options:
+    experimental: true
   appdaemon: true
   python_script: true
   theme: true

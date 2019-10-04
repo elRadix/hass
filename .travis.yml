@@ -3,7 +3,8 @@ dist: xenial
 language: python
 cache: pip
 python:
-  - 3.7.3
+  - 3.7.4
+ 
 
 env:
   - BUILD=stable

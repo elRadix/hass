@@ -45,14 +45,11 @@ async def async_remove_entry(hass, config_entry):
 
 async def _update_listener(hass, config_entry):
     conf = config_entry.options
-    _LOGGER.error(conf)
     if CONFIG_ICON_PATH in hass.data[DOMAIN]:
         del hass.data[DOMAIN][CONFIG_ICON_PATH]
     if CONFIG_TITLE in hass.data[DOMAIN]:
         del hass.data[DOMAIN][CONFIG_TITLE]
-    _LOGGER.error(hass.data[DOMAIN])
     hass.data[DOMAIN].update(conf)
-    _LOGGER.error(hass.data[DOMAIN])
     return apply_hooks(hass)
 
 
@@ -104,6 +101,19 @@ def apply_hooks(hass):
                 text = text.replace("/static/icons/favicon-apple-180x180.png", icons["apple"])
             if title:
                 text = text.replace("<title>Home Assistant</title>", f"<title>{title}</title>")
+                text = text.replace("<body>", f"""<body>
+                    <script type="module">
+                        customElements.whenDefined('ha-sidebar').then(() => {{
+                            const Sidebar = customElements.get('ha-sidebar');
+                            const firstUpdated = Sidebar.prototype.firstUpdated;
+                            Sidebar.prototype.firstUpdated = function(changedProps) {{
+                                firstUpdated.bind(this)(changedProps);
+                                this.shadowRoot.querySelector(".menu .title").innerHTML = "{title}";
+                            }}
+                        }});
+                    </script>
+                """)
+
             return text
 
         tpl.render = new_render

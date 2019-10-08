@@ -7673,35 +7673,6 @@
                             "show_header_toggle": false,
                             "title": "Processes",
                             "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "counter.error_counter"
-                                },
-                                {
-                                    "entity": "counter.warning_counter"
-                                },
-                                {
-                                    "action_name": "Reset counter",
-                                    "name": "Error",
-                                    "service": "counter.reset",
-                                    "service_data": {
-                                        "entity_id": "counter.error_counter"
-                                    },
-                                    "type": "call-service"
-                                },
-                                {
-                                    "action_name": "Reset counter",
-                                    "name": "Warning",
-                                    "service": "counter.reset",
-                                    "service_data": {
-                                        "entity_id": "counter.warning_counter"
-                                    },
-                                    "type": "call-service"
-                                }
-                            ],
-                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:server",

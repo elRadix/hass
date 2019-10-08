@@ -3,7 +3,8 @@ dist: xenial
 language: python
 cache: pip
 python:
-  - 3.7.3
+  - 3.7.4
+ 
 
 env:
   - BUILD=stable
@@ -13,7 +14,7 @@ matrix:
   allow_failures:
     # - python: 3.7.3
     #   env: BUILD=beta
-    - python: 3.7.3
+    - python: 3.74
       env: BUILD=dev
 
 before_install:

@@ -12,6 +12,7 @@ Entities in the [`alert`](https://www.home-assistant.io/components/alert) domain
 Entities in the [`automation`](https://www.home-assistant.io/components/automation) domain | 305
 Entities in the [`binary_sensor`](https://www.home-assistant.io/components/binary_sensor) domain | 61
 Entities in the [`climate`](https://www.home-assistant.io/components/climate) domain | 6
+Entities in the [`configurator`](https://www.home-assistant.io/components/configurator) domain | 1
 Entities in the [`counter`](https://www.home-assistant.io/components/counter) domain | 10
 Entities in the [`device_tracker`](https://www.home-assistant.io/components/device_tracker) domain | 19
 Entities in the [`geo_address`](https://www.home-assistant.io/components/geo_address) domain | 5
@@ -23,12 +24,13 @@ Entities in the [`input_select`](https://www.home-assistant.io/components/input_
 Entities in the [`input_text`](https://www.home-assistant.io/components/input_text) domain | 6
 Entities in the [`light`](https://www.home-assistant.io/components/light) domain | 41
 Entities in the [`lock`](https://www.home-assistant.io/components/lock) domain | 1
-Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 2
+Entities in the [`media_player`](https://www.home-assistant.io/components/media_player) domain | 6
+Entities in the [`persistent_notification`](https://www.home-assistant.io/components/persistent_notification) domain | 1
 Entities in the [`person`](https://www.home-assistant.io/components/person) domain | 2
 Entities in the [`plant`](https://www.home-assistant.io/components/plant) domain | 2
 Entities in the [`schedy_room`](https://www.home-assistant.io/components/schedy_room) domain | 5
 Entities in the [`script`](https://www.home-assistant.io/components/script) domain | 94
-Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 427
+Entities in the [`sensor`](https://www.home-assistant.io/components/sensor) domain | 431
 Entities in the [`sun`](https://www.home-assistant.io/components/sun) domain | 1
 Entities in the [`switch`](https://www.home-assistant.io/components/switch) domain | 99
 Entities in the [`timer`](https://www.home-assistant.io/components/timer) domain | 16

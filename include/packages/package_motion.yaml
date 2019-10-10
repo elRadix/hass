@@ -1,17 +1,4 @@
 ---
-##########################################################################################
-# Inputs
-# https://diyfuturism.com/index.php/2017/12/15/useful-sensor-motion-last-seen-________/
-##########################################################################################
-
-variable:
-  last_motion:
-    value: 'Not set'
-    restore: true
-    attributes:
-      icon: mdi:map-marker
-      friendly_name: 'Last Motion'
-
 binary_sensor:
   - platform: template
     sensors:

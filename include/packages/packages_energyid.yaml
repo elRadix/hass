@@ -690,6 +690,7 @@ automation:
         unit_of_measurement: 'eur'
         icon: mdi:counter
         start_date: 01/02/2019
+        EAN: 541448860008645368
     - service: python_script.set_state
       data_template:
         entity_id: sensor.water_prepaid_monthly
@@ -697,6 +698,7 @@ automation:
         unit_of_measurement: 'eur'
         icon: mdi:counter
         start_date: 1/3/2019
+        Meter: 80536336
     - service: python_script.set_state
       data_template:
         entity_id: sensor.gas_start
@@ -704,6 +706,7 @@ automation:
         unit_of_measurement: 'm3'
         icon: mdi:counter
         start_date: 01/02/2019
+        EAN: 541448860008645368
     - service: python_script.set_state
       data_template:
         entity_id: sensor.water_start
@@ -711,6 +714,7 @@ automation:
         icon: mdi:counter
         state: 781
         start_date: 27/10/2018
+        Meter: 80536336
     - service: python_script.set_state
       data_template:
         entity_id: sensor.electricity_day_start
@@ -718,6 +722,7 @@ automation:
         unit_of_measurement: 'kWh'
         icon: mdi:counter
         start_date: 01/02/2019
+        EAN: 541448860008645412
     - service: python_script.set_state
       data_template:
         entity_id: sensor.electricity_night_start
@@ -725,6 +730,7 @@ automation:
         icon: mdi:counter
         state: 16218
         start_date: 01/02/2019
+        EAN: 541448860008645412
     - service: python_script.set_state
       data_template:
         entity_id: sensor.electricity_night_last
@@ -732,6 +738,7 @@ automation:
         unit_of_measurement: 'kWh'
         icon: mdi:counter
         date: "{{ states.input_text.date_electricity_night_last.state }}"
+        EAN: 541448860008645412
         source: https://www.energyid.eu
     - service: python_script.set_state
       data_template:
@@ -740,6 +747,7 @@ automation:
         unit_of_measurement: 'kWh'
         icon: mdi:counter
         date: "{{ states.input_text.date_electricity_day_last.state }}"
+        EAN: 541448860008645412
         source: https://www.energyid.eu
     - service: python_script.set_state
       data_template:
@@ -756,6 +764,7 @@ automation:
         unit_of_measurement: 'm3'
         icon: mdi:counter
         date: "{{ states.input_text.date_gas_last.state }}"
+        EAN: 541448860008645368
         source: https://www.energyid.eu
     - service: python_script.set_state
       data_template:
@@ -764,6 +773,7 @@ automation:
         unit_of_measurement: 'kWh'
         icon: mdi:counter
         start_date: 01/02/2019
+        EAN: 541448860008645368
     - service: python_script.set_state
       data_template:
         entity_id: sensor.day_year
@@ -771,6 +781,7 @@ automation:
         unit_of_measurement: 'kWh'
         icon: mdi:counter
         start_date: 01/02/2019
+        EAN: 541448860008645412
     - service: python_script.set_state
       data_template:
         entity_id: sensor.night_year
@@ -778,6 +789,7 @@ automation:
         unit_of_measurement: 'kWh'
         icon: mdi:counter
         start_date: 01/02/2019
+        EAN: 541448860008645412
     - service: python_script.set_state
       data_template:
         entity_id: sensor.gas_year_kwh
@@ -785,6 +797,7 @@ automation:
         unit_of_measurement: 'kWh'
         icon: mdi:counter
         start_date: 01/02/2019
+        EAN: 541448860008645368
     - service: python_script.set_state
       data_template:
         entity_id: sensor.gas_year
@@ -792,6 +805,7 @@ automation:
         unit_of_measurement: 'm3'
         icon: mdi:counter
         start_date: 01/02/2019
+        EAN: 541448860008645368
 
 
 

@@ -171,6 +171,7 @@ variable:
       icon: mdi:map-marker
       friendly_name: 'Last Motion'
 
+
 # docker_monitor:
 #   name: raspi
 #   # url: !secret hadockermon_host

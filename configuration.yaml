@@ -163,13 +163,14 @@ zone: !include_dir_merge_list include/zones
 # https://diyfuturism.com/index.php/2017/12/15/useful-sensor-motion-last-seen-________/
 ##########################################################################################
 
-var:
+variable:
   last_motion:
     value: 'Not set'
     restore: true
     attributes:
       icon: mdi:map-marker
       friendly_name: 'Last Motion'
+
 
 # docker_monitor:
 #   name: raspi

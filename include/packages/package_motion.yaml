@@ -1,4 +1,17 @@
 ---
+##########################################################################################
+# Inputs
+# https://diyfuturism.com/index.php/2017/12/15/useful-sensor-motion-last-seen-________/
+##########################################################################################
+
+variable:
+  last_motion:
+    value: 'Not set'
+    restore: true
+    attributes:
+      icon: mdi:map-marker
+      friendly_name: 'Last Motion
+
 binary_sensor:
   - platform: template
     sensors:
@@ -73,6 +86,40 @@ timer:
 
 automation:
 
+# Update Last Motion variable
+  - alias: 'Update Last Motion'
+    id: 'Update Last Motion'
+#    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id:
+        - binary_sensor.motion_inkomhal
+        - binary_sensor.motion_eetkamer
+        - binary_sensor.motion_wc
+        - binary_sensor.motion_traphal
+        - binary_sensor.motion_badkamer
+      to: 'on'
+    action:
+      service: variable.set_variable
+      data:
+        variable: last_motion
+        attributes_template: >
+          {
+                "history_1": "{{ variable.state }}",
+                "history_2": "{{ variable.attributes.history_1 }}",
+                "history_3": "{{ variable.attributes.history_2 }}",
+                "history_4": "{{ variable.attributes.history_3 }}",
+                "history_5": "{{ variable.attributes.history_4 }}",
+                "history_6": "{{ variable.attributes.history_5 }}",
+                "history_7": "{{ variable.attributes.history_6 }}",
+                "history_8": "{{ variable.attributes.history_7 }}",
+                "history_9": "{{ variable.attributes.history_8 }}",
+                "history_10": "{{ variable.attributes.history_9 }}"
+          }
+      data_template:
+        value: >
+          {{ trigger.to_state.attributes.friendly_name|replace('motion sensor','') }}:
+          {{as_timestamp(states.variable.last_motion.last_changed)| timestamp_custom('%X') }}
 
 # start or stop timer on motion day or night
 

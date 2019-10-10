@@ -63,6 +63,9 @@ breaking_changes:
 #mobile_app:
 map:
 
+plex_webhooks:
+  webhook_id: plex_webhook
+
 http:
   use_x_forwarded_for: true
   trusted_proxies:

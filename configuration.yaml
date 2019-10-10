@@ -174,6 +174,18 @@ zone: !include_dir_merge_list include/zones
 #     - utilization_version
 #     - container_status
 
+##########################################################################################
+# Inputs
+# https://diyfuturism.com/index.php/2017/12/15/useful-sensor-motion-last-seen-________/
+##########################################################################################
+
+variable:
+  last_motion:
+    value: 'Not set'
+    restore: true
+    attributes:
+      icon: mdi:map-marker
+      friendly_name: 'Last Motion
 
 weather:
   - platform: darksky

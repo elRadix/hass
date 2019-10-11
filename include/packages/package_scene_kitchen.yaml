@@ -1,4 +1,12 @@
 ---
+variable:
+  last_scene:
+    value: 'Not set'
+    restore: true
+    attributes:
+      icon: mdi:card-text
+      friendly_name: 'Last Scene'
+
 group:
  easyplus_sensors:
     name: Easyplus
@@ -397,6 +405,35 @@ automation:
       data_template:
         message: 'All programs completed, easyplus is {{states.switch.easyplus.state}}'
 
+# Update Last Scene variable
+  - alias: 'Update Last Scene'
+    id: 'Update Last Scene'
+#    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: switch.led_keuken_microgolf,switch.led_keuken_waterkoker,switch.led_keuken_dish,switch.led_keuken_oven,switch.stp_keuken_oven,switch.stp_keuken_microgolf,switch.stp_eetkamer_tv,switch.stp_berging_dryer,switch.stp_berging_was,switch.stp_keuken_dish,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_waterkoker
+      to: 'on'
+    action:
+      service: variable.set_variable
+      data:
+        variable: last_scene
+        attributes_template: >
+          {
+                "history_01": "{{ variable.state }}",
+                "history_02": "{{ variable.attributes.history_1 }}",
+                "history_03": "{{ variable.attributes.history_2 }}",
+                "history_04": "{{ variable.attributes.history_3 }}",
+                "history_05": "{{ variable.attributes.history_4 }}",
+                "history_06": "{{ variable.attributes.history_5 }}",
+                "history_07": "{{ variable.attributes.history_6 }}",
+                "history_08": "{{ variable.attributes.history_7 }}",
+                "history_09": "{{ variable.attributes.history_8 }}",
+                "history_10": "{{ variable.attributes.history_9 }}"
+          }
+      data_template:
+        value: >
+          {{ trigger.to_state.attributes.friendly_name}}:
+          {{as_timestamp(states.variable.last_scene.last_changed)| timestamp_custom('%X') }}
 
 
 

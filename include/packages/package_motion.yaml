@@ -121,6 +121,7 @@ automation:
           {{ trigger.to_state.attributes.friendly_name|replace('motion sensor','') }}:
           {{as_timestamp(states.variable.last_motion.last_changed)| timestamp_custom('%X') }}
 
+
 # start or stop timer on motion day or night
 
   - id: motion_occupied_on_eetkamer_occupied

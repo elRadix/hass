@@ -429,12 +429,13 @@ automation:
                 "history_07": "{{ variable.attributes.history_06 }}",
                 "history_08": "{{ variable.attributes.history_07 }}",
                 "history_09": "{{ variable.attributes.history_08 }}",
-                "history_10": "{{ variable.attributes.history_0 9 }}"
+                "history_10": "{{ variable.attributes.history_09 }}"
           }
       data_template:
         value: >
-          {{ trigger.to_state.attributes.friendly_name }}:
-          {{as_timestamp(states.variable.scene.last_changed)| timestamp_custom('%X') }}
+          {{as_timestamp(states.variable.scene.last_changed)| timestamp_custom('%X') }}:
+          {{ trigger.to_state.attributes.friendly_name }}
+
 
 
 # WIP

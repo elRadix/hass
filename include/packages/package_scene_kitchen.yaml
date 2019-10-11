@@ -429,7 +429,7 @@ automation:
                 "history_7": "{{ variable.attributes.history_6 }}",
                 "history_8": "{{ variable.attributes.history_7 }}",
                 "history_9": "{{ variable.attributes.history_8 }}",
-                "history_0": "{{ variable.attributes.history_9 }}"
+                "history_10": "{{ variable.attributes.history_9 }}"
           }
       data_template:
         value: >

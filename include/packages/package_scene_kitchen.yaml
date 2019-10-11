@@ -1,6 +1,6 @@
 ---
 variable:
-  last_scene:
+  scene:
     value: 'Not set'
     restore: true
     attributes:
@@ -417,7 +417,7 @@ automation:
     action:
       service: variable.set_variable
       data:
-        variable: last_scene
+        variable: scene
         attributes_template: >
           {
                 "history_01": "{{ variable.state }}",
@@ -434,7 +434,7 @@ automation:
       data_template:
         value: >
           {{ trigger.to_state.attributes.friendly_name }}:
-          {{as_timestamp(states.variable.last_scene.last_changed)| timestamp_custom('%X') }}
+          {{as_timestamp(states.variable.scene.last_changed)| timestamp_custom('%X') }}
 
 # WIP
         # timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'

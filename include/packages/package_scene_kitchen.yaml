@@ -1,6 +1,6 @@
 ---
 variable:
-  last_scene:
+  last_scenes:
     value: 'Not set'
     restore: true
     attributes:
@@ -417,7 +417,7 @@ automation:
     action:
       service: variable.set_variable
       data:
-        variable: last_scene
+        variable: last_scenes
         attributes_template: >
           {
                 "history_1": "{{ variable.state }}",

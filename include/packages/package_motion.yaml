@@ -5,7 +5,7 @@
 ##########################################################################################
 
 variable:
-  last_motion:
+  last_motions:
     value: 'Not set'
     restore: true
     attributes:
@@ -102,7 +102,7 @@ automation:
     action:
       service: variable.set_variable
       data:
-        variable: last_motion
+        variable: last_motions
         attributes_template: >
           {
                 "history_1": "{{ variable.state }}",

@@ -410,17 +410,9 @@ automation:
     id: 'Update Last Scene'
 #    initial_state: 'on'
     trigger:
-      platform: state
-      entity_id:
-        - switch.stp_keuken_oven
-        - switch.stp_keuken_microgolf
-        - switch.stp_eetkamer_tv
-        - switch.stp_berging_dryer
-        - switch.stp_berging_was
-        - switch.stp_keuken_dish
-        - switch.stp_keuken_commander
-        - switch.stp_keuken_espresso
-        - switch.stp_keuken_waterkoker
+    - platform: state
+      entity_id: switch.led_keuken_microgolf,switch.led_keuken_waterkoker,switch.led_keuken_dish,switch.led_keuken_oven,switch.stp_keuken_oven,switch.stp_keuken_microgolf,switch.stp_eetkamer_tv,switch.stp_berging_dryer,switch.stp_berging_was,switch.stp_keuken_dish,switch.stp_keuken_commander,switch.stp_keuken_espresso,switch.stp_keuken_waterkoker
+      from: 'off'
       to: 'on'
     action:
       service: variable.set_variable

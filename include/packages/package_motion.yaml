@@ -98,6 +98,8 @@ automation:
         - binary_sensor.motion_wc
         - binary_sensor.motion_traphal
         - binary_sensor.motion_badkamer
+        - binary_sensor.inkomhal
+        - binary_sensor.terras
       to: 'on'
     action:
       service: variable.set_variable

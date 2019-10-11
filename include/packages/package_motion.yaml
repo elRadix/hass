@@ -106,15 +106,15 @@ automation:
         attributes_template: >
           {
                 "history_01": "{{ variable.state }}",
-                "history_02": "{{ variable.attributes.history_1 }}",
-                "history_03": "{{ variable.attributes.history_2 }}",
-                "history_04": "{{ variable.attributes.history_3 }}",
-                "history_05": "{{ variable.attributes.history_4 }}",
-                "history_06": "{{ variable.attributes.history_5 }}",
-                "history_07": "{{ variable.attributes.history_6 }}",
-                "history_08": "{{ variable.attributes.history_7 }}",
-                "history_09": "{{ variable.attributes.history_8 }}",
-                "history_10": "{{ variable.attributes.history_9 }}"
+                "history_02": "{{ variable.attributes.history_01 }}",
+                "history_03": "{{ variable.attributes.history_02 }}",
+                "history_04": "{{ variable.attributes.history_03 }}",
+                "history_05": "{{ variable.attributes.history_04 }}",
+                "history_06": "{{ variable.attributes.history_05 }}",
+                "history_07": "{{ variable.attributes.history_06 }}",
+                "history_08": "{{ variable.attributes.history_07 }}",
+                "history_09": "{{ variable.attributes.history_08 }}",
+                "history_10": "{{ variable.attributes.history_09 }}"
           }
       data_template:
         value: >

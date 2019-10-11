@@ -8,7 +8,6 @@ cch:
   swipe: true
   swipe_animate: swipe
   swipe_prevent_default: true
-  swipe_wrap: false
   voice: hide
 resources:
 - type: js

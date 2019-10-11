@@ -434,7 +434,7 @@ automation:
       data_template:
         value: >
           {{ trigger.to_state.attributes.friendly_name }}:
-          {{as_timestamp(states.variable.last_scene.last_changed)| timestamp_custom('%X') }}
+          {{as_timestamp(states.variable.last_scenes.last_changed)| timestamp_custom('%X') }}
 
 # WIP
         # timer: 'timer.{{ trigger.to_state.attributes.friendly_name }}'

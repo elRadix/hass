@@ -119,7 +119,7 @@ automation:
       data_template:
         value: >
           {{ trigger.to_state.attributes.friendly_name|replace('motion sensor','') }}:
-          {{as_timestamp(states.variable.last_motion.last_changed)| timestamp_custom('%X') }}
+          {{as_timestamp(states.variable.last_motions.last_changed)| timestamp_custom('%X') }}
 
 
 # start or stop timer on motion day or night

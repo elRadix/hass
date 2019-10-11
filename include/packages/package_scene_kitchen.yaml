@@ -420,16 +420,16 @@ automation:
         variable: last_scene
         attributes_template: >
           {
-                "history_01": "{{ variable.state }}",
-                "history_02": "{{ variable.attributes.history_1 }}",
-                "history_03": "{{ variable.attributes.history_2 }}",
-                "history_04": "{{ variable.attributes.history_3 }}",
-                "history_05": "{{ variable.attributes.history_4 }}",
-                "history_06": "{{ variable.attributes.history_5 }}",
-                "history_07": "{{ variable.attributes.history_6 }}",
-                "history_08": "{{ variable.attributes.history_7 }}",
-                "history_09": "{{ variable.attributes.history_8 }}",
-                "history_10": "{{ variable.attributes.history_9 }}"
+                "history_1": "{{ variable.state }}",
+                "history_2": "{{ variable.attributes.history_1 }}",
+                "history_3": "{{ variable.attributes.history_2 }}",
+                "history_4": "{{ variable.attributes.history_3 }}",
+                "history_5": "{{ variable.attributes.history_4 }}",
+                "history_6": "{{ variable.attributes.history_5 }}",
+                "history_7": "{{ variable.attributes.history_6 }}",
+                "history_8": "{{ variable.attributes.history_7 }}",
+                "history_9": "{{ variable.attributes.history_8 }}",
+                "history_0": "{{ variable.attributes.history_9 }}"
           }
       data_template:
         value: >

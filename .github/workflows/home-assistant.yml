@@ -73,9 +73,9 @@ jobs:
     needs: [yamllint, remarklint]
     steps:
       - name: rename secrets file
-        run: mv secrets_redacted.yaml secrets.yaml
+        run: pwd
       - name: create directory
-        run: mkdir fake_directory/
+        run: ls
       - name: create file data.log
         run: touch fake_directory/data.log
       - name: create file cert.log

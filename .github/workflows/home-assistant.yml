@@ -22,7 +22,7 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
         with:
-          args: The ${{ github.event_name }} event triggered first step.
+          args: The ${{ GITHUB_ACTION }} event triggered first step.
   remarklint:
     runs-on: ubuntu-18.04
     steps:
@@ -43,7 +43,7 @@ jobs:
     needs: [yamllint, remarklint]
     steps:
       - name: rename secrets file
-        run: cp -R ./secrets_redacted.yaml ./secrets.yaml
+        run: cp -R secrets_redacted.yaml secrets.yaml
       - name: create directory
         run: mkdir fake_directory/
       - name: create file data.log
@@ -60,7 +60,7 @@ jobs:
       - name: Home Assistant Check
         uses: "docker://homeassistant/home-assistant:stable"
         with:
-          args: python -m homeassistant --config ./ --script check_config --info all
+          args: python -m homeassistant --config . --script check_config --info all
       - name: send default message
         uses: appleboy/telegram-action@master
         env:
@@ -73,7 +73,7 @@ jobs:
     needs: [yamllint, remarklint]
     steps:
       - name: rename secrets file
-        run: cp -R secrets_redacted.yaml secrets.yaml
+        run: cp secrets_redacted.yaml secrets.yaml
       - name: create directory
         run: mkdir fake_directory/
       - name: create file data.log
@@ -90,20 +90,20 @@ jobs:
       - name: Home Assistant Check
         uses: "docker://homeassistant/home-assistant:beta"
         with:
-          args: python -m homeassistant --config ./ --script check_config --info all
+          args: python -m homeassistant --config . --script check_config --info all
       - name: send default message
         uses: appleboy/telegram-action@master
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
         with:
-          args: The ${{ github.event_name }} event triggered first step.
+          args: The ${{ GITHUB_WORKFLOW}} event triggered first step.
   home_assistant_dev:
     runs-on: ubuntu-latest
     needs: [yamllint, remarklint]
     steps:
       - name: rename secrets file
-        run: cp -R ./secrets_redacted.yaml secrets.yaml
+        run: cp secrets_redacted.yaml secrets.yaml
       - name: create directory
         run: mkdir fake_directory/
       - name: create file data.log
@@ -120,7 +120,7 @@ jobs:
       - name: Home Assistant Check
         uses: "docker://homeassistant/home-assistant:dev"
         with:
-          args: python -m homeassistant --config ./ --script check_config --info all
+          args: python -m homeassistant --config . --script check_config --info all
       - name: send default message
         uses: appleboy/telegram-action@master
         env:

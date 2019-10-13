@@ -28,6 +28,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: [yamllint, remarklint]
     steps:
+      - name: Copy scecrets folder
+        run: cp secrets_redacted.yaml secrets.yaml
+      - name: create directory
+        run: mkdir fake_directory/
+      - name: create file data.log
+        run: touch fake_directory/data.log
+      - name: create file cert.log
+        run: touch fake_directory/cert.log
+      - name: create file cert_eu.log
+        run: touch fake_directory/cert_eu.log
       - name: Home Assistant Version
         uses: "docker://homeassistant/home-assistant:stable"
         with:

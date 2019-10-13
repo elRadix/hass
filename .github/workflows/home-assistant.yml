@@ -43,7 +43,7 @@ jobs:
     needs: [yamllint, remarklint]
     steps:
       - name: rename secrets file
-        run: cp -R secrets_redacted.yaml secrets.yaml
+        run: mv secrets_redacted.yaml secrets.yaml
       - name: create directory
         run: mkdir fake_directory/
       - name: create file data.log
@@ -73,7 +73,7 @@ jobs:
     needs: [yamllint, remarklint]
     steps:
       - name: rename secrets file
-        run: cp secrets_redacted.yaml secrets.yaml
+        run: mv secrets_redacted.yaml secrets.yaml
       - name: create directory
         run: mkdir fake_directory/
       - name: create file data.log

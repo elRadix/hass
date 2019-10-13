@@ -85,6 +85,7 @@ jobs:
       - name: create file cert.log
         run: touch fake_directory/cert.log
       - name: create file cert_eu.log
+        run: touch fake_directory/cert_eu.log
       - name: Home Assistant Version
         uses: "docker://homeassistant/home-assistant:dev"
         with:

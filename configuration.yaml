@@ -28,6 +28,8 @@ homeassistant:
 
   packages: !include_dir_named include/packages/
 
+api:
+
 readme:
   convert_lovelace: true
 

@@ -1,0 +1,255 @@
+{
+    "data": {
+        "custom-components/sensor.rpi_power": {
+            "version_type": "version",
+            "version_installed": "0.1.5",
+            "version_available": "0.1.5"
+        },
+        "custom-components/media_player.braviatv_psk": {
+            "version_type": "version",
+            "version_installed": "0.3.1",
+            "version_available": "0.3.1"
+        },
+        "custom-components/breaking_changes": {
+            "version_type": "version",
+            "version_installed": "0.3.6",
+            "version_available": "0.3.6"
+        },
+        "StyraHem/ShellyForHASS": {
+            "version_type": "version",
+            "version_installed": "0.1.0",
+            "version_available": "0.1.0"
+        },
+        "custom-cards/vertical-stack-in-card": {
+            "version_type": "version",
+            "version_installed": "v0.1.3",
+            "version_available": "v0.1.3"
+        },
+        "custom-cards/state-element": {
+            "version_type": "version",
+            "version_installed": "0.0.1",
+            "version_available": "0.0.1"
+        },
+        "custom-cards/dual-gauge-card": {
+            "version_type": "version",
+            "version_installed": "0.5.1",
+            "version_available": "0.5.1"
+        },
+        "custom-cards/list-card": {
+            "version_type": "version",
+            "version_installed": "0.1.0",
+            "version_available": "0.1.0"
+        },
+        "custom-cards/button-card": {
+            "version_type": "version",
+            "version_installed": "2.0.5",
+            "version_available": "2.0.5"
+        },
+        "custom-cards/bar-card": {
+            "version_type": "version",
+            "version_installed": "1.6.1",
+            "version_available": "1.6.1"
+        },
+        "custom-cards/text-divider-row": {
+            "version_type": "version",
+            "version_installed": "1.0.4",
+            "version_available": "1.0.4"
+        },
+        "custom-cards/entity-attributes-card": {
+            "version_type": "version",
+            "version_installed": "0.1.2",
+            "version_available": "0.1.2"
+        },
+        "custom-cards/monster-card": {
+            "version_type": "version",
+            "version_installed": "0.2.5",
+            "version_available": "0.2.5"
+        },
+        "custom-cards/decluttering-card": {
+            "version_type": "version",
+            "version_installed": "0.2.0",
+            "version_available": "0.2.0"
+        },
+        "maykar/compact-custom-header": {
+            "version_type": "version",
+            "version_installed": "1.4.5",
+            "version_available": "1.4.5"
+        },
+        "nervetattoo/simple-thermostat": {
+            "version_type": "version",
+            "version_installed": "0.28.0",
+            "version_available": "0.28.0"
+        },
+        "nervetattoo/banner-card": {
+            "version_type": "version",
+            "version_installed": "0.9.0",
+            "version_available": "0.9.0"
+        },
+        "kalkih/mini-media-player": {
+            "version_type": "version",
+            "version_installed": "v1.4.1",
+            "version_available": "v1.4.1"
+        },
+        "kalkih/mini-graph-card": {
+            "version_type": "version",
+            "version_installed": "v0.7.0",
+            "version_available": "v0.7.0"
+        },
+        "thomasloven/lovelace-card-mod": {
+            "version_type": "version",
+            "version_installed": "6",
+            "version_available": "6"
+        },
+        "thomasloven/lovelace-markdown-mod": {
+            "version_type": "version",
+            "version_installed": "0.3",
+            "version_available": "0.3"
+        },
+        "bieniu/ha-shellies-discovery": {
+            "version_type": "version",
+            "version_installed": "0.12.3",
+            "version_available": "0.12.3"
+        },
+        "gadgetchnnel/lovelace-text-input-row": {
+            "version_type": "version",
+            "version_installed": "v0.0.8",
+            "version_available": "v0.0.8"
+        },
+        "pippyn/Home-Assistant-Sensor-Ophaalkalender": {
+            "version_type": "version",
+            "version_installed": "v1.1.2",
+            "version_available": "v1.1.2"
+        },
+        "ljmerza/travel-time-card": {
+            "version_type": "version",
+            "version_installed": "1.1.2",
+            "version_available": "1.1.2"
+        },
+        "pnbruckner/ha-sun2": {
+            "version_type": "version",
+            "version_installed": "1.3.0",
+            "version_available": "1.3.0"
+        },
+        "mishaaq/sun-card": {
+            "version_type": "version",
+            "version_installed": "v3.1",
+            "version_available": "v3.1"
+        },
+        "custom-components/templatesensor": {
+            "version_type": "version",
+            "version_installed": "0.1.0",
+            "version_available": "0.1.0"
+        },
+        "dlashua/templatebinarysensor": {
+            "version_type": "commit",
+            "version_installed": "91e79e8",
+            "version_available": "91e79e8"
+        },
+        "thomasloven/hass-lovelace_gen": {
+            "version_type": "version",
+            "version_installed": "4",
+            "version_available": "4"
+        },
+        "Sanderhuisman/docker_monitor": {
+            "version_type": "version",
+            "version_installed": "0.1.2",
+            "version_available": "0.1.2"
+        },
+        "custom-components/readme": {
+            "version_type": "version",
+            "version_installed": "0.1.1",
+            "version_available": "0.1.1"
+        },
+        "seangreen2/slate_theme": {
+            "version_type": "commit",
+            "version_installed": "69114b9",
+            "version_available": "69114b9"
+        },
+        "thomasloven/hass-favicon": {
+            "version_type": "version",
+            "version_installed": "6",
+            "version_available": "6"
+        },
+        "custom-cards/button-entity-row": {
+            "version_type": "version",
+            "version_installed": "v0.3.4",
+            "version_available": "v0.3.4"
+        },
+        "ljmerza/tracking-number-card": {
+            "version_type": "version",
+            "version_installed": "1.2.2",
+            "version_available": "1.2.2"
+        },
+        "bruxy70/Garbage-Collection": {
+            "version_type": "version",
+            "version_installed": "v1.14",
+            "version_available": "v1.14"
+        },
+        "Villhellm/lovelace-animated-background": {
+            "version_type": "commit",
+            "version_installed": "0770ea9",
+            "version_available": "0770ea9"
+        },
+        "postlund/search-card": {
+            "version_type": "commit",
+            "version_installed": "711f03b",
+            "version_available": "711f03b"
+        },
+        "RodBr/miflora-card": {
+            "version_type": "version",
+            "version_installed": "0.1.0",
+            "version_available": "0.1.0"
+        },
+        "AmoebeLabs/flex-horseshoe-card": {
+            "version_type": "version",
+            "version_installed": "0.8.2",
+            "version_available": "0.8.2"
+        },
+        "daenny/climate_group": {
+            "version_type": "version",
+            "version_installed": "0.1.2",
+            "version_available": "0.1.2"
+        },
+        "ReneNulschDE/mbapipy": {
+            "version_type": "commit",
+            "version_installed": "168acc2",
+            "version_available": "168acc2"
+        },
+        "JBassett/plex_webhooks": {
+            "version_type": "version",
+            "version_installed": "v0.3",
+            "version_available": "v0.3"
+        },
+        "rogro82/hass-variables": {
+            "version_type": "commit",
+            "version_installed": "fd9b44e",
+            "version_available": "fd9b44e"
+        },
+        "danobot/entity-controller": {
+            "version_type": "commit",
+            "version_installed": "d7fdb98",
+            "version_available": "d7fdb98"
+        },
+        "home-assistant-community-themes/amoled": {
+            "version_type": "commit",
+            "version_installed": "e3e6813",
+            "version_available": "e3e6813"
+        },
+        "thomasloven/lovelace-card-tools": {
+            "version_type": "version",
+            "version_installed": "0.4.2",
+            "version_available": "0.4.2"
+        },
+        "home-assistant-community-themes/another-dark": {
+            "version_type": "commit",
+            "version_installed": "c47e331",
+            "version_available": "c47e331"
+        },
+        "home-assistant-community-themes/midnight": {
+            "version_type": "commit",
+            "version_installed": "6077dac",
+            "version_available": "6077dac"
+        }
+    },
+    "schema": "5"
+}

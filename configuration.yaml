@@ -90,6 +90,10 @@ shelly:
     - all
   version: true
 
+tuya:
+  username: elrachid@gmai.com
+  password: athlon00
+  country_code: BE
 
 
 #  Include

@@ -8,80 +8,41 @@ input_number:
     mode: box
     min: 0
     max: 100
-    unit_of_measurement: "$/day"
-    icon: mdi:currency-usd
+    unit_of_measurement: "€/day"
+    icon: mdi:currency-eur
 
   t31_energy_cost:
     name: T31 Energy Cost
     mode: box
     min: 0
     max: 100
-    unit_of_measurement: "$/kWh"
-    icon: mdi:currency-usd
+    unit_of_measurement: "€/kWh"
+    icon: mdi:currency-eur
 
   t41_daily_cost:
     name: T41 Daily Cost
     mode: box
     min: 0
     max: 100
-    unit_of_measurement: "$/day"
-    icon: mdi:currency-usd
+    unit_of_measurement: "€/day"
+    icon: mdi:currency-eur
 
   t41_energy_cost:
     name: T41 Energy Cost
     mode: box
     min: 0
     max: 100
-    unit_of_measurement: "$/kWh"
-    icon: mdi:currency-usd
+    unit_of_measurement: "€/kWh"
+    icon: mdi:currency-eur
 
   cumulative_energy_cost:
     name: Cumulative Energy Cost
     mode: box
     min: 0
     max: 5000
-    unit_of_measurement: "$"
-    icon: mdi:currency-usd
-  t31_daily_cost:
-    name: T31 Daily Cost
-    mode: box
-    min: 0
-    max: 100
-    unit_of_measurement: "$/day"
-    icon: mdi:currency-usd
-
-  t31_energy_cost:
-    name: T31 Energy Cost
-    mode: box
-    min: 0
-    max: 100
-    unit_of_measurement: "$/kWh"
-    icon: mdi:currency-usd
-
-  t41_daily_cost:
-    name: T41 Daily Cost
-    mode: box
-    min: 0
-    max: 100
-    unit_of_measurement: "$/day"
-    icon: mdi:currency-usd
-
-  t41_energy_cost:
-    name: T41 Energy Cost
-    mode: box
-    min: 0
-    max: 100
-    unit_of_measurement: "$/kWh"
-    icon: mdi:currency-usd
-
-  cumulative_energy_cost:
-    name: Cumulative Energy Cost
-    mode: box
-    min: 0
-    max: 5000
-    unit_of_measurement: "$"
-    icon: mdi:currency-usd
-
+    unit_of_measurement: "€"
+    icon: mdi:currency-eur
+ 
 utility_meter:
   energy_t31_light_and_power:
     source: sensor.shelly_t31_total_energy
@@ -166,7 +127,7 @@ sensor:
           - input_number.t31_daily_cost
           - input_number.t31_energy_cost
         value_template: "{{ (states('sensor.energy_t31_light_and_power_total')|float * states('input_number.t31_energy_cost')|float + states('input_number.t31_daily_cost')|float)|round(2) }}"
-        unit_of_measurement: "$"
+        unit_of_measurement: "€"
 
   - platform: template
     sensors:
@@ -177,7 +138,7 @@ sensor:
           - input_number.t41_daily_cost
           - input_number.t41_energy_cost
         value_template: "{{ (states('sensor.energy_t41_heating_total')|float * states('input_number.t41_energy_cost')|float + states('input_number.t41_daily_cost')|float)|round(2) }}"
-        unit_of_measurement: "$"
+        unit_of_measurement: "€"
 
   - platform: template
     sensors:
@@ -187,7 +148,7 @@ sensor:
           - sensor.t31_cost_today
           - sensor.t41_cost_today
         value_template: "{{ ( states('sensor.t31_cost_today')|float + states('sensor.t41_cost_today')|float )|round(2) }}"
-        unit_of_measurement: "$"
+        unit_of_measurement: "€"
 
   - platform: template
     sensors:
@@ -196,7 +157,7 @@ sensor:
         entity_id:
           - input_number.cumulative_energy_cost
         value_template: "{{ states('input_number.cumulative_energy_cost')|float|round(2) }}"
-        unit_of_measurement: "$"
+        unit_of_measurement: "€"
 
   - platform: template
     sensors:
@@ -222,17 +183,13 @@ script:
 
 automation:
 
-  - id: set_dark_theme_at_sunset
-    alias: 'Set Dark Theme At Sunset'
+  - id: tariff change to night
+    alias: 'Tariff change to night'
     initial_state: true
     trigger:
       platform: sun
       event: sunset
     action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.select_theme
-        option: Night
     - service: utility_meter.select_tariff ###### Tariff change to night
       data:
         entity_id:
@@ -240,8 +197,8 @@ automation:
         - utility_meter.energy_t41_heating
         tariff: night
 
-  - id: set_light_theme_at_sunrise
-    alias: 'Set Light Theme At Sunrise'
+  - id: tariff change to day
+    alias: 'Tariff change to day'
     initial_state: true
     trigger:
       platform: sun
@@ -257,7 +214,6 @@ automation:
         - utility_meter.energy_t31_light_and_power
         - utility_meter.energy_t41_heating
         tariff: day
-
 
   - id: daily_energy_use_message
     alias: 'Daily Energy Use Message'
@@ -276,9 +232,4 @@ automation:
     - service: notify.energy_log
       data_template:
         message: "{{ states('sensor.date') }},{{ states('sensor.energy_t31_light_and_power_day') }},{{ states('sensor.energy_t31_light_and_power_night') }},{{ states('sensor.energy_t31_light_and_power_total') }},{{ states('sensor.energy_t41_heating_day') }},{{ states('sensor.energy_t41_heating_night') }},{{ states('sensor.energy_t41_heating_total') }},{{ states('sensor.total_energy_day') }},{{ states('sensor.total_energy_night') }},{{ states('sensor.total_energy') }},{{ state_attr('sensor.power_stats','min_value') }},{{ state_attr('sensor.power_stats','max_value') }},{{ states('sensor.power_stats') }},{{ states('sensor.total_cost_today') }}"
-
-
-
-
-
 

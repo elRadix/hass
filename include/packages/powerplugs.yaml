@@ -2,7 +2,7 @@
 
 
 input_number:
-
+# to keep track of tariff and daily supply costs
   t31_daily_cost:
     name: T31 Daily Cost
     mode: box
@@ -44,6 +44,7 @@ input_number:
     icon: mdi:currency-eur
  
 utility_meter:
+# Utility meters to keep track of consumption. Resets daily. Night and day tariffs to keep track of energy
   energy_t31_light_and_power:
     source: sensor.shelly_t31_total_energy
     cycle: daily
@@ -57,9 +58,8 @@ utility_meter:
       - day
       - night
 
-
-sensor:
-
+sensor:  
+# Template sensors for daily totals and stats.
   - platform: statistics
     name: 'Power Stats'
     entity_id: sensor.total_power
@@ -167,7 +167,8 @@ sensor:
           - input_datetime.last_reset
         value_template: "{{ states('input_datetime.last_reset') }}"
 
-script:
+script:  
+# for resetting cumulative total cost.
 
   reset_cumulative_cost:
     sequence:
@@ -180,9 +181,15 @@ script:
       data_template:
         date: "{{ as_timestamp(now())|timestamp_custom('%Y-%m-%d') }}"
 
+#notify: 
+#Notification service for file logging.
+#  - platform: file
+#    name: energy_log
+#    filename: /config/www/csv_logs/energy_log.csv
+#    timestamp: false
 
 automation:
-
+# to change day/night tariff at sunset/sunrise 
   - id: tariff change to night
     alias: 'Tariff change to night'
     initial_state: true
@@ -215,6 +222,7 @@ automation:
         - utility_meter.energy_t41_heating
         tariff: day
 
+# to send daily use notification, log daily use to file and to accumulate total cost.
   - id: daily_energy_use_message
     alias: 'Daily Energy Use Message'
     trigger:

@@ -1,243 +1,243 @@
----
+# ---
 
 
-input_number:
-# to keep track of tariff and daily supply costs
-  t31_daily_cost:
-    name: T31 Daily Cost
-    mode: box
-    min: 0
-    max: 100
-    unit_of_measurement: "€/day"
-    icon: mdi:currency-eur
+# input_number:
+# # to keep track of tariff and daily supply costs
+#   t31_daily_cost:
+#     name: T31 Daily Cost
+#     mode: box
+#     min: 0
+#     max: 100
+#     unit_of_measurement: "€/day"
+#     icon: mdi:currency-eur
 
-  t31_energy_cost:
-    name: T31 Energy Cost
-    mode: box
-    min: 0
-    max: 100
-    unit_of_measurement: "€/kWh"
-    icon: mdi:currency-eur
+#   t31_energy_cost:
+#     name: T31 Energy Cost
+#     mode: box
+#     min: 0
+#     max: 100
+#     unit_of_measurement: "€/kWh"
+#     icon: mdi:currency-eur
 
-  t41_daily_cost:
-    name: T41 Daily Cost
-    mode: box
-    min: 0
-    max: 100
-    unit_of_measurement: "€/day"
-    icon: mdi:currency-eur
+#   t41_daily_cost:
+#     name: T41 Daily Cost
+#     mode: box
+#     min: 0
+#     max: 100
+#     unit_of_measurement: "€/day"
+#     icon: mdi:currency-eur
 
-  t41_energy_cost:
-    name: T41 Energy Cost
-    mode: box
-    min: 0
-    max: 100
-    unit_of_measurement: "€/kWh"
-    icon: mdi:currency-eur
+#   t41_energy_cost:
+#     name: T41 Energy Cost
+#     mode: box
+#     min: 0
+#     max: 100
+#     unit_of_measurement: "€/kWh"
+#     icon: mdi:currency-eur
 
-  cumulative_energy_cost:
-    name: Cumulative Energy Cost
-    mode: box
-    min: 0
-    max: 5000
-    unit_of_measurement: "€"
-    icon: mdi:currency-eur
+#   cumulative_energy_cost:
+#     name: Cumulative Energy Cost
+#     mode: box
+#     min: 0
+#     max: 5000
+#     unit_of_measurement: "€"
+#     icon: mdi:currency-eur
  
-utility_meter:
-# Utility meters to keep track of consumption. Resets daily. Night and day tariffs to keep track of energy
-  energy_t31_light_and_power:
-    source: sensor.shelly_t31_total_energy
-    cycle: daily
-    tariffs:
-      - day
-      - night
-  energy_t41_heating:
-    source: sensor.shelly_t41_total_energy
-    cycle: daily
-    tariffs:
-      - day
-      - night
+# utility_meter:
+# # Utility meters to keep track of consumption. Resets daily. Night and day tariffs to keep track of energy
+#   energy_t31_light_and_power:
+#     source: sensor.fridge_energy_total
+#     cycle: daily
+#     tariffs:
+#       - day
+#       - night
+#   energy_t41_heating:
+#     source: sensor.fridge_energy_total
+#     cycle: daily
+#     tariffs:
+#       - day
+#       - night
 
-sensor:  
-# Template sensors for daily totals and stats.
-  - platform: statistics
-    name: 'Power Stats'
-    entity_id: sensor.total_power
-    sampling_size: 10000
-    max_age:
-      hours: 24
-    precision: 1
+# sensor:  
+# # Template sensors for daily totals and stats.
+#   - platform: statistics
+#     name: 'Power Stats'
+#     entity_id: sensor.fridge_energy_total
+#     sampling_size: 10000
+#     max_age:
+#       hours: 24
+#     precision: 1
 
-  - platform: template
-    sensors:
-      energy_t31_light_and_power_total:
-        friendly_name: 'Light and Power Total'
-        entity_id:
-          - sensor.energy_t31_light_and_power_day
-          - sensor.energy_t31_light_and_power_night
-        value_template: "{{ (states('sensor.energy_t31_light_and_power_day')|float + states('sensor.energy_t31_light_and_power_night')|float)|round(3) }}"
-        unit_of_measurement: "kWh"
+#   - platform: template
+#     sensors:
+#       energy_t31_light_and_power_total:
+#         friendly_name: 'Light and Power Total'
+#         entity_id:
+#           - sensor.energy_t31_light_and_power_day
+#           - sensor.energy_t31_light_and_power_night
+#         value_template: "{{ (states('sensor.energy_t31_light_and_power_day')|float + states('sensor.energy_t31_light_and_power_night')|float)|round(3) }}"
+#         unit_of_measurement: "kWh"
 
-  - platform: template
-    sensors:
-      energy_t41_heating_total:
-        friendly_name: 'Heating and Hot Water Total'
-        entity_id:
-          - sensor.energy_t41_heating_day
-          - sensor.energy_t41_heating_night
-        value_template: "{{ (states('sensor.energy_t41_heating_day')|float + states('sensor.energy_t41_heating_night')|float)|round(3) }}"
-        unit_of_measurement: "kWh"
+#   - platform: template
+#     sensors:
+#       energy_t41_heating_total:
+#         friendly_name: 'Heating and Hot Water Total'
+#         entity_id:
+#           - sensor.energy_t41_heating_day
+#           - sensor.energy_t41_heating_night
+#         value_template: "{{ (states('sensor.energy_t41_heating_day')|float + states('sensor.energy_t41_heating_night')|float)|round(3) }}"
+#         unit_of_measurement: "kWh"
 
-  - platform: template
-    sensors:
-      total_energy_day:
-        friendly_name: 'Total Energy Day'
-        entity_id:
-          - sensor.energy_t31_light_and_power_day
-          - sensor.energy_t41_heating_day
-        value_template: "{{ (states('sensor.energy_t31_light_and_power_day')|float + states('sensor.energy_t41_heating_day')|float)|round(3) }}"
-        unit_of_measurement: "kWh"
+#   - platform: template
+#     sensors:
+#       total_energy_day:
+#         friendly_name: 'Total Energy Day'
+#         entity_id:
+#           - sensor.energy_t31_light_and_power_day
+#           - sensor.energy_t41_heating_day
+#         value_template: "{{ (states('sensor.energy_t31_light_and_power_day')|float + states('sensor.energy_t41_heating_day')|float)|round(3) }}"
+#         unit_of_measurement: "kWh"
 
-  - platform: template
-    sensors:
-      total_energy_night:
-        friendly_name: 'Total Energy Night'
-        entity_id:
-          - sensor.energy_t31_light_and_power_night
-          - sensor.energy_t41_heating_night
-        value_template: "{{ (states('sensor.energy_t31_light_and_power_night')|float + states('sensor.energy_t41_heating_night')|float)|round(3) }}"
-        unit_of_measurement: "kWh"
+#   - platform: template
+#     sensors:
+#       total_energy_night:
+#         friendly_name: 'Total Energy Night'
+#         entity_id:
+#           - sensor.energy_t31_light_and_power_night
+#           - sensor.energy_t41_heating_night
+#         value_template: "{{ (states('sensor.energy_t31_light_and_power_night')|float + states('sensor.energy_t41_heating_night')|float)|round(3) }}"
+#         unit_of_measurement: "kWh"
 
-  - platform: template
-    sensors:
-      total_energy:
-        friendly_name: 'Total Energy Used Today'
-        entity_id:
-          - sensor.total_energy_day
-          - sensor.total_energy_night
-        value_template: "{{ (states('sensor.total_energy_day')|float + states('sensor.total_energy_night')|float)|round(3) }}"
-        unit_of_measurement: "kWh"
+#   - platform: template
+#     sensors:
+#       total_energy:
+#         friendly_name: 'Total Energy Used Today'
+#         entity_id:
+#           - sensor.total_energy_day
+#           - sensor.total_energy_night
+#         value_template: "{{ (states('sensor.total_energy_day')|float + states('sensor.total_energy_night')|float)|round(3) }}"
+#         unit_of_measurement: "kWh"
 
-  - platform: template
-    sensors:
-      t31_cost_today:
-        friendly_name: 'T31 Cost Today'
-        entity_id:
-          - sensor.energy_t31_light_and_power_total
-          - input_number.t31_daily_cost
-          - input_number.t31_energy_cost
-        value_template: "{{ (states('sensor.energy_t31_light_and_power_total')|float * states('input_number.t31_energy_cost')|float + states('input_number.t31_daily_cost')|float)|round(2) }}"
-        unit_of_measurement: "€"
+#   - platform: template
+#     sensors:
+#       t31_cost_today:
+#         friendly_name: 'T31 Cost Today'
+#         entity_id:
+#           - sensor.energy_t31_light_and_power_total
+#           - input_number.t31_daily_cost
+#           - input_number.t31_energy_cost
+#         value_template: "{{ (states('sensor.energy_t31_light_and_power_total')|float * states('input_number.t31_energy_cost')|float + states('input_number.t31_daily_cost')|float)|round(2) }}"
+#         unit_of_measurement: "€"
 
-  - platform: template
-    sensors:
-      t41_cost_today:
-        friendly_name: 'T41 Cost Today'
-        entity_id:
-          - sensor.energy_t41_heating_total
-          - input_number.t41_daily_cost
-          - input_number.t41_energy_cost
-        value_template: "{{ (states('sensor.energy_t41_heating_total')|float * states('input_number.t41_energy_cost')|float + states('input_number.t41_daily_cost')|float)|round(2) }}"
-        unit_of_measurement: "€"
+#   - platform: template
+#     sensors:
+#       t41_cost_today:
+#         friendly_name: 'T41 Cost Today'
+#         entity_id:
+#           - sensor.energy_t41_heating_total
+#           - input_number.t41_daily_cost
+#           - input_number.t41_energy_cost
+#         value_template: "{{ (states('sensor.energy_t41_heating_total')|float * states('input_number.t41_energy_cost')|float + states('input_number.t41_daily_cost')|float)|round(2) }}"
+#         unit_of_measurement: "€"
 
-  - platform: template
-    sensors:
-      total_cost_today:
-        friendly_name: 'Total Cost Today'
-        entity_id:
-          - sensor.t31_cost_today
-          - sensor.t41_cost_today
-        value_template: "{{ ( states('sensor.t31_cost_today')|float + states('sensor.t41_cost_today')|float )|round(2) }}"
-        unit_of_measurement: "€"
+#   - platform: template
+#     sensors:
+#       total_cost_today:
+#         friendly_name: 'Total Cost Today'
+#         entity_id:
+#           - sensor.t31_cost_today
+#           - sensor.t41_cost_today
+#         value_template: "{{ ( states('sensor.t31_cost_today')|float + states('sensor.t41_cost_today')|float )|round(2) }}"
+#         unit_of_measurement: "€"
 
-  - platform: template
-    sensors:
-      cumulative_energy_cost:
-        friendly_name: 'Cumulative Energy Cost' #### for Lovelace display only. Calculations use the input_number.
-        entity_id:
-          - input_number.cumulative_energy_cost
-        value_template: "{{ states('input_number.cumulative_energy_cost')|float|round(2) }}"
-        unit_of_measurement: "€"
+#   - platform: template
+#     sensors:
+#       cumulative_energy_cost:
+#         friendly_name: 'Cumulative Energy Cost' #### for Lovelace display only. Calculations use the input_number.
+#         entity_id:
+#           - input_number.cumulative_energy_cost
+#         value_template: "{{ states('input_number.cumulative_energy_cost')|float|round(2) }}"
+#         unit_of_measurement: "€"
 
-  - platform: template
-    sensors:
-      last_reset: 
-        friendly_name: 'Last Reset' # Date the cumulative total cost was reset.
-        entity_id:
-          - input_datetime.last_reset
-        value_template: "{{ states('input_datetime.last_reset') }}"
+#   - platform: template
+#     sensors:
+#       last_reset: 
+#         friendly_name: 'Last Reset' # Date the cumulative total cost was reset.
+#         entity_id:
+#           - input_datetime.last_reset
+#         value_template: "{{ states('input_datetime.last_reset') }}"
 
-script:  
-# for resetting cumulative total cost.
+# script:  
+# # for resetting cumulative total cost.
 
-  reset_cumulative_cost:
-    sequence:
-    - service: input_number.set_value
-      data:
-        entity_id: input_number.cumulative_energy_cost
-        value: 0
-    - service: input_datetime.set_datetime
-      entity_id: input_datetime.last_reset
-      data_template:
-        date: "{{ as_timestamp(now())|timestamp_custom('%Y-%m-%d') }}"
+#   reset_cumulative_cost:
+#     sequence:
+#     - service: input_number.set_value
+#       data:
+#         entity_id: input_number.cumulative_energy_cost
+#         value: 0
+#     - service: input_datetime.set_datetime
+#       entity_id: input_datetime.last_reset
+#       data_template:
+#         date: "{{ as_timestamp(now())|timestamp_custom('%Y-%m-%d') }}"
 
-#notify: 
-#Notification service for file logging.
-#  - platform: file
-#    name: energy_log
-#    filename: /config/www/csv_logs/energy_log.csv
-#    timestamp: false
+# #notify: 
+# #Notification service for file logging.
+# #  - platform: file
+# #    name: energy_log
+# #    filename: /config/www/csv_logs/energy_log.csv
+# #    timestamp: false
 
-automation:
-# to change day/night tariff at sunset/sunrise 
-  - id: tariff change to night
-    alias: 'Tariff change to night'
-    initial_state: true
-    trigger:
-      platform: sun
-      event: sunset
-    action:
-    - service: utility_meter.select_tariff ###### Tariff change to night
-      data:
-        entity_id:
-        - utility_meter.energy_t31_light_and_power
-        - utility_meter.energy_t41_heating
-        tariff: night
+# automation:
+# # to change day/night tariff at sunset/sunrise 
+#   - id: tariff change to night
+#     alias: 'Tariff change to night'
+#     initial_state: true
+#     trigger:
+#       platform: sun
+#       event: sunset
+#     action:
+#     - service: utility_meter.select_tariff ###### Tariff change to night
+#       data:
+#         entity_id:
+#         - utility_meter.energy_t31_light_and_power
+#         - utility_meter.energy_t41_heating
+#         tariff: night
 
-  - id: tariff change to day
-    alias: 'Tariff change to day'
-    initial_state: true
-    trigger:
-      platform: sun
-      event: sunrise
-    action:
-    - service: input_select.select_option
-      data:
-        entity_id: input_select.select_theme
-        option: Day
-    - service: utility_meter.select_tariff ###### Tariff change to day
-      data:
-        entity_id:
-        - utility_meter.energy_t31_light_and_power
-        - utility_meter.energy_t41_heating
-        tariff: day
+#   - id: tariff change to day
+#     alias: 'Tariff change to day'
+#     initial_state: true
+#     trigger:
+#       platform: sun
+#       event: sunrise
+#     action:
+#     - service: input_select.select_option
+#       data:
+#         entity_id: input_select.select_theme
+#         option: Day
+#     - service: utility_meter.select_tariff ###### Tariff change to day
+#       data:
+#         entity_id:
+#         - utility_meter.energy_t31_light_and_power
+#         - utility_meter.energy_t41_heating
+#         tariff: day
 
-# to send daily use notification, log daily use to file and to accumulate total cost.
-  - id: daily_energy_use_message
-    alias: 'Daily Energy Use Message'
-    trigger:
-      platform: time
-      at: '23:59:50'
-    action:
-    - service: notify.telegram_system
-      data_template:
-        title: '*Information*'
-        message: "Today's energy use was {{ states('sensor.total_energy') }} kWh."
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.cumulative_energy_cost
-        value: "{{ states('input_number.cumulative_energy_cost')|float + states('sensor.total_cost_today')|float }}"
-    - service: notify.energy_log
-      data_template:
-        message: "{{ states('sensor.date') }},{{ states('sensor.energy_t31_light_and_power_day') }},{{ states('sensor.energy_t31_light_and_power_night') }},{{ states('sensor.energy_t31_light_and_power_total') }},{{ states('sensor.energy_t41_heating_day') }},{{ states('sensor.energy_t41_heating_night') }},{{ states('sensor.energy_t41_heating_total') }},{{ states('sensor.total_energy_day') }},{{ states('sensor.total_energy_night') }},{{ states('sensor.total_energy') }},{{ state_attr('sensor.power_stats','min_value') }},{{ state_attr('sensor.power_stats','max_value') }},{{ states('sensor.power_stats') }},{{ states('sensor.total_cost_today') }}"
+# # to send daily use notification, log daily use to file and to accumulate total cost.
+#   - id: daily_energy_use_message
+#     alias: 'Daily Energy Use Message'
+#     trigger:
+#       platform: time
+#       at: '23:59:50'
+#     action:
+#     - service: notify.telegram_system
+#       data_template:
+#         title: '*Information*'
+#         message: "Today's energy use was {{ states('sensor.total_energy') }} kWh."
+#     - service: input_number.set_value
+#       data_template:
+#         entity_id: input_number.cumulative_energy_cost
+#         value: "{{ states('input_number.cumulative_energy_cost')|float + states('sensor.total_cost_today')|float }}"
+#     - service: notify.energy_log
+#       data_template:
+#         message: "{{ states('sensor.date') }},{{ states('sensor.energy_t31_light_and_power_day') }},{{ states('sensor.energy_t31_light_and_power_night') }},{{ states('sensor.energy_t31_light_and_power_total') }},{{ states('sensor.energy_t41_heating_day') }},{{ states('sensor.energy_t41_heating_night') }},{{ states('sensor.energy_t41_heating_total') }},{{ states('sensor.total_energy_day') }},{{ states('sensor.total_energy_night') }},{{ states('sensor.total_energy') }},{{ state_attr('sensor.power_stats','min_value') }},{{ state_attr('sensor.power_stats','max_value') }},{{ states('sensor.power_stats') }},{{ states('sensor.total_cost_today') }}"
 

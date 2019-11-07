@@ -42,8 +42,8 @@
         },
         "custom-cards/button-card": {
             "version_type": "version",
-            "version_installed": "2.0.5",
-            "version_available": "2.0.5"
+            "version_installed": "3.0.0",
+            "version_available": "3.0.0"
         },
         "custom-cards/bar-card": {
             "version_type": "version",
@@ -72,8 +72,8 @@
         },
         "maykar/compact-custom-header": {
             "version_type": "version",
-            "version_installed": "1.4.5",
-            "version_available": "1.4.5"
+            "version_installed": "1.4.7",
+            "version_available": "1.4.7"
         },
         "nervetattoo/simple-thermostat": {
             "version_type": "version",
@@ -92,13 +92,13 @@
         },
         "kalkih/mini-graph-card": {
             "version_type": "version",
-            "version_installed": "v0.7.0",
-            "version_available": "v0.7.0"
+            "version_installed": "v0.8.2",
+            "version_available": "v0.8.2"
         },
         "thomasloven/lovelace-card-mod": {
             "version_type": "version",
-            "version_installed": "6",
-            "version_available": "6"
+            "version_installed": "7",
+            "version_available": "7"
         },
         "thomasloven/lovelace-markdown-mod": {
             "version_type": "version",
@@ -107,8 +107,8 @@
         },
         "bieniu/ha-shellies-discovery": {
             "version_type": "version",
-            "version_installed": "0.12.3",
-            "version_available": "0.12.3"
+            "version_installed": "0.12.5",
+            "version_available": "0.12.5"
         },
         "gadgetchnnel/lovelace-text-input-row": {
             "version_type": "version",
@@ -162,8 +162,8 @@
         },
         "seangreen2/slate_theme": {
             "version_type": "commit",
-            "version_installed": "69114b9",
-            "version_available": "69114b9"
+            "version_installed": "d921d16",
+            "version_available": "d921d16"
         },
         "thomasloven/hass-favicon": {
             "version_type": "version",
@@ -172,8 +172,8 @@
         },
         "custom-cards/button-entity-row": {
             "version_type": "version",
-            "version_installed": "v0.3.4",
-            "version_available": "v0.3.4"
+            "version_installed": "v0.4.0",
+            "version_available": "v0.4.0"
         },
         "ljmerza/tracking-number-card": {
             "version_type": "version",
@@ -182,18 +182,13 @@
         },
         "bruxy70/Garbage-Collection": {
             "version_type": "version",
-            "version_installed": "v1.14",
-            "version_available": "v1.14"
-        },
-        "Villhellm/lovelace-animated-background": {
-            "version_type": "commit",
-            "version_installed": "0770ea9",
-            "version_available": "0770ea9"
+            "version_installed": "v2.1",
+            "version_available": "v2.1"
         },
         "postlund/search-card": {
             "version_type": "commit",
-            "version_installed": "711f03b",
-            "version_available": "711f03b"
+            "version_installed": "98043b7",
+            "version_available": "98043b7"
         },
         "RodBr/miflora-card": {
             "version_type": "version",
@@ -232,23 +227,23 @@
         },
         "home-assistant-community-themes/amoled": {
             "version_type": "commit",
-            "version_installed": "e3e6813",
-            "version_available": "e3e6813"
+            "version_installed": "ec2f266",
+            "version_available": "ec2f266"
         },
         "thomasloven/lovelace-card-tools": {
             "version_type": "version",
             "version_installed": "0.4.2",
             "version_available": "0.4.2"
         },
-        "home-assistant-community-themes/another-dark": {
-            "version_type": "commit",
-            "version_installed": "c47e331",
-            "version_available": "c47e331"
-        },
         "home-assistant-community-themes/midnight": {
             "version_type": "commit",
-            "version_installed": "6077dac",
-            "version_available": "6077dac"
+            "version_installed": "aa97521",
+            "version_available": "aa97521"
+        },
+        "hacs/integration": {
+            "version_type": "version",
+            "version_installed": "0.16.3",
+            "version_available": "0.16.3"
         }
     },
     "schema": "5"

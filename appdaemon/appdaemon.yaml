@@ -1,12 +1,17 @@
 secret: /conf/secrets.yaml
-#log:
-#  errorfile: STDERR
-#  logfile: STDOUT
+
 appdaemon:
-  threads: 10
+#  threads: 10
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 10
+  time_zone: Europe/Brussels
   plugins:
     HASS:
       type: hass
       ha_url: !secret ha_url
       token: !secret token
+      app_dir: /config/apps 
 
+http:
+  url: http://0.0.0.0:5050

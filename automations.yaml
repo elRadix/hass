@@ -1,0 +1,14 @@
+- id: '1572729736146'
+  alias: New Automation
+  description: ''
+  trigger:
+  - device_id: 28f99ed7f4064f2398fe66e61c74cefd
+    domain: binary_sensor
+    entity_id: binary_sensor.rf_button
+    platform: device
+    type: powered
+  condition: []
+  action:
+  - data:
+      message: RF pushed
+    service: notify.dageraad

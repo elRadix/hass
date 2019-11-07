@@ -2,5 +2,6 @@
     "data": {
         "view": "Table"
     },
-    "schema": "5"
+    "key": "hacs.hacs",
+    "version": "6"
 }

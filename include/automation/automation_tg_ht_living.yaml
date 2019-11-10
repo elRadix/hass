@@ -81,6 +81,9 @@
       keyboard:
         - '/Living_V, /Verwarming'
         - '/home'
+  - service: notify.dageraad
+    data:
+      message: "Living voor 1 uur opwarmen"
 
 ## 3 ##
 - id: tg_heating_living_3
@@ -114,6 +117,7 @@
     data:
       entity_id: climate.living
       temperature: 5
+      hvac_mode: "off"
   - service: notify.dageraad
     data:
       message: "Living verwarming is uitgeschakeld na 1 uur."
@@ -207,6 +211,7 @@
     data:
       entity_id: climate.living
       temperature: 5
+      hvac_mode: "off"
   - service: notify.dageraad
     data:
       message: "Living verwarming is uitgeschakeld na 2 uur"
@@ -235,6 +240,7 @@
     data:
       entity_id: climate.living
       temperature: 5
+      hvac_mode: "off"
   - service: input_boolean.turn_off
     entity_id: input_boolean.1u_living
   - service: input_boolean.turn_off

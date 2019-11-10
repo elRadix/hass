@@ -236,13 +236,16 @@
   - service: homeassistant.turn_off
     data:
       entity_id:
-        - switch.ketel
+        - input_boolean.easyplus_boiler_heating
   - service: notify.telegram_rachid
     data:
       message: "Verwarming programma & ketel uitgeschakeld."
   - service: notify.android
     data:
       message: Verwarming programma & ketel uitgeschakeld.
+
+
+
 
 ##Eetkamer
 - id: auto_heat_on enabled
@@ -277,9 +280,10 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time.state }}'
   action:
-    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
-      entity_id: switch.ketel
+      entity_id: switch.easyplus
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.easyplus_boiler_heating
     - service: climate.set_operation_mode
       data:
         entity_id: climate.eetkamer
@@ -353,9 +357,10 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_liv.state }}'
   action:
-    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
-      entity_id: switch.ketel
+      entity_id: switch.easyplus
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.easyplus_boiler_heating
     - service: shell_command.tmp_living_auto
     - service: climate.set_temperature
       data:
@@ -431,9 +436,10 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp1.state }}'
   action:
-    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
-      entity_id: switch.ketel
+      entity_id: switch.easyplus
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.easyplus_boiler_heating
     - service: shell_command.tmp_slp1_auto
     - service: climate.set_temperature
       data:
@@ -506,9 +512,10 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp2.state }}'
   action:
-    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
-      entity_id: switch.ketel
+      entity_id: switch.easyplus
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.easyplus_boiler_heating
     - service: shell_command.tmp_slp2_auto
     - service: climate.set_temperature
       data:
@@ -584,9 +591,10 @@
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp3.state }}'
   action:
-    - service: script.turn_on_easyplus
     - service: homeassistant.turn_on
-      entity_id: switch.ketel
+      entity_id: switch.easyplus
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.easyplus_boiler_heating
     - service: shell_command.tmp_slp3_auto
     - service: climate.set_temperature
       data:
@@ -647,7 +655,7 @@
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_ketel.state }}'
   action:
   - service: homeassistant.turn_on
-    entity_id: switch.ketel
+    entity_id: input_boolean.easyplus_boiler_heating
   - service: notify.dageraad
     data:
       message: "Ketel aan!"

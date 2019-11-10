@@ -1,36 +1,35 @@
 ---
-- id: boiler_boolean_on
+- id: boiler_heating_boolean_on
   initial_state: 'true'
-  alias: '[Boiler] turn on'
+  alias: '[Boiler] Heating turn on'
   trigger:
   - platform: state
-    entity_id: input_boolean.easyplus_boiler_shower
-    from: 'off'
+    entity_id: input_boolean.easyplus_boiler_heating
     to: 'on'
   action:
   - service: homeassistant.turn_on
     entity_id: switch.ketel
 
-- id: boiler_boolean_off
+- id: boiler_heating_boolean_off
   initial_state: 'true'
-  alias: '[Boiler] turn off'
+  alias: '[Boiler] Heating turn off'
   trigger:
   - platform: state
-    entity_id: input_boolean.easyplus_boiler_shower
+    entity_id: input_boolean.easyplus_boiler_heating
     from: 'on'
     to: 'off'
   action:
   - service: homeassistant.turn_off
-    entity_id: switch.ketel
+    entity_id: input_boolean.easyplus_boiler_heating
 
-- id: boiler_state
+- id: boiler_state_heating
   initial_state: 'true'
-  alias: '[Boiler] state'
+  alias: '[Boiler] Heating state'
   trigger:
   - platform: state
     entity_id: switch.ketel
     to: 'on'
   action:
   - service: homeassistant.turn_on
-    entity_id: input_boolean.easyplus_boiler_shower
+    entity_id: input_boolean.easyplus_boiler_heating
 

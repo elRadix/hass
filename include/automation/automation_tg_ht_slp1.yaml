@@ -48,9 +48,10 @@
       target: '{{ trigger.event.data.user_id }}'
       message: '
         Even geduld aub...EasyPlus opstarten'
-  - service: script.turn_on_easyplus
   - service: homeassistant.turn_on
-    entity_id: switch.ketel
+    entity_id: switch.easyplus
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.easyplus_boiler_heating
   - service: shell_command.tmp_slp1_auto
   - service: input_boolean.turn_on
     entity_id: input_boolean.1u_floradix
@@ -113,7 +114,7 @@
   - platform: state
     entity_id: input_boolean.2u_floradix
     from: 'off'
-    to: 'on'    
+    to: 'on'
   - platform: event
     event_type: telegram_command
     event_data:
@@ -124,9 +125,10 @@
       target: '{{ trigger.event.data.user_id }}'
       message: '
         Even geduld aub...EasyPlus opstarten'
-  - service: script.turn_on_easyplus
   - service: homeassistant.turn_on
-    entity_id: switch.ketel
+    entity_id: switch.easyplus
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.easyplus_boiler_heating
   - service: input_boolean.turn_on
     entity_id: input_boolean.2u_floradix
   - service: input_boolean.turn_on

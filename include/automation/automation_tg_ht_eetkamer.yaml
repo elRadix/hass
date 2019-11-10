@@ -46,9 +46,10 @@
       target: '{{ trigger.event.data.user_id }}'
       message: '
         Even geduld aub...EasyPlus opstarten'
-  - service: script.turn_on_easyplus
   - service: homeassistant.turn_on
-    entity_id: switch.ketel
+    entity_id: switch.easyplus
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.easyplus_boiler_heating
   - service: input_boolean.turn_on
     entity_id: input_boolean.1u_eetkamer
   - service: input_boolean.turn_on
@@ -64,7 +65,6 @@
       entity_id: climate.eetkamer
       temperature: 19
       operation_mode: "heat"
-
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -131,9 +131,10 @@
       target: '{{ trigger.event.data.user_id }}'
       message: '
         Even geduld aub...EasyPlus opstarten'
-  - service: script.turn_on_easyplus
   - service: homeassistant.turn_on
-    entity_id: switch.ketel
+    entity_id: switch.easyplus
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.easyplus_boiler_heating
   - service: input_boolean.turn_on
     entity_id: input_boolean.2u_eetkamer
   - service: input_boolean.turn_on

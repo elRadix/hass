@@ -52,7 +52,7 @@
     entity_id: switch.easyplus
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
-  - service: shell_command_heating_tmp_slp1_auto
+  - service: shell_command.heating_tmp_slp1_auto
   - service: input_boolean.turn_on
     entity_id: input_boolean.1u_floradix
   - service: input_boolean.turn_on
@@ -95,7 +95,7 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.heating_floradix
-  - service: shell_command_heating_tmp_slp1_off
+  - service: shell_command.heating_tmp_slp1_off
   - service: input_boolean.turn_off
     entity_id: input_boolean.ketel_1h
   - service: climate.set_preset_mode
@@ -141,7 +141,7 @@
     entity_id: input_boolean.2u_floradix
   - service: input_boolean.turn_on
     entity_id: input_boolean.ketel_2h
-  - service: shell_command_heating_tmp_slp1_auto
+  - service: shell_command.heating_tmp_slp1_auto
   - service: climate.set_preset_mode
     data:
       entity_id: climate.floradix
@@ -180,7 +180,7 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.heating_floradix
-  - service: shell_command_heating_tmp_slp1_off
+  - service: shell_command.heating_tmp_slp1_off
   - service: input_boolean.turn_off
     entity_id: input_boolean.2u_floradix
   - service: input_boolean.turn_off
@@ -211,7 +211,7 @@
     event_data:
       command: '/Stop_SR'
   action:
-  - service: shell_command_heating_tmp_slp1_off
+  - service: shell_command.heating_tmp_slp1_off
   - service: homeassistant.turn_off
     entity_id: switch.heating_floradix
   - service: climate.set_preset_mode

@@ -275,7 +275,7 @@
       seconds: 14
   condition:
     - condition: state
-      entity_id: input_boolean.heating 
+      entity_id: input_boolean.heating
       state: 'on'
     - condition: template
       value_template: '{{ (now().strftime("%s") | int | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time.state }}'
@@ -284,14 +284,18 @@
       entity_id: switch.easyplus
     - service: homeassistant.turn_on
       entity_id: input_boolean.easyplus_boiler_heating
-    - service: climate.set_operation_mode
+    - service: climate.set_preset_mode
       data:
         entity_id: climate.eetkamer
-        operation_mode: "heat"
+        preset_mode: 'none'
+    - service: climate.set_hvac_mode
+      data:
+        entity_id: climate.eetkamer
+        hvac_mode: "heat"
     - service: climate.set_temperature
       data:
         entity_id: climate.eetkamer
-        temperature: 19
+        temperature: 20
     - service: notify.dageraad
       data:
         message: "Room Dinner will heat for {{states.sensor.auto_heat_duration.state}} at {{states.sensor.auto_heat_time.state}}"
@@ -318,10 +322,14 @@
     data:
       entity_id: climate.eetkamer
       temperature: 5
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.eetkamer
-      operation_mode: "off"
+      preset_mode: 'away'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.eetkamer
+      hvac_mode: "off"
   - service: notify.dageraad
     data:
       message: "Verwarming Eetkamer is uitgeschakeld."
@@ -365,11 +373,15 @@
     - service: climate.set_temperature
       data:
         entity_id: climate.living
-        temperature: 19
-    - service: climate.set_operation_mode
+        temperature: 20
+    - service: climate.set_preset_mode
       data:
         entity_id: climate.living
-        operation_mode: "heat"
+        preset_mode: 'none'
+    - service: climate.set_hvac_mode
+      data:
+        entity_id: climate.living
+        hvac_mode: "heat"
     - service: notify.dageraad
       data:
         message: "Room Living will heat for {{states.sensor.auto_heat_duration_liv.state}} at {{states.sensor.auto_heat_time_liv.state}}"
@@ -395,10 +407,14 @@
     data:
       entity_id: climate.living
       temperature: 5
-  - service: climate.set_operation_mode
+  - service: climate.set_hvac_mode
     data:
       entity_id: climate.living
-      operation_mode: "off"
+      hvac_mode: "off"
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.living
+        preset_mode: 'away'
   - service: notify.telegram_dageraad
     data:
       message: "Verwarming Living is uitgeschakeld!"
@@ -441,14 +457,18 @@
     - service: homeassistant.turn_on
       entity_id: input_boolean.easyplus_boiler_heating
     - service: shell_command.tmp_slp1_auto
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.floradix
+        preset_mode: 'none'
     - service: climate.set_temperature
       data:
         entity_id: climate.floradix
-        temperature: 19
-    - service: climate.set_operation_mode
+        temperature: 20
+    - service: climate.set_hvac_mode
       data:
         entity_id: climate.floradix
-        operation_mode: "heat"
+        hvac_mode: heat
     - service: notify.dageraad
       data:
         message: "Room S&R will heat for {{states.sensor.auto_heat_duration_slp1.state}} at {{states.sensor.auto_heat_time_slp1.state}}"
@@ -473,10 +493,14 @@
     data:
       entity_id: climate.floradix
       temperature: 5
-  - service: climate.set_operation_mode
+  - service: climate.set_hvac_mode
     data:
       entity_id: climate.floradix
-      operation_mode: "off"
+      hvac_mode: off
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.floradix
+      preset_mode: 'away'
   - service: notify.dageraad
     data:
       message: "Verwarming S&R is uitgeschakeld!"
@@ -517,14 +541,18 @@
     - service: homeassistant.turn_on
       entity_id: input_boolean.easyplus_boiler_heating
     - service: shell_command.tmp_slp2_auto
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.sara
+        preset_mode: 'none'
     - service: climate.set_temperature
       data:
         entity_id: climate.sara
-        temperature: 19
-    - service: climate.set_operation_mode
+        temperature: 20
+    - service: climate.set_hvac_mode
       data:
         entity_id: climate.sara
-        operation_mode: "heat"
+        hvac_mode: "heat"
     - service: notify.dageraad
       data:
         message: "Room Sara will heat for {{states.sensor.auto_heat_duration_slp2.state}} at {{states.sensor.auto_heat_time_slp2.state}}"
@@ -550,10 +578,14 @@
     data:
       entity_id: climate.sara
       temperature: 5
-  - service: climate.set_operation_mode
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.sara
+        preset_mode: 'away'
+  - service: climate.set_hvac_mode
     data:
       entity_id: climate.sara
-      operation_mode: "off"
+      hvac_mode: "off"
   - service: notify.dageraad
     data:
       message: "Verwarming Sara is uitgeschakeld!"
@@ -596,14 +628,18 @@
     - service: homeassistant.turn_on
       entity_id: input_boolean.easyplus_boiler_heating
     - service: shell_command.tmp_slp3_auto
+    - service: climate.set_preset_mode
+      data:
+        entity_id: climate.yassin
+        preset_mode: 'none'
     - service: climate.set_temperature
       data:
         entity_id: climate.yassin
-        temperature: 19
-    - service: climate.set_operation_mode
+        temperature: 20
+    - service: climate.set_hvac_mode
       data:
         entity_id: climate.yassin
-        operation_mode: "heat"
+        hvac_mode: "heat"
     - service: notify.dageraad
       data:
         message: "Room Yassin will heat for {{states.sensor.auto_heat_duration_slp3.state}} at {{states.sensor.auto_heat_time_slp3.state}}"
@@ -625,14 +661,18 @@
     value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration_slp3") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp3.state }}'
   action:
   - service: shell_command.tmp_slp3_off
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.yassin
+      preset_mode: 'away'
   - service: climate.set_temperature
     data:
       entity_id: climate.yassin
       temperature: 5
-  - service: climate.set_operation_mode
+  - service: climate.set_hvac_mode
     data:
       entity_id: climate.yassin
-      operation_mode: "off"
+      hvac_mode: "off"
   - service: notify.dageraad
     data:
       message: "Verwarming Yassin is uitgeschakeld!"

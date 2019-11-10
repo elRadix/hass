@@ -57,14 +57,18 @@
     entity_id: input_boolean.1u_floradix
   - service: input_boolean.turn_on
     entity_id: input_boolean.ketel_1h
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.floradix
-      operation_mode: "heat"
+      preset_mode: 'none'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.floradix
+      hvac_mode: "heat"
   - service: climate.set_temperature
     data:
       entity_id: climate.floradix
-      temperature: 19
+      temperature: 20
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -94,10 +98,14 @@
   - service: shell_command.tmp_slp1_off
   - service: input_boolean.turn_off
     entity_id: input_boolean.ketel_1h
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.floradix
-      operation_mode: "off"
+      preset_mode: 'away'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.floradix
+      hvac_mode: "off"
   - service: climate.set_temperature
     data:
       entity_id: climate.floradix
@@ -134,15 +142,19 @@
   - service: input_boolean.turn_on
     entity_id: input_boolean.ketel_2h
   - service: shell_command.tmp_slp1_auto
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.floradix
-      operation_mode: "heat"
+      preset_mode: 'none'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.floradix
+      hvac_mode: "heat"
   - service: climate.set_temperature
     data:
       entity_id: climate.floradix
       temperature: 23
-      operation_mode: "heat"
+      hvac_mode: "heat"
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -173,10 +185,14 @@
     entity_id: input_boolean.2u_floradix
   - service: input_boolean.turn_off
     entity_id: input_boolean.ketel_1h
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.floradix
-      operation_mode: "off"
+      preset_mode: 'away'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.floradix
+      hvac_mode: "off"
   - service: climate.set_temperature
     data:
       entity_id: climate.floradix
@@ -198,10 +214,14 @@
   - service: shell_command.tmp_slp1_off
   - service: homeassistant.turn_off
     entity_id: switch.heating_floradix
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.floradix
-      operation_mode: "off"
+      preset_mode: 'away'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.floradix
+      hvac_mode: "off"
   - service: climate.set_temperature
     data:
       entity_id: climate.floradix

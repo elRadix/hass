@@ -54,14 +54,18 @@
     entity_id: input_boolean.1u_yassin
   - service: input_boolean.turn_on
     entity_id: input_boolean.ketel_1h
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.yassin
-      operation_mode: "heat"
+      preset_mode: 'none'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.yassin
+      hvac_mode: "heat"
   - service: climate.set_temperature
     data:
       entity_id: climate.yassin
-      temperature: 19
+      temperature: 20
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -93,10 +97,14 @@
     entity_id: input_boolean.ketel_1h
   - service: input_boolean.turn_off
     entity_id: input_boolean.1u_yassin
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.yassin
-      operation_mode: "off"
+      preset_mode: 'away'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.yassin
+      hvac_mode: "off"
   - service: climate.set_temperature
     data:
       entity_id: climate.yassin
@@ -133,15 +141,19 @@
   - service: input_boolean.turn_on
     entity_id: input_boolean.ketel_2h
   - service: shell_command.tmp_slp3_auto
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.yassin
-      operation_mode: "heat"
+      preset_mode: 'none'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.yassin
+      hvac_mode: "heat"
   - service: climate.set_temperature
     data:
       entity_id: climate.yassin
-      temperature: 19
-      operation_mode: "heat"
+      temperature: 20
+      hvac_mode: "heat"
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -172,10 +184,14 @@
     entity_id: input_boolean.2u_yassin
   - service: input_boolean.turn_off
     entity_id: input_boolean.ketel_2h
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.yassin
-      operation_mode: "off"
+      preset_mode: 'away'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.yassin
+      hvac_mode: "off"
   - service: climate.set_temperature
     data:
       entity_id: climate.yassin
@@ -197,10 +213,14 @@
   - service: shell_command.tmp_slp3_off
   - service: homeassistant.turn_off
     entity_id: switch.heating_yassin
-  - service: climate.set_operation_mode
+  - service: climate.set_preset_mode
     data:
       entity_id: climate.yassin
-      operation_mode: "off"
+      preset_mode: 'away'
+  - service: climate.set_hvac_mode
+    data:
+      entity_id: climate.yassin
+      hvac_mode: "off"
   - service: climate.set_temperature
     data:
       entity_id: climate.yassin

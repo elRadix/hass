@@ -56,15 +56,19 @@
     entity_id: input_boolean.ketel_1h
   - service: input_boolean.turn_off
     entity_id: input_boolean.2u_eetkamer
-  - service: climate.set_operation_mode
+  - service: climate.set_hvac_mode
     data:
       entity_id: climate.eetkamer
-      operation_mode: "heat"
+      hvac_mode: "heat"
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.eetkamer
+      preset_mode: 'none'
   - service: climate.set_temperature
     data:
       entity_id: climate.eetkamer
-      temperature: 19
-      operation_mode: "heat"
+      temperature: 20
+      hvac_mode: "heat"
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -99,10 +103,14 @@
     entity_id: input_boolean.1u_eetkamer
   - service: input_boolean.turn_off
     entity_id: input_boolean.ketel_1h
-  - service: climate.set_operation_mode
+  - service: climate.set_hvac_mode
     data:
       entity_id: climate.eetkamer
-      operation_mode: "off"
+      hvac_mode: "off"
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.eetkamer
+      preset_mode: 'away'
   - service: climate.set_temperature
     data:
       entity_id: climate.eetkamer
@@ -116,7 +124,7 @@
 - id: tg_heating_eetkamer_4
   alias: tg_heating_eetkamer_2u_start
   initial_state: 'true'
-  trigger: 
+  trigger:
   - platform: state
     entity_id: input_boolean.2u_eetkamer
     from: 'off'
@@ -139,15 +147,19 @@
     entity_id: input_boolean.2u_eetkamer
   - service: input_boolean.turn_on
     entity_id: input_boolean.ketel_2h
-  - service: climate.set_operation_mode
+  - service: climate.set_hvac_mode
     data:
       entity_id: climate.eetkamer
-      operation_mode: "heat"
+      hvac_mode: "heat"
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.eetkamer
+      preset_mode: 'none'
   - service: climate.set_temperature
     data:
       entity_id: climate.eetkamer
-      temperature: 19
-      operation_mode: "heat"
+      temperature: 20
+      hvac_mode: "heat"
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -180,10 +192,14 @@
     entity_id: input_boolean.2u_eetkamer
   - service: input_boolean.turn_off
     entity_id: input_boolean.ketel_2h
-  - service: climate.set_operation_mode
+  - service: climate.set_hvac_mode
     data:
       entity_id: climate.eetkamer
-      operation_mode: "off"
+      hvac_mode: "off"
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.eetkamer
+      preset_mode: 'away'
   - service: climate.set_temperature
     data:
       entity_id: climate.eetkamer
@@ -205,14 +221,18 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.heating_eetkamer
-  - service: climate.set_operation_mode
+  - service: climate.set_hvac_mode
     data:
       entity_id: climate.eetkamer
-      operation_mode: "off"
+      hvac_mode: "off"
   - service: climate.set_temperature
     data:
       entity_id: climate.eetkamer
       temperature: 5
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.eetkamer
+      preset_mode: 'away'
   - service: input_boolean.turn_off
     entity_id: input_boolean.1u_eetkamer
   - service: input_boolean.turn_off

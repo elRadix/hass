@@ -2,92 +2,92 @@
 setpoint_living_on:
   alias: Verwarming AAN living
   sequence:
-    - service: shell_command_heating_tmp_living
+    - service: shell_command.heating_tmp_living
 
 setpoint_living_auto:
   alias: Verwarming AUTO living
   sequence:
-    - service: shell_command_heating_tmp_living_auto
+    - service: shell_command.heating_tmp_living_auto
 
 heating_living_off:
   alias: Verwarmig UIT living
   sequence:
-    - service: shell_command_heating_tmp_living_off
+    - service: shell_command.heating_tmp_living_off
 ###############################################
 setpoint_slp1_on:
   alias: Verwarming AAN slp1
   sequence:
-    - service: shell_command_heating_tmp_slp1_on
+    - service: shell_command.heating_tmp_slp1_on
 
 heating_slp1_auto:
   alias: Verwarmig AUTO slp1
   sequence:
-    - service: shell_command_heating_tmp_slp1_auto
+    - service: shell_command.heating_tmp_slp1_auto
 
 heating_slp1_off:
   alias: Verwarmig UIT slp1
   sequence:
-    - service: shell_command_heating_tmp_slp1_off
+    - service: shell_command.heating_tmp_slp1_off
 #################################################
 setpoint_slp2_on:
   alias: Verwarming AAN slp2
   sequence:
-    - service: shell_command_heating_tmp_slp2_on
+    - service: shell_command.heating_tmp_slp2_on
 
 setpoint_slp2_auto:
   alias: Verwarming Auto slp2
   sequence:
-    - service: shell_command_heating_tmp_slp2_auto
+    - service: shell_command.heating_tmp_slp2_auto
 
 heating_slp2_off:
   alias: Verwarmig UIT slp2
   sequence:
-    - service: shell_command_heating_tmp_slp2_off
+    - service: shell_command.heating_tmp_slp2_off
 #################################################
 setpoint_slp3_on:
   alias: Verwarming AAN slp3
   sequence:
-    - service: shell_command_heating_tmp_slp3_on
+    - service: shell_command.heating_tmp_slp3_on
 
 setpoint_slp3_auto:
   alias: Verwarming AAN slp3
   sequence:
-    - service: shell_command_heating_tmp_slp3_auto
+    - service: shell_command.heating_tmp_slp3_auto
 
 heating_slp3_off:
   alias: Verwarmig UIT slp3
   sequence:
-    - service: shell_command_heating_tmp_slp3_off
+    - service: shell_command.heating_tmp_slp3_off
 #################################################
 setpoint_bad_on:
   alias: Verwarming AAN bad
   sequence:
-    - service: shell_command_heating_tmp_bad_on
+    - service: shell_command.heating_tmp_bad_on
 
 setpoint_bad_auto:
   alias: Verwarming AUTO bad
   sequence:
-    - service: shell_command_heating_tmp_bad_auto
+    - service: shell_command.heating_tmp_bad_auto
 
 heating_bad_off:
   alias: Verwarmig UIT bad
   sequence:
-    - service: shell_command_heating_tmp_bad_off
+    - service: shell_command.heating_tmp_bad_off
 #################################################
 setpoint_eetkamer_on:
   alias: Verwarming AAN eetkamer
   sequence:
-    - service: shell_command_heating_tmp_eetkamer_on
+    - service: shell_command.heating_tmp_eetkamer_on
 
 setpoint_eetkamer_auto:
   alias: Verwarming AAN eetkamer auto
   sequence:
-    - service: shell_command_heating_tmp_eetkamer_auto
+    - service: shell_command.heating_tmp_eetkamer_auto
 
 heating_eetkamer_off:
   alias: Verwarmig UIT eetkamer
   sequence:
-    - service: shell_command_heating_tmp_eetkamer_off
+    - service: shell_command.heating_tmp_eetkamer_off
 #################################################
 
 heating_timer:

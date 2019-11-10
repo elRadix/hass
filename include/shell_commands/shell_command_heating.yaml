@@ -2,23 +2,18 @@
 heating_tmp_living: !secret heating_tmp_living
 heating_tmp_living_auto: !secret heating_tmp_living_auto
 heating_tmp_living_off: !secret heating_tmp_living_off
-
 heating_tmp_slp1_on: !secret heating_tmp_slp1_on
 heating_tmp_slp1_auto: !secret heating_tmp_slp1_auto
 heating_tmp_slp1_off: !secret heating_tmp_slp1_off
-
 heating_tmp_slp2_on: !secret heating_tmp_slp2_on
 heating_tmp_slp2_auto: !secret heating_tmp_slp2_auto
 heating_tmp_slp2_off: !secret heating_tmp_slp2_off
-
 heating_tmp_slp3_on: !secret heating_tmp_slp3_on
 heating_tmp_slp3_auto: !secret heating_tmp_slp3_auto
 heating_tmp_slp3_off: !secret heating_tmp_slp3_off
-
 heating_tmp_bad_on: !secret heating_tmp_bad_on
 heating_tmp_bad_auto: !secret heating_tmp_bad_auto
 heating_tmp_bad_off: !secret heating_tmp_bad_off
-
 heating_tmp_eetkamer_on: !secret heating_tmp_eetkamer_on
 heating_tmp_eetkamer_auto: !secret heating_tmp_eetkamer_auto
 heating_tmp_eetkamer_off: !secret heating_tmp_eetkamer_off

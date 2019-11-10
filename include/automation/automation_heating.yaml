@@ -12,8 +12,8 @@
   - service: climate.set_temperature
     data_template:
       entity_id: climate.living
-      temperature: '{{ states.sensor.tmp_set_living.state | float  }}'
-      #temperature: '{{ states.input_number.setpoint.state | float  }}'
+      #temperature: '{{ states.sensor.tmp_set_living.state | float  }}'
+      temperature: '{{ states.input_number.setpoint.state | float  }}'
 
 - id: setpoint_eetkamer
   initial_state: 'true'

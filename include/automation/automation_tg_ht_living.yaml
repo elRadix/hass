@@ -90,10 +90,10 @@
   alias: tg_heating_living_1u_stop
   initial_state: 'true'
   trigger:
-#  - platform: state
-#    entity_id: input_boolean.1u_living
-#    from: 'on'
-#    to: 'off'
+  - platform: state
+    entity_id: input_boolean.1u_living
+    from: 'on'
+    to: 'off'
   - platform: state
     entity_id: input_boolean.1u_living
     from: 'off'

@@ -1,8 +1,8 @@
 #notify:
 
 
-  - name: android
-    platform: fcm-android
+  # - name: android
+  #   platform: fcm-android
     #server_key (OPTIONAL: only if using your own FCM Project): MYSERVERKEY123456
 
 #  - name: html5

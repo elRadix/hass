@@ -1113,41 +1113,6 @@
                                 }
                             ],
                             "type": "vertical-stack"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "switch.transmission_turtle_mode"
-                                },
-                                {
-                                    "entity": "switch.transmission_switch"
-                                },
-                                {
-                                    "entity": "sensor.transmission_status"
-                                },
-                                {
-                                    "entity": "sensor.transmission_active_torrents"
-                                },
-                                {
-                                    "entity": "sensor.transmission_completed_torrents"
-                                },
-                                {
-                                    "entity": "sensor.transmission_paused_torrents"
-                                },
-                                {
-                                    "entity": "sensor.transmission_started_torrents"
-                                },
-                                {
-                                    "entity": "sensor.transmission_total_torrents"
-                                },
-                                {
-                                    "entity": "sensor.transmission_down_speed"
-                                },
-                                {
-                                    "entity": "sensor.transmission_up_speed"
-                                }
-                            ],
-                            "type": "entities"
                         }
                     ],
                     "icon": "mdi:home-assistant",
@@ -2886,10 +2851,6 @@
                                             "type": "custom:button-card"
                                         },
                                         {
-                                            "color_type": "blank-card",
-                                            "type": "custom:button-card"
-                                        },
-                                        {
                                             "color": "rgb(0,0,0.5)",
                                             "color_off": "var(--disabled-text-color)",
                                             "color_type": "card",
@@ -3094,10 +3055,16 @@
                                             "color": "rgb(255, 255, 0)",
                                             "color_off": "var(--disabled-text-color)(189, 255, 5)",
                                             "color_type": "card",
+                                            "confirmation": {
+                                                "text": "[[[ return `Are you sure you want to toggle ${entity.attributes.friendly_name}?` ]]]"
+                                            },
                                             "default_color": "var(--primary-text-color)",
                                             "entity": "input_boolean.easyplus_boiler_shower",
-                                            "icon": "mdi:fire",
-                                            "lock": true,
+                                            "icon": "mdi:shower-head",
+                                            "lock": {
+                                                "enabled": true,
+                                                "unlock": "tap"
+                                            },
                                             "show_name": false,
                                             "size": "75%",
                                             "state": [
@@ -3152,16 +3119,86 @@
                                             "type": "custom:button-card"
                                         },
                                         {
-                                            "color_type": "blank-card",
+                                            "card_style": "",
+                                            "color": "rgb(255, 255, 0)",
+                                            "color_off": "var(--disabled-text-color)(189, 255, 5)",
+                                            "color_type": "card",
+                                            "confirmation": {
+                                                "text": "[[[ return `Are you sure you want to toggle ${entity.attributes.friendly_name}?` ]]]"
+                                            },
+                                            "default_color": "var(--primary-text-color)",
+                                            "entity": "input_boolean.easyplus_boiler_heating",
+                                            "icon": "mdi:fire",
+                                            "lock": {
+                                                "enabled": true,
+                                                "unlock": "tap"
+                                            },
+                                            "show_name": false,
+                                            "size": "75%",
+                                            "state": [
+                                                {
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "70px"
+                                                            },
+                                                            {
+                                                                "width": "70px"
+                                                            },
+                                                            {
+                                                                "border-radius": "50px"
+                                                            },
+                                                            {
+                                                                "border-style": "solid"
+                                                            },
+                                                            {
+                                                                "border-width": "2px"
+                                                            },
+                                                            {
+                                                                "border-color": "#e5e5e5"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "value": "on"
+                                                },
+                                                {
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "70px"
+                                                            },
+                                                            {
+                                                                "width": "70px"
+                                                            },
+                                                            {
+                                                                "border-radius": "50px"
+                                                            },
+                                                            {
+                                                                "font-size": "11px"
+                                                            },
+                                                            {
+                                                                "box-shadow": "2px 2px rgba(0,0,0,0.3)"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "value": "off"
+                                                }
+                                            ],
                                             "type": "custom:button-card"
                                         },
                                         {
                                             "card_style": "",
                                             "color": "yellow",
                                             "color_type": "card",
+                                            "confirmation": {
+                                                "text": "[[[ return `Are you sure you want to toggle ${entity.attributes.friendly_name}?` ]]]"
+                                            },
                                             "entity": "switch.easyplus",
                                             "icon": "mdi:power",
-                                            "lock": true,
+                                            "lock": {
+                                                "enabled": true,
+                                                "unlock": "tap"
+                                            },
                                             "name": "Easyplus",
                                             "show_name": false,
                                             "size": "100%",
@@ -4051,6 +4088,78 @@
                                             "color_off": "var(--disabled-text-color)(189, 255, 5)",
                                             "color_type": "card",
                                             "default_color": "var(--primary-text-color)",
+                                            "entity": "switch.living",
+                                            "hold_action": {
+                                                "action": "more-info",
+                                                "haptic": "success"
+                                            },
+                                            "icon": "mdi:power-socket",
+                                            "name": "Living",
+                                            "show_name": false,
+                                            "size": "75%",
+                                            "state": [
+                                                {
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "70px"
+                                                            },
+                                                            {
+                                                                "width": "70px"
+                                                            },
+                                                            {
+                                                                "border-radius": "10px"
+                                                            },
+                                                            {
+                                                                "border-style": "solid"
+                                                            },
+                                                            {
+                                                                "border-width": "2px"
+                                                            },
+                                                            {
+                                                                "border-color": "#e5e5e5"
+                                                            },
+                                                            {
+                                                                "white-space": "nowrap"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "value": "on"
+                                                },
+                                                {
+                                                    "styles": {
+                                                        "card": [
+                                                            {
+                                                                "height": "70px"
+                                                            },
+                                                            {
+                                                                "width": "70px"
+                                                            },
+                                                            {
+                                                                "border-radius": "10px"
+                                                            },
+                                                            {
+                                                                "font-size": "11px"
+                                                            },
+                                                            {
+                                                                "box-shadow": "2px 2px rgba(0,0,0,0.3)"
+                                                            },
+                                                            {
+                                                                "white-space": "nowrap"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "value": "off"
+                                                }
+                                            ],
+                                            "type": "custom:button-card"
+                                        },
+                                        {
+                                            "card_style": "",
+                                            "color": "rgb(255, 255, 0)",
+                                            "color_off": "var(--disabled-text-color)(189, 255, 5)",
+                                            "color_type": "card",
+                                            "default_color": "var(--primary-text-color)",
                                             "entity": "switch.stp_living_other",
                                             "hold_action": {
                                                 "action": "more-info",
@@ -4624,9 +4733,9 @@
                                 }
                             ],
                             "group_by": "date",
-                            "hours_to_show": 12,
-                            "name": "\ud83c\udc29 Energy Usage Per Day",
-                            "points_per_hour": 1,
+                            "hours_to_show": 168,
+                            "name": "\ud83c\udc29 Energy Usage Week ",
+                            "points_per_hour": 0.5,
                             "show": {
                                 "graph": "bar",
                                 "labels": true
@@ -5820,6 +5929,15 @@
                             ],
                             "title": "Shelly HT",
                             "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "input_boolean.easyplus_boiler_heating"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "type": "entities"
                         },
                         {
                             "entities": [

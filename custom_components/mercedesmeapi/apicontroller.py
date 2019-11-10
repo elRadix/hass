@@ -70,7 +70,8 @@ ODOMETER_OPTIONS = ["odo",
                     "rangeliquid",
                     "serviceintervaldays",
                     "tanklevelpercent",
-                    "tankReserveLamp"]
+                    "tankReserveLamp",
+                    "batteryState"]
 
 LOCATION_OPTIONS = ["latitude",
                     "longitude",
@@ -98,22 +99,23 @@ WINDOW_OPTIONS = ["windowstatusrearleft",
 
 DOOR_OPTIONS = [
     'doorStateFrontLeft',
-    'doorStateFrontRight', 
-    'doorStateRearLeft', 
-    'doorStateRearRight', 
-    'frontLeftDoorLocked', 
-    'frontRightDoorLocked', 
-    'rearLeftDoorLocked', 
+    'doorStateFrontRight',
+    'doorStateRearLeft',
+    'doorStateRearRight',
+    'frontLeftDoorLocked',
+    'frontRightDoorLocked',
+    'rearLeftDoorLocked',
     'rearRightDoorLocked',
-    'frontLeftDoorClosed', 
-    'frontRightDoorClosed', 
-    'rearLeftDoorClosed', 
-    'rearRightDoorClosed', 
-    'rearRightDoorClosed', 
+    'frontLeftDoorClosed',
+    'frontRightDoorClosed',
+    'rearLeftDoorClosed',
+    'rearRightDoorClosed',
+    'rearRightDoorClosed',
     'doorsClosed',
     'trunkStateRollup',
     'sunroofstatus',
-    'locked']
+    'locked',
+    'fuelLidClosed']
 
 ELECTRIC_OPTIONS = [
     'rangeelectric',

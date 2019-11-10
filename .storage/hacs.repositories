@@ -205,13 +205,13 @@
                 "@robmarkcole"
             ],
             "category": "integration",
-            "description": "Home-Assistant component for face and person detection with sighthound.com",
+            "description": "Home-Assistant component for person detection with Sighthound Cloud",
             "full_name": "robmarkcole/HASS-Sighthound",
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "e28dcc7",
-            "last_release_tag": "v0.2",
+            "last_commit": "ad515c9",
+            "last_release_tag": "v0.4",
             "name": "Sighthound custom component",
             "new": false,
             "repository_manifest": {},
@@ -417,8 +417,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": "98b7ba9",
-            "last_commit": "5d4e9a6",
-            "last_release_tag": "1.2.0",
+            "last_commit": "20cd255",
+            "last_release_tag": "1.2.1",
             "name": "Authenticated",
             "new": false,
             "repository_manifest": {},
@@ -711,8 +711,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "2c430ce",
-            "last_release_tag": "8",
+            "last_commit": "1dab4bd",
+            "last_release_tag": "9",
             "name": "lovelace-slider-entity-row",
             "new": false,
             "repository_manifest": {
@@ -745,16 +745,21 @@
         "145142810": {
             "authors": [],
             "category": "plugin",
-            "description": "\ud83d\udce6 Aftership Card",
-            "full_name": "custom-cards/aftership-card",
+            "description": "\ud83d\udce6 Aftership Card for package tracking",
+            "full_name": "iantrich/aftership-card",
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "c47e1a4",
-            "last_release_tag": "1.1.3",
+            "last_commit": "ecb3984",
+            "last_release_tag": "1.1.4",
             "name": "aftership-card",
-            "new": false,
-            "repository_manifest": {},
+            "new": true,
+            "repository_manifest": {
+                "filename": "aftership-card.js",
+                "name": "Aftership Card",
+                "render_readme": true,
+                "zip_release": true
+            },
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
@@ -1079,8 +1084,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "f48412b",
-            "last_release_tag": "7",
+            "last_commit": "a00f7c9",
+            "last_release_tag": "8",
             "name": "lovelace-fold-entity-row",
             "new": false,
             "repository_manifest": {
@@ -1100,7 +1105,7 @@
             "hide": false,
             "installed": true,
             "installed_commit": "552640b",
-            "last_commit": "2156633",
+            "last_commit": "622ad62",
             "last_release_tag": "v0.8.2",
             "name": "mini-graph-card",
             "new": false,
@@ -1443,9 +1448,9 @@
             "full_name": "nervetattoo/simple-thermostat",
             "hide": false,
             "installed": true,
-            "installed_commit": "02ddb3f",
-            "last_commit": "02ddb3f",
-            "last_release_tag": "0.28.0",
+            "installed_commit": "2ee2e92",
+            "last_commit": "2ee2e92",
+            "last_release_tag": "0.29.0",
             "name": "simple-thermostat",
             "new": false,
             "repository_manifest": {},
@@ -1459,7 +1464,7 @@
                 "lovelace-ui",
                 "polymer-3"
             ],
-            "version_installed": "0.28.0"
+            "version_installed": "0.29.0"
         },
         "158878235": {
             "authors": [
@@ -1648,9 +1653,9 @@
             "full_name": "thomasloven/lovelace-card-tools",
             "hide": false,
             "installed": true,
-            "installed_commit": "c0cf359",
-            "last_commit": "c0cf359",
-            "last_release_tag": "2.1",
+            "installed_commit": "4bcbb48",
+            "last_commit": "4bcbb48",
+            "last_release_tag": "2.2",
             "name": "lovelace-card-tools",
             "new": false,
             "repository_manifest": {
@@ -1659,7 +1664,7 @@
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": "2.1"
+            "version_installed": "2.2"
         },
         "161661213": {
             "authors": [],
@@ -1839,8 +1844,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "9f7ffca",
-            "last_release_tag": "1.0.6",
+            "last_commit": "70bea91",
+            "last_release_tag": "1.0.7",
             "name": "roku-card",
             "new": true,
             "repository_manifest": {
@@ -1999,6 +2004,27 @@
             ],
             "version_installed": null
         },
+        "167744584": {
+            "authors": [],
+            "category": "plugin",
+            "description": "\ud83d\udd39Automatically populate the entities-list of lovelace cards",
+            "full_name": "thomasloven/lovelace-auto-entities",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "65b2bd2",
+            "last_release_tag": "1.1",
+            "name": "lovelace-auto-entities",
+            "new": true,
+            "repository_manifest": {
+                "name": "auto-entities",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": null
+        },
         "167885769": {
             "authors": [
                 "@sherrell"
@@ -2088,8 +2114,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "e2c6c62",
-            "last_release_tag": "v1.10.3",
+            "last_commit": "e6277b3",
+            "last_release_tag": "v1.10.4",
             "name": "BWAlarm (ak74 edition)",
             "new": false,
             "repository_manifest": {},
@@ -2189,11 +2215,14 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "e4b180f",
+            "last_commit": "ec3cf46",
             "last_release_tag": "1.0.9",
             "name": "config-template-card",
             "new": true,
-            "repository_manifest": {},
+            "repository_manifest": {
+                "name": "Config Template Card",
+                "render_readme": true
+            },
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
@@ -2237,7 +2266,7 @@
             "hide": false,
             "installed": true,
             "installed_commit": "838dbd7",
-            "last_commit": "c30f5bc",
+            "last_commit": "c30cff5",
             "last_release_tag": "0.16.3",
             "name": "HACS (Home Assistant Community Store)",
             "new": false,
@@ -2508,12 +2537,12 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "266daa5",
+            "last_commit": "61b9461",
             "last_release_tag": "1.0.8",
             "name": "podcast-card",
             "new": true,
             "repository_manifest": {
-                "name": "Radial Menu Element",
+                "name": "Podcast Card",
                 "render_readme": true
             },
             "selected_tag": null,
@@ -2854,8 +2883,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "9a7b90a",
-            "last_release_tag": "1.4.5",
+            "last_commit": "195b40b",
+            "last_release_tag": "1.4.6",
             "name": "radial-menu",
             "new": true,
             "repository_manifest": {
@@ -3115,8 +3144,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "632c70f",
-            "last_release_tag": "v0.0.3",
+            "last_commit": "af4357e",
+            "last_release_tag": "0.0.5",
             "name": "lovelace-card-templater",
             "new": false,
             "repository_manifest": {},
@@ -3198,8 +3227,8 @@
             "full_name": "ReneNulschDE/mbapipy",
             "hide": false,
             "installed": true,
-            "installed_commit": "168acc2",
-            "last_commit": "168acc2",
+            "installed_commit": "1754cde",
+            "last_commit": "1754cde",
             "last_release_tag": null,
             "name": "MercedesMeApi",
             "new": false,
@@ -3537,9 +3566,9 @@
             "full_name": "thomasloven/lovelace-card-mod",
             "hide": false,
             "installed": true,
-            "installed_commit": "d671cdb",
-            "last_commit": "d671cdb",
-            "last_release_tag": "8",
+            "installed_commit": "ebc779f",
+            "last_commit": "ebc779f",
+            "last_release_tag": "9",
             "name": "lovelace-card-mod",
             "new": false,
             "repository_manifest": {
@@ -3549,7 +3578,7 @@
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": "8"
+            "version_installed": "9"
         },
         "190982718": {
             "authors": [
@@ -4020,13 +4049,13 @@
         "193372044": {
             "authors": [],
             "category": "plugin",
-            "description": "This card enables you to specify target or start zoned cleanup using map, just like in Mi Home app. Additionally you can define a list of zones and choose ones to be cleaned.",
+            "description": "This card enables you to specify target or start zoned cleanup using live or static map, just like in Mi Home app. Additionally you can define a list of zones and choose ones to be cleaned.",
             "full_name": "PiotrMachowski/lovelace-xiaomi-vacuum-map-card",
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "d568984",
-            "last_release_tag": "v1.0.0",
+            "last_commit": "aed2ce3",
+            "last_release_tag": "v1.1.0",
             "name": "lovelace-xiaomi-vacuum-map-card",
             "new": false,
             "repository_manifest": {},
@@ -4213,8 +4242,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "eaed9cd",
-            "last_release_tag": "13",
+            "last_commit": "8038cab",
+            "last_release_tag": "13.1",
             "name": "Browser mod",
             "new": false,
             "repository_manifest": {},
@@ -4809,8 +4838,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "8048670",
-            "last_release_tag": "0.6.1",
+            "last_commit": "6987d42",
+            "last_release_tag": "0.6.2",
             "name": "GIOS",
             "new": false,
             "repository_manifest": {
@@ -6511,8 +6540,8 @@
             "full_name": "home-assistant-community-themes/amoled",
             "hide": false,
             "installed": true,
-            "installed_commit": "ec2f266",
-            "last_commit": "ec2f266",
+            "installed_commit": "8d539d6",
+            "last_commit": "8d539d6",
             "last_release_tag": null,
             "name": "amoled",
             "new": false,
@@ -6926,7 +6955,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "fe6b100",
+            "last_commit": "9291f87",
             "last_release_tag": null,
             "name": "grey_night",
             "new": false,
@@ -6981,8 +7010,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "9debdbd",
-            "last_release_tag": "1.1.4",
+            "last_commit": "0e94767",
+            "last_release_tag": "1.1.5",
             "name": "restriction-card",
             "new": true,
             "repository_manifest": {
@@ -7005,12 +7034,12 @@
             "description": "Logbook card for Home Assistant UI Lovelace",
             "full_name": "royto/logbook-card",
             "hide": false,
-            "installed": false,
-            "installed_commit": null,
-            "last_commit": "369c8a8",
-            "last_release_tag": "0.2.0",
+            "installed": true,
+            "installed_commit": "480ef90",
+            "last_commit": "480ef90",
+            "last_release_tag": "0.3.0",
             "name": "logbook-card",
-            "new": true,
+            "new": false,
             "repository_manifest": {
                 "content_in_root": true,
                 "filename": "logbook-card.js",
@@ -7019,7 +7048,7 @@
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": null
+            "version_installed": "0.3.0"
         },
         "216165131": {
             "authors": [],
@@ -7186,6 +7215,210 @@
             "topics": [
                 "home-assistant",
                 "lovelace-card"
+            ],
+            "version_installed": null
+        },
+        "219035415": {
+            "authors": [
+                "@ptimatth"
+            ],
+            "category": "integration",
+            "description": "Georide integration for Home Assistant",
+            "full_name": "ptimatth/GeorideHA",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "bc3da8f",
+            "last_release_tag": "0.4.0",
+            "name": "Georide",
+            "new": false,
+            "repository_manifest": {
+                "content_in_root": false,
+                "country": [
+                    "FR"
+                ],
+                "domains": [
+                    "devices_tracker",
+                    "sensor"
+                ],
+                "homeassistant": "0.100.0",
+                "name": "Georide integration",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": null
+        },
+        "219363790": {
+            "authors": [],
+            "category": "integration",
+            "description": "Play videos from the Swedish channel 4",
+            "full_name": "lindell/home-assistant-tv4-play",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "4c62572",
+            "last_release_tag": "0.1.1",
+            "name": "TV4 Play",
+            "new": false,
+            "repository_manifest": {
+                "country": [
+                    "SE"
+                ],
+                "name": "TV4 Play"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [
+                "homeassistant",
+                "tv4",
+                "tv4play"
+            ],
+            "version_installed": null
+        },
+        "220641275": {
+            "authors": [],
+            "category": "theme",
+            "description": "Dark Orange theme for Home Assistant",
+            "full_name": "home-assistant-community-themes/dark-orange",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "9193207",
+            "last_release_tag": null,
+            "name": "dark_orange",
+            "new": true,
+            "repository_manifest": {
+                "name": "Dark Orange Theme"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [
+                "hacs",
+                "home-assistant",
+                "theme"
+            ],
+            "version_installed": null
+        },
+        "220642260": {
+            "authors": [
+                "@basnijholt"
+            ],
+            "category": "integration",
+            "description": "Home Assistant integration for KEF LS50 Wireless and LSX speakers :house: :speaker:",
+            "full_name": "basnijholt/media_player.kef",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": null,
+            "name": "KEF",
+            "new": true,
+            "repository_manifest": {
+                "domains": [
+                    "media_player"
+                ],
+                "name": "KEF",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [
+                "hacs",
+                "home-assistant",
+                "kef",
+                "ls50",
+                "ls50w",
+                "lsx"
+            ],
+            "version_installed": null
+        },
+        "220679143": {
+            "authors": [],
+            "category": "plugin",
+            "description": "Lovelace Departure Card for the HASL Platform",
+            "full_name": "hasl-platform/lovelace-hasl-departure-card",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "v2.3.0",
+            "name": "lovelace-hasl-departure-card",
+            "new": true,
+            "repository_manifest": {
+                "content_in_root": false,
+                "filename": "hasl-departure-card.js",
+                "homeassistant": "0.92",
+                "name": "HASL Departure Card",
+                "render_readme": false,
+                "zip_release": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [
+                "departures",
+                "hasl",
+                "sl"
+            ],
+            "version_installed": null
+        },
+        "220679530": {
+            "authors": [],
+            "category": "plugin",
+            "description": "Lovelace Traffic Status Card for the HASL Platform",
+            "full_name": "hasl-platform/lovelace-hasl-traffic-status-card",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "v2.3.0",
+            "name": "lovelace-hasl-traffic-status-card",
+            "new": true,
+            "repository_manifest": {
+                "content_in_root": false,
+                "filename": "hasl-traffic-status-card.js",
+                "homeassistant": "0.92",
+                "name": "HASL Traffic Status Card",
+                "render_readme": false,
+                "zip_release": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [
+                "hasl",
+                "sl",
+                "traffic-status"
+            ],
+            "version_installed": null
+        },
+        "220685552": {
+            "authors": [
+                "@freakshock88"
+            ],
+            "category": "integration",
+            "description": "Custom component for Home Assistant which generates a sensor to show popularity for a google maps place.",
+            "full_name": "freakshock88/hass-populartimes",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "0.11",
+            "name": "Popular Times",
+            "new": true,
+            "repository_manifest": {
+                "domains": [
+                    "sensor"
+                ],
+                "name": "Popular Times",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [
+                "google-maps",
+                "google-places-api",
+                "homeassistant"
             ],
             "version_installed": null
         },

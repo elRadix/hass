@@ -8,7 +8,7 @@
      entity_id: input_number.setpoint
   action:
   - service: script.setpoint_living_on
-  - service: shell_command.tmp_living
+  - service: shell_command_heating_tmp_living
   - service: climate.set_temperature
     data_template:
       entity_id: climate.living
@@ -22,7 +22,7 @@
   -  platform: state
      entity_id: input_number.setpoint_eetkamer
   action:
-  #- service: script.setpoint_eetkamer_on
+  - service: shell_command_heating_tmp_eetkamer_on
   - service: climate.set_temperature
     data_template:
       entity_id: climate.eetkamer
@@ -317,7 +317,7 @@
   - condition: template
     value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time.state }}'
   action:
-  - service: shell_command.tmp_eetkamer_off
+  - service: shell_command_heating_tmp_eetkamer_off
   - service: climate.set_temperature
     data:
       entity_id: climate.eetkamer
@@ -369,7 +369,7 @@
       entity_id: switch.easyplus
     - service: homeassistant.turn_on
       entity_id: input_boolean.easyplus_boiler_heating
-    - service: shell_command.tmp_living_auto
+    - service: shell_command_heating_tmp_living_auto
     - service: climate.set_temperature
       data:
         entity_id: climate.living
@@ -402,7 +402,7 @@
   - condition: template
     value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration_liv") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_liv.state }}'
   action:
-  - service: shell_command.tmp_living_off
+  - service: shell_command_heating_tmp_living_off
   - service: climate.set_temperature
     data:
       entity_id: climate.living
@@ -410,11 +410,11 @@
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.living
-      hvac_mode: "off"
-    - service: climate.set_preset_mode
-      data:
-        entity_id: climate.living
-        preset_mode: 'away'
+      hvac_mode: off
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.living
+      preset_mode: 'away'
   - service: notify.telegram_dageraad
     data:
       message: "Verwarming Living is uitgeschakeld!"
@@ -456,7 +456,7 @@
       entity_id: switch.easyplus
     - service: homeassistant.turn_on
       entity_id: input_boolean.easyplus_boiler_heating
-    - service: shell_command.tmp_slp1_auto
+    - service: shell_command_heating_tmp_slp1_auto
     - service: climate.set_preset_mode
       data:
         entity_id: climate.floradix
@@ -488,7 +488,7 @@
   - condition: template
     value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration_slp1") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp1.state }}'
   action:
-  - service: shell_command.tmp_slp1_off
+  - service: shell_command_heating_tmp_slp1_off
   - service: climate.set_temperature
     data:
       entity_id: climate.floradix
@@ -540,7 +540,7 @@
       entity_id: switch.easyplus
     - service: homeassistant.turn_on
       entity_id: input_boolean.easyplus_boiler_heating
-    - service: shell_command.tmp_slp2_auto
+    - service: shell_command_heating_tmp_slp2_auto
     - service: climate.set_preset_mode
       data:
         entity_id: climate.sara
@@ -573,15 +573,15 @@
   - condition: template
     value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration_slp2") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp2.state }}'
   action:
-  - service: shell_command.tmp_slp2_off
+  - service: shell_command_heating_tmp_slp2_off
   - service: climate.set_temperature
     data:
       entity_id: climate.sara
       temperature: 5
-    - service: climate.set_preset_mode
-      data:
-        entity_id: climate.sara
-        preset_mode: 'away'
+  - service: climate.set_preset_mode
+    data:
+      entity_id: climate.sara
+      preset_mode: 'away'
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.sara
@@ -627,7 +627,7 @@
       entity_id: switch.easyplus
     - service: homeassistant.turn_on
       entity_id: input_boolean.easyplus_boiler_heating
-    - service: shell_command.tmp_slp3_auto
+    - service: shell_command_heating_tmp_slp3_auto
     - service: climate.set_preset_mode
       data:
         entity_id: climate.yassin
@@ -660,7 +660,7 @@
   - condition: template
     value_template: '{{ ((now().strftime("%s") | int - (states("input_number.auto_heat_duration_slp3") | int) * 60) | timestamp_custom("%H:%M")) == states.sensor.auto_heat_time_slp3.state }}'
   action:
-  - service: shell_command.tmp_slp3_off
+  - service: shell_command_heating_tmp_slp3_off
   - service: climate.set_preset_mode
     data:
       entity_id: climate.yassin

@@ -53,7 +53,7 @@
     entity_id: switch.easyplus
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
-  - service: shell_command.tmp_living_auto
+  - service: shell_command_heating_tmp_living_auto
   - service: input_boolean.turn_on
     entity_id: input_boolean.1u_living
   - service: input_boolean.turn_on
@@ -99,7 +99,7 @@
       minutes: 75
       seconds: 0
   action:
-  - service: shell_command.tmp_living_off
+  - service: shell_command_heating_tmp_living_off
   - service: homeassistant.turn_off
     entity_id: switch.heating_living
   - service: input_boolean.turn_off
@@ -142,7 +142,7 @@
     entity_id: switch.easyplus
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
-  - service: shell_command.tmp_living_auto
+  - service: shell_command_heating_tmp_living_auto
   - service: input_boolean.turn_on
     entity_id: input_boolean.ketel_2h
   - service: input_boolean.turn_on
@@ -188,7 +188,7 @@
       minutes: 135
       seconds: 0
   action:
-  - service: shell_command.tmp_living_off
+  - service: shell_command_heating_tmp_living_off
   - service: homeassistant.turn_off
     entity_id: switch.heating_living
   - service: input_boolean.turn_off

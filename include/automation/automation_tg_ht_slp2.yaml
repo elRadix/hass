@@ -49,7 +49,7 @@
     entity_id: switch.easyplus
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
-  - service: shell_command.tmp_slp2_auto
+  - service: shell_command_heating_tmp_slp2_auto
   - service: input_boolean.turn_on
     entity_id: input_boolean.1u_sara
   - service: input_boolean.turn_on
@@ -94,7 +94,7 @@
     entity_id: switch.heating_sara
   - service: input_boolean.turn_off
     entity_id: input_boolean.ketel_1h
-  - service: shell_command.tmp_slp2_off
+  - service: shell_command_heating_tmp_slp2_off
   - service: input_boolean.turn_off
     entity_id: input_boolean.1u_sara
   - service: climate.set_preset_mode
@@ -140,7 +140,7 @@
     entity_id: input_boolean.2u_sara
   - service: input_boolean.turn_on
     entity_id: input_boolean.ketel_3h
-  - service: shell_command.tmp_slp2_auto
+  - service: shell_command_heating_tmp_slp2_auto
   - service: climate.set_preset_mode
     data:
       entity_id: climate.sara
@@ -179,7 +179,7 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.heating_sara
-  - service: shell_command.tmp_slp2_off
+  - service: shell_command_heating_tmp_slp2_off
   - service: input_boolean.turn_off
     entity_id: input_boolean.2u_sara
   - service: input_boolean.turn_off
@@ -210,7 +210,7 @@
     event_data:
       command: '/Stop_Sara'
   action:
-  - service: shell_command.tmp_slp2_off
+  - service: shell_command_heating_tmp_slp2_off
   - service: homeassistant.turn_off
     entity_id: switch.heating_sara
   - service: climate.set_preset_mode

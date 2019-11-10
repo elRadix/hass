@@ -67,7 +67,7 @@ setpoint_bad_on:
 setpoint_bad_auto:
   alias: Verwarming AUTO bad
   sequence:
-    - service: shell_command_heating_tmp_badauto
+    - service: shell_command_heating_tmp_bad_auto
 
 heating_bad_off:
   alias: Verwarmig UIT bad

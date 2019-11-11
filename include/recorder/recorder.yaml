@@ -519,7 +519,6 @@
       - input_boolean.day
       - input_boolean.easyplus_summer
       - input_boolean.heating
-      - input_boolean.ketel_1h
       - input_boolean.ketel_2h
       - input_boolean.mode_kodi
       - input_boolean.reset_rf

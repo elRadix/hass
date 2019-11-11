@@ -47,13 +47,11 @@
         Even geduld aub...EasyPlus opstarten'
   - service: homeassistant.turn_on
     entity_id: switch.easyplus
+  - delay:
+      seconds: 25
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
   - service: shell_command.heating_tmp_slp2_auto
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.1u_sara
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.ketel_1h
   - service: climate.set_preset_mode
     data:
       entity_id: climate.sara
@@ -73,6 +71,8 @@
       keyboard:
         - '/Sara_V, /Verwarming'
         - '/home'
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.1u_sara
   - service: notify.dageraad
     data:
       message: "Sara voor 1 uur opwarmen"
@@ -82,7 +82,11 @@
   alias: tg_heating_sara_1u_stop
   initial_state: 'true'
   trigger:
-    platform: state
+  - platform: state
+    entity_id: input_boolean.1u_sara
+    from: 'on'
+    to: 'off'
+  - platform: state
     entity_id: input_boolean.1u_sara
     from: 'off'
     to: 'on'
@@ -92,11 +96,7 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.heating_sara
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_1h
   - service: shell_command.heating_tmp_slp2_off
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.1u_sara
   - service: climate.set_preset_mode
     data:
       entity_id: climate.sara
@@ -109,6 +109,8 @@
     data:
       entity_id: climate.sara
       temperature: 5
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.1u_sara
   - service: notify.dageraad
     data:
       message: "Sara verwarming is uitgeschakeld na 1 uur."
@@ -134,6 +136,8 @@
         Even geduld aub...EasyPlus opstarten'
   - service: homeassistant.turn_on
     entity_id: switch.easyplus
+  - delay:
+      seconds: 25
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
   - service: input_boolean.turn_on
@@ -172,7 +176,11 @@
   alias: tg_heating_sara_2u_stop
   initial_state: 'true'
   trigger:
-    platform: state
+  - platform: state
+    entity_id: input_boolean.2u_sara
+    from: 'on'
+    to: 'off'
+  - platform: state
     entity_id: input_boolean.2u_sara
     from: 'off'
     to: 'on'
@@ -183,10 +191,6 @@
   - service: homeassistant.turn_off
     entity_id: switch.heating_sara
   - service: shell_command.heating_tmp_slp2_off
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.2u_sara
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_2h
   - service: climate.set_preset_mode
     data:
       entity_id: climate.sara
@@ -199,6 +203,8 @@
     data:
       entity_id: climate.sara
       temperature: 5
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.2u_sara
   - service: notify.dageraad
     data:
       message: "Sara verwarming is uitgeschakeld na 2 uur"
@@ -232,10 +238,6 @@
     entity_id: input_boolean.1u_sara
   - service: input_boolean.turn_off
     entity_id: input_boolean.2u_sara
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_1h
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_2h
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'

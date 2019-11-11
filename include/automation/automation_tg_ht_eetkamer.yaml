@@ -48,14 +48,10 @@
         Even geduld aub...EasyPlus opstarten'
   - service: homeassistant.turn_on
     entity_id: switch.easyplus
+  - delay:
+       seconds: 25
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.1u_eetkamer
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.ketel_1h
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.2u_eetkamer
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.eetkamer
@@ -79,6 +75,8 @@
       keyboard:
         - '/Eetkamer_V, /Verwarming'
         - '/home'
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.1u_eetkamer
   - service: notify.dageraad
     data:
       message: "Eetkamer voor 1 uur opwarmen"
@@ -103,10 +101,6 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.heating_eetkamer
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.1u_eetkamer
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_1h
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.eetkamer
@@ -119,6 +113,8 @@
     data:
       entity_id: climate.eetkamer
       temperature: 5
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.1u_eetkamer
   - service: notify.dageraad
     data:
       message: "Eetkamer verwarming is uitgeschakeld na 1 uur."
@@ -147,10 +143,6 @@
     entity_id: switch.easyplus
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.2u_eetkamer
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.ketel_2h
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.eetkamer
@@ -164,6 +156,8 @@
       entity_id: climate.eetkamer
       temperature: 20
       hvac_mode: "heat"
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.2u_eetkamer
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -195,10 +189,6 @@
   action:
   - service: homeassistant.turn_off
     entity_id: switch.heating_eetkamer
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.2u_eetkamer
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_2h
   - service: climate.set_hvac_mode
     data:
       entity_id: climate.eetkamer
@@ -211,6 +201,8 @@
     data:
       entity_id: climate.eetkamer
       temperature: 5
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.2u_eetkamer
   - service: notify.dageraad
     data:
       message: "Eetkamer verwarming is uitgeschakeld na 2 uur"
@@ -218,7 +210,6 @@
 ## 6 ##
 - id: tg_heating_eetkamer_6
   alias: tg_heating_eetkamer_stop_all
-
   initial_state: 'true'
   trigger:
     platform: event
@@ -244,10 +235,6 @@
     entity_id: input_boolean.1u_eetkamer
   - service: input_boolean.turn_off
     entity_id: input_boolean.2u_eetkamer
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_1h
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_2h
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'

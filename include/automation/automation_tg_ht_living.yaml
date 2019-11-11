@@ -53,11 +53,11 @@
     entity_id: switch.easyplus
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
+  - delay:
+       seconds: 25
   - service: shell_command.heating_tmp_living_auto
   - service: input_boolean.turn_on
     entity_id: input_boolean.1u_living
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.ketel_1h
   - service: climate.set_preset_mode
     data:
       entity_id: climate.living
@@ -103,8 +103,6 @@
     entity_id: switch.heating_living
   - service: input_boolean.turn_off
     entity_id: input_boolean.1u_living
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_1h
   - service: climate.set_preset_mode
     data:
       entity_id: climate.living
@@ -144,11 +142,11 @@
         Even geduld aub...EasyPlus opstarten'
   - service: homeassistant.turn_on
     entity_id: switch.easyplus
-  - service: homeassistant.turn_on
+  - delay:
+      seconds: 25
+    - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
   - service: shell_command.heating_tmp_living_auto
-  - service: input_boolean.turn_on
-    entity_id: input_boolean.ketel_2h
   - service: input_boolean.turn_on
     entity_id: input_boolean.2u_living
   - service: climate.set_preset_mode
@@ -200,8 +198,6 @@
     entity_id: switch.heating_living
   - service: input_boolean.turn_off
     entity_id: input_boolean.2u_living
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_2h
   - service: climate.set_preset_mode
     data:
       entity_id: climate.living
@@ -248,13 +244,8 @@
     entity_id: input_boolean.1u_living
   - service: input_boolean.turn_off
     entity_id: input_boolean.2u_living
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_1h
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.ketel_2h
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
       message: "Living verwarming is uitgeschakeld"
-
 #### TELEGRAM LIVING ####

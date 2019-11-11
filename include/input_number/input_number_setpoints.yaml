@@ -1,7 +1,7 @@
   setpoint:
     name: 'Doel setpoint'
     min: 5
-    max: 23
+    max: 26
     step: 1
     initial: 10
     mode: slider
@@ -10,7 +10,7 @@
   setpoint_slp1:
     name: 'Doel setpoint'
     min: 5
-    max: 24
+    max: 26
     step: 1
     initial: 10
     mode: slider
@@ -19,7 +19,7 @@
   setpoint_slp2:
     name: 'Doel setpoint'
     min: 5
-    max: 22
+    max: 26
     step: 1
     initial: 10
     mode: slider
@@ -28,7 +28,7 @@
   setpoint_slp3:
     name: 'Doel setpoint'
     min: 5
-    max: 22
+    max: 26
     step: 1
     initial: 10
     mode: slider
@@ -47,6 +47,6 @@
     name: 'Doel Setpoint'
     initial: 10
     min: 5
-    max: 23
+    max: 26
     step: 1
     mode: slider

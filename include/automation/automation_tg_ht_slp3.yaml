@@ -25,6 +25,9 @@
       keyboard:
         - '/1u_Yassin, /Stop_Yassin'
         - '/Verwarming, /home'
+  - service: notify.dageraad
+    data:
+      message: "Yassin voor 1 uur opwarmen"
 
 ## 2 ##
 - id: tg_heating_yassin_2
@@ -145,10 +148,6 @@
     data:
       entity_id: climate.yassin
       preset_mode: 'none'
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.yassin
-      hvac_mode: "heat"
   - service: climate.set_temperature
     data:
       entity_id: climate.yassin
@@ -163,6 +162,9 @@
                  Yassin: {{states.climate.yassin.attributes.current_temperature}}°C'
       keyboard:
         - '/Verwarming, /home'
+  - service: notify.dageraad
+    data:
+      message: "Yassin voor 2 uur opwarmen"
 
 # 5 ##
 - id: tg_heating_yassin_5

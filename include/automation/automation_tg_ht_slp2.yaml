@@ -58,14 +58,11 @@
     data:
       entity_id: climate.sara
       preset_mode: 'none'
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.sara
-      hvac_mode: "heat"
   - service: climate.set_temperature
     data:
       entity_id: climate.sara
       temperature: 20
+      hvac_mode: "heat"
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -76,6 +73,9 @@
       keyboard:
         - '/Sara_V, /Verwarming'
         - '/home'
+  - service: notify.dageraad
+    data:
+      message: "Sara voor 1 uur opwarmen"
 
 ## 3 ##
 - id: tg_heating_sara_3
@@ -163,6 +163,9 @@
                  Sara: {{states.climate.sara.attributes.current_temperature}}°C'
       keyboard:
         - '/Verwarming, /home'
+  - service: notify.dageraad
+    data:
+      message: "Sara voor 2 uur opwarmen"
 
 # 5 ##
 - id: tg_heating_sara_5

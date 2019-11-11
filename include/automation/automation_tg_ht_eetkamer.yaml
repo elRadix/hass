@@ -79,6 +79,10 @@
       keyboard:
         - '/Eetkamer_V, /Verwarming'
         - '/home'
+  - service: notify.dageraad
+    data:
+      message: "Eetkamer voor 1 uur opwarmen"
+
 
 ## 3 ##
 - id: tg_heating_eetkamer_3
@@ -168,6 +172,9 @@
 
                  Eetkamer: {{states.climate.eetkamer.attributes.current_temperature}}°C'
       keyboard: ["/Eetkamer, /Verwarming, /home"]
+  - service: notify.dageraad
+    data:
+      message: "Eetkamer voor 2 uur opwarmen"
 
 ## 5 ##
 - id: tg_heating_eetkamer_5

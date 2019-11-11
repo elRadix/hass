@@ -61,14 +61,11 @@
     data:
       entity_id: climate.floradix
       preset_mode: 'none'
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.floradix
-      hvac_mode: "heat"
   - service: climate.set_temperature
     data:
       entity_id: climate.floradix
       temperature: 20
+      hvac_mode: "heat"
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -79,6 +76,9 @@
       keyboard:
         - '/SR, /Verwarming'
         - '/home'
+  - service: notify.dageraad
+    data:
+      message: "S&R voor 1 uur opwarmen"
 
 ## 3 ##
 - id: tg_heating_floradix_3
@@ -146,14 +146,10 @@
     data:
       entity_id: climate.floradix
       preset_mode: 'none'
-  - service: climate.set_hvac_mode
-    data:
-      entity_id: climate.floradix
-      hvac_mode: "heat"
   - service: climate.set_temperature
     data:
       entity_id: climate.floradix
-      temperature: 23
+      temperature: 20
       hvac_mode: "heat"
   - service: telegram_bot.send_message
     data_template:
@@ -164,7 +160,10 @@
                  S&R: {{states.climate.yassin.attributes.current_temperature}}°C'
       keyboard:
         - '/Verwarming, /home'
-
+  - service: notify.dageraad
+    data:
+      message: "S&R voor 2 uur opwarmen"
+      
 # 5 ##
 - id: tg_heating_floradix_5
   alias: tg_heating_floradix_2u_stop

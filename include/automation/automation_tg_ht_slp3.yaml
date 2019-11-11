@@ -11,7 +11,7 @@
     event_data:
       command: '/Yassin_V'
   action:
-    service: telegram_bot.send_message
+  - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
       message: 'Ketel wordt automatisch opgestart!!
@@ -25,9 +25,7 @@
       keyboard:
         - '/1u_Yassin, /Stop_Yassin'
         - '/Verwarming, /home'
-  - service: notify.dageraad
-    data:
-      message: "Yassin voor 1 uur opwarmen"
+
 
 ## 2 ##
 - id: tg_heating_yassin_2
@@ -78,7 +76,10 @@
       keyboard:
         - '/Yassin, /Verwarming'
         - '/home'
-
+  - service: notify.dageraad
+    data:
+      message: "Yassin voor 1 uur opwarmen"
+      
 ## 3 ##
 - id: tg_heating_yassin_3
   alias: tg_heating_yassin_1u_stop

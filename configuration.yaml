@@ -232,7 +232,7 @@ climate:
     heater: switch.heating_eetkamer
     target_sensor: sensor.ht_eetkamer_temp
     min_temp: 5
-    max_temp: 22
+    max_temp: 26
     ac_mode: false
     target_temp: 17
     hot_tolerance: 0.5
@@ -247,7 +247,7 @@ climate:
     heater: switch.heating_living
     target_sensor: sensor.tmp_living
     min_temp: 5
-    max_temp: 24
+    max_temp: 26
     ac_mode: false
     target_temp: 5
     hot_tolerance: 0.5
@@ -262,7 +262,7 @@ climate:
     heater: switch.heating_sara
     target_sensor: sensor.ht_sara_temp
     min_temp: 5
-    max_temp: 22
+    max_temp: 25
     ac_mode: false
     target_temp: 17
     hot_tolerance: 0.5
@@ -277,7 +277,7 @@ climate:
     heater: switch.heating_yassin
     target_sensor: sensor.tmp_slp_3
     min_temp: 5
-    max_temp: 22
+    max_temp: 25
     ac_mode: false
     target_temp: 17
     hot_tolerance: 0.5
@@ -293,7 +293,7 @@ climate:
     target_sensor: sensor.tmp_slp_1
     ac_mode: false
     min_temp: 5
-    max_temp: 24
+    max_temp: 26
     target_temp: 17
     hot_tolerance: 0.5
     min_cycle_duration:
@@ -307,7 +307,7 @@ climate:
     heater: switch.heating_badkamer
     target_sensor: sensor.tmp_badkamer
     min_temp: 5
-    max_temp: 25
+    max_temp: 20
     target_temp: 5
     hot_tolerance: 0.5
     min_cycle_duration:

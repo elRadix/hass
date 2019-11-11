@@ -1,11 +1,24 @@
 #=== Sensors
 #============
 
-  # Latest Sonoff Tasmota firmware version
-  - platform: command_line
-    name: Tasmota Current Version
-    command: "curl -s https://github.com/arendst/Sonoff-Tasmota/releases/latest | cut -d'\"' -f2 | rev | cut -d'/' -f1 | rev"
-    scan_interval: 86400
+  # # Latest Sonoff Tasmota firmware version
+  # - platform: command_line
+  #   name: Tasmota Current Version
+  #   command: "curl -s https://github.com/arendst/Tasmota/releases/latest | cut -d'\"' -f2 | rev | cut -d'/' -f1 | rev"
+  #   scan_interval: 86400
+
+
+  - platform: rest
+    resource: https://api.github.com/repos/arendst/Tasmota/releases/latest
+    name: Sonoff Firmware Version Available
+    username: !secret githubuser
+    password: !secret githubpass
+    authentication: basic
+    value_template: '{{ value_json.tag_name }}'
+    headers:
+      Accept: application/vnd.github.v3+json
+      Content-Type: application/json
+      User-Agent: Home Assistant REST sensor
 
   # Latest ESPHome firmware version
 

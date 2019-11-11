@@ -20,6 +20,16 @@
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
 
+
+  - platform: mqtt
+    name: "Freezer Firmware version"
+    state_topic: "freezer/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version }}'
+
+    name: "RF Bridge Firmware version"
+    state_topic: "rfbridge/stat/STATUS2"
+    value_template: 'v{{ value_json.StatusFWR.Version }}'
+
   # Latest ESPHome firmware version
 
   - platform: command_line
@@ -35,27 +45,27 @@
         entity_id: sensor.time
         friendly_name: Tasmota Earliest Installed Version
         value_template: >
-          {% set ns = namespace(lowest = states('sensor.tasmota_current_version')[1:]) %}
-          {% for item in states if item.entity_id.split(".")[1].endswith('Sonoff') and 
+          {% set ns = namespace(lowest = states('sensor.sonoff_firmware_version_available')[1:]) %}
+          {% for item in states if item.entity_id.split(".")[1].endswith('Tasmota') and 
                                    item.entity_id.split(".")[1].startswith('Version') and 
                                    item.state != 'unknown' and
                                    item.state < ns.lowest %}
             {% set ns.lowest = item.state %}
           {% endfor %}
-          v{{ ns.lowest }}  
+          v{{ ns.lowest }}
 
 
   # Installed firmware version
 
 ####SONOFF#####
-  - platform: rest
-    name: Sonoff latest release
-    resource: https://api.github.com/repos/arendst/Sonoff-Tasmota/releases/latest
-    value_template: '{{ value_json.tag_name }}'
-    headers:
-      Accept: application/vnd.github.v3+json
-      Content-Type: application/json
-      User-Agent: Home Assistant REST sensor 
+  # - platform: rest
+  #   name: Sonoff latest release
+  #   resource: https://api.github.com/repos/arendst/Sonoff-Tasmota/releases/latest
+  #   value_template: '{{ value_json.tag_name }}'
+  #   headers:
+  #     Accept: application/vnd.github.v3+json
+  #     Content-Type: application/json
+  #     User-Agent: Home Assistant REST sensor
 
   # - platform: mqtt
   #   name: Sonoff 01 Version
@@ -105,7 +115,7 @@
   - platform: mqtt
     name: Sonoff 06 Version
     state_topic: "rfbridge/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-sonoff)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-tasmota)", "") }}'
     # qos: 0
     # availability_topic: "rfbridge/tele/LWT"
     # payload_available: "Online"

@@ -53,8 +53,7 @@
     entity_id: switch.easyplus
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
-  # - delay:
-  #      seconds: 25
+  - delay: '00:00:30'
   - service: shell_command.heating_tmp_living_auto
   - service: input_boolean.turn_on
     entity_id: input_boolean.1u_living
@@ -142,9 +141,8 @@
         Even geduld aub...EasyPlus opstarten'
   - service: homeassistant.turn_on
     entity_id: switch.easyplus
-  # - delay:
-  #     seconds: 25
-    - service: homeassistant.turn_on
+  - delay: '00:00:30'
+  - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
   - service: shell_command.heating_tmp_living_auto
   - service: input_boolean.turn_on

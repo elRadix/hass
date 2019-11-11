@@ -43,8 +43,7 @@
   action:
   - service: homeassistant.turn_on
     entity_id: switch.easyplus
-  # - delay:
-  #     seconds: 25
+  - delay: '00:00:30'
   - service: telegram_bot.send_message
     data_template:
       target: '{{ trigger.event.data.user_id }}'
@@ -137,8 +136,7 @@
         Even geduld aub...EasyPlus opstarten'
   - service: homeassistant.turn_on
     entity_id: switch.easyplus
-  # - delay:
-  #     seconds: 25
+  - delay: '00:00:30'
   - service: homeassistant.turn_on
     entity_id: input_boolean.easyplus_boiler_heating
   - service: input_boolean.turn_on

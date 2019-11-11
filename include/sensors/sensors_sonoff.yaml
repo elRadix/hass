@@ -20,12 +20,12 @@
       Content-Type: application/json
       User-Agent: Home Assistant REST sensor
 
-
   - platform: mqtt
     name: "Freezer Firmware version"
     state_topic: "freezer/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version }}'
 
+  - platform: mqtt
     name: "RF Bridge Firmware version"
     state_topic: "rfbridge/stat/STATUS2"
     value_template: 'v{{ value_json.StatusFWR.Version }}'
@@ -115,7 +115,7 @@
   - platform: mqtt
     name: Sonoff 06 Version
     state_topic: "rfbridge/stat/STATUS2"
-    value_template: 'v{{ value_json.StatusFWR.Version | replace("(release-tasmota)", "") }}'
+    value_template: 'v{{ value_json.StatusFWR.Version | replace("(ba5ae71-tasmota)", "") }}'
     # qos: 0
     # availability_topic: "rfbridge/tele/LWT"
     # payload_available: "Online"

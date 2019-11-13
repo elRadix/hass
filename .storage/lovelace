@@ -132,6 +132,10 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/flex-horseshoe-card/flex-horseshoe-card.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/logbook-card/logbook-card.js"
                 }
             ],
             "title": "Home",
@@ -3047,10 +3051,6 @@
                                             "type": "custom:button-card"
                                         },
                                         {
-                                            "color_type": "blank-card",
-                                            "type": "custom:button-card"
-                                        },
-                                        {
                                             "card_style": "",
                                             "color": "rgb(255, 255, 0)",
                                             "color_off": "var(--disabled-text-color)(189, 255, 5)",
@@ -3261,16 +3261,16 @@
                                                 }
                                             ],
                                             "type": "custom:button-card"
-                                        },
-                                        {
-                                            "color_type": "blank-card",
-                                            "type": "custom:button-card"
                                         }
                                     ],
                                     "type": "horizontal-stack"
                                 }
                             ],
                             "type": "vertical-stack"
+                        },
+                        {
+                            "color_type": "blank-card",
+                            "type": "custom:button-card"
                         },
                         {
                             "cards": [
@@ -3307,10 +3307,6 @@
                                                     }
                                                 ]
                                             },
-                                            "type": "custom:button-card"
-                                        },
-                                        {
-                                            "color_type": "blank-card",
                                             "type": "custom:button-card"
                                         },
                                         {
@@ -3355,10 +3351,6 @@
                                 },
                                 {
                                     "cards": [
-                                        {
-                                            "color_type": "blank-card",
-                                            "type": "custom:button-card"
-                                        },
                                         {
                                             "card_style": "",
                                             "color": "rgb(255, 255, 0)",
@@ -3787,16 +3779,16 @@
                                                 }
                                             },
                                             "type": "custom:button-card"
-                                        },
-                                        {
-                                            "color_type": "blank-card",
-                                            "type": "custom:button-card"
                                         }
                                     ],
                                     "type": "horizontal-stack"
                                 }
                             ],
                             "type": "vertical-stack"
+                        },
+                        {
+                            "color_type": "blank-card",
+                            "type": "custom:button-card"
                         },
                         {
                             "cards": [
@@ -4041,6 +4033,10 @@
                                             "type": "custom:button-card"
                                         },
                                         {
+                                            "color_type": "blank-card",
+                                            "type": "custom:button-card"
+                                        },
+                                        {
                                             "color": "rgb(0,0,0.5)",
                                             "color_off": "var(--disabled-text-color)",
                                             "color_type": "card",
@@ -4078,10 +4074,6 @@
                                 },
                                 {
                                     "cards": [
-                                        {
-                                            "color_type": "blank-card",
-                                            "type": "custom:button-card"
-                                        },
                                         {
                                             "card_style": "",
                                             "color": "rgb(255, 255, 0)",
@@ -4697,8 +4689,10 @@
                             "font_size_header": 14,
                             "group_by": "hour",
                             "hour24": true,
+                            "hours_to_show": 24,
                             "icon": "mdi:power",
                             "line_width": 2,
+                            "points_per_hour": 1,
                             "show": {
                                 "fill": false,
                                 "graph": "bar",
@@ -7900,10 +7894,17 @@
                                     "entity": "script.check_sonoffs_version"
                                 },
                                 {
-                                    "entity": "sensor.tasmota_current_version"
+                                    "entity": "sensor.sonoff_firmware_version_available",
+                                    "name": "Tasmota Latest Stable"
                                 },
                                 {
-                                    "entity": "sensor.sonoff_06_version"
+                                    "entity": "sensor.rf_bridge_firmware_version",
+                                    "name": "RF Bridge"
+                                },
+                                {
+                                    "entity": "sensor.freezer_firmware_version",
+                                    "icon": "mdi:power",
+                                    "name": "Freezer"
                                 }
                             ],
                             "show_header_toggle": false,
@@ -8129,6 +8130,18 @@
                             "type": "entities"
                         },
                         {
+                            "entity": "input_boolean.easyplus_boiler_shower",
+                            "max_items": 5,
+                            "title": "Shower history",
+                            "type": "custom:logbook-card"
+                        },
+                        {
+                            "entity": "input_boolean.easyplus_boiler_heating",
+                            "max_items": 5,
+                            "title": "Heating history",
+                            "type": "custom:logbook-card"
+                        },
+                        {
                             "cards": [
                                 {
                                     "entities": [
@@ -8216,19 +8229,6 @@
                             "type": "custom:vertical-stack-in-card"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "plant.phalaenopsis"
-                                },
-                                {
-                                    "entity": "plant.dypsis_lutescens"
-                                }
-                            ],
-                            "show_header_toggle": false,
-                            "title": "miflower",
-                            "type": "entities"
-                        },
-                        {
                             "artwork": "full-cover",
                             "entity": "media_player.slaapkamer",
                             "hide": {
@@ -8294,38 +8294,6 @@
                                 }
                             ],
                             "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                "moisture:sensor.miflower_moisture",
-                                "intensity:sensor.miflower_light_intensity",
-                                "temperature:sensor.miflower_temperature",
-                                "conductivity:sensor.miflower_conductivity",
-                                "battery:sensor.miflower_battery"
-                            ],
-                            "image": "plant/phalaenopsis.jpg",
-                            "max_moisture": 65,
-                            "min_conductivity": 350,
-                            "min_moisture": 15,
-                            "min_temperature": 12,
-                            "title": "orchidee (keuken)",
-                            "type": "custom:plant-card"
-                        },
-                        {
-                            "entities": [
-                                "moisture:sensor.miflower_moisture",
-                                "intensity:sensor.miflower_light_intensity",
-                                "temperature:sensor.miflower_temperature",
-                                "conductivity:sensor.miflower_conductivity",
-                                "battery:sensor.miflower_battery"
-                            ],
-                            "image": "plant/dypsis.jpg",
-                            "max_moisture": 65,
-                            "min_conductivity": 350,
-                            "min_moisture": 15,
-                            "min_temperature": 12,
-                            "title": "areca palm (living)",
-                            "type": "custom:plant-card"
                         }
                     ],
                     "title": "SCENES"
@@ -11022,6 +10990,19 @@
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "plant.phalaenopsis"
+                                },
+                                {
+                                    "entity": "plant.dypsis_lutescens"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "miflower",
+                            "type": "entities"
                         }
                     ],
                     "title": "test"
@@ -12382,6 +12363,38 @@
                                 }
                             ],
                             "type": "horizontal-stack"
+                        },
+                        {
+                            "entities": [
+                                "moisture:sensor.miflower_moisture",
+                                "intensity:sensor.miflower_light_intensity",
+                                "temperature:sensor.miflower_temperature",
+                                "conductivity:sensor.miflower_conductivity",
+                                "battery:sensor.miflower_battery"
+                            ],
+                            "image": "plant/phalaenopsis.jpg",
+                            "max_moisture": 65,
+                            "min_conductivity": 350,
+                            "min_moisture": 15,
+                            "min_temperature": 12,
+                            "title": "orchidee (keuken)",
+                            "type": "custom:plant-card"
+                        },
+                        {
+                            "entities": [
+                                "moisture:sensor.miflower_moisture",
+                                "intensity:sensor.miflower_light_intensity",
+                                "temperature:sensor.miflower_temperature",
+                                "conductivity:sensor.miflower_conductivity",
+                                "battery:sensor.miflower_battery"
+                            ],
+                            "image": "plant/dypsis.jpg",
+                            "max_moisture": 65,
+                            "min_conductivity": 350,
+                            "min_moisture": 15,
+                            "min_temperature": 12,
+                            "title": "areca palm (living)",
+                            "type": "custom:plant-card"
                         }
                     ],
                     "title": "cards"

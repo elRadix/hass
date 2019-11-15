@@ -245,7 +245,7 @@ climate:
   - platform: generic_thermostat
     name: Living
     heater: switch.heating_living
-    target_sensor: sensor.tmp_living
+    target_sensor: sensor.tmp_living_source
     min_temp: 5
     max_temp: 26
     ac_mode: false
@@ -275,7 +275,7 @@ climate:
   - platform: generic_thermostat
     name: Yassin
     heater: switch.heating_yassin
-    target_sensor: sensor.tmp_slp_3
+    target_sensor: sensor.tmp_slp_3__source
     min_temp: 5
     max_temp: 25
     ac_mode: false
@@ -290,7 +290,7 @@ climate:
   - platform: generic_thermostat
     name: FloRadix
     heater: switch.heating_floradix
-    target_sensor: sensor.tmp_slp_1
+    target_sensor: sensor.tmp_slp_1__source
     ac_mode: false
     min_temp: 5
     max_temp: 26

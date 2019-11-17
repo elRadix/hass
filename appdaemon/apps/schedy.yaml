@@ -69,7 +69,7 @@ schedy_heating:
     badkamer:
       actors:
         climate.badkamer:
-      rescheduling_delay: 30 # return back to schedule after x minutes
+#      rescheduling_delay: 30 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['badkamer'])"
 

@@ -170,17 +170,17 @@
   binary_sensor.motion_badkamer:
     friendly_name: "Badkamer"
   climate.badkamer:
-    friendly_name: "Thermostaat"
+    friendly_name: "badkamer"
   climate.eetkamer:
-    friendly_name: "Thermostaat"
+    friendly_name: "eetkamer"
   climate.floradix:
-    friendly_name: "Thermostaat"
+    friendly_name: "floradix"
   climate.living:
-    friendly_name: "Thermostaat"
+    friendly_name: "living"
   climate.sara:
-    friendly_name: "Thermostaat"
+    friendly_name: "sara"
   climate.yassin:
-    friendly_name: "Thermostaat"
+    friendly_name: "yassin"
   switch.easyplus:
     friendly_name: "Domotica"
   automation.easyplus_startup:

@@ -1,4 +1,5 @@
 import appdaemon.plugins.hass.hassapi as hass
+import time
 class climate(hass.Hass):
 
  def initialize(self):
@@ -10,6 +11,7 @@ class climate(hass.Hass):
     if self.get_state('switch.easyplus', attribute='state') != 'on':
       self.turn_on('switch.easyplus')
       self.log("easyplus on")
+      time.sleep(20)
     if self.get_state('input_boolean.easyplus_boiler_heating', attribute='state') != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating')
       self.log("boiler on")

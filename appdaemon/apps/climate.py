@@ -19,7 +19,7 @@ class climate(hass.Hass):
           self.call_service("shell_command/heating_floradix")
           self.call_service("shell_command/heating_sara")
           self.call_service("shell_command/heating_yassin")
-          self.call_service("shell_command/heating_badkamer")
+          self.call_service("shell_command/heating_bad")
             self.log("ON setpoint sent")
     return
    if old == "heat" and new == "off":

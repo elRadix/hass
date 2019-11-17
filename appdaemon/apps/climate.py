@@ -11,7 +11,7 @@ class climate(hass.Hass):
    if old == "off" and new == "heat":
     if self.get_state('switch.easyplus') != 'on':
       self.turn_on('switch.easyplus')
-      time.sleep(30)
+    time.sleep(30)
       self.log("easyplus on")
     if self.get_state('input_boolean.easyplus_boiler_heating') != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating')

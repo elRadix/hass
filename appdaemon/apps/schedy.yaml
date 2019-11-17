@@ -6,34 +6,30 @@ schedy_heating:
 
   schedule_snippets:
     1_floor:
-#    - x: "8 if is_off('input_boolean.easyplus_boiler_heating') else Skip()
     - { v: 19, start: "17:00", end: "19:00", weekdays: "1-5", weeks: "1-9, 44-52" }
-    # kids:
-    # - { v: 19, start: "18:30", end: "20:30", weekdays: "1-5", weeks: "1-9, 44-52" }
 
     kids:
     - v: 20
       rules:
       - weekdays: 1-5
         rules:
-        - { v: 19, start: "18:30", end: "20:30", weeks: "1-9, 44-52"  }
+        - { start: "18:30", end: "20:30", weeks: "1-9, 44-52"  }
       - weekdays: 6-7
         rules:
-        - { v: 19, start: "19:00", end: "20:30",  weeks: "1-9, 44-52"  }
-
+        - { start: "19:00", end: "20:30", weeks: "1-9, 44-52"  }
 
     parents:
-    - v: 21
+    - v: 22
       rules:
       - weekdays: 1-5
         rules:
-        - { v: 19, start: "18:30", end: "20:30", weeks: "1-9, 44-52"  }
+        - { start: "18:30", end: "20:30", weeks: "1-9, 44-52"  }
       - weekdays: 6-7
         rules:
-        - { v: 19, start: "19:00", end: "20:30",  weeks: "1-9, 44-52"  }
+        - { start: "19:00", end: "20:30", weeks: "1-9, 44-52"  }
 
     badkamer:
-    - { v: 22, start: "10:30", end: "13:00", weekdays: "1-7", weeks: "1-9, 44-52" }
+    - { v: 10, start: "10:30", end: "13:00", weekdays: "6-7", weeks: "1-9, 44-52" }
 
   schedule_prepend:
   - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
@@ -41,12 +37,11 @@ schedy_heating:
   schedule_append:
   - v: "OFF"
 
-
   rooms:
     living:
       actors:
         climate.living:
-      rescheduling_delay: 30 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       watched_entities:
       - binary_sensor.inkomhal
       schedule:
@@ -55,7 +50,7 @@ schedy_heating:
     eetkamer:
       actors:
         climate.eetkamer:
-      rescheduling_delay: 30 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       watched_entities:
       - binary_sensor.terras
       schedule:
@@ -64,21 +59,21 @@ schedy_heating:
     sara:
       actors:
         climate.sara:
-      rescheduling_delay: 30 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['kids'])"
 
     yassin:
       actors:
         climate.yassin:
-      rescheduling_delay: 30 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['kids'])"
 
     floradix:
       actors:
         climate.floradix:
-      rescheduling_delay: 30 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['parents'])"
 
@@ -89,7 +84,6 @@ schedy_heating:
       schedule:
       - x: "IncludeSchedule(schedule_snippets['badkamer'])"
 
-
   statistics:
     # Pick an arbitrary name for the parameter instance.
     ground_floor_temp_delta:
@@ -99,3 +93,11 @@ schedy_heating:
       rooms:
         living:
         eetkamer:
+    upstairs_temp_delta:
+      # The type of parameter as found in the actor'S documentation.
+      type: temp_delta
+      # More parameter-specific settings:
+      rooms:
+        floradix:
+        sara:
+        yassin:

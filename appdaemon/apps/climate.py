@@ -10,8 +10,8 @@ class climate(hass.Hass):
     if self.get_state('switch.easyplus', attribute='state') != 'on':
       self.turn_on('switch.easyplus')
       self.log("easyplus on")
-    if self.get_state('switch.ketel', attribute='state') != 'on':
-      self.turn_on('switch.ketel')
+    if self.get_state('input_boolean.easyplus_boiler_heating', attribute='state') != 'on':
+      self.turn_on('input_boolean.easyplus_boiler_heating')
       self.log("boiler on")
     self.call_service("shell_command/heating_living")
     self.call_service("shell_command/heating_eetkamer")

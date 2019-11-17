@@ -22,6 +22,7 @@ schedy_heating:
   - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
 
   schedule_append:
+  - v: 10
   - v: "OFF"
 
 

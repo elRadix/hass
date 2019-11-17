@@ -8,11 +8,16 @@ schedy_heating:
     1_floor:
 #    - x: "8 if is_off('input_boolean.easyplus_boiler_heating') else Skip()
     - { v: 19, start: "17:00", end: "19:00", weekdays: "1-5", weeks: "1-9, 44-52" }
+    - v: 6
     kids:
     - { v: 19, start: "18:30", end: "20:30", weekdays: "1-5", weeks: "1-9, 44-52" }
+    - v: 6
     parents:
     - { v: 22, start: "18:30", end: "22:30", weekdays: "1-5", weeks: "1-9, 44-52" }
-
+    - v: 6
+    badkamer:
+    - { v: 22, start: "10:30", end: "12:00", weekdays: "1-7", weeks: "1-9, 44-52" }
+    - v: 6
   schedule_prepend:
   - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
 
@@ -59,6 +64,14 @@ schedy_heating:
       rescheduling_delay: 30 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['parents'])"
+
+    badkamer:
+      actors:
+        climate.badkmaer:
+      rescheduling_delay: 30 # return back to schedule after x minutes
+      schedule:
+      - x: "IncludeSchedule(schedule_snippets['parents'])"
+
 
   statistics:
     # Pick an arbitrary name for the parameter instance.

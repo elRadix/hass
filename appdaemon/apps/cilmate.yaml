@@ -1,0 +1,10 @@
+climate_heating:
+  module: climate
+  class: climate
+  entities:
+   - climate.living
+   - climate.eetkamer
+   - climate.floradix
+   - climate.sara
+   - climate.yassin
+   - climate.badkamer

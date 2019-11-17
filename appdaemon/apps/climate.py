@@ -1,3 +1,4 @@
+import appdaemon.plugins.hass.hassapi as hass
 class climate(hass.Hass):
 
  def initialize(self):
@@ -18,7 +19,7 @@ class climate(hass.Hass):
     self.call_service("shell_command/heating_sara")
     self.call_service("shell_command/heating_yassin")
     self.call_service("shell_command/heating_badkamer")
-    #   self.log("ON setpoint sent")
+    self.log("ON setpoint sent")
     return
    if old == "heat" and new == "off":
     self.call_service("shell_command/heating_tmp_living_off")
@@ -27,5 +28,5 @@ class climate(hass.Hass):
     self.call_service("shell_command/heating_tmp_slp2_off")
     self.call_service("shell_command/heating_tmp_slp3_off")
     self.call_service("shell_command/heating_tmp_eetkamer_off")
-    #   self.log("OFF setpoint sent")
+    self.log("OFF setpoint sent")
     return

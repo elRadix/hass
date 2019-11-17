@@ -6,7 +6,7 @@ schedy_heating:
 
   schedule_snippets:
     1_floor:
-    - { v: 19, start: "17:00", end: "19:00", weekdays: "1-5", weeks: "1-9, 44-52" }
+    - { v: 20, start: "17:00", end: "20:00", weekdays: "1-5", weeks: "1-9, 44-52" }
 
     kids:
     - v: 20

@@ -1,0 +1,20 @@
+
+living_1_hour:
+  alias: heating 1 hour living
+  sequence:
+    - event: schedy_set_value
+      event_data:
+        app_name: schedy_heating
+        room: living
+        v: 22.0
+        rescheduling_delay: 60
+
+eetkamer_1_hour:
+  alias: heating 1 hour eetkamer
+  sequence:
+    - event: schedy_set_value
+      event_data:
+        app_name: schedy_heating
+        room: eetkamer
+        v: 22.0
+        rescheduling_delay: 60

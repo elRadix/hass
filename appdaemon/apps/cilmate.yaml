@@ -1,10 +1,16 @@
-climate_heating:
+living:
   module: climate
   class: climate
-  entities:
-   - climate.living
-   - climate.eetkamer
-   - climate.floradix
-   - climate.sara
-   - climate.yassin
-   - climate.badkamer
+  climate: climate.living
+eetkamer:
+  module: climate
+  class: climate
+  climate: climate.eetkamer
+floradix:
+  module: climate
+  class: climate
+  climate: climate.floradix
+sara:
+  module: climate
+  class: climate
+  climate: climate.sara

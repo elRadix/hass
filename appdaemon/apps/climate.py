@@ -25,10 +25,10 @@ class climate(hass.Hass):
     return
    if old == "heat" and new == "off":
     self.call_service("shell_command/heating_tmp_living_off")
-    self.call_service('climate/set_temperature', entity_id=climate.living, target_temperature=5)
+    # self.call_service('climate/set_temperature', entity_id=climate.living, target_temperature=5)
     self.call_service("shell_command/heating_tmp_eetkamer_off")
     self.call_service("shell_command/heating_tmp_slp1_off")
-    self.call_service('climate/set_temperature', entity_id=climate.floradix, target_temperature=5)
+    # self.call_service('climate/set_temperature', entity_id=climate.floradix, target_temperature=5)
     self.call_service("shell_command/heating_tmp_slp2_off")
     self.call_service("shell_command/heating_tmp_slp3_off")
     self.call_service("shell_command/heating_tmp_eetkamer_off")

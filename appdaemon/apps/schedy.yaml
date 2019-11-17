@@ -15,8 +15,8 @@ schedy_heating:
     parents:
     - { v: 22, start: "18:30", end: "22:30", weekdays: "1-5", weeks: "1-9, 44-52" }
     # - v: 6
-    badkamer:
-    - { v: 22, start: "10:30", end: "13:00", weekdays: "1-7", weeks: "1-9, 44-52" }
+    # badkamer:
+    # - { v: 22, start: "10:30", end: "13:00", weekdays: "1-7", weeks: "1-9, 44-52" }
     # - v: 6
   schedule_prepend:
   - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
@@ -66,12 +66,12 @@ schedy_heating:
       schedule:
       - x: "IncludeSchedule(schedule_snippets['parents'])"
 
-    badkamer:
-      actors:
-        climate.badkamer:
-#      rescheduling_delay: 30 # return back to schedule after x minutes
-      schedule:
-      - x: "IncludeSchedule(schedule_snippets['badkamer'])"
+#     badkamer:
+#       actors:
+#         climate.badkamer:
+# #      rescheduling_delay: 30 # return back to schedule after x minutes
+#       schedule:
+#       - x: "IncludeSchedule(schedule_snippets['badkamer'])"
 
 
   statistics:

@@ -6,6 +6,7 @@ class climate(hass.Hass):
      self.listen_state(self.climate_cb, climate, attribute='state')
      self.log(self.args)
  def climate_cb(self, entity, attribute, old, new, kwargs):
+     self.log(self.args)
    if old == "off" and new == "heat":
     if self.get_state('switch.easyplus', attribute='state') != 'on':
       self.turn_on('switch.easyplus')

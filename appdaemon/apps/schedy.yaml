@@ -8,21 +8,37 @@ schedy_heating:
     1_floor:
 #    - x: "8 if is_off('input_boolean.easyplus_boiler_heating') else Skip()
     - { v: 19, start: "17:00", end: "19:00", weekdays: "1-5", weeks: "1-9, 44-52" }
-    # - v: 6
+    # kids:
+    # - { v: 19, start: "18:30", end: "20:30", weekdays: "1-5", weeks: "1-9, 44-52" }
+
     kids:
-    - { v: 19, start: "18:30", end: "20:30", weekdays: "1-5", weeks: "1-9, 44-52" }
-    # - v: 6
+    - v: 20
+      rules:
+      - weekdays: 1-5
+        rules:
+        - { v: 19, start: "18:30", end: "20:30", weeks: "1-9, 44-52"  }
+      - weekdays: 6-7
+        rules:
+        - { v: 19, start: "19:00", end: "20:30",  weeks: "1-9, 44-52"  }
+
+
     parents:
-    - { v: 22, start: "18:30", end: "22:30", weekdays: "1-5", weeks: "1-9, 44-52" }
-    # - v: 6
-    # badkamer:
-    # - { v: 22, start: "10:30", end: "13:00", weekdays: "1-7", weeks: "1-9, 44-52" }
-    # - v: 6
+    - v: 21
+      rules:
+      - weekdays: 1-5
+        rules:
+        - { v: 19, start: "18:30", end: "20:30", weeks: "1-9, 44-52"  }
+      - weekdays: 6-7
+        rules:
+        - { v: 19, start: "19:00", end: "20:30",  weeks: "1-9, 44-52"  }
+
+    badkamer:
+    - { v: 22, start: "10:30", end: "13:00", weekdays: "1-7", weeks: "1-9, 44-52" }
+
   schedule_prepend:
   - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
 
   schedule_append:
-  - v: 10
   - v: "OFF"
 
 
@@ -66,12 +82,12 @@ schedy_heating:
       schedule:
       - x: "IncludeSchedule(schedule_snippets['parents'])"
 
-#     badkamer:
-#       actors:
-#         climate.badkamer:
-# #      rescheduling_delay: 30 # return back to schedule after x minutes
-#       schedule:
-#       - x: "IncludeSchedule(schedule_snippets['badkamer'])"
+    badkamer:
+      actors:
+        climate.badkamer:
+#      rescheduling_delay: 30 # return back to schedule after x minutes
+      schedule:
+      - x: "IncludeSchedule(schedule_snippets['badkamer'])"
 
 
   statistics:

@@ -1,0 +1,50 @@
+actions_input_boolean:
+  module: actions_input_boolean
+  class: actions_input_boolean
+  priority: 1
+
+actions_input_number:
+  module: actions_input_number
+  class: actions_input_number
+  priority: 1
+
+actions_switch:
+  module: actions_switch
+  class: actions_switch
+  priority: 1
+
+actions_light:
+  module: actions_light
+  class: actions_light
+  priority: 1
+
+actions_fade_in:
+  module: actions_fade_in
+  class: actions_fade_in_light
+  priority: 1
+
+actions_fade_out:
+  module: actions_fade_out
+  class: actions_fade_out_light
+  priority: 1
+
+actions_locatie:
+  module: actions_locatie
+  class: actions_locatie
+  priority: 1
+
+actions_notify:
+  module: actions_notify
+  class: actions_notify
+  priority: 1
+
+actions_sensor:
+  module: actions_sensor
+  class: actions_sensor
+  priority: 1
+
+actions_notruf:
+  module: actions_notruf
+  class: actions_notruf
+  priority: 1
+

@@ -1,0 +1,31 @@
+actions_language_default:
+  module: actions_languages
+  class: actions_languages
+  priority: 1
+  if: if
+  if again: if again
+  do_first: do_first
+  do_after_some_delay: do_after_some_delay
+  hold_for: hold_for
+  value: value
+  delay: delay
+  new_state: new_state
+  old_state: old_state
+  attribute: attribute
+  start: start
+  end: end
+  time: time
+  location: location
+  notify: notify
+  sunrise: sunrise
+  sunset: sunset
+  debug_logging: debug_logging
+  no_action_log: no_action_log
+  calendar: calendar
+  action: action
+  offset: offset
+  weekday: weekday
+  hourly: hourly
+  
+
+  

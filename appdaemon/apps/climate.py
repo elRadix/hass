@@ -8,6 +8,7 @@ class climate(hass.Hass):
      self.log(self.args)
  def climate_cb(self, entity, attribute, old, new, kwargs):
    if old == "off" and new == "heat":
+      self.log((entity, attribute, old, new, kwargs))
     if self.get_state('switch.easyplus', attribute='state') != 'on':
       self.turn_on('switch.easyplus')
       self.log("easyplus on")
@@ -20,16 +21,16 @@ class climate(hass.Hass):
     self.call_service("shell_command/heating_floradix")
     self.call_service("shell_command/heating_sara")
     self.call_service("shell_command/heating_yassin")
-    self.call_service("shell_command/heating_badkamer")
     self.log("ON setpoint sent")
     return
    if old == "heat" and new == "off":
     self.call_service("shell_command/heating_tmp_living_off")
+    self.call_service('climate/set_temperature', entity_id=climate.living, temperature=5)
     self.call_service("shell_command/heating_tmp_eetkamer_off")
     self.call_service("shell_command/heating_tmp_slp1_off")
+    self.call_service('climate/set_temperature', entity_id=climate.floradix, temperature=5)
     self.call_service("shell_command/heating_tmp_slp2_off")
     self.call_service("shell_command/heating_tmp_slp3_off")
     self.call_service("shell_command/heating_tmp_eetkamer_off")
-    self.call_service("shell_command/heating_tmp_bad_off")
     self.log("OFF setpoint sent")
     return

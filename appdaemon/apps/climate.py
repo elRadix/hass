@@ -28,5 +28,6 @@ class climate(hass.Hass):
     self.call_service("shell_command/heating_tmp_slp2_off")
     self.call_service("shell_command/heating_tmp_slp3_off")
     self.call_service("shell_command/heating_tmp_eetkamer_off")
+    self.call_service("shell_command/heating_tmp_bad_off")
     self.log("OFF setpoint sent")
     return

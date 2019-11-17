@@ -20,6 +20,6 @@ class climate(hass.Hass):
     self.log("target temperature set")
     return
    if old == "heat" and new == "off":
-    self.call_service("shell_command/tmp_"+friendly+"_off")
+    self.call_service("shell_command.heating_tmp_"+friendly+"_off")
     self.log("target temperature off")
     return

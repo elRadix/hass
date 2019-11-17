@@ -1,6 +1,6 @@
 ##### Heat control
   - platform: command_line
-    scan_interval: 200
+    scan_interval: 10
     name: heat_living
     command: "/opt/scripts/status/motion.sh -c 0"
     device_class: heat
@@ -8,7 +8,7 @@
     payload_off: 0
 
   - platform: command_line
-    scan_interval: 200
+    scan_interval: 10
     name: heat_slp_1
     command: "/opt/scripts/status/motion.sh -c 7"
     device_class: heat
@@ -16,7 +16,7 @@
     payload_off: 0
 
   - platform: command_line
-    scan_interval: 200
+    scan_interval: 10
     name: heat_slp_2
     command: "/opt/scripts/status/motion.sh -c 5"
     device_class: heat
@@ -24,7 +24,7 @@
     payload_off: 0
 
   - platform: command_line
-    scan_interval: 200
+    scan_interval: 10
     name: heat_slp_3
     command: "/opt/scripts/status/motion.sh -c 6"
     device_class: heat
@@ -32,7 +32,7 @@
     payload_off: 0
 
   - platform: command_line
-    scan_interval: 200
+    scan_interval: 10
     name: heat_badkamer
     command: "/opt/scripts/status/motion.sh -c 10"
     device_class: heat

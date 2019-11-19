@@ -6,32 +6,54 @@ schedy_heating:
 
   schedule_snippets:
     living:
-    - { v: 24, start: "17:00", end: "19:30", weekdays: "1-5", weeks: "1-9, 44-52" }
+    - { v: 24, start: "17:00", end: "19:30", weekdays: "1", weeks: "1-9, 44-52" }
+    - { v: 24, start: "17:00", end: "19:30", weekdays: "2", weeks: "1-9, 44-52" }
+    - { v: 24, start: "18:00", end: "20:30", weekdays: "3", weeks: "1-9, 44-52" }
+    - { v: 24, start: "17:00", end: "19:30", weekdays: "4", weeks: "1-9, 44-52" }
+    - { v: 24, start: "18:00", end: "29:30", weekdays: "5", weeks: "1-9, 44-52" }
+
     eetkamer:
-    - { v: 24, start: "17:20", end: "19:00", weekdays: "1-5", weeks: "1-9, 44-52" }
+    - { v: 24, start: "17:10", end: "19:40", weekdays: "1", weeks: "1-9, 44-52" }
+    - { v: 24, start: "17:10", end: "19:40", weekdays: "2", weeks: "1-9, 44-52" }
+    - { v: 24, start: "18:10", end: "20:40", weekdays: "3", weeks: "1-9, 44-52" }
+    - { v: 24, start: "17:10", end: "19:40", weekdays: "4", weeks: "1-9, 44-52" }
+    - { v: 24, start: "18:10", end: "29:40", weekdays: "5", weeks: "1-9, 44-52" }
 
     kids:
     - v: 20
       rules:
-      - weekdays: 1-5
+      - weekdays: 1
         rules:
-        - { start: "18:30", end: "20:30", weeks: "1-9, 44-52"  }
+        - { start: "19:00", end: "21:00", weeks: "1-9, 44-52"  }
+      - weekdays: 2
+        rules:
+        - { start: "19:00", end: "21:00", weeks: "1-9, 44-52"  }
+      - weekdays: 3
+        rules:
+        - { start: "19:30", end: "21:30", weeks: "1-9, 44-52"  }
+      - weekdays: 4
+        rules:
+        - { start: "19:30", end: "21:30", weeks: "1-9, 44-52"  }
+      - weekdays: 5
+        rules:
+        - { start: "19:30", end: "21:30", weeks: "1-9, 44-52"  }
+
       - weekdays: 6-7
         rules:
-        - { start: "19:00", end: "20:30", weeks: "1-9, 44-52"  }
+        - { start: "19:30", end: "21:30", weeks: "1-9, 44-52"  }
 
     parents:
     - v: 22
       rules:
       - weekdays: 1-5
         rules:
-        - { start: "18:30", end: "20:30", weeks: "1-9, 44-52"  }
+        - { start: "19:30", end: "22:30", weeks: "1-9, 44-52"  }
       - weekdays: 6-7
         rules:
-        - { start: "19:00", end: "20:30", weeks: "1-9, 44-52"  }
+        - { start: "19:00", end: "21:30", weeks: "1-9, 44-52"  }
 
-    badkamer:
-    - { v: 10, start: "10:30", end: "13:00", weekdays: "6-7", weeks: "1-9, 44-52" }
+    # badkamer:
+    # - { v: 5, start: "10:30", end: "13:00", weekdays: "6-7", weeks: "1-9, 44-52" }
 
   schedule_prepend:
   - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
@@ -43,7 +65,7 @@ schedy_heating:
     living:
       actors:
         climate.living:
-      # rescheduling_delay: 60 # return back to schedule after x minutes
+        rescheduling_delay: 60 # return back to schedule after x minutes
       watched_entities:
       - binary_sensor.inkomhal
       schedule:
@@ -52,7 +74,7 @@ schedy_heating:
     eetkamer:
       actors:
         climate.eetkamer:
-      # rescheduling_delay: 60 # return back to schedule after x minutes
+        rescheduling_delay: 60 # return back to schedule after x minutes
       watched_entities:
       - binary_sensor.terras
       schedule:
@@ -61,7 +83,7 @@ schedy_heating:
     sara:
       actors:
         climate.sara:
-      # rescheduling_delay: 60 # return back to schedule after x minutes
+       rescheduling_delay: 60 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['kids'])"
 
@@ -79,12 +101,12 @@ schedy_heating:
       schedule:
       - x: "IncludeSchedule(schedule_snippets['parents'])"
 
-    badkamer:
-      actors:
-        climate.badkamer:
-#      rescheduling_delay: 30 # return back to schedule after x minutes
-      schedule:
-      - x: "IncludeSchedule(schedule_snippets['badkamer'])"
+#     badkamer:
+#       actors:
+#         climate.badkamer:
+# #      rescheduling_delay: 30 # return back to schedule after x minutes
+#       schedule:
+#       - x: "IncludeSchedule(schedule_snippets['badkamer'])"
 
   statistics:
     # Pick an arbitrary name for the parameter instance.

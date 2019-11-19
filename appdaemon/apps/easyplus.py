@@ -10,8 +10,7 @@ class easyplus(hass.Hass):
    friendly = self.get_state(entity, attribute="friendly_name")
    state = self.get_state(entity)
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
-#    self.log(self.args)
-#    self.log(state)
+   self.log("Switch is %s and telnet is s%", state, easyplus)
    if old != "on" and new != "off":
     if easyplus != 'on':
       for i in range (3):

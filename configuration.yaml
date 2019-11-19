@@ -234,7 +234,7 @@ climate:
     min_temp: 5
     max_temp: 26
     ac_mode: false
-    target_temp: 17
+    target_temp: 23
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
@@ -249,7 +249,7 @@ climate:
     min_temp: 5
     max_temp: 26
     ac_mode: false
-    target_temp: 5
+    target_temp: 22
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5

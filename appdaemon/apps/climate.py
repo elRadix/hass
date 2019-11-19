@@ -16,8 +16,8 @@ class climate(hass.Hass):
       self.turn_on('switch.easyplus')
       time.sleep(50)
       self.log("telnet state is %s", easyplus)
-    if self.get_state('input_boolean.easyplus_boiler_heating_dev') != 'on':
-      self.turn_on('input_boolean.easyplus_boiler_heating_dev')
+    if self.get_state('input_boolean.easyplus_boiler_heating') != 'on':
+      self.turn_on('input_boolean.easyplus_boiler_heating')
       self.log("boiler on")
     self.call_service("shell_command/heating_"+friendly)
     self.log("target temperature set")

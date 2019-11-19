@@ -230,11 +230,11 @@ climate:
   - platform: generic_thermostat
     name: Eetkamer
     heater: switch.heating_eetkamer
-    target_sensor: sensor.ht_eetkamer_temp
+    target_sensor: sensor.shelly_h_t_22c3c0_temperature
     min_temp: 5
     max_temp: 26
     ac_mode: false
-    target_temp: 23
+    target_temp: 24
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5

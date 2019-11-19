@@ -22,5 +22,4 @@ class easyplus(hass.Hass):
         self.turn_on(entity)
         self.log("%s %s", friendly, state)
     return
-   self.log(self.args)
-   #self.log("Switch is %s and telnet is s%", state, easyplus)
+#   self.log(self.args)

@@ -1,5 +1,5 @@
   - platform: command_line
-    command: '/dev/tcp/192.168.1.61/2024 && echo 0. || echo 1'
+    command: '/dev/tcp/192.168.1.61/2024 && echo 0 || echo 1'
     name: 'easyplus_telnet'
     device_class: connectivity
     payload_on: 0

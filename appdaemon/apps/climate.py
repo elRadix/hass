@@ -9,12 +9,13 @@ class climate(hass.Hass):
  def climate_cb(self, entity, attribute, old, new, kwargs):
    friendly = self.get_state(entity, attribute="friendly_name")
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
+   self.log(easyplus)
    if old == "off" and new == "heat":
     while self.get_state('binary_sensor.easyplus_telnet') == 'off':
       self.turn_off('switch.easyplus')
       self.turn_on('switch.easyplus')
       time.sleep(40)
-      self.log("easyplus on")
+      self.log(easyplus)
     if self.get_state('input_boolean.easyplus_boiler_heating_dev') != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating_dev')
       self.log("boiler on")

@@ -17,6 +17,7 @@ heating_tmp_bad_off: !secret shell_command_heating_tmp_bad_off
 heating_tmp_eetkamer_on: !secret shell_command_heating_tmp_eetkamer_on
 heating_tmp_eetkamer_auto: !secret shell_command_heating_tmp_eetkamer_auto
 heating_tmp_eetkamer_off: !secret shell_command_heating_tmp_eetkamer_off
+
 #appdaemon
 heating_living: !secret shell_command_heating_living
 heating_eetkamer: !secret shell_command_heating_eetkamer
@@ -24,3 +25,7 @@ heating_floradix: !secret shell_command_heating_floradix
 heating_sara: !secret shell_command_heating_sara
 heating_yassin: !secret shell_command_heating_yassin
 heating_bad: !secret shell_command_heating_bad
+heating_tmp_floradix_off: !secret shell_command_heating_tmp_slp1_off
+heating_tmp_sara_off: !secret shell_command_heating_tmp_slp2_off
+heating_tmp_yassin_off: !secret shell_command_heating_tmp_slp3_off
+heating_tmp_badkamer_off: !secret shell_command_heating_tmp_bad_off

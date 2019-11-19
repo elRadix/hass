@@ -1,3 +1,16 @@
+  - platform: command_line
+    command: '/dev/tcp/192.168.1.61/2024 && echo 0. || echo 1'
+    name: 'easyplus_telnet'
+    device_class: connectivity
+    payload_on: 0
+    payload_off: 1
+
+  - platform: command_line
+    command: '/opt/scripts/telnet.sh'
+    name: 'easyplus_telnet_script'
+    device_class: connectivity
+    payload_on: 0
+    payload_off: 1
 
 
   - platform: command_line
@@ -6,8 +19,7 @@
     device_class: connectivity
     payload_on: "Up"
     payload_off: "Down"
-    
-    
+
   - platform: workday
     country: BE
     workdays: [mon, tue, wed, thu, fri]

@@ -10,14 +10,14 @@ schedy_heating:
     - { v: 24, start: "17:00", end: "19:30", weekdays: "2", weeks: "1-9, 44-52" }
     - { v: 24, start: "18:00", end: "20:30", weekdays: "3", weeks: "1-9, 44-52" }
     - { v: 24, start: "17:00", end: "19:30", weekdays: "4", weeks: "1-9, 44-52" }
-    - { v: 24, start: "18:00", end: "29:30", weekdays: "5", weeks: "1-9, 44-52" }
+    - { v: 24, start: "18:00", end: "21:30", weekdays: "5", weeks: "1-9, 44-52" }
 
     eetkamer:
     - { v: 24, start: "17:10", end: "19:40", weekdays: "1", weeks: "1-9, 44-52" }
     - { v: 24, start: "17:10", end: "19:40", weekdays: "2", weeks: "1-9, 44-52" }
     - { v: 24, start: "18:10", end: "20:40", weekdays: "3", weeks: "1-9, 44-52" }
     - { v: 24, start: "17:10", end: "19:40", weekdays: "4", weeks: "1-9, 44-52" }
-    - { v: 24, start: "18:10", end: "29:40", weekdays: "5", weeks: "1-9, 44-52" }
+    - { v: 24, start: "18:10", end: "21:40", weekdays: "5", weeks: "1-9, 44-52" }
 
     kids:
     - v: 20

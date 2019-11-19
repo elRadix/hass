@@ -7,9 +7,7 @@
       entity_id: binary_sensor.easyplus_telnet, switch.easyplus
       device_class: power
       value_template: >-
-        {% if is_state('switch.easyplus', 'on') %}
-          on
-        {% elif is_state('binary_sensor.easyplus_telnet', 'on') %}
+        {% if is_state('binary_sensor.easyplus_telnet', 'on') and is_state('switch.easyplus', 'on') %}
           on
         {% else %}
           off

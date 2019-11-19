@@ -11,7 +11,7 @@ class easyplus(hass.Hass):
    state = self.get_state(entity)
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
    self.log(self.args)
-   self.log(self.easyplus_cb)
+   self.log(self.state)
    if old != "on" and new != "off":
     if easyplus != 'on':
       for i in range (3):

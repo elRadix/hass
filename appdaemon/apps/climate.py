@@ -8,8 +8,10 @@ class climate(hass.Hass):
 
  def climate_cb(self, entity, attribute, old, new, kwargs):
    friendly = self.get_state(entity, attribute="friendly_name")
+   easyplus = self.get_state('sensor.easyplus_telnet')
    if old == "off" and new == "heat":
-    if self.get_state('switch.easyplus') != 'on':
+    while  easyplus != 'on':
+      self.turn_off('switch.easyplus')
       self.turn_on('switch.easyplus')
       time.sleep(20)
       self.log("easyplus on")

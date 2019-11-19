@@ -13,8 +13,8 @@ class climate(hass.Hass):
       self.turn_on('switch.easyplus')
       self.log("easyplus on")
     time.sleep(30)
-    if self.get_state('input_boolean.easyplus_boiler_heating') != 'on':
-      self.turn_on('input_boolean.easyplus_boiler_heating')
+    if self.get_state('input_boolean.easyplus_boiler_heating_dev') != 'on':
+      self.turn_on('input_boolean.easyplus_boiler_heating_dev')
       self.log("boiler on")
     self.call_service("shell_command/heating_"+friendly)
     self.log("target temperature set")

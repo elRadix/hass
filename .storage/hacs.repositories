@@ -98,7 +98,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "e895385",
+            "last_commit": "98ce18b",
             "last_release_tag": null,
             "name": "Sinope Neviweb",
             "new": false,
@@ -210,8 +210,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "ad515c9",
-            "last_release_tag": "v0.4",
+            "last_commit": "d77eea3",
+            "last_release_tag": "v0.5",
             "name": "Sighthound custom component",
             "new": false,
             "repository_manifest": {},
@@ -750,8 +750,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "018d4a1",
-            "last_release_tag": "1.1.7",
+            "last_commit": "9bbc506",
+            "last_release_tag": "1.1.9",
             "name": "aftership-card",
             "new": true,
             "repository_manifest": {
@@ -810,7 +810,7 @@
             "hide": false,
             "installed": true,
             "installed_commit": "b924559",
-            "last_commit": "9bf2a82",
+            "last_commit": "3839550",
             "last_release_tag": "0.1.0",
             "name": "list-card",
             "new": false,
@@ -1336,7 +1336,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "37eb2ce",
+            "last_commit": "e149317",
             "last_release_tag": null,
             "name": "flex-table-card",
             "new": false,
@@ -1365,12 +1365,33 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "03496c4",
-            "last_release_tag": "2.0",
+            "last_commit": "5d2842f",
+            "last_release_tag": "2.3",
             "name": "lovelace-layout-card",
             "new": true,
             "repository_manifest": {
                 "name": "layout-card",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": null
+        },
+        "157618389": {
+            "authors": [],
+            "category": "integration",
+            "description": "\ud83d\udd39 Use icons from fontawesome in home-assistant",
+            "full_name": "thomasloven/hass-fontawesome",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "201a146",
+            "last_release_tag": "1.0",
+            "name": "Fontawesome icons",
+            "new": true,
+            "repository_manifest": {
+                "name": "fontawesome",
                 "render_readme": true
             },
             "selected_tag": null,
@@ -1386,7 +1407,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "3f17a26",
+            "last_commit": "5817209",
             "last_release_tag": "0.0.8",
             "name": "air-visual-card",
             "new": false,
@@ -1432,12 +1453,12 @@
                 "@danobot"
             ],
             "category": "integration",
-            "description": " Intelligent entity controller for Home Assistant for controlling devices with timers, overrides, scripts, custom service parameters and sun-based time restrictions.",
+            "description": "Intelligent entity controller for Home Assistant for controlling devices with timers, overrides, custom service parameters and scripts, and sun-based time restrictions.",
             "full_name": "danobot/entity-controller",
             "hide": false,
             "installed": true,
-            "installed_commit": "d7fdb98",
-            "last_commit": "d7fdb98",
+            "installed_commit": "c420a8f",
+            "last_commit": "d626fec",
             "last_release_tag": null,
             "name": "Entity Contoller",
             "new": false,
@@ -1655,16 +1676,16 @@
             "full_name": "maykar/compact-custom-header",
             "hide": false,
             "installed": true,
-            "installed_commit": "68a6e20",
-            "last_commit": "68a6e20",
-            "last_release_tag": "1.4.7",
+            "installed_commit": "1d69c31",
+            "last_commit": "1d69c31",
+            "last_release_tag": "1.4.9",
             "name": "compact-custom-header",
             "new": false,
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
             "topics": [],
-            "version_installed": "1.4.7"
+            "version_installed": "1.4.9"
         },
         "161403328": {
             "authors": [],
@@ -1673,8 +1694,8 @@
             "full_name": "thomasloven/lovelace-card-tools",
             "hide": false,
             "installed": true,
-            "installed_commit": "4bcbb48",
-            "last_commit": "cd230cc",
+            "installed_commit": "cd230cc",
+            "last_commit": "605caa9",
             "last_release_tag": "2.3",
             "name": "lovelace-card-tools",
             "new": false,
@@ -1684,7 +1705,7 @@
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": "2.2"
+            "version_installed": "2.3"
         },
         "161661213": {
             "authors": [],
@@ -1735,7 +1756,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "f3eaab4",
+            "last_commit": "839f422",
             "last_release_tag": "v1.3.0",
             "name": "Lightwave v2 (Smart Series) custom component",
             "new": false,
@@ -1787,7 +1808,7 @@
             "full_name": "custom-cards/bar-card",
             "hide": false,
             "installed": true,
-            "installed_commit": "01cf7d2",
+            "installed_commit": "a4f97b7",
             "last_commit": "a4f97b7",
             "last_release_tag": "1.6.2",
             "name": "bar-card",
@@ -1796,7 +1817,7 @@
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": "1.6.1"
+            "version_installed": "1.6.2"
         },
         "163446489": {
             "authors": [],
@@ -1815,6 +1836,24 @@
             "show_beta": false,
             "topics": [],
             "version_installed": null
+        },
+        "164022050": {
+            "authors": [],
+            "category": "plugin",
+            "description": "Check Button Card is a button that tracks when it is last pressed, for the Home Assistant Lovelace front-end using MQTT auto discovery.",
+            "full_name": "custom-cards/check-button-card",
+            "hide": false,
+            "installed": true,
+            "installed_commit": "1401b76",
+            "last_commit": "1401b76",
+            "last_release_tag": "0.1.2",
+            "name": "check-button-card",
+            "new": false,
+            "repository_manifest": {},
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": "0.1.2"
         },
         "164155243": {
             "authors": [
@@ -1864,8 +1903,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "3aef9a3",
-            "last_release_tag": "1.0.8",
+            "last_commit": "4b8bbf5",
+            "last_release_tag": "1.0.9",
             "name": "roku-card",
             "new": true,
             "repository_manifest": {
@@ -1968,8 +2007,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "7d11c5e",
-            "last_release_tag": "v2.3",
+            "last_commit": "0721774",
+            "last_release_tag": "v2.4",
             "name": "deepstack_object custom component",
             "new": false,
             "repository_manifest": {},
@@ -1991,8 +2030,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "b257d7d",
-            "last_release_tag": "v2.5.4",
+            "last_commit": "e7bb62b",
+            "last_release_tag": "v2.5.5",
             "name": "Afvalbeheer",
             "new": false,
             "repository_manifest": {},
@@ -2030,12 +2069,12 @@
             "description": "\ud83d\udd39Automatically populate the entities-list of lovelace cards",
             "full_name": "thomasloven/lovelace-auto-entities",
             "hide": false,
-            "installed": false,
-            "installed_commit": null,
-            "last_commit": "01e22c1",
-            "last_release_tag": "1.2",
+            "installed": true,
+            "installed_commit": "7a9f8f1",
+            "last_commit": "4231522",
+            "last_release_tag": "1.5",
             "name": "lovelace-auto-entities",
-            "new": true,
+            "new": false,
             "repository_manifest": {
                 "name": "auto-entities",
                 "render_readme": true
@@ -2043,7 +2082,7 @@
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": null
+            "version_installed": "1.5"
         },
         "167885769": {
             "authors": [
@@ -2055,7 +2094,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "fd269d1",
+            "last_commit": "447d856",
             "last_release_tag": "v0.6.2",
             "name": "Arlo Camera Support",
             "new": false,
@@ -2114,8 +2153,8 @@
             "hide": false,
             "installed": true,
             "installed_commit": "6f68961",
-            "last_commit": "6f68961",
-            "last_release_tag": "v1.1.2",
+            "last_commit": "355b219",
+            "last_release_tag": "v1.1.3",
             "name": "Ophaalkalender",
             "new": false,
             "repository_manifest": {},
@@ -2134,8 +2173,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "e6277b3",
-            "last_release_tag": "v1.10.4",
+            "last_commit": "4cde797",
+            "last_release_tag": "v1.11.0",
             "name": "BWAlarm (ak74 edition)",
             "new": false,
             "repository_manifest": {},
@@ -2285,9 +2324,9 @@
             "full_name": "hacs/integration",
             "hide": false,
             "installed": true,
-            "installed_commit": "838dbd7",
-            "last_commit": "c30cff5",
-            "last_release_tag": "0.16.3",
+            "installed_commit": "b11087d",
+            "last_commit": "2bb9d92",
+            "last_release_tag": "0.17.3",
             "name": "HACS (Home Assistant Community Store)",
             "new": false,
             "repository_manifest": {
@@ -2305,7 +2344,7 @@
                 "package-manager",
                 "python"
             ],
-            "version_installed": "0.16.3"
+            "version_installed": "0.17.1"
         },
         "172800356": {
             "authors": [
@@ -2366,7 +2405,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "4048717",
+            "last_commit": "cbb8a85",
             "last_release_tag": null,
             "name": "lovelace-gap-card",
             "new": true,
@@ -2405,8 +2444,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "58c9bd5",
-            "last_release_tag": "3.0",
+            "last_commit": "1a9093d",
+            "last_release_tag": "4.1",
             "name": "Programmable Thermostat",
             "new": false,
             "repository_manifest": {},
@@ -2459,8 +2498,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "b627fb5",
-            "last_release_tag": "0.3.2",
+            "last_commit": "e4c6c58",
+            "last_release_tag": "0.3.3",
             "name": "lovelace-home-feed-card",
             "new": false,
             "repository_manifest": {},
@@ -2662,7 +2701,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "952166f",
+            "last_commit": "f47f0e3",
             "last_release_tag": null,
             "name": "lovelace-multiple-entity-row",
             "new": false,
@@ -2786,7 +2825,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "41616e1",
+            "last_commit": "d92055d",
             "last_release_tag": null,
             "name": "lovelace-dummy-entity-row",
             "new": true,
@@ -2870,6 +2909,27 @@
             "topics": [],
             "version_installed": "1.1.2"
         },
+        "180528950": {
+            "authors": [],
+            "category": "plugin",
+            "description": "\ud83d\udd39 Display the more-info dialog of any entity as a lovelace card",
+            "full_name": "thomasloven/lovelace-more-info-card",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "d93d8bb",
+            "last_release_tag": null,
+            "name": "lovelace-more-info-card",
+            "new": false,
+            "repository_manifest": {
+                "name": "more-info-card",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": null
+        },
         "180651910": {
             "authors": [
                 "hellowlol"
@@ -2903,8 +2963,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "4e20f48",
-            "last_release_tag": "1.4.7",
+            "last_commit": "663e55f",
+            "last_release_tag": "1.4.8",
             "name": "radial-menu",
             "new": true,
             "repository_manifest": {
@@ -3424,24 +3484,6 @@
             "topics": [],
             "version_installed": null
         },
-        "187247895": {
-            "authors": [],
-            "category": "plugin",
-            "description": "\u26a0\ufe0f DEPRECATED - MOVE TO AUTO-ENTITIES",
-            "full_name": "custom-cards/monster-card",
-            "hide": false,
-            "installed": true,
-            "installed_commit": "1102b59",
-            "last_commit": "2e1b58d",
-            "last_release_tag": "0.2.5",
-            "name": "monster-card",
-            "new": false,
-            "repository_manifest": {},
-            "selected_tag": null,
-            "show_beta": false,
-            "topics": [],
-            "version_installed": "0.2.5"
-        },
         "187247927": {
             "authors": [],
             "category": "plugin",
@@ -3586,9 +3628,9 @@
             "full_name": "thomasloven/lovelace-card-mod",
             "hide": false,
             "installed": true,
-            "installed_commit": "7502a5c",
-            "last_commit": "501a52d",
-            "last_release_tag": "10",
+            "installed_commit": "050f862",
+            "last_commit": "050f862",
+            "last_release_tag": "11",
             "name": "lovelace-card-mod",
             "new": false,
             "repository_manifest": {
@@ -3598,7 +3640,7 @@
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": "10"
+            "version_installed": "11"
         },
         "190982718": {
             "authors": [
@@ -3630,8 +3672,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "4224f9b",
-            "last_release_tag": "0.3.9",
+            "last_commit": "72c8357",
+            "last_release_tag": "0.3.11",
             "name": "Beerbolaget",
             "new": false,
             "repository_manifest": {},
@@ -3826,16 +3868,16 @@
             "full_name": "pnbruckner/ha-sun2",
             "hide": false,
             "installed": true,
-            "installed_commit": "d5c13bd",
-            "last_commit": "d5c13bd",
-            "last_release_tag": "1.3.0",
+            "installed_commit": "73ab367",
+            "last_commit": "73ab367",
+            "last_release_tag": "1.4.0",
             "name": "Sun2",
             "new": false,
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
             "topics": [],
-            "version_installed": "1.3.0"
+            "version_installed": "1.4.0"
         },
         "192835334": {
             "authors": [],
@@ -4262,8 +4304,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "e9c78e3",
-            "last_release_tag": "13.1",
+            "last_commit": "61d23a8",
+            "last_release_tag": "13.2",
             "name": "Browser mod",
             "new": false,
             "repository_manifest": {},
@@ -4280,7 +4322,7 @@
             "hide": false,
             "installed": true,
             "installed_commit": "3bd8a9b",
-            "last_commit": "96a73ca",
+            "last_commit": "21ab60c",
             "last_release_tag": "0.12.5",
             "name": "shellies_discovery",
             "new": false,
@@ -4308,7 +4350,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "fe38c49",
+            "last_commit": "837c3c3",
             "last_release_tag": "0.3.5",
             "name": "thermostat_update",
             "new": false,
@@ -4334,7 +4376,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "ffaf5c6",
+            "last_commit": "3d11229",
             "last_release_tag": "0.0.7",
             "name": "airly",
             "new": false,
@@ -4359,7 +4401,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "14f96e3",
+            "last_commit": "6335b9f",
             "last_release_tag": "0.4.0",
             "name": "thermostats-update",
             "new": false,
@@ -4387,7 +4429,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "34ac8e2",
+            "last_commit": "e43c25d",
             "last_release_tag": "0.9.1",
             "name": "Airly",
             "new": false,
@@ -4435,8 +4477,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "54eb48c",
-            "last_release_tag": "0.8.7",
+            "last_commit": "e50f890",
+            "last_release_tag": "v0.8.7",
             "name": "Fronius",
             "new": false,
             "repository_manifest": {},
@@ -4505,7 +4547,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "216047e",
+            "last_commit": "bb0d42d",
             "last_release_tag": "0.21",
             "name": "BOM Forecast",
             "new": false,
@@ -4601,8 +4643,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "343d7f9",
-            "last_release_tag": "0.1.1",
+            "last_commit": "c2bb061",
+            "last_release_tag": "0.1.3",
             "name": "lovelace-grocy-chores-card",
             "new": false,
             "repository_manifest": {},
@@ -4860,8 +4902,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "6987d42",
-            "last_release_tag": "0.6.2",
+            "last_commit": "4bd3470",
+            "last_release_tag": "0.6.3",
             "name": "GIOS",
             "new": false,
             "repository_manifest": {
@@ -5220,8 +5262,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "649faf4",
-            "last_release_tag": "v2.1",
+            "last_commit": "229780f",
+            "last_release_tag": "v2.2",
             "name": "Kostal",
             "new": false,
             "repository_manifest": {
@@ -5578,16 +5620,16 @@
             "full_name": "thomasloven/hass-lovelace_gen",
             "hide": false,
             "installed": true,
-            "installed_commit": "10f967c",
-            "last_commit": "400b14b",
-            "last_release_tag": "4",
+            "installed_commit": "5870a3f",
+            "last_commit": "5870a3f",
+            "last_release_tag": "5",
             "name": "Lovelace Gen",
             "new": false,
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": "4"
+            "version_installed": "5"
         },
         "201292040": {
             "authors": [],
@@ -5894,8 +5936,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "801fdf4",
-            "last_release_tag": "1.1.0",
+            "last_commit": "f55802b",
+            "last_release_tag": "2.0.2",
             "name": "digitalSTROM",
             "new": false,
             "repository_manifest": {
@@ -6074,8 +6116,8 @@
             "hide": false,
             "installed": true,
             "installed_commit": "092ba1e",
-            "last_commit": "1e1f1b7",
-            "last_release_tag": "v2.2",
+            "last_commit": "d4f9684",
+            "last_release_tag": "v2.3",
             "name": "Garbage Collection",
             "new": false,
             "repository_manifest": {
@@ -6089,7 +6131,7 @@
                 "zip_release": true
             },
             "selected_tag": null,
-            "show_beta": false,
+            "show_beta": true,
             "topics": [
                 "garbage-collection",
                 "schedule",
@@ -6215,7 +6257,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "cd185f8",
+            "last_commit": "86febaa",
             "last_release_tag": null,
             "name": "garbage-collection-card",
             "new": false,
@@ -6265,9 +6307,9 @@
             "full_name": "AmoebeLabs/flex-horseshoe-card",
             "hide": false,
             "installed": true,
-            "installed_commit": "58171b4",
-            "last_commit": "58171b4",
-            "last_release_tag": "0.8.2",
+            "installed_commit": "2e00adb",
+            "last_commit": "2e00adb",
+            "last_release_tag": "0.8.3",
             "name": "flex-horseshoe-card",
             "new": false,
             "repository_manifest": {
@@ -6285,7 +6327,7 @@
                 "lovelace-custom-card",
                 "lovelace-ui"
             ],
-            "version_installed": "0.8.2"
+            "version_installed": "0.8.3"
         },
         "207620142": {
             "authors": [
@@ -6376,8 +6418,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "002682b",
-            "last_release_tag": "0.4.0",
+            "last_commit": "d6b7b80",
+            "last_release_tag": "1.0.1",
             "name": "Anniversaries",
             "new": false,
             "repository_manifest": {
@@ -6414,7 +6456,7 @@
                 "domains": [
                     "sensor"
                 ],
-                "name": "Afvalkalender voor Area Reiniging"
+                "name": "Integration for bin/waste collection by Area Reiniging"
             },
             "selected_tag": null,
             "show_beta": false,
@@ -6431,8 +6473,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "277d4a9",
-            "last_release_tag": "1.4.0",
+            "last_commit": "64f5864",
+            "last_release_tag": "1.4.1",
             "name": "FRITZ!Box Tools",
             "new": false,
             "repository_manifest": {
@@ -6589,7 +6631,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "b056603",
+            "last_commit": "8ac788d",
             "last_release_tag": null,
             "name": "BMR",
             "new": false,
@@ -6704,8 +6746,8 @@
             "description": "\ud83d\udc69\u200d\u2695\ufe0f\ud83d\udd0b AppDaemon entity check app. Currently supports battery level & unknown/unavailable states",
             "full_name": "benleb/ad-ench",
             "hide": false,
-            "installed": false,
-            "installed_commit": null,
+            "installed": true,
+            "installed_commit": "6248496",
             "last_commit": "6248496",
             "last_release_tag": "v0.4.4",
             "name": "ench",
@@ -6727,7 +6769,7 @@
                 "home-assistant",
                 "python"
             ],
-            "version_installed": null
+            "version_installed": "v0.4.4"
         },
         "212657669": {
             "authors": [
@@ -6760,7 +6802,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "76247fe",
+            "last_commit": "ed1d979",
             "last_release_tag": "1.0.1",
             "name": "Mitsubishi HVAC with Echonet lite",
             "new": false,
@@ -6786,16 +6828,16 @@
             "full_name": "JBassett/plex_webhooks",
             "hide": false,
             "installed": true,
-            "installed_commit": "43c17b5",
-            "last_commit": "43c17b5",
-            "last_release_tag": "v0.3",
+            "installed_commit": "8001751",
+            "last_commit": "45d7a9e",
+            "last_release_tag": "v0.5",
             "name": "Plex Webhooks",
             "new": false,
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": "v0.3"
+            "version_installed": "v0.4"
         },
         "213551635": {
             "authors": [
@@ -6864,6 +6906,24 @@
                 "name": "gui-sandbox",
                 "render_readme": true
             },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": null
+        },
+        "214510201": {
+            "authors": [],
+            "category": "plugin",
+            "description": "Lovelace pie chart card that displays current energy usage",
+            "full_name": "cheelio/power-usage-card",
+            "hide": false,
+            "installed": true,
+            "installed_commit": "9afab40",
+            "last_commit": "9afab40",
+            "last_release_tag": null,
+            "name": "power-usage-card",
+            "new": false,
+            "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
@@ -6952,8 +7012,8 @@
             "full_name": "home-assistant-community-themes/blue-night",
             "hide": false,
             "installed": true,
-            "installed_commit": "d110360",
-            "last_commit": "d110360",
+            "installed_commit": "f46f735",
+            "last_commit": "f46f735",
             "last_release_tag": null,
             "name": "blue_night",
             "new": false,
@@ -7001,8 +7061,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "456afed",
-            "last_release_tag": "1.2.0",
+            "last_commit": "b2617f9",
+            "last_release_tag": "1.3.0",
             "name": "rgb-light-card",
             "new": false,
             "repository_manifest": {
@@ -7032,8 +7092,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "d5d57db",
-            "last_release_tag": "1.1.6",
+            "last_commit": "30250c8",
+            "last_release_tag": "1.1.7",
             "name": "restriction-card",
             "new": true,
             "repository_manifest": {
@@ -7057,9 +7117,9 @@
             "full_name": "royto/logbook-card",
             "hide": false,
             "installed": true,
-            "installed_commit": "7b446ff",
-            "last_commit": "31bb2e6",
-            "last_release_tag": "0.4.0",
+            "installed_commit": "895b34d",
+            "last_commit": "895b34d",
+            "last_release_tag": "0.4.1",
             "name": "logbook-card",
             "new": false,
             "repository_manifest": {
@@ -7070,7 +7130,7 @@
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
-            "version_installed": "0.4.0"
+            "version_installed": "0.4.1"
         },
         "216165131": {
             "authors": [],
@@ -7216,6 +7276,33 @@
             ],
             "version_installed": null
         },
+        "217507414": {
+            "authors": [
+                "@fineemb"
+            ],
+            "category": "integration",
+            "description": "\u63a5\u5165Hass\u7684\u51c9\u9738\u7ec4\u4ef6",
+            "full_name": "fineemb/Yeelink-ven-fan",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": null,
+            "name": "Yeelink",
+            "new": true,
+            "repository_manifest": {
+                "domains": [
+                    "fan"
+                ],
+                "homeassistant": "0.99.9",
+                "name": "Yeelight ven fan",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": null
+        },
         "218178802": {
             "authors": [],
             "category": "plugin",
@@ -7280,7 +7367,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "4c62572",
+            "last_commit": "37996e8",
             "last_release_tag": "0.1.1",
             "name": "TV4 Play",
             "new": false,
@@ -7333,7 +7420,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "890cc54",
+            "last_commit": "8900c7b",
             "last_release_tag": null,
             "name": "KEF",
             "new": true,
@@ -7354,6 +7441,34 @@
                 "ls50w",
                 "lsx"
             ],
+            "version_installed": null
+        },
+        "220678749": {
+            "authors": [
+                "@shogunxam"
+            ],
+            "category": "integration",
+            "description": "HA Integration for Centro Funzionale Regione Toscana",
+            "full_name": "shogunxam/Home-Assistant-custom-components-cfr-toscana",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "b3be572",
+            "last_release_tag": "v0.4",
+            "name": "CFR (Centro Funzionale Regione Toscana)",
+            "new": true,
+            "repository_manifest": {
+                "country": [
+                    "IT"
+                ],
+                "domains": [
+                    "sensor"
+                ],
+                "name": "cfr sensor"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
             "version_installed": null
         },
         "220679143": {
@@ -7381,7 +7496,8 @@
             "topics": [
                 "departures",
                 "hasl",
-                "sl"
+                "sl",
+                "stockholms-lokaltrafik"
             ],
             "version_installed": null
         },
@@ -7410,6 +7526,7 @@
             "topics": [
                 "hasl",
                 "sl",
+                "stockholms-lokaltrafik",
                 "traffic-status"
             ],
             "version_installed": null
@@ -7424,10 +7541,10 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "ec6e793",
+            "last_commit": "e1298cc",
             "last_release_tag": "0.11",
             "name": "Popular Times",
-            "new": true,
+            "new": false,
             "repository_manifest": {
                 "domains": [
                     "sensor"
@@ -7441,6 +7558,103 @@
                 "google-maps",
                 "google-places-api",
                 "homeassistant"
+            ],
+            "version_installed": null
+        },
+        "221287384": {
+            "authors": [],
+            "category": "theme",
+            "description": "Clear Theme for Home Assistant",
+            "full_name": "naofireblade/clear-theme",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "b9e122b",
+            "last_release_tag": "v1.0",
+            "name": "clear",
+            "new": true,
+            "repository_manifest": {
+                "homeassistant": "0.101.0",
+                "name": "Clear Theme"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": null
+        },
+        "221288367": {
+            "authors": [],
+            "category": "theme",
+            "description": "Dark variant of Clear Theme for Home Assistant",
+            "full_name": "naofireblade/clear-theme-dark",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "ece24b0",
+            "last_release_tag": "v1.0",
+            "name": "clear-dark",
+            "new": true,
+            "repository_manifest": {
+                "homeassistant": "0.101.0",
+                "name": "Clear Theme Dark"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": null
+        },
+        "222056780": {
+            "authors": [],
+            "category": "appdaemon",
+            "description": "Bring full functionality to IKEA light controllers",
+            "full_name": "xaviml/z2m_ikea_controller",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "b110399",
+            "last_release_tag": "v1.0.1",
+            "name": "z2m_ikea_controller",
+            "new": true,
+            "repository_manifest": {
+                "name": "Z2M - IKEA controllers",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [
+                "e1524",
+                "e1743",
+                "e1810",
+                "ikea"
+            ],
+            "version_installed": null
+        },
+        "222422187": {
+            "authors": [],
+            "category": "theme",
+            "description": "Theme based on iOS Dark Mode for Lovelace Home Assistant \ud83c\udfe0\ud83e\udd16",
+            "full_name": "basnijholt/lovelace-ios-dark-mode-theme",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": null,
+            "name": "ios-dark-mode",
+            "new": true,
+            "repository_manifest": {
+                "name": "iOS Dark Mode Theme",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [
+                "dark-mode",
+                "darkmode",
+                "hacs",
+                "home-assistant",
+                "ios",
+                "lovelace",
+                "theme"
             ],
             "version_installed": null
         },
@@ -7474,8 +7688,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "068b4be",
-            "last_release_tag": "v1.7",
+            "last_commit": "dd37745",
+            "last_release_tag": "v1.8",
             "name": "Hue sensor custom component",
             "new": false,
             "repository_manifest": {},

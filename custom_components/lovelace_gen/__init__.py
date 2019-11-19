@@ -14,6 +14,8 @@ _LOGGER = logging.getLogger(__name__)
 
 jinja = jinja2.Environment(loader=jinja2.FileSystemLoader("/"))
 
+llgen_config = {}
+
 def load_yaml(fname, args={}):
     try:
         ll_gen = False
@@ -22,7 +24,7 @@ def load_yaml(fname, args={}):
                 ll_gen = True
 
         if ll_gen:
-            stream = io.StringIO(jinja.get_template(fname).render(args))
+            stream = io.StringIO(jinja.get_template(fname).render({**args, "_global": llgen_config}))
             stream.name = fname
             return loader.yaml.load(stream, Loader=loader.SafeLineLoader) or OrderedDict()
         else:
@@ -42,7 +44,7 @@ def _include_yaml(ldr, node):
         fn = node.value
     else:
         fn, args, *_ = ldr.construct_sequence(node)
-    fname = os.path.join(os.path.dirname(ldr.name), fn)
+    fname = os.path.abspath(os.path.join(os.path.dirname(ldr.name), fn))
     try:
         return loader._add_reference(load_yaml(fname, args), ldr, node)
     except FileNotFoundError as exc:
@@ -60,5 +62,31 @@ loader.load_yaml = load_yaml
 loader.yaml.SafeLoader.add_constructor("!include", _include_yaml)
 loader.yaml.SafeLoader.add_constructor("!file", _uncache_file)
 
-async def async_setup(*_):
+async def async_setup(hass, config):
+    llgen_config.update(config.get("lovelace_gen"));
     return True
+
+# Allow redefinition of node anchors
+import yaml
+
+def compose_node(self, parent, index):
+    if self.check_event(yaml.events.AliasEvent):
+        event = self.get_event()
+        anchor = event.anchor
+        if anchor not in self.anchors:
+            raise yaml.composer.ComposerError(None, None, "found undefined alias %r"
+                    % anchor, event.start_mark)
+        return self.anchors[anchor]
+    event = self.peek_event()
+    anchor = event.anchor
+    self.descend_resolver(parent, index)
+    if self.check_event(yaml.events.ScalarEvent):
+        node = self.compose_scalar_node(anchor)
+    elif self.check_event(yaml.events.SequenceStartEvent):
+        node = self.compose_sequence_node(anchor)
+    elif self.check_event(yaml.events.MappingStartEvent):
+        node = self.compose_mapping_node(anchor)
+    self.ascend_resolver()
+    return node
+
+yaml.composer.Composer.compose_node = compose_node

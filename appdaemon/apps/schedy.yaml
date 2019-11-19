@@ -5,8 +5,10 @@ schedy_heating:
   actor_type: thermostat
 
   schedule_snippets:
-    1_floor:
-    - { v: 24, start: "17:00", end: "20:00", weekdays: "1-5", weeks: "1-9, 44-52" }
+    living:
+    - { v: 24, start: "17:00", end: "19:30", weekdays: "1-5", weeks: "1-9, 44-52" }
+    eetkamer:
+    - { v: 24, start: "17:20", end: "19:00", weekdays: "1-5", weeks: "1-9, 44-52" }
 
     kids:
     - v: 20
@@ -45,7 +47,7 @@ schedy_heating:
       watched_entities:
       - binary_sensor.inkomhal
       schedule:
-      - x: "IncludeSchedule(schedule_snippets['1_floor'])"
+      - x: "IncludeSchedule(schedule_snippets['living'])"
 
     eetkamer:
       actors:
@@ -54,7 +56,7 @@ schedy_heating:
       watched_entities:
       - binary_sensor.terras
       schedule:
-      - x: "IncludeSchedule(schedule_snippets['1_floor'])"
+      - x: "IncludeSchedule(schedule_snippets['eetkamer'])"
 
     sara:
       actors:

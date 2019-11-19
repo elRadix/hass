@@ -19,7 +19,7 @@ class easyplus(hass.Hass):
         self.turn_on('switch.easyplus')
         time.sleep(10)
         self.log("easyplus %s", easyplus)
-#        self.turn_off(entity)
+        self.turn_off(entity)
         self.turn_on(entity)
         self.log("%s %s", friendly, state)
     return

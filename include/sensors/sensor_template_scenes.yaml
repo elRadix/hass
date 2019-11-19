@@ -2,8 +2,8 @@
 
 - platform: template
   sensors:
-    easyplus:
-      friendly_name: "Easyplus Telnet"
+    easyplus_telnet:
+      friendly_name: "telnet status"
       entity_id: binary_sensor.easyplus_telnet_script, switch.easyplus
       device_class: power
       value_template: >-

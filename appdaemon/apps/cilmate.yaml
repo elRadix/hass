@@ -14,3 +14,7 @@ sara:
   module: climate
   class: climate
   climate: climate.sara
+yassin:
+  module: climate
+  class: climate
+  climate: climate.yassin

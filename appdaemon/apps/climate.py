@@ -4,7 +4,7 @@ import time
 class climate(hass.Hass):
 
  def initialize(self):
-   self.listen_state(self.climate_cb, self.args["climate"])
+   self.listen_state(self.climate_cb, self.args)
 
  def climate_cb(self, entity, attribute, old, new, kwargs):
    friendly = self.get_state(entity, attribute="friendly_name")
@@ -20,6 +20,8 @@ class climate(hass.Hass):
     self.log("target temperature set")
     return
    if old == "heat" and new == "off":
+    self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
     self.log("target temperature off")
     return
+

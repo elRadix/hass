@@ -59,7 +59,7 @@ schedy_heating:
     sara:
       actors:
         climate.sara:
-      rescheduling_delay: 60 # return back to schedule after x minutes
+      # rescheduling_delay: 60 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['kids'])"
 

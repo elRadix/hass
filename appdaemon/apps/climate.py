@@ -14,7 +14,7 @@ class climate(hass.Hass):
     while self.get_state('binary_sensor.easyplus_telnet') == 'off':
       self.turn_off('switch.easyplus')
       self.turn_on('switch.easyplus')
-      time.sleep(40)
+      time.sleep(50)
       self.log("telnet state:",easyplus)
     if self.get_state('input_boolean.easyplus_boiler_heating_dev') != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating_dev')

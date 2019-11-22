@@ -1,5 +1,6 @@
 {
     "data": {
+        "compact": false,
         "view": "Table"
     },
     "key": "hacs.hacs",

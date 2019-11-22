@@ -4,8 +4,11 @@ Support for Shelly smart home devices.
 For more details about this component, please refer to the documentation at
 https://home-assistant.io/components/shelly/
 """
+# pylint: disable=broad-except, bare-except, invalid-name, import-error
+
 from datetime import timedelta
 import logging
+import time
 
 import voluptuous as vol
 
@@ -18,13 +21,11 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.script import Script
 from homeassistant.util import slugify
 
-import time
-
-REQUIREMENTS = ['pyShelly==0.1.0']
+REQUIREMENTS = ['pyShelly==0.1.8']
 
 _LOGGER = logging.getLogger(__name__)
 
-__version__ = "0.1.0"
+__version__ = "0.1.3"
 VERSION = __version__
 
 DOMAIN = 'shelly'
@@ -42,6 +43,8 @@ CONF_UPGRADE_SWITCH = 'upgrade_switch'
 CONF_UNAVALABLE_AFTER_SEC = 'unavailable_after_sec'
 CONF_LOCAL_PY_SHELLY = 'debug_local_py_shelly'
 CONF_ONLY_DEVICE_ID = 'debug_only_device_id'
+CONF_CLOUD_AUTH_KEY = 'cloud_auth_key'
+CONF_CLOUD_SEREVR = 'cloud_server'
 
 CONF_WIFI_SENSOR = 'wifi_sensor' #deprecated
 CONF_UPTIME_SENSOR = 'uptime_sensor' #deprecated
@@ -108,7 +111,7 @@ CONFIG_SCHEMA = vol.Schema({
         vol.Optional(CONF_DISCOVERY,
                      default=DEFAULT_DISCOVERY): cv.boolean,
         vol.Optional(CONF_OBJECT_ID_PREFIX,
-                     default=DEFAULT_OBJECT_ID_PREFIX): cv.string,        
+                     default=DEFAULT_OBJECT_ID_PREFIX): cv.string,
         vol.Optional(CONF_USERNAME): cv.string,
         vol.Optional(CONF_PASSWORD): cv.string,
         vol.Optional(CONF_DEVICES,
@@ -127,10 +130,12 @@ CONFIG_SCHEMA = vol.Schema({
                      default=True): cv.boolean,
         vol.Optional(CONF_SCAN_INTERVAL,
                      default=DEFAULT_SCAN_INTERVAL): cv.time_period,
-        vol.Optional(CONF_POWER_DECIMALS): cv.positive_int,        
+        vol.Optional(CONF_POWER_DECIMALS): cv.positive_int,
         vol.Optional(CONF_LOCAL_PY_SHELLY,
                      default=False): cv.boolean,
-        vol.Optional(CONF_ONLY_DEVICE_ID) : cv.string
+        vol.Optional(CONF_ONLY_DEVICE_ID) : cv.string,
+        vol.Optional(CONF_CLOUD_AUTH_KEY) : cv.string,
+        vol.Optional(CONF_CLOUD_SEREVR) : cv.string,
     })
 }, extra=vol.ALLOW_EXTRA)
 
@@ -149,10 +154,10 @@ def get_block_from_hass(hass, discovery_info):
     """Get block from HASS"""
     if SHELLY_BLOCK_ID in discovery_info:
         key = discovery_info[SHELLY_BLOCK_ID]
-        return hass.data[SHELLY_BLOCKS][key] 
+        return hass.data[SHELLY_BLOCKS][key]
 
 def _dev_key(dev):
-    key = dev.id + "-" + dev.device_type   
+    key = dev.id + "-" + dev.device_type
     if dev.device_sub_type is not None:
         key += "-" + dev.device_sub_type
     return key
@@ -166,18 +171,18 @@ def _get_device_key(dev):
 def get_device_from_hass(hass, discovery_info):
     """Get device from HASS"""
     device_key = discovery_info[SHELLY_DEVICE_ID]
-    return hass.data[SHELLY_DEVICES][device_key]  
+    return hass.data[SHELLY_DEVICES][device_key]
 
-def _find_device_config(conf, id):
+def _find_device_config(conf, device_id):
     device_conf_list = conf.get(CONF_DEVICES)
     for item in device_conf_list:
-        if item[CONF_ID].upper() == id:
+        if item[CONF_ID].upper() == device_id:
             return item
     return None
 
-def _get_device_config(conf, id, id_2=None):
+def _get_device_config(conf, device_id, id_2=None):
     """Get config for device."""
-    item = _find_device_config(conf, id)
+    item = _find_device_config(conf, device_id)
     if item is None and id_2 is not None:
         item = _find_device_config(conf, id_2)
     if item is None:
@@ -185,15 +190,15 @@ def _get_device_config(conf, id, id_2=None):
     return item
 
 def _get_specific_config(conf, key, default, *ids):
-    for id in ids:
-        item = _find_device_config(conf, id)
+    for device_id in ids:
+        item = _find_device_config(conf, device_id)
         if item is not None and key in item:
             return item[key]
     return default
 
 def _get_specific_config_root(conf, key, *ids):
     item = _get_specific_config(conf, key, None, *ids)
-    if item == None:
+    if item is None:
         item = conf.get(key)
     return item
 
@@ -219,6 +224,7 @@ def setup(hass, config):
 
     if conf.get(CONF_LOCAL_PY_SHELLY):
         _LOGGER.info("Loading local pyShelly")
+        #pylint: disable=no-name-in-module
         from .pyShelly import pyShelly
     else:
         from pyShelly import pyShelly
@@ -226,37 +232,38 @@ def setup(hass, config):
     hass.data[SHELLY_DEVICES] = DEVICES
     hass.data[SHELLY_BLOCKS] = BLOCKS
 
-    if conf.get(CONF_WIFI_SENSOR) is not None: 
+    if conf.get(CONF_WIFI_SENSOR) is not None:
         _LOGGER.warning("wifi_sensor is deprecated, use rssi in sensors instead.")
         if conf.get(CONF_WIFI_SENSOR) and SENSOR_RSSI not in conf[CONF_SENSORS]:
             conf[CONF_SENSORS].append(SENSOR_RSSI)
-             
-    if conf.get(CONF_UPTIME_SENSOR) is not None: 
+
+    if conf.get(CONF_UPTIME_SENSOR) is not None:
         _LOGGER.warning("uptime_sensor is deprecated, use uptime in sensors instead.")
         if conf.get(CONF_UPTIME_SENSOR) and SENSOR_UPTIME not in conf[CONF_SENSORS]:
             conf[CONF_SENSORS].append(SENSOR_UPTIME)
 
     def _block_updated(block):
-        
+
         hass_data = block.hass_data
 
         if hass_data['discover']:
-            if hass_data['allow_upgrade_switch'] == True:
+            if hass_data['allow_upgrade_switch']:
                 has_update = block.info_values.get('has_firmware_update', False)
                 update_switch = getattr(block, 'firmware_switch', None)
-                if has_update:                        
+                if has_update:
                     if update_switch is None:
                         attr = {'firmware': True,
                                 SHELLY_BLOCK_ID : _get_block_key(block)}
-                        discovery.load_platform(hass, 'switch', DOMAIN, attr, conf)
+                        discovery.load_platform(hass, 'switch',
+                                                DOMAIN, attr, conf)
                 elif update_switch is not None:
                     update_switch.remove()
 
-            block_key = _get_block_key(block)        
+            block_key = _get_block_key(block)
             for key, _value in block.info_values.items():
                 ukey = block.id + '-' + key
                 if not ukey in BLOCK_SENSORS:
-                    BLOCK_SENSORS.append(ukey)                
+                    BLOCK_SENSORS.append(ukey)
                     for sensor in hass_data['sensor_cfg']:
                         if SENSOR_TYPES[sensor].get('attr') == key:
                             attr = {'sensor_type':key,
@@ -271,26 +278,27 @@ def setup(hass, config):
         discover_block = discover or _get_device_config(conf, block.id) != {}
 
         block.hass_data = {
-            'allow_upgrade_switch' : _get_specific_config_root(conf, CONF_UPGRADE_SWITCH, block.id),
+            'allow_upgrade_switch' :
+                _get_specific_config_root(conf, CONF_UPGRADE_SWITCH, block.id),
             'sensor_cfg' : _get_sensor_config(conf, block.id),
             'discover': discover_block
         }
-        
+
         #Config block
         if block.unavailable_after_sec is None:
             block.unavailable_after_sec \
                 = _get_specific_config_root(conf, CONF_UNAVALABLE_AFTER_SEC,
-                                                block.id)
+                                            block.id)
 
         #if conf.get(CONF_ADDITIONAL_INFO):
             #block.update_status_information()
             # cfg_sensors = conf.get(CONF_SENSORS)
-            # for sensor in cfg_sensors:                
-            #     sensor_type = SENSOR_TYPES[sensor]                
+            # for sensor in cfg_sensors:
+            #     sensor_type = SENSOR_TYPES[sensor]
             #     if 'attr' in sensor_type:
             #         attr = {'sensor_type':sensor_type['attr'],
             #                 SHELLY_BLOCK_ID : block_key}
-            #         discovery.load_platform(hass, 'sensor', DOMAIN, attr, 
+            #         discovery.load_platform(hass, 'sensor', DOMAIN, attr,
             #                                 config)
 
     def _device_added(dev, _code):
@@ -316,7 +324,7 @@ def setup(hass, config):
             sensor_cfg = _get_sensor_config(conf, dev.id, dev.block.id)
             if SENSOR_SWITCH in sensor_cfg:
                 discovery.load_platform(hass, 'sensor', DOMAIN, attr, config)
-        elif dev.device_type in ["SENSOR"]: #, "INFOSENSOR"]:            
+        elif dev.device_type in ["SENSOR"]: #, "INFOSENSOR"]:
             discovery.load_platform(hass, 'sensor', DOMAIN, attr, config)
         elif dev.device_type in ["LIGHT", "DIMMER"]:
             discovery.load_platform(hass, 'light', DOMAIN, attr, config)
@@ -336,12 +344,14 @@ def setup(hass, config):
     pys.cb_device_removed.append(_device_removed)
     pys.username = conf.get(CONF_USERNAME)
     pys.password = conf.get(CONF_PASSWORD)
+    pys.cloud_auth_key = conf.get(CONF_CLOUD_AUTH_KEY)
+    pys.cloud_server = conf.get(CONF_CLOUD_SEREVR)
     if additional_info:
         pys.update_status_interval = update_interval
     pys.only_device_id = conf.get(CONF_ONLY_DEVICE_ID)
     pys.igmp_fix_enabled = conf.get(CONF_IGMPFIX)
     pys.open()
-    #pys.discover()
+    pys.discover()
 
     if conf.get(CONF_VERSION):
         attr = {'version': VERSION, 'pyShellyVersion': pys.version()}
@@ -374,7 +384,7 @@ class ShellyBlock(Entity):
 
     def __init__(self, block, hass, prefix=""):
         conf = hass.data[SHELLY_CONFIG]
-        id_prefix = conf.get(CONF_OBJECT_ID_PREFIX)        
+        id_prefix = conf.get(CONF_OBJECT_ID_PREFIX)
         self._unique_id = slugify(id_prefix + "_" + block.type + "_" +
                                   block.id + prefix)
         self.entity_id = "." + self._unique_id
@@ -382,20 +392,31 @@ class ShellyBlock(Entity):
         if entity_id is not None:
             self.entity_id = "." + slugify(id_prefix + "_" + entity_id + prefix)
             self._unique_id += "_" + slugify(entity_id)
-        self._name = block.type_name()
-        if conf.get(CONF_SHOW_ID_IN_NAME):
-            self._name += " [" + block.id + "]"
+        #self._name = None
+        #block.type_name()
+        #if conf.get(CONF_SHOW_ID_IN_NAME):
+        #    self._name += " [" + block.id + "]"
+        self._show_id_in_name = conf.get(CONF_SHOW_ID_IN_NAME)
         self._block = block
         self.hass = hass
         self._block.cb_updated.append(self._updated)
         block.shelly_device = self
-        self._name = _get_specific_config(conf, CONF_NAME, self.name, block.id)              
+        self._name = _get_specific_config(conf, CONF_NAME, None, block.id)
+        self._name_ext = None
         self._is_removed = False
 
     @property
     def name(self):
         """Return the display name of this device."""
-        return self._name
+        if self._name is None:
+            name = self._block.friendly_name()
+        else:
+            name = self._name
+        if self._name_ext:
+            name += ' - ' + self._name_ext
+        if self._show_id_in_name:
+            name += " [" + self._block.id + "]"
+        return name
 
     def _updated(self, _block):
         """Receive events when the switch state changed (by mobile,
@@ -429,19 +450,21 @@ class ShellyDevice(Entity):
         id_prefix = conf.get(CONF_OBJECT_ID_PREFIX)
         self._unique_id = id_prefix + "_" + dev.type + "_" + dev.id
         self.entity_id = "." + slugify(self._unique_id)
-        entity_id = _get_specific_config(conf, CONF_ENTITY_ID , 
-                                                    None, dev.id, dev.block.id)
+        entity_id = _get_specific_config(conf, CONF_ENTITY_ID ,
+                                         None, dev.id, dev.block.id)
         if entity_id is not None:
             self.entity_id = "." + slugify(id_prefix + "_" + entity_id)
             self._unique_id += "_" + slugify(entity_id)
-        self._name = dev.type_name()
-        if conf.get(CONF_SHOW_ID_IN_NAME):
-            self._name += " [" + dev.id + "]"  # 'Test' #light.name
+        self._show_id_in_name = conf.get(CONF_SHOW_ID_IN_NAME)
+        #self._name = dev.type_name()
+        #if conf.get(CONF_SHOW_ID_IN_NAME):
+        #    self._name += " [" + dev.id + "]"  # 'Test' #light.name
         self._dev = dev
         self.hass = hass
         self._dev.cb_updated.append(self._updated)
         dev.shelly_device = self
-        self._name = _get_specific_config(conf, CONF_NAME, self._name, dev.id, dev.block.id)
+        self._name = _get_specific_config(conf, CONF_NAME, None,
+                                          dev.id, dev.block.id)
 
         self._sensor_conf = _get_sensor_config(conf, dev.id, dev.block.id)
 
@@ -454,21 +477,29 @@ class ShellyDevice(Entity):
             self.schedule_update_ha_state(True)
 
         if self._dev.info_values is not None:
-            for key, _value in self._dev.info_values.items():            
+            for key, _value in self._dev.info_values.items():
                 ukey = self._dev.id + '-' + key
                 if not ukey in DEVICE_SENSORS:
                     DEVICE_SENSORS.append(ukey)
                     for sensor in self._sensor_conf:
                         if SENSOR_TYPES[sensor].get('attr') == key:
                             attr = {'sensor_type':key,
-                                    SHELLY_DEVICE_ID : _get_device_key(self._dev)}
+                                    SHELLY_DEVICE_ID:_get_device_key(self._dev)}
                             conf = self.hass.data[SHELLY_CONFIG]
                             discovery.load_platform(self.hass, 'sensor',
                                                     DOMAIN, attr, conf)
+
     @property
     def name(self):
         """Return the display name of this device."""
-        return self._name
+        if self._name is None:
+            name = self._dev.friendly_name()
+        else:
+            name = self._name
+
+        if self._show_id_in_name:
+            name += " [" + self._dev.id + "]"
+        return name
 
     @property
     def device_state_attributes(self):
@@ -504,3 +535,8 @@ class ShellyDevice(Entity):
     def remove(self):
         self._is_removed = True
         self.hass.add_job(self.async_remove)
+
+    @property
+    def should_poll(self):
+        """No polling needed."""
+        return False

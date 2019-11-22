@@ -5138,49 +5138,6 @@
                             "type": "entities"
                         },
                         {
-                            "columns": 4,
-                            "entities": [
-                                {
-                                    "entity": "sensor.ht_eetkamer_temp",
-                                    "name": "Eetkamer"
-                                },
-                                {
-                                    "entity": "sensor.ht_eetkamer_humidity",
-                                    "name": "Vochtigheid %"
-                                },
-                                {
-                                    "entity": "sensor.ht_eetkamer_battery",
-                                    "name": "Batterij %"
-                                },
-                                {
-                                    "entity": "sensor.ht_eetkamer_online",
-                                    "icon": "mdi:lan-connect",
-                                    "name": "Online"
-                                },
-                                {
-                                    "entity": "sensor.ht_sara_temp",
-                                    "name": "Sara"
-                                },
-                                {
-                                    "entity": "sensor.ht_sara_humidity",
-                                    "icon": "mdi:water-percent",
-                                    "name": "Vochtigheid %"
-                                },
-                                {
-                                    "entity": "sensor.ht_sara_battery",
-                                    "icon": "mdi:battery",
-                                    "name": "Batterij %"
-                                },
-                                {
-                                    "entity": "sensor.ht_sara_online",
-                                    "icon": "mdi:lan-connect",
-                                    "name": "Online"
-                                }
-                            ],
-                            "title": "Shelly HT",
-                            "type": "glance"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "input_boolean.1u_yassin",
@@ -5238,6 +5195,69 @@
                             "show_header_toggle": false,
                             "title": "Badkamer",
                             "type": "entities"
+                        },
+                        {
+                            "columns": 4,
+                            "entities": [
+                                {
+                                    "entity": "sensor.ht_eetkamer_temp",
+                                    "name": "Eetkamer"
+                                },
+                                {
+                                    "entity": "sensor.ht_eetkamer_humidity",
+                                    "name": "Vochtigheid %"
+                                },
+                                {
+                                    "entity": "sensor.ht_eetkamer_battery",
+                                    "name": "Batterij %"
+                                },
+                                {
+                                    "entity": "sensor.ht_eetkamer_online",
+                                    "icon": "mdi:lan-connect",
+                                    "name": "Online"
+                                },
+                                {
+                                    "entity": "sensor.ht_sara_temp",
+                                    "name": "Sara"
+                                },
+                                {
+                                    "entity": "sensor.ht_sara_humidity",
+                                    "icon": "mdi:water-percent",
+                                    "name": "Vochtigheid %"
+                                },
+                                {
+                                    "entity": "sensor.ht_sara_battery",
+                                    "icon": "mdi:battery",
+                                    "name": "Batterij %"
+                                },
+                                {
+                                    "entity": "sensor.ht_sara_online",
+                                    "icon": "mdi:lan-connect",
+                                    "name": "Online"
+                                }
+                            ],
+                            "title": "Shelly HT",
+                            "type": "glance"
+                        },
+                        {
+                            "entity": "climate.eetkamer",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entity": "climate.living",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entity": "climate.floradix",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entity": "climate.sara",
+                            "type": "thermostat"
+                        },
+                        {
+                            "entity": "climate.yassin",
+                            "type": "thermostat"
                         }
                     ],
                     "icon": "mdi:temperature-celsius",

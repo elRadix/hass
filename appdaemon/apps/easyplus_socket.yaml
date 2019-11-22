@@ -1,36 +1,36 @@
-switch_stp_keuken_oven:
-  module: easyplus
-  class: easyplus
-  entity: switch.stp_keuken_oven
-switch_stp_keuken_microgolf:
-  module: easyplus
-  class: easyplus
-  entity: switch.stp_keuken_microgolf
-switch_stp_eetkamer_tv:
-  module: easyplus
-  class: easyplus
-  entity: switch.stp_eetkamer_tv
-switch_stp_berging_dryer:
-  module: easyplus
-  class: easyplus
-  entity: switch.stp_berging_dryer
-switch_stp_berging_was:
-  module: easyplus
-  class: easyplus
-  entity: switch.stp_berging_was
-switch_stp_keuken_dish:
-  module: easyplus
-  class: easyplus
-  entity: switch.stp_keuken_dish
-switch_stp_keuken_commander:
-  module: easyplus
-  class: easyplus
-  entity: switch.stp_keuken_commander
-switch_stp_keuken_espresso:
-  module: easyplus
-  class: easyplus
-  entity: switch.stp_keuken_espresso
-switch_stp_keuken_waterkoker:
-  module: easyplus
-  class: easyplus
-  entity: switch.stp_keuken_waterkoker
+# switch_stp_keuken_oven:
+#   module: easyplus
+#   class: easyplus
+#   entity: switch.stp_keuken_oven
+# switch_stp_keuken_microgolf:
+#   module: easyplus
+#   class: easyplus
+#   entity: switch.stp_keuken_microgolf
+# switch_stp_eetkamer_tv:
+#   module: easyplus
+#   class: easyplus
+#   entity: switch.stp_eetkamer_tv
+# switch_stp_berging_dryer:
+#   module: easyplus
+#   class: easyplus
+#   entity: switch.stp_berging_dryer
+# switch_stp_berging_was:
+#   module: easyplus
+#   class: easyplus
+#   entity: switch.stp_berging_was
+# switch_stp_keuken_dish:
+#   module: easyplus
+#   class: easyplus
+#   entity: switch.stp_keuken_dish
+# switch_stp_keuken_commander:
+#   module: easyplus
+#   class: easyplus
+#   entity: switch.stp_keuken_commander
+# switch_stp_keuken_espresso:
+#   module: easyplus
+#   class: easyplus
+#   entity: switch.stp_keuken_espresso
+# switch_stp_keuken_waterkoker:
+#   module: easyplus
+#   class: easyplus
+#   entity: switch.stp_keuken_waterkoker

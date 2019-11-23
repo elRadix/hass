@@ -20,7 +20,7 @@ schedy_heating:
     - { v: 24, start: "18:10", end: "21:40", weekdays: "5", weeks: "1-9, 44-52" }
 
     kids:
-    - v: 20
+    - v: 22
       rules:
       - weekdays: 1
         rules:
@@ -42,14 +42,14 @@ schedy_heating:
         - { start: "19:30", end: "21:30", weeks: "1-9, 44-52"  }
 
     parents:
-    - v: 22
+    - v: 24
       rules:
       - weekdays: 1-5
         rules:
         - { start: "19:30", end: "22:30", weeks: "1-9, 44-52"  }
       - weekdays: 6-7
         rules:
-        - { start: "19:00", end: "21:30", weeks: "1-9, 44-52"  }
+        - { start: "19:30", end: "22:30", weeks: "1-9, 44-52"  }
 
     # badkamer:
     # - { v: 5, start: "10:30", end: "13:00", weekdays: "6-7", weeks: "1-9, 44-52" }
@@ -60,11 +60,12 @@ schedy_heating:
   schedule_append:
   - v: "OFF"
 
+
   rooms:
     living:
       actors:
         climate.living:
-#        rescheduling_delay: 60 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       watched_entities:
       - binary_sensor.inkomhal
       schedule:
@@ -73,7 +74,7 @@ schedy_heating:
     eetkamer:
       actors:
         climate.eetkamer:
-#        rescheduling_delay: 60 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       watched_entities:
       - binary_sensor.terras
       schedule:
@@ -82,21 +83,21 @@ schedy_heating:
     sara:
       actors:
         climate.sara:
-#       rescheduling_delay: 60 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['kids'])"
 
     yassin:
       actors:
         climate.yassin:
-#      rescheduling_delay: 60 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['kids'])"
 
     floradix:
       actors:
         climate.floradix:
-#      rescheduling_delay: 60 # return back to schedule after x minutes
+      rescheduling_delay: 60 # return back to schedule after x minutes
       schedule:
       - x: "IncludeSchedule(schedule_snippets['parents'])"
 

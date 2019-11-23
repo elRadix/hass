@@ -1105,7 +1105,7 @@
             "hide": false,
             "installed": true,
             "installed_commit": "552640b",
-            "last_commit": "dfe0a14",
+            "last_commit": "a48f63e",
             "last_release_tag": "v0.8.2",
             "name": "mini-graph-card",
             "new": false,
@@ -2326,7 +2326,7 @@
             "hide": false,
             "installed": true,
             "installed_commit": "7b332a4",
-            "last_commit": "7b332a4",
+            "last_commit": "07b2dc5",
             "last_release_tag": "0.17.4",
             "name": "HACS (Home Assistant Community Store)",
             "new": false,
@@ -6116,9 +6116,9 @@
             "full_name": "bruxy70/Garbage-Collection",
             "hide": false,
             "installed": true,
-            "installed_commit": "d4f9684",
-            "last_commit": "2f5670c",
-            "last_release_tag": "v2.3",
+            "installed_commit": "3783524",
+            "last_commit": "3783524",
+            "last_release_tag": "v2.4",
             "name": "Garbage Collection",
             "new": false,
             "repository_manifest": {
@@ -6139,7 +6139,7 @@
                 "waste",
                 "waste-management"
             ],
-            "version_installed": "v2.3"
+            "version_installed": "v2.4"
         },
         "204700563": {
             "authors": [

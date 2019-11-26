@@ -13,7 +13,6 @@ class notify(appapi.AppDaemon):
 
   def send_notify(self, entity, attribute, old, new, kwargs):
     self.log("Updated Sensor value : " + new)
-    # always send IFTTT notification
     self.call_service('notify/dageraad', message=new)
 
     ha_trigger = self.get_state("sensor.notify_message","frontend")

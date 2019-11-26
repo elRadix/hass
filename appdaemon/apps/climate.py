@@ -21,7 +21,7 @@ class climate(hass.Hass):
         time.sleep(25)
         self.log("Failure - Telnet %s", telnet)
         tg = "Failure - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
-        self.log("Failure - Telnet %s", telnet)
+        self.call_service("notify/dageraad",message = tg)
         if telnet == 'on':
           break
       self.log("Succes - Telnet %s", telnet)

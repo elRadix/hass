@@ -11,13 +11,9 @@ class climate(hass.Hass):
    friendly = self.get_state(entity, attribute="friendly_name")
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
    boiler = self.get_state('input_boolean.easyplus_boiler_heating')
-  #  self.temp = int(float(self.get_state(self.args["friendly"])))
-  #  friendly = self.get_state(climate, attribute="friendly_name")
-  #  tg = "Current temp is {} for room: {} ".format(temp, friendly)
-   self.call_service("notify/dageraad",message = tg)
-   self.log("telnet state is %s ", easyplus)
    tg = "Easyplus is {} ".format(easyplus)
    self.call_service("notify/dageraad",message = tg)
+   self.log("telnet state is %s ", easyplus)
    if old == "off" and new == "heat":
     while self.get_state('binary_sensor.easyplus_telnet') == 'off':
       self.turn_off('switch.easyplus')
@@ -46,8 +42,14 @@ class climate(hass.Hass):
    self.log(self.args)
 
  def temp_state(self, entity, attribute, old, new, kwargs):
+   self.temp_state = int(float(self.get_state(self.args["temp"])))
    tg = "Current temp is {} ".format(temp_state)
    self.call_service("notify/dageraad",message = tg)
+
+
+  #  self.temp = int(float(self.get_state(self.args["friendly"])))
+  #  friendly = self.get_state(climate, attribute="friendly_name")
+  #  tg = "Current temp is {} for room: {} ".format(temp, friendly)
 
 # import appdaemon.plugins.hass.hassapi as hass
 # import datetime

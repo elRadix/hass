@@ -24,9 +24,9 @@ class climate(hass.Hass):
         self.log("Failure - Telnet %s", telnet)
         if telnet == 'on':
           break
-          self.log("Succes - Telnet %s", telnet)
-          tg = "Succes - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
-          self.call_service("notify/dageraad",message = tg)
+      self.log("Succes - Telnet %s", telnet)
+      tg = "Succes - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
+      self.call_service("notify/dageraad",message = tg)
 
   #  if old == "off" and new == "heat":
   #   if telnet != 'on':

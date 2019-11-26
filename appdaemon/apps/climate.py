@@ -5,15 +5,15 @@ class climate(hass.Hass):
 
  def initialize(self):
    self.listen_state(self.climate_cb, self.args["climate"])
-
+   self.listen_state(self.temp_state, self.args["temp"])
 
  def climate_cb(self, entity, attribute, old, new, kwargs):
    friendly = self.get_state(entity, attribute="friendly_name")
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
    boiler = self.get_state('input_boolean.easyplus_boiler_heating')
-   self.temp = int(float(self.get_state(self.args["friendly"])))
-   friendly = self.get_state(climate, attribute="friendly_name")
-   tg = "Current temp is {} for room: {} ".format(temp, friendly)
+  #  self.temp = int(float(self.get_state(self.args["friendly"])))
+  #  friendly = self.get_state(climate, attribute="friendly_name")
+  #  tg = "Current temp is {} for room: {} ".format(temp, friendly)
    self.call_service("notify/dageraad",message = tg)
    self.log("telnet state is %s ", easyplus)
    tg = "Easyplus is {} ".format(easyplus)
@@ -44,6 +44,10 @@ class climate(hass.Hass):
     self.call_service("notify/dageraad",message = tg)
     return
    self.log(self.args)
+
+ def temp_state(self, entity, attribute, old, new, kwargs):
+   tg = "Current temp is {} ".format(temp_state)
+   self.call_service("notify/dageraad",message = tg)
 
 # import appdaemon.plugins.hass.hassapi as hass
 # import datetime

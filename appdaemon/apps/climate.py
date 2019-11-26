@@ -11,7 +11,8 @@ class climate(hass.Hass):
    friendly = self.get_state(entity, attribute="friendly_name")
    boiler = self.get_state('input_boolean.easyplus_boiler_heating')
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
-   temp= self.get_state(entity, attribute="current_temperature")
+   current_temp= self.get_state(entity, attribute="current_temperature")
+   heating_temp= self.get_state(entity, attribute="temperature")
    if old == "off" and new == "heat":
     if easyplus != 'on':
       for i in range (0, 5, 1):
@@ -30,15 +31,19 @@ class climate(hass.Hass):
       self.call_service("notify/dageraad",message = tg)
     self.call_service("shell_command/heating_"+friendly)
     self.log("target temperature set")
-    tg = "Heating program starting for room {}, current temp is {} ".format(friendly, temp)
+    tg = "Heating program starting room {}, current temp is {} ".format(friendly, current_temp)
+    tg2 = "Heating temp set for room {} to {} gr. ".format(friendly, heating_temp)
     self.call_service("notify/dageraad",message = tg)
+    self.call_service("notify/dageraad",message = tg2)
     return
    if old == "heat" and new == "off":
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
     self.log("target temperature off")
-    tg = "Heating program completed for room {}, current temp is {} ".format(friendly, temp)
+    tg = "Heating program completed for room {}, current temp is {}gr. ".format(friendly, current_temp)
+    tg2 = "Heating temp set for room {} to {} gr. ".format(friendly, heating_temp)
     self.call_service("notify/dageraad",message = tg)
+    self.call_service("notify/dageraad",message = tg2)
     return
    self.log(self.args)
 

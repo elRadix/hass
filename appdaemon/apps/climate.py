@@ -1,7 +1,10 @@
 import appdaemon.plugins.hass.hassapi as hass
 import datetime
 import time
+import os
+import re
 class climate(hass.Hass):
+
 
  def initialize(self):
    self.listen_state(self.climate_cb, self.args["climate"])
@@ -12,6 +15,8 @@ class climate(hass.Hass):
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
    current_temp= self.get_state(entity, attribute="current_temperature")
    heating_temp= self.get_state(entity, attribute="temperature")
+   pretty_timestamp = entity.strftime('%X on %x')
+
    if old == "off" and new == "heat":
     if easyplus != 'on':
       for i in range (0, 5, 1):
@@ -23,6 +28,7 @@ class climate(hass.Hass):
         self.log("easyplus %s", easyplus)
         tg = "Easyplus ready, state is {} ".format(easyplus)
         self.call_service("notify/dageraad",message = tg)
+
     if boiler != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating')
       self.log("boiler %s", boiler)
@@ -33,8 +39,9 @@ class climate(hass.Hass):
     self.log("target temperature set")
     self.call_service('notify/dageraad',
         title="[Heating Started]\n",
-        message=("\n\nRoom {}\nCurrent temp is {}\nHeating temp set to {}".format(friendly,current_temp,heating_temp)))
+        message=("\n\nRoom {}\nCurrent temp is {}\nHeating temp set to {}\n Start time: {}".format(friendly,current_temp,heating_temp,pretty_timestamp)))
     return
+
    if old == "heat" and new == "off":
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
@@ -43,7 +50,7 @@ class climate(hass.Hass):
     self.set_state("sensor.notify_message", state="Heating Completed")
     self.call_service('notify/dageraad',
         title="[Heating Completed]\n",
-        message=("\nRoom {}\nCurrent temp is {}\nHeating temp set to {}".format(friendly,current_temp,heating_temp_off)))
+        message=("\nRoom {}\nCurrent temp is {}\nHeating temp set to {}\n Start time: {}".format(friendly,current_temp,heating_temp_off,pretty_timestamp)))
     return
    self.log(self.args)
 

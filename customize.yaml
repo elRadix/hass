@@ -157,8 +157,6 @@
     friendly_name: "Rachid"
   sensor.find_soumaya_mqtt:
     friendly_name: "Soumaya"
-  binary_sensor.s2_camera_motion:
-    friendly_name: "Berging"
   binary_sensor.motion_inkomhal:
     friendly_name: "Inkomhal"
   binary_sensor.motion_eetkamer:

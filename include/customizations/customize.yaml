@@ -229,8 +229,6 @@
     friendly_name: "Rachid"
   sensor.find_soumaya_mqtt:
     friendly_name: "Soumaya"
-  binary_sensor.s2_camera_motion:
-    friendly_name: "Berging"
   binary_sensor.motion_inkomhal:
     friendly_name: "Inkomhal"
   binary_sensor.motion_eetkamer:
@@ -271,38 +269,7 @@
   automation.auto_off_day:
     friendly_name: "Daglicht Programma"
 
-  camera.s2:
-    friendly_name: "Samsung Camera"
-  switch.s2_exposure_lock:
-    friendly_name: "Exposure"
-  switch.s2_focus:
-    friendly_name: "Focus"
-  switch.s2_frontfacing_camera:
-    friendly_name: "Front Camera"
-  switch.s2_gps_active:
-    friendly_name: "GPS active"
-  switch.s2_night_vision:
-    friendly_name: "Night vision"
-  switch.s2_overlay:
-    friendly_name: "Date/Time overlay"
-  switch.s2_torch:
-    friendly_name: "Torch"
-  switch.s2_video_recording:
-    friendly_name: "Record Video"
-  switch.s2_white_balance_lock:
-    friendly_name: "White balance lock"
-  sensor.s2_audio_connections:
-    friendly_name: "Audio Connection"
-  sensor.s2_battery_level:
-    friendly_name: "Battery level"
-  sensor.s2_battery_temperature:
-    friendly_name: "Battery temperature"
-  sensor.s2_battery_voltage:
-    friendly_name: "Battery voltage"
-  sensor.s2_light_level:
-    friendly_name: "Light level"
-  sensor.s2_motion:
-    friendly_name: "Motion"
+
   sensor.rachid_battery:
     friendly_name: "Rachid"
     icon: mdi:battery
@@ -313,12 +280,7 @@
     friendly_name: "Rachid"
   binary_sensor.soumaya_home:
     friendly_name: "Soumaya"
-  sensor.ptf_btc:
-    friendly_name: "PTF BitCoins"
-  sensor.ptf_eur:
-    friendly_name: "PTF Eur"
-  sensor.pl_eur:
-    friendly_name: "Profit Eur"
+
 
   sensor.tautulli_total:
     friendly_name: "Total"

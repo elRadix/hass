@@ -29,10 +29,12 @@ class climate(hass.Hass):
       tg = "Boiler is {} ".format(easyplus)
       self.call_service("notify/dageraad",message = tg)
     self.call_service("shell_command/heating_"+friendly)
+    self.set_state("sensor.notify_message", state="Heating started")
     self.log("target temperature set")
     self.call_service('notify/dageraad',
         title="[Heating Started]",
         message=("\n\nRoom {}\nCurrent temp is {}\nHeating temp set to {}".format(friendly,current_temp,heating_temp)))
+
     return
    if old == "heat" and new == "off":
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)

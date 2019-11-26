@@ -30,20 +30,20 @@ class climate(hass.Hass):
       self.call_service("notify/dageraad",message = tg)
     self.call_service("shell_command/heating_"+friendly)
     self.log("target temperature set")
-    tg = "Heating program starting room {}, current temp is {} ".format(friendly, current_temp)
-    tg2 = "Heating temp set for room {} to {} gr. ".format(friendly, heating_temp)
-    self.call_service("notify/dageraad",message = tg)
-    self.call_service("notify/dageraad",message = tg2)
+    self.call_service('notify/dageraad',
+        title="[Heating Starting] {} (",
+        message=("Current temp is {}, \nHeating temp set to {}"
+                 "Thank for your service".format(friendly,current_temp,heating_temp)))
     return
    if old == "heat" and new == "off":
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
     self.log("target temperature off")
-    tg = "Heating program completed for room {}, current temp is {} gr. ".format(friendly, current_temp)
-    time.sleep(5)
-    tg2 = "Heating temp set for room {} to {} gr. ".format(friendly, heating_temp)
-    self.call_service("notify/dageraad",message = tg)
-    self.call_service("notify/dageraad",message = tg2)
+    time.sleep(15)
+    self.call_service('notify/dageraad',
+        title="[Heating Completed] {} (",
+        message=("Current temp is {}, \nHeating temp set to {}"
+                 "Thank for your service".format(friendly,current_temp,heating_temp)))
     return
    self.log(self.args)
 

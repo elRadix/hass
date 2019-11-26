@@ -5,6 +5,10 @@ class climate(hass.Hass):
 
  def initialize(self):
    self.listen_state(self.climate_cb, self.args["climate"])
+   self.temp = int(float(self.get_state(self.args["climate"])))
+   friendly = self.get_state(climate, attribute="friendly_name")
+   tg = "Current temp is {} for room: {} ".format(temp, friendly)
+   self.call_service("notify/dageraad",message = tg)
 
  def climate_cb(self, entity, attribute, old, new, kwargs):
    friendly = self.get_state(entity, attribute="friendly_name")
@@ -24,7 +28,7 @@ class climate(hass.Hass):
     if self.get_state('input_boolean.easyplus_boiler_heating') != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating_dev')
       self.log("Boiler is {} .".format(boiler))
-      tg = "Heating starting for room: {} ".format(friendly)
+      tg = "Heating program starting for room: {} ".format(friendly)
       tg2 = "Boiler is {} for room: {} ".format(boiler, friendly)
       self.call_service("notify/dageraad",message = tg)
       self.call_service("notify/dageraad",message = tg2)

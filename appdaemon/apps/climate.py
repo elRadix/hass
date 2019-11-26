@@ -9,26 +9,40 @@ class climate(hass.Hass):
  def climate_cb(self, entity, attribute, old, new, kwargs):
    friendly = self.get_state(entity, attribute="friendly_name")
    boiler = self.get_state('input_boolean.easyplus_boiler_heating')
-   easyplus = self.get_state('binary_sensor.easyplus_telnet')
+   telnet = self.get_state('binary_sensor.easyplus_telnet')
+   easyplus = self.get_state('switch.easyplus')
+
 
    if old == "off" and new == "heat":
-    if easyplus != 'on':
-      for i in range (3):
+    for i in range (7):
+      if telnet != 'on':
         self.turn_off('switch.easyplus')
         self.turn_on('switch.easyplus')
-        tg = "Easyplus is rebooting Telnet is {} ".format(easyplus)
-        self.call_service("notify/dageraad",message = tg)
         time.sleep(25)
-        self.log("easyplus %s", easyplus)
-        tg = "Easyplus ready, Telnet state is {} ".format(easyplus)
+        self.log("Failure - Telnet %s", telnet)
+        tg = "Failure - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
         self.call_service("notify/dageraad",message = tg)
+      break
+      self.log("Succes - Telnet %s", telnet)
+      tg = "Succes - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
+      self.call_service("notify/dageraad",message = tg)
+
+  #  if old == "off" and new == "heat":
+  #   if telnet != 'on':
+  #     for i in range (7):
+  #       self.turn_off('switch.easyplus')
+  #       self.turn_on('switch.easyplus')
+  #       time.sleep(25)
+  #       self.log("Telnet %s", telnet)
+  #       tg = "Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
+  #       self.call_service("notify/dageraad",message = tg)
 
 
 
     if boiler != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating_dev')
       self.log("boiler %s", boiler)
-      tg = "Boiler is {} ".format(easyplus)
+      tg = "Boiler is {} ".format(boiler)
       self.call_service("notify/dageraad",message = tg)
     self.call_service("shell_command/heating_"+friendly)
     current_temp= self.get_state(entity, attribute="current_temperature")
@@ -107,3 +121,7 @@ class climate(hass.Hass):
 #    friendly = self.get_state(entity, attribute="friendly_name")
 #    tg = "Current temp for {} is {} ".format(friendly, temp_state)
 #    self.call_service("notify/dageraad",message = tg)
+
+
+        # tg = "Easyplus is rebooting Telnet is {} ".format(easyplus)
+        # self.call_service("notify/dageraad",message = tg)

@@ -1,10 +1,7 @@
 import appdaemon.plugins.hass.hassapi as hass
 import datetime
 import time
-import os
-import re
 class climate(hass.Hass):
-
 
  def initialize(self):
    self.listen_state(self.climate_cb, self.args["climate"])
@@ -15,14 +12,14 @@ class climate(hass.Hass):
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
    current_temp= self.get_state(entity, attribute="current_temperature")
    heating_temp= self.get_state(entity, attribute="temperature")
-   pretty_timestamp = entity.strftime('%X on %x')
+   pretty_timestamp = dt.strftime('%X on %x')
 
    if old == "off" and new == "heat":
     if easyplus != 'on':
       for i in range (0, 5, 1):
         self.turn_off('switch.easyplus')
         self.turn_on('switch.easyplus')
-        tg = "Easyplus is rebooting state is {} ".format(easyplus)
+        tg = "Easyplus is rebooting Telnet is {} ".format(easyplus)
         self.call_service("notify/dageraad",message = tg)
         time.sleep(25)
         self.log("easyplus %s", easyplus)
@@ -39,7 +36,8 @@ class climate(hass.Hass):
     self.log("target temperature set")
     self.call_service('notify/dageraad',
         title="[Heating Started]\n",
-        message=("\n\nRoom {}\nCurrent temp is {}\nHeating temp set to {}\n Start time: {}".format(friendly,current_temp,heating_temp,pretty_timestamp)))
+        message=("\n "
+                 "Room {}\nCurrent temp is {}\nHeating temp set to {}".format(friendly,current_temp,heating_temp)))
     return
 
    if old == "heat" and new == "off":
@@ -50,7 +48,8 @@ class climate(hass.Hass):
     self.set_state("sensor.notify_message", state="Heating Completed")
     self.call_service('notify/dageraad',
         title="[Heating Completed]\n",
-        message=("\nRoom {}\nCurrent temp is {}\nHeating temp set to {}\n Start time: {}".format(friendly,current_temp,heating_temp_off,pretty_timestamp)))
+        message=("\n "
+                 "Room {}\nCurrent temp is {}\nHeating temp set to {}".format(friendly,current_temp,heating_temp_off)))
     return
    self.log(self.args)
 

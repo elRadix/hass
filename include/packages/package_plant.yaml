@@ -1,123 +1,123 @@
----
-sensor:
-  - platform: miflora
-    mac: !secret miflora_1
-    name: miflower
-    force_update: true
-    median: 1
-    adapter: hci0
-    monitored_conditions:
-      - moisture
-      - light
-      - temperature
-      - conductivity
-      - battery
+# ---
+# sensor:
+#   - platform: miflora
+#     mac: !secret miflora_1
+#     name: miflower
+#     force_update: true
+#     median: 1
+#     adapter: hci0
+#     monitored_conditions:
+#       - moisture
+#       - light
+#       - temperature
+#       - conductivity
+#       - battery
 
-  - platform: template
-    sensors:
-      plants_detail:
-        friendly_name: "Plants Detail"
-        entity_id: group.all_plants
-        value_template: >
-          {%- if is_state('group.all_plants', 'ok') -%}
-            Good
-          {%- elif is_state('group.all_plants', 'problem') -%}
-            {%- set problems = namespace(plants = '') -%}
-            {%- for plant_id in state_attr('group.all_plants','entity_id') -%}
-              {%- if is_state(plant_id, 'problem') -%}
-                {%- set problems.plants = problems.plants ~ state_attr(plant_id, 'friendly_name') ~ ': ' ~ state_attr(plant_id, 'problem') ~ ', ' -%}
-              {%- endif -%}
-            {%- endfor -%}
-            {{ problems.plants | regex_replace(', $','') }}
-          {%- else -%}
-            Unknown
-          {%- endif %}
-        icon_template: >
-          {%- if is_state('group.all_plants', 'ok') -%}
-            mdi:flower
-          {%- elif is_state('group.all_plants', 'problem') -%}
-            mdi:flower-outline
-          {%- else -%}
-            mdi:help-circle
-          {%- endif %}
+#   - platform: template
+#     sensors:
+#       plants_detail:
+#         friendly_name: "Plants Detail"
+#         entity_id: group.all_plants
+#         value_template: >
+#           {%- if is_state('group.all_plants', 'ok') -%}
+#             Good
+#           {%- elif is_state('group.all_plants', 'problem') -%}
+#             {%- set problems = namespace(plants = '') -%}
+#             {%- for plant_id in state_attr('group.all_plants','entity_id') -%}
+#               {%- if is_state(plant_id, 'problem') -%}
+#                 {%- set problems.plants = problems.plants ~ state_attr(plant_id, 'friendly_name') ~ ': ' ~ state_attr(plant_id, 'problem') ~ ', ' -%}
+#               {%- endif -%}
+#             {%- endfor -%}
+#             {{ problems.plants | regex_replace(', $','') }}
+#           {%- else -%}
+#             Unknown
+#           {%- endif %}
+#         icon_template: >
+#           {%- if is_state('group.all_plants', 'ok') -%}
+#             mdi:flower
+#           {%- elif is_state('group.all_plants', 'problem') -%}
+#             mdi:flower-outline
+#           {%- else -%}
+#             mdi:help-circle
+#           {%- endif %}
 
-plant:
-  phalaenopsis:
-    sensors:
-      moisture: sensor.miflower_moisture
-      battery: sensor.miflower_battery
-      temperature: sensor.miflower_temperature
-      conductivity: sensor.miflower_conductivity
-      brightness: sensor.miflower_light_intensity
-    min_moisture: 15
-    max_moisture: 65
-    min_battery: 20
-    min_conductivity: 350
-    max_conductivity: 2000
-    min_temperature: 15
-    max_temperature: 32
-    min_brightness: 2000
-    max_brightness: 30000
+# plant:
+#   phalaenopsis:
+#     sensors:
+#       moisture: sensor.miflower_moisture
+#       battery: sensor.miflower_battery
+#       temperature: sensor.miflower_temperature
+#       conductivity: sensor.miflower_conductivity
+#       brightness: sensor.miflower_light_intensity
+#     min_moisture: 15
+#     max_moisture: 65
+#     min_battery: 20
+#     min_conductivity: 350
+#     max_conductivity: 2000
+#     min_temperature: 15
+#     max_temperature: 32
+#     min_brightness: 2000
+#     max_brightness: 30000
 
-  dypsis_lutescens:
-    sensors:
-      moisture: sensor.miflower_moisture
-      battery: sensor.miflower_battery
-      temperature: sensor.miflower_temperature
-      conductivity: sensor.miflower_conductivity
-      brightness: sensor.miflower_light_intensity
-    min_moisture: 15
-    max_moisture: 60
-    min_battery: 20
-    min_conductivity: 350
-    max_conductivity: 2000
-    min_temperature: 10
-    max_temperature: 35
-    min_brightness: 2000
-    max_brightness: 30000
-
-
-automation:
-  - id: plant_01
-    alias: Update Plant Problems
-    trigger:
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: plant.giant_phalaenopsis
-    action:
-    - service: python_script.plant_problems
-    - delay:
-        seconds: 60
-    - service: python_script.plant_problems
-    - service: notify.dageraad
-      data_template:
-        message: >
-          Plant status:
+#   dypsis_lutescens:
+#     sensors:
+#       moisture: sensor.miflower_moisture
+#       battery: sensor.miflower_battery
+#       temperature: sensor.miflower_temperature
+#       conductivity: sensor.miflower_conductivity
+#       brightness: sensor.miflower_light_intensity
+#     min_moisture: 15
+#     max_moisture: 60
+#     min_battery: 20
+#     min_conductivity: 350
+#     max_conductivity: 2000
+#     min_temperature: 10
+#     max_temperature: 35
+#     min_brightness: 2000
+#     max_brightness: 30000
 
 
-          {% if states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 0 %}
-          No plants need watering and battery is fine.
-          {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int == 0 %}
-          A plant needs water, {{ states.sensor.plants_water_friendly.state }}
-          {% elif states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 1 %}
-          A plant sensor needs a new battery, {{ states.sensor.plants_battery_friendly.state }}
-          {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int == 1 %}
-          A plant needs water {{ states.sensor.plants_water_friendly.state }} and a plant sensor needs a new battery {{ states.sensor.plants_battery_friendly.state }}.
-          {% elif states.sensor.plants_water_number.state | int > 1 and states.sensor.plants_battery_number.state | int == 0 %}
-          {{ states.sensor.plants_water_number.state }} Plants need water and that is {{ states.sensor.plants_water_friendly.state }}.
-          {% elif states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int > 1 %}
-          {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
-          {% elif states.sensor.plants_water_number.state | int > 1 and states.sensor.plants_battery_number.state | int == 1 %}
-          {{ states.sensor.plants_water_number.state }} Plants need water and that is {{ states.sensor.plants_water_friendly.state }} and a plant sensor needs a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
-          {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int > 1 %}
-          A plant needs water and that is {{ states.sensor.plants_water_friendly.state }} and {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
-          {% else %}
-          {{ states.sensor.plants_water_number.state }} Plants need water and that is. {{ states.sensor.plants_water_friendly.state }} and {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}
-          {% endif %}
+# automation:
+#   - id: plant_01
+#     alias: Update Plant Problems
+#     trigger:
+#     - platform: homeassistant
+#       event: start
+#     - platform: state
+#       entity_id: plant.giant_phalaenopsis
+#     action:
+#     - service: python_script.plant_problems
+#     - delay:
+#         seconds: 60
+#     - service: python_script.plant_problems
+#     - service: notify.dageraad
+#       data_template:
+#         message: >
+#           Plant status:
 
-          {% if is_state_attr('sensor.plants_problems','fertilize_number',0) %}
-          No plants need fertilizer.
-          {% elif states.sensor.plants_problems.attributes.fertilize_number | float > 0 %}
-          These plants {{states.sensor.plants_problems.attributes.fertilize}} need fertilizing.
-          {% endif %}
+
+#           {% if states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 0 %}
+#           No plants need watering and battery is fine.
+#           {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int == 0 %}
+#           A plant needs water, {{ states.sensor.plants_water_friendly.state }}
+#           {% elif states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int == 1 %}
+#           A plant sensor needs a new battery, {{ states.sensor.plants_battery_friendly.state }}
+#           {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int == 1 %}
+#           A plant needs water {{ states.sensor.plants_water_friendly.state }} and a plant sensor needs a new battery {{ states.sensor.plants_battery_friendly.state }}.
+#           {% elif states.sensor.plants_water_number.state | int > 1 and states.sensor.plants_battery_number.state | int == 0 %}
+#           {{ states.sensor.plants_water_number.state }} Plants need water and that is {{ states.sensor.plants_water_friendly.state }}.
+#           {% elif states.sensor.plants_water_number.state | int == 0 and states.sensor.plants_battery_number.state | int > 1 %}
+#           {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
+#           {% elif states.sensor.plants_water_number.state | int > 1 and states.sensor.plants_battery_number.state | int == 1 %}
+#           {{ states.sensor.plants_water_number.state }} Plants need water and that is {{ states.sensor.plants_water_friendly.state }} and a plant sensor needs a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
+#           {% elif states.sensor.plants_water_number.state | int == 1 and states.sensor.plants_battery_number.state | int > 1 %}
+#           A plant needs water and that is {{ states.sensor.plants_water_friendly.state }} and {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}.
+#           {% else %}
+#           {{ states.sensor.plants_water_number.state }} Plants need water and that is. {{ states.sensor.plants_water_friendly.state }} and {{ states.sensor.plants_battery_number.state }} Plant sensors need a new battery and that is {{ states.sensor.plants_battery_friendly.state }}
+#           {% endif %}
+
+#           {% if is_state_attr('sensor.plants_problems','fertilize_number',0) %}
+#           No plants need fertilizer.
+#           {% elif states.sensor.plants_problems.attributes.fertilize_number | float > 0 %}
+#           These plants {{states.sensor.plants_problems.attributes.fertilize}} need fertilizing.
+#           {% endif %}

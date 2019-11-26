@@ -5,7 +5,7 @@ class climate(hass.Hass):
 
  def initialize(self):
    self.listen_state(self.climate_cb, self.args["climate"])
-   self.listen_state(self.temp_state, self.args["temp"])
+  #  self.listen_state(self.temp_state, self.args["temp"])
 
  def climate_cb(self, entity, attribute, old, new, kwargs):
    friendly = self.get_state(entity, attribute="friendly_name")

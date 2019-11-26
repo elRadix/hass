@@ -2,17 +2,17 @@ living:
   module: climate
   class: climate
   climate: climate.living
-  temp: sensor.tmp_living
+  # temp: sensor.tmp_living
 eetkamer:
   module: climate
   class: climate
   climate: climate.eetkamer
-  temp: sensor.ht_eetkamer_temp
+  # temp: sensor.ht_eetkamer_temp
 floradix:
   module: climate
   class: climate
   climate: climate.floradix
-  temp: sensor.tmp_slp_1
+  # temp: sensor.tmp_slp_1
 sara:
   module: climate
   class: climate
@@ -22,4 +22,4 @@ sara:
   module: climate
   class: climate
   climate: climate.yassin
-  temp: sensor.tmp_slp_3
+  # temp: sensor.tmp_slp_3

@@ -39,8 +39,9 @@ class climate(hass.Hass):
    if old == "heat" and new == "off":
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
+    time.sleep(5)
     self.log("target temperature off")
-    tg = "Heating program completed for room {}, current temp is {}gr. ".format(friendly, current_temp)
+    tg = "Heating program completed for room {}, current temp is {} gr. ".format(friendly, current_temp)
     tg2 = "Heating temp set for room {} to {} gr. ".format(friendly, heating_temp)
     self.call_service("notify/dageraad",message = tg)
     self.call_service("notify/dageraad",message = tg2)

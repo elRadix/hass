@@ -35,8 +35,8 @@ class climate(hass.Hass):
     self.log("target temperature set")
     self.call_service('notify/dageraad',
         title="[Heating Started]\n",
-        message=("\n================\n"
-                 "Room {}\nCurrent temp is {}\nHeating temp set to {}".format(friendly,current_temp,heating_temp)))
+        message=("\n===============\n"
+                 "Room: {}\nCurrent temp: {}°C\nHeating temp: {}°C".format(friendly,current_temp,heating_temp)))
     return
 
    if old == "heat" and new == "off":
@@ -48,8 +48,8 @@ class climate(hass.Hass):
     self.set_state("sensor.notify_message", state="Heating Completed")
     self.call_service('notify/dageraad',
         title="[Heating Completed]\n",
-        message=("\n================\n"
-                 "Room {}\nCurrent temp is {}\nHeating temp set to {}".format(friendly,current_temp,heating_temp)))
+        message=("\n===============\n"
+                 "Room: {}\nCurrent temp: {}°C\nHeating temp: {}°C".format(friendly,current_temp,heating_temp)))
     return
    self.log(self.args)
 

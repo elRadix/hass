@@ -5,7 +5,6 @@ class climate(hass.Hass):
 
  def initialize(self):
    self.listen_state(self.climate_cb, self.args["climate"])
-  #  self.listen_state(self.temp_state, self.args["temp"])
 
  def climate_cb(self, entity, attribute, old, new, kwargs):
    friendly = self.get_state(entity, attribute="friendly_name")
@@ -39,9 +38,9 @@ class climate(hass.Hass):
    if old == "heat" and new == "off":
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
-    time.sleep(5)
     self.log("target temperature off")
     tg = "Heating program completed for room {}, current temp is {} gr. ".format(friendly, current_temp)
+    time.sleep(5)
     tg2 = "Heating temp set for room {} to {} gr. ".format(friendly, heating_temp)
     self.call_service("notify/dageraad",message = tg)
     self.call_service("notify/dageraad",message = tg2)

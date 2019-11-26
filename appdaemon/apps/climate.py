@@ -16,8 +16,10 @@ class climate(hass.Hass):
    if old == "off" and new == "heat":
     for i in range (7):
       if telnet != 'on':
+        # self.get_state('binary_sensor.easyplus_telnet')
         self.turn_off('switch.easyplus')
         self.turn_on('switch.easyplus')
+        time.sleep(25)
         self.log("Failure - Telnet %s", telnet)
         tg = "Failure - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
         self.call_service("notify/dageraad",message = tg)

@@ -11,20 +11,23 @@ class climate(hass.Hass):
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
    boiler = self.get_state('input_boolean.easyplus_boiler_heating')
    self.log("telnet state is %s ", easyplus)
+   tg = "Easyplus is {} ".format(easyplus)
+   self.call_service("notify/dageraad",message = tg)
    if old == "off" and new == "heat":
     while self.get_state('binary_sensor.easyplus_telnet') == 'off':
       self.turn_off('switch.easyplus')
       self.turn_on('switch.easyplus')
       time.sleep(50)
       self.log("telnet state is %s", easyplus)
-      self.call_service("notify/dageraad",message = easyplus)
-      tgmmessage = "Easyplus is {} ".format(easyplus)
-      self.call_service("notify/dageraad",message = tgmmessage)
+      tg = "Easyplus is {} ".format(easyplus)
+      self.call_service("notify/dageraad",message = tg)
     if self.get_state('input_boolean.easyplus_boiler_heating') != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating_dev')
       self.log("Boiler is {} .".format(boiler))
-      tgmmessage = "Heating starting for room: {} ".format(friendly)
-      self.call_service("notify/dageraad",message = tgmmessage)
+      tg = "Heating starting for room: {} ".format(friendly)
+      tg2 = "Boiler is {} for room: {} ".format(boiler, friendly)
+      self.call_service("notify/dageraad",message = tg)
+      self.call_service("notify/dageraad",message = tg2)
     self.call_service("shell_command/heating_"+friendly)
     self.log("target temperature set")
     return
@@ -32,8 +35,8 @@ class climate(hass.Hass):
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
     self.log("target temperature off")
-    tgmmessage = "Heating progam completed for room: {} ".format(friendly)
-    self.call_service("notify/dageraad",message = tgmmessage)
+    tg = "Heating progam completed for room: {} ".format(friendly)
+    self.call_service("notify/dageraad",message = tg)
     return
    self.log(self.args)
 

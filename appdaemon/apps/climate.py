@@ -13,7 +13,7 @@ class climate(hass.Hass):
 
    if old == "off" and new == "heat":
     if easyplus != 'on':
-      for i in range (0, 5, 1):
+      for i in range (0, 2, 1):
         self.turn_off('switch.easyplus')
         self.turn_on('switch.easyplus')
         tg = "Easyplus is rebooting Telnet is {} ".format(easyplus)
@@ -23,8 +23,10 @@ class climate(hass.Hass):
         tg = "Easyplus ready, Telnet state is {} ".format(easyplus)
         self.call_service("notify/dageraad",message = tg)
 
+
+
     if boiler != 'on':
-      self.turn_on('input_boolean.easyplus_boiler_heating')
+      self.turn_on('input_boolean.easyplus_boiler_heating_dev')
       self.log("boiler %s", boiler)
       tg = "Boiler is {} ".format(easyplus)
       self.call_service("notify/dageraad",message = tg)

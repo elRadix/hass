@@ -14,33 +14,13 @@ class climate(hass.Hass):
 
 
    if old == "off" and new == "heat":
-    for i in range (7):
-      if telnet != 'on':
-        self.get_state('binary_sensor.easyplus_telnet')
-        self.turn_off('switch.easyplus')
-        self.turn_on('switch.easyplus')
-        time.sleep(25)
-        self.log("Failure - Telnet %s", telnet)
-        tg = "Failure - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
-        self.call_service("notify/dageraad",message = tg)
-        self.get_state('binary_sensor.easyplus_telnet')
-      else:
-          break
-    self.log("Succes - Telnet %s", telnet)
-    tg = "Succes - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
-    self.call_service("notify/dageraad",message = tg)
-
-  #  if old == "off" and new == "heat":
-  #   if telnet != 'on':
-  #     for i in range (7):
-  #       self.turn_off('switch.easyplus')
-  #       self.turn_on('switch.easyplus')
-  #       time.sleep(25)
-  #       self.log("Telnet %s", telnet)
-  #       tg = "Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
-  #       self.call_service("notify/dageraad",message = tg)
-
-
+    while self.get_state('binary_sensor.easyplus_telnet') == 'off':
+      self.turn_off('switch.easyplus')
+      self.turn_on('switch.easyplus')
+      time.sleep(20)
+      self.log("telnet state is %s", telnet)
+      tg = "Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
+      self.call_service("notify/dageraad",message = tg)
 
     if boiler != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating_dev')
@@ -71,6 +51,28 @@ class climate(hass.Hass):
                  "Room: {}\nCurrent temp: {}°C\nHeating temp: {}°C".format(friendly,current_temp,heating_temp)))
     return
    self.log(self.args)
+
+
+
+##Nordine version
+  #  if old == "off" and new == "heat":
+  #   for i in range (7):
+  #     if telnet != 'on':
+  #       self.get_state('binary_sensor.easyplus_telnet')
+  #       self.turn_off('switch.easyplus')
+  #       self.turn_on('switch.easyplus')
+  #       time.sleep(25)
+  #       self.get_state('binary_sensor.easyplus_telnet')
+  #       self.log("Failure - Telnet %s", telnet)
+  #       tg = "Failure - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
+  #       self.call_service("notify/dageraad",message = tg)
+  #     else:
+  #         break
+  #   self.log("Succes - Telnet %s", telnet)
+  #   tg = "Succes - Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
+  #   self.call_service("notify/dageraad",message = tg)
+
+
 
 #  def temp_state(self, entity, attribute, old, new, kwargs):
 #    self.temp_state = int(float(self.get_state(self.args["temp"])))

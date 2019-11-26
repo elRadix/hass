@@ -11,14 +11,17 @@ class climate(hass.Hass):
    friendly = self.get_state(entity, attribute="friendly_name")
    boiler = self.get_state('input_boolean.easyplus_boiler_heating')
    easyplus = self.get_state('binary_sensor.easyplus_telnet')
+   temp_state=self.get_state(self.climate_cb, attribute="temperature")
    if old == "off" and new == "heat":
     if easyplus != 'on':
       for i in range (0, 5, 1):
         self.turn_off('switch.easyplus')
         self.turn_on('switch.easyplus')
+        tg = "Easyplus is rebooting state is {} ".format(easyplus)
+        self.call_service("notify/dageraad",message = tg)
         time.sleep(25)
         self.log("easyplus %s", easyplus)
-        tg = "Easyplus is {} ".format(easyplus)
+        tg = "Easyplus ready, state is {} ".format(easyplus)
         self.call_service("notify/dageraad",message = tg)
     if boiler != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating')
@@ -27,23 +30,24 @@ class climate(hass.Hass):
       self.call_service("notify/dageraad",message = tg)
     self.call_service("shell_command/heating_"+friendly)
     self.log("target temperature set")
-    tg = "Heating program starting for room: {} ".format(friendly)
+    tg = "Heating program starting for room {}, current temp is {} ".format(friendly, temp_state)
     self.call_service("notify/dageraad",message = tg)
     return
    if old == "heat" and new == "off":
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
     self.log("target temperature off")
-    tg = "Heating progam completed for room: {} ".format(friendly)
+    tg = "Heating progam completed for room {}, temp set to {} ".format(friendly, temp_state)
     self.call_service("notify/dageraad",message = tg)
     return
    self.log(self.args)
 
- def temp_state(self, entity, attribute, old, new, kwargs):
-   self.temp_state = int(float(self.get_state(self.args["temp"])))
-   friendly = self.get_state(entity, attribute="friendly_name")
-   tg = "Current temp for {} is {} ".format(friendly, temp_state)
-   self.call_service("notify/dageraad",message = tg)
+#  def temp_state(self, entity, attribute, old, new, kwargs):
+#    self.temp_state = int(float(self.get_state(self.args["temp"])))
+#    self.get_state(self.temp_ste, attribute="temperature") != self.kwargs["ACTempID"]:
+#    friendly = self.get_state(entity, attribute="friendly_name")
+#    tg = "Current temp for {} is {} ".format(friendly, temp_state)
+#    self.call_service("notify/dageraad",message = tg)
 
 
 

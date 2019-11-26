@@ -13,7 +13,7 @@ class climate(hass.Hass):
 
    if old == "off" and new == "heat":
     if easyplus != 'on':
-      for i in range (0, 2, 1):
+      for i in range (3):
         self.turn_off('switch.easyplus')
         self.turn_on('switch.easyplus')
         tg = "Easyplus is rebooting Telnet is {} ".format(easyplus)

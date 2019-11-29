@@ -23,7 +23,7 @@ class climate(hass.Hass):
       self.call_service("notify/dageraad",message = tg)
 
     if boiler != 'on':
-      self.turn_on('input_boolean.easyplus_boiler_heating_dev')
+      self.turn_on('input_boolean.easyplus_boiler_heating')
       self.log("boiler %s", boiler)
       tg = "Boiler is {} ".format(boiler)
       self.call_service("notify/dageraad",message = tg)

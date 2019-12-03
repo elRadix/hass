@@ -93,16 +93,33 @@
                 "@claudegel"
             ],
             "category": "integration",
-            "description": "Neviweb Custom Component for Home Assistant",
+            "description": "Neviweb Custom Component for Home Assistant to manage devices connected via GT125",
             "full_name": "claudegel/sinope-1",
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "98ce18b",
+            "last_commit": "52bd5b8",
             "last_release_tag": null,
             "name": "Sinope Neviweb",
             "new": false,
-            "repository_manifest": {},
+            "repository_manifest": {
+                "content_in_root": false,
+                "country": [
+                    "CA"
+                ],
+                "domains": [
+                    "switch",
+                    "climate",
+                    "light"
+                ],
+                "filename": false,
+                "homeassistant": false,
+                "iot_class": "Cloud Polling",
+                "name": "Sinope Neviweb",
+                "persistent_directory": false,
+                "render_readme": true,
+                "zip_release": false
+            },
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
@@ -234,7 +251,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "0ee6933",
+            "last_commit": "7122081",
             "last_release_tag": null,
             "name": "ZiGate",
             "new": false,
@@ -1105,7 +1122,7 @@
             "hide": false,
             "installed": true,
             "installed_commit": "552640b",
-            "last_commit": "504b741",
+            "last_commit": "37ffa60",
             "last_release_tag": "v0.8.2",
             "name": "mini-graph-card",
             "new": false,
@@ -1148,8 +1165,8 @@
             "description": "Adds buttons to call services to entity cards",
             "full_name": "custom-cards/button-entity-row",
             "hide": false,
-            "installed": true,
-            "installed_commit": "59de604",
+            "installed": false,
+            "installed_commit": null,
             "last_commit": "59de604",
             "last_release_tag": "v0.4.0",
             "name": "button-entity-row",
@@ -1180,7 +1197,7 @@
                 "home-assistant",
                 "lovelace-ui"
             ],
-            "version_installed": "v0.4.0"
+            "version_installed": null
         },
         "151550084": {
             "authors": [
@@ -2326,7 +2343,7 @@
             "hide": false,
             "installed": true,
             "installed_commit": "7b332a4",
-            "last_commit": "499bf36",
+            "last_commit": "2eac3e0",
             "last_release_tag": "0.17.4",
             "name": "HACS (Home Assistant Community Store)",
             "new": false,
@@ -3876,8 +3893,8 @@
             "hide": false,
             "installed": true,
             "installed_commit": "73ab367",
-            "last_commit": "73ab367",
-            "last_release_tag": "1.4.0",
+            "last_commit": "8dbaf43",
+            "last_release_tag": "1.4.1",
             "name": "Sun2",
             "new": false,
             "repository_manifest": {},
@@ -4328,9 +4345,9 @@
             "full_name": "bieniu/ha-shellies-discovery",
             "hide": false,
             "installed": true,
-            "installed_commit": "0e15e5f",
-            "last_commit": "0e15e5f",
-            "last_release_tag": "0.13.2",
+            "installed_commit": "cf62ec2",
+            "last_commit": "cf62ec2",
+            "last_release_tag": "0.13.3",
             "name": "shellies_discovery",
             "new": false,
             "repository_manifest": {
@@ -4347,7 +4364,7 @@
                 "python-script",
                 "shelly"
             ],
-            "version_installed": "0.13.2"
+            "version_installed": "0.13.3"
         },
         "194381263": {
             "authors": [],
@@ -4610,11 +4627,28 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "ce1e732",
+            "last_commit": "0de64ab",
             "last_release_tag": null,
             "name": "Sinope GT125",
             "new": false,
-            "repository_manifest": {},
+            "repository_manifest": {
+                "content_in_root": false,
+                "country": [
+                    "CA"
+                ],
+                "domains": [
+                    "switch",
+                    "climate",
+                    "light"
+                ],
+                "filename": false,
+                "homeassistant": false,
+                "iot_class": "Local Polling",
+                "name": "Sinope GT125",
+                "persistent_directory": false,
+                "render_readme": true,
+                "zip_release": false
+            },
             "selected_tag": null,
             "show_beta": false,
             "topics": [],
@@ -5646,8 +5680,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "749f987",
-            "last_release_tag": "v0.5.0",
+            "last_commit": "88084f3",
+            "last_release_tag": "v0.6.0",
             "name": "zigbee2mqtt-networkmap",
             "new": false,
             "repository_manifest": {
@@ -5973,7 +6007,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "b71f7ce",
+            "last_commit": "b0bc7ec",
             "last_release_tag": "v2.2",
             "name": "CZ Public Transport",
             "new": false,
@@ -6124,7 +6158,7 @@
             "installed": true,
             "installed_commit": "6e0ab99",
             "last_commit": "4d2f779",
-            "last_release_tag": "v2.6",
+            "last_release_tag": "v2.7",
             "name": "Garbage Collection",
             "new": false,
             "repository_manifest": {
@@ -6482,8 +6516,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "b69b001",
-            "last_release_tag": "1.4.1",
+            "last_commit": "031f55d",
+            "last_release_tag": "1.4.2",
             "name": "FRITZ!Box Tools",
             "new": false,
             "repository_manifest": {
@@ -7429,7 +7463,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "56fdbe6",
+            "last_commit": "a776560",
             "last_release_tag": null,
             "name": "KEF",
             "new": true,
@@ -7648,8 +7682,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "c105cef",
-            "last_release_tag": "v2.0.3",
+            "last_commit": "8033e58",
+            "last_release_tag": "v2.0.4",
             "name": "iCloud3 Device Tracker",
             "new": true,
             "repository_manifest": {
@@ -7749,7 +7783,7 @@
                 "@Magalex2x14"
             ],
             "category": "integration",
-            "description": "Xiaomi Mi Temperature and Humidity monitor (BLE) sensor",
+            "description": "Xiaomi BLE monitor sensor",
             "full_name": "custom-components/sensor.mitemp_bt",
             "hide": false,
             "installed": false,
@@ -7757,11 +7791,33 @@
             "last_commit": "da40f48",
             "last_release_tag": "0.3.0",
             "name": "Xiaomi Mi temperature and humidity monitor",
-            "new": true,
+            "new": false,
             "repository_manifest": {
                 "domains": "sensor",
                 "iot_class": "local push",
                 "name": "Xiaomi Mi temperature and humidity monitor (BLE) sensor platform"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "topics": [],
+            "version_installed": null
+        },
+        "224442630": {
+            "authors": [],
+            "category": "plugin",
+            "description": "\ud83c\udf9b\ufe0f Button Toolbar card for Home Assistant.",
+            "full_name": "xMrVizzy/button-toolbar",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "7d1d523",
+            "last_release_tag": "0.1.0",
+            "name": "button-toolbar",
+            "new": true,
+            "repository_manifest": {
+                "filename": "button-toolbar.js",
+                "name": "Button Toolbar",
+                "render_readme": true
             },
             "selected_tag": null,
             "show_beta": false,

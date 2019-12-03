@@ -15,6 +15,14 @@
             },
             "resources": [
                 {
+                    "type": "js",
+                    "url": "/local/custom_cards/nmbs-routeboard-card.js?v=0.001"
+                },
+                {
+                    "type": "css",
+                    "url": "/local/custom_cards/nmbs-routeboard-stylesheet.css?v=0.001"
+                },
+                {
                     "type": "module",
                     "url": "/local/card-modder.js"
                 },
@@ -283,6 +291,89 @@
                                 "type": "markdown"
                             },
                             "type": "custom:card-modder"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "card_style": "",
+                                    "color_off": "var(--disabled-text-color)",
+                                    "color_type": "label",
+                                    "default_color": "var(--primary-text-color)",
+                                    "name": "Treinen Brussel",
+                                    "show_icon": false,
+                                    "styles": {
+                                        "card": [
+                                            {
+                                                "height": "40px"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "text-orientation": "mixed"
+                                            },
+                                            {
+                                                "font-size": "20px"
+                                            },
+                                            {
+                                                "text-Transform": "uppercase"
+                                            },
+                                            {
+                                                "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                            },
+                                            {
+                                                "font-weight": "bold"
+                                            },
+                                            {
+                                                "padding": "2%"
+                                            },
+                                            {
+                                                "color": "white"
+                                            },
+                                            {
+                                                "border-radius": "50px"
+                                            },
+                                            {
+                                                "border-style": "solid"
+                                            },
+                                            {
+                                                "border-width": "2px"
+                                            },
+                                            {
+                                                "border-color": "#e5e5e5"
+                                            }
+                                        ]
+                                    },
+                                    "type": "custom:button-card"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "arrivalStation": "Brussel-Noord",
+                                            "departureStation": "Mechelen",
+                                            "lang": "nl",
+                                            "style": "\nha-card {\n\n  background-color: rgba(255, 255, 255, 0.3);\n\n  padding: 16px 16px 16px 12px;\n\n}\n\n.card-header {\n\n  color: #fafafa;\n\n  font-family: var(--ha-card-header-font-family, inherit);\n\n  font-size: var(--ha-card-header-font-size, 24px);\n\n  letter-spacing: -0.012em;\n\n  line-height: 32px;\n\n  display: block;\n\n  padding: 0px 0px 14px;\n\n}\n\n.tableContainer {\n\n  background-color: #2f2b2b;\n\n  padding-bottom: .4em;\n\n}\n\ntable {\n\n  border: 0px;\n\n  border-collapse: collapse;\n\n  border-spacing: 0px;\n\n}\n\nth {\n\n  text-align: left;\n\n  font-size: 1.1em;\n\n  font-weight: 600;\n\n  color: #fafafa;\n\n  padding-bottom: .5em;\n\n  padding-top: .5em;\n\n  padding-left: .5em;\n\n}\n\ntr:nth-child(2n+3), tr:nth-child(even) {\n\n  color: #dde010;\n\n  font-size: 1.5em;\n\n}\n\n.time, .delay, .platform, .direction {\n\n  padding-left: .5em;\n\n  font-family: 'bpdotssquaresregular';\n\n  line-height: 1em;\n\n}\n\n.delay {\n\n  color: #ff5858;\n\n  font-weight: 600;\n\n  width: 100%;\n\n}\n\n.platform {\n\n  text-align: center !important;\n\n}\n\n.direction {\n\n  min-width: 170px;\n\n  text-transform: uppercase;\n\n}\n",
+                                            "type": "custom:nmbs-routeboard"
+                                        },
+                                        {
+                                            "arrivalStation": "Mechelen",
+                                            "departureStation": "Brussel-Centraal",
+                                            "lang": "nl",
+                                            "style": "ha-card {\n  background-color: rgba(255, 255, 255, 0.3);\n  padding: 16px 16px 16px 12px;\n}\n.card-header {\n  color: #fafafa;\n  font-family: var(--ha-card-header-font-family, inherit);\n  font-size: var(--ha-card-header-font-size, 24px);\n  letter-spacing: -0.012em;\n  line-height: 32px;\n  display: block;\n  padding: 0px 0px 14px;\n}\n.tableContainer {\n  background-color: #2f2b2b;\n  padding-bottom: .4em;\n}\ntable {\n  border: 0px;\n  border-collapse: collapse;\n  border-spacing: 0px;\n}\nth {\n  text-align: left;\n  font-size: 1.1em;\n  font-weight: 600;\n  color: #fafafa;\n  padding-bottom: .5em;\n  padding-top: .5em;\n  padding-left: .5em;\n}\ntr:nth-child(2n+3), tr:nth-child(even) {\n  color: #dde010;\n  font-size: 1.4em;\n}\n.time, .delay, .platform, .direction {\n  padding-left: .5em;\n  font-family: 'bpdotssquaresregular';\n  line-height:1em;\n}\n.delay {\n  color: #ff5858;\n  font-weight: 600;\n  width: 100%;\n}\n.platform {\n  text-align: center !important;\n}\n.direction {\n  min-width: 170px;\n  text-transform: uppercase;\n}\n",
+                                            "type": "custom:nmbs-routeboard"
+                                        },
+                                        {
+                                            "arrivalStation": "Mechelen",
+                                            "departureStation": "Brussel-Noord",
+                                            "lang": "nl",
+                                            "style": "ha-card {\n  background-color: rgba(255, 255, 255, 0.3);\n  padding: 16px 16px 16px 12px;\n}\n.card-header {\n  color: #fafafa;\n  font-family: var(--ha-card-header-font-family, inherit);\n  font-size: var(--ha-card-header-font-size, 24px);\n  letter-spacing: -0.012em;\n  line-height: 32px;\n  display: block;\n  padding: 0px 0px 14px;\n}\n.tableContainer {\n  background-color: #2f2b2b;\n  padding-bottom: .4em;\n}\ntable {\n  border: 0px;\n  border-collapse: collapse;\n  border-spacing: 0px;\n}\nth {\n  text-align: left;\n  font-size: 1.1em;\n  font-weight: 600;\n  color: #fafafa;\n  padding-bottom: .5em;\n  padding-top: .5em;\n  padding-left: .5em;\n}\ntr:nth-child(2n+3), tr:nth-child(even) {\n  color: #dde010;\n  font-size: 1.4em;\n}\n.time, .delay, .platform, .direction {\n  padding-left: 0.5em;\n  font-family: 'bpdotssquaresregular';\n  line-height: 1em;\n}\n.delay {\n  color: #ff5858;\n  font-weight: 600;\n  width: 100%;\n}\n.platform {\n  text-align: center !important;\n}\n.direction {\n  min-width: 170px;\n  text-transform: uppercase;\n}\n",
+                                            "type": "custom:nmbs-routeboard"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
                         },
                         {
                             "cards": [
@@ -601,44 +692,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "variable.scene",
-                                    "name": "Last Switches"
-                                },
-                                {
-                                    "filter": {
-                                        "exclude": [
-                                            "variable.scene.icon*",
-                                            "variable.scene.fr*"
-                                        ],
-                                        "include": [
-                                            "variable.scene.*"
-                                        ]
-                                    },
-                                    "heading_name": "Last Switches ",
-                                    "heading_state": "   ",
-                                    "type": "custom:entity-attributes-card"
-                                },
-                                "variable.motion",
-                                {
-                                    "filter": {
-                                        "exclude": [
-                                            "variable.motion.icon*",
-                                            "variable.motion.fr*"
-                                        ],
-                                        "include": [
-                                            "variable.motion.*"
-                                        ]
-                                    },
-                                    "heading_name": "Last motion ",
-                                    "heading_state": "   ",
-                                    "type": "custom:entity-attributes-card"
-                                }
-                            ],
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "sensor.last_boot_date_time"
                                 },
                                 {
@@ -743,10 +796,6 @@
                                 }
                             ],
                             "type": "conditional"
-                        },
-                        {
-                            "entity": "plant.phalaenopsis",
-                            "type": "plant-status"
                         },
                         {
                             "card": {
@@ -11297,6 +11346,44 @@
                             ],
                             "show_header_toggle": false,
                             "title": "miflower",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "variable.scene",
+                                    "name": "Last Switches"
+                                },
+                                {
+                                    "filter": {
+                                        "exclude": [
+                                            "variable.scene.icon*",
+                                            "variable.scene.fr*"
+                                        ],
+                                        "include": [
+                                            "variable.scene.*"
+                                        ]
+                                    },
+                                    "heading_name": "Last Switches ",
+                                    "heading_state": "   ",
+                                    "type": "custom:entity-attributes-card"
+                                },
+                                "variable.motion",
+                                {
+                                    "filter": {
+                                        "exclude": [
+                                            "variable.motion.icon*",
+                                            "variable.motion.fr*"
+                                        ],
+                                        "include": [
+                                            "variable.motion.*"
+                                        ]
+                                    },
+                                    "heading_name": "Last motion ",
+                                    "heading_state": "   ",
+                                    "type": "custom:entity-attributes-card"
+                                }
+                            ],
                             "type": "entities"
                         }
                     ],

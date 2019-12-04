@@ -62,7 +62,7 @@ discovery:
 ssdp:
 zeroconf:
 breaking_changes:
-#mobile_app:
+mobile_app:
 map:
 
 #plex_webhooks:

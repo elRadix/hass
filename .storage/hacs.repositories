@@ -3892,16 +3892,16 @@
             "full_name": "pnbruckner/ha-sun2",
             "hide": false,
             "installed": true,
-            "installed_commit": "73ab367",
-            "last_commit": "8dbaf43",
-            "last_release_tag": "1.4.1",
+            "installed_commit": "8dbaf43",
+            "last_commit": "f5c5c54",
+            "last_release_tag": "1.5.0",
             "name": "Sun2",
             "new": false,
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
             "topics": [],
-            "version_installed": "1.4.0"
+            "version_installed": "1.4.1"
         },
         "192835334": {
             "authors": [],
@@ -6008,7 +6008,7 @@
             "installed": false,
             "installed_commit": null,
             "last_commit": "b0bc7ec",
-            "last_release_tag": "v2.2",
+            "last_release_tag": "v2.3",
             "name": "CZ Public Transport",
             "new": false,
             "repository_manifest": {
@@ -7496,8 +7496,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "b3be572",
-            "last_release_tag": "v0.4",
+            "last_commit": "fa5f7cf",
+            "last_release_tag": "v0.5",
             "name": "CFR (Centro Funzionale Regione Toscana)",
             "new": true,
             "repository_manifest": {

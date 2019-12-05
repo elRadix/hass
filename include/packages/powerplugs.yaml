@@ -176,17 +176,17 @@ automation:
 
 
 # to send daily use notification, log daily use to file and to accumulate total cost.
-  - id: daily_energy_use_message
-    alias: 'Daily Energy Use Message'
-    trigger:
-      platform: time
-      at: '23:59:50'
-    action:
-    - service: notify.dageraad
-      data_template:
-        title: '*Information*'
-        message: "Today's energy use was {{ states('sensor.daily_power') }} kWh."
-        
+- id: daily_energy_use_message
+  alias: 'Daily Energy Use Message'
+  trigger:
+    platform: time
+    at: '23:59:50'
+  action:
+  - service: notify.dageraad
+    data_template:
+      title: '*Information*'
+      message: "Today's energy use was {{ states('sensor.daily_power') }} kWh."
+
     # - service: input_number.set_value
     #   data_template:
     #     entity_id: input_number.cumulative_energy_cost

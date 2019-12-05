@@ -4,6 +4,16 @@ schedy_heating:
   expressions_from_events: true
   actor_type: thermostat
 
+  schedule_prepend:
+  - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
+
+  schedule_append:
+  - v: "OFF"
+
+  watched_entities:
+  - "binary_sensor.terras"
+  - "binary_sensor.inkomhal"
+
   schedule_snippets:
     living:
     - { v: 24, start: "17:00", end: "19:30", weekdays: "1", weeks: "1-9, 44-52" }
@@ -54,11 +64,6 @@ schedy_heating:
     # badkamer:
     # - { v: 5, start: "10:30", end: "13:00", weekdays: "6-7", weeks: "1-9, 44-52" }
 
-  schedule_prepend:
-#  - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
-
-  schedule_append:
-  - v: "OFF"
 
 
   rooms:

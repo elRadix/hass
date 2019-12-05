@@ -5,13 +5,13 @@
   #   payload_on: "Up"
   #   payload_off: "Down"
 
-  - platform: sun2
-    monitored_conditions:
-      - elevation:
-          name: Sun is up
-      - elevation:
-          above: -6
-          name: Above Civil Dawn
+  # - platform: sun2
+  #   monitored_conditions:
+  #     - elevation:
+  #         name: Sun is up
+  #     - elevation:
+  #         above: -6
+  #         name: Above Civil Dawn
 
 
   - platform: command_line

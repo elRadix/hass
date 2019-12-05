@@ -6,7 +6,7 @@ utility_meter:
     tariffs:
       - night
       - day
-  was__monthly:
+  was_monthly:
     source: sensor.was_energy_today
     cycle: monthly
      tariffs:

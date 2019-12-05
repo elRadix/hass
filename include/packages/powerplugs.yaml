@@ -85,6 +85,9 @@ utility_meter:
   waterkoker_daily:
     source: sensor.waterkoker_energy_today
     cycle: daily
+    tariffs:
+      - night
+      - day
   dish_daily:
     source: sensor.dish_energy_today
     cycle: daily
@@ -93,6 +96,45 @@ utility_meter:
       - day
 
 
+# automation:
+
+# - id: Powerplug Tarrif Energy
+#   alias: Powerplug Tarrif Energy
+#   initial_state: True
+#   trigger:
+#     - platform: time
+#       at: '06:00:00'
+#     - platform: time
+#       at: '21:00:00'
+#   action:
+#     - service: utility_meter.next_tariff
+#       entity_id: utility_meter.daily_energy
+#     - service: utility_meter.next_tariff
+#       entity_id: utility_meter.monthly_energy
+
+
+#     - service: utility_meter.next_tariff
+#     - service: utility_meter.next_tariff
+#     - service: utility_meter.next_tariff
+#     - service: utility_meter.next_tariff
+#     - service: utility_meter.next_tariff
+#     - service: utility_meter.next_tariff
+#     - service: utility_meter.next_tariff
+#     - service: utility_meter.next_tariff
+
+#  utility_meter.dish_monthly
+#  utility_meter.droog_daily
+#  utility_meter.droog_monthly
+#  utility_meter.freezer_daily
+#  utility_meter.freezer_monthly
+#  utility_meter.fridge_daily
+#  utility_meter.fridge_monthly
+#  utility_meter.ketel_daily
+#  utility_meter.ketel_monthly
+#  utility_meter.kitchen_daily
+#  utility_meter.kitchen_monthly
+#  utility_meter.was_daily
+#  utility_meter.was_monthly
 
 # automation:
 # # to change day/night tariff at sunset/sunrise

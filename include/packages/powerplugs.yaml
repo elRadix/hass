@@ -121,7 +121,7 @@ sensor:
         friendly_name: Monthly Power Day
         unit_of_measurement: kWh
         value_template: "{{ states('sensor.ketel_monthly_day')|float|round(2) + states('sensor.fridge_daily_day')|float|round(2)  + states('sensor.freezer_monthly_day')|float|round(2) + states('sensor.kitchen_monthly_day')|float|round(2) + states('sensor.dish_monthly_day')|float|round(2)   + states('sensor.waterkoker_monthly_day')|float |round(2) + states('sensor.was_monthly_day')|float |round(2) + states('sensor.droog_monthly_day')|float |round(2) }}"
-      montyhly_power:
+      monthly_power:
         friendly_name: Monthly Power
         unit_of_measurement: kWh
         value_template: "{{ states('sensor.monthly_day_power')|float |round(2) + states('sensor.monthly_day_power')|float |round(2) }}"
@@ -183,8 +183,9 @@ automation:
   action:
   - service: notify.dageraad
     data_template:
-      title: '*Information*'
-      message: "Today's energy use was {{ states('sensor.daily_power') }} kWh."
+      title: '*Power Usage*'
+      message: "Today: {{ states('sensor.daily_power') }} kWh
+                Month: {{ states('sensor.monthly_power') }} kWh"
 
     # - service: input_number.set_value
     #   data_template:

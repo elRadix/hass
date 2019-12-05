@@ -101,14 +101,30 @@ utility_meter:
 sensor:
   - platform: template
     sensors:
+      day_power:
+        friendly_name: Daily Power Day
+        unit_of_measurement: kWh
+        value_template: "{{ states('sensor.ketel_daily_day')|float + states('sensor.fridge_daily_day')|float + states('sensor.freezer_daily_day')|float + states('sensor.kitchen_daily_day')|float + states('sensor.dish_daily_day')|float  + states('sensor.waterkoker_daily_day')|float  + states('sensor.was_daily_day')|float + states('sensor.droog_daily_day')|float }}"
+      night_power:
+        friendly_name: Daily Power Night
+        unit_of_measurement: kWh
+        value_template: "{{ states('sensor.ketel_daily_night')|float + states('sensor.fridge_daily_night')|float + states('sensor.freezer_daily_night')|float + states('sensor.kitchen_daily_night')|float + states('sensor.dish_daily_night')|float  + states('sensor.waterkoker_daily_night')|float  + states('sensor.was_daily_night')|float + states('sensor.droog_daily_night')|float }}"
       daily_power:
-        friendly_name: Daily Power Ketel
+        friendly_name: Daily Power usage
         unit_of_measurement: kWh
-        value_template: "{{ states('sensor.daily_power_offpeak')|float + states('sensor.daily_power_peak')|float }}"
-      monthly_power:
-        friendly_name: Monthly Power
+        value_template: "{{ states('sensor.day_power')|float + states('sensor.night_power')|float }}"
+      monthly_night_power:
+        friendly_name: Monthly Night
         unit_of_measurement: kWh
-        value_template: "{{ states('sensor.monthly_power_offpeak')|float + states('sensor.monthly_power_peak')|float }}"
+        value_template: "{{ states('sensor.ketel_monthly_night')|float + states('sensor.fridge_daily_night')|float + states('sensor.freezer_daily_night')|float + states('sensor.kitchen_daily_night')|float + states('sensor.dish_daily_night')|float  + states('sensor.waterkoker_daily_night')|float  + states('sensor.was_daily_night')|float + states('sensor.droog_daily_night')|float }}"
+      monthly_day_power:
+        friendly_name: Monthly day
+        unit_of_measurement: kWh
+        value_template: "{{ states('sensor.ketel_monthly_day')|float + states('sensor.fridge_daily_day')|float + states('sensor.freezer_daily_day')|float + states('sensor.kitchen_daily_day')|float + states('sensor.dish_daily_day')|float  + states('sensor.waterkoker_daily_day')|float  + states('sensor.was_daily_day')|float + states('sensor.droog_daily_day')|float }}"
+      montyhly_power:
+        friendly_name: Monthly Power usage
+        unit_of_measurement: kWh
+        value_template: "{{ states('sensor.monthly_day_power')|float + states('sensor.monthly_day_power')|float }}"
 
 
 
@@ -122,6 +138,10 @@ automation:
       at: '06:00:00'
     - platform: time
       at: '21:00:00'
+  condition:
+    condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
   action:
     - service: utility_meter.next_tariff
       entity_id: utility_meter.dish_daily
@@ -446,4 +466,35 @@ automation:
 #     - service: notify.energy_log
 #       data_template:
 #         message: "{{ states('sensor.date') }},{{ states('sensor.energy_t31_light_and_power_day') }},{{ states('sensor.energy_t31_light_and_power_night') }},{{ states('sensor.energy_t31_light_and_power_total') }},{{ states('sensor.energy_t41_heating_day') }},{{ states('sensor.energy_t41_heating_night') }},{{ states('sensor.energy_t41_heating_total') }},{{ states('sensor.total_energy_day') }},{{ states('sensor.total_energy_night') }},{{ states('sensor.total_energy') }},{{ state_attr('sensor.power_stats','min_value') }},{{ state_attr('sensor.power_stats','max_value') }},{{ states('sensor.power_stats') }},{{ states('sensor.total_cost_today') }}"
+
+
+entities:
+
+
+
+
+
+
+
+
+
+  - entity: sensor.ketel_monthly_night
+  - entity: sensor.fridge_monthly_night
+  - entity: sensor.freezer_monthly_night
+  - entity: sensor.kitchen_monthly_night
+  - entity: sensor.dish_monthly_night
+  - entity: sensor.waterkoker_monthly_night
+  - entity: sensor.droog_monthly_night
+
+  - entity: sensor.ketel_monthly_day
+  - entity: sensor.fridge_monthly_day
+  - entity: sensor.freezer_monthly_day
+  - entity: sensor.kitchen_monthly_day
+  - entity: sensor.dish_monthly_day
+  - entity: sensor.waterkoker_monthly_day
+  - entity: sensor.droog_monthly_day
+  - entity: sensor.was_monthly_day
+
+
+
 

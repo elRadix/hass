@@ -9,6 +9,10 @@
     monitored_conditions:
       - elevation:
           name: Sun is up
+      - elevation:
+          above: -6
+          name: Above Civil Dawn
+
 
   - platform: command_line
     command: '/opt/scripts/telnet.sh'

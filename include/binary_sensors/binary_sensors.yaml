@@ -7,7 +7,14 @@
 
   - platform: sun2
     monitored_conditions:
-      - elevation
+      - elevation:
+          name: Sun is up
+      - dusk:
+          name: Dusk
+      - daylight:
+          name: Daylight
+      - dawn:
+          name: Dawn
 
   - platform: command_line
     command: '/opt/scripts/telnet.sh'

@@ -110,23 +110,21 @@ sensor:
         unit_of_measurement: kWh
         value_template: "{{ states('sensor.ketel_daily_night')|float + states('sensor.fridge_daily_night')|float + states('sensor.freezer_daily_night')|float + states('sensor.kitchen_daily_night')|float + states('sensor.dish_daily_night')|float  + states('sensor.waterkoker_daily_night')|float  + states('sensor.was_daily_night')|float + states('sensor.droog_daily_night')|float }}"
       daily_power:
-        friendly_name: Daily Power usage
+        friendly_name: Daily Power
         unit_of_measurement: kWh
         value_template: "{{ states('sensor.day_power')|float + states('sensor.night_power')|float }}"
       monthly_night_power:
-        friendly_name: Monthly Night
+        friendly_name: Monthly Power Night
         unit_of_measurement: kWh
-        value_template: "{{ states('sensor.ketel_monthly_night')|float + states('sensor.fridge_daily_night')|float + states('sensor.freezer_daily_night')|float + states('sensor.kitchen_daily_night')|float + states('sensor.dish_daily_night')|float  + states('sensor.waterkoker_daily_night')|float  + states('sensor.was_daily_night')|float + states('sensor.droog_daily_night')|float }}"
+        value_template: "{{ states('sensor.ketel_monthly_night')|float + states('sensor.fridge_monthly_night')|float + states('sensor.freezer_monthly_night')|float + states('sensor.kitchen_monthly_night')|float + states('sensor.dish_monthly_night')|float  + states('sensor.waterkoker_monthly_night')|float  + states('sensor.was_monthly_night')|float + states('sensor.droog_monthly_night')|float }}"
       monthly_day_power:
-        friendly_name: Monthly day
+        friendly_name: Monthly Power Day
         unit_of_measurement: kWh
-        value_template: "{{ states('sensor.ketel_monthly_day')|float + states('sensor.fridge_daily_day')|float + states('sensor.freezer_daily_day')|float + states('sensor.kitchen_daily_day')|float + states('sensor.dish_daily_day')|float  + states('sensor.waterkoker_daily_day')|float  + states('sensor.was_daily_day')|float + states('sensor.droog_daily_day')|float }}"
+        value_template: "{{ states('sensor.ketel_monthly_day')|float + states('sensor.fridge_daily_day')|float + states('sensor.freezer_monthly_day')|float + states('sensor.kitchen_monthly_day')|float + states('sensor.dish_monthly_day')|float  + states('sensor.waterkoker_monthly_day')|float  + states('sensor.was_monthly_day')|float + states('sensor.droog_monthly_day')|float }}"
       montyhly_power:
-        friendly_name: Monthly Power usage
+        friendly_name: Monthly Power
         unit_of_measurement: kWh
         value_template: "{{ states('sensor.monthly_day_power')|float + states('sensor.monthly_day_power')|float }}"
-
-
 
 automation:
 

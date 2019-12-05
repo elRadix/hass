@@ -39,6 +39,9 @@ utility_meter:
   waterkoker_monthly:
     source: sensor.waterkoker_energy_today
     cycle: monthly
+    tariffs:
+      - night
+      - day
   dish_monthly:
     source: sensor.dish_energy_today
     cycle: monthly
@@ -95,46 +98,61 @@ utility_meter:
       - night
       - day
 
-
-# automation:
-
-# - id: Powerplug Tarrif Energy
-#   alias: Powerplug Tarrif Energy
-#   initial_state: True
-#   trigger:
-#     - platform: time
-#       at: '06:00:00'
-#     - platform: time
-#       at: '21:00:00'
-#   action:
-#     - service: utility_meter.next_tariff
-#       entity_id: utility_meter.daily_energy
-#     - service: utility_meter.next_tariff
-#       entity_id: utility_meter.monthly_energy
+sensor:
+  - platform: template
+    sensors:
+      daily_power:
+        friendly_name: Daily Power Ketel
+        unit_of_measurement: kWh
+        value_template: "{{ states('sensor.daily_power_offpeak')|float + states('sensor.daily_power_peak')|float }}"
+      monthly_power:
+        friendly_name: Monthly Power
+        unit_of_measurement: kWh
+        value_template: "{{ states('sensor.monthly_power_offpeak')|float + states('sensor.monthly_power_peak')|float }}"
 
 
-#     - service: utility_meter.next_tariff
-#     - service: utility_meter.next_tariff
-#     - service: utility_meter.next_tariff
-#     - service: utility_meter.next_tariff
-#     - service: utility_meter.next_tariff
-#     - service: utility_meter.next_tariff
-#     - service: utility_meter.next_tariff
-#     - service: utility_meter.next_tariff
 
-#  utility_meter.dish_monthly
-#  utility_meter.droog_daily
-#  utility_meter.droog_monthly
-#  utility_meter.freezer_daily
-#  utility_meter.freezer_monthly
-#  utility_meter.fridge_daily
-#  utility_meter.fridge_monthly
-#  utility_meter.ketel_daily
-#  utility_meter.ketel_monthly
-#  utility_meter.kitchen_daily
-#  utility_meter.kitchen_monthly
-#  utility_meter.was_daily
-#  utility_meter.was_monthly
+automation:
+
+- id: Powerplug Tarrif Energy
+  alias: Powerplug Tarrif Energy
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '06:00:00'
+    - platform: time
+      at: '21:00:00'
+  action:
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.dish_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.dish_monthly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.droog_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.droog_monthly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.freezer_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.freezer_monthly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.fridge_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.fridge_monthly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.ketel_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.ketel_monthly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.kitchen_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.kitchen_monthly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.was_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.was_monthly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.waterkoker_daily
 
 # automation:
 # # to change day/night tariff at sunset/sunrise

@@ -4,8 +4,8 @@ schedy_heating:
   expressions_from_events: true
   actor_type: thermostat
 
-  schedule_prepend:
-  - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
+#  schedule_prepend:
+#  - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
 
   schedule_append:
   - v: "OFF"

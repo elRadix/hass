@@ -85,7 +85,7 @@ views:
       icon: mdi:fire
     - entity: binary_sensor.inkomhal
       name: Inkomhal
-    - entity: binary_sensor.terras
+    - entity: binary_sensor.eetkamer
       name: Terras
     - entity: binary_sensor.keuken_lek
       name: Keuken
@@ -3250,7 +3250,7 @@ views:
       secondary_info: last-changed
     - entity: binary_sensor.inkomhal
       secondary_info: last-changed
-    - entity: binary_sensor.terras
+    - entity: binary_sensor.eetkamer
       secondary_info: last-changed
     - entity: binary_sensor.keuken_lek
       secondary_info: last-changed

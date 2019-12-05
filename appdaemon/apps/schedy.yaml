@@ -10,10 +10,6 @@ schedy_heating:
   schedule_append:
   - v: "OFF"
 
-  watched_entities:
-  - "binary_sensor.terras"
-  - "binary_sensor.inkomhal"
-
   schedule_snippets:
     living:
     - { v: 24, start: "17:00", end: "19:30", weekdays: "1", weeks: "1-9, 44-52" }
@@ -81,7 +77,7 @@ schedy_heating:
         climate.eetkamer:
     #  rescheduling_delay: 60 # return back to schedule after x minutes
       watched_entities:
-      - binary_sensor.terras
+      - binary_sensor.eetkamer
       schedule:
       - x: "IncludeSchedule(schedule_snippets['eetkamer'])"
 

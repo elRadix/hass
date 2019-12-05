@@ -99,7 +99,7 @@ automation:
         - binary_sensor.motion_traphal
         - binary_sensor.motion_badkamer
         - binary_sensor.inkomhal
-        - binary_sensor.terras
+        - binary_sensor.eetkamer
       to: 'on'
     action:
       service: variable.set_variable

@@ -37,7 +37,7 @@
   alias: '[RF] Terras Open'
   trigger:
   - platform: state
-    entity_id: binary_sensor.terras
+    entity_id: binary_sensor.eetkamer
     from: 'off'
     to: 'on'
   action:
@@ -58,7 +58,7 @@
   alias: '[RF] Inkomhal Closed'
   trigger:
   - platform: state
-    entity_id: binary_sensor.inkomhal, binary_sensor.terras
+    entity_id: binary_sensor.inkomhal, binary_sensor.eetkamer
     from: 'on'
     to: 'off'
   action:
@@ -78,7 +78,7 @@
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: binary_sensor.inkomhal, binary_sensor.terras
+      entity_id: binary_sensor.inkomhal, binary_sensor.eetkamer
       to: 'on'
       for:
         minutes: 5
@@ -92,7 +92,7 @@
       entity_id: binary_sensor.inkomhal
       state: 'on'
     - condition: state
-      entity_id: binary_sensor.terras
+      entity_id: binary_sensor.eetkamer
       state: 'on'
 #  condition:
 #    condition: and

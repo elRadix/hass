@@ -48,9 +48,9 @@
 
   terras:
     name: Terras
-    message: "Terras has been open for {{ relative_time(states.binary_sensor.terras.last_changed) }}"
+    message: "Terras has been open for {{ relative_time(states.binary_sensor.eetkamer.last_changed) }}"
     done_message: "Terras is closed"
-    entity_id: binary_sensor.terras
+    entity_id: binary_sensor.eetkamer
     state: 'on'
     repeat:
       - 10
@@ -62,7 +62,7 @@
     notifiers:
       - dageraad
       - android
-      
+
   water_keuken:
     name: Water Keuken
     message: "Water has been detected in the kichten for {{ relative_time(states.binary_sensor.water_keuken.last_changed) }}"
@@ -79,7 +79,7 @@
     notifiers:
       - dageraad
       - android
-      
+
   water_badkamer:
     name: Water Badkamer
     message: "Water has been detected in the bathroom for {{ relative_time(states.binary_sensor.water_badkamer.last_changed) }}"
@@ -110,7 +110,6 @@
       - dageraad
       - android
 
-
   gas:
     name: Fire Alarm
     message: "Gas has been detected !!!"
@@ -123,5 +122,3 @@
     notifiers:
       - dageraad
       - android
-
-

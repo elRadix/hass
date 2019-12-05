@@ -31,7 +31,7 @@
   device_class: door
 
 - platform: mqtt
-  name: 'Terras'
+  name: 'Eetkamer'
   state_topic: 'home/terras'
   device_class: door
 

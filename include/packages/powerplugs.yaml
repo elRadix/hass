@@ -174,6 +174,30 @@ automation:
     - service: utility_meter.next_tariff
       entity_id: utility_meter.waterkoker_daily
 
+
+# to send daily use notification, log daily use to file and to accumulate total cost.
+  - id: daily_energy_use_message
+    alias: 'Daily Energy Use Message'
+    trigger:
+      platform: time
+      at: '23:59:50'
+    action:
+    - service: notify.dageraad
+      data_template:
+        title: '*Information*'
+        message: "Today's energy use was {{ states('sensor.daily_power') }} kWh."
+        
+    # - service: input_number.set_value
+    #   data_template:
+    #     entity_id: input_number.cumulative_energy_cost
+    #     value: "{{ states('input_number.cumulative_energy_cost')|float + states('sensor.total_cost_today')|float }}"
+    # - service: notify.energy_log
+    #   data_template:
+    #     message: "{{ states('sensor.date') }},{{ states('sensor.energy_t31_light_and_power_day') }},{{ states('sensor.energy_t31_light_and_power_night') }},{{ states('sensor.energy_t31_light_and_power_total') }},{{ states('sensor.energy_t41_heating_day') }},{{ states('sensor.energy_t41_heating_night') }},{{ states('sensor.energy_t41_heating_total') }},{{ states('sensor.total_energy_day') }},{{ states('sensor.total_energy_night') }},{{ states('sensor.total_energy') }},{{ state_attr('sensor.power_stats','min_value') }},{{ state_attr('sensor.power_stats','max_value') }},{{ states('sensor.power_stats') }},{{ states('sensor.total_cost_today') }}"
+
+
+
+
 # automation:
 # # to change day/night tariff at sunset/sunrise
 #   - id: tariff change to night
@@ -466,35 +490,3 @@ automation:
 #     - service: notify.energy_log
 #       data_template:
 #         message: "{{ states('sensor.date') }},{{ states('sensor.energy_t31_light_and_power_day') }},{{ states('sensor.energy_t31_light_and_power_night') }},{{ states('sensor.energy_t31_light_and_power_total') }},{{ states('sensor.energy_t41_heating_day') }},{{ states('sensor.energy_t41_heating_night') }},{{ states('sensor.energy_t41_heating_total') }},{{ states('sensor.total_energy_day') }},{{ states('sensor.total_energy_night') }},{{ states('sensor.total_energy') }},{{ state_attr('sensor.power_stats','min_value') }},{{ state_attr('sensor.power_stats','max_value') }},{{ states('sensor.power_stats') }},{{ states('sensor.total_cost_today') }}"
-
-
-entities:
-
-
-
-
-
-
-
-
-
-  - entity: sensor.ketel_monthly_night
-  - entity: sensor.fridge_monthly_night
-  - entity: sensor.freezer_monthly_night
-  - entity: sensor.kitchen_monthly_night
-  - entity: sensor.dish_monthly_night
-  - entity: sensor.waterkoker_monthly_night
-  - entity: sensor.droog_monthly_night
-
-  - entity: sensor.ketel_monthly_day
-  - entity: sensor.fridge_monthly_day
-  - entity: sensor.freezer_monthly_day
-  - entity: sensor.kitchen_monthly_day
-  - entity: sensor.dish_monthly_day
-  - entity: sensor.waterkoker_monthly_day
-  - entity: sensor.droog_monthly_day
-  - entity: sensor.was_monthly_day
-
-
-
-

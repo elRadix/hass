@@ -124,7 +124,7 @@ sensor:
       monthly_power:
         friendly_name: Monthly Power
         unit_of_measurement: kWh
-        value_template: "{{ states('sensor.monthly_day_power')|float |round(2) + states('sensor.monthly_day_power')|float |round(2) }}"
+        value_template: "{{ states('sensor.monthly_day_power')|float |round(2) + states('sensor.monthly_night_power')|float |round(2) }}"
 
 
 automation:

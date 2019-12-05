@@ -5,6 +5,10 @@
   #   payload_on: "Up"
   #   payload_off: "Down"
 
+  - platform: sun2
+    monitored_conditions:
+      - elevation
+
   - platform: command_line
     command: '/opt/scripts/telnet.sh'
     scan_interval: 5

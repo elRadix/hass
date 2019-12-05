@@ -52,7 +52,7 @@ utility_meter:
     tariffs:
       - night
       - day
-  was__daily:
+  was_daily:
     source: sensor.was_energy_today
     cycle: daily
     tariffs:

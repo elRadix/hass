@@ -489,7 +489,7 @@ sensor:
             {% set used_day = states('sensor.water_consumption_day') |float %}
             {% set days = states('sensor.days_water_consumed') |float %}
             {% set prepaid = states('sensor.water_prepaid_monthly') |float %}
-            {% set price = 3.68568181818182 |float %}
+            {% set price = 3.9068181818 |float %}
             {% set cost_period = (((used_day * days / 1000) * price))|float|round(2) %}
             {{  ( cost_period  )  |float |round(2)  }}
         unit_of_measurement: 'eur'
@@ -505,7 +505,7 @@ sensor:
             {% set days = states('sensor.days_water_consumed') |float %}
             {% set month = states('sensor.water_period') |float %}
             {% set prepaid = states('sensor.water_prepaid_monthly') |float %}
-            {% set price = 3.68568181818182 |float %}
+            {% set price = 3.9068181818 |float %}
             {% set cost_monthly =  (( (prepaid * month)  )) |float |round(2) %}
             {% set cost_period = (((used_day * days / 1000) * price))|float|round(2) %}
             {% set balance =  (( (cost_monthly - cost_period)  )) |float |round(2) %}
@@ -523,7 +523,7 @@ sensor:
             {% set days = states('sensor.days_water_consumed') |float %}
             {% set month = states('sensor.water_period') |float %}
             {% set prepaid = states('sensor.water_prepaid_monthly') |float %}
-            {% set price = 3.68568181818182 |float %}
+            {% set price = 3.9068181818 |float %}
             {% set fcst =  ((  (prepaid *12) -(( ((used_period) * price)) /month) *12  )) |float |round(2) %}
             {{  ( fcst  )  |float |round(2)  }}
         unit_of_measurement: 'eur'

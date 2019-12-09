@@ -40,8 +40,8 @@ input_number:
   water_last:
     name: water last
     icon: mdi:counter
-    min: 821
-    max: 5000
+    min: 855
+    max: 1200
     step: 0.001
     mode: box
   electricity_day_last:
@@ -712,8 +712,8 @@ automation:
         entity_id: sensor.water_start
         unit_of_measurement: 'm3'
         icon: mdi:counter
-        state: 781
-        start_date: 27/10/2018
+        state: 766
+        start_date: 24/11/2018
         Meter: 80536336
     - service: python_script.set_state
       data_template:

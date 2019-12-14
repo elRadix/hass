@@ -597,7 +597,7 @@
                                                         },
                                                         {
                                                             "color": "red",
-                                                            "value": 30
+                                                            "value": 35
                                                         }
                                                     ],
                                                     "target": 27.3,
@@ -4847,16 +4847,16 @@
                                     "name": "Dryer"
                                 },
                                 {
+                                    "entity": "switch.kitchen",
+                                    "name": "Kitchen"
+                                },
+                                {
                                     "entity": "switch.freezer",
-                                    "name": "Freewer"
+                                    "name": "Freezer"
                                 },
                                 {
                                     "entity": "switch.fridge",
                                     "name": "Fridge"
-                                },
-                                {
-                                    "entity": "switch.kitchen",
-                                    "name": "Kitchen"
                                 },
                                 {
                                     "entity": "switch.waterkoker",

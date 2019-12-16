@@ -283,8 +283,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "99d9262",
-            "last_release_tag": "v2.3.5",
+            "last_commit": "a8bdbf4",
+            "last_release_tag": "v2.3.6",
             "name": "Alexa Media Player",
             "new": false,
             "repository_manifest": {
@@ -295,13 +295,13 @@
                     "alarm_control_panel",
                     "sensor"
                 ],
-                "homeassistant": "0.103.0",
+                "homeassistant": "0.96.0",
                 "iot_class": "cloud_poll",
                 "name": "Alexa Media Player"
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 354,
+            "stars": 356,
             "topics": [],
             "version_installed": null
         },
@@ -430,7 +430,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 16,
+            "stars": 18,
             "topics": [
                 "automations",
                 "badges",
@@ -911,7 +911,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 294,
+            "stars": 296,
             "topics": [
                 "home-assistant",
                 "home-assistant-custom",
@@ -1003,7 +1003,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
-            "stars": 32,
+            "stars": 33,
             "topics": [
                 "bravia",
                 "home-assistant",
@@ -1027,7 +1027,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 91,
+            "stars": 92,
             "topics": [],
             "version_installed": null
         },
@@ -1103,7 +1103,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "837f17a",
+            "last_commit": "d37b817",
             "last_release_tag": null,
             "name": "Philips Ambilights",
             "new": false,
@@ -1129,7 +1129,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 474,
+            "stars": 477,
             "topics": [
                 "automation",
                 "custom",
@@ -1179,7 +1179,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 566,
+            "stars": 567,
             "topics": [
                 "automation",
                 "custom",
@@ -1290,7 +1290,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 28,
+            "stars": 29,
             "topics": [],
             "version_installed": null
         },
@@ -1454,7 +1454,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 104,
+            "stars": 105,
             "topics": [],
             "version_installed": null
         },
@@ -1476,7 +1476,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 67,
+            "stars": 68,
             "topics": [],
             "version_installed": null
         },
@@ -1600,7 +1600,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "1dfa8aa",
+            "last_commit": "e8227ce",
             "last_release_tag": "3",
             "name": "lovelace-state-switch",
             "new": true,
@@ -1610,7 +1610,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 49,
+            "stars": 51,
             "topics": [],
             "version_installed": null
         },
@@ -1688,7 +1688,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 15,
+            "stars": 16,
             "topics": [],
             "version_installed": null
         },
@@ -1762,6 +1762,41 @@
             ],
             "version_installed": null
         },
+        "160218749": {
+            "authors": [
+                "@DavidMStraub"
+            ],
+            "category": "integration",
+            "description": "Custom component for Home Assistant to connect appliances supporting the Home Connect standard (WIP)",
+            "full_name": "DavidMStraub/homeassistant-homeconnect",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "v0.2.3",
+            "name": "Home Connect",
+            "new": true,
+            "repository_manifest": {
+                "domains": [
+                    "sensor",
+                    "binary_sensor",
+                    "switch"
+                ],
+                "homeassistant": "0.102",
+                "name": "Home Connect",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 65,
+            "topics": [
+                "hacs",
+                "homeassistant",
+                "homeconnect",
+                "python"
+            ],
+            "version_installed": null
+        },
         "160728801": {
             "authors": [
                 "@asantaga"
@@ -1782,25 +1817,6 @@
             "stars": 1,
             "topics": [],
             "version_installed": null
-        },
-        "161357236": {
-            "authors": [],
-            "category": "plugin",
-            "description": "\u2b06\ufe0f CCH - Customize the header and add enhancements to Lovelace. Features: kiosk mode, conditional header styling, per user/device views, swiping between views on mobile, and more.",
-            "full_name": "maykar/compact-custom-header",
-            "hide": false,
-            "installed": true,
-            "installed_commit": "1d69c31",
-            "last_commit": "1d69c31",
-            "last_release_tag": "1.4.9",
-            "name": "compact-custom-header",
-            "new": false,
-            "repository_manifest": {},
-            "selected_tag": null,
-            "show_beta": true,
-            "stars": 264,
-            "topics": [],
-            "version_installed": "1.4.9"
         },
         "161403328": {
             "authors": [],
@@ -2228,8 +2244,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "e4a2377",
-            "last_release_tag": "v0.6.5",
+            "last_commit": "b2768e3",
+            "last_release_tag": "v0.6.6",
             "name": "Arlo Camera Support",
             "new": false,
             "repository_manifest": {},
@@ -2470,8 +2486,8 @@
             "hide": false,
             "installed": true,
             "installed_commit": null,
-            "last_commit": "50298dd",
-            "last_release_tag": "0.18.1",
+            "last_commit": "596b1cc",
+            "last_release_tag": "0.18.2",
             "name": "HACS (Home Assistant Community Store)",
             "new": false,
             "repository_manifest": {
@@ -2481,7 +2497,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 565,
+            "stars": 570,
             "topics": [
                 "community",
                 "hacs",
@@ -2490,7 +2506,7 @@
                 "package-manager",
                 "python"
             ],
-            "version_installed": "0.18.1"
+            "version_installed": "0.18.2"
         },
         "172800356": {
             "authors": [
@@ -2826,7 +2842,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
-            "stars": 126,
+            "stars": 130,
             "topics": [],
             "version_installed": "0.1.5"
         },
@@ -2901,7 +2917,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 110,
+            "stars": 111,
             "topics": [],
             "version_installed": null
         },
@@ -2920,7 +2936,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 13,
+            "stars": 14,
             "topics": [],
             "version_installed": null
         },
@@ -3288,7 +3304,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 51,
+            "stars": 52,
             "topics": [],
             "version_installed": null
         },
@@ -3670,7 +3686,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 4,
+            "stars": 5,
             "topics": [],
             "version_installed": null
         },
@@ -4069,7 +4085,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 36,
+            "stars": 38,
             "topics": [],
             "version_installed": null
         },
@@ -4281,7 +4297,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 6,
+            "stars": 7,
             "topics": [
                 "custom-component",
                 "home-assistant",
@@ -4362,8 +4378,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "d4205ef",
-            "last_release_tag": "v1.1.4",
+            "last_commit": "bfb04c3",
+            "last_release_tag": "v1.1.5",
             "name": "lovelace-xiaomi-vacuum-map-card",
             "new": false,
             "repository_manifest": {},
@@ -4541,7 +4557,7 @@
             "name": "Philips AirPurifier",
             "new": false,
             "repository_manifest": {
-                "name": "Philips AirPurifier",
+                "name": "\ud83c\udfde Philips AirPurifier",
                 "render_readme": "true"
             },
             "selected_tag": null,
@@ -4565,7 +4581,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 112,
+            "stars": 115,
             "topics": [],
             "version_installed": null
         },
@@ -4587,7 +4603,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 21,
+            "stars": 23,
             "topics": [
                 "discovery",
                 "home-assistant",
@@ -4830,7 +4846,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "964506e",
+            "last_commit": "005ca57",
             "last_release_tag": "0.57",
             "name": "bom-weather-card",
             "new": false,
@@ -4929,14 +4945,14 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "8fa0279",
+            "last_commit": "630acf4",
             "last_release_tag": "0.1.3",
             "name": "lovelace-grocy-chores-card",
             "new": false,
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 12,
+            "stars": 13,
             "topics": [],
             "version_installed": null
         },
@@ -5361,7 +5377,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 9,
+            "stars": 10,
             "topics": [],
             "version_installed": null
         },
@@ -5589,7 +5605,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 1,
+            "stars": 2,
             "topics": [],
             "version_installed": null
         },
@@ -5950,7 +5966,7 @@
             "hide": false,
             "installed": true,
             "installed_commit": "5870a3f",
-            "last_commit": "5fd324f",
+            "last_commit": "38fd8b7",
             "last_release_tag": "5",
             "name": "Lovelace Gen",
             "new": false,
@@ -5979,7 +5995,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 37,
+            "stars": 38,
             "topics": [
                 "home-assistant",
                 "zigbee2mqtt"
@@ -6178,7 +6194,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 8,
+            "stars": 9,
             "topics": [],
             "version_installed": "6"
         },
@@ -6275,7 +6291,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 21,
+            "stars": 23,
             "topics": [],
             "version_installed": null
         },
@@ -6339,8 +6355,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "83cd349",
-            "last_release_tag": "v0.1.0",
+            "last_commit": "2564658",
+            "last_release_tag": "v0.1.1",
             "name": "Node-RED",
             "new": true,
             "repository_manifest": {
@@ -6615,7 +6631,7 @@
             "installed": false,
             "installed_commit": null,
             "last_commit": "b464d01",
-            "last_release_tag": "v0.2.1",
+            "last_release_tag": "v0.2.2",
             "name": "Sia",
             "new": false,
             "repository_manifest": {
@@ -6698,7 +6714,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "58ac7cf",
+            "last_commit": "39ee7ed",
             "last_release_tag": null,
             "name": "avfallsor",
             "new": false,
@@ -6882,7 +6898,7 @@
                 "domains": [
                     "sensor"
                 ],
-                "name": "Afvalkalender voor Area Reiniging"
+                "name": "Integration for bin/waste collection by Area Reiniging"
             },
             "selected_tag": null,
             "show_beta": false,
@@ -7047,7 +7063,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 6,
+            "stars": 7,
             "topics": [
                 "hacs",
                 "home-assistant",
@@ -7225,7 +7241,7 @@
             "name": "Minecraft Version",
             "new": false,
             "repository_manifest": {
-                "name": "Minecraft Version",
+                "name": "\u26cf\ufe0f Minecraft Version",
                 "render_readme": "true"
             },
             "selected_tag": null,
@@ -7300,7 +7316,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 32,
+            "stars": 33,
             "topics": [],
             "version_installed": null
         },
@@ -7549,7 +7565,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 18,
+            "stars": 19,
             "topics": [
                 "home-assistant",
                 "lovelace",
@@ -7844,6 +7860,29 @@
             "topics": [],
             "version_installed": null
         },
+        "219339142": {
+            "authors": [],
+            "category": "plugin",
+            "description": "Lovelace Custom Header",
+            "full_name": "maykar/custom-header",
+            "hide": false,
+            "installed": true,
+            "installed_commit": "6d2baff",
+            "last_commit": "6d2baff",
+            "last_release_tag": "1.0.1",
+            "name": "custom-header",
+            "new": false,
+            "repository_manifest": {
+                "filename": "custom-header.js",
+                "name": "Custom Header",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 6,
+            "topics": [],
+            "version_installed": "1.0.1"
+        },
         "219363790": {
             "authors": [],
             "category": "integration",
@@ -8107,8 +8146,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "97fb419",
-            "last_release_tag": "0.3.0",
+            "last_commit": "679f9b5",
+            "last_release_tag": "0.3.1",
             "name": "Auto Backup",
             "new": true,
             "repository_manifest": {
@@ -8163,7 +8202,7 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "6304352",
+            "last_commit": "ab85a93",
             "last_release_tag": "v2.0.5",
             "name": "iCloud3 Device Tracker",
             "new": false,
@@ -8176,7 +8215,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 16,
+            "stars": 17,
             "topics": [
                 "device-tracker",
                 "icloud",
@@ -8284,8 +8323,44 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 16,
+            "stars": 17,
             "topics": [],
+            "version_installed": null
+        },
+        "224073673": {
+            "authors": [
+                "@pinkywafer"
+            ],
+            "category": "integration",
+            "description": "Calendarific holiday sensor for Home Assistant ",
+            "full_name": "pinkywafer/Calendarific",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "6dad80c",
+            "last_release_tag": "0.9.1",
+            "name": "Calendarific",
+            "new": false,
+            "repository_manifest": {
+                "domains": [
+                    "calendarific",
+                    "sensor"
+                ],
+                "filename": "calendarific.zip",
+                "iot_class": "Cloud Polling",
+                "name": "Calendarific",
+                "zip_release": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 0,
+            "topics": [
+                "api-client",
+                "calendarific",
+                "holidays",
+                "home-assistant",
+                "sensor"
+            ],
             "version_installed": null
         },
         "224442630": {
@@ -8360,8 +8435,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "0c19be8",
-            "last_release_tag": "v0.7.1",
+            "last_commit": "78bd29a",
+            "last_release_tag": "v0.8.0",
             "name": "PowerView",
             "new": true,
             "repository_manifest": {
@@ -8372,7 +8447,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 1,
+            "stars": 2,
             "topics": [],
             "version_installed": null
         },
@@ -8404,7 +8479,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 1,
+            "stars": 2,
             "topics": [
                 "hassio",
                 "hassio-integration",
@@ -8534,6 +8609,86 @@
             ],
             "version_installed": null
         },
+        "227056435": {
+            "authors": [
+                "@briis"
+            ],
+            "category": "integration",
+            "description": "# Meteobridge Weather for Home Assistant",
+            "full_name": "briis/mbweather",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "V1.0.3",
+            "name": "Meteobridge Weather",
+            "new": true,
+            "repository_manifest": {},
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 0,
+            "topics": [
+                "darksky",
+                "home-assistant",
+                "meteobridge",
+                "meteobridge-logger",
+                "python"
+            ],
+            "version_installed": null
+        },
+        "227988032": {
+            "authors": [],
+            "category": "theme",
+            "description": "Theme for home assistant that makes use of pinks and purples and maybe some teal",
+            "full_name": "estiens/sweet_pink_hass_theme",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "4bf3bdb",
+            "last_release_tag": null,
+            "name": "sweetpink",
+            "new": true,
+            "repository_manifest": {
+                "name": "sweet pink",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 1,
+            "topics": [
+                "home-assistant",
+                "lovelace",
+                "lovelace-theme",
+                "lovelace-ui"
+            ],
+            "version_installed": null
+        },
+        "228037599": {
+            "authors": [],
+            "category": "appdaemon",
+            "description": "\ud83d\udeb6\ud83d\udeb6AppDaemon app to loosely couple entities",
+            "full_name": "aneisch/follow_me_appdaemon",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": "7685936",
+            "last_release_tag": "v1.1",
+            "name": "follow_me",
+            "new": false,
+            "repository_manifest": {
+                "country": "US",
+                "name": "Follow Me",
+                "render_readme": "true"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 0,
+            "topics": [
+                "appdaemon-apps",
+                "hacs"
+            ],
+            "version_installed": null
+        },
         "76125161": {
             "authors": [
                 "@tybritten"
@@ -8565,8 +8720,8 @@
             "hide": false,
             "installed": false,
             "installed_commit": null,
-            "last_commit": "ced07e8",
-            "last_release_tag": "v2.1",
+            "last_commit": "d1b6da2",
+            "last_release_tag": "v2.2",
             "name": "Hue sensor custom component",
             "new": false,
             "repository_manifest": {
@@ -8580,7 +8735,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 300,
+            "stars": 301,
             "topics": [
                 "home-assistant",
                 "hue",

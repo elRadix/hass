@@ -13,6 +13,14 @@
                 "swipe_prevent_default": true,
                 "voice": "hide"
             },
+            "custom_header": {
+                "chevrons": false,
+                "compact_mode": true,
+                "footer_mode": true,
+                "header_text": "Dageraad",
+                "hide_unused": true,
+                "menu_dropdown": true
+            },
             "resources": [
                 {
                     "type": "js",
@@ -164,6 +172,10 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/mini-graph-card/mini-graph-card-bundle.js"
+                },
+                {
+                    "type": "module",
+                    "url": "/community_plugin/custom-header/custom-header.js"
                 }
             ],
             "title": "Home",
@@ -5052,7 +5064,7 @@
                             "icon": "mdi:power",
                             "line_width": 3,
                             "name": "Was & Droog",
-                            "points_per_hour": 15,
+                            "points_per_hour": 1,
                             "show": {
                                 "fill": false,
                                 "graph": "line",

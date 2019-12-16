@@ -4,8 +4,12 @@ schedy_heating:
   expressions_from_events: true
   actor_type: thermostat
 
+  debug: true
+  
+  
 #  schedule_prepend:
 #  - x: "Mark(OFF, Mark.OVERLAY) if not is_empty(filter_entities('binary_sensor', window_room=room_name, state='on')) else Skip()"
+
 
   schedule_append:
   - v: "OFF"
@@ -52,10 +56,10 @@ schedy_heating:
       rules:
       - weekdays: 1-5
         rules:
-        - { start: "19:30", end: "22:30", weeks: "1-9, 44-52"  }
+        - { start: "19:30", end: "21:30", weeks: "1-9, 44-52"  }
       - weekdays: 6-7
         rules:
-        - { start: "19:30", end: "22:30", weeks: "1-9, 44-52"  }
+        - { start: "19:30", end: "21:30", weeks: "1-9, 44-52"  }
 
     # badkamer:
     # - { v: 5, start: "10:30", end: "13:00", weekdays: "6-7", weeks: "1-9, 44-52" }
@@ -63,7 +67,7 @@ schedy_heating:
 
 
   rooms:
-    living:
+    inkomhal:
       actors:
         climate.living:
      # rescheduling_delay: 60 # return back to schedule after x minutes
@@ -109,20 +113,20 @@ schedy_heating:
 #       schedule:
 #       - x: "IncludeSchedule(schedule_snippets['badkamer'])"
 
-  statistics:
+#  statistics:
     # Pick an arbitrary name for the parameter instance.
-    ground_floor_temp_delta:
-      # The type of parameter as found in the actor'S documentation.
-      type: temp_delta
-      # More parameter-specific settings:
-      rooms:
-        living:
-        eetkamer:
-    upstairs_temp_delta:
-      # The type of parameter as found in the actor'S documentation.
-      type: temp_delta
-      # More parameter-specific settings:
-      rooms:
-        floradix:
-        sara:
-        yassin:
+#    ground_floor_temp_delta:
+#      # The type of parameter as found in the actor'S documentation.
+#      type: temp_delta
+#      # More parameter-specific settings:
+#      rooms:
+#        living:
+#        eetkamer:
+#    upstairs_temp_delta:
+#      # The type of parameter as found in the actor'S documentation.
+#      type: temp_delta
+#      # More parameter-specific settings:
+#      rooms:
+#        floradix:
+#        sara:
+#        yassin:

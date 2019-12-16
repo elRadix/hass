@@ -17,6 +17,7 @@ jobs:
             touch fake_directory/cert_eu.log
             echo "10" > fake_directory/cert.log
             echo "10" > fake_directory/cert_eu.log
+            apt-get install python3-venv
             python3.7 -m venv .
             source bin/activate
             pip install --upgrade pip
@@ -40,6 +41,7 @@ jobs:
             touch fake_directory/cert_eu.log
             echo "10" > fake_directory/cert.log
             echo "10" > fake_directory/cert_eu.log
+            apt-get install python3-venv
             python3.7 -m venv .
             source bin/activate
             pip install --upgrade pip

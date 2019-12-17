@@ -48,6 +48,37 @@ utility_meter:
     tariffs:
       - night
       - day
+  oven_monthly:
+    source: sensor.oven_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
+  microwave_monthly:
+    source: sensor.microwave_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
+  commander_monthly:
+    source: sensor.commander_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
+  samsungtv_monthly:
+    source: sensor.samsungtv_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
+  sonytv_monthly:
+    source: sensor.sonytv_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
+
 ##DAILY
   ketel_daily:
     source: sensor.ketel_energy_today
@@ -97,6 +128,36 @@ utility_meter:
     tariffs:
       - night
       - day
+  oven_monthly:
+    source: sensor.oven_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
+  microwave_daily:
+    source: sensor.microwave_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
+  commander_daily:
+    source: sensor.commander_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
+  samsungtv_daily:
+    source: sensor.samsungtv_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
+  sonytv_daily:
+    source: sensor.sonytv_energy_today
+    cycle: monthly
+    tariffs:
+      - night
+      - day
 
 sensor:
   - platform: template
@@ -104,27 +165,27 @@ sensor:
       day_power:
         friendly_name: Daily Power Day
         unit_of_measurement: kWh
-        value_template: "{{ (states('sensor.ketel_daily_day')|float |round(2)+ states('sensor.fridge_daily_day')|float|round(2) + states('sensor.freezer_daily_day')|float |round(2)+ states('sensor.kitchen_daily_day')|float |round(2) + states('sensor.dish_daily_day')|float |round(2) + states('sensor.waterkoker_daily_day')|float |round(2)  + states('sensor.was_daily_day')|float |round(2)  + states('sensor.droog_daily_day')|float |round(2) ) }}"
+        value_template: "{{ (states('sensor.ketel_daily_day')|float |round(2) + states('sensor.fridge_daily_day')|float|round(2) + states('sensor.freezer_daily_day')|float |round(2) + states('sensor.kitchen_daily_day')|float |round(2) + states('sensor.dish_daily_day')|float |round(2) + states('sensor.waterkoker_daily_day')|float |round(2) + states('sensor.was_daily_day')|float |round(2) + states('sensor.droog_daily_day')|float |round(2) + states('sensor.oven_daily_day')|float |round(2) + states('sensor.microwave_daily_day')|float |round(2) + states('sensor.commander_daily_day')|float |round(2) + states('sensor.samsungtv_daily_day')|float |round(2) + states('sensor.sonytv_daily_day')|float |round(2) ) }}"
       night_power:
         friendly_name: Daily Power Night
         unit_of_measurement: kWh
-        value_template: "{{ (states('sensor.ketel_daily_night')|float |round(2)  + states('sensor.fridge_daily_night')|float |round(2) + states('sensor.freezer_daily_night')|float |round(2) + states('sensor.kitchen_daily_night')|float |round(2) + states('sensor.dish_daily_night')|float |round(2)  + states('sensor.waterkoker_daily_night')|float  + states('sensor.was_daily_night')|float + states('sensor.droog_daily_night')|float |round(2) ) }}"
+        value_template: "{{ (states('sensor.ketel_daily_night')|float |round(2) + states('sensor.fridge_daily_night')|float|round(2) + states('sensor.freezer_daily_night')|float |round(2) + states('sensor.kitchen_daily_night')|float |round(2) + states('sensor.dish_daily_night')|float |round(2) + states('sensor.waterkoker_daily_night')|float |round(2) + states('sensor.was_daily_night')|float |round(2) + states('sensor.droog_daily_night')|float |round(2) + states('sensor.oven_daily_night')|float |round(2) + states('sensor.microwave_daily_night')|float |round(2) + states('sensor.commander_daily_night')|float |round(2) + states('sensor.samsungtv_daily_night')|float |round(2) + states('sensor.sonytv_daily_night')|float |round(2) ) }}"
       daily_power:
         friendly_name: Daily Power
         unit_of_measurement: kWh
-        value_template: "{{ (states('sensor.day_power')|float |round(2) + states('sensor.night_power')|float |round(2) ) }}"
+        value_template: "{{ (states('sensor.day_power')|float |round(1) + states('sensor.night_power')|float |round(1) ) }}"
       monthly_night_power:
         friendly_name: Monthly Power Night
         unit_of_measurement: kWh
-        value_template: "{{ (states('sensor.ketel_monthly_night')|float |round(2)  + states('sensor.fridge_monthly_night')|float |round(2) + states('sensor.freezer_monthly_night')|float |round(2) + states('sensor.kitchen_monthly_night')|float |round(2) + states('sensor.dish_monthly_night')|float|round(2) + states('sensor.waterkoker_monthly_night')|float |round(2)  + states('sensor.was_monthly_night')|float|round(2) + states('sensor.droog_monthly_night')|float |round(2) )}}"
+        value_template: "{{ (states('sensor.ketel_monthly_night')|float |round(2) + states('sensor.fridge_monthly_night')|float|round(2) + states('sensor.freezer_monthly_night')|float |round(2) + states('sensor.kitchen_monthly_night')|float |round(2) + states('sensor.dish_monthly_night')|float |round(2) + states('sensor.waterkoker_monthly_night')|float |round(2) + states('sensor.was_monthly_night')|float |round(2) + states('sensor.droog_monthly_night')|float |round(2) + states('sensor.oven_monthly_night')|float |round(2) + states('sensor.microwave_monthly_night')|float |round(2) + states('sensor.commander_monthly_night')|float |round(2) + states('sensor.samsungtv_monthly_night')|float |round(2) + states('sensor.sonytv_monthly_night')|float |round(2) ) }}"
       monthly_day_power:
         friendly_name: Monthly Power Day
         unit_of_measurement: kWh
-        value_template: "{{ (states('sensor.ketel_monthly_day')|float|round(2) + states('sensor.fridge_daily_day')|float|round(2)  + states('sensor.freezer_monthly_day')|float|round(2) + states('sensor.kitchen_monthly_day')|float|round(2) + states('sensor.dish_monthly_day')|float|round(2) + states('sensor.waterkoker_monthly_day')|float |round(2) + states('sensor.was_monthly_day')|float |round(2) + states('sensor.droog_monthly_day')|float |round(2) )}}"
+        value_template: "{{ (states('sensor.ketel_monthly_day')|float |round(2) + states('sensor.fridge_monthly_day')|float|round(2) + states('sensor.freezer_monthly_day')|float |round(2) + states('sensor.kitchen_monthly_day')|float |round(2) + states('sensor.dish_monthly_day')|float |round(2) + states('sensor.waterkoker_monthly_day')|float |round(2) + states('sensor.was_monthly_day')|float |round(2) + states('sensor.droog_monthly_day')|float |round(2) + states('sensor.oven_monthly_day')|float |round(2) + states('sensor.microwave_monthly_day')|float |round(2) + states('sensor.commander_monthly_day')|float |round(2) + states('sensor.samsungtv_monthly_day')|float |round(2) + states('sensor.sonytv_monthly_day')|float |round(2) ) }}"
       monthly_power:
         friendly_name: Monthly Power
         unit_of_measurement: kWh
-        value_template: "{{ (states('sensor.monthly_day_power')|float |round(2) + states('sensor.monthly_night_power')|float |round(2)) }}"
+        value_template: "{{ (states('sensor.monthly_day_power')|float |round(1) + states('sensor.monthly_night_power')|float |round(1)) }}"
 
 
 automation:
@@ -172,7 +233,28 @@ automation:
       entity_id: utility_meter.was_monthly
     - service: utility_meter.next_tariff
       entity_id: utility_meter.waterkoker_daily
-
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.waterkoker_monthly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.oven_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.oven_montly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.microwave_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.microwave_montly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.commander_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.commander_montly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.samsungtv_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.samsungtv_montly
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.sonytv_daily
+    - service: utility_meter.next_tariff
+      entity_id: utility_meter.sonytv_montly
 
 # to send daily use notification, log daily use to file and to accumulate total cost.
 - id: daily_energy_use_message
@@ -185,6 +267,7 @@ automation:
     data_template:
       title: '*Power Usage*'
       message: "Today: {{ states('sensor.daily_power') }} kWh
+      
                 Month: {{ states('sensor.monthly_power') }} kWh"
 
     # - service: input_number.set_value
@@ -490,3 +573,5 @@ automation:
 #     - service: notify.energy_log
 #       data_template:
 #         message: "{{ states('sensor.date') }},{{ states('sensor.energy_t31_light_and_power_day') }},{{ states('sensor.energy_t31_light_and_power_night') }},{{ states('sensor.energy_t31_light_and_power_total') }},{{ states('sensor.energy_t41_heating_day') }},{{ states('sensor.energy_t41_heating_night') }},{{ states('sensor.energy_t41_heating_total') }},{{ states('sensor.total_energy_day') }},{{ states('sensor.total_energy_night') }},{{ states('sensor.total_energy') }},{{ state_attr('sensor.power_stats','min_value') }},{{ state_attr('sensor.power_stats','max_value') }},{{ states('sensor.power_stats') }},{{ states('sensor.total_cost_today') }}"
+
+

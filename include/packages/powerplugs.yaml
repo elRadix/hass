@@ -128,7 +128,7 @@ utility_meter:
     tariffs:
       - night
       - day
-  oven_monthly:
+  oven_daily:
     source: sensor.oven_energy_today
     cycle: monthly
     tariffs:
@@ -267,7 +267,7 @@ automation:
     data_template:
       title: '*Power Usage*'
       message: "Today: {{ states('sensor.daily_power') }} kWh
-      
+
                 Month: {{ states('sensor.monthly_power') }} kWh"
 
     # - service: input_number.set_value

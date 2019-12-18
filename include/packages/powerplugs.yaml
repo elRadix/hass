@@ -67,7 +67,7 @@ utility_meter:
       - night
       - day
   samsungtv_monthly:
-    source: sensor.samsungtv_energy_today
+    source: sensor.samsung_energy_today
     cycle: monthly
     tariffs:
       - night

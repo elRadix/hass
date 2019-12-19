@@ -91,10 +91,10 @@ shelly:
     - all
   version: true
 
-tuya:
-  username: elrachid@gmail.com
-  password: athlon2020
-  country_code: BE
+# tuya:
+#   username: elrachid@gmail.com
+#   password: athlon2020
+#   country_code: BE
 
 
 #  Include

@@ -31,7 +31,7 @@
     mac: '58:2D:34:10:AD:21'
     name: Kitchen Temp
     force_update: true
-    median: 3
+    median: 1
     monitored_conditions:
       - temperature
       - humidity
@@ -41,7 +41,7 @@
     mac: '58:2D:34:10:B3:F0'
     name: Living Temp
     force_update: true
-    median: 3
+    median: 1
     monitored_conditions:
       - temperature
       - humidity

@@ -37,9 +37,9 @@
   #     - device_tracker.platform1_me
   #     - device_tracker.platform2_me
 
-#  - platform: bluetooth_tracker ##werkt
+  - platform: bluetooth_tracker ##werkt
   
-  # - platform: bluetooth_le_tracker
+  - platform: bluetooth_le_tracker
 
 #  - platform: life360
 #    username: !secret life_username

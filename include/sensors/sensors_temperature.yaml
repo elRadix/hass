@@ -25,3 +25,14 @@
     name: tmp_badkamer_source
     command: /opt/scripts/status/state.sh -t 10
     unit_of_measurement: "°C"
+
+## Xiaomi BLE Temperature and Humidity sensor CGG1
+  - platform: mitemp_bt
+    mac: '58:2D:34:10:AD:21'
+    name: Kitchen Temp
+    force_update: true
+    median: 3
+    monitored_conditions:
+      - temperature
+      - humidity
+      - battery

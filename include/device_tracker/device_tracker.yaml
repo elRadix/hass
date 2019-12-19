@@ -2,7 +2,7 @@
 
   - platform: composite
     name: comp_rachid
-    time_as: local    
+    time_as: local
     entity_id:
       #- device_tracker.owntracks_rachid
       - device_tracker.google_maps_elrachid_gmail_com
@@ -21,7 +21,7 @@
 
   - platform: composite
     name: comp_soumaya
-    time_as: local    
+    time_as: local
     entity_id:
       #- device_tracker.owntracks_soumaya
       - device_tracker.google_maps_102675862650488616596
@@ -37,8 +37,8 @@
   #     - device_tracker.platform1_me
   #     - device_tracker.platform2_me
 
-  - platform: bluetooth_tracker ##werkt
-  
+#  - platform: bluetooth_tracker ##werkt
+
 #  - platform: bluetooth_le_tracker
 
 #  - platform: life360

@@ -1,7 +1,7 @@
 {
     "data": {
         "compact": true,
-        "view": "Table"
+        "view": "Grid"
     },
     "key": "hacs.hacs",
     "version": "6"

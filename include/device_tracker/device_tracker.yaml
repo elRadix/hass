@@ -39,7 +39,7 @@
 
   - platform: bluetooth_tracker ##werkt
   
-  - platform: bluetooth_le_tracker
+#  - platform: bluetooth_le_tracker
 
 #  - platform: life360
 #    username: !secret life_username

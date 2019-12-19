@@ -1,25 +1,14 @@
 {
     "data": {
         "config": {
-            "cch": {
-                "active_tab_color": "red",
-                "clock_am_pm": false,
-                "date_locale": "en-gb",
-                "hide_help": true,
-                "menu": "overflow",
-                "notifications": "hide",
-                "swipe": true,
-                "swipe_animate": "swipe",
-                "swipe_prevent_default": true,
-                "voice": "hide"
-            },
             "custom_header": {
                 "chevrons": false,
                 "compact_mode": true,
                 "footer_mode": true,
-                "header_text": "Dageraad",
+                "hidden_tab_redirect": false,
                 "hide_unused": true,
-                "menu_dropdown": true
+                "menu_dropdown": true,
+                "reverse_button_direction": true
             },
             "resources": [
                 {
@@ -64,10 +53,6 @@
                 },
                 {
                     "type": "module",
-                    "url": "/community_plugin/compact-custom-header/compact-custom-header.js"
-                },
-                {
-                    "type": "module",
                     "url": "/community_plugin/simple-thermostat/simple-thermostat.js"
                 },
                 {
@@ -106,10 +91,6 @@
                     "url": "/community_plugin/tracking-number-card/tracking-number-card.js"
                 },
                 {
-                    "type": "js",
-                    "url": "/community_plugin/monster-card/monster-card.js"
-                },
-                {
                     "type": "module",
                     "url": "/community_plugin/sun-card/sun-card.js"
                 },
@@ -124,10 +105,6 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/travel-time-card/travel-time-card.js"
-                },
-                {
-                    "type": "module",
-                    "url": "/community_plugin/lovelace-animated-background/animated-background.js"
                 },
                 {
                     "type": "module",
@@ -3959,7 +3936,7 @@
                                                                 "box-shadow": "2px 2px rgba(0,0,0,0.3)"
                                                             },
                                                             {
-                                                                "filter": "brightness(55%)"
+                                                                "filter": "brightness(25%)"
                                                             }
                                                         ]
                                                     },
@@ -4006,7 +3983,7 @@
                                                                 "width": "100px"
                                                             },
                                                             {
-                                                                "filter": "brightness(55%)"
+                                                                "filter": "brightness(25%)"
                                                             }
                                                         ]
                                                     },
@@ -4056,7 +4033,7 @@
                                                                 "border-radius": "5px"
                                                             },
                                                             {
-                                                                "filter": "brightness(55%)"
+                                                                "filter": "brightness(25%)"
                                                             }
                                                         ]
                                                     },
@@ -4805,46 +4782,66 @@
                             "type": "vertical-stack"
                         },
                         {
-                            "columns": 4,
+                            "columns": 5,
                             "entities": [
                                 {
-                                    "entity": "sensor.ketel_energy_today",
+                                    "entity": "sensor.was_energy_power",
+                                    "name": "Was"
+                                },
+                                {
+                                    "entity": "sensor.droog_energy_power",
+                                    "name": "Droog"
+                                },
+                                {
+                                    "entity": "sensor.freezer_energy_power",
+                                    "name": "Ijskast"
+                                },
+                                {
+                                    "entity": "sensor.fridge_energy_power",
+                                    "name": "Koelkast"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_energy_power",
+                                    "name": "Eiland"
+                                },
+                                {
+                                    "entity": "sensor.waterkoker_energy_power",
+                                    "name": "Waterkoker"
+                                },
+                                {
+                                    "entity": "sensor.dish_energy_power",
+                                    "name": "Vaatwasser"
+                                },
+                                {
+                                    "entity": "sensor.oven_energy_power",
+                                    "name": "Oven"
+                                },
+                                {
+                                    "entity": "sensor.microwave_energy_power",
+                                    "name": "Microgolf"
+                                },
+                                {
+                                    "entity": "sensor.commander_energy_power",
+                                    "name": "Commander"
+                                },
+                                {
+                                    "entity": "sensor.samsung_energy_power",
+                                    "name": "Samsung"
+                                },
+                                {
+                                    "entity": "sensor.sonytv_energy_power",
+                                    "name": "Sony"
+                                },
+                                {
+                                    "entity": "sensor.ketel_energy_power",
                                     "name": "Boiler"
-                                },
-                                {
-                                    "entity": "sensor.was_energy_today",
-                                    "name": "Washer"
-                                },
-                                {
-                                    "entity": "sensor.droog_energy_today",
-                                    "name": "Dryer"
-                                },
-                                {
-                                    "entity": "sensor.freezer_energy_today",
-                                    "name": "Freezer"
-                                },
-                                {
-                                    "entity": "sensor.fridge_energy_today",
-                                    "name": "Fridge"
-                                },
-                                {
-                                    "entity": "sensor.kitchen_energy_today",
-                                    "name": "Kitchen"
-                                },
-                                {
-                                    "entity": "sensor.waterkoker_energy_today",
-                                    "name": "Quooker"
-                                },
-                                {
-                                    "entity": "sensor.dish_energy_today",
-                                    "name": "Dish"
                                 }
                             ],
-                            "title": "Power Usage Today",
+                            "title": "Power Usage Now",
                             "type": "glance"
                         },
                         {
-                            "columns": 4,
+                            "columns": 5,
                             "entities": [
                                 {
                                     "entity": "switch.ketel",
@@ -4877,6 +4874,21 @@
                                 {
                                     "entity": "switch.dish",
                                     "name": "Dish"
+                                },
+                                {
+                                    "entity": "switch.oven"
+                                },
+                                {
+                                    "entity": "switch.microwave"
+                                },
+                                {
+                                    "entity": "switch.commander"
+                                },
+                                {
+                                    "entity": "switch.samsung"
+                                },
+                                {
+                                    "entity": "switch.sonytv"
                                 }
                             ],
                             "show_icon": true,
@@ -4988,6 +5000,11 @@
                             ],
                             "entities": [
                                 {
+                                    "color": "green",
+                                    "entity": "sensor.kitchen_energy_power",
+                                    "name": "Eiland"
+                                },
+                                {
                                     "color": "brown",
                                     "entity": "sensor.dish_energy_power",
                                     "name": "Vaatwasser"
@@ -4998,9 +5015,14 @@
                                     "name": "Waterkoker"
                                 },
                                 {
-                                    "color": "green",
-                                    "entity": "sensor.kitchen_energy_power",
-                                    "name": "Keuken blok"
+                                    "color": "red",
+                                    "entity": "sensor.microwave_energy_power",
+                                    "name": "Microgolf"
+                                },
+                                {
+                                    "color": "orange",
+                                    "entity": "sensor.commander_energy_power",
+                                    "name": "Commander"
                                 }
                             ],
                             "font_size": 100,
@@ -5227,9 +5249,123 @@
                                 },
                                 {
                                     "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.microwave_daily_day"
+                                },
+                                {
+                                    "entity": "sensor.microwave_daily_night"
+                                },
+                                {
+                                    "entity": "sensor.microwave_monthly_day"
+                                },
+                                {
+                                    "entity": "sensor.microwave_monthly_night"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.oven_daily_day"
+                                },
+                                {
+                                    "entity": "sensor.oven_daily_night"
+                                },
+                                {
+                                    "entity": "sensor.oven_monthly_day"
+                                },
+                                {
+                                    "entity": "sensor.oven_monthly_night"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.commander_daily_day"
+                                },
+                                {
+                                    "entity": "sensor.commander_daily_night"
+                                },
+                                {
+                                    "entity": "sensor.commander_monthly_day"
+                                },
+                                {
+                                    "entity": "sensor.commander_monthly_night"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.samsungtv_daily_day"
+                                },
+                                {
+                                    "entity": "sensor.samsungtv_daily_night"
+                                },
+                                {
+                                    "entity": "sensor.samsungtv_monthly_day"
+                                },
+                                {
+                                    "entity": "sensor.samsungtv_monthly_night"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
+                                    "entity": "sensor.sonytv_daily_day"
+                                },
+                                {
+                                    "entity": "sensor.sonytv_daily_night"
+                                },
+                                {
+                                    "entity": "sensor.sonytv_monthly_day"
+                                },
+                                {
+                                    "entity": "sensor.sonytv_monthly_night"
                                 }
                             ],
                             "type": "entities"
+                        },
+                        {
+                            "columns": 4,
+                            "entities": [
+                                {
+                                    "entity": "sensor.fridge_status"
+                                },
+                                {
+                                    "entity": "sensor.freezer_status"
+                                },
+                                {
+                                    "entity": "sensor.ketel_status"
+                                },
+                                {
+                                    "entity": "sensor.was_status"
+                                },
+                                {
+                                    "entity": "sensor.droog_status"
+                                },
+                                {
+                                    "entity": "sensor.microwave_status"
+                                },
+                                {
+                                    "entity": "sensor.oven_status"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_status"
+                                },
+                                {
+                                    "entity": "sensor.waterkoker_status"
+                                },
+                                {
+                                    "entity": "sensor.commander_status"
+                                },
+                                {
+                                    "entity": "sensor.samsung_status"
+                                },
+                                {
+                                    "entity": "sensor.sonytv_status"
+                                }
+                            ],
+                            "type": "glance"
                         }
                     ],
                     "icon": "mdi:power-plug",
@@ -5249,6 +5385,29 @@
                                 }
                             ],
                             "show_header_toggle": false,
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.kitchen_temp_temperature"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_temp_humidity"
+                                },
+                                {
+                                    "entity": "sensor.kitchen_temp_battery"
+                                },
+                                {
+                                    "entity": "sensor.living_temp_temperature"
+                                },
+                                {
+                                    "entity": "sensor.living_temp_humidity"
+                                },
+                                {
+                                    "entity": "sensor.living_temp_battery"
+                                }
+                            ],
                             "type": "entities"
                         },
                         {
@@ -5492,26 +5651,6 @@
                             ],
                             "title": "Shelly HT",
                             "type": "glance"
-                        },
-                        {
-                            "entity": "climate.eetkamer",
-                            "type": "thermostat"
-                        },
-                        {
-                            "entity": "climate.living",
-                            "type": "thermostat"
-                        },
-                        {
-                            "entity": "climate.floradix",
-                            "type": "thermostat"
-                        },
-                        {
-                            "entity": "climate.sara",
-                            "type": "thermostat"
-                        },
-                        {
-                            "entity": "climate.yassin",
-                            "type": "thermostat"
                         }
                     ],
                     "icon": "mdi:temperature-celsius",

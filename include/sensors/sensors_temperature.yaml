@@ -27,7 +27,7 @@
     unit_of_measurement: "°C"
 
 ## Xiaomi BLE Temperature and Humidity sensor CGG1
-  - platform: mitemp_bt
+  - platform: mitemp_cgg1
     mac: 58:2D:34:10:AD:21
     name: Kitchen Temp
     force_update: true
@@ -35,9 +35,9 @@
     monitored_conditions:
       - temperature
       - humidity
-      - battery
+#     - battery
 
-  - platform: mitemp_bt
+  - platform: mitemp_cgg1
     mac: 58:2D:34:10:B3:F0
     name: Living Temp
     force_update: true
@@ -45,4 +45,4 @@
     monitored_conditions:
       - temperature
       - humidity
-      - battery
+ #    - battery

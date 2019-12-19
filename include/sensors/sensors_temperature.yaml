@@ -36,3 +36,13 @@
       - temperature
       - humidity
       - battery
+
+  - platform: mitemp_bt
+    mac: '58:2D:34:10:B3:F0'
+    name: Living Temp
+    force_update: true
+    median: 3
+    monitored_conditions:
+      - temperature
+      - humidity
+      - battery

@@ -343,23 +343,23 @@ mercedesmeapi:
   accept_lang: !secret mercedes_accept_lang
   save_car_details: false
 
-media_player:
-  - platform: braviatv_psk
-    name: TV Living
-    host: !secret ip_sony
-    psk: sony
-    mac: !secret mac_sony
-    amp: true
-    android: true
-# #    #sourcefilter:
-#     #  - ' HD'
-#     #  - HDMI
-#  - platform: tts_bluetooth_speaker
-#    address: 10:B7:F6:00:66:25   # Required - for example, 00:2F:AD:12:0D:42
-#    volume: 1.0                   # Optional - default is 0.5
-#    #pre_silence_duration: 1       # Optional - No. of seconds silence before the TTS (default is 0)
-#    #post_silence_duration: 0.5    # Optional - No. of seconds silence after the TTS (default is 0)
-#    #cache_dir: /tmp/tts           # Optional - make sure it matches the same setting in TTS confi
+# media_player:
+#   - platform: braviatv_psk
+#     name: TV Living
+#     host: !secret ip_sony
+#     psk: sony
+#     mac: !secret mac_sony
+#     amp: true
+#     android: true
+# # #    #sourcefilter:
+# #     #  - ' HD'
+# #     #  - HDMI
+# #  - platform: tts_bluetooth_speaker
+# #    address: 10:B7:F6:00:66:25   # Required - for example, 00:2F:AD:12:0D:42
+# #    volume: 1.0                   # Optional - default is 0.5
+# #    #pre_silence_duration: 1       # Optional - No. of seconds silence before the TTS (default is 0)
+# #    #post_silence_duration: 0.5    # Optional - No. of seconds silence after the TTS (default is 0)
+# #    #cache_dir: /tmp/tts           # Optional - make sure it matches the same setting in TTS confi
 
 panel_iframe:
   esphome:

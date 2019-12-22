@@ -47,7 +47,7 @@
 #       - humidity
 #  #    - battery
 
-  - platform: mitemp_bt
+#  - platform: mitemp_bt
     # rounding: True
     # decimals: 2
     # period: 60

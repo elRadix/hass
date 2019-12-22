@@ -1,85 +1,85 @@
-  - platform: template
-    sensors:
+#   - platform: template
+#     sensors:
 
-      time_to_leave_for_work:
-        entity_id: sensor.time, sensor.time_to_work
-        value_template: >
-          {% set t = strptime(states.sensor.time.state,'%H:%M') %}
-          {{ ( t.hour + t.minute / 60 ) > ( 8.75 - states.sensor.time_to_work.state | int / 60) }}
-        friendly_name: 'Time to Leave for work'
-
-      time_to_leave_for_home:
-        entity_id: sensor.time, sensor.time_to_home
-        value_template: >
-          {% set t = strptime(states.sensor.time.state,'%H:%M') %}
-          {{ ( t.hour + t.minute / 60 ) > ( 17.75 - states.sensor.time_to_home.state | int / 60) }}
-        friendly_name: 'Time to Leave for Home'
-        
-      me_traffic_density_to_work:  #proximity.work  sensor.time_to_work
-        entity_id: sensor.time_to_work
-        friendly_name: Traffic to work
-        value_template: >-
-          {% if states("sensor.time_to_work") | float >= 45 %}
-            Heavy
-          {% elif states("sensor.time_to_work") | float < 45 and states("sensor.time_to_work") | float >= 30 %}
-            Moderate
-          {% elif states("sensor.time_to_work") | float < 30 and states("sensor.time_to_work") | float >= 1 %}
-            Normal
-          {% else %}
-            None
-          {% endif %}
-
-      me_traffic_density_to_home: #sensor.time_to_home
-        entity_id: sensor.time_to_home
-        friendly_name: Traffic to home
-        value_template: >-
-          {% if states("sensor.time_to_home") | float >= 45 %}
-            Heavy
-          {% elif states("sensor.time_to_home") | float < 45 and states("sensor.time_to_home") | float >= 30 %}
-            Moderate
-          {% elif states("sensor.time_to_home") | float < 30 and states("sensor.time_to_home") | float >= 1 %}
-            Normal
-          {% else %}
-            None
-          {% endif %}
-
-
-      proximity_person:
-        entity_id: proximity.home
-        value_template: >
-          {% if states.proximity.home.state %}
-            {{ states.proximity.home.attributes.nearest.split(' ')[0] }}
-          {% else %}
-            unknown
-          {% endif %}
-#        entity_id: proximity.home
-
-#       duration_home_to_work_rachid:
-#         entity_id: sensor.time_to_work, sensor.time
+#       time_to_leave_for_work:
+#         entity_id: sensor.time, sensor.time_to_work
 #         value_template: >
-#           {% if states.sensor.time_to_work.state %}
-#             {{ states.sensor.time_to_work.attributes.duration | int }}
+#           {% set t = strptime(states.sensor.time.state,'%H:%M') %}
+#           {{ ( t.hour + t.minute / 60 ) > ( 8.75 - states.sensor.time_to_work.state | int / 60) }}
+#         friendly_name: 'Time to Leave for work'
+
+#       time_to_leave_for_home:
+#         entity_id: sensor.time, sensor.time_to_home
+#         value_template: >
+#           {% set t = strptime(states.sensor.time.state,'%H:%M') %}
+#           {{ ( t.hour + t.minute / 60 ) > ( 17.75 - states.sensor.time_to_home.state | int / 60) }}
+#         friendly_name: 'Time to Leave for Home'
+        
+#       me_traffic_density_to_work:  #proximity.work  sensor.time_to_work
+#         entity_id: sensor.time_to_work
+#         friendly_name: Traffic to work
+#         value_template: >-
+#           {% if states("sensor.time_to_work") | float >= 45 %}
+#             Heavy
+#           {% elif states("sensor.time_to_work") | float < 45 and states("sensor.time_to_work") | float >= 30 %}
+#             Moderate
+#           {% elif states("sensor.time_to_work") | float < 30 and states("sensor.time_to_work") | float >= 1 %}
+#             Normal
 #           {% else %}
-#             0
+#             None
 #           {% endif %}
-# #        entity_id: sensor.time_to_work
-#         unit_of_measurement: 'min'
 
-      percent_at_work_daily:
-        entity_id: sensor.time_at_work_today
-        unit_of_measurement: "%"
-        value_template: "{{ '%.1f'|format(states('sensor.time_at_work_today')|float * 100 / 24) }}"
-        friendly_name: 'Daily'
+#       me_traffic_density_to_home: #sensor.time_to_home
+#         entity_id: sensor.time_to_home
+#         friendly_name: Traffic to home
+#         value_template: >-
+#           {% if states("sensor.time_to_home") | float >= 45 %}
+#             Heavy
+#           {% elif states("sensor.time_to_home") | float < 45 and states("sensor.time_to_home") | float >= 30 %}
+#             Moderate
+#           {% elif states("sensor.time_to_home") | float < 30 and states("sensor.time_to_home") | float >= 1 %}
+#             Normal
+#           {% else %}
+#             None
+#           {% endif %}
 
-      percent_at_work_weekly:
-        entity_id: sensor.time_at_work_this_week
-        unit_of_measurement: "%"
-        value_template: "{{ '%.1f'|format(states('sensor.time_at_work_this_week')|float * 100 / 168) }}"
-        friendly_name: 'Weekly at Work'
 
-      percent_at_work_monthly:
-        entity_id: sensor.time_at_work_this_month
-        unit_of_measurement: "%"
-        value_template: "{{ '%.1f'|format(states('sensor.time_at_work_this_month')|float * 100 / 720) }}"
-        friendly_name: 'Monthly at Work'
+#       proximity_person:
+#         entity_id: proximity.home
+#         value_template: >
+#           {% if states.proximity.home.state %}
+#             {{ states.proximity.home.attributes.nearest.split(' ')[0] }}
+#           {% else %}
+#             unknown
+#           {% endif %}
+# #        entity_id: proximity.home
+
+# #       duration_home_to_work_rachid:
+# #         entity_id: sensor.time_to_work, sensor.time
+# #         value_template: >
+# #           {% if states.sensor.time_to_work.state %}
+# #             {{ states.sensor.time_to_work.attributes.duration | int }}
+# #           {% else %}
+# #             0
+# #           {% endif %}
+# # #        entity_id: sensor.time_to_work
+# #         unit_of_measurement: 'min'
+
+#       percent_at_work_daily:
+#         entity_id: sensor.time_at_work_today
+#         unit_of_measurement: "%"
+#         value_template: "{{ '%.1f'|format(states('sensor.time_at_work_today')|float * 100 / 24) }}"
+#         friendly_name: 'Daily'
+
+#       percent_at_work_weekly:
+#         entity_id: sensor.time_at_work_this_week
+#         unit_of_measurement: "%"
+#         value_template: "{{ '%.1f'|format(states('sensor.time_at_work_this_week')|float * 100 / 168) }}"
+#         friendly_name: 'Weekly at Work'
+
+#       percent_at_work_monthly:
+#         entity_id: sensor.time_at_work_this_month
+#         unit_of_measurement: "%"
+#         value_template: "{{ '%.1f'|format(states('sensor.time_at_work_this_month')|float * 100 / 720) }}"
+#         friendly_name: 'Monthly at Work'
 

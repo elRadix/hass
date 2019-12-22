@@ -5,7 +5,7 @@
     origin: device_tracker.comp_rachid
     destination: !secret waze_destination_home
     region: 'EU'
-    
+
   - platform: waze_travel_time
     name: Soumaya to Home
     origin: device_tracker.comp_soumaya

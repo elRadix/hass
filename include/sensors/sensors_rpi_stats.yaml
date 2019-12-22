@@ -9,10 +9,10 @@
     resources:
      - type: disk_free
        arg: /home
-    #  - type: disk_free
-    #    arg: /mnt/usb_2
-    #  - type: disk_use_percent
-    #    arg: /mnt/usb_2
+     - type: disk_free
+       arg: /mnt/usb_2
+     - type: disk_use_percent
+       arg: /mnt/usb_2
      - type: memory_free
      - type: memory_use
      - type: swap_use

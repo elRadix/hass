@@ -231,11 +231,11 @@ climate:
   - platform: generic_thermostat
     name: Eetkamer
     heater: switch.heating_eetkamer
-    target_sensor: sensor.shelly_h_t_22c3c0_temperature
+    target_sensor: sensor.eink_temp_keuken
     min_temp: 5
-    max_temp: 26
+    max_temp: 24
     ac_mode: false
-    target_temp: 24
+    target_temp: 20
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
@@ -246,11 +246,11 @@ climate:
   - platform: generic_thermostat
     name: Living
     heater: switch.heating_living
-    target_sensor: sensor.tmp_living_source
+    target_sensor: sensor.eink_temp_living
     min_temp: 5
-    max_temp: 26
+    max_temp: 24
     ac_mode: false
-    target_temp: 22
+    target_temp: 20
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
@@ -263,9 +263,9 @@ climate:
     heater: switch.heating_sara
     target_sensor: sensor.ht_sara_temp
     min_temp: 5
-    max_temp: 25
+    max_temp: 22
     ac_mode: false
-    target_temp: 17
+    target_temp: 20
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
@@ -276,9 +276,9 @@ climate:
   - platform: generic_thermostat
     name: Yassin
     heater: switch.heating_yassin
-    target_sensor: sensor.tmp_slp_3_source
+    target_sensor: sensor.eink_temp_yassin
     min_temp: 5
-    max_temp: 25
+    max_temp: 22
     ac_mode: false
     target_temp: 17
     hot_tolerance: 0.5
@@ -291,11 +291,11 @@ climate:
   - platform: generic_thermostat
     name: FloRadix
     heater: switch.heating_floradix
-    target_sensor: sensor.tmp_slp_1_source
+    target_sensor: sensor.eink_temp_floradix
     ac_mode: false
     min_temp: 5
-    max_temp: 26
-    target_temp: 17
+    max_temp: 24
+    target_temp: 20
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5

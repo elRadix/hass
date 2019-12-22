@@ -50,7 +50,7 @@ hacs:
 
 config:
 system_health:
-websocket_api:
+# websocket_api:
 # default_config:
 cloud:
 person:

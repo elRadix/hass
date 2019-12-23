@@ -1,14 +1,11 @@
-cch:
-  active_tab_color: red
-  clock_am_pm: false
-  date_locale: en-gb
-  hide_help: true
-  menu: overflow
-  notifications: hide
-  swipe: true
-  swipe_animate: swipe
-  swipe_prevent_default: true
-  voice: hide
+custom_header:
+  chevrons: false
+  compact_mode: true
+  footer_mode: true
+  hidden_tab_redirect: false
+  hide_unused: true
+  menu_dropdown: true
+  reverse_button_direction: true
 resources:
 - type: js
   url: /local/custom_cards/nmbs-routeboard-card.js?v=0.001
@@ -31,8 +28,6 @@ resources:
 - type: module
   url: /community_plugin/mini-graph-card/mini-graph-card.js
 - type: module
-  url: /community_plugin/compact-custom-header/compact-custom-header.js
-- type: module
   url: /community_plugin/simple-thermostat/simple-thermostat.js
 - type: js
   url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
@@ -51,8 +46,6 @@ resources:
   url: /community_plugin/lovelace-text-input-row/text-input-row.js
 - type: js
   url: /community_plugin/tracking-number-card/tracking-number-card.js
-- type: js
-  url: /community_plugin/monster-card/monster-card.js
 - type: module
   url: /community_plugin/sun-card/sun-card.js
 - type: module
@@ -61,8 +54,6 @@ resources:
   url: /community_plugin/mini-media-player/mini-media-player-bundle.js
 - type: js
   url: /community_plugin/travel-time-card/travel-time-card.js
-- type: module
-  url: /community_plugin/lovelace-animated-background/animated-background.js
 - type: module
   url: /community_plugin/search-card/search-card.js
 - type: js
@@ -77,6 +68,16 @@ resources:
   url: /community_plugin/lovelace-card-tools/card-tools.js
 - type: module
   url: /community_plugin/lovelace-auto-entities/auto-entities.js
+- type: js
+  url: /community_plugin/lovelace-text-input-row/lovelace-text-input-row.js
+- type: module
+  url: /community_plugin/power-usage-card/power-usage-card.js
+- type: js
+  url: /community_plugin/state-element/state-element.js
+- type: module
+  url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
+- type: module
+  url: /community_plugin/custom-header/custom-header.js
 title: Home
 views:
 - badges: []
@@ -383,7 +384,7 @@ views:
           - color: darkorange
             value: 29
           - color: red
-            value: 30
+            value: 35
           target: 27.3
           title: 27.33 eur - water
           title_position: inside
@@ -2088,7 +2089,7 @@ views:
             - width: 100px
             - border-radius: 5px
             - box-shadow: 2px 2px rgba(0,0,0,0.3)
-            - filter: brightness(55%)
+            - filter: brightness(25%)
           value: 'off'
         type: custom:button-card
       - color_type: blank-card
@@ -2113,7 +2114,7 @@ views:
         - styles:
             card:
             - width: 100px
-            - filter: brightness(55%)
+            - filter: brightness(25%)
           value: 'off'
         type: custom:button-card
       - color_type: blank-card
@@ -2139,7 +2140,7 @@ views:
             card:
             - width: 100px
             - border-radius: 5px
-            - filter: brightness(55%)
+            - filter: brightness(25%)
           value: 'off'
         type: custom:button-card
       - color_type: blank-card
@@ -2519,27 +2520,37 @@ views:
         type: custom:button-card
       type: horizontal-stack
     type: vertical-stack
-  - columns: 4
+  - columns: 5
     entities:
-    - entity: sensor.ketel_energy_today
+    - entity: sensor.was_energy_power
+      name: Was
+    - entity: sensor.droog_energy_power
+      name: Droog
+    - entity: sensor.freezer_energy_power
+      name: Ijskast
+    - entity: sensor.fridge_energy_power
+      name: Koelkast
+    - entity: sensor.kitchen_energy_power
+      name: Eiland
+    - entity: sensor.waterkoker_energy_power
+      name: Waterkoker
+    - entity: sensor.dish_energy_power
+      name: Vaatwasser
+    - entity: sensor.oven_energy_power
+      name: Oven
+    - entity: sensor.microwave_energy_power
+      name: Microgolf
+    - entity: sensor.commander_energy_power
+      name: Commander
+    - entity: sensor.samsung_energy_power
+      name: Samsung
+    - entity: sensor.sonytv_energy_power
+      name: Sony
+    - entity: sensor.ketel_energy_power
       name: Boiler
-    - entity: sensor.was_energy_today
-      name: Washer
-    - entity: sensor.droog_energy_today
-      name: Dryer
-    - entity: sensor.freezer_energy_today
-      name: Freezer
-    - entity: sensor.fridge_energy_today
-      name: Fridge
-    - entity: sensor.kitchen_energy_today
-      name: Kitchen
-    - entity: sensor.waterkoker_energy_today
-      name: Quooker
-    - entity: sensor.dish_energy_today
-      name: Dish
-    title: Power Usage Today
+    title: Power Usage Now
     type: glance
-  - columns: 4
+  - columns: 5
     entities:
     - entity: switch.ketel
       name: Boiler
@@ -2547,16 +2558,21 @@ views:
       name: Washer
     - entity: switch.droog
       name: Dryer
-    - entity: switch.freezer
-      name: Freewer
-    - entity: switch.fridge
-      name: Fridge
     - entity: switch.kitchen
       name: Kitchen
+    - entity: switch.freezer
+      name: Freezer
+    - entity: switch.fridge
+      name: Fridge
     - entity: switch.waterkoker
       name: Quooker
     - entity: switch.dish
       name: Dish
+    - entity: switch.oven
+    - entity: switch.microwave
+    - entity: switch.commander
+    - entity: switch.samsung
+    - entity: switch.sonytv
     show_icon: true
     show_state: false
     type: glance
@@ -2631,15 +2647,21 @@ views:
     - color: '#e45e65'
       value: 1000
     entities:
+    - color: green
+      entity: sensor.kitchen_energy_power
+      name: Eiland
     - color: brown
       entity: sensor.dish_energy_power
       name: Vaatwasser
     - color: blue
       entity: sensor.wateroker_energy_power
       name: Waterkoker
-    - color: green
-      entity: sensor.kitchen_energy_power
-      name: Keuken blok
+    - color: red
+      entity: sensor.microwave_energy_power
+      name: Microgolf
+    - color: orange
+      entity: sensor.commander_energy_power
+      name: Commander
     font_size: 100
     font_size_header: 14
     group_by: hour
@@ -2684,7 +2706,7 @@ views:
     icon: mdi:power
     line_width: 3
     name: Was & Droog
-    points_per_hour: 15
+    points_per_hour: 1
     show:
       fill: false
       graph: line
@@ -2747,7 +2769,46 @@ views:
     - entity: sensor.droog_monthly_day
     - entity: sensor.droog_monthly_night
     - type: divider
+    - entity: sensor.microwave_daily_day
+    - entity: sensor.microwave_daily_night
+    - entity: sensor.microwave_monthly_day
+    - entity: sensor.microwave_monthly_night
+    - type: divider
+    - entity: sensor.oven_daily_day
+    - entity: sensor.oven_daily_night
+    - entity: sensor.oven_monthly_day
+    - entity: sensor.oven_monthly_night
+    - type: divider
+    - entity: sensor.commander_daily_day
+    - entity: sensor.commander_daily_night
+    - entity: sensor.commander_monthly_day
+    - entity: sensor.commander_monthly_night
+    - type: divider
+    - entity: sensor.samsungtv_daily_day
+    - entity: sensor.samsungtv_daily_night
+    - entity: sensor.samsungtv_monthly_day
+    - entity: sensor.samsungtv_monthly_night
+    - type: divider
+    - entity: sensor.sonytv_daily_day
+    - entity: sensor.sonytv_daily_night
+    - entity: sensor.sonytv_monthly_day
+    - entity: sensor.sonytv_monthly_night
     type: entities
+  - columns: 4
+    entities:
+    - entity: sensor.fridge_status
+    - entity: sensor.freezer_status
+    - entity: sensor.ketel_status
+    - entity: sensor.was_status
+    - entity: sensor.droog_status
+    - entity: sensor.microwave_status
+    - entity: sensor.oven_status
+    - entity: sensor.kitchen_status
+    - entity: sensor.waterkoker_status
+    - entity: sensor.commander_status
+    - entity: sensor.samsung_status
+    - entity: sensor.sonytv_status
+    type: glance
   icon: mdi:power-plug
   path: switch
   title: Stopcontanten
@@ -2757,6 +2818,14 @@ views:
     - entity: input_boolean.easyplus_boiler_heating
     - entity: sensor.easyplus_telnet
     show_header_toggle: false
+    type: entities
+  - entities:
+    - entity: sensor.kitchen_temp_temperature
+    - entity: sensor.kitchen_temp_humidity
+    - entity: sensor.kitchen_temp_battery
+    - entity: sensor.living_temp_temperature
+    - entity: sensor.living_temp_humidity
+    - entity: sensor.living_temp_battery
     type: entities
   - entities:
     - entity: script.eetkamer_1_hour
@@ -2887,16 +2956,6 @@ views:
       name: Online
     title: Shelly HT
     type: glance
-  - entity: climate.eetkamer
-    type: thermostat
-  - entity: climate.living
-    type: thermostat
-  - entity: climate.floradix
-    type: thermostat
-  - entity: climate.sara
-    type: thermostat
-  - entity: climate.yassin
-    type: thermostat
   icon: mdi:temperature-celsius
   path: ''
   title: Verwarming
@@ -5391,8 +5450,7 @@ views:
   - aspect_ratio: 16x9
     default_zoom: 15
     entities:
-    - entity: device_tracker.life360_rachid
-    - entity: device_tracker.comp_rachid
+    - entity: device_tracker.sm_g975f
     type: map
   - aspect_ratio: 16x9
     default_zoom: 15
@@ -5415,7 +5473,7 @@ views:
       name: google
     - entity: device_tracker.life360_rachid
       name: life360
-    - entity: device_tracker.elradix_2
+    - entity: device_tracker.sm_g975f
       name: gpslogger
     show_name: true
     show_state: true

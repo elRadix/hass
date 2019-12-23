@@ -16,21 +16,21 @@ schedy_heating:
 
   schedule_snippets:
     living:
-    - { v: 24, start: "17:00", end: "19:30", weekdays: "1", weeks: "1-9, 44-52" }
-    - { v: 24, start: "17:00", end: "19:30", weekdays: "2", weeks: "1-9, 44-52" }
-    - { v: 24, start: "18:00", end: "20:30", weekdays: "3", weeks: "1-9, 44-52" }
-    - { v: 24, start: "17:00", end: "19:30", weekdays: "4", weeks: "1-9, 44-52" }
-    - { v: 24, start: "18:00", end: "21:30", weekdays: "5", weeks: "1-9, 44-52" }
+    - { v: 20, start: "17:00", end: "19:30", weekdays: "1", weeks: "1-9, 44-52" }
+    - { v: 20, start: "17:00", end: "19:30", weekdays: "2", weeks: "1-9, 44-52" }
+    - { v: 20, start: "18:00", end: "20:30", weekdays: "3", weeks: "1-9, 44-52" }
+    - { v: 20, start: "17:00", end: "19:30", weekdays: "4", weeks: "1-9, 44-52" }
+    - { v: 20, start: "18:00", end: "21:30", weekdays: "5", weeks: "1-9, 44-52" }
 
     eetkamer:
-    - { v: 24, start: "17:10", end: "21:30", weekdays: "1", weeks: "1-9, 44-52" }
-    - { v: 24, start: "17:10", end: "21:30", weekdays: "2", weeks: "1-9, 44-52" }
-    - { v: 24, start: "18:10", end: "21:40", weekdays: "3", weeks: "1-9, 44-52" }
-    - { v: 24, start: "17:10", end: "21:40", weekdays: "4", weeks: "1-9, 44-52" }
-    - { v: 24, start: "18:10", end: "21:40", weekdays: "5", weeks: "1-9, 44-52" }
+    - { v: 20, start: "17:10", end: "21:30", weekdays: "1", weeks: "1-9, 44-52" }
+    - { v: 20, start: "17:10", end: "21:30", weekdays: "2", weeks: "1-9, 44-52" }
+    - { v: 20, start: "18:10", end: "21:40", weekdays: "3", weeks: "1-9, 44-52" }
+    - { v: 20, start: "17:10", end: "21:40", weekdays: "4", weeks: "1-9, 44-52" }
+    - { v: 20, start: "18:10", end: "21:40", weekdays: "5", weeks: "1-9, 44-52" }
 
     kids:
-    - v: 22
+    - v: 20
       rules:
       - weekdays: 1
         rules:
@@ -52,7 +52,7 @@ schedy_heating:
         - { start: "19:30", end: "21:30", weeks: "1-9, 44-52"  }
 
     parents:
-    - v: 24
+    - v: 21
       rules:
       - weekdays: 1-5
         rules:

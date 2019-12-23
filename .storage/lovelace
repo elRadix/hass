@@ -4,7 +4,6 @@
             "custom_header": {
                 "chevrons": false,
                 "compact_mode": true,
-                "footer_mode": true,
                 "hidden_tab_redirect": false,
                 "hide_unused": true,
                 "menu_dropdown": true,
@@ -869,6 +868,108 @@
                                     "entities": [
                                         {
                                             "color_type": "label-card",
+                                            "name": "Vochtigheid Kamers",
+                                            "show_entity_picture": true,
+                                            "styles": {
+                                                "card": [
+                                                    {
+                                                        "height": "40px"
+                                                    },
+                                                    {
+                                                        "font-weight": "bold"
+                                                    },
+                                                    {
+                                                        "text-orientation": "mixed"
+                                                    },
+                                                    {
+                                                        "font-size": "20px"
+                                                    },
+                                                    {
+                                                        "text-Transform": "uppercase"
+                                                    },
+                                                    {
+                                                        "background-image": "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(0,212,255,1) 100%)"
+                                                    },
+                                                    {
+                                                        "font-weight": "bold"
+                                                    },
+                                                    {
+                                                        "padding": "2%"
+                                                    },
+                                                    {
+                                                        "color": "white"
+                                                    },
+                                                    {
+                                                        "border-radius": "50px"
+                                                    },
+                                                    {
+                                                        "border-style": "solid"
+                                                    },
+                                                    {
+                                                        "border-width": "2px"
+                                                    },
+                                                    {
+                                                        "border-color": "#e5e5e5"
+                                                    }
+                                                ]
+                                            },
+                                            "type": "custom:button-card"
+                                        },
+                                        {
+                                            "card": {
+                                                "align_state": "left",
+                                                "entities": [
+                                                    {
+                                                        "entity": "sensor.eink_humidity_keuken",
+                                                        "name": "Keuken"
+                                                    },
+                                                    {
+                                                        "entity": "sensor.eink_humidity_living",
+                                                        "name": "Living"
+                                                    },
+                                                    {
+                                                        "entity": "sensor.eink_humidity_yassin",
+                                                        "name": "Yassin"
+                                                    },
+                                                    {
+                                                        "entity": "sensor.eink_humidity_floradix",
+                                                        "name": "FloRadix"
+                                                    },
+                                                    {
+                                                        "entity": "sensor.ht_sara_humidity",
+                                                        "name": "Sara"
+                                                    }
+                                                ],
+                                                "hour24": true,
+                                                "hours_to_show": 24,
+                                                "line_width": 4,
+                                                "name": " ",
+                                                "points_per_hour": 0.5,
+                                                "show": {
+                                                    "fill": true,
+                                                    "graph": "line",
+                                                    "labels": true
+                                                },
+                                                "type": "custom:mini-graph-card"
+                                            },
+                                            "style": {
+                                                "background": "transparent"
+                                            },
+                                            "type": "custom:card-modder"
+                                        }
+                                    ],
+                                    "show_header_toggle": false,
+                                    "type": "entities"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "color_type": "label-card",
                                             "name": "SLAAPKAMERS",
                                             "show_entity_picture": true,
                                             "styles": {
@@ -921,16 +1022,16 @@
                                                 "align_state": "left",
                                                 "entities": [
                                                     {
-                                                        "entity": "sensor.tmp_slp_1",
-                                                        "name": "S&R"
+                                                        "entity": "sensor.eink_temp_yassin",
+                                                        "name": "Yassin"
+                                                    },
+                                                    {
+                                                        "entity": "sensor.eink_temp_floradix",
+                                                        "name": "FloRadix"
                                                     },
                                                     {
                                                         "entity": "sensor.ht_sara_temp",
                                                         "name": "Sara"
-                                                    },
-                                                    {
-                                                        "entity": "sensor.tmp_slp_3",
-                                                        "name": "Yassin"
                                                     }
                                                 ],
                                                 "hour24": true,
@@ -939,22 +1040,8 @@
                                                 "name": " ",
                                                 "points_per_hour": 0.5,
                                                 "show": {
-                                                    "color_thresholds": [
-                                                        {
-                                                            "color": "#f39c12",
-                                                            "value": 24
-                                                        },
-                                                        {
-                                                            "color": "#d35400",
-                                                            "value": 23
-                                                        },
-                                                        {
-                                                            "color": "#c0392b",
-                                                            "value": 25
-                                                        }
-                                                    ],
                                                     "extrema": true,
-                                                    "icon": false,
+                                                    "icon": true,
                                                     "labels": true,
                                                     "points": false
                                                 },
@@ -1031,15 +1118,16 @@
                                                 "entities": [
                                                     {
                                                         "color": "green",
-                                                        "entity": "sensor.ht_eetkamer_temp",
-                                                        "name": "Eetkamer"
+                                                        "entity": "sensor.eink_temp_keuken",
+                                                        "name": "Keuken"
                                                     },
                                                     {
                                                         "color": "orange",
-                                                        "entity": "sensor.tmp_living",
+                                                        "entity": "sensor.eink_temp_living",
                                                         "name": "Living"
                                                     }
                                                 ],
+                                                "group_by": "hour",
                                                 "hour24": true,
                                                 "hours_to_show": 24,
                                                 "line_width": 5,
@@ -5390,22 +5478,51 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.kitchen_temp_temperature"
+                                    "entity": "sensor.eink_humidity_keuken"
                                 },
                                 {
-                                    "entity": "sensor.kitchen_temp_humidity"
+                                    "entity": "sensor.eink_humidity_living"
                                 },
                                 {
-                                    "entity": "sensor.kitchen_temp_battery"
+                                    "entity": "sensor.eink_humidity_yassin"
                                 },
                                 {
-                                    "entity": "sensor.living_temp_temperature"
+                                    "entity": "sensor.eink_humidity_floradix"
                                 },
                                 {
-                                    "entity": "sensor.living_temp_humidity"
+                                    "entity": "sensor.ht_sara_humidity"
                                 },
                                 {
-                                    "entity": "sensor.living_temp_battery"
+                                    "entity": "sensor.eink_temp_keuken"
+                                },
+                                {
+                                    "entity": "sensor.eink_temp_living"
+                                },
+                                {
+                                    "entity": "sensor.eink_temp_yassin"
+                                },
+                                {
+                                    "entity": "sensor.eink_temp_floradix"
+                                },
+                                {
+                                    "entity": "sensor.ht_sara_temp"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.miflora_conductivity"
+                                },
+                                {
+                                    "entity": "sensor.miflora_light"
+                                },
+                                {
+                                    "entity": "sensor.miflora_temp"
+                                },
+                                {
+                                    "entity": "sensor.miflora_moistures"
                                 }
                             ],
                             "type": "entities"
@@ -6003,7 +6120,7 @@
                             "type": "entities"
                         },
                         {
-                            "columns": 3,
+                            "columns": 4,
                             "entities": [
                                 {
                                     "entity": "sensor.count_automations",

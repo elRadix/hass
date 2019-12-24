@@ -19,7 +19,7 @@ class easyplus(hass.Hass):
     # self.log("%s", error)
     # self.log(self.args)
 
-list(filter(None, test_list)) 
+
 
 
 #    easyplus = self.get_state('binary_sensor.easyplus_telnet')

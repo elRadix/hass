@@ -23,6 +23,19 @@
     service: counter.increment
     entity_id: counter.error_counter
 
+- id: Create notifications for "easyplus" errors
+  trigger:
+    platform: event
+    event_type: system_log_event
+  condition:
+    condition: template
+    value_template: '{{ "Command failed: /usr/bin/expect" in trigger.event.data.message }}'
+  action:
+    service: persistent_notification.create
+    data_template:
+      title: Something bad happened
+      message: '{{ trigger.event.data.message }}'
+
 - id: Create notifications for "service" errors
   trigger:
     platform: event
@@ -35,6 +48,7 @@
     data_template:
       title: Something bad happened
       message: '{{ trigger.event.data.message }}'
+
 
 
 - id: Error_Hass_Log

@@ -152,6 +152,10 @@
                 {
                     "type": "module",
                     "url": "/community_plugin/custom-header/custom-header.js"
+                },
+                {
+                    "type": "js",
+                    "url": "/community_plugin/lovelace-swipe-navigation/swipe-navigation.js"
                 }
             ],
             "title": "Home",
@@ -924,6 +928,10 @@
                                                         "name": "Keuken"
                                                     },
                                                     {
+                                                        "entity": "sensor.ht_eetkamer_humidity",
+                                                        "name": "Eetkamer"
+                                                    },
+                                                    {
                                                         "entity": "sensor.eink_humidity_living",
                                                         "name": "Living"
                                                     },
@@ -1120,6 +1128,11 @@
                                                         "color": "green",
                                                         "entity": "sensor.eink_temp_keuken",
                                                         "name": "Keuken"
+                                                    },
+                                                    {
+                                                        "color": "blue",
+                                                        "entity": "sensor.ht_eetkamer_temp",
+                                                        "name": "Eetkamer"
                                                     },
                                                     {
                                                         "color": "orange",
@@ -4873,12 +4886,12 @@
                             "columns": 5,
                             "entities": [
                                 {
-                                    "entity": "sensor.was_energy_power",
-                                    "name": "Was"
+                                    "entity": "sensor.easyplus_energy_power",
+                                    "name": "Easyplus"
                                 },
                                 {
-                                    "entity": "sensor.droog_energy_power",
-                                    "name": "Droog"
+                                    "entity": "sensor.ketel_energy_power",
+                                    "name": "Boiler"
                                 },
                                 {
                                     "entity": "sensor.freezer_energy_power",
@@ -4891,6 +4904,14 @@
                                 {
                                     "entity": "sensor.kitchen_energy_power",
                                     "name": "Eiland"
+                                },
+                                {
+                                    "entity": "sensor.was_energy_power",
+                                    "name": "Was"
+                                },
+                                {
+                                    "entity": "sensor.droog_energy_power",
+                                    "name": "Droog"
                                 },
                                 {
                                     "entity": "sensor.waterkoker_energy_power",
@@ -4919,10 +4940,6 @@
                                 {
                                     "entity": "sensor.sonytv_energy_power",
                                     "name": "Sony"
-                                },
-                                {
-                                    "entity": "sensor.ketel_energy_power",
-                                    "name": "Boiler"
                                 }
                             ],
                             "title": "Power Usage Now",
@@ -4931,6 +4948,9 @@
                         {
                             "columns": 5,
                             "entities": [
+                                {
+                                    "entity": "switch.easyplus"
+                                },
                                 {
                                     "entity": "switch.ketel",
                                     "name": "Boiler"
@@ -5476,39 +5496,82 @@
                             "type": "entities"
                         },
                         {
+                            "columns": 6,
                             "entities": [
                                 {
-                                    "entity": "sensor.eink_humidity_keuken"
+                                    "entity": "sensor.eink_humidity_keuken",
+                                    "name": "Keuken"
                                 },
                                 {
-                                    "entity": "sensor.eink_humidity_living"
+                                    "entity": "sensor.ht_eetkamer_humidity",
+                                    "name": "Eetkamer"
                                 },
                                 {
-                                    "entity": "sensor.eink_humidity_yassin"
+                                    "entity": "sensor.eink_humidity_living",
+                                    "name": "Living"
                                 },
                                 {
-                                    "entity": "sensor.eink_humidity_floradix"
+                                    "entity": "sensor.eink_humidity_yassin",
+                                    "name": "Yassin"
                                 },
                                 {
-                                    "entity": "sensor.ht_sara_humidity"
+                                    "entity": "sensor.ht_sara_humidity",
+                                    "name": "Sara"
                                 },
                                 {
-                                    "entity": "sensor.eink_temp_keuken"
+                                    "entity": "sensor.eink_humidity_floradix",
+                                    "name": "FloRadix"
                                 },
                                 {
-                                    "entity": "sensor.eink_temp_living"
+                                    "entity": "sensor.eink_temp_keuken",
+                                    "name": ""
                                 },
                                 {
-                                    "entity": "sensor.eink_temp_yassin"
+                                    "entity": "sensor.ht_eetkamer_temp",
+                                    "name": ""
                                 },
                                 {
-                                    "entity": "sensor.eink_temp_floradix"
+                                    "entity": "sensor.eink_temp_living",
+                                    "name": ""
                                 },
                                 {
-                                    "entity": "sensor.ht_sara_temp"
+                                    "entity": "sensor.eink_temp_yassin",
+                                    "name": ""
+                                },
+                                {
+                                    "entity": "sensor.ht_sara_temp",
+                                    "name": ""
+                                },
+                                {
+                                    "entity": "sensor.eink_temp_floradix",
+                                    "name": ""
+                                },
+                                {
+                                    "entity": "sensor.mija_keuken_battery_level_2",
+                                    "name": ""
+                                },
+                                {
+                                    "entity": "sensor.ht_eetkamer_battery",
+                                    "name": ""
+                                },
+                                {
+                                    "entity": "sensor.mija_living_battery_level_2",
+                                    "name": ""
+                                },
+                                {
+                                    "entity": "sensor.mija_yassin_battery_level_2",
+                                    "name": ""
+                                },
+                                {
+                                    "entity": "sensor.ht_sara_battery",
+                                    "name": ""
+                                },
+                                {
+                                    "entity": "sensor.mija_floradix_battery_level_2",
+                                    "name": ""
                                 }
                             ],
-                            "type": "entities"
+                            "type": "glance"
                         },
                         {
                             "entities": [

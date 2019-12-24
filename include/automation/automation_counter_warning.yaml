@@ -35,10 +35,6 @@
     data_template:
       entity_id: sensor.error
       state: '{{ trigger.event.data.message }}'
-  - service: notify.telegram_rachid
-    data_template:
-      message: '{{ trigger.event.data.message }}'
-      title:  Easyplus Error
 
 
 - id: Create notifications for "service" errors

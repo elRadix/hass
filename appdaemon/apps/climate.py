@@ -33,11 +33,11 @@ class climate(hass.Hass):
       self.call_service("notify/dageraad",message = tg)
     self.call_service("shell_command/heating_"+friendly)
     self.set_state("sensor.notify_message", state="Heating started")
-    self.log("target temperature set")
-    #friendly = self.get_state(entity, attribute="friendly_name")
     temp_cur = self.get_state(entity, attribute="current_temperature")
     temp_set = self.get_state(entity, attribute="temperature")
-    self.call_service("notify/dageraad", message = ("Climate {} turned on, now {}°C and set to {}°C".format(friendly, temp_cur, temp_set)))
+    self.log("climate {} turned on, temperature set to  {}".format(friendly, temp_set))
+    #friendly = self.get_state(entity, attribute="friendly_name")
+    self.call_service("notify/dageraad", message = ("climate {} turned on, now {}°C and set to {}°C".format(friendly, temp_cur, temp_set)))
 
     return
 
@@ -49,6 +49,7 @@ class climate(hass.Hass):
     friendly = self.get_state(entity, attribute="friendly_name")
     temp_cur = self.get_state(entity, attribute="current_temperature")
     temp_set = self.get_state(entity, attribute="temperature")
+    self.log("climate {} turned off, temperature set to {}".format(friendly, temp_set))
     self.call_service("notify/dageraad", message = ("climate {} turned off, now {}°C and set to {}°C".format(friendly, temp_cur, temp_set)))
     self.set_state("sensor.notify_message", state="Heating {} Completed".format(friendly))
     return

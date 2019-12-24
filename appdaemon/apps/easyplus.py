@@ -8,12 +8,15 @@ class easyplus(hass.Hass):
 
  def error_cb(self, entity, attribute, old, new, kwargs):
     error = self.get_state(entity)
-    easyplus = self.get_state('binary_sensor.easyplus_telnet')
-    self.log("%s", error)
-    mylist = str(error).split(':')
+    mylist = str(error).split('Command failed: ')
     self.log("list is split, now printing the split list")
     self.log(mylist)
-    if error.startswith("Command failed: "):
-       return error[17:]
-    self.log("%s", error)
-    self.log(self.args)
+    self.log("%s", mylist)
+    # if error.startswith("Command failed: "):
+    #    return error[17:]
+    # self.log("%s", error)
+    # self.log(self.args)
+
+
+
+#    easyplus = self.get_state('binary_sensor.easyplus_telnet')

@@ -8,7 +8,8 @@ class easyplus(hass.Hass):
 
  def error_cb(self, entity, attribute, old, new, kwargs):
     error = self.get_state(entity)
-    mylist = error(filter(None, "Command failed:")) 
+    mylist = error
+    mylist = filter("Command failed:")
     self.log("list is split, now printing the split list")
     self.log(mylist)
  #   filter = str(mylist).split(',')

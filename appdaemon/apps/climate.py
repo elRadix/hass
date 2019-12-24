@@ -44,7 +44,6 @@ class climate(hass.Hass):
    if old == "heat" and new == "off":
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
-    self.log("target temperature off")
     self.set_state("sensor.notify_message", state="Heating Completed")
     friendly = self.get_state(entity, attribute="friendly_name")
     temp_cur = self.get_state(entity, attribute="current_temperature")

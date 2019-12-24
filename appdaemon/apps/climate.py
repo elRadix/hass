@@ -18,6 +18,7 @@ class climate(hass.Hass):
       self.turn_off('switch.easyplus')
       self.turn_on('switch.easyplus')
       time.sleep(20)
+      self.get_state('switch.easyplus')
       self.log("telnet state is %s", telnet)
       tg = "Easyplus is {}, Telnet state is {} ".format(easyplus, telnet)
       self.call_service("notify/dageraad",message = tg)
@@ -25,35 +26,50 @@ class climate(hass.Hass):
     if boiler != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating')
       self.get_state('binary_sensor.easyplus_telnet')
+      self.get_state('input_boolean.easyplus_boiler_heating')
+      time.sleep(3)
       self.log("boiler %s", boiler)
       tg = "Boiler is {} ".format(boiler)
       self.call_service("notify/dageraad",message = tg)
     self.call_service("shell_command/heating_"+friendly)
-    current_temp= self.get_state(entity, attribute="current_temperature")
-    heating_temp= self.get_state(entity, attribute="temperature")
-    # self.set_state("sensor.notify_message", state="Heating started")
+    self.set_state("sensor.notify_message", state="Heating started")
     self.log("target temperature set")
-    self.call_service('notify/dageraad',
-        title="[Heating Started]\n",
-        message=("\n===============\n"
-                 "Room: {}\nCurrent temp: {}°C\nHeating temp: {}°C".format(friendly,current_temp,heating_temp)))
+    friendly = self.get_state(entity, attribute="friendly_name")
+    temp_cur = self.get_state(entity, attribute="current_temperature")
+    temp_set = self.get_state(entity, attribute="temperature")
+    self.call_service("notify/dageraad", message = ("climate {} turned on, now {} and set to {} degrees".format(friendly, temp_cur, temp_set)))
+
     return
 
    if old == "heat" and new == "off":
     self.call_service("climate/set_temperature", entity_id = self.args["climate"], temperature = 5)
     self.call_service("shell_command/heating_tmp_"+friendly+"_off")
     self.log("target temperature off")
-    current_temp= self.get_state(entity, attribute="current_temperature")
-    heating_temp= self.get_state(entity, attribute="temperature")
-    # self.set_state("sensor.notify_message", state="Heating Completed")
-    self.call_service('notify/dageraad',
-        title="[Heating Completed]\n",
-        message=("\n===============\n"
-                 "Room: {}\nCurrent temp: {}°C\nHeating temp: {}°C".format(friendly,current_temp,heating_temp)))
+    self.set_state("sensor.notify_message", state="Heating Completed")
+    friendly = self.get_state(entity, attribute="friendly_name")
+    temp_cur = self.get_state(entity, attribute="current_temperature")
+    temp_set = self.get_state(entity, attribute="temperature")
+    self.call_service("notify/dageraad", message = ("climate {} turned off, now {} and set to {} degrees".format(friendly, temp_cur, temp_set)))
+
     return
    self.log(self.args)
 
 
+
+#old notification
+#    current_temp= self.get_state(entity, attribute="current_temperature")
+#    heating_temp= self.get_state(entity, attribute="temperature")
+#    self.call_service('notify/dageraad',
+#        title="[Heating Completed]\n",
+#        message=("\n===============\n"
+#                 "Room: {}\nCurrent temp: {}°C\nHeating temp: {}°C".format(friendly,current_temp,heating_temp)))
+###
+#    current_temp= self.get_state(entity, attribute="current_temperature")
+#    heating_temp= self.get_state(entity, attribute="temperature")
+#    self.call_service('notify/dageraad',
+#        title="[Heating Started]\n",
+#        message=("\n===============\n"
+#                 "Room: {}\nCurrent temp: {}°C\nHeating temp: {}°C".format(friendly,current_temp,heating_temp)))
 
 ##Nordine version
   #  if old == "off" and new == "heat":
@@ -131,3 +147,8 @@ class climate(hass.Hass):
 
         # tg = "Easyplus is rebooting Telnet is {} ".format(easyplus)
         # self.call_service("notify/dageraad",message = tg)
+
+    friendly = self.get_state(entity, attribute="friendly_name")
+    temp_cur = self.get_state(entity, attribute="current_temperature")
+    temp_set = self.get_state(entity, attribute="temperature")
+    self.call_service("notify/merwone", message = ("climate {} turned on, now {} and set to {} degrees".format(friendly, temp_cur, temp_set)))

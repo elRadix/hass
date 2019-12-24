@@ -34,7 +34,7 @@ class climate(hass.Hass):
     self.call_service("shell_command/heating_"+friendly)
     self.set_state("sensor.notify_message", state="Heating started")
     self.log("target temperature set")
-    friendly = self.get_state(entity, attribute="friendly_name")
+    #friendly = self.get_state(entity, attribute="friendly_name")
     temp_cur = self.get_state(entity, attribute="current_temperature")
     temp_set = self.get_state(entity, attribute="temperature")
     self.call_service("notify/dageraad", message = ("climate {} turned on, now {} and set to {} degrees".format(friendly, temp_cur, temp_set)))
@@ -147,8 +147,3 @@ class climate(hass.Hass):
 
         # tg = "Easyplus is rebooting Telnet is {} ".format(easyplus)
         # self.call_service("notify/dageraad",message = tg)
-
-    friendly = self.get_state(entity, attribute="friendly_name")
-    temp_cur = self.get_state(entity, attribute="current_temperature")
-    temp_set = self.get_state(entity, attribute="temperature")
-    self.call_service("notify/merwone", message = ("climate {} turned on, now {} and set to {} degrees".format(friendly, temp_cur, temp_set)))

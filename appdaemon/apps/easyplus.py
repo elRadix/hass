@@ -11,6 +11,8 @@ class easyplus(hass.Hass):
     mylist = str(error).split('Command failed: /usr/bin/expect -f /opt/scripts/apex.sh')
     self.log("list is split, now printing the split list")
     self.log(mylist)
+    filter = str(mylist).split(',')
+    self.log(filter)
 #    self.log("%s", mylist)
     # if error.startswith("Command failed: "):
     #    return error[17:]

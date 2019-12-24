@@ -31,10 +31,10 @@
     condition: template
     value_template: '{{ "Command failed: /usr/bin/expect" in trigger.event.data.message }}'
   action:
-    service: persistent_notification.create
+  - service: notify.telegram_rachid
     data_template:
-      title: Something bad happened
       message: '{{ trigger.event.data.message }}'
+      title:  Easyplus Error
 
 - id: Create notifications for "service" errors
   trigger:

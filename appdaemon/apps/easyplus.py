@@ -8,10 +8,10 @@ class easyplus(hass.Hass):
 
  def error_cb(self, entity, attribute, old, new, kwargs):
     error = self.get_state(entity)
-    mylist = str(error).split('Command failed: ')
+    mylist = str(error).split('Command failed: /usr/bin/expect -f /opt/scripts/apex.sh')
     self.log("list is split, now printing the split list")
     self.log(mylist)
-    self.log("%s", mylist)
+#    self.log("%s", mylist)
     # if error.startswith("Command failed: "):
     #    return error[17:]
     # self.log("%s", error)

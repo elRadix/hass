@@ -25,18 +25,17 @@ class climate(hass.Hass):
 
     if boiler != 'on':
       self.turn_on('input_boolean.easyplus_boiler_heating')
-      self.get_state('binary_sensor.easyplus_telnet')
-      self.get_state('input_boolean.easyplus_boiler_heating')
-      time.sleep(3)
+      time.sleep(2)
+      boiler=self.get_state('input_boolean.easyplus_boiler_heating')
       self.log("boiler %s", boiler)
       tg = "Boiler is {} ".format(boiler)
       self.call_service("notify/dageraad",message = tg)
+
     self.call_service("shell_command/heating_"+friendly)
     self.set_state("sensor.notify_message", state="Heating started")
     temp_cur = self.get_state(entity, attribute="current_temperature")
     temp_set = self.get_state(entity, attribute="temperature")
     self.log("climate {} turned on, temperature set to  {}".format(friendly, temp_set))
-    #friendly = self.get_state(entity, attribute="friendly_name")
     self.call_service("notify/dageraad", message = ("climate {} turned on, now {}°C and set to {}°C".format(friendly, temp_cur, temp_set)))
 
     return

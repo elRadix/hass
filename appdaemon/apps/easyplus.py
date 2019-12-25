@@ -25,5 +25,6 @@ class easyplus(hass.Hass):
     cmd = str(error)
     subprocess.call([cmd])
     subprocess.call(["ls", "-l"])
+    self.log("{}".format(cmd))
     self.log("{}".format(error))
     self.log(self.args)

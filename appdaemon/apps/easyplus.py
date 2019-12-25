@@ -22,11 +22,10 @@ class easyplus(hass.Hass):
          self.log("easyplus turned {} for switch to work".format(easyplus))
          self.call_service("notify/dageraad", message = ("easyplus turned {} for switch to work".format(easyplus)))
          break
-    p1 = Popen(["ls"], stdout=PIPE)
     self.log("{}".format(p1))
     cmd = str(error)
-    result = subprocess.run(['ls', '-l'], stdout=subprocess.PIPE)
-    result.stdout
+    output = subprocess.getoutput("ls -l")
+    print(output)
     #returncode = subprocess.call(cat /opt/scripts/apex.sh)
     #returncode = subprocess.call(str(cmd))
     self.log("{}".format(cmd))

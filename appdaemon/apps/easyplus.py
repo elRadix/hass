@@ -23,8 +23,8 @@ class easyplus(hass.Hass):
          self.call_service("notify/dageraad", message = ("easyplus turned {} for switch to work".format(easyplus)))
          break
     p1 = Popen(["dmesg"], stdout=PIPE)
-    print p1.communicate()
-    cmd = str(error)
+    self.log("{}".format(p1))
+    #cmd = str(error)
     #subprocess.call([cmd])
     #subprocess.call(["ls", "-l"])
     #self.log("{}".format(cmd))

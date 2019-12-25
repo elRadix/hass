@@ -22,7 +22,7 @@ class easyplus(hass.Hass):
     cmd = '"' + error + '", shell=True'
     telnet= 'Setrelay 32,1' ## make variable
     cmds = ["expect -f /opt/scripts/apex.sh", "'{telnet}'"]
-    self.log("{}".format(cmd))
+    self.log("{}".format(cmds))
     returncode = subprocess.run(cmds)
     self.log(self.args)
-    subprocess.Popen(cmd)
+    subprocess.Popen(cmds)

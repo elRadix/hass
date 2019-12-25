@@ -71,10 +71,6 @@
                     "url": "/community_plugin/text-divider-row/text-divider-row.js"
                 },
                 {
-                    "type": "module",
-                    "url": "/community_plugin/decluttering-card/decluttering-card.js"
-                },
-                {
                     "type": "js",
                     "url": "/community_plugin/list-card/list-card.js"
                 },
@@ -84,10 +80,6 @@
                 {
                     "type": "js",
                     "url": "/community_plugin/lovelace-text-input-row/text-input-row.js"
-                },
-                {
-                    "type": "js",
-                    "url": "/community_plugin/tracking-number-card/tracking-number-card.js"
                 },
                 {
                     "type": "module",
@@ -2979,9 +2971,12 @@
                                 },
                                 {
                                     "entity": "sensor.easyplus_telnet"
+                                },
+                                {
+                                    "entity": "sensor.error"
                                 }
                             ],
-                            "type": "glance"
+                            "type": "entities"
                         },
                         {
                             "cards": [
@@ -5239,6 +5234,21 @@
                                     "type": "divider"
                                 },
                                 {
+                                    "entity": "sensor.easyplus_daily_day"
+                                },
+                                {
+                                    "entity": "sensor.easyplus_daily_night"
+                                },
+                                {
+                                    "entity": "sensor.easyplus_monthly_day"
+                                },
+                                {
+                                    "entity": "sensor.easyplus_monthly_night"
+                                },
+                                {
+                                    "type": "divider"
+                                },
+                                {
                                     "entity": "sensor.ketel_daily_day"
                                 },
                                 {
@@ -5490,6 +5500,9 @@
                                 },
                                 {
                                     "entity": "sensor.easyplus_telnet"
+                                },
+                                {
+                                    "entity": "sensor.error"
                                 }
                             ],
                             "show_header_toggle": false,

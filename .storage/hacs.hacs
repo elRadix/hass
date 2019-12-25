@@ -1,6 +1,7 @@
 {
     "data": {
         "compact": true,
+        "onboarding_done": true,
         "view": "Grid"
     },
     "key": "hacs.hacs",

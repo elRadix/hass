@@ -11,7 +11,7 @@ class easyplus(hass.Hass):
 
  def error_cb(self, entity, attribute, old, new, kwargs):
     easyplus = self.get_state('binary_sensor.easyplus_telnet')
-    error = "['/usr/bin/expect', '-f', '/opt/scripys/apex.sh', " + str(new).split(".sh ",1)[1] + "']"
+    error = "['/usr/bin/expect', '-f', '/opt/scripys/apex.sh', " + str(new).split(".sh ",1)[1] + "]"
     self.log("{}".format(error))
     for i in range (0, 3, 1):
      if easyplus != 'on':

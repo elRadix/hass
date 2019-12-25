@@ -21,5 +21,5 @@ class easyplus(hass.Hass):
          break
     cmd = '"' + error + '", shell=True'
     self.log("{}".format(cmd))
-    returncode = subprocess.run("expect -f /opt/scripts/apex.sh 'Setrelay 34,1'", shell=True)
+    returncode = subprocess.run("%cmd%")
     self.log(self.args)

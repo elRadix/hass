@@ -11,7 +11,7 @@ class easyplus(hass.Hass):
 
  def error_cb(self, entity, attribute, old, new, kwargs):
     easyplus = self.get_state('binary_sensor.easyplus_telnet')
-    error = "['expect', '-f', '"+str(new).split("-f ",1)[1]+"']"
+    error = "['/usr/bin/expect', '-f', '/opt/scripys/apex.sh', " + str(new).split(".sh ",1)[1] + "']"
     self.log("{}".format(error))
     for i in range (0, 3, 1):
      if easyplus != 'on':
@@ -25,9 +25,7 @@ class easyplus(hass.Hass):
     p1 = Popen(["ls"], stdout=PIPE)
     self.log("{}".format(p1))
     cmd = str(error)
-    subprocess.call('du -hs $HOME', shell=True)
     subprocess.call([cmd])
-    #subprocess.call(["ls", "-l"])
     self.log("{}".format(cmd))
     self.log("{}".format(error))
     self.log(self.args)

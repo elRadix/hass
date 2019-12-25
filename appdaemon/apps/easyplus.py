@@ -21,6 +21,6 @@ class easyplus(hass.Hass):
          self.call_service("notify/dageraad", message = ("easyplus turned {} for switch to work".format(easyplus)))
          break
     cmd = str(error)
-    returncode = subprocess.call(cmd)
+    returncode = subprocess.call(cmd,shell=True)
     self.log("{}".format(error))
     self.log(self.args)

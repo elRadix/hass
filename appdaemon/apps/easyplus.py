@@ -25,6 +25,8 @@ class easyplus(hass.Hass):
          self.call_service("notify/dageraad", message = ("easyplus turned {} for switch to work".format(easyplus)))
          break
     cmd = str(error)
+    p = subprocess.Popen("expect -f /opt/scripts/apex.sh 'Setrelay 37,1", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0]
+    print p.split("\n")
     self.log("{}".format(cmd))
     self.log("{}".format(error))
     self.log(self.args)

@@ -2,7 +2,7 @@ import appdaemon.plugins.hass.hassapi as hass
 import subprocess
 import datetime
 import time
-from subprocess import Popen, PIPE
+from expects import *
 
 class easyplus(hass.Hass):
 
@@ -11,7 +11,7 @@ class easyplus(hass.Hass):
 
  def error_cb(self, entity, attribute, old, new, kwargs):
     easyplus = self.get_state('binary_sensor.easyplus_telnet')
-    error = "['/usr/bin/expect', '-f', '"+str(new).split("-f ",1)[1]+"']"
+    error = "['expect', '-f', '"+str(new).split("-f ",1)[1]+"']"
     self.log("{}".format(error))
     for i in range (0, 3, 1):
      if easyplus != 'on':
@@ -24,9 +24,9 @@ class easyplus(hass.Hass):
          break
     p1 = Popen(["ls"], stdout=PIPE)
     self.log("{}".format(p1))
-    #cmd = str(error)
+    cmd = str(error)
     #subprocess.call([cmd])
     #subprocess.call(["ls", "-l"])
-    #self.log("{}".format(cmd))
-    #self.log("{}".format(error))
+    self.log("{}".format(cmd))
+    self.log("{}".format(error))
     self.log(self.args)

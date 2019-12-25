@@ -25,8 +25,10 @@ class easyplus(hass.Hass):
     p1 = Popen(["ls"], stdout=PIPE)
     self.log("{}".format(p1))
     cmd = str(error)
-    returncode = subprocess.call(cat /opt/scripts/apex.sh)
-    returncode = subprocess.call(str(cmd))
+    result = subprocess.run(['ls', '-l'], stdout=subprocess.PIPE)
+    result.stdout
+    #returncode = subprocess.call(cat /opt/scripts/apex.sh)
+    #returncode = subprocess.call(str(cmd))
     self.log("{}".format(cmd))
     self.log("{}".format(error))
     self.log(self.args)

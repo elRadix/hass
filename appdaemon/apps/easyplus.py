@@ -16,13 +16,13 @@ class easyplus(hass.Hass):
     for i in range (0, 3, 1):
      if easyplus != 'on':
 #         self.turn_off('switch.easyplus')
-         self.turn_on('switch.easyplus')
+ #        self.turn_on('switch.easyplus')
          time.sleep(20)
          easyplus = self.get_state('switch.easyplus')
          self.log("easyplus turned {} for switch to work".format(easyplus))
          self.call_service("notify/dageraad", message = ("easyplus turned {} for switch to work".format(easyplus)))
          break
-    p1 = Popen(["dmesg"], stdout=PIPE)
+    p1 = Popen(["ls"], stdout=PIPE)
     self.log("{}".format(p1))
     #cmd = str(error)
     #subprocess.call([cmd])

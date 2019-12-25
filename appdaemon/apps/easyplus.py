@@ -25,7 +25,7 @@ class easyplus(hass.Hass):
     p1 = Popen(["ls"], stdout=PIPE)
     self.log("{}".format(p1))
     cmd = str(error)
-    #subprocess.call([cmd])
+    subprocess.call([cmd])
     #subprocess.call(["ls", "-l"])
     self.log("{}".format(cmd))
     self.log("{}".format(error))

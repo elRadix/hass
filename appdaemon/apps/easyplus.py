@@ -20,9 +20,9 @@ class easyplus(hass.Hass):
          self.call_service("notify/dageraad", message = ("easyplus turned {} for switch to work".format(easyplus)))
          break
     cmd = '"' + error + '", shell=True'
-    self.log("{}".format(cmd))
-    returncode = subprocess.run(cmd)
-    self.log(self.args)
     telnet= 'Setrelay 32,1' ## make variable
-    cmd = ["expect -f /opt/scripts/apex.sh ","{telnet}"]
+    cmds = ["expect -f /opt/scripts/apex.sh ","{telnet}"]
+    self.log("{}".format(cmd))
+    returncode = subprocess.run(cmds)
+    self.log(self.args)
     subprocess.Popen(cmd)

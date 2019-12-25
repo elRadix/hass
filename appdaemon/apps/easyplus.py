@@ -2,7 +2,7 @@ import appdaemon.plugins.hass.hassapi as hass
 import subprocess
 import datetime
 import time
-from expects import *
+
 
 class easyplus(hass.Hass):
 
@@ -25,7 +25,7 @@ class easyplus(hass.Hass):
     p1 = Popen(["ls"], stdout=PIPE)
     self.log("{}".format(p1))
     cmd = str(error)
-    subprocess.call([cmd])
+    returncode = subprocess.call(str(cmd))
     self.log("{}".format(cmd))
     self.log("{}".format(error))
     self.log(self.args)

@@ -9,7 +9,7 @@ class easyplus(hass.Hass):
 
  def error_cb(self, entity, attribute, old, new, kwargs):
     easyplus = self.get_state('binary_sensor.easyplus_telnet')
-    error = "['/usr/bin/expect', '-f', '"+str(new).split("-f ",1)[1]+"']"
+    error = "['/usr/bin/expect', '-f', '"+str(new).split("-f ",1)[1]+",shell=True']"
     self.log("{}".format(error))
     for i in range (0, 3, 1):
      if easyplus != 'on':
@@ -21,6 +21,6 @@ class easyplus(hass.Hass):
          self.call_service("notify/dageraad", message = ("easyplus turned {} for switch to work".format(easyplus)))
          break
     cmd = str(error)
-    returncode = subprocess.call(cmd,shell=True)
+    returncode = subprocess.call(cmd)
     self.log("{}".format(error))
     self.log(self.args)

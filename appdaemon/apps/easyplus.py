@@ -13,8 +13,8 @@ class easyplus(hass.Hass):
     self.log("{}".format(error))
     for i in range (0, 3, 1):
      if easyplus != 'on':
-         self.turn_on('switch.easyplus')
-         time.sleep(20)
+        # self.turn_on('switch.easyplus')
+        # time.sleep(20)
          easyplus = self.get_state('switch.easyplus')
          self.log("easyplus turned {} for switch to work".format(easyplus))
          self.call_service("notify/dageraad", message = ("easyplus turned {} for switch to work".format(easyplus)))

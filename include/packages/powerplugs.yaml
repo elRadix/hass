@@ -142,31 +142,31 @@ utility_meter:
       - day
   microwave_daily:
     source: sensor.microwave_energy_today
-    cycle: monthly
+    cycle: daily
     tariffs:
       - night
       - day
   commander_daily:
     source: sensor.commander_energy_today
-    cycle: monthly
+    cycle: daily
     tariffs:
       - night
       - day
   samsungtv_daily:
     source: sensor.samsung_energy_today
-    cycle: monthly
+    cycle: daily
     tariffs:
       - night
       - day
   sonytv_daily:
     source: sensor.sonytv_energy_today
-    cycle: monthly
+    cycle: daily
     tariffs:
       - night
       - day
   easyplus_daily:
     source: sensor.easyplus_energy_today
-    cycle: monthly
+    cycle: daily
     tariffs:
       - night
       - day

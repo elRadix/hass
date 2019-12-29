@@ -647,7 +647,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 292,
+            "stars": 293,
             "topics": [
                 "homeassistant",
                 "lovelace",
@@ -1016,7 +1016,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Lovelace button-card for home assistant",
-            "downloads": 7773,
+            "downloads": 7929,
             "full_name": "custom-cards/button-card",
             "hide": false,
             "installed": true,
@@ -1029,7 +1029,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
-            "stars": 301,
+            "stars": 302,
             "topics": [
                 "home-assistant",
                 "home-assistant-custom",
@@ -1129,7 +1129,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
-            "stars": 33,
+            "stars": 34,
             "topics": [
                 "bravia",
                 "home-assistant",
@@ -1254,7 +1254,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Minimalistic media card for Home Assistant Lovelace UI",
-            "downloads": 2484,
+            "downloads": 2776,
             "full_name": "kalkih/mini-media-player",
             "hide": false,
             "installed": true,
@@ -1267,7 +1267,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 481,
+            "stars": 480,
             "topics": [
                 "automation",
                 "custom",
@@ -1308,7 +1308,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Minimalistic graph card for Home Assistant Lovelace UI",
-            "downloads": 8831,
+            "downloads": 9033,
             "full_name": "kalkih/mini-graph-card",
             "hide": false,
             "installed": true,
@@ -1321,7 +1321,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 574,
+            "stars": 575,
             "topics": [
                 "automation",
                 "custom",
@@ -1743,7 +1743,7 @@
             "authors": [],
             "category": "plugin",
             "description": "A different take on the thermostat card for Home Assistant \u2668\ufe0f",
-            "downloads": 2760,
+            "downloads": 2830,
             "full_name": "nervetattoo/simple-thermostat",
             "hide": false,
             "installed": true,
@@ -2144,7 +2144,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Customizable Animated Bar card for Home Assistant Lovelace",
-            "downloads": 1389,
+            "downloads": 1421,
             "full_name": "custom-cards/bar-card",
             "hide": false,
             "installed": true,
@@ -2157,7 +2157,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 72,
+            "stars": 73,
             "topics": [],
             "version_installed": "1.6.2"
         },
@@ -2461,7 +2461,7 @@
             },
             "selected_tag": "1.9",
             "show_beta": true,
-            "stars": 123,
+            "stars": 125,
             "topics": [],
             "version_installed": "1.9"
         },
@@ -2735,14 +2735,14 @@
             ],
             "category": "integration",
             "description": "Manage (Install, track, upgrade) and discover custom elements for Home Assistant.",
-            "downloads": 1674,
+            "downloads": 3155,
             "full_name": "hacs/integration",
             "hide": false,
             "installed": true,
             "installed_commit": null,
-            "last_commit": "1e985af",
-            "last_release_tag": "0.20.1",
-            "last_updated": "2019-12-25T00:16:10Z",
+            "last_commit": "4ad2c49",
+            "last_release_tag": "0.20.3",
+            "last_updated": "2019-12-26T17:45:55Z",
             "name": "HACS (Home Assistant Community Store)",
             "new": false,
             "repository_manifest": {
@@ -2754,7 +2754,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 588,
+            "stars": 595,
             "topics": [
                 "community",
                 "hacs",
@@ -2763,7 +2763,7 @@
                 "package-manager",
                 "python"
             ],
-            "version_installed": "0.20.1"
+            "version_installed": "0.20.3"
         },
         "172800356": {
             "authors": [
@@ -3057,14 +3057,14 @@
             "authors": [],
             "category": "plugin",
             "description": "Lovelace card for sun component - Home Assistant",
-            "downloads": 434,
+            "downloads": 24,
             "full_name": "mishaaq/sun-card",
             "hide": false,
             "installed": true,
-            "installed_commit": "d94869a",
-            "last_commit": "d94869a",
-            "last_release_tag": "v3.1",
-            "last_updated": "2019-08-09T09:23:12Z",
+            "installed_commit": "f92431e",
+            "last_commit": "f92431e",
+            "last_release_tag": "v3.2",
+            "last_updated": "2019-12-25T23:09:02Z",
             "name": "sun-card",
             "new": false,
             "repository_manifest": {},
@@ -3076,7 +3076,7 @@
                 "lovelace",
                 "lovelace-ui"
             ],
-            "version_installed": "v3.1"
+            "version_installed": "v3.2"
         },
         "175927964": {
             "authors": [],
@@ -3166,7 +3166,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
-            "stars": 135,
+            "stars": 137,
             "topics": [],
             "version_installed": "0.1.5"
         },
@@ -3958,7 +3958,7 @@
             "authors": [],
             "category": "plugin",
             "description": "A fluffy banner card for Home Assistant \ud83e\udd70",
-            "downloads": 2226,
+            "downloads": 2256,
             "full_name": "nervetattoo/banner-card",
             "hide": false,
             "installed": true,
@@ -4250,7 +4250,7 @@
             "authors": [],
             "category": "plugin",
             "description": "",
-            "downloads": 563,
+            "downloads": 572,
             "full_name": "thomasloven/lovelace-markdown-mod",
             "hide": false,
             "installed": true,
@@ -5815,7 +5815,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 11,
+            "stars": 12,
             "topics": [],
             "version_installed": null
         },
@@ -7146,14 +7146,14 @@
             ],
             "category": "integration",
             "description": "\ud83d\uddd1 Custom Home Assistant sensor for scheduling garbage collection (or other regularly re-occurring events - weekly on given days, semi-weekly or monthly)",
-            "downloads": 733,
+            "downloads": 181,
             "full_name": "bruxy70/Garbage-Collection",
             "hide": false,
             "installed": true,
-            "installed_commit": "088320e",
-            "last_commit": "448c4a3",
-            "last_release_tag": "2.8",
-            "last_updated": "2019-12-10T14:44:24Z",
+            "installed_commit": "fe4752f",
+            "last_commit": "fe4752f",
+            "last_release_tag": "2.9",
+            "last_updated": "2019-12-26T08:32:19Z",
             "name": "Garbage Collection",
             "new": false,
             "repository_manifest": {
@@ -7166,7 +7166,7 @@
                 "name": "Garbage Collection",
                 "zip_release": true
             },
-            "selected_tag": "2.8",
+            "selected_tag": null,
             "show_beta": true,
             "stars": 28,
             "topics": [
@@ -7175,7 +7175,7 @@
                 "waste",
                 "waste-management"
             ],
-            "version_installed": "2.8"
+            "version_installed": "2.9"
         },
         "204700563": {
             "authors": [
@@ -7376,7 +7376,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 27,
+            "stars": 29,
             "topics": [
                 "home-assistant",
                 "home-assistant-custom",
@@ -7701,7 +7701,7 @@
             "installed_commit": "7146b0b",
             "last_commit": "7146b0b",
             "last_release_tag": null,
-            "last_updated": "2019-11-23T09:40:19Z",
+            "last_updated": "2019-12-27T06:41:49Z",
             "name": "amoled",
             "new": false,
             "repository_manifest": {
@@ -8104,7 +8104,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 16,
+            "stars": 17,
             "topics": [
                 "hacs",
                 "home-assistant",
@@ -8205,7 +8205,7 @@
             "installed_commit": "1f616a5",
             "last_commit": "1f616a5",
             "last_release_tag": null,
-            "last_updated": "2019-11-23T09:40:38Z",
+            "last_updated": "2019-12-27T06:40:15Z",
             "name": "blue_night",
             "new": false,
             "repository_manifest": {
@@ -8594,7 +8594,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Lovelace Custom Header",
-            "downloads": 322,
+            "downloads": 956,
             "full_name": "maykar/custom-header",
             "hide": false,
             "installed": true,
@@ -9512,6 +9512,293 @@
                 "appdaemon-apps",
                 "hacs"
             ],
+            "version_installed": null
+        },
+        "228604799": {
+            "authors": [
+                "@cyberjunky"
+            ],
+            "category": "integration",
+            "description": "This component tracks devices using the arp-scan liinux command, it's very fast, and reasonably accurate.",
+            "downloads": null,
+            "full_name": "cyberjunky/home-assistant-arpscan_tracker",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.0.2",
+            "last_updated": null,
+            "name": "Arpscan tracker",
+            "new": true,
+            "repository_manifest": {
+                "country": "NL",
+                "domains": [
+                    "device_tracker"
+                ],
+                "name": "Arpscan Device Tracker",
+                "render_readme": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 1,
+            "topics": [
+                "custom-component",
+                "hacs",
+                "home-assistant",
+                "homeassistant",
+                "python"
+            ],
+            "version_installed": null
+        },
+        "228618998": {
+            "authors": [
+                "@cyberjunky"
+            ],
+            "category": "integration",
+            "description": ":electric_plug: This component can read values from and control Plugwise circles and plugs.",
+            "downloads": null,
+            "full_name": "cyberjunky/home-assistant-plugwise",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.0.2",
+            "last_updated": null,
+            "name": "Plugwise",
+            "new": true,
+            "repository_manifest": {
+                "country": "NL",
+                "domains": [
+                    "switch",
+                    "sensor"
+                ],
+                "name": "Plugwise",
+                "render_readme": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 0,
+            "topics": [
+                "custom-component",
+                "hacs",
+                "home-assistant",
+                "homeassistant",
+                "plugwise",
+                "power",
+                "python"
+            ],
+            "version_installed": null
+        },
+        "228627470": {
+            "authors": [
+                "@cyberjunky"
+            ],
+            "category": "integration",
+            "description": ":recycle: :wastebasket: This component fetches garbage pickup dates for parts of The Netherlands using HVC Groep's REST API.",
+            "downloads": null,
+            "full_name": "cyberjunky/home-assistant-hvcgroep",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.0.3",
+            "last_updated": null,
+            "name": "HVCGroep Sensor",
+            "new": true,
+            "repository_manifest": {
+                "country": "NL",
+                "domains": [
+                    "sensor"
+                ],
+                "name": "HVCGroep",
+                "render_readme": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 0,
+            "topics": [
+                "custom-component",
+                "hacs",
+                "home-assistant",
+                "homeassistant",
+                "python"
+            ],
+            "version_installed": null
+        },
+        "228649088": {
+            "authors": [
+                "@cyberjunky"
+            ],
+            "category": "integration",
+            "description": ":fire_engine: This component tracks P2000 emergency events in The Netherlands.",
+            "downloads": null,
+            "full_name": "cyberjunky/home-assistant-p2000",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.0.3",
+            "last_updated": null,
+            "name": "P2000 Sensor",
+            "new": true,
+            "repository_manifest": {
+                "country": "NL",
+                "domains": [
+                    "sensor"
+                ],
+                "name": "P2000 Sensor",
+                "render_readme": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 2,
+            "topics": [
+                "custom-component",
+                "emergency",
+                "hacs",
+                "home-assistant",
+                "homeassistant",
+                "p2000",
+                "python"
+            ],
+            "version_installed": null
+        },
+        "228662926": {
+            "authors": [
+                "@cyberjunky"
+            ],
+            "category": "integration",
+            "description": "This component provides a climate device for rooted TOON thermostats.",
+            "downloads": null,
+            "full_name": "cyberjunky/home-assistant-toon_climate",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.0.3",
+            "last_updated": null,
+            "name": "TOON Climate",
+            "new": true,
+            "repository_manifest": {
+                "country": "NL",
+                "domains": [
+                    "climate"
+                ],
+                "name": "TOON Climate",
+                "render_readme": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 1,
+            "topics": [],
+            "version_installed": null
+        },
+        "228678807": {
+            "authors": [
+                "@cyberjunky"
+            ],
+            "category": "integration",
+            "description": "This component reads and displays sensor values from the meteradapter connected to a rooted TOON thermostat.",
+            "downloads": null,
+            "full_name": "cyberjunky/home-assistant-toon_smartmeter",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.0.2",
+            "last_updated": null,
+            "name": "TOON Smart Meter",
+            "new": true,
+            "repository_manifest": {
+                "country": "NL",
+                "domains": [
+                    "sensor"
+                ],
+                "name": "TOON Smart Meter",
+                "render_readme": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 1,
+            "topics": [
+                "custom-component",
+                "hacs",
+                "home-assistant",
+                "homeassistant",
+                "python"
+            ],
+            "version_installed": null
+        },
+        "228685436": {
+            "authors": [
+                "@cyberjunky"
+            ],
+            "category": "integration",
+            "description": "This component reads and displays the boiler status values from a rooted TOON thermostat.",
+            "downloads": null,
+            "full_name": "cyberjunky/home-assistant-toon_boilerstatus",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.0.1",
+            "last_updated": null,
+            "name": "TOON Boiler Status",
+            "new": true,
+            "repository_manifest": {
+                "country": [
+                    "NL",
+                    "BE"
+                ],
+                "domains": [
+                    "sensor"
+                ],
+                "name": "TOON Boiler Status",
+                "render_readme": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 1,
+            "topics": [
+                "custom-component",
+                "cv",
+                "hacs",
+                "home-assistant",
+                "homeassistant",
+                "opentherm",
+                "python",
+                "toon"
+            ],
+            "version_installed": null
+        },
+        "228690854": {
+            "authors": [
+                "@cyberjunky"
+            ],
+            "category": "integration",
+            "description": "This components reads statistics from a The Things Network Gateway.",
+            "downloads": null,
+            "full_name": "cyberjunky/home-assistant-ttn_gateway",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.0.3",
+            "last_updated": null,
+            "name": "TTN Gateway Sensor",
+            "new": true,
+            "repository_manifest": {
+                "country": "NL",
+                "domains": [
+                    "sensor"
+                ],
+                "name": "TTN Gateway Sensor",
+                "render_readme": false
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 0,
+            "topics": [],
             "version_installed": null
         },
         "229014136": {

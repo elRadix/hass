@@ -4,10 +4,13 @@
             "custom_header": {
                 "chevrons": false,
                 "compact_mode": true,
+                "footer_mode": true,
+                "header_text": " ",
                 "hidden_tab_redirect": false,
                 "hide_unused": true,
                 "menu_dropdown": true,
-                "reverse_button_direction": true
+                "shadow": false,
+                "split_mode": true
             },
             "resources": [
                 {
@@ -941,7 +944,7 @@
                                                     }
                                                 ],
                                                 "hour24": true,
-                                                "hours_to_show": 24,
+                                                "hours_to_show": 48,
                                                 "line_width": 4,
                                                 "name": " ",
                                                 "points_per_hour": 0.5,
@@ -1035,15 +1038,14 @@
                                                     }
                                                 ],
                                                 "hour24": true,
-                                                "hours_to_show": 24,
+                                                "hours_to_show": 48,
                                                 "line_width": 4,
                                                 "name": " ",
                                                 "points_per_hour": 0.5,
                                                 "show": {
-                                                    "extrema": true,
-                                                    "icon": true,
-                                                    "labels": true,
-                                                    "points": false
+                                                    "fill": true,
+                                                    "graph": "line",
+                                                    "labels": true
                                                 },
                                                 "type": "custom:mini-graph-card"
                                             },
@@ -1132,33 +1134,15 @@
                                                         "name": "Living"
                                                     }
                                                 ],
-                                                "group_by": "hour",
                                                 "hour24": true,
-                                                "hours_to_show": 24,
-                                                "line_width": 5,
+                                                "hours_to_show": 48,
+                                                "line_width": 4,
                                                 "name": " ",
                                                 "points_per_hour": 0.5,
                                                 "show": {
-                                                    "color_thresholds": [
-                                                        {
-                                                            "color": "#f39c12",
-                                                            "value": 18
-                                                        },
-                                                        {
-                                                            "color": "#d35400",
-                                                            "value": 20
-                                                        },
-                                                        {
-                                                            "color": "#c0392b",
-                                                            "value": 24
-                                                        }
-                                                    ],
-                                                    "extrema": true,
-                                                    "icon": true,
-                                                    "icon_adaptive_color": true,
-                                                    "labels": true,
-                                                    "name_adaptive_color": true,
-                                                    "points": false
+                                                    "fill": true,
+                                                    "graph": "line",
+                                                    "labels": true
                                                 },
                                                 "type": "custom:mini-graph-card"
                                             },

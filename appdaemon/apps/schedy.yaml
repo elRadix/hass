@@ -3,6 +3,7 @@ schedy_heating:
   class: SchedyApp
   expressions_from_events: true
   actor_type: thermostat
+#  log: /conf/schedy.log
 
 #  debug: true
   

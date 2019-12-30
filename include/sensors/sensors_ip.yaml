@@ -1,4 +1,4 @@
-#  - platform: geoip
+  - platform: geoip
 
   - platform: dnsip
     hostname: !secret dnsip_be

@@ -8,7 +8,7 @@ class easyplus(hass.Hass):
     self.listen_state(self.failed_cb, 'sensor.error')
 
  def failed_cb(self, entity, attribute, old, new, kwargs):
-    script = "expect -f /home/homeassistant/.homeassistant/opt/bin/apex.sh"
+    script = "expect -f /opt/scripts/apex.sh"
     telnet = self.get_state('binary_sensor.easyplus_telnet')
     easyplus = self.get_state('switch.easyplus')
     failed = str(new).split(".sh ",1)[1]
@@ -19,13 +19,15 @@ class easyplus(hass.Hass):
       tg = "Easyplus is rebooting - failed switch {}".format(failed)
       self.call_service("notify/dageraad",message = tg)
       time.sleep(35)
+      telnet = self.get_state('binary_sensor.easyplus_telnet')
+      easyplus = self.get_state('switch.easyplus')
       self.get_state('binary_sensor.easyplus_telnet')
       self.log("telnet state is %s", telnet)
       tg = "Easyplus is {}, Telnet is {} ".format(easyplus, telnet)
       self.call_service("notify/dageraad",message = tg)
       returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
       self.log("state: {} {}".format(script, failed))
-      self.call_service("notify/dageraad", message = ("Failed switch started: {}".format(failed)))
+      self.call_service("notify/dageraad", message = ("Failed switch to start: {}".format(failed)))
       self.log(self.args)
 
 

@@ -1,5 +1,6 @@
 secret: /conf/secrets.yaml
 
+<<<<<<< HEAD
 #logs:
 #  main_log:
 #    filename: /conf/appdaemon.log
@@ -16,8 +17,26 @@ secret: /conf/secrets.yaml
 #    name: TestLog
 #    filename: /conf/test.log
     
+=======
+logs:
+  main_log:
+    filename: /conf/appdaemon.log
+  # access_log:
+  #   filename: /conf/access.log
+  # error_log:
+  #   filename: /conf/error.log
+  # diag_log:
+  #   filename: /conf/diag.log
+  #   log_generations: 5
+  #   log_size: 1024
+  #   format: "{asctime} {levelname:<8} {appname:<10}: {message}"
+  # test_log:
+  #   name: TestLog
+  #   filename: /conf/test.log
+
+>>>>>>> d225930bf6802fc4c7d933bc3c9065e8d2c66a61
 appdaemon:
-  total_threads: 10
+  #total_threads: 10
   latitude: !secret latitude
   longitude: !secret longitude
   elevation: 10
@@ -27,7 +46,7 @@ appdaemon:
       type: hass
       ha_url: !secret ha_url
       token: !secret token
-      app_dir: /config/apps 
+      app_dir: /config/apps
 
 http:
   url: http://0.0.0.0:5050

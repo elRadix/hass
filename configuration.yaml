@@ -45,8 +45,9 @@ hacs:
   options:
     experimental: true
   appdaemon: true
-  python_script: true
-  theme: true
+#  python_script: true
+#  theme: true
+
 
 config:
 system_health:
@@ -233,7 +234,7 @@ climate:
     heater: switch.heating_eetkamer
     target_sensor: sensor.eink_temp_keuken
     min_temp: 5
-    max_temp: 24
+    max_temp: 21
     ac_mode: false
     target_temp: 20
     hot_tolerance: 0.5
@@ -265,7 +266,7 @@ climate:
     min_temp: 5
     max_temp: 22
     ac_mode: false
-    target_temp: 20
+    target_temp: 19
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5
@@ -280,7 +281,7 @@ climate:
     min_temp: 5
     max_temp: 22
     ac_mode: false
-    target_temp: 17
+    target_temp: 19
     hot_tolerance: 0.5
     min_cycle_duration:
       minutes: 5

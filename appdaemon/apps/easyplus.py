@@ -16,6 +16,8 @@ class easyplus(hass.Hass):
     while self.get_state('binary_sensor.easyplus_telnet') == 'off':
       self.turn_off('switch.easyplus')
       self.turn_on('switch.easyplus')
+      tg = "Easyplus is rebooting - failed switch {}".format(failed)
+      self.call_service("notify/dageraad",message = tg)
       time.sleep(35)
       self.get_state('binary_sensor.easyplus_telnet')
       self.log("telnet state is %s", telnet)

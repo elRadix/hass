@@ -1,4 +1,4 @@
 easyplus:
   module: easyplus
   class: easyplus
-  log: easyplus.log
+  #log: easyplus.log

@@ -19,7 +19,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 138,
+            "stars": 141,
             "topics": [],
             "version_installed": null
         },
@@ -647,7 +647,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 293,
+            "stars": 295,
             "topics": [
                 "homeassistant",
                 "lovelace",
@@ -1016,7 +1016,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Lovelace button-card for home assistant",
-            "downloads": 7929,
+            "downloads": 8265,
             "full_name": "custom-cards/button-card",
             "hide": false,
             "installed": true,
@@ -1029,7 +1029,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
-            "stars": 302,
+            "stars": 306,
             "topics": [
                 "home-assistant",
                 "home-assistant-custom",
@@ -1254,7 +1254,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Minimalistic media card for Home Assistant Lovelace UI",
-            "downloads": 2776,
+            "downloads": 3359,
             "full_name": "kalkih/mini-media-player",
             "hide": false,
             "installed": true,
@@ -1267,7 +1267,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 480,
+            "stars": 483,
             "topics": [
                 "automation",
                 "custom",
@@ -1279,6 +1279,36 @@
                 "sonos"
             ],
             "version_installed": "v1.5.1"
+        },
+        "149443194": {
+            "authors": [
+                "@rsnodgrass"
+            ],
+            "category": "integration",
+            "description": "ADT Pulse sensor for Home Assistant",
+            "downloads": null,
+            "full_name": "rsnodgrass/hass-adtpulse",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "0.0.2",
+            "last_updated": null,
+            "name": "ADT Pulse",
+            "new": true,
+            "repository_manifest": {
+                "domains": [
+                    "alarm_control_panel",
+                    "binary_sensor"
+                ],
+                "name": "ADT Pulse",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 5,
+            "topics": [],
+            "version_installed": null
         },
         "150781994": {
             "authors": [],
@@ -1308,7 +1338,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Minimalistic graph card for Home Assistant Lovelace UI",
-            "downloads": 9033,
+            "downloads": 9455,
             "full_name": "kalkih/mini-graph-card",
             "hide": false,
             "installed": true,
@@ -1321,7 +1351,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 575,
+            "stars": 579,
             "topics": [
                 "automation",
                 "custom",
@@ -1743,20 +1773,20 @@
             "authors": [],
             "category": "plugin",
             "description": "A different take on the thermostat card for Home Assistant \u2668\ufe0f",
-            "downloads": 2830,
+            "downloads": 437,
             "full_name": "nervetattoo/simple-thermostat",
             "hide": false,
             "installed": true,
-            "installed_commit": "cb0c520",
-            "last_commit": "cb0c520",
-            "last_release_tag": "0.31.0",
-            "last_updated": "2019-11-11T20:46:14Z",
+            "installed_commit": "9f76f0a",
+            "last_commit": "9f76f0a",
+            "last_release_tag": "0.32.1",
+            "last_updated": "2019-12-28T13:23:12Z",
             "name": "simple-thermostat",
             "new": false,
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 169,
+            "stars": 170,
             "topics": [
                 "hassio",
                 "home-assistant",
@@ -1765,7 +1795,7 @@
                 "lovelace-ui",
                 "polymer-3"
             ],
-            "version_installed": "0.31.0"
+            "version_installed": "0.32.1"
         },
         "158756598": {
             "authors": [],
@@ -2144,7 +2174,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Customizable Animated Bar card for Home Assistant Lovelace",
-            "downloads": 1421,
+            "downloads": 1505,
             "full_name": "custom-cards/bar-card",
             "hide": false,
             "installed": true,
@@ -2157,7 +2187,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 73,
+            "stars": 74,
             "topics": [],
             "version_installed": "1.6.2"
         },
@@ -2461,7 +2491,7 @@
             },
             "selected_tag": "1.9",
             "show_beta": true,
-            "stars": 125,
+            "stars": 128,
             "topics": [],
             "version_installed": "1.9"
         },
@@ -2546,7 +2576,7 @@
             "installed_commit": "8c4fb1a",
             "last_commit": "8c4fb1a",
             "last_release_tag": "V1.1.4",
-            "last_updated": "2019-12-09T11:52:28Z",
+            "last_updated": "2019-12-27T22:53:11Z",
             "name": "Ophaalkalender",
             "new": false,
             "repository_manifest": {},
@@ -2735,14 +2765,14 @@
             ],
             "category": "integration",
             "description": "Manage (Install, track, upgrade) and discover custom elements for Home Assistant.",
-            "downloads": 3155,
+            "downloads": 7060,
             "full_name": "hacs/integration",
             "hide": false,
             "installed": true,
-            "installed_commit": null,
-            "last_commit": "4ad2c49",
-            "last_release_tag": "0.20.3",
-            "last_updated": "2019-12-26T17:45:55Z",
+            "installed_commit": "275a2c5",
+            "last_commit": "275a2c5",
+            "last_release_tag": "0.20.4",
+            "last_updated": "2019-12-30T06:43:25Z",
             "name": "HACS (Home Assistant Community Store)",
             "new": false,
             "repository_manifest": {
@@ -2754,7 +2784,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 595,
+            "stars": 611,
             "topics": [
                 "community",
                 "hacs",
@@ -2763,7 +2793,7 @@
                 "package-manager",
                 "python"
             ],
-            "version_installed": "0.20.3"
+            "version_installed": "0.20.4"
         },
         "172800356": {
             "authors": [
@@ -3057,7 +3087,7 @@
             "authors": [],
             "category": "plugin",
             "description": "Lovelace card for sun component - Home Assistant",
-            "downloads": 24,
+            "downloads": 54,
             "full_name": "mishaaq/sun-card",
             "hide": false,
             "installed": true,
@@ -3166,7 +3196,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": true,
-            "stars": 137,
+            "stars": 139,
             "topics": [],
             "version_installed": "0.1.5"
         },
@@ -3789,18 +3819,18 @@
             "full_name": "maykar/lovelace-swipe-navigation",
             "hide": false,
             "installed": true,
-            "installed_commit": "a845f67",
-            "last_commit": "a845f67",
-            "last_release_tag": "1.2.1",
-            "last_updated": "2019-06-18T15:15:46Z",
+            "installed_commit": "968295d",
+            "last_commit": "968295d",
+            "last_release_tag": "1.2.2",
+            "last_updated": "2019-12-27T13:05:16Z",
             "name": "lovelace-swipe-navigation",
             "new": false,
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 30,
+            "stars": 31,
             "topics": [],
-            "version_installed": "1.2.1"
+            "version_installed": "1.2.2"
         },
         "184333163": {
             "authors": [],
@@ -3958,7 +3988,7 @@
             "authors": [],
             "category": "plugin",
             "description": "A fluffy banner card for Home Assistant \ud83e\udd70",
-            "downloads": 2256,
+            "downloads": 2365,
             "full_name": "nervetattoo/banner-card",
             "hide": false,
             "installed": true,
@@ -3971,7 +4001,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 129,
+            "stars": 130,
             "topics": [
                 "custom-cards",
                 "hassio",
@@ -4250,7 +4280,7 @@
             "authors": [],
             "category": "plugin",
             "description": "",
-            "downloads": 572,
+            "downloads": 584,
             "full_name": "thomasloven/lovelace-markdown-mod",
             "hide": false,
             "installed": true,
@@ -5632,7 +5662,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 33,
+            "stars": 34,
             "topics": [
                 "hacs",
                 "home-assistant",
@@ -5815,7 +5845,7 @@
             "repository_manifest": {},
             "selected_tag": null,
             "show_beta": false,
-            "stars": 12,
+            "stars": 13,
             "topics": [],
             "version_installed": null
         },
@@ -6537,6 +6567,36 @@
             "topics": [],
             "version_installed": "5"
         },
+        "200989730": {
+            "authors": [
+                "@rsnodgrass"
+            ],
+            "category": "integration",
+            "description": "Flo Water Control for Home Assistant",
+            "downloads": null,
+            "full_name": "rsnodgrass/hass-flo-water",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "2.0.1",
+            "last_updated": null,
+            "name": "Flo Water Control System",
+            "new": true,
+            "repository_manifest": {
+                "domains": [
+                    "sensor",
+                    "switch"
+                ],
+                "name": "Flo Water Control System",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 3,
+            "topics": [],
+            "version_installed": null
+        },
         "201292040": {
             "authors": [],
             "category": "plugin",
@@ -7146,14 +7206,14 @@
             ],
             "category": "integration",
             "description": "\ud83d\uddd1 Custom Home Assistant sensor for scheduling garbage collection (or other regularly re-occurring events - weekly on given days, semi-weekly or monthly)",
-            "downloads": 181,
+            "downloads": 234,
             "full_name": "bruxy70/Garbage-Collection",
             "hide": false,
             "installed": true,
-            "installed_commit": "fe4752f",
-            "last_commit": "fe4752f",
-            "last_release_tag": "2.9",
-            "last_updated": "2019-12-26T08:32:19Z",
+            "installed_commit": "9a9c4c7",
+            "last_commit": "9a9c4c7",
+            "last_release_tag": "2.11",
+            "last_updated": "2019-12-29T19:28:42Z",
             "name": "Garbage Collection",
             "new": false,
             "repository_manifest": {
@@ -7175,7 +7235,7 @@
                 "waste",
                 "waste-management"
             ],
-            "version_installed": "2.9"
+            "version_installed": "2.11"
         },
         "204700563": {
             "authors": [
@@ -7229,6 +7289,35 @@
                 "lovelace-card",
                 "template"
             ],
+            "version_installed": null
+        },
+        "205416078": {
+            "authors": [
+                "@rsnodgrass"
+            ],
+            "category": "integration",
+            "description": "SensorPush integration for Home Assistant",
+            "downloads": null,
+            "full_name": "rsnodgrass/hass-sensorpush",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "0.0.2",
+            "last_updated": null,
+            "name": "SensorPush",
+            "new": true,
+            "repository_manifest": {
+                "domains": [
+                    "sensor"
+                ],
+                "name": "SensorPush",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 0,
+            "topics": [],
             "version_installed": null
         },
         "206574936": {
@@ -7698,10 +7787,10 @@
             "full_name": "home-assistant-community-themes/amoled",
             "hide": false,
             "installed": true,
-            "installed_commit": "7146b0b",
-            "last_commit": "7146b0b",
+            "installed_commit": "209e1df",
+            "last_commit": "209e1df",
             "last_release_tag": null,
-            "last_updated": "2019-12-27T06:41:49Z",
+            "last_updated": "2019-12-28T16:34:06Z",
             "name": "amoled",
             "new": false,
             "repository_manifest": {
@@ -7709,7 +7798,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 8,
+            "stars": 9,
             "topics": [
                 "hacs",
                 "home-assistant",
@@ -8096,7 +8185,7 @@
             "installed_commit": "0a23416",
             "last_commit": "0a23416",
             "last_release_tag": null,
-            "last_updated": "2019-12-15T17:06:32Z",
+            "last_updated": "2019-12-30T07:42:54Z",
             "name": "midnight",
             "new": false,
             "repository_manifest": {
@@ -8104,7 +8193,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 17,
+            "stars": 18,
             "topics": [
                 "hacs",
                 "home-assistant",
@@ -8202,10 +8291,10 @@
             "full_name": "home-assistant-community-themes/blue-night",
             "hide": false,
             "installed": true,
-            "installed_commit": "1f616a5",
-            "last_commit": "1f616a5",
+            "installed_commit": "15f17a4",
+            "last_commit": "15f17a4",
             "last_release_tag": null,
-            "last_updated": "2019-12-27T06:40:15Z",
+            "last_updated": "2019-12-27T09:35:02Z",
             "name": "blue_night",
             "new": false,
             "repository_manifest": {
@@ -8332,7 +8421,7 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 6,
+            "stars": 7,
             "topics": [],
             "version_installed": "0.4.1"
         },
@@ -8594,14 +8683,14 @@
             "authors": [],
             "category": "plugin",
             "description": "Lovelace Custom Header",
-            "downloads": 956,
+            "downloads": 847,
             "full_name": "maykar/custom-header",
             "hide": false,
             "installed": true,
-            "installed_commit": "c68d3c9",
-            "last_commit": "c68d3c9",
-            "last_release_tag": "1.1.5",
-            "last_updated": "2019-12-24T15:51:51Z",
+            "installed_commit": "7397624",
+            "last_commit": "7397624",
+            "last_release_tag": "1.1.7",
+            "last_updated": "2019-12-28T22:14:06Z",
             "name": "custom-header",
             "new": false,
             "repository_manifest": {
@@ -8611,9 +8700,9 @@
             },
             "selected_tag": null,
             "show_beta": false,
-            "stars": 28,
+            "stars": 29,
             "topics": [],
-            "version_installed": "1.1.5"
+            "version_installed": "1.1.7"
         },
         "219363790": {
             "authors": [],
@@ -8705,6 +8794,44 @@
                 "ls50",
                 "ls50w",
                 "lsx"
+            ],
+            "version_installed": null
+        },
+        "220661494": {
+            "authors": [
+                "@cyr-ius"
+            ],
+            "category": "integration",
+            "description": "Livebox Component for Home assistant",
+            "downloads": null,
+            "full_name": "Cyr-ius/hass-livebox-component",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.3.2",
+            "last_updated": null,
+            "name": "Orange Livebox",
+            "new": true,
+            "repository_manifest": {
+                "country": "FR",
+                "domains": [
+                    "device_tracker",
+                    "sensor",
+                    "binary_sensor",
+                    "switch"
+                ],
+                "homeassistant": "0.99.9",
+                "name": "Orange Livebox routeur"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 0,
+            "topics": [
+                "hacs",
+                "home-assistant",
+                "homeassistant",
+                "homeassistant-components"
             ],
             "version_installed": null
         },
@@ -9074,10 +9201,10 @@
             "full_name": "custom-components/sensor.mitemp_bt",
             "hide": false,
             "installed": true,
-            "installed_commit": "78cb438",
-            "last_commit": "78cb438",
-            "last_release_tag": "0.4.0",
-            "last_updated": "2019-12-21T16:37:29Z",
+            "installed_commit": "c03c156",
+            "last_commit": "c03c156",
+            "last_release_tag": "0.4.1",
+            "last_updated": "2019-12-28T00:42:15Z",
             "name": "Xiaomi BLE monitor sensor integration",
             "new": false,
             "repository_manifest": {
@@ -9085,11 +9212,46 @@
                 "iot_class": "local push",
                 "name": "Xiaomi BLE monitor sensor platform"
             },
-            "selected_tag": "0.4.0",
+            "selected_tag": "0.4.1",
             "show_beta": true,
-            "stars": 20,
+            "stars": 26,
             "topics": [],
-            "version_installed": "0.4.0"
+            "version_installed": "0.4.1"
+        },
+        "224001103": {
+            "authors": [
+                "@biker91620",
+                "@cyr-ius"
+            ],
+            "category": "integration",
+            "description": "Cozytouch support for Home Assistant",
+            "downloads": null,
+            "full_name": "Cyr-ius/hass-cozytouch",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "1.2",
+            "last_updated": null,
+            "name": "Cozytouch",
+            "new": true,
+            "repository_manifest": {
+                "country": "FR",
+                "domains": [
+                    "binary_sensor",
+                    "sensor",
+                    "climate",
+                    "water_heater",
+                    "switch"
+                ],
+                "homeassistant": "0.99.9",
+                "name": "Cozytouch"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 1,
+            "topics": [],
+            "version_installed": null
         },
         "224073673": {
             "authors": [
@@ -9828,6 +9990,66 @@
             "show_beta": false,
             "stars": 0,
             "topics": [],
+            "version_installed": null
+        },
+        "229519365": {
+            "authors": [
+                "@bacco007"
+            ],
+            "category": "integration",
+            "description": "Home Assistant Sensor for WaterNSW Real Time Data",
+            "downloads": null,
+            "full_name": "bacco007/sensor.waternsw",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "v0.2",
+            "last_updated": null,
+            "name": "Water NSW",
+            "new": true,
+            "repository_manifest": {
+                "country": "AU",
+                "domains": "sensor",
+                "name": "WaterNSW Real Time Data"
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 0,
+            "topics": [],
+            "version_installed": null
+        },
+        "230623251": {
+            "authors": [],
+            "category": "appdaemon",
+            "description": "EUROTRONIC TRV Valve position helper is an AppDaemon app that allows access to valve position (%) value from Z-Wave TRVs in Home Assistant",
+            "downloads": null,
+            "full_name": "jmarsik/ad-eurotronic-trv-valvepos",
+            "hide": false,
+            "installed": false,
+            "installed_commit": null,
+            "last_commit": null,
+            "last_release_tag": "v1.0",
+            "last_updated": null,
+            "name": "eurotronic-trv-valvepos",
+            "new": true,
+            "repository_manifest": {
+                "homeassistant": "0.103.0",
+                "name": "EUROTRONIC TRV Valve position helper",
+                "render_readme": true
+            },
+            "selected_tag": null,
+            "show_beta": false,
+            "stars": 1,
+            "topics": [
+                "appdaemon",
+                "eurotronic",
+                "hacs",
+                "hassio",
+                "home-assistant",
+                "trv",
+                "zwave"
+            ],
             "version_installed": null
         },
         "76125161": {

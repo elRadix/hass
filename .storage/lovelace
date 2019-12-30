@@ -4,13 +4,11 @@
             "custom_header": {
                 "chevrons": false,
                 "compact_mode": true,
-                "footer_mode": true,
                 "header_text": " ",
                 "hidden_tab_redirect": false,
                 "hide_unused": true,
                 "menu_dropdown": true,
-                "shadow": false,
-                "split_mode": true
+                "shadow": false
             },
             "resources": [
                 {

@@ -1,20 +1,20 @@
 secret: /conf/secrets.yaml
 
-logs:
-  main_log:
-    filename: /conf/appdaemon.log
-  access_log:
-    filename: /conf/access.log
-  error_log:
-    filename: /conf/error.log
-  diag_log:
-    filename: /conf/diag.log
-    log_generations: 5
-    log_size: 1024
-    format: "{asctime} {levelname:<8} {appname:<10}: {message}"
-  test_log:
-    name: TestLog
-    filename: /conf/test.log
+#logs:
+#  main_log:
+#    filename: /conf/appdaemon.log
+#  access_log:
+#    filename: /conf/access.log
+#  error_log:
+#    filename: /conf/error.log
+#  diag_log:
+#    filename: /conf/diag.log
+#    log_generations: 5
+#    log_size: 1024
+#    format: "{asctime} {levelname:<8} {appname:<10}: {message}"
+#  test_log:
+#    name: TestLog
+#    filename: /conf/test.log
     
 appdaemon:
   total_threads: 10

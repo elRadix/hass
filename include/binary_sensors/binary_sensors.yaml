@@ -24,7 +24,7 @@
 
   - platform: command_line
     name: WAN
-    command: "/opt/scripts/wan_test.sh"
+    command: '/opt/scripts/wan_test.sh'
     device_class: connectivity
     payload_on: "Up"
     payload_off: "Down"

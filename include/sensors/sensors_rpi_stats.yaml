@@ -23,10 +23,6 @@
      - type: load_15m
      - type: last_boot
      - type: process
-       arg: php-fpm7.0
-     - type: process
-       arg: nginx
-     - type: process
        arg: cron
      - type: process
        arg: dockerd

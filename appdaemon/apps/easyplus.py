@@ -13,46 +13,46 @@ class easyplus(hass.Hass):
     easyplus = self.get_state('switch.easyplus')
     failed = str(new).split(".sh ",1)[1]
     self.log("{}".format(failed))
-    loop = 0
-    while self.get_state('binary_sensor.easyplus_telnet') == 'off':
-      loop+=1
-      self.turn_off('switch.easyplus')
-      time.sleep(2)
-      self.turn_on('switch.easyplus')
-      self.call_service("notify/dageraad", message = ("Easyplus Reboot, try nr {} ".format(loop)))
-      time.sleep(35)
-      telnet = self.get_state('binary_sensor.easyplus_telnet')
-      easyplus = self.get_state('switch.easyplus')
-      self.get_state('binary_sensor.easyplus_telnet')
-      self.log("telnet state is %s", telnet)
-      self.call_service("notify/dageraad", message = ("Easyplus is {}, Telnet is {}".format(easyplus, telnet)))
+    if ",0" not in failed:
+      while self.get_state('binary_sensor.easyplus_telnet') == 'off':
+         for i in range (0, 5, 1):
+            self.turn_off('switch.easyplus')
+            time.sleep(2)
+            self.turn_on('switch.easyplus')
+            time.sleep(35)
+            telnet = self.get_state('binary_sensor.easyplus_telnet')
+            easyplus = self.get_state('binary_sensor.easyplus_telnet')
+            self.log("telnet state %s", telnet)
+            self.log("easyplus {} and telnet {} to enable switch - restart {}".format(easyplus, telnet, i))
+            self.call_service("notify/dageraad", message = ("easyplus turned {} an to enable switch - restart {}".format(easyplus, telnet, i)))
+            break
       returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
       self.log("{} {}".format(script, failed))
-      self.call_service("notify/dageraad", message = ("Started Switch {} after {} tries  ".format(failed, loop)))
+      self.call_service("notify/dageraad", message = ("switch turned {} succesfully".format(easyplus)))
       self.log(self.args)
 
 
 
-   #  if ",0" not in failed:
-   #    for i in range (0, 3, 1):
-   #     if easyplus != 'on':
-   #         self.turn_off('switch.easyplus')
-   #         time.sleep(2)
-   #         self.turn_on('switch.easyplus')
-   #         self.call_service("notify/dageraad", message = ("Run {} - Reboot Easyplus".format(i)))
-   #         time.sleep(35)
-   #         telnet = self.get_state('binary_sensor.easyplus_telnet')
-   #         easyplus = self.get_state('switch.easyplus')
-   #         self.log("easyplus {}, telnet {}, loop {}".format(easyplus, telnet, i))
-   #         self.call_service("notify/dageraad", message = ("Easyplus is {}, Telnet is {} - loop {}".format(easyplus, telnet, i)))
-   #         break
-   #    returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
-   #    self.log("state: {} {}".format(script, failed))
-   #    self.call_service("notify/dageraad", message = ("switch {}".format(easyplus)))
-   #    self.log(self.args)
-
-
-
-
-
-
+#  def failed_cb(self, entity, attribute, old, new, kwargs):
+#     script = "expect -f /opt/scripts/apex.sh"
+#     telnet = self.get_state('binary_sensor.easyplus_telnet')
+#     easyplus = self.get_state('switch.easyplus')
+#     failed = str(new).split(".sh ",1)[1]
+#     self.log("{}".format(failed))
+#     loop = 0
+#     while self.get_state('binary_sensor.easyplus_telnet') == 'off':
+#       loop+=1
+#       self.turn_off('switch.easyplus')
+#       time.sleep(2)
+#       self.turn_on('switch.easyplus')
+#       self.call_service("notify/dageraad", message = ("Easyplus Reboot, try nr {} ".format(loop)))
+#       time.sleep(35)
+#       telnet = self.get_state('binary_sensor.easyplus_telnet')
+#       easyplus = self.get_state('switch.easyplus')
+#       self.get_state('binary_sensor.easyplus_telnet')
+#       self.log("telnet state is %s", telnet)
+#       self.call_service("notify/dageraad", message = ("Easyplus is {}, Telnet is {}".format(easyplus, telnet)))
+#       returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
+#       self.log("{} {}".format(script, failed))
+#       self.call_service("notify/dageraad", message = ("Started Switch {} after {} tries  ".format(failed, loop)))
+#       self.log(self.args)

@@ -15,7 +15,7 @@ class easyplus(hass.Hass):
     loop = 0
     self.log("{}".format(failed))
     if ",0" not in failed:
-      while self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop != 4:
+      while self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop <=4:
          loop+=1
          self.turn_off('switch.easyplus')
          time.sleep(2)

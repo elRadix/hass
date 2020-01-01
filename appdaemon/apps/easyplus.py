@@ -24,8 +24,8 @@ class easyplus(hass.Hass):
          telnet = self.get_state('binary_sensor.easyplus_telnet')
          easyplus = self.get_state('binary_sensor.easyplus_telnet')
          self.log("telnet state %s", telnet)
-         self.log("easyplus {} and telnet {} to enable switch - restart {}".format(easyplus, telnet, i))
-         self.call_service("notify/dageraad", message = ("easyplus turned {} an to enable switch - restart {}".format(easyplus, telnet, i)))
+         self.log("easyplus {} and telnet {} to enable switch - restart {}".format(easyplus, telnet, loop))
+         self.call_service("notify/dageraad", message = ("easyplus turned {} an to enable switch - restart {}".format(easyplus, telnet, loop)))
          break
       returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
       self.log("{} {}".format(script, failed))

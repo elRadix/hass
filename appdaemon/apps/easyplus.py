@@ -80,8 +80,3 @@ class easyplus(hass.Hass):
 #       self.log("{} {}".format(script, failed))
 #       self.call_service("notify/dageraad", message = ("Started Switch {} after {} tries  ".format(failed, loop)))
 #       self.log(self.args)
-
-
-    loop = 0
-    while self.get_state('binary_sensor.easyplus_telnet') == 'off' or loop = 3:
-      loop+=1

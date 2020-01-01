@@ -24,11 +24,11 @@ class easyplus(hass.Hass):
          telnet = self.get_state('binary_sensor.easyplus_telnet')
          easyplus = self.get_state('binary_sensor.easyplus_telnet')
          self.log("telnet state %s", telnet)
-         self.log("easyplus {} and telnet {} to enable switch - restart #{}".format(easyplus, telnet, loop))
-         self.call_service("notify/dageraad", message = ("easyplus {} and telnet {} to enable switch - restart #{}".format(easyplus, telnet, loop)))
+         self.log("easyplus {} and telnet {} - restart #{}".format(easyplus, telnet, loop))
+         self.call_service("notify/dageraad", message = ("easyplus {} and telnet {} - restart #{}".format(easyplus, telnet, loop)))
       else:
          if self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop >3:
-           self.log("Reboot failed after {} tries, telnet is {} ".format(loop, telnet))
+           self.log("Easyplud failed after {} tries, telnet is {} ".format(loop, telnet))
            self.call_service("notify/dageraad", message = ("Easyplus failed after {} tries, telnet still {} ".format(loop, telnet)))
          if self.get_state('binary_sensor.easyplus_telnet') == 'on' and loop <=3:
            returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
@@ -45,7 +45,7 @@ class easyplus(hass.Hass):
 #     loop = 0
 #     self.log("{}".format(failed))
 #     if ",0" not in failed:
-#       while self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop <=3:
+#       while self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop <=2:
 #         loop += 1
 #         self.turn_off('switch.easyplus')
 #         time.sleep(1)
@@ -57,10 +57,10 @@ class easyplus(hass.Hass):
 #         self.log("easyplus turned {} to enable switch - restart {}".format(easyplus, loop))
 #         self.call_service("notify/merwone", message = ("easyplus turned {} to enable switch - restart {}".format(easyplus, loop)))
 #       else:
-#         if self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop >3:
+#         if self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop >2:
 #           self.log("easyplus failed to turn on - restart {}".format(loop))
 #           self.call_service("notify/merwone", message = ("easyplus failed to turn on - restart {}".format(loop)))
-#         if self.get_state('binary_sensor.easyplus_telnet') == 'on' and loop <=3:
+#         if self.get_state('binary_sensor.easyplus_telnet') == 'on' and loop <=2:
 #           returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
 #           self.log("{} {}".format(script, failed))
 #           self.call_service("notify/merwone", message = ("switch turned {} succesfully".format(easyplus)))

@@ -27,10 +27,10 @@ class easyplus(hass.Hass):
          self.log("easyplus {} and telnet {} to enable switch - restart #{}".format(easyplus, telnet, loop))
          self.call_service("notify/dageraad", message = ("easyplus {} and telnet {} to enable switch - restart #{}".format(easyplus, telnet, loop)))
       else:
-         if self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop == 4:
+         if self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop >3:
            self.log("Reboot failed after {} tries, telnet is {} ".format(loop, telnet))
            self.call_service("notify/dageraad", message = ("Easyplus failed after {} tries, telnet still {} ".format(loop, telnet)))
-         if self.get_state('binary_sensor.easyplus_telnet') == 'on' and loop <=4:
+         if self.get_state('binary_sensor.easyplus_telnet') == 'on' and loop <=3:
            returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
            self.log("{} {}".format(script, failed))
            self.call_service("notify/dageraad", message = ("switch turned {} succesfully".format(easyplus)))

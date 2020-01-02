@@ -5,9 +5,9 @@ import time
 class easyplus(hass.Hass):
 
  def initialize(self):
-    self.listen_state(self.failed_cb, 'sensor.error')
+    self.listen_state(self.easyplus_cb, 'sensor.error')
 
- def failed_cb(self, entity, attribute, old, new, kwargs):
+ def easyplus_cb(self, entity, attribute, old, new, kwargs):
     script = "expect -f /opt/scripts/apex.sh"
     telnet = self.get_state('binary_sensor.easyplus_telnet')
     easyplus = self.get_state('switch.easyplus')

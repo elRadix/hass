@@ -32,3 +32,7 @@
     services:
       - service: telegram_rachid
       - service: telegram_soumaya
+
+  - platform: file
+    name: log_unknown_rf_codes
+    filename: /opt/scripts/my-log_unknown_rf_codes.log

@@ -18,10 +18,19 @@ d = { '0DF00A':['inkomhal','ON','true'],
 
 p = data.get('payload')
 
+# if p is not None:
+#   if p in d.keys():
+#     service_data = {'topic':'home/{}'.format(d[p][0]), 'payload':'{}'.format(d[p][1]), 'qos':0, 'retain':'{}'.format(d[p][2])}
+#   else:
+#     service_data = {'topic':'home/unknown', 'payload':'{}'.format(p), 'qos':0, 'retain':'false'}
+#     logger.warning('<rfbridge_demux> Received unknown RF command: {}'.format(p))
+#   hass.services.call('mqtt', 'publish', service_data, False)
+
 if p is not None:
   if p in d.keys():
     service_data = {'topic':'home/{}'.format(d[p][0]), 'payload':'{}'.format(d[p][1]), 'qos':0, 'retain':'{}'.format(d[p][2])}
+    hass.services.call('mqtt', 'publish', service_data, False)
   else:
-    service_data = {'topic':'home/unknown', 'payload':'{}'.format(p), 'qos':0, 'retain':'false'}
     logger.warning('<rfbridge_demux> Received unknown RF command: {}'.format(p))
-  hass.services.call('mqtt', 'publish', service_data, False)
+    service_data = {'message':'{} - {}'.format(datetime.datetime.now().strftime("%d %b, %X"), p)}
+    hass.services.call('notify', 'log_unknown_rf_codes', service_data, False)

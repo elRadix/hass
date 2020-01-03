@@ -18,7 +18,8 @@ class telnet(hass.Hass):
     self.log("{}".format(telnet))
     self.log(self.args)
 
-    process = subprocess.Popen(['ping', '-c 4', 'python.org'], 
+    process = subprocess.Popen(['/bin/bash', '/opt/scripts/telnet.sh'],
+                           shell=True,
                            stdout=subprocess.PIPE,
                            universal_newlines=True)
     while True:
@@ -27,8 +28,8 @@ class telnet(hass.Hass):
         # Do something else
         return_code = process.poll()
         if return_code is not None:
-            print('RETURN CODE', return_code)
-            # Process has finished, read rest of the output 
+            print('OUTPUT =', return_code)
+            # Process has finished, read rest of the output
             for output in process.stdout.readlines():
                 print(output.strip())
             break

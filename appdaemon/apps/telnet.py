@@ -13,7 +13,7 @@ class telnet(hass.Hass):
     print(result.stdout)
     print(result.stderr)
     #returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
-    telnet = subprocess.run(['ls', '/opt/scripts/'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    telnet = subprocess.run(['/bin/sh', '/opt/scripts/telnet.sh'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     print(telnet.stdout)
 
     self.log(self.args)

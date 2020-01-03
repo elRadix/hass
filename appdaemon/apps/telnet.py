@@ -5,7 +5,7 @@ import time
 class telnet(hass.Hass):
 
  def initialize(self):
-    self.listen_state(self.telnet_cb, 'sensor.error')
+    self.listen_state(self.telnet_cb, 'input_boolean.night')
 
  def telnet_cb(self, entity, attribute, old, new, kwargs):
     result = subprocess.run(['/opt/scripts/telnet.sh'], capture_output=True)

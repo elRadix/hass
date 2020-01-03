@@ -9,11 +9,11 @@ class telnet(hass.Hass):
 
  def telnet_cb(self, entity, attribute, old, new, kwargs):
     script = "/opt/scripts/telnet.sh"
-    result = subprocess.run(['sh', '/opt/scripts/telnet.sh'], shell=True, capture_output=True)
+    result = subprocess.run(['/bin/sh', '/opt/scripts/telnet.sh'], shell=True, capture_output=True)
     print(result.stdout)
     print(result.stderr)
     #returncode = subprocess.run("{} {}".format(script, failed), shell=True, capture_output=True).stdout
-    telnet = subprocess.run(['ls', '/op/scripts/'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    telnet = subprocess.run(['ls', '/opt/scripts/'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     print(telnet.stdout)
 
     self.log(self.args)

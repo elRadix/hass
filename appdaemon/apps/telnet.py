@@ -11,7 +11,7 @@ class telnet(hass.Hass):
  def telnet_cb(self, entity, attribute, old, new, kwargs):
     script = "/opt/scripts/telnet.sh"
     os.chdir('/opt/scripts/') #to get into the directory where app is installed
-    telnet = subprocess.run([script], shell=True, stdout=subprocess.PIPE)
+    telnet = subprocess.run(['bash', '/opt/scripts/telnet.sh'], shell=True, stdout=subprocess.PIPE)
     output = telnet.stdout.decode('utf-8')
     print(output)
     print(telnet.stdout)

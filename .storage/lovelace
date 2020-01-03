@@ -3205,10 +3205,6 @@
                                             "default_color": "var(--primary-text-color)",
                                             "entity": "input_boolean.easyplus_boiler_shower",
                                             "icon": "mdi:shower-head",
-                                            "lock": {
-                                                "enabled": true,
-                                                "unlock": "tap"
-                                            },
                                             "show_name": false,
                                             "size": "75%",
                                             "state": [
@@ -3270,10 +3266,6 @@
                                             "default_color": "var(--primary-text-color)",
                                             "entity": "input_boolean.easyplus_boiler_heating",
                                             "icon": "mdi:fire",
-                                            "lock": {
-                                                "enabled": true,
-                                                "unlock": "tap"
-                                            },
                                             "show_name": false,
                                             "size": "75%",
                                             "state": [
@@ -3333,10 +3325,6 @@
                                             "color_type": "card",
                                             "entity": "switch.easyplus",
                                             "icon": "mdi:power",
-                                            "lock": {
-                                                "enabled": true,
-                                                "unlock": "tap"
-                                            },
                                             "name": "Easyplus",
                                             "show_name": false,
                                             "size": "100%",
@@ -5542,7 +5530,7 @@
                                     "name": ""
                                 },
                                 {
-                                    "entity": "sensor.mija_keuken_battery_level_2",
+                                    "entity": "sensor.mija_keuken_battery_level",
                                     "name": ""
                                 },
                                 {
@@ -5550,11 +5538,11 @@
                                     "name": ""
                                 },
                                 {
-                                    "entity": "sensor.mija_living_battery_level_2",
+                                    "entity": "sensor.mija_living_battery_level",
                                     "name": ""
                                 },
                                 {
-                                    "entity": "sensor.mija_yassin_battery_level_2",
+                                    "entity": "sensor.mija_yassin_battery_level",
                                     "name": ""
                                 },
                                 {
@@ -5562,28 +5550,11 @@
                                     "name": ""
                                 },
                                 {
-                                    "entity": "sensor.mija_floradix_battery_level_2",
+                                    "entity": "sensor.mija_floradix_battery_level",
                                     "name": ""
                                 }
                             ],
                             "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.miflora_conductivity"
-                                },
-                                {
-                                    "entity": "sensor.miflora_light"
-                                },
-                                {
-                                    "entity": "sensor.miflora_temp"
-                                },
-                                {
-                                    "entity": "sensor.miflora_moistures"
-                                }
-                            ],
-                            "type": "entities"
                         },
                         {
                             "entities": [
@@ -7854,6 +7825,23 @@
                                 },
                                 {
                                     "entity": "binary_sensor.rf_button"
+                                }
+                            ],
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.miflora_conductivity"
+                                },
+                                {
+                                    "entity": "sensor.miflora_light"
+                                },
+                                {
+                                    "entity": "sensor.miflora_temp"
+                                },
+                                {
+                                    "entity": "sensor.miflora_moistures"
                                 }
                             ],
                             "type": "entities"

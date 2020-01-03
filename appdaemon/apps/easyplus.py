@@ -17,7 +17,7 @@ class easyplus(hass.Hass):
     if ",0" not in failed:
       while self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop <=4:
          loop+=1
-         checktelnet = subprocess.run(["/opt/scripts/telnet.sh"], universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+         checktelnet = subprocess.run(["/opt/scripts/telnet.sh"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
          self.call_service("notify/dageraad", message = ("Failed switch: {}".format(failed, )))
          self.turn_off('switch.easyplus')
          time.sleep(2)

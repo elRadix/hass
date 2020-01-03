@@ -9,8 +9,8 @@ class telnet(hass.Hass):
     self.listen_state(self.telnet_cb, 'input_boolean.night')
 
  def telnet_cb(self, entity, attribute, old, new, kwargs):
-      telnet = subprocess.call(['python /opt/scripts/telnet.py'])
-   #  os.chdir('/opt/scripts/') #to get into the directory where app is installed
+      os.chdir('/opt/scripts/') #to get into the directory where app is installed
+      telnet = subprocess.call(['/opt/scripts/telnet.py'])
    #  process = subprocess.Popen(['python', '/opt/scripts/telnet.py'],
    #                         stdout=subprocess.PIPE,
    #                         universal_newlines=True)

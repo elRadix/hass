@@ -10,8 +10,7 @@ class telnet(hass.Hass):
 
  def telnet_cb(self, entity, attribute, old, new, kwargs):
     os.chdir('/opt/scripts/') #to get into the directory where app is installed
-    process = subprocess.Popen(['/bin/bash', '/opt/scripts/telnet.sh'],
-                           shell=True,
+    process = subprocess.Popen(['python', '/opt/scripts/telnet.py'],
                            stdout=subprocess.PIPE,
                            universal_newlines=True)
     while True:
@@ -70,3 +69,4 @@ class telnet(hass.Hass):
 #            process.wait()
 #            print (process.returncode)
 #       self.log(self.args)
+

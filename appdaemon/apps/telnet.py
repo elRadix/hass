@@ -2,6 +2,7 @@ import appdaemon.plugins.hass.hassapi as hass
 import subprocess
 import datetime
 import time
+import os
 class telnet(hass.Hass):
 
  def initialize(self):
@@ -9,7 +10,10 @@ class telnet(hass.Hass):
 
  def telnet_cb(self, entity, attribute, old, new, kwargs):
     script = "/opt/scripts/telnet.sh"
-    telnet = subprocess.run([script], shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    os.chdir('/opt/scripts/') #to get into the directory where app is installed
+    telnet = subprocess.run([script], shell=True, stdout=subprocess.PIPE)
+    output = telnet.stdout.decode('utf-8')
+    print(output)
     print(telnet.stdout)
     self.log("{}".format(telnet))
     self.log(self.args)

@@ -15,7 +15,7 @@
 
 
   - platform: command_line
-    command: '/opt/scripts/telnet.sh'
+    command: '/opt/scripts/telnet.py'
     scan_interval: 5
     name: 'easyplus_telnet'
     device_class: connectivity

@@ -13,11 +13,11 @@ class easyplus(hass.Hass):
     easyplus = self.get_state('switch.easyplus')
     failed = str(new).split(".sh ",1)[1]
     loop = 0
+    cmdtelnet = "/opt/scripts/telnet.sh"
     self.log("{}".format(failed))
     if ",0" not in failed:
       while self.get_state('binary_sensor.easyplus_telnet') == 'off' and loop <=4:
          loop+=1
-         checktelnet = subprocess.run(["/opt/scripts/telnet.sh"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
          self.call_service("notify/dageraad", message = ("Failed switch: {}".format(failed, )))
          self.turn_off('switch.easyplus')
          time.sleep(2)
@@ -37,12 +37,17 @@ class easyplus(hass.Hass):
            self.log("{} {}".format(script, failed))
            self.call_service("notify/dageraad", message = ("switch turned {} succesfully".format(easyplus)))
            self.set_state("sensor.error", state=".sh '0,0'")
+           process = subprocess.Popen(cmdtelnet, shell=True, stdout=subprocess.PIPE)
+           process.wait()
+           print (process.returncode)
       self.log(self.args)
 
 
 
 
-
+# process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+# process.wait()
+# print process.returncode
 
 #  def failed_cb(self, entity, attribute, old, new, kwargs):
 #     script = "expect -f /home/homeassistant/.homeassistant/opt/bin/apex.sh"

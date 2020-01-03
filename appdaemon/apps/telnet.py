@@ -8,7 +8,7 @@ class telnet(hass.Hass):
     self.listen_state(self.telnet_cb, 'input_boolean.night')
 
  def telnet_cb(self, entity, attribute, old, new, kwargs):
-    telnet = subprocess.run(['/bin/sh', '/opt/scripts/telnet.sh'], shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    telnet = subprocess.run(['/bin/bash', '/opt/scripts/telnet.sh'], shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     print(telnet.stdout)
     self.log("{}".format(telnet))
     self.log(self.args)

@@ -133,31 +133,30 @@ recorder:  #!include_dir_merge_list include/recorder
   #db_url: mysql://user:pw@url:port/dbname?charset=utf8
   purge_keep_days: 7
   purge_interval: 0
-  exclude:
-    domains:
-      - automation
-      - weblink
-      - updater
-      - group
-      - calendar
-      - camera
-      - device_tracker
-      - group
-      - input_text
-      - input_number
-      - lock
-      - media_player
-      - remote
-      - script
-      - switch
-      - light
-    # - sensor
-      - sun
-      - zone
-      - weather
-#    entities:
-#      - camera.porch_camera
-#      - camera.bedroom_tv_image
+#   exclude:
+#     domains:
+#       - automation
+#       - weblink
+#       - updater
+#       - group
+#       - calendar
+#       - camera
+#       - group
+#       - input_text
+#       - input_number
+#       - lock
+#       - media_player
+#       - remote
+#       - script
+#       - switch
+#       - light
+#     # - sensor
+#       - sun
+#       - zone
+#       - weather
+# #    entities:
+# #      - camera.porch_camera
+# #      - camera.bedroom_tv_image
 script: !include_dir_merge_named include/script
 shell_command: !include_dir_merge_named include/shell_commands
 sensor: !include_dir_merge_list include/sensors

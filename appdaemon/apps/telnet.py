@@ -9,15 +9,7 @@ class telnet(hass.Hass):
     self.listen_state(self.telnet_cb, 'input_boolean.night')
 
  def telnet_cb(self, entity, attribute, old, new, kwargs):
-    script = "/opt/scripts/telnet.sh"
     os.chdir('/opt/scripts/') #to get into the directory where app is installed
-    telnet = subprocess.run(['/bin/bash', '/opt/scripts/telnet.sh'], timeout =6, shell=True, stdout=subprocess.PIPE)
-    output = telnet.stdout.decode('utf-8')
-    print(output)
-    print(telnet.stdout)
-    self.log("{}".format(telnet))
-    self.log(self.args)
-
     process = subprocess.Popen(['/bin/bash', '/opt/scripts/telnet.sh'],
                            shell=True,
                            stdout=subprocess.PIPE,
@@ -35,8 +27,13 @@ class telnet(hass.Hass):
             break
 
 
-
-
+   #  script = "/opt/scripts/telnet.sh"
+   #  telnet = subprocess.run(['/bin/bash', '/opt/scripts/telnet.sh'], timeout =6, shell=True, stdout=subprocess.PIPE)
+   #  output = telnet.stdout.decode('utf-8')
+   #  print(output)
+   #  print(telnet.stdout)
+   #  self.log("{}".format(telnet))
+   #  self.log(self.args)
 
 
 #  def easyplus_cb(self, entity, attribute, old, new, kwargs):

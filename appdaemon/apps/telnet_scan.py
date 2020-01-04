@@ -29,11 +29,8 @@ class telnet_scan(hass.Hass):
      while self.get_state('binary_sensor.easyplus_telnet') == 'on':
        data=tn.read_very_eager()
        if ">".encode() in data:
-         new= data.split(">".encode())
-         #new = str(data).split(">",1)[1].encode()
-         self.log(new)
-       if "s".encode() in data:
-         self.log("command {}".format(data))
+        entity_type= data.split()[0].encode()
+        self.log(entity_type)
      self.log(self.args)
 
 

@@ -21,11 +21,6 @@ class telnet_scan(hass.Hass):
      self.log("starting telnet session")
      tn = telnetlib.Telnet("192.168.3.61",2024)
      tn.write("pass apex\r\n".encode())
-     #time.sleep(0.5)
-     #tn.write("getdata\r\n".encode()) #get full download of easyplus
-     #time.sleep(0.5)
-     #getdata=tn.read_very_eager()
-     self.log(getdata)
      while self.get_state('binary_sensor.easyplus_telnet') == 'on':
        data=tn.read_very_eager().split("\n")
        if ">".encode() in data:
@@ -33,6 +28,12 @@ class telnet_scan(hass.Hass):
      self.log(self.args)
 
 
+
+     #time.sleep(0.5)
+     #tn.write("getdata\r\n".encode()) #get full download of easyplus
+     #time.sleep(0.5)
+     #getdata=tn.read_very_eager()
+     #self.log(getdata)
 
         # if "DigitalOut 33,ON".encode() in data:
         #   self.log("Microwave ON")

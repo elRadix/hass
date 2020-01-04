@@ -28,7 +28,7 @@ class telnet_scan(hass.Hass):
     while self.get_state('binary_sensor.easyplus_telnet') == 'on':
       self.log("getting easyplus log...")
       data=tn.read_very_eager()
-      if " ".encode() not in data:
+      if ">".encode() in data:
         self.log(data)
         if "DigitalOut 33,ON".encode() in data:
           self.log("Microwave ON")
@@ -38,6 +38,9 @@ class telnet_scan(hass.Hass):
           self.set_state("switch.stp_keuken_microgolf", state = "off")
     self.log(self.args)
 
+>Temperature 8,97.5
+>Temperature 10,19.5
+>Dig
 
 ###################
 ## original code ##

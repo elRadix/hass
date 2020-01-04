@@ -30,7 +30,7 @@ class telnet_scan(hass.Hass):
       if ">".encode() in data:
         self.log(data)
       if "s".encode() in data:
-        self.log("{}".format(data))
+        self.log("command {}".format(data))
     self.log(self.args)
 
 

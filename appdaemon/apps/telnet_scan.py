@@ -23,15 +23,15 @@ class telnet_scan(hass.Hass):
     getdata=tn.read_very_eager()
     #tn.read_until("b".encode())
     #data=tn.read_very_eager()
-    data = tn.read_all() #(‘ascii’)
+#    data = tn.read_all() #(‘ascii’)
 #    tn.close()
 #    self.log("getting easyplus completed")
     self.log(getdata)
     self.log(data)
-    if "DigitalOut 33,ON".encode() in data:
+    if "DigitalOut 33,ON".encode() in getdata:
        self.log("Microwave ON")
        self.set_state("switch.stp_keuken_microgolf", state = "on")
-    if "DigitalOut 33,OFF".encode() in data:
+    if "DigitalOut 33,OFF".encode() in getdata:
        self.log("Microwave OFF")
        self.set_state("switch.stp_keuken_microgolf", state = "off")
 

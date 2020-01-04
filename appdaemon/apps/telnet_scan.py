@@ -21,7 +21,7 @@ class telnet_scan(hass.Hass):
     tn.write("getdata\r\n".encode())
     time.sleep(0.5)
     #data=tn.read_very_eager()
-    data = tn.read_all().decode() #(‘ascii’)
+    data = tn.read_all() #(‘ascii’)
 #    tn.close()
 #    self.log("getting easyplus completed")
     self.log(readoutput)

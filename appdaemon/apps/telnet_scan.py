@@ -37,6 +37,7 @@ class telnet_scan(hass.Hass):
 
 
 
+
 #  def get_easyplus(self, entity, attribute, old, new, kwargs):
 #     self.log("getting easyplus log...")
 #     tn = telnetlib.Telnet("192.168.3.61",2024)

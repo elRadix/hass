@@ -26,7 +26,7 @@ class telnet_scan(hass.Hass):
     getdata=tn.read_very_eager()
     self.log(getdata)
     while self.get_state('binary_sensor.easyplus_telnet') == 'on':
-      self.log("getting easyplus log...")
+      #self.log("getting easyplus log...")
       data=tn.read_very_eager()
       if ">".encode() in data:
         self.log(data)

@@ -7,10 +7,14 @@ import time
 
 class telnet_scan(hass.Hass):
 
+#  def initialize(self):
+# #    time = datetime.time(0, 0, 0)
+#     self.listen_state(self.get_easyplus, 'input_boolean.night')
+# #    self.handle = self.run_every(get_easyplus, time)
+
+
  def initialize(self):
-#    time = datetime.time(0, 0, 0)
     self.listen_state(self.get_easyplus, 'input_boolean.night')
-#    self.handle = self.run_every(get_easyplus, time)
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):
     self.log("getting easyplus log...")

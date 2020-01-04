@@ -39,6 +39,7 @@ class telnet_scan(hass.Hass):
     self.log(self.args)
 
 
+
 ###################
 ## original code ##
 ###################

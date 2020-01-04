@@ -17,26 +17,26 @@ class telnet_scan(hass.Hass):
     self.listen_state(self.get_easyplus, 'input_boolean.night_late')
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):
-    self.log("getting easyplus log...")
-    tn = telnetlib.Telnet("192.168.3.61",2024)
-#    tn.write("r\n".encode())
-    tn.write("pass apex\r\n".encode())
-    time.sleep(0.5)
-    tn.write("getdata\r\n".encode())
-    time.sleep(0.5)
-    getdata=tn.read_very_eager()
-    data = (tn.read_all().decode('ascii'))
-    #sys.stdout.write(data)
-    tn.expect("test")
-    #tn.close()
-    self.log(data)
-    self.log(getdata)
-    if "DigitalOut 33,ON".encode() in data:
-       self.log("Microwave ON")
-       self.set_state("switch.stp_keuken_microgolf", state = "on")
-    if "DigitalOut 33,OFF".encode() in data:
-       self.log("Microwave OFF")
-       self.set_state("switch.stp_keuken_microgolf", state = "off")
+    telnet = self.get_state('binary_sensor.easyplus_telnet')
+    while self.get_state('binary_sensor.easyplus_telnet') == 'on':
+       self.log("getting easyplus log...")
+       tn = telnetlib.Telnet("192.168.3.61",2024)
+       tn.write("pass apex\r\n".encode())
+       time.sleep(0.5)
+       tn.write("getdata\r\n".encode())
+       time.sleep(0.5)
+       getdata=tn.read_very_eager()
+       data = (tn.read_all().decode('ascii'))
+       tn.expect("test")
+       tn.close()
+       self.log(data)
+       self.log(getdata)
+       if "DigitalOut 33,ON".encode() in data:
+          self.log("Microwave ON")
+          self.set_state("switch.stp_keuken_microgolf", state = "on")
+       if "DigitalOut 33,OFF".encode() in data:
+          self.log("Microwave OFF")
+          self.set_state("switch.stp_keuken_microgolf", state = "off")
     self.log(self.args)
 
     #tn.read_until("b".encode())

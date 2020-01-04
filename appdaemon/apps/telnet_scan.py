@@ -8,8 +8,9 @@ import time
 class telnet_scan(hass.Hass):
 
  def initialize(self):
+#    time = datetime.time(0, 0, 0)
     self.listen_state(self.get_easyplus, "switch.stp_keuken_microgolf", new = "on")
-
+#    self.handle = self.run_every(get_easyplus, time)
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):
     self.run_in(self.get_easyplus, 60)
@@ -19,11 +20,11 @@ class telnet_scan(hass.Hass):
     time.sleep(0.5)
     tn.write("getdata\r\n".encode())
     time.sleep(0.5)
-    data=tn.read_very_eager()
-    #sys.stdout.write(data)
-    tn.close()
-    self.log("getting easyplus completed")
-    self.log(data)
+    #data=tn.read_very_eager()
+    data = tn.read_all().decode() #(‘ascii’)
+#    tn.close()
+#    self.log("getting easyplus completed")
+    self.log(readoutput)
     if "DigitalOut 33,ON".encode() in data:
        self.log("Microwave ON")
        self.set_state("switch.stp_keuken_microgolf", state = "on")

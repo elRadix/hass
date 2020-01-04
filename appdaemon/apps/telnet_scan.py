@@ -4,7 +4,6 @@ import telnetlib
 import time
 import re
 
-
 class TelnetEasyplus(hass.Hass):
 
   def initialize(self):
@@ -21,6 +20,7 @@ class TelnetEasyplus(hass.Hass):
     data=tn.read_very_eager()
     sys.stdout.write(data)
     tn.close()
+    self.log(data)
+
     #data2=re.findall(r'LTE band: *(\S*)', data.decode())
     #self.set_state("input_text.band", state = data2 ) #BCK - need to parse data2
-    self.log(data)

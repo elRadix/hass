@@ -27,7 +27,7 @@ class telnet_scan(hass.Hass):
     self.log(getdata)
     while self.get_state('binary_sensor.easyplus_telnet') == 'on':
       self.log("getting easyplus log...")
-      data=tn.read_all()
+      data=tn.read_very_eager()
       #tn.close()
       self.log(data)
       if "DigitalOut 33,ON".encode() in data:

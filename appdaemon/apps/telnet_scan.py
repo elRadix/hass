@@ -4,7 +4,7 @@ import telnetlib
 import time
 import re
 
-class TelnetEasyplus(hass.Hass):
+class telnet_scan(hass.Hass):
 
   def initialize(self):
     #Run callback to run get_bands every 30s starting now

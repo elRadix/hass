@@ -23,10 +23,10 @@ class telnet_scan(hass.Hass):
     #sys.stdout.write(data)
     tn.close()
     self.log(data)
-    if "Led 0,ON".encode() in data:
-       self.log("LED O is ON")
-    if "Led 0,OFF".encode() in data:
-       self.log("LED O is OFF")
+    if "DigitalOut 33,ON".encode() in data:
+       self.log("Microwave ON")
+    if "DigitalOut 33,OFF".encode() in data:
+       self.log("Microwave OFF")
 
 
 

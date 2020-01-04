@@ -16,14 +16,14 @@ class telnet_scan(hass.Hass):
  def initialize(self):
     self.listen_state(self.get_easyplus, 'input_boolean.night_late')
 
- def get_easyplus(self, entity, attribute, old, new, kwargs):
+
+
+ def get_easyplus(self):
+    self.log("getting easyplus log...")
+    tn = telnetlib.Telnet("192.168.3.61",2024)
+    tn.write("pass apex\r\n".encode())
     while self.get_state('binary_sensor.easyplus_telnet') == 'on':
       self.log("getting easyplus log...")
-      tn = telnetlib.Telnet("192.168.3.61",2024)
-      tn.write("pass apex\r\n".encode())
-      time.sleep(0.5)
-      tn.write("getdata\r\n".encode())
-      time.sleep(0.5)
       data=tn.read_very_eager()
       #tn.close()
       self.log(data)
@@ -34,6 +34,19 @@ class telnet_scan(hass.Hass):
          self.log("Microwave OFF")
          self.set_state("switch.stp_keuken_microgolf", state = "off")
     self.log(self.args)
+
+
+
+#  def get_easyplus(self, entity, attribute, old, new, kwargs):
+#     self.log("getting easyplus log...")
+#     tn = telnetlib.Telnet("192.168.3.61",2024)
+#     tn.write("pass apex\r\n".encode())
+#     time.sleep(0.5)
+#     tn.write("getdata\r\n".encode())
+#     time.sleep(0.5)
+#     data=tn.read_very_eager()
+#     tn.close()
+#     self.log(data)
 
     #tn.read_until("b".encode())
     #data=tn.read_very_eager()

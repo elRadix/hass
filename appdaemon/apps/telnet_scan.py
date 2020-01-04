@@ -24,9 +24,10 @@ class telnet_scan(hass.Hass):
     time.sleep(0.5)
     tn.write("getdata\r\n".encode())
     time.sleep(0.5)
-    data=tn.read_very_eager()
+#    data=tn.read_very_eager()
+    data = tn.read_all() 
     #sys.stdout.write(data)
-    tn.close()
+#    tn.close()
     self.log(data)
     if "DigitalOut 33,ON".encode() in data:
        self.log("Microwave ON")

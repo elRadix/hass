@@ -9,9 +9,10 @@ class telnet_scan(hass.Hass):
 
  def initialize(self):
     self.listen_state(self.get_easyplus, "switch.easyplus", new = "on")
-    self.run_in(self.get_easyplus, 60)
+
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):
+    self.run_in(self.get_easyplus, 60)
     self.log("getting easyplus log...")
     tn = telnetlib.Telnet("192.168.3.61",2024)
     tn.write("pass apex\r\n".encode())

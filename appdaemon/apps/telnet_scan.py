@@ -14,24 +14,25 @@ class telnet_scan(hass.Hass):
 
 
  def initialize(self):
-    self.listen_state(self.get_easyplus, 'input_boolean.night')
+    self.listen_state(self.get_easyplus, 'binary_sensor.easyplus_telnet')
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):
-    self.log("starting telnet session")
-    tn = telnetlib.Telnet("192.168.3.61",2024)
-    tn.write("pass apex\r\n".encode())
-    time.sleep(0.5)
-    tn.write("getdata\r\n".encode()) #get full download of easyplus
-    time.sleep(0.5)
-    getdata=tn.read_very_eager()
-    self.log(getdata)
-    while self.get_state('binary_sensor.easyplus_telnet') == 'on':
-      data=tn.read_very_eager()
-      if ">".encode() in data:
-        self.log(data)
-      if "s".encode() in data:
-        self.log("command {}".format(data))
-    self.log(self.args)
+   if old == "off" and new == "on":
+     self.log("starting telnet session")
+     tn = telnetlib.Telnet("192.168.3.61",2024)
+     tn.write("pass apex\r\n".encode())
+     time.sleep(0.5)
+     tn.write("getdata\r\n".encode()) #get full download of easyplus
+     time.sleep(0.5)
+     getdata=tn.read_very_eager()
+     self.log(getdata)
+     while self.get_state('binary_sensor.easyplus_telnet') == 'on':
+       data=tn.read_very_eager()
+       if ">".encode() in data:
+         self.log(data)
+       if "s".encode() in data:
+         self.log("command {}".format(data))
+     self.log(self.args)
 
 
 

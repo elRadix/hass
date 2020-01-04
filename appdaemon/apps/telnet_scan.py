@@ -14,15 +14,19 @@ class telnet_scan(hass.Hass):
  def get_easyplus(self, entity, attribute, old, new, kwargs):
     self.log("getting easyplus log...")
     tn = telnetlib.Telnet("192.168.3.61",2024)
-    tn.write("r\n".encode())
+#    tn.write("r\n".encode())
     tn.write("pass apex\r\n".encode())
     time.sleep(0.5)
     tn.write("getdata\r\n".encode())
-    time.sleep(3)
+    time.sleep(0.5)
     data=tn.read_very_eager()
     #sys.stdout.write(data)
     tn.close()
     self.log(data)
+    if "Led 0,OFF" in data:
+       self.log("LED O FOUND") 
+
+
 
     #data2=re.findall(r'LTE band: *(\S*)', data.decode())
     #self.set_state("input_text.band", state = data2 ) #BCK - need to parse data2

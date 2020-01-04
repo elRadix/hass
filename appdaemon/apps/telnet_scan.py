@@ -38,9 +38,6 @@ class telnet_scan(hass.Hass):
           self.set_state("switch.stp_keuken_microgolf", state = "off")
     self.log(self.args)
 
->Temperature 8,97.5
->Temperature 10,19.5
->Dig
 
 ###################
 ## original code ##

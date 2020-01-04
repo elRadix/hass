@@ -22,7 +22,7 @@ class telnet_scan(hass.Hass):
      tn = telnetlib.Telnet("192.168.3.61",2024)
      tn.write("pass apex\r\n".encode())
      while self.get_state('binary_sensor.easyplus_telnet') == 'on':
-       data=tn.read_very_eager().split("\n")
+       data=tn.read_very_eager().split("\n").encode()
        if ">".encode() in data:
         self.log(data)
      self.log(self.args)

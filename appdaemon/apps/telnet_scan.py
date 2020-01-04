@@ -8,7 +8,7 @@ class TelnetEasyplus(hass.Hass):
 
   def initialize(self):
     #Run callback to run get_bands every 30s starting now
-        self.run_every(self.get_easypluslog, self.datetime(), 30)
+    self.run_every(self.get_easypluslog, self.datetime(), 30)
 
   def get_easypluslog(self, kwargs):
     #self.log("getting band...")
@@ -18,7 +18,7 @@ class TelnetEasyplus(hass.Hass):
     tn.write("getdata\r\n".encode())
     time.sleep(0.5)
     data=tn.read_very_eager()
-    sys.stdout.write(data)
+    #sys.stdout.write(data)
     tn.close()
     self.log(data)
 

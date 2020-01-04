@@ -13,29 +13,27 @@ class telnet_scan(hass.Hass):
 #    self.handle = self.run_every(get_easyplus, time)
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):
-    self.run_in(self.get_easyplus, 60)
     self.log("getting easyplus log...")
     tn = telnetlib.Telnet("192.168.3.61",2024)
+#    tn.write("r\n".encode())
     tn.write("pass apex\r\n".encode())
     time.sleep(0.5)
     tn.write("getdata\r\n".encode())
     time.sleep(0.5)
-    getdata=tn.read_very_eager()
+    data=tn.read_very_eager()
+    #sys.stdout.write(data)
+    tn.close()
+    self.log(data)
+    if "DigitalOut 33,ON".encode() in data:
+       self.log("Microwave ON")
+       self.set_state("switch.stp_keuken_microgolf", state = "on")
+    if "DigitalOut 33,OFF".encode() in data:
+       self.log("Microwave OFF")
+       self.set_state("switch.stp_keuken_microgolf", state = "off"))
+
     #tn.read_until("b".encode())
     #data=tn.read_very_eager()
 #    data = tn.read_all() #(‘ascii’)
-    tn.close()
-    self.log("getting easyplus completed")
-    self.log(getdata)
-#    self.log(data)
-    if "DigitalOut 33,ON".encode() in getdata:
-       self.log("Microwave ON")
-       self.set_state("switch.stp_keuken_microgolf", state = "on")
-    if "DigitalOut 33,OFF".encode() in getdata:
-       self.log("Microwave OFF")
-       self.set_state("switch.stp_keuken_microgolf", state = "off")
-
-
 
     #data2=re.findall(r'LTE band: *(\S*)', data.decode())
     #self.set_state("input_text.band", state = data2 ) #BCK - need to parse data2

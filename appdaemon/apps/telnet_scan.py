@@ -26,19 +26,19 @@ class telnet_scan(hass.Hass):
     getdata=tn.read_very_eager()
     self.log(getdata)
     while self.get_state('binary_sensor.easyplus_telnet') == 'on':
-      #self.log("getting easyplus log...")
       data=tn.read_very_eager()
       if ">".encode() in data:
         self.log(data)
+    self.log(self.args)
+
+
+
         if "DigitalOut 33,ON".encode() in data:
           self.log("Microwave ON")
           self.set_state("switch.stp_keuken_microgolf", state = "on")
         if "DigitalOut 33,OFF".encode() in data:
           self.log("Microwave OFF")
           self.set_state("switch.stp_keuken_microgolf", state = "off")
-    self.log(self.args)
-
-
 
 ###################
 ## original code ##

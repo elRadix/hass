@@ -30,10 +30,10 @@ class telnet_scan(hass.Hass):
       #getdata=tn.read_very_eager()
       #tn.close()
       self.log(getdata)
-      if "DigitalOut 33,ON".encode() in data:
+      if "DigitalOut 33,ON".encode() in getdata:
          self.log("Microwave ON")
          self.set_state("switch.stp_keuken_microgolf", state = "on")
-      if "DigitalOut 33,OFF".encode() in data:
+      if "DigitalOut 33,OFF".encode() in getdata:
          self.log("Microwave OFF")
          self.set_state("switch.stp_keuken_microgolf", state = "off")
     self.log(self.args)

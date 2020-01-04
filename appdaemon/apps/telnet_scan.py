@@ -8,7 +8,7 @@ import time
 class telnet_scan(hass.Hass):
 
  def initialize(self):
-    self.listen_state("switch.easyplus", new = "on")
+    self.listen_state(self.get_easyplus, "switch.easyplus", new = "on")
     self.run_in(self.get_easyplus, 60)
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):

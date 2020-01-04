@@ -8,7 +8,7 @@ class telnet_scan(hass.Hass):
 
   def initialize(self):
     #Run callback to run get_bands every 30s starting now
-    self.run_every(self.get_easyplus, self.datetime(), 30)
+    self.run_every(self.get_easyplus, datetime.datetime.now(),5)
 
   def get_easyplus(self, kwargs):
     self.log("getting easyplus log...")

@@ -31,7 +31,7 @@ class telnet_scan(hass.Hass):
        if ">".encode() in data:
          #new= data.split("\r\n,>,b".encode())
          #new = str(data).split(">",1)[1].encode()
-         new = str(data).splitlines(True)).encode()
+         new = data.splitlines(True)).encode()
          self.log(new)
        if "s".encode() in data:
          self.log("command {}".format(data))

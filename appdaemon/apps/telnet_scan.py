@@ -25,7 +25,7 @@ class telnet_scan(hass.Hass):
     tn.write("getdata\r\n".encode())
     time.sleep(0.5)
 #    data=tn.read_very_eager()
-    data = tn.read_all() 
+    data = (tn.read_all().decode('ascii'))
     #sys.stdout.write(data)
 #    tn.close()
     self.log(data)

@@ -17,7 +17,7 @@ class telnet_scan(hass.Hass):
     self.listen_state(self.get_easyplus, 'input_boolean.night')
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):
-    self.log("getting easyplus log...")
+    self.log("starting telnet session")
     tn = telnetlib.Telnet("192.168.3.61",2024)
     tn.write("pass apex\r\n".encode())
     while self.get_state('binary_sensor.easyplus_telnet') == 'on':

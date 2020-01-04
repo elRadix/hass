@@ -16,7 +16,8 @@ class telnet_scan(hass.Hass):
     # self.run_every(self.get_easyplus, datetime.datetime.now(),5)
     runtime = datetime.datetime.now()
     # addseconds = (round((runtime.minute*60 + runtime.second)/300)+1)*300
-    runtime = runtime.replace(minute=0, second=0, microsecond=0) + datetime.timedelta(seconds=addseconds)
+    # runtime = runtime.replace(minute=0, second=0, microsecond=0) + datetime.timedelta(seconds=addseconds)
+    runtime = runtime.replace(minute=0, second=0, microsecond=0) + datetime.timedelta(seconds=1)
     self.run_every(self.get_easyplus,runtime,1)
 
   def get_easyplus(self, kwargs):

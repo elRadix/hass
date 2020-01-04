@@ -8,10 +8,10 @@ class TelnetEasyplus(hass.Hass):
 
   def initialize(self):
     #Run callback to run get_bands every 30s starting now
-    self.run_every(self.get_easypluslog, self.datetime(), 30)
+    self.run_every(self.get_easyplus, self.datetime(), 30)
 
-  def get_easypluslog(self, kwargs):
-    #self.log("getting band...")
+  def get_easyplus(self, kwargs):
+    self.log("getting easyplus log...")
     tn = telnetlib.Telnet("192.168.3.61",2024)
     tn.write("pass apex\r\n".encode())
     time.sleep(0.5)

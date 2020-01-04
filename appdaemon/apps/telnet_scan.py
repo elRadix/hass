@@ -33,7 +33,7 @@ class telnet_scan(hass.Hass):
        self.set_state("switch.stp_keuken_microgolf", state = "on")
     if "DigitalOut 33,OFF".encode() in data:
        self.log("Microwave OFF")
-       self.set_state("switch.stp_keuken_microgolf", state = "off"))
+       self.set_state("switch.stp_keuken_microgolf", state = "off")
 
     #tn.read_until("b".encode())
     #data=tn.read_very_eager()

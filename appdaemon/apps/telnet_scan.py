@@ -3,13 +3,15 @@ import datetime
 import telnetlib
 import time
 import re
+import threading
 
 class telnet_scan(hass.Hass):
 
 
 
  def initialize(self):
-    self.listen_state(self.get_easyplus, 'input_boolean.night')
+    #self.listen_state(self.get_easyplus, 'input_boolean.night')
+    threading.Timer(10.0, self.get_easyplus).start() # called every minute
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):
     self.log("getting easyplus log...")

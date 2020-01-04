@@ -29,6 +29,8 @@ class telnet_scan(hass.Hass):
       data=tn.read_very_eager()
       if ">".encode() in data:
         self.log(data)
+      if "s".encode() in data:
+        self.log("command: "data)
     self.log(self.args)
 
 

@@ -14,7 +14,7 @@ class telnet_scan(hass.Hass):
 
 
  def initialize(self):
-    self.listen_state(self.get_easyplus, 'input_boolean.night')
+    self.listen_state(self.get_easyplus, 'input_boolean.night_late')
 
  def get_easyplus(self, entity, attribute, old, new, kwargs):
     self.log("getting easyplus log...")
@@ -34,6 +34,7 @@ class telnet_scan(hass.Hass):
     if "DigitalOut 33,OFF".encode() in data:
        self.log("Microwave OFF")
        self.set_state("switch.stp_keuken_microgolf", state = "off")
+    self.log(self.args)
 
     #tn.read_until("b".encode())
     #data=tn.read_very_eager()

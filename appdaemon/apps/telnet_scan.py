@@ -23,8 +23,8 @@ class telnet_scan(hass.Hass):
      tn.write("pass apex\r\n".encode())
      while self.get_state('binary_sensor.easyplus_telnet') == 'on':
        data=tn.read_very_eager()
-       if ">".decode('ascii') in data:
-        cleaned =re.sub(">",'',data)
+       if ">".encode('ascii') in data:
+        cleaned =re.sub(">",'',data).decode('ascii')
         type = cleaned.split()[0]
         state = cleaned.split()[1]
         self.log("Type= %s", type)

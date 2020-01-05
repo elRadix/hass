@@ -26,7 +26,8 @@ class telnet_scan(hass.Hass):
        if ">".encode() in data:
         type = data.split()[0]
         state = data.split()[1]
-        self.log(type,state)
+        self.log("Type= %s", type)
+        self.log("State= %s", state)
      self.log(self.args)
 
 

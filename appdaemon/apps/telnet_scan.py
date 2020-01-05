@@ -24,7 +24,7 @@ class telnet_scan(hass.Hass):
      while self.get_state('binary_sensor.easyplus_telnet') == 'on':
        data=tn.read_very_eager()
        if ">".encode('ascii') in data:
-        cleaned = re.sub('>',  '',data.encode())
+        cleaned =re.sub(str(">"),'',data)
         type = cleaned.split()[0]
         state = cleaned.split()[1]
         self.log("Type= %s", type)
